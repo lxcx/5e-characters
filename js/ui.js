@@ -1106,26 +1106,26 @@ function showBackgroundDescription() {
 
     const bgData = backgrounds[selectedBg];
     if (bgData) {
-        let html = `<strong>${bgData.name}</strong>`;
+        let html = `<strong style="margin-right: 8px;">${bgData.name}</strong>`;
         
-        // Build description with proper line breaks
+        // Build description with proper line breaks using divs
         const parts = [];
         
         // Main flavor text (extract from description before "Skills:")
         const descMatch = bgData.description.match(/^([^.]+\.)/);
         if (descMatch) {
-            parts.push(descMatch[1]);
+            parts.push(`<div style="margin-top: 4px;">${descMatch[1]}</div>`);
         }
         
         // Skills
         if (bgData.skills && bgData.skills.length > 0) {
-            parts.push(`<strong>Skills:</strong> ${bgData.skills.join(', ')}`);
+            parts.push(`<div><strong>Skills:</strong> ${bgData.skills.join(', ')}</div>`);
         }
         
         // Tools
         if (bgData.tools && bgData.tools.length > 0) {
             const toolList = Array.isArray(bgData.tools) ? bgData.tools.join(', ') : bgData.tools;
-            parts.push(`<strong>Tools:</strong> ${toolList}`);
+            parts.push(`<div><strong>Tools:</strong> ${toolList}</div>`);
         }
         
         // Languages
@@ -1133,10 +1133,10 @@ function showBackgroundDescription() {
             const langText = bgData.languages === 1 ? 'One of your choice' : 
                             bgData.languages === 2 ? 'Two of your choice' : 
                             `${bgData.languages} of your choice`;
-            parts.push(`<strong>Languages:</strong> ${langText}`);
+            parts.push(`<div><strong>Languages:</strong> ${langText}</div>`);
         }
         
-        html += '<br>' + parts.join('<br>');
+        html += parts.join('');
         descriptionDiv.innerHTML = html;
         descriptionDiv.style.display = 'block';
     } else {
