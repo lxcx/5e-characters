@@ -1071,6 +1071,13 @@ function showBackgroundDescription() {
         descriptionDiv.style.display = 'none';
         return;
     }
+    
+    // Handle custom background
+    if (selectedBg === 'custom') {
+        descriptionDiv.innerHTML = `<strong>Custom Background</strong><br>Create your own background with custom traits, ideals, bonds, and flaws.`;
+        descriptionDiv.style.display = 'block';
+        return;
+    }
 
     const bgData = backgrounds[selectedBg];
     if (bgData) {

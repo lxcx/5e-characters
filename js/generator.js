@@ -128,7 +128,19 @@ function generateNPC() {
     const bgSelect = document.getElementById('background');
     const bgValue = bgSelect ? bgSelect.value : 'random';
     
-    if (bgValue !== 'none') {
+    if (bgValue === 'custom') {
+        // Custom background with placeholder text
+        selectedBackground = 'custom';
+        backgroundData = {
+            name: 'Custom',
+            skills: [],
+            tools: [],
+            traits: ['Click to enter your personality trait...'],
+            ideals: ['Click to enter your ideal...'],
+            bonds: ['Click to enter your bond...'],
+            flaws: ['Click to enter your flaw...']
+        };
+    } else if (bgValue !== 'none') {
         selectedBackground = bgValue === 'random' ? randomChoice(Object.keys(backgrounds)) : bgValue;
         backgroundData = backgrounds[selectedBackground];
     }
