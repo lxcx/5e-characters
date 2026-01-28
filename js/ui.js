@@ -647,10 +647,8 @@ function displayNPC(npc) {
             </div>
         ` : '';
         
-        // For custom backgrounds, show the custom name; for others show the background key
-        const displayName = npc.background === 'custom' && npc.backgroundData?.name 
-            ? npc.backgroundData.name 
-            : capitalize(npc.background);
+        // Use the proper name from backgroundData (has correct spacing), fallback to capitalized key
+        const displayName = npc.backgroundData?.name || capitalize(npc.background);
         
         html += `
             <div class="section-title" style="margin-top: 15px;">

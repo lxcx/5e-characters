@@ -359,7 +359,7 @@ return html;
     ` : ''}
 
     ${npc.background ? `
-    <h2>Background: ${capitalize(npc.background)}</h2>
+    <h2>Background: ${npc.backgroundData?.name || capitalize(npc.background)}</h2>
     ${npc.backgroundData?.feature ? `
     <div class="trait-block" style="margin-bottom: 15px; border-left: 3px solid #58180d; padding-left: 10px; background: #f8f5f0;">
         <strong style="color: #58180d;">Feature: ${npc.backgroundData.feature}</strong>
