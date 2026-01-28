@@ -122,13 +122,11 @@ function generateNPC() {
         selectedAlignment = alignment === 'random' ? randomChoice(alignments) : alignment;
     }
 
-    // Background (for PC mode)
+    // Background (for PC mode) - always random, user can change on generated side
     let selectedBackground = null;
     let backgroundData = null;
     if (isPCMode()) {
-        const bgSelect = document.getElementById('background');
-        const bgValue = bgSelect ? bgSelect.value : 'random';
-        selectedBackground = bgValue === 'random' ? randomChoice(Object.keys(backgrounds)) : bgValue;
+        selectedBackground = randomChoice(Object.keys(backgrounds));
         backgroundData = backgrounds[selectedBackground];
     }
 

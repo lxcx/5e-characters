@@ -607,6 +607,45 @@ function displayNPC(npc) {
         `;
     }
 
+    // Background traits (for PCs)
+    if (npc.background && npc.backgroundData) {
+        html += `
+            <div class="section-title" style="margin-top: 15px;"><i class="fa-solid fa-masks-theater"></i> Background: ${capitalize(npc.background)}</div>
+            
+            <div class="info-item" style="margin-bottom: 8px;">
+                <span class="info-label">Personality Trait:</span>
+                <span class="editable" style="cursor: pointer; display: block; margin-top: 4px;" 
+                    onclick="openBackgroundTraitModal('personalityTrait', 'Personality Trait', currentNPC.backgroundData.traits, currentNPC.personalityTrait)">
+                    ${npc.personalityTrait || 'Click to select'}
+                </span>
+            </div>
+            
+            <div class="info-item" style="margin-bottom: 8px;">
+                <span class="info-label">Ideal:</span>
+                <span class="editable" style="cursor: pointer; display: block; margin-top: 4px;"
+                    onclick="openBackgroundTraitModal('ideal', 'Ideal', currentNPC.backgroundData.ideals, currentNPC.ideal)">
+                    ${npc.ideal || 'Click to select'}
+                </span>
+            </div>
+            
+            <div class="info-item" style="margin-bottom: 8px;">
+                <span class="info-label">Bond:</span>
+                <span class="editable" style="cursor: pointer; display: block; margin-top: 4px;"
+                    onclick="openBackgroundTraitModal('bond', 'Bond', currentNPC.backgroundData.bonds, currentNPC.bond)">
+                    ${npc.bond || 'Click to select'}
+                </span>
+            </div>
+            
+            <div class="info-item" style="margin-bottom: 8px;">
+                <span class="info-label">Flaw:</span>
+                <span class="editable" style="cursor: pointer; display: block; margin-top: 4px;"
+                    onclick="openBackgroundTraitModal('flaw', 'Flaw', currentNPC.backgroundData.flaws, currentNPC.flaw)">
+                    ${npc.flaw || 'Click to select'}
+                </span>
+            </div>
+        `;
+    }
+
     if (npc.backstory) {
         html += `
             <!-- Backstory Section with Lock -->
@@ -677,7 +716,21 @@ function toggleCharacterType() {
     document.getElementById('pcLabel').style.fontWeight = isPC ? 'bold' : 'normal';
     document.getElementById('pcLabel').style.color = isPC ? '#1e7b34' : '#888';
     
-    document.getElementById('backgroundGroup').style.display = isPC ? 'block' : 'none';
+    // Update button text
+    const generateBtn = document.getElementById('generateBtn');
+    if (generateBtn) {
+        generateBtn.innerHTML = isPC 
+            ? '<i class="fa-solid fa-wand-magic-sparkles"></i> Generate PC'
+            : '<i class="fa-solid fa-wand-magic-sparkles"></i> Generate NPC';
+    }
+    
+    // Update placeholder text
+    const placeholderText = document.getElementById('placeholderText');
+    if (placeholderText) {
+        placeholderText.textContent = isPC
+            ? 'Fill out the form and click "Generate PC" to create a character'
+            : 'Fill out the form and click "Generate NPC" to create a character';
+    }
     
     const classSelect = document.getElementById('npcClass');
     if (isPC && classSelect.value === 'commoner') {
@@ -2278,6 +2331,105 @@ function removeWeapon(index) {
     
     currentNPC.weapons.splice(index, 1);
     displayNPC(currentNPC);
+}
+
+// Background trait selection modal
+function openBackgroundTraitModal(field, title, options, currentValue) {
+    const modal = document.getElementById('multiSelectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalOptions');
+    
+    modalTitle.textContent = `Select ${title}`;
+    currentModalField = field;
+    
+    let html = `
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Choose from ${title}s:</label>
+            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; border-radius: 6px; padding: 5px;">
+    `;
+    
+    options.forEach((opt, index) => {
+        const isSelected = opt === currentValue;
+        html += `
+            <div class="modal-option ${isSelected ? 'selected' : ''}" 
+                 onclick="selectBackgroundTrait('${field}', this, ${index})"
+                 data-value="${index}"
+                 style="padding: 8px; margin: 4px 0; border-radius: 4px; cursor: pointer; ${isSelected ? 'background: #58180d; color: white;' : 'background: #f5f5f5;'}">
+                ${opt}
+            </div>
+        `;
+    });
+    
+    html += `
+            </div>
+        </div>
+        <div style="margin-top: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Or enter custom ${title.toLowerCase()}:</label>
+            <textarea id="customTraitInput" style="width: 100%; min-height: 60px; padding: 8px; border: 2px solid #dee2e6; border-radius: 6px; font-family: inherit;"
+                placeholder="Enter your own ${title.toLowerCase()}...">${currentValue && !options.includes(currentValue) ? currentValue : ''}</textarea>
+        </div>
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
+            <button onclick="saveBackgroundTrait('${field}')" style="flex: 1; padding: 10px; background: #58180d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                <i class="fa-solid fa-check"></i> Save
+            </button>
+            <button onclick="closeModal()" style="flex: 1; padding: 10px; background: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                Cancel
+            </button>
+        </div>
+    `;
+    
+    modalContent.innerHTML = html;
+    
+    // Hide the default save button and custom input
+    document.getElementById('addCustomContainer').style.display = 'none';
+    document.querySelector('.modal-content .save-btn')?.style.setProperty('display', 'none');
+    
+    modal.classList.add('active');
+    
+    // Store options for later
+    modal.dataset.traitOptions = JSON.stringify(options);
+}
+
+function selectBackgroundTrait(field, element, index) {
+    // Remove selected from all
+    element.parentElement.querySelectorAll('.modal-option').forEach(el => {
+        el.classList.remove('selected');
+        el.style.background = '#f5f5f5';
+        el.style.color = 'inherit';
+    });
+    
+    // Add selected to clicked
+    element.classList.add('selected');
+    element.style.background = '#58180d';
+    element.style.color = 'white';
+    
+    // Clear custom input
+    document.getElementById('customTraitInput').value = '';
+}
+
+function saveBackgroundTrait(field) {
+    const modal = document.getElementById('multiSelectModal');
+    const options = JSON.parse(modal.dataset.traitOptions || '[]');
+    const customInput = document.getElementById('customTraitInput').value.trim();
+    
+    let newValue;
+    
+    if (customInput) {
+        newValue = customInput;
+    } else {
+        const selected = document.querySelector('.modal-option.selected');
+        if (selected) {
+            const index = parseInt(selected.dataset.value);
+            newValue = options[index];
+        }
+    }
+    
+    if (newValue && currentNPC) {
+        currentNPC[field] = newValue;
+        displayNPC(currentNPC);
+    }
+    
+    closeModal();
 }
 
 function openMultiSelectModal(field, title, options, currentSelections) {

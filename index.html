@@ -1811,24 +1811,6 @@
                             <span id="pcLabel" style="color: #888;">PC</span>
                         </div>
                     </div>
-                    <div class="form-group" id="backgroundGroup" style="flex: 1; display: none;">
-                        <label for="background">Background</label>
-                        <select id="background">
-                            <option value="random">Random</option>
-                            <option value="acolyte">Acolyte</option>
-                            <option value="charlatan">Charlatan</option>
-                            <option value="criminal">Criminal</option>
-                            <option value="entertainer">Entertainer</option>
-                            <option value="folkhero">Folk Hero</option>
-                            <option value="hermit">Hermit</option>
-                            <option value="noble">Noble</option>
-                            <option value="outlander">Outlander</option>
-                            <option value="sage">Sage</option>
-                            <option value="sailor">Sailor</option>
-                            <option value="soldier">Soldier</option>
-                            <option value="urchin">Urchin</option>
-                        </select>
-                    </div>
                 </div>
                 
                 <!-- Row 1: Race & Gender -->
@@ -2105,7 +2087,7 @@
                     </div>
                 </div>
 
-                <button onclick="generateNPC()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate NPC</button>
+                <button id="generateBtn" onclick="generateNPC()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate NPC</button>
             </div>
 
             <div class="result-section">
@@ -2119,7 +2101,7 @@
                     <!-- NPC will be displayed here -->
                 </div>
                 <div id="placeholder" style="text-align: center; color: #6c757d; padding: 40px;">
-                    <p style="font-size: 1.2em;">Fill out the form and click "Generate NPC" to create a character</p>
+                    <p id="placeholderText" style="font-size: 1.2em;">Fill out the form and click "Generate NPC" to create a character</p>
                 </div>
             </div>
         </div>
