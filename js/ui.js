@@ -2385,11 +2385,11 @@ function openBackgroundTraitModal(field, title, options, currentValue) {
     
     modalContent.innerHTML = html;
     
-    // Hide the default save button and custom input if they exist
-    const addCustomContainer = document.getElementById('addCustomContainer');
-    if (addCustomContainer) addCustomContainer.style.display = 'none';
-    const saveBtn = document.querySelector('.modal-content .save-btn');
-    if (saveBtn) saveBtn.style.display = 'none';
+    // Hide the default modal elements (custom input and footer)
+    const customInput = document.querySelector('#multiSelectModal .modal-custom-input');
+    if (customInput) customInput.style.display = 'none';
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = 'none';
     
     modal.classList.add('active');
     
@@ -2484,6 +2484,10 @@ function openMultiSelectModal(field, title, options, currentSelections) {
     if (customInputSection) {
         customInputSection.style.display = field === 'skills' ? 'none' : 'flex';
     }
+    
+    // Ensure modal footer is visible (may have been hidden by background trait modal)
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = 'flex';
     
     // Update skill count display
     updateSkillCountDisplay();
