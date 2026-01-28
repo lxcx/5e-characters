@@ -610,7 +610,11 @@ function displayNPC(npc) {
     // Background traits (for PCs)
     if (npc.background && npc.backgroundData) {
         html += `
-            <div class="section-title" style="margin-top: 15px;"><i class="fa-solid fa-masks-theater"></i> Background: ${capitalize(npc.background)}</div>
+            <div class="section-title" style="margin-top: 15px;">
+                <i class="fa-solid fa-masks-theater"></i> Background: 
+                <span class="editable" style="cursor: pointer; border-bottom: 1px dashed #58180d;" 
+                    onclick="openBackgroundSelectModal()">${capitalize(npc.background)}</span>
+            </div>
             
             <div class="info-item" style="margin-bottom: 8px;">
                 <span class="info-label">Personality Trait:</span>
@@ -2392,6 +2396,91 @@ function removeWeapon(index) {
     if (!currentNPC || !currentNPC.weapons) return;
     
     currentNPC.weapons.splice(index, 1);
+    displayNPC(currentNPC);
+}
+
+// Background selection modal - allows changing the background after generation
+function openBackgroundSelectModal() {
+    const modal = document.getElementById('multiSelectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalOptions = document.getElementById('modalOptions');
+    
+    modalTitle.textContent = 'Select Background';
+    
+    // Build options HTML grouped by source
+    const sourceGroups = {
+        "Player's Handbook": ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folkhero', 'guildartisan', 'hermit', 'noble', 'outlander', 'sage', 'sailor', 'soldier', 'urchin'],
+        "Sword Coast Adv. Guide": ['citywatch', 'clancrafter', 'cloisteredscholar', 'courtier', 'factionagent', 'fartraveler', 'inheritor', 'knightoftheorder', 'mercenaryveteran', 'urbanbountyhunter', 'uthgardttribemember', 'waterdhaviannoble'],
+        "Ravnica": ['azoriusfunctionary', 'boroslegionnaire', 'dimiroperative', 'golgariagent', 'gruulanarch', 'izzetengineer', 'orzhovrepresentative', 'rakdoscultist', 'selesnyainitiate', 'simicscientist'],
+        "Wildemount": ['grinner', 'volstruckeragent'],
+        "Theros": ['athlete'],
+        "Ravenloft": ['hauntedone', 'investigator'],
+        "Strixhaven": ['loreholdstudent', 'prismaristudent', 'quandrixstudent', 'silverquillstudent', 'witherbloomstudent'],
+        "Acquisitions Inc.": ['celebrityadventurersscion', 'failedmerchant', 'gambler', 'plaintiff', 'rivalintern']
+    };
+    
+    let optionsHtml = '';
+    for (const [source, bgKeys] of Object.entries(sourceGroups)) {
+        optionsHtml += `<div style="font-weight: bold; margin-top: 10px; margin-bottom: 5px; color: #58180d; border-bottom: 1px solid #ddd; padding-bottom: 3px;">${source}</div>`;
+        bgKeys.forEach(key => {
+            const bg = backgrounds[key];
+            if (bg) {
+                const isSelected = currentNPC && currentNPC.background === key;
+                optionsHtml += `
+                    <div class="modal-option ${isSelected ? 'selected' : ''}" 
+                         style="padding: 8px 12px; cursor: pointer; border-radius: 4px; margin: 2px 0;"
+                         onmouseover="this.style.backgroundColor='#f0e8d8'"
+                         onmouseout="this.style.backgroundColor='${isSelected ? '#e8dcc8' : 'transparent'}'"
+                         onclick="selectNewBackground('${key}')">
+                        <strong>${bg.name}</strong>
+                        <div style="font-size: 0.85em; color: #666; margin-top: 2px;">
+                            Skills: ${bg.skills ? bg.skills.join(', ') : 'None'}
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+    
+    modalOptions.innerHTML = optionsHtml;
+    
+    // Hide the custom input and footer for this modal
+    const customInput = document.querySelector('#multiSelectModal .modal-custom-input');
+    if (customInput) customInput.style.display = 'none';
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = 'none';
+    
+    modal.classList.add('active');
+}
+
+// Handle selecting a new background
+function selectNewBackground(bgKey) {
+    const bgData = backgrounds[bgKey];
+    if (!bgData || !currentNPC) return;
+    
+    // Update the NPC with the new background
+    currentNPC.background = bgKey;
+    currentNPC.backgroundData = bgData;
+    
+    // Randomly select new trait, ideal, bond, flaw from the new background
+    currentNPC.personalityTrait = randomChoice(bgData.traits);
+    currentNPC.ideal = randomChoice(bgData.ideals);
+    currentNPC.bond = randomChoice(bgData.bonds);
+    currentNPC.flaw = randomChoice(bgData.flaws);
+    
+    // Update tool proficiencies from new background
+    currentNPC.toolProficiencies = bgData.tools || [];
+    
+    // Update skills - add background skills (avoiding duplicates)
+    const bgSkills = bgData.skills || [];
+    bgSkills.forEach(skill => {
+        if (!currentNPC.skills.includes(skill)) {
+            currentNPC.skills.push(skill);
+        }
+    });
+    
+    // Close modal and refresh display
+    closeModal();
     displayNPC(currentNPC);
 }
 
