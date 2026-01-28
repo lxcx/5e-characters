@@ -734,7 +734,12 @@ function toggleCharacterType() {
     
     const classSelect = document.getElementById('npcClass');
     if (isPC && classSelect.value === 'commoner') {
+        // PC mode: switch from commoner to random adventurer
         classSelect.value = 'random';
+        onClassChange();
+    } else if (!isPC && classSelect.value !== 'commoner') {
+        // NPC mode: default back to commoner
+        classSelect.value = 'commoner';
         onClassChange();
     }
 }
