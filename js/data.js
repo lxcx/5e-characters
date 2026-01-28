@@ -293,6 +293,318 @@ const backgrounds = {
         ideals: ['Respect - All people deserve respect.', 'Community - We must take care of each other.', 'Change - The low are lifted, the high brought down.', 'Retribution - The rich need to see the gutters.', 'People - I help those who help me.', 'Aspiration - I will prove I deserve a better life.'],
         bonds: ['My city is my home; I will fight for it.', 'I sponsor an orphanage.', 'I owe my survival to another urchin.', 'I owe a debt I can never repay.', 'I escaped poverty by robbing an important person.', 'No one should endure my hardships.'],
         flaws: ['I run from fights when outnumbered.', 'Gold seems like a lot of money.', 'I trust no one but myself.', 'I would rather kill someone in their sleep.', 'It is not stealing if I need it more.', 'Those who cannot care for themselves deserve their fate.']
+    },
+    // PHB - Guild Artisan
+    guildartisan: {
+        name: 'Guild Artisan', skills: ['Insight', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
+        description: 'You are a member of an artisan\'s guild, skilled in a particular field. Skills: Insight, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.'],
+        ideals: ['Community - It is the duty of all to strengthen the bonds of community.', 'Generosity - My talents were given to me so I could use them to benefit the world.', 'Freedom - Everyone should be free to pursue their own livelihood.', 'Greed - I am only in it for the money.', 'People - I am committed to the people I care about.', 'Aspiration - I work hard to be the best there is at my craft.'],
+        bonds: ['The workshop where I learned my trade is the most important place in the world to me.', 'I created a great work for someone and then found them unworthy; I am still looking for someone worthy.', 'I owe my guild a great debt for forging me into the person I am today.', 'I pursue wealth to secure someone\'s love.', 'One day I will return to my guild and prove that I am the greatest artisan of them all.', 'I will get revenge on the evil forces that destroyed my place of business.'],
+        flaws: ['I will do anything to get my hands on something rare or priceless.', 'I am quick to assume that someone is trying to cheat me.', 'No one must ever learn that I once stole money from guild coffers.', 'I am never satisfied with what I have.', 'I would kill to acquire a noble title.', 'I am horribly jealous of anyone who can outshine my handiwork.']
+    },
+    // SCAG Backgrounds
+    citywatch: {
+        name: 'City Watch', skills: ['Athletics', 'Insight'], languages: 2,
+        description: 'You have served the community where you grew up, standing as its first line of defense. Skills: Athletics, Insight. Languages: Two of your choice.',
+        traits: ['I am always polite and respectful.', 'I am haunted by memories of war.', 'I have lost too many friends.', 'I am full of inspiring stories from my service.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and breaking things.'],
+        ideals: ['Greater Good - Our lot is to lay down our lives in defense of others.', 'Responsibility - I do what I must and obey just authority.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - In life as in war, the stronger force wins.', 'Live and Let Live - Ideals are not worth killing over.', 'Nation - My city, nation, or people are all that matter.'],
+        bonds: ['I would still lay down my life for the people I served with.', 'Someone saved my life on the watch. I will never leave a comrade behind.', 'My honor is my life.', 'I will never forget the crushing defeat my company suffered.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
+        flaws: ['The monstrous enemy we faced still leaves me quivering with fear.', 'I have little respect for anyone who is not a proven warrior.', 'I made a terrible mistake in battle that cost many lives.', 'My hatred of my enemies is blind and unreasoning.', 'I obey the law, even if the law causes misery.', 'I would rather eat my armor than admit when I am wrong.']
+    },
+    clancrafter: {
+        name: 'Clan Crafter', skills: ['History', 'Insight'], tools: ['Artisan\'s tools'], languages: 1,
+        description: 'You learned your craft among a clan of dwarves or similar artisan community. Skills: History, Insight. Tools: One type of artisan\'s tools. Languages: Dwarvish or one of your choice.',
+        traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.'],
+        ideals: ['Community - It is the duty of all to strengthen the bonds of community.', 'Generosity - My talents were given to me so I could use them to benefit the world.', 'Freedom - Everyone should be free to pursue their own livelihood.', 'Greed - I am only in it for the money.', 'People - I am committed to the people I care about.', 'Aspiration - I work hard to be the best there is at my craft.'],
+        bonds: ['The workshop where I learned my trade is the most important place in the world to me.', 'I created a great work for someone and then found them unworthy.', 'I owe my guild a great debt for forging me into the person I am today.', 'I pursue wealth to secure someone\'s love.', 'One day I will return to my guild and prove that I am the greatest artisan.', 'I will get revenge on the evil forces that destroyed my place of business.'],
+        flaws: ['I will do anything to get my hands on something rare or priceless.', 'I am quick to assume that someone is trying to cheat me.', 'No one must ever learn that I once stole money from guild coffers.', 'I am never satisfied with what I have.', 'I would kill to acquire a noble title.', 'I am horribly jealous of anyone who can outshine my handiwork.']
+    },
+    cloisteredscholar: {
+        name: 'Cloistered Scholar', skills: ['History'], languages: 2,
+        description: 'You spent years learning the lore of the multiverse in a great library. Skills: History plus one from Arcana, Nature, or Religion. Languages: Two of your choice.',
+        traits: ['I use polysyllabic words that convey the impression of great erudition.', 'I have read every book in the world\'s greatest libraries.', 'I am used to helping out those who are not as smart as I am.', 'There is nothing I like more than a good mystery.', 'I am willing to listen to every side of an argument.', 'I speak slowly when talking to idiots.'],
+        ideals: ['Knowledge - The path to power and self-improvement is through knowledge.', 'Beauty - What is beautiful points us beyond itself toward what is true.', 'Logic - Emotions must not cloud our logical thinking.', 'No Limits - Nothing should fetter the infinite possibility inherent in all existence.', 'Power - Knowledge is the path to power and domination.', 'Self-Improvement - The goal of a life of study is the betterment of oneself.'],
+        bonds: ['It is my duty to protect my students.', 'I have an ancient text that holds terrible secrets.', 'I work to preserve a library, university, scriptorium, or monastery.', 'My life\'s work is a series of tomes related to a specific field of lore.', 'I have been searching my whole life for the answer to a certain question.', 'I sold my soul for knowledge and hope to do great deeds to win it back.'],
+        flaws: ['I am easily distracted by the promise of information.', 'Most people scream and run when they see a demon. I stop and take notes.', 'Unlocking an ancient mystery is worth the price of a civilization.', 'I overlook obvious solutions in favor of complicated ones.', 'I speak without really thinking through my words, invariably insulting others.', 'I cannot keep a secret to save my life, or anyone else\'s.']
+    },
+    courtier: {
+        name: 'Courtier', skills: ['Insight', 'Persuasion'], languages: 2,
+        description: 'You know the inner workings of courts and have served in a political environment. Skills: Insight, Persuasion. Languages: Two of your choice.',
+        traits: ['I believe that anything worth doing is worth doing right.', 'My eloquent flattery makes everyone feel wonderful.', 'I always want to know how things work and who is in charge.', 'I am full of witty aphorisms and have insight for every occasion.', 'I am never rude to people of higher station.', 'I like to talk at length about court intrigues.'],
+        ideals: ['Respect - Respect is due to me because of my position.', 'Responsibility - It is my duty to respect the authority of those above me.', 'Independence - I must prove that I can handle myself without coddling.', 'Power - If I can attain more power, no one will tell me what to do.', 'Family - Blood runs thicker than water.', 'Noble Obligation - It is my duty to protect those beneath my station.'],
+        bonds: ['I will face any challenge to win the approval of my patron.', 'My house\'s alliance with another noble family must be sustained.', 'Nothing is more important than the other members of my political faction.', 'I am in love with the heir of a family that my family despises.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero of the people.'],
+        flaws: ['I secretly believe that everyone is beneath me.', 'I hide a truly scandalous secret that could ruin my family forever.', 'I too often hear veiled insults and threats in every word.', 'I have an insatiable desire for carnal pleasures.', 'In fact, the world does revolve around me.', 'By my words and actions, I often bring shame to my family.']
+    },
+    factionagent: {
+        name: 'Faction Agent', skills: ['Insight'], languages: 2,
+        description: 'You serve a faction or organization and work toward its goals. Skills: Insight plus one Intelligence, Wisdom, or Charisma skill. Languages: Two of your choice.',
+        traits: ['I idolize a particular hero of my faction and constantly refer to that person\'s deeds.', 'I can find common ground between the fiercest enemies.', 'I see omens in every event and action. The gods try to speak to us.', 'Nothing can shake my optimistic attitude.', 'I quote (or misquote) sacred texts in almost every situation.', 'I am tolerant (or intolerant) of other factions and their ways.'],
+        ideals: ['Tradition - The ancient traditions of my faction must be preserved and upheld.', 'Charity - I always try to help those in need, no matter the personal cost.', 'Change - We must help bring about the changes our faction is working for.', 'Power - I hope to one day rise to the top of my faction\'s hierarchy.', 'Faith - I trust that my faction\'s leaders will guide my actions wisely.', 'Aspiration - I seek to prove myself worthy of my faction\'s favor.'],
+        bonds: ['I would die to recover an artifact of my faction that was lost long ago.', 'I will someday get revenge on the corrupt leader who branded me a traitor.', 'I owe my life to a faction member who took me in when my parents died.', 'Everything I do is for the common people.', 'I will do anything to protect the faction I serve.', 'I seek to preserve a sacred text of my faction.'],
+        flaws: ['I judge others harshly, and myself even more severely.', 'I put too much trust in those who wield power within my faction.', 'My piety sometimes leads me to blindly trust those that profess the same ideals.', 'I am inflexible in my thinking.', 'I am suspicious of strangers and expect the worst of them.', 'Once I pick a goal, I become obsessed with it to the detriment of everything else.']
+    },
+    fartraveler: {
+        name: 'Far Traveler', skills: ['Insight', 'Perception'], tools: ['Musical instrument or gaming set'], languages: 1,
+        description: 'You come from a distant place few have heard of. Skills: Insight, Perception. Tools: One musical instrument or gaming set. Languages: One of your choice.',
+        traits: ['I have different assumptions about personal space.', 'I have my own ideas about what is and is not food.', 'I have a strong code of honor or sense of propriety.', 'I express affection or contempt in ways unfamiliar to others.', 'I honor my deities through practices viewed as foreign.', 'I begin or end my day with small rituals unfamiliar to those around me.'],
+        ideals: ['Open - I have much to learn from the kindly folk I meet along my way.', 'Reserved - As someone new, I am careful to respect the local customs.', 'Adventure - I am far from home and everything is strange and wonderful.', 'Cunning - Though I may not know local ways, I can use them to my advantage.', 'Inquisitive - Everything is new, but I have a thirst to learn.', 'Suspicious - I must be careful, for I have no way of telling friend from foe here.'],
+        bonds: ['So long as I have this token from my homeland, I can face any adversity.', 'The gods of my people are a comfort to me so far from home.', 'I hold no greater cause than my service to my people.', 'My freedom is my most precious possession.', 'I am fascinated by the beauty and wonder of this new land.', 'Though I had no choice, I lament leaving my loved ones behind.'],
+        flaws: ['I am secretly convinced of the superiority of my own culture.', 'I pretend not to understand the local language to avoid interactions.', 'I have a weakness for the new intoxicants and other pleasures of this land.', 'I do not take kindly to suggestions that my homeland is inferior.', 'I have a weakness for the exotic beauty of the people of these lands.', 'I consider the adherents of other gods to be deluded innocents.']
+    },
+    inheritor: {
+        name: 'Inheritor', skills: ['Survival'], tools: ['Gaming set or musical instrument'], languages: 1,
+        description: 'You are the heir to something of great value, but also great danger. Skills: Survival plus one from Arcana, History, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        traits: ['I keep my thoughts to myself and let my actions speak.', 'I have a strong sense of fair play.', 'I am confident in my own abilities.', 'I prefer action over contemplation.', 'I believe in the power of destiny.', 'I am driven by wanderlust that led me away from home.'],
+        ideals: ['Respect - Respect is due to those who have proven their worth.', 'Responsibility - I must be worthy of my inheritance.', 'Independence - I am not bound by the expectations of my predecessors.', 'Power - My inheritance is a source of power.', 'Legacy - I must honor those who came before me.', 'Change - My inheritance is a tool for changing the world.'],
+        bonds: ['My inheritance is my most precious possession.', 'I must prove myself worthy of my inheritance.', 'I will find those who know the secrets of my inheritance.', 'I seek to learn the full history of my inheritance.', 'I will protect my inheritance at any cost.', 'My inheritance connects me to my family\'s past.'],
+        flaws: ['I am obsessed with my inheritance to the detriment of other things.', 'I assume that others want to steal my inheritance.', 'I am haunted by the expectations of my predecessors.', 'I overvalue my inheritance and undervalue other things.', 'I am secretive about my inheritance and its origins.', 'I believe my inheritance makes me better than others.']
+    },
+    knightoftheorder: {
+        name: 'Knight of the Order', skills: ['Persuasion'], tools: ['Gaming set or musical instrument'], languages: 1,
+        description: 'You are a member of a knightly order dedicated to a cause. Skills: Persuasion plus one from Arcana, History, Nature, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        traits: ['I am always polite and respectful.', 'I am haunted by memories of battles past.', 'I have lost too many friends and am slow to make new ones.', 'I am full of inspiring and cautionary tales from my order.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and protecting the weak.'],
+        ideals: ['Greater Good - My order exists to lay down lives in defense of others.', 'Responsibility - I do what I must and obey my order.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - The stronger force wins, and my order is mighty.', 'Faith - I trust that my order\'s cause is just.', 'Glory - I must earn glory in battle for myself and my order.'],
+        bonds: ['I would die for the ideals of my order.', 'A fellow knight saved my life; I will never forget.', 'My honor is my life.', 'I will never forget a defeat suffered by my order.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
+        flaws: ['My hatred of our sworn enemies is blind and unreasoning.', 'I obey the rules of my order, even if they cause misery.', 'I would rather eat my armor than admit when I am wrong.', 'I have little respect for anyone outside my order.', 'I made a terrible mistake that cost lives; I must atone.', 'The monstrous enemy we face still leaves me quivering with fear.']
+    },
+    mercenaryveteran: {
+        name: 'Mercenary Veteran', skills: ['Athletics', 'Persuasion'], tools: ['Gaming set', 'Vehicles (land)'],
+        description: 'You served in a mercenary company, fighting for coin. Skills: Athletics, Persuasion. Tools: One gaming set, Vehicles (land).',
+        traits: ['I am always polite and respectful.', 'I am haunted by memories of war.', 'I have lost too many friends.', 'I am full of inspiring and cautionary tales from my service.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and breaking things.'],
+        ideals: ['Greater Good - Our lot is to lay down our lives in defense of others.', 'Responsibility - I do what I must and obey just authority.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - In life as in war, the stronger force wins.', 'Live and Let Live - Ideals are not worth killing over.', 'Nation - My city, nation, or people are all that matter.'],
+        bonds: ['I would still lay down my life for the people I served with.', 'Someone saved my life on the battlefield. I will never leave a comrade behind.', 'My honor is my life.', 'I will never forget the crushing defeat my company suffered.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
+        flaws: ['The monstrous enemy we faced still leaves me quivering with fear.', 'I have little respect for anyone who is not a proven warrior.', 'I made a terrible mistake in battle that cost many lives.', 'My hatred of my enemies is blind and unreasoning.', 'I obey orders, even if I think they are wrong.', 'I would rather eat my armor than admit when I am wrong.']
+    },
+    urbanbountyhunter: {
+        name: 'Urban Bounty Hunter', skills: ['Insight', 'Stealth'], tools: ['Gaming set', 'Thieves\' tools or musical instrument'],
+        description: 'You earn your living tracking people for the coin. Skills: Choose two from Deception, Insight, Persuasion, and Stealth. Tools: One gaming set, plus thieves\' tools or a musical instrument.',
+        traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note exits.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to risks in a situation.'],
+        ideals: ['Honor - I do not kill unarmed targets.', 'Freedom - Chains are meant to be broken.', 'Charity - I take contracts against those who prey on the weak.', 'Greed - I will do anything for the right price.', 'People - I am loyal to my friends, not ideals.', 'Redemption - I hunt down evildoers.'],
+        bonds: ['I am trying to pay off an old debt.', 'My ill-gotten gains support my family.', 'A target escaped me once; I will find them.', 'I will become the greatest bounty hunter.', 'I seek redemption for letting an innocent be taken.', 'Someone I loved was killed by a target; I hunt in their memory.'],
+        flaws: ['When gold is involved, I have tunnel vision.', 'I turn tail and run when things look bad.', 'My target\'s bounty is mine alone.', 'I have little respect for the law.', 'I have trouble trusting anyone.', 'I would betray anyone for the right price.']
+    },
+    uthgardttribemember: {
+        name: 'Uthgardt Tribe Member', skills: ['Athletics', 'Survival'], tools: ['Artisan\'s tools or musical instrument'], languages: 1,
+        description: 'You grew up among the Uthgardt barbarian tribes. Skills: Athletics, Survival. Tools: One type of artisan\'s tools or one musical instrument. Languages: One of your choice.',
+        traits: ['I am driven by wanderlust that led me away from home.', 'I watch over my friends as if they were a litter of newborn pups.', 'I once ran twenty-five miles without stopping to warn my tribe.', 'I have a lesson for every situation, drawn from observing nature.', 'I place no stock in wealthy or well-mannered folk.', 'I was raised by wolves.'],
+        ideals: ['Change - Life is like the seasons, in constant change.', 'Greater Good - It is each person\'s responsibility to help.', 'Honor - If I dishonor myself, I dishonor my whole tribe.', 'Might - The strongest are meant to rule.', 'Nature - The natural world is more important than civilization.', 'Glory - I must earn glory in battle for myself and my tribe.'],
+        bonds: ['My family, clan, or tribe is the most important thing in my life.', 'An injury to the unspoiled wilderness is an injury to me.', 'I will bring terrible wrath upon the evildoers who destroyed my homeland.', 'I am the last of my tribe, and I must ensure its legacy.', 'I suffer awful visions of a coming disaster and will do anything to prevent it.', 'My tribe\'s totem animal is my spiritual guide and protector.'],
+        flaws: ['I am too enamored of ale, wine, and other intoxicants.', 'There is no room for caution in a life lived to the fullest.', 'I remember every insult I have received and nurse a silent resentment.', 'I am slow to trust members of other races.', 'Violence is my answer to almost any challenge.', 'I expect danger around every corner.']
+    },
+    waterdhaviannoble: {
+        name: 'Waterdhavian Noble', skills: ['History', 'Persuasion'], tools: ['Gaming set or musical instrument'], languages: 1,
+        description: 'You are a scion of one of the noble houses of Waterdeep. Skills: History, Persuasion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        traits: ['My eloquent flattery makes everyone feel wonderful.', 'The common folk love me for my kindness and generosity.', 'No one could doubt by looking at me that I am a cut above the rabble.', 'I take great pains to always look my best and follow the latest fashions.', 'I do not like to get my hands dirty.', 'Despite my noble birth, I do not place myself above other folk.'],
+        ideals: ['Respect - Respect is due to me because of my position.', 'Responsibility - It is my duty to respect the authority of those above me.', 'Independence - I must prove that I can handle myself without coddling.', 'Power - If I can attain more power, no one will tell me what to do.', 'Family - Blood runs thicker than water.', 'Noble Obligation - It is my duty to protect those beneath my station.'],
+        bonds: ['I will face any challenge to win the approval of my family.', 'My house\'s alliance with another noble family must be sustained.', 'Nothing is more important than the other members of my family.', 'I am in love with the heir of a family that my family despises.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero of the people.'],
+        flaws: ['I secretly believe that everyone is beneath me.', 'I hide a truly scandalous secret that could ruin my family forever.', 'I too often hear veiled insults and threats in every word.', 'I have an insatiable desire for carnal pleasures.', 'In fact, the world does revolve around me.', 'By my words and actions, I often bring shame to my family.']
+    },
+    // Guildmaster's Guide to Ravnica Backgrounds
+    azoriusfunctionary: {
+        name: 'Azorius Functionary', skills: ['Insight', 'Intimidation'], languages: 2,
+        description: 'You serve the Azorius Senate, the legislative body of Ravnica. Skills: Insight, Intimidation. Languages: Two of your choice.',
+        traits: ['I try never to let my judgment become clouded by emotion.', 'I have a strong sense of fair play.', 'I believe that everything worth doing is worth doing right.', 'I do not let my emotions control my words or actions.', 'I am happiest when everything goes according to plan.', 'I keep detailed records of everything.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Order - The law is meant to ensure that the guilty are punished.', 'Peace - The ultimate object of the law is to remove violence.', 'Compliance - Obeying the law is not optional.', 'Justice - The guilty must be punished; the innocent protected.', 'Reform - The law must change with the times.'],
+        bonds: ['I am beholden to an Azorius arrester who captured the criminal who killed my parents.', 'I hope to prove myself worthy of a position in the guild.', 'I owe my life to a Senate statesman who protected me.', 'The law is the only bulwark against chaos.', 'I will do anything to protect my loved ones from crime.', 'I seek to restore the reputation of the Azorius.'],
+        flaws: ['I am convinced that I am better and more important than everyone else.', 'I take orders only from Senator or higher.', 'I will never be satisfied with what I have.', 'I see every situation in terms of the law.', 'I believe that everyone is out to break the law.', 'I am oblivious to the feelings of others.']
+    },
+    boroslegionnaire: {
+        name: 'Boros Legionnaire', skills: ['Athletics', 'Intimidation'], languages: 2,
+        description: 'You are a member of the Boros Legion, the righteous military guild. Skills: Athletics, Intimidation. Languages: Choose one of Celestial, Draconic, Goblin, or Minotaur.',
+        traits: ['I approach every task with the same dedication.', 'I am always looking for evil to fight.', 'Nothing gets my blood burning like a good fight.', 'I have a strong sense of fair play.', 'I keep my word, no matter what.', 'I believe that discipline is key.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Justice - The guilty must always be punished.', 'Protection - It is my duty to protect the innocent.', 'Solidarity - Strength comes from working together.', 'Order - Society needs order to function.', 'Conviction - A fight without conviction is meaningless.'],
+        bonds: ['I would lay down my life for my fellow legionnaires.', 'I owe my life to a Boros commander who saved me.', 'I fight to protect those who cannot protect themselves.', 'The angels of the Boros inspire me.', 'I must prove myself worthy of my position.', 'I will never forget a comrade who fell in battle.'],
+        flaws: ['I see threats where others see nothing.', 'I am rigid in my thinking.', 'I act first and think later.', 'I refuse to surrender, even when I should.', 'I believe violence is the answer to most problems.', 'I look down on those who are not warriors.']
+    },
+    dimiroperative: {
+        name: 'Dimir Operative', skills: ['Deception', 'Stealth'], languages: 2,
+        description: 'You serve House Dimir, the guild of secrets and shadows. Skills: Deception, Stealth. Languages: Two of your choice.',
+        traits: ['I have a cover identity I use to avoid suspicion.', 'I lie constantly, even when there is no reason to.', 'I keep secrets even from those closest to me.', 'I distrust everyone until they prove themselves.', 'I am always looking for leverage over others.', 'Information is my most valuable commodity.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Control - I like knowing I have leverage over others.', 'Secrecy - Ignorance is a form of protection.', 'Knowledge - Information is power.', 'Independence - I rely only on myself.', 'Ambition - I will rise to the top of my guild.'],
+        bonds: ['I have pledged my life to Dimir.', 'I hold secrets that could bring down powerful people.', 'I have a rival who is always one step behind me.', 'Someone I love does not know my true nature.', 'I owe my position to a Dimir handler.', 'I seek hidden knowledge at any cost.'],
+        flaws: ['I am paranoid to the point of obsession.', 'I never tell the truth when a lie will do.', 'I have no qualms about betraying anyone.', 'I am obsessed with uncovering secrets.', 'I do not know how to form genuine connections.', 'I underestimate my enemies.']
+    },
+    golgariagent: {
+        name: 'Golgari Agent', skills: ['Nature', 'Survival'], languages: 2,
+        description: 'You are part of the Golgari Swarm, masters of decay and rebirth. Skills: Nature, Survival. Languages: Choose one of Elvish, Giant, or Kraul.',
+        traits: ['I do not fear death; it is just another part of the cycle.', 'I find beauty in decay and rot.', 'I am patient and willing to wait for the right moment.', 'I believe nothing should go to waste.', 'I prefer the company of insects and fungus to people.', 'I accept the lowly position given to me.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Cycle - Life and death are part of one continuous cycle.', 'Nature - Nature is the source of all life.', 'Power - The strong survive; the weak become food.', 'Acceptance - Death is nothing to fear.', 'Ambition - I will rise from the rot.'],
+        bonds: ['I owe my life to the Golgari who found me in the undercity.', 'I honor the spirits of my ancestors.', 'The undercity is my home; I will protect it.', 'I seek to understand the mysteries of life and death.', 'I nurture the rot gardens as my sacred duty.', 'I have a fondness for a particular undercity creature.'],
+        flaws: ['I am disgusted by those who fear death.', 'I have no concern for the living.', 'I hoard things others consider garbage.', 'I believe the surface world is decadent and doomed.', 'I trust no one from outside the Swarm.', 'I see everything in terms of predator and prey.']
+    },
+    gruulanarch: {
+        name: 'Gruul Anarch', skills: ['Animal Handling', 'Athletics'], languages: 2,
+        description: 'You belong to the Gruul Clans, wild warriors opposing civilization. Skills: Animal Handling, Athletics. Languages: Choose one of Draconic, Giant, Goblin, or Sylvan.',
+        traits: ['I am driven by wanderlust.', 'I watch over my clan as if they were my family.', 'I have a lesson for every situation from nature.', 'I place no stock in wealthy or well-mannered folk.', 'Violence is my answer to almost any challenge.', 'I distrust magic and civilization.'],
+        ideals: ['Guild - My clan is all that really matters.', 'Destruction - Civilization must be torn down.', 'Freedom - No one tells me what to do.', 'Might - The strong take what they want.', 'Nature - The natural world is sacred.', 'Rage - Fury is the only true emotion.'],
+        bonds: ['My clan is my family, my life.', 'I will have revenge on civilized society.', 'I must prove my strength to my clanmates.', 'The wild places of Ravnica must be protected.', 'I follow a powerful beast as my totem.', 'I have a rival clan that I must defeat.'],
+        flaws: ['I am slow to trust anyone from the city.', 'I react violently to any perceived insult.', 'I refuse to back down from any challenge.', 'I distrust and avoid magic.', 'I am happier in the wild than with people.', 'I have no patience for planning.']
+    },
+    izzetengineer: {
+        name: 'Izzet Engineer', skills: ['Arcana', 'Investigation'], languages: 2,
+        description: 'You work for the Izzet League, the guild of chaotic innovation. Skills: Arcana, Investigation. Languages: Choose one of Draconic, Goblin, or Vedalken.',
+        traits: ['I have a habit of talking to myself or my creations.', 'I become obsessed with whatever project I am working on.', 'I am always scribbling notes and sketches.', 'I get excited about new ideas, especially impractical ones.', 'I believe that failure is just a step toward success.', 'I am always tinkering with something.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Creativity - I am always thinking of new ideas.', 'Discovery - I must learn how everything works.', 'Freedom - Rules are meant to be broken for science.', 'Knowledge - Understanding the universe is paramount.', 'Expression - Creation is its own reward.'],
+        bonds: ['I am devoted to the Firemind and his vision.', 'My inventions are my children.', 'I owe everything to my mentor.', 'I have a rival whose inventions I must surpass.', 'I seek to restore a lost Izzet discovery.', 'The laboratory is my home.'],
+        flaws: ['I have no sense of personal safety.', 'I get lost in my work and forget everything else.', 'I am convinced my ideas are always the best.', 'I do not understand social cues.', 'I refuse to admit when an experiment is a failure.', 'I am easily distracted by new ideas.']
+    },
+    orzhovrepresentative: {
+        name: 'Orzhov Representative', skills: ['Intimidation', 'Religion'], languages: 2,
+        description: 'You serve the Orzhov Syndicate, the guild of wealth and spirits. Skills: Intimidation, Religion. Languages: Two of your choice.',
+        traits: ['I am meticulous about contracts and agreements.', 'I believe that wealth is a sign of virtue.', 'I treat everyone as a potential business partner.', 'I keep detailed records of debts owed to me.', 'I am always looking for ways to increase my wealth.', 'I believe in the sanctity of contracts.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Wealth - Money is power, and I want power.', 'Order - Contracts and laws must be upheld.', 'Power - I will rise to the top of the hierarchy.', 'Tradition - The ways of the Orzhov are sacred.', 'Family - The Syndicate is my family.'],
+        bonds: ['I owe a tremendous debt to the Orzhov.', 'I seek to free myself or others from Orzhov debts.', 'I must accumulate wealth to prove my worth.', 'I serve a powerful Orzhov spirit.', 'I have secrets about Orzhov dealings.', 'I collect debts for the Syndicate.'],
+        flaws: ['I value wealth above all else.', 'I see everyone as either a debtor or a creditor.', 'I am obsessed with climbing the hierarchy.', 'I cannot resist a profitable deal.', 'I believe that everyone has a price.', 'I hold grudges over unpaid debts.']
+    },
+    rakdoscultist: {
+        name: 'Rakdos Cultist', skills: ['Acrobatics', 'Performance'], languages: 2,
+        description: 'You belong to the Cult of Rakdos, the guild of chaos and entertainment. Skills: Acrobatics, Performance. Languages: Choose one of Abyssal or Giant.',
+        traits: ['I crave attention and will do anything to get it.', 'I love to make people laugh, even at my expense.', 'I am always working on a new performance.', 'I push boundaries to see how far I can go.', 'I believe pain and pleasure are two sides of the same coin.', 'I live in the moment.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Chaos - Rules exist to be broken.', 'Freedom - No one can tell me what to do.', 'Pleasure - Life should be enjoyed to its fullest.', 'Pain - Suffering can be beautiful.', 'Fame - I want everyone to know my name.'],
+        bonds: ['I am devoted to Rakdos and his vision.', 'My performance troupe is my family.', 'I seek to create the ultimate show.', 'I owe my freedom to the Cult.', 'I have a rival performer I must outshine.', 'I crave the thrill of a dangerous performance.'],
+        flaws: ['I cannot resist an opportunity to perform.', 'I take things too far in pursuit of a reaction.', 'I have no sense of personal safety.', 'I am addicted to the rush of danger.', 'I believe I am more talented than I am.', 'I cannot turn down a dare.']
+    },
+    selesnyainitiate: {
+        name: 'Selesnya Initiate', skills: ['Nature', 'Persuasion'], languages: 2,
+        description: 'You are part of the Selesnya Conclave, the guild of harmony and nature. Skills: Nature, Persuasion. Languages: Choose one of Elvish, Loxodon, or Sylvan.',
+        traits: ['I believe everyone can find peace in the Conclave.', 'I see the best in everyone.', 'I find comfort in the presence of others.', 'I believe in the power of community.', 'I prefer harmony to conflict.', 'I am patient and willing to listen.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Harmony - We are all connected to each other.', 'Peace - Violence is never the answer.', 'Community - Together we are stronger.', 'Nature - The natural world is sacred.', 'Order - Society needs structure.'],
+        bonds: ['I am devoted to the Worldsoul.', 'My enclave is my family and home.', 'I seek to spread the message of harmony.', 'I owe my peace of mind to the Conclave.', 'I have a bond with a particular vernadi.', 'I will protect the natural places of Ravnica.'],
+        flaws: ['I struggle to understand those outside the Conclave.', 'I am naive about the dangers of the world.', 'I sacrifice my own needs for others.', 'I cannot fathom why anyone would reject harmony.', 'I am too trusting.', 'I avoid conflict even when necessary.']
+    },
+    simicscientist: {
+        name: 'Simic Scientist', skills: ['Arcana', 'Medicine'], languages: 2,
+        description: 'You work for the Simic Combine, the guild of biological research. Skills: Arcana, Medicine. Languages: Two of your choice.',
+        traits: ['I am always observing and analyzing.', 'I view everything through the lens of evolution.', 'I am constantly taking notes.', 'I am fascinated by all forms of life.', 'I believe in progress through adaptation.', 'I sometimes forget that subjects have feelings.'],
+        ideals: ['Guild - My guild is all that really matters.', 'Knowledge - Understanding life is paramount.', 'Progress - We must always improve.', 'Nature - We must work with nature, not against it.', 'Perfection - I seek to create the perfect organism.', 'Discovery - New species await discovery.'],
+        bonds: ['I am devoted to my research.', 'My creations are my legacy.', 'I owe my position to a Simic mentor.', 'I seek to protect Ravnica\'s waterways.', 'I have a bond with an experimental creature.', 'I must complete my predecessor\'s research.'],
+        flaws: ['I see others as potential test subjects.', 'I am obsessed with a particular area of research.', 'I believe the Simic way is the only way.', 'I struggle with ethical considerations.', 'I become too attached to my experiments.', 'I overlook the obvious in favor of the complex.']
+    },
+    // Explorer's Guide to Wildemount Backgrounds
+    grinner: {
+        name: 'Grinner', skills: ['Deception', 'Performance'], tools: ['Thieves\' tools or musical instrument'], languages: 1,
+        description: 'You are a member of the Golden Grin, a secret network of spies and entertainers. Skills: Deception, Performance. Tools: One musical instrument or thieves\' tools. Languages: One of your choice.',
+        traits: ['I love being the center of attention.', 'Someone is always trying to cage me in, but I stay free.', 'I change my mood or mind as quickly as I change key in a song.', 'I enjoy playing tricks on people.', 'I can find common ground with anyone.', 'I am irrepressibly flirtatious.'],
+        ideals: ['Beauty - The world is full of beauty; I want to show it to others.', 'Tradition - Old stories and songs are more important than progress.', 'Creativity - Art is the catalyst for change.', 'Freedom - When I perform, I make even the caged ones feel free.', 'Fairness - Everyone deserves to smile.', 'People - I like seeing the smiles on people\'s faces when I perform.'],
+        bonds: ['My instrument is my most treasured possession.', 'A fellow Grinner taught me everything I know.', 'I will do anything to prove myself to the Golden Grin.', 'I would do anything for the other members of my troupe.', 'The oppressed must be freed, and I will be the one to do it.', 'I entered this life to escape oppression.'],
+        flaws: ['I lie about almost everything, even when there is no good reason.', 'I do not trust anyone fully, not even my allies.', 'I prioritize my own safety over others.', 'I have trouble keeping secrets.', 'A scandal prevents me from ever going home.', 'I cannot resist a pretty face.']
+    },
+    volstruckeragent: {
+        name: 'Volstrucker Agent', skills: ['Deception', 'Stealth'], tools: ['Poisoner\'s kit'],
+        description: 'You were trained by the Volstrucker, the covert assassins of the Cerberus Assembly. Skills: Deception, Stealth. Tools: Poisoner\'s kit. Languages: One of your choice.',
+        traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note the locations of everything valuable.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to the risks in a situation.'],
+        ideals: ['Order - The laws of the Dwendalian Empire must be upheld.', 'Knowledge - The path to power is through knowledge.', 'No Limits - Nothing should fetter the infinite possibilities of existence.', 'Power - Solitude and study are paths toward power.', 'Loyalty - I am loyal to the Assembly, no matter what.', 'Reform - The Empire\'s laws and government can be redeemed.'],
+        bonds: ['I have a family member or loved one who depends on me.', 'My life\'s work is a series of tomes related to a specific field of magic.', 'I owe the Cerberus Assembly everything.', 'I have a rival in the Volstrucker whom I must prove myself against.', 'The Assembly\'s secrets are mine to guard.', 'I must atone for the missions I have carried out.'],
+        flaws: ['I secretly believe that everyone is beneath me.', 'I follow orders, even when I disagree with them.', 'I too often hear veiled insults and threats in every word.', 'I am haunted by my past missions.', 'I do not understand how others can have moral qualms.', 'I am paranoid about being discovered.']
+    },
+    // Mythic Odysseys of Theros Background
+    athlete: {
+        name: 'Athlete', skills: ['Acrobatics', 'Athletics'], tools: ['Vehicles (land)'], languages: 1,
+        description: 'You strive to be the greatest athlete of your generation. Skills: Acrobatics, Athletics. Tools: Vehicles (land). Languages: One of your choice.',
+        traits: ['I feel most alive when pushing my body to its limits.', 'I spread the good word of physical fitness wherever I go.', 'I am always seeking to improve myself.', 'I love a good competition.', 'I never back down from a challenge.', 'I train constantly to stay in peak condition.'],
+        ideals: ['Competition - I strive to test myself in all things.', 'Triumph - I must be the best; anything less is failure.', 'Camaraderie - The strongest bonds are forged through challenge.', 'People - I strive to inspire my fans.', 'Tradition - Every great athlete gives tribute to those who came before.', 'Greater Good - I use my gifts to inspire others.'],
+        bonds: ['My teammates are my family.', 'I must prove myself worthy of a famous athlete\'s legacy.', 'I owe my training to a mentor who believed in me.', 'Completing my ultimate challenge is all that matters.', 'I represent my homeland in competition.', 'I will defeat the rival who humiliated me.'],
+        flaws: ['I do not handle losing well.', 'I must always be the best.', 'I overlook dangers in pursuit of victory.', 'I refuse to ask for help.', 'I talk endlessly about my athletic achievements.', 'I am convinced of my own invincibility.']
+    },
+    // Van Richten's Guide to Ravenloft Backgrounds
+    hauntedone: {
+        name: 'Haunted One', skills: ['Arcana', 'Investigation'], languages: 2,
+        description: 'You are haunted by something so terrible that you dare not speak of it. Skills: Choose two from Arcana, Investigation, Religion, or Survival. Languages: Choose two, one of which must be exotic.',
+        traits: ['I do not run from evil. Evil runs from me.', 'I like to read and memorize poetry.', 'I spend money freely and live life to the fullest.', 'I live for the thrill of the hunt.', 'I do not talk about what haunts me.', 'I expect danger around every corner.'],
+        ideals: ['I try to help those in need, no matter the personal cost.', 'I will stop the evil that haunts me.', 'I kill monsters to make the world safer for others.', 'I have a dark calling that puts me above the law.', 'I like to know my enemy inside and out.', 'I would sacrifice my life to protect the innocent.'],
+        bonds: ['I keep my thoughts and discoveries in a journal.', 'I would sacrifice my life to destroy the thing that haunts me.', 'I have sworn revenge against the one who wronged me.', 'I have a loved one I must protect from danger.', 'The one who gave me my flaw must pay.', 'I seek the truth behind the supernatural.'],
+        flaws: ['I have certain rituals I must observe.', 'I assume the worst in people.', 'I feel no emotions anymore, only emptiness.', 'I never reveal what terrifies me most.', 'I have no problem killing the guilty.', 'I hide a truly monstrous secret.']
+    },
+    investigator: {
+        name: 'Investigator', skills: ['Insight', 'Investigation'], tools: ['Disguise kit', 'Thieves\' tools'],
+        description: 'You have a nose for uncovering truth and solving mysteries. Skills: Choose two from Insight, Investigation, or Perception. Tools: Disguise kit, Thieves\' tools.',
+        traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note exits and hiding spots.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to the risks in a situation.'],
+        ideals: ['Truth - I must uncover the truth at any cost.', 'Justice - The guilty must be brought to justice.', 'Knowledge - Information is power.', 'Logic - Emotions must not cloud my judgment.', 'Order - Laws exist to protect the innocent.', 'People - I solve crimes to help victims.'],
+        bonds: ['A cold case haunts me; I must solve it.', 'I owe my skills to a mentor who taught me.', 'Someone I care about was wrongly accused.', 'I hunt criminals who evade the law.', 'I collect evidence of a conspiracy.', 'I carry a memento from an unsolved case.'],
+        flaws: ['I cannot let go of a mystery.', 'I see crimes everywhere.', 'I do not trust the law to handle things.', 'I become obsessed with solving cases.', 'I take unnecessary risks.', 'I overlook the obvious in search of complexity.']
+    },
+    // Strixhaven Backgrounds
+    loreholdstudent: {
+        name: 'Lorehold Student', skills: ['History', 'Religion'], languages: 2,
+        description: 'You study history and archaeology at Strixhaven\'s Lorehold College. Skills: History, Religion. Languages: Two of your choice.',
+        traits: ['I thrill at learning about the civilizations of the past.', 'I am always referencing historical examples.', 'I believe the dead have much to teach us.', 'I am meticulous about preserving records.', 'I love a good mystery from the past.', 'I believe history repeats itself.'],
+        ideals: ['Preservation - History must be preserved for future generations.', 'Knowledge - The past holds the keys to understanding.', 'Truth - Historical revisionism must be exposed.', 'Balance - We must learn from both triumphs and failures.', 'Legacy - Great deeds should be remembered.', 'Discovery - Lost history must be found.'],
+        bonds: ['I am devoted to uncovering a historical mystery.', 'My family has a proud history I must honor.', 'I seek an artifact lost to history.', 'I owe my passion to a professor who inspired me.', 'I have a rivalry with another Lorehold student.', 'A spirit I summoned has become a friend.'],
+        flaws: ['I live in the past and struggle with the present.', 'I dismiss anything I consider historically insignificant.', 'I am judgmental of those who ignore history.', 'I have trouble relating to living people.', 'I value relics more than I should.', 'I see every situation through a historical lens.']
+    },
+    prismaristudent: {
+        name: 'Prismari Student', skills: ['Acrobatics', 'Performance'], languages: 2,
+        description: 'You study creative expression at Strixhaven\'s Prismari College. Skills: Acrobatics, Performance. Languages: Two of your choice.',
+        traits: ['I am always working on a new creative project.', 'I see art everywhere, in everything.', 'I love dramatic flourishes in everything I do.', 'I believe in self-expression above all.', 'My emotions fuel my creativity.', 'I never do anything halfway.'],
+        ideals: ['Expression - Art is the highest form of expression.', 'Passion - Strong emotions drive great art.', 'Beauty - The world needs more beauty.', 'Freedom - True art cannot be constrained.', 'Innovation - Tradition is just yesterday\'s innovation.', 'Spectacle - Art should make people feel something.'],
+        bonds: ['I am devoted to my art form.', 'My rivalry with another artist pushes me.', 'I owe my talent to a mentor who believed in me.', 'I seek to create my masterpiece.', 'My art tells the story of someone important to me.', 'I will prove the critics wrong.'],
+        flaws: ['I believe I am the greatest artist of my generation.', 'I am devastated by criticism.', 'I neglect other responsibilities for my art.', 'I have no patience for those who do not appreciate art.', 'My dramatic tendencies cause problems.', 'I cannot resist a chance to perform.']
+    },
+    quandrixstudent: {
+        name: 'Quandrix Student', skills: ['Arcana', 'Nature'], languages: 2,
+        description: 'You study mathematics and nature at Strixhaven\'s Quandrix College. Skills: Arcana, Nature. Languages: Two of your choice.',
+        traits: ['I see mathematical patterns everywhere.', 'I prefer working with numbers to working with people.', 'I am always calculating probabilities.', 'Nature follows mathematical laws I seek to understand.', 'I love puzzles and brain teasers.', 'I think in diagrams and equations.'],
+        ideals: ['Knowledge - Mathematics is the language of the universe.', 'Logic - Everything can be understood through logic.', 'Pattern - The universe follows discernible patterns.', 'Nature - Mathematics reveals nature\'s secrets.', 'Order - Chaos is just patterns we do not understand.', 'Progress - New theories advance understanding.'],
+        bonds: ['I am devoted to solving a mathematical mystery.', 'My research is my life\'s work.', 'I owe my love of math to a mentor.', 'I have a rivalry with another mathematician.', 'I seek to prove a controversial theorem.', 'Nature itself is my laboratory.'],
+        flaws: ['I struggle to explain my ideas to non-mathematicians.', 'I dismiss anything that cannot be quantified.', 'I get lost in theoretical problems.', 'I believe emotions are irrational.', 'I am condescending to those less mathematically inclined.', 'I see living things as mere equations.']
+    },
+    silverquillstudent: {
+        name: 'Silverquill Student', skills: ['Intimidation', 'Persuasion'], languages: 2,
+        description: 'You study eloquence and language at Strixhaven\'s Silverquill College. Skills: Intimidation, Persuasion. Languages: Two of your choice.',
+        traits: ['I always have the perfect word for any situation.', 'I believe in the power of language to change minds.', 'I love a good debate.', 'My words can wound as easily as heal.', 'I collect sayings and phrases.', 'I choose my words very carefully.'],
+        ideals: ['Truth - Words should reveal truth.', 'Power - Language is power over others.', 'Justice - My voice speaks for the voiceless.', 'Freedom - Expression must be free.', 'Influence - The right words change the world.', 'Knowledge - Understanding language is understanding people.'],
+        bonds: ['I am devoted to mastering language.', 'A debate club is my second family.', 'I owe my eloquence to a mentor.', 'I have a rival whose words I must surpass.', 'I write for a cause I believe in.', 'Someone silenced me once; never again.'],
+        flaws: ['I cannot resist correcting others\' grammar.', 'I believe I can talk my way out of anything.', 'My words sometimes wound unintentionally.', 'I am addicted to being right.', 'I talk too much.', 'I use my words manipulatively.']
+    },
+    witherbloomstudent: {
+        name: 'Witherbloom Student', skills: ['Nature', 'Survival'], languages: 2,
+        description: 'You study life and death at Strixhaven\'s Witherbloom College. Skills: Nature, Survival. Languages: Two of your choice.',
+        traits: ['I am fascinated by the cycle of life and death.', 'I find beauty in decay.', 'I am always collecting specimens.', 'I prefer animals and plants to people.', 'I believe in the practical over the theoretical.', 'I am not squeamish about death.'],
+        ideals: ['Life - Preserving life is paramount.', 'Death - Death is natural and should be accepted.', 'Balance - Life and death must be in balance.', 'Nature - The natural cycle is sacred.', 'Knowledge - Understanding life means understanding death.', 'Power - Control over life and death is true power.'],
+        bonds: ['I am devoted to studying a particular organism.', 'My familiar is my closest companion.', 'I owe my interest in nature to someone special.', 'I have a rivalry with another naturalist.', 'I seek a cure for a deadly disease.', 'A swamp or forest is my true home.'],
+        flaws: ['I am too comfortable with death.', 'I struggle to connect with people.', 'I hoard biological specimens obsessively.', 'I can be callous about suffering.', 'I value nature over civilization.', 'I forget that not everyone is comfortable with death.']
+    },
+    // Acquisitions Incorporated Backgrounds
+    celebrityadventurersscion: {
+        name: 'Celebrity Adventurer\'s Scion', skills: ['Perception', 'Performance'], tools: ['Disguise kit'],
+        description: 'You are the child of a famous adventurer and live in their shadow. Skills: Perception, Performance. Tools: Disguise kit.',
+        traits: ['I do not care about the fame; I just want to live up to my parent\'s legacy.', 'I am used to getting what I want.', 'I have to prove I am more than just my famous parent\'s child.', 'I am uncomfortable with attention.', 'I love the spotlight and crave attention.', 'I name-drop constantly.'],
+        ideals: ['Justice - My parent stood for something; so do I.', 'Legacy - I will honor my family\'s name.', 'Fame - I want to be known for my own deeds.', 'Freedom - I will forge my own path.', 'Power - Fame is a kind of power.', 'Family - Family honor is everything.'],
+        bonds: ['I will surpass my parent\'s legend.', 'I carry an heirloom from my famous parent.', 'My parent\'s old adventuring party watches over me.', 'I have an arch-rival who also descends from famous adventurers.', 'I must solve a mystery from my parent\'s past.', 'I protect my parent\'s reputation.'],
+        flaws: ['I expect special treatment.', 'I am terrified of not living up to my parent.', 'I resent being compared to my parent.', 'I rely on my family name too much.', 'I am spoiled and entitled.', 'I have trouble forming my own identity.']
+    },
+    failedmerchant: {
+        name: 'Failed Merchant', skills: ['Investigation', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
+        description: 'Your business went bankrupt, and now you seek fortune through adventure. Skills: Investigation, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        traits: ['I am always looking for a good deal.', 'I learned from my failures and am wiser now.', 'I still have connections in the merchant world.', 'I am suspicious of those who seem too generous.', 'I keep meticulous financial records.', 'I dream of one day being successful again.'],
+        ideals: ['Wealth - I want to be rich, really rich.', 'Redemption - I will prove I am not a failure.', 'Risk - You have to spend money to make money.', 'Fairness - Business should be conducted honestly.', 'Knowledge - I failed because I did not know enough.', 'People - Money is not as important as relationships.'],
+        bonds: ['I owe money to dangerous people.', 'My former business partner betrayed me.', 'I have a family depending on me.', 'I know the secret to a profitable venture.', 'I must pay back everyone I disappointed.', 'I still have inventory I cannot seem to sell.'],
+        flaws: ['I am haunted by my failure.', 'I take foolish risks trying to recoup losses.', 'I blame others for my failure.', 'I am obsessed with money.', 'I trust too easily when money is involved.', 'I cannot resist a get-rich-quick scheme.']
+    },
+    gambler: {
+        name: 'Gambler', skills: ['Deception', 'Insight'], tools: ['Gaming set'], languages: 1,
+        description: 'You make your living through games of chance and skill. Skills: Deception, Insight. Tools: One gaming set. Languages: One of your choice.',
+        traits: ['I stay calm, because panicking is the surest way to lose.', 'I evaluate everything in terms of risk and reward.', 'I cannot resist taking a gamble.', 'I have an unshakeable lucky streak.', 'I know every card game and dice game.', 'I always have a wager going.'],
+        ideals: ['Luck - Fortune favors the bold.', 'Risk - Life is too short not to take chances.', 'Knowledge - The more I know, the better I can play.', 'Fairness - I never cheat.', 'Power - Winning gives me power over others.', 'Freedom - I live by my own rules.'],
+        bonds: ['I owe a lot of money to a dangerous person.', 'A fellow gambler is my closest friend.', 'I have a lucky charm I never gamble without.', 'I am trying to win back something precious.', 'I must pay off my debts before they catch up.', 'A big score will solve all my problems.'],
+        flaws: ['I cannot walk away from a bet.', 'I am convinced the next game will be different.', 'I borrow money I cannot repay.', 'I take foolish risks.', 'I lie about my wins and losses.', 'I believe I am luckier than I am.']
+    },
+    plaintiff: {
+        name: 'Plaintiff', skills: ['Medicine', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
+        description: 'You were wronged and seek justice through adventure. Skills: Medicine, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        traits: ['I suffered a terrible wrong and demand justice.', 'I know the law better than most lawyers.', 'I am always preparing my case.', 'I document everything meticulously.', 'I never let a slight go unaddressed.', 'I have a keen sense of fairness.'],
+        ideals: ['Justice - The wrongdoer must be punished.', 'Law - The legal system will give me satisfaction.', 'Revenge - If the law will not help, I will take matters into my own hands.', 'Fairness - Everyone deserves their day in court.', 'Order - Laws must be respected.', 'Truth - The truth of my case must be known.'],
+        bonds: ['I was wronged by someone powerful.', 'I collect evidence against those who wronged me.', 'Other victims of the same wrong are my allies.', 'A lawyer or judge showed me kindness.', 'My case is all I think about.', 'I carry documents proving my claim.'],
+        flaws: ['I am obsessed with my case.', 'I see myself as a perpetual victim.', 'I alienate people with my constant complaining.', 'I refuse to let anything go.', 'I believe everyone is out to wrong me.', 'I am litigious to a fault.']
+    },
+    rivalintern: {
+        name: 'Rival Intern', skills: ['History', 'Investigation'], tools: ['Artisan\'s tools'], languages: 1,
+        description: 'You trained with a rival organization and learned their secrets. Skills: History, Investigation. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        traits: ['I know how rival organizations operate.', 'I am always looking for insider information.', 'I am fiercely competitive.', 'I have contacts in multiple organizations.', 'I am good at corporate espionage.', 'I left my old organization under bad terms.'],
+        ideals: ['Competition - Being the best means beating the rest.', 'Knowledge - I must know what everyone else is doing.', 'Loyalty - My new allies have my complete devotion.', 'Power - Corporate power is real power.', 'Freedom - I work for whoever pays best.', 'Ambition - I will climb to the top.'],
+        bonds: ['I have a rival from my old organization.', 'I left behind friends when I switched sides.', 'I have secrets that could damage my old organization.', 'I seek to bring down the organization that wronged me.', 'I carry documents from my old internship.', 'Someone from my old organization wants me silenced.'],
+        flaws: ['I am paranoid about being discovered.', 'I have divided loyalties.', 'I cannot fully trust anyone.', 'I am always looking for the next opportunity.', 'I see betrayal as a normal business practice.', 'I burned bridges I should not have.']
     }
 };
 
