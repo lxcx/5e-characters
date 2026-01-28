@@ -1038,7 +1038,28 @@ const raceLore = {
     }
 };
 
+// Descriptive phrases to replace direct alignment terms in backstories
+const alignmentDescriptions = {
+    'lawful good': ['honorable and compassionate', 'principled and kind-hearted', 'dutiful and benevolent', 'righteous and caring'],
+    'neutral good': ['kind-hearted and pragmatic', 'benevolent and flexible', 'altruistic yet practical', 'caring and open-minded'],
+    'chaotic good': ['free-spirited and compassionate', 'rebellious yet kind', 'independent and caring', 'unconventional but good-hearted'],
+    'lawful neutral': ['disciplined and impartial', 'orderly and fair-minded', 'principled and balanced', 'methodical and just'],
+    'true neutral': ['balanced and pragmatic', 'impartial and adaptable', 'even-handed and practical', 'measured and flexible'],
+    'chaotic neutral': ['unpredictable and independent', 'free-spirited and self-reliant', 'whimsical and autonomous', 'impulsive yet self-aware'],
+    'lawful evil': ['ruthlessly disciplined', 'calculating and methodical', 'coldly ambitious', 'tyrannical yet orderly'],
+    'neutral evil': ['selfish and opportunistic', 'self-serving and cunning', 'coldly pragmatic', 'ambitiously ruthless'],
+    'chaotic evil': ['unpredictable and self-serving', 'destructively independent', 'wild and merciless', 'chaotically selfish']
+};
+
+function getAlignmentDescription(alignment) {
+    const descriptions = alignmentDescriptions[alignment.toLowerCase()];
+    return descriptions ? randomChoice(descriptions) : alignment;
+}
+
 function generateBackstory(name, race, occupation, age, alignment, ageCategory, gender, characterClasses) {
+    // Convert alignment to descriptive phrase
+    const alignmentDesc = getAlignmentDescription(alignment);
+    
     // For non-binary characters, use first name instead of "they" to avoid grammatical issues
     const firstName = name.split(' ')[0];
     const pronoun = gender === 'male' ? 'he' : gender === 'female' ? 'she' : firstName;
@@ -1122,68 +1143,68 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
     const backstoryTemplates = {
         'infant': [
             `${name} was born ${justBorn} in ${lore.homeland}. Even at this tender age, ${pronoun} already show${verbS} signs of ${possessive} ${race} heritage. ${Possessive} family watches over ${object} with great love.`,
-            `A ${ageDescription}, ${name} is just beginning life in ${lore.homeland}. The infant's ${race} features are already evident, and ${possessive} family hopes ${pronoun} will grow to embody ${alignment} values.`,
+            `A ${ageDescription}, ${name} is just beginning life in ${lore.homeland}. The infant's ${race} features are already evident, and ${possessive} family hopes ${pronoun} will grow to embody ${alignmentDesc} values.`,
             `${name} is a ${ageOf} ${race} infant, born into a family from ${lore.homeland}. ${Possessive} parents pray ${pronoun} will grow strong and true.`,
             `The tiny ${race} known as ${name} came into this world ${agePhrase} in ${lore.homeland}. ${Possessive} future is unwritten, full of possibility and promise.`,
             `${name}, a ${ageOf} ${race} infant, sleeps peacefully while ${possessive} family tends to ${object}. Born in ${lore.homeland}, ${possessive} journey has only just begun.`
         ],
         'child': [
             `${name} is a ${age}-year-old ${race} child from ${lore.homeland}. ${Pronoun} spend${verbS} ${possessive} days ${lore.childhood}, while dreaming of becoming a ${formattedOccupation}.`,
-            `Young ${name}, at ${age} ${yearWord} old, is ${lore.childhood}. This curious ${race} child ${lore.culture}, already showing a ${alignment} temperament.`,
+            `Young ${name}, at ${age} ${yearWord} old, is ${lore.childhood}. This curious ${race} child ${lore.culture}, already showing a ${alignmentDesc} temperament.`,
             `At ${age}, ${name} is still ${lore.childhood}. The young ${race} idolizes the local ${formattedOccupation}s and ${lore.culture}.`,
             `${name} is a ${race} child of ${age} who grew up in ${lore.homeland}. While ${lore.childhood}, ${pronoun} dream${verbS} of one day working as a ${formattedOccupation}.`,
-            `The ${age}-year-old ${race} named ${name} is known for ${possessive} ${alignment} nature. Currently ${lore.childhood}, ${pronoun} show${verbS} promise for a future as a ${formattedOccupation}.`
+            `The ${age}-year-old ${race} named ${name} is known for ${possessive} ${alignmentDesc} nature. Currently ${lore.childhood}, ${pronoun} show${verbS} promise for a future as a ${formattedOccupation}.`
         ],
         'young-adult': hasAdventurerTraining ? [
             `${name} is a ${age}-year-old ${race} from ${lore.homeland} who works as a ${formattedOccupation}, while secretly being ${adventurerScenario}. ${Pronoun} ${lore.culture}, balancing ${possessive} ambitions carefully.`,
             `At ${age}, ${name} appears to be a simple ${formattedOccupation}, but is ${adventurerScenario}. This young ${race} from ${lore.homeland} ${lore.culture}, hiding ${possessive} true potential.`,
-            `${name} is a young ${race} of ${age} ${yearWord}, ${adventurerScenario} while working as a ${formattedOccupation}. ${Possessive} ${alignment} values guide both paths ${pronoun} walk${verbS}.`,
+            `${name} is a young ${race} of ${age} ${yearWord}, ${adventurerScenario} while working as a ${formattedOccupation}. ${Possessive} ${alignmentDesc} values guide both paths ${pronoun} walk${verbS}.`,
             `Fresh from ${lore.homeland}, the ${age}-year-old ${name} maintains a cover as a ${formattedOccupation}. In reality, ${pronoun} is ${adventurerScenario}, full of untapped potential.`,
             `${name}, a ${age}-year-old ${race}, lives a double life as ${formattedOccupation} and ${adventurerScenario}. ${Pronoun} ${lore.culture}, but ${possessive} true journey is just beginning.`
         ] : [
             `${name} is a ${age}-year-old ${race} from ${lore.homeland} who recently began training as a ${formattedOccupation}${subclassHook ? `, ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, and face${verbS} the challenge of ${lore.challenge}.`,
-            `At ${age}, ${name} has just left ${lore.homeland} to pursue a career as a ${formattedOccupation}. As a young ${race}${subclassHook ? ` ${subclassHook}` : ''} who ${lore.culture}, ${pronoun} approach${verbS === 's' ? 'es' : ''} ${possessive} new life with ${alignment} determination.`,
+            `At ${age}, ${name} has just left ${lore.homeland} to pursue a career as a ${formattedOccupation}. As a young ${race}${subclassHook ? ` ${subclassHook}` : ''} who ${lore.culture}, ${pronoun} approach${verbS === 's' ? 'es' : ''} ${possessive} new life with ${alignmentDesc} determination.`,
             `${name} is a young ${race} of ${age} ${yearWord}, newly apprenticed to a ${formattedOccupation}${subclassHook ? ` ${subclassHook}` : ''}. Having grown up ${lore.childhood}, ${pronoun} now face${verbS} ${lore.challenge}.`,
-            `Fresh from ${lore.homeland}, the ${age}-year-old ${name}${subclassHook ? ` ${subclassHook}` : ''} ${lore.culture}. This young ${race} ${hasHave} chosen the path of a ${formattedOccupation}, bringing ${possessive} ${alignment} values.`,
+            `Fresh from ${lore.homeland}, the ${age}-year-old ${name}${subclassHook ? ` ${subclassHook}` : ''} ${lore.culture}. This young ${race} ${hasHave} chosen the path of a ${formattedOccupation}, bringing ${possessive} ${alignmentDesc} values.`,
             `${name}, a ${age}-year-old ${race}${subclassHook ? ` ${subclassHook}` : ''}, still honors ${lore.tradition} while training as a ${formattedOccupation}. ${Pronoun} ${lore.culture} and ${hasHave} much to prove.`
         ],
         'adult': hasAdventurerTraining ? [
-            `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}, but is also ${adventurerScenario}. ${Pronoun} ${lore.culture}, balancing ${possessive} dual life with ${alignment} integrity.`,
+            `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}, but is also ${adventurerScenario}. ${Pronoun} ${lore.culture}, balancing ${possessive} dual life with ${alignmentDesc} integrity.`,
             `At ${age} ${yearWord} old, ${name} works as a ${formattedOccupation}, though ${pronoun} is ${adventurerScenario}. This ${race} from ${lore.homeland} ${lore.culture}, keeping ${possessive} past close to ${possessive} chest.`,
-            `${name}, a ${race} of ${age}, appears to be a simple ${formattedOccupation}. In truth, ${pronoun} is ${adventurerScenario}. Few know of ${possessive} ${alignment} convictions or true capabilities.`,
+            `${name}, a ${race} of ${age}, appears to be a simple ${formattedOccupation}. In truth, ${pronoun} is ${adventurerScenario}. Few know of ${possessive} ${alignmentDesc} convictions or true capabilities.`,
             `The ${age}-year-old ${race} known as ${name} serves as a ${formattedOccupation} in ${lore.homeland}. However, ${pronoun} is ${adventurerScenario}, and ${possessive} skills run far deeper than most realize.`,
-            `${name} lives as a ${formattedOccupation} at ${age}. This ${race} from ${lore.homeland} is ${adventurerScenario}, carrying ${possessive} ${alignment} values quietly while ${lore.culture}.`
+            `${name} lives as a ${formattedOccupation} at ${age}. This ${race} from ${lore.homeland} is ${adventurerScenario}, carrying ${possessive} ${alignmentDesc} values quietly while ${lore.culture}.`
         ] : [
-            `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}${subclassHook ? `, ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, and ${hasHave} learned to navigate ${lore.challenge}. ${Possessive} ${alignment} reputation is well-established.`,
+            `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}${subclassHook ? `, ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, and ${hasHave} learned to navigate ${lore.challenge}. ${Possessive} ${alignmentDesc} reputation is well-established.`,
             `At ${age} ${yearWord} old, ${name} has established ${reflexive} as a capable ${formattedOccupation}${subclassHook ? ` ${subclassHook}` : ''}. This ${race} from ${lore.homeland} ${lore.culture}, while still honoring ${lore.tradition}.`,
-            `${name}, a ${race} of ${age}${subclassHook ? ` ${subclassHook}` : ''}, has spent years honing ${possessive} craft as a ${formattedOccupation}. Despite ${lore.challenge}, ${pronoun} ${hasHave} built a ${alignment} reputation.`,
+            `${name}, a ${race} of ${age}${subclassHook ? ` ${subclassHook}` : ''}, has spent years honing ${possessive} craft as a ${formattedOccupation}. Despite ${lore.challenge}, ${pronoun} ${hasHave} built a ${alignmentDesc} reputation.`,
             `The ${age}-year-old ${race} known as ${name} is a respected ${formattedOccupation}${subclassHook ? ` ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, never forgetting ${possessive} roots in ${lore.homeland}.`,
-            `${name} is in the prime of ${possessive} career at ${age}. This ${race} ${formattedOccupation} from ${lore.homeland}${subclassHook ? ` ${subclassHook}` : ''} ${hasHave} overcome ${lore.challenge} through ${possessive} ${alignment} approach to life.`
+            `${name} is in the prime of ${possessive} career at ${age}. This ${race} ${formattedOccupation} from ${lore.homeland}${subclassHook ? ` ${subclassHook}` : ''} ${hasHave} overcome ${lore.challenge} through ${possessive} ${alignmentDesc} approach to life.`
         ],
         'mature': hasAdventurerTraining ? [
-            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}, though ${pronoun} is ${adventurerScenario}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}, drawing on both ${possessive} adventuring experience and ${alignment} wisdom.`,
+            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}, though ${pronoun} is ${adventurerScenario}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}, drawing on both ${possessive} adventuring experience and ${alignmentDesc} wisdom.`,
             `At ${age}, ${name} has seen much in ${possessive} time. On the surface a ${formattedOccupation}, ${pronoun} is ${adventurerScenario}. Few suspect the depth of skill this ${race} possesses.`,
             `${name}, a ${race} of ${age} ${yearWord}, maintains a life as a ${formattedOccupation} while being ${adventurerScenario}. From ${lore.homeland}, ${pronoun} ${lore.culture}, though ${possessive} past holds more than ${pronoun} let${verbS} on.`,
-            `The ${age}-year-old ${race} ${name} appears to be a simple ${formattedOccupation}, but is ${adventurerScenario}. ${Possessive} ${alignment} character guides both aspects of ${possessive} life.`,
+            `The ${age}-year-old ${race} ${name} appears to be a simple ${formattedOccupation}, but is ${adventurerScenario}. ${Possessive} ${alignmentDesc} character guides both aspects of ${possessive} life.`,
             `${name} has lived ${age} ${yearWord} as both ${formattedOccupation} and ${adventurerScenario}. This ${race} from ${lore.homeland} ${lore.culture}, carrying secrets that few would believe.`
         ] : [
-            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}${subclassHook ? `, ${subclassHook}` : ''}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}. Years of ${lore.challenge} have only strengthened ${possessive} ${alignment} convictions.`,
-            `At ${age}, ${name}${subclassHook ? ` ${subclassHook}` : ''} has seen much in ${possessive} time as a ${race} ${formattedOccupation}. ${Pronoun} still honors ${lore.tradition}, while mentoring younger folk with ${possessive} ${alignment} wisdom.`,
+            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}${subclassHook ? `, ${subclassHook}` : ''}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}. Years of ${lore.challenge} have only strengthened ${possessive} ${alignmentDesc} convictions.`,
+            `At ${age}, ${name}${subclassHook ? ` ${subclassHook}` : ''} has seen much in ${possessive} time as a ${race} ${formattedOccupation}. ${Pronoun} still honors ${lore.tradition}, while mentoring younger folk with ${possessive} ${alignmentDesc} wisdom.`,
             `${name}, a ${race} of ${age} ${yearWord}${subclassHook ? ` ${subclassHook}` : ''}, has decades of experience as a ${formattedOccupation}. From ${lore.homeland}, ${pronoun} ${lore.culture}. Many seek ${possessive} counsel on important matters.`,
-            `The ${age}-year-old ${race} ${formattedOccupation} ${name}${subclassHook ? ` ${subclassHook}` : ''} has weathered many storms since leaving ${lore.homeland}. ${Possessive} ${alignment} character has been tested by ${lore.challenge} and proven over the years.`,
+            `The ${age}-year-old ${race} ${formattedOccupation} ${name}${subclassHook ? ` ${subclassHook}` : ''} has weathered many storms since leaving ${lore.homeland}. ${Possessive} ${alignmentDesc} character has been tested by ${lore.challenge} and proven over the years.`,
             `${name} is a master ${formattedOccupation} at ${age}${subclassHook ? `, ${subclassHook}` : ''}. As a ${race} who ${lore.culture}, ${pronoun} ${hasHave} become a ${lore.elder}, still practicing ${lore.tradition}.`
         ],
         'elderly': hasAdventurerTraining ? [
-            `${name} is a venerable ${race} of ${age} ${yearWord}, living as a ${formattedOccupation} though ${pronoun} is ${adventurerScenario}. Now a ${lore.elder}, ${pronoun} guards ${possessive} secrets with ${alignment} wisdom.`,
+            `${name} is a venerable ${race} of ${age} ${yearWord}, living as a ${formattedOccupation} though ${pronoun} is ${adventurerScenario}. Now a ${lore.elder}, ${pronoun} guards ${possessive} secrets with ${alignmentDesc} wisdom.`,
             `At ${age}, ${name} has lived many lives - ${formattedOccupation} to most, but ${adventurerScenario} to those who know the truth. This ${race} ${lore.elder} ${lore.culture}, carrying stories few would believe.`,
             `${name}, an elderly ${race} of ${age}, appears to be a simple ${formattedOccupation}. Yet ${pronoun} is ${adventurerScenario}. Even now, ${possessive} skills remain sharp.`,
             `The ${age}-year-old ${race} ${name} is known locally as a ${formattedOccupation}, but is secretly ${adventurerScenario}. From ${lore.homeland}, this ${lore.elder} keeps ${possessive} true nature hidden.`,
             `${name} has seen ${age} ${yearWord} come and go, living as ${formattedOccupation} while being ${adventurerScenario}. This ${race} ${lore.elder} ${lore.culture}, ${possessive} past a closely guarded secret.`
         ] : [
-            `${name} is a venerable ${race} of ${age} ${yearWord}, a retired ${formattedOccupation} from ${lore.homeland}. Now a ${lore.elder}, ${pronoun} shares ${possessive} ${alignment} wisdom with the next generation.`,
+            `${name} is a venerable ${race} of ${age} ${yearWord}, a retired ${formattedOccupation} from ${lore.homeland}. Now a ${lore.elder}, ${pronoun} shares ${possessive} ${alignmentDesc} wisdom with the next generation.`,
             `At ${age}, ${name} has lived a full life as a ${race} ${formattedOccupation}. ${Pronoun} ${lore.culture}, and reflect${verbS} on a lifetime of ${lore.challenge}. ${Possessive} legacy is secure.`,
             `${name}, an elderly ${race} of ${age}, was once a renowned ${formattedOccupation}. This ${lore.elder} from ${lore.homeland} now spend${verbS} ${possessive} twilight years honoring ${lore.tradition}.`,
-            `The ${age}-year-old ${race} ${name} is a living legend among ${formattedOccupation}s. From ${lore.homeland}, this ${lore.elder} ${hasHave} earned great respect through ${possessive} ${alignment} deeds.`,
+            `The ${age}-year-old ${race} ${name} is a living legend among ${formattedOccupation}s. From ${lore.homeland}, this ${lore.elder} ${hasHave} earned great respect through ${possessive} ${alignmentDesc} deeds.`,
             `${name} has seen ${age} ${yearWord} come and go. This elderly ${race} ${formattedOccupation} is treasured as a ${lore.elder}, ${possessive} stories of ${lore.challenge} inspiring all who listen.`
         ]
     };
