@@ -1039,14 +1039,17 @@ const raceLore = {
 };
 
 function generateBackstory(name, race, occupation, age, alignment, ageCategory, gender, characterClasses) {
-    const pronoun = gender === 'male' ? 'he' : gender === 'female' ? 'she' : 'they';
+    // For non-binary characters, use first name instead of "they" to avoid grammatical issues
+    const firstName = name.split(' ')[0];
+    const pronoun = gender === 'male' ? 'he' : gender === 'female' ? 'she' : firstName;
     const Pronoun = pronoun.charAt(0).toUpperCase() + pronoun.slice(1);
-    const possessive = gender === 'male' ? 'his' : gender === 'female' ? 'her' : 'their';
+    const possessive = gender === 'male' ? 'his' : gender === 'female' ? 'her' : (firstName + "'s");
     const Possessive = possessive.charAt(0).toUpperCase() + possessive.slice(1);
-    const reflexive = gender === 'non-binary' ? 'themselves' : (gender === 'male' ? 'himself' : 'herself');
-    const object = gender === 'non-binary' ? 'them' : (gender === 'male' ? 'him' : 'her');
-    const verbS = gender === 'non-binary' ? '' : 's';
-    const hasHave = gender === 'non-binary' ? 'have' : 'has';
+    const reflexive = gender === 'non-binary' ? (firstName + "'s self") : (gender === 'male' ? 'himself' : 'herself');
+    const object = gender === 'non-binary' ? firstName : (gender === 'male' ? 'him' : 'her');
+    // Always use singular verb form now since we use name instead of "they"
+    const verbS = 's';
+    const hasHave = 'has';
     
     // Format occupation: replace underscores with spaces and capitalize each word
     const formattedOccupation = occupation.replace(/_/g, ' ').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
@@ -1135,7 +1138,7 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
             `${name} is a ${age}-year-old ${race} from ${lore.homeland} who works as a ${formattedOccupation}, while secretly being ${adventurerScenario}. ${Pronoun} ${lore.culture}, balancing ${possessive} ambitions carefully.`,
             `At ${age}, ${name} appears to be a simple ${formattedOccupation}, but is ${adventurerScenario}. This young ${race} from ${lore.homeland} ${lore.culture}, hiding ${possessive} true potential.`,
             `${name} is a young ${race} of ${age} ${yearWord}, ${adventurerScenario} while working as a ${formattedOccupation}. ${Possessive} ${alignment} values guide both paths ${pronoun} walk${verbS}.`,
-            `Fresh from ${lore.homeland}, the ${age}-year-old ${name} maintains a cover as a ${formattedOccupation}. In reality, ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}, full of untapped potential.`,
+            `Fresh from ${lore.homeland}, the ${age}-year-old ${name} maintains a cover as a ${formattedOccupation}. In reality, ${pronoun} is ${adventurerScenario}, full of untapped potential.`,
             `${name}, a ${age}-year-old ${race}, lives a double life as ${formattedOccupation} and ${adventurerScenario}. ${Pronoun} ${lore.culture}, but ${possessive} true journey is just beginning.`
         ] : [
             `${name} is a ${age}-year-old ${race} from ${lore.homeland} who recently began training as a ${formattedOccupation}${subclassHook ? `, ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, and face${verbS} the challenge of ${lore.challenge}.`,
@@ -1146,9 +1149,9 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
         ],
         'adult': hasAdventurerTraining ? [
             `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}, but is also ${adventurerScenario}. ${Pronoun} ${lore.culture}, balancing ${possessive} dual life with ${alignment} integrity.`,
-            `At ${age} ${yearWord} old, ${name} works as a ${formattedOccupation}, though ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. This ${race} from ${lore.homeland} ${lore.culture}, keeping ${possessive} past close to ${possessive} chest.`,
-            `${name}, a ${race} of ${age}, appears to be a simple ${formattedOccupation}. In truth, ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. Few know of ${possessive} ${alignment} convictions or true capabilities.`,
-            `The ${age}-year-old ${race} known as ${name} serves as a ${formattedOccupation} in ${lore.homeland}. However, ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}, and ${possessive} skills run far deeper than most realize.`,
+            `At ${age} ${yearWord} old, ${name} works as a ${formattedOccupation}, though ${pronoun} is ${adventurerScenario}. This ${race} from ${lore.homeland} ${lore.culture}, keeping ${possessive} past close to ${possessive} chest.`,
+            `${name}, a ${race} of ${age}, appears to be a simple ${formattedOccupation}. In truth, ${pronoun} is ${adventurerScenario}. Few know of ${possessive} ${alignment} convictions or true capabilities.`,
+            `The ${age}-year-old ${race} known as ${name} serves as a ${formattedOccupation} in ${lore.homeland}. However, ${pronoun} is ${adventurerScenario}, and ${possessive} skills run far deeper than most realize.`,
             `${name} lives as a ${formattedOccupation} at ${age}. This ${race} from ${lore.homeland} is ${adventurerScenario}, carrying ${possessive} ${alignment} values quietly while ${lore.culture}.`
         ] : [
             `${name} is a ${race} ${formattedOccupation} of ${age} ${yearWord} from ${lore.homeland}${subclassHook ? `, ${subclassHook}` : ''}. ${Pronoun} ${lore.culture}, and ${hasHave} learned to navigate ${lore.challenge}. ${Possessive} ${alignment} reputation is well-established.`,
@@ -1158,8 +1161,8 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
             `${name} is in the prime of ${possessive} career at ${age}. This ${race} ${formattedOccupation} from ${lore.homeland}${subclassHook ? ` ${subclassHook}` : ''} ${hasHave} overcome ${lore.challenge} through ${possessive} ${alignment} approach to life.`
         ],
         'mature': hasAdventurerTraining ? [
-            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}, though ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}, drawing on both ${possessive} adventuring experience and ${alignment} wisdom.`,
-            `At ${age}, ${name} has seen much in ${possessive} time. On the surface a ${formattedOccupation}, ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. Few suspect the depth of skill this ${race} possesses.`,
+            `${name} is a seasoned ${race} ${formattedOccupation} of ${age} ${yearWord}, though ${pronoun} is ${adventurerScenario}. Originally from ${lore.homeland}, ${pronoun} ${lore.culture}, drawing on both ${possessive} adventuring experience and ${alignment} wisdom.`,
+            `At ${age}, ${name} has seen much in ${possessive} time. On the surface a ${formattedOccupation}, ${pronoun} is ${adventurerScenario}. Few suspect the depth of skill this ${race} possesses.`,
             `${name}, a ${race} of ${age} ${yearWord}, maintains a life as a ${formattedOccupation} while being ${adventurerScenario}. From ${lore.homeland}, ${pronoun} ${lore.culture}, though ${possessive} past holds more than ${pronoun} let${verbS} on.`,
             `The ${age}-year-old ${race} ${name} appears to be a simple ${formattedOccupation}, but is ${adventurerScenario}. ${Possessive} ${alignment} character guides both aspects of ${possessive} life.`,
             `${name} has lived ${age} ${yearWord} as both ${formattedOccupation} and ${adventurerScenario}. This ${race} from ${lore.homeland} ${lore.culture}, carrying secrets that few would believe.`
@@ -1171,9 +1174,9 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
             `${name} is a master ${formattedOccupation} at ${age}${subclassHook ? `, ${subclassHook}` : ''}. As a ${race} who ${lore.culture}, ${pronoun} ${hasHave} become a ${lore.elder}, still practicing ${lore.tradition}.`
         ],
         'elderly': hasAdventurerTraining ? [
-            `${name} is a venerable ${race} of ${age} ${yearWord}, living as a ${formattedOccupation} though ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. Now a ${lore.elder}, ${pronoun} guards ${possessive} secrets with ${alignment} wisdom.`,
+            `${name} is a venerable ${race} of ${age} ${yearWord}, living as a ${formattedOccupation} though ${pronoun} is ${adventurerScenario}. Now a ${lore.elder}, ${pronoun} guards ${possessive} secrets with ${alignment} wisdom.`,
             `At ${age}, ${name} has lived many lives - ${formattedOccupation} to most, but ${adventurerScenario} to those who know the truth. This ${race} ${lore.elder} ${lore.culture}, carrying stories few would believe.`,
-            `${name}, an elderly ${race} of ${age}, appears to be a simple ${formattedOccupation}. Yet ${pronoun} ${gender === 'non-binary' ? 'are' : 'is'} ${adventurerScenario}. Even now, ${possessive} skills remain sharp.`,
+            `${name}, an elderly ${race} of ${age}, appears to be a simple ${formattedOccupation}. Yet ${pronoun} is ${adventurerScenario}. Even now, ${possessive} skills remain sharp.`,
             `The ${age}-year-old ${race} ${name} is known locally as a ${formattedOccupation}, but is secretly ${adventurerScenario}. From ${lore.homeland}, this ${lore.elder} keeps ${possessive} true nature hidden.`,
             `${name} has seen ${age} ${yearWord} come and go, living as ${formattedOccupation} while being ${adventurerScenario}. This ${race} ${lore.elder} ${lore.culture}, ${possessive} past a closely guarded secret.`
         ] : [
