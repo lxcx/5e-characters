@@ -129,10 +129,10 @@ function generateNPC() {
     const bgValue = bgSelect ? bgSelect.value : 'random';
     
     if (bgValue === 'custom') {
-        // Custom background with placeholder text
+        // Custom background with placeholder text - user will name it after generation
         selectedBackground = 'custom';
         backgroundData = {
-            name: 'Custom',
+            name: 'Custom Background',
             skills: [],
             tools: [],
             traits: ['Click to enter your personality trait...'],

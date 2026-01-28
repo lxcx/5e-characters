@@ -647,11 +647,19 @@ function displayNPC(npc) {
             </div>
         ` : '';
         
+        // For custom backgrounds, show the custom name; for others show the background key
+        const displayName = npc.background === 'custom' && npc.backgroundData?.name 
+            ? npc.backgroundData.name 
+            : capitalize(npc.background);
+        
         html += `
             <div class="section-title" style="margin-top: 15px;">
                 <i class="fa-solid fa-masks-theater"></i> Background: 
                 <span class="editable" style="cursor: pointer; border-bottom: 1px dashed #58180d;" 
-                    onclick="openBackgroundSelectModal()">${capitalize(npc.background)}</span>
+                    onclick="${npc.background === 'custom' ? 'openCustomBackgroundNameModal()' : 'openBackgroundSelectModal()'}">
+                    ${displayName}
+                </span>
+                ${npc.background === 'custom' ? '<span style="font-size: 0.8em; color: #666; margin-left: 8px;">(click to rename)</span>' : ''}
             </div>
             
             ${customSkillsHtml}
@@ -2522,26 +2530,9 @@ function openBackgroundSelectModal() {
 function selectNewBackground(bgKey) {
     if (!currentNPC) return;
     
-    // Handle custom background
+    // Handle custom background - prompt for name first
     if (bgKey === 'custom') {
-        currentNPC.background = 'custom';
-        currentNPC.backgroundData = {
-            name: 'Custom',
-            skills: [],
-            tools: [],
-            traits: ['Click to enter your personality trait...'],
-            ideals: ['Click to enter your ideal...'],
-            bonds: ['Click to enter your bond...'],
-            flaws: ['Click to enter your flaw...']
-        };
-        currentNPC.personalityTrait = 'Click to enter your personality trait...';
-        currentNPC.ideal = 'Click to enter your ideal...';
-        currentNPC.bond = 'Click to enter your bond...';
-        currentNPC.flaw = 'Click to enter your flaw...';
-        currentNPC.toolProficiencies = [];
-        
-        closeModal();
-        displayNPC(currentNPC);
+        openCustomBackgroundNameModal();
         return;
     }
     
@@ -2570,6 +2561,83 @@ function selectNewBackground(bgKey) {
     });
     
     // Close modal and refresh display
+    closeModal();
+    displayNPC(currentNPC);
+}
+
+// Custom background name input modal
+function openCustomBackgroundNameModal() {
+    const modal = document.getElementById('multiSelectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalOptions');
+    
+    modalTitle.textContent = 'Create Custom Background';
+    
+    // Get existing custom name if editing
+    const existingName = currentNPC.background === 'custom' && currentNPC.backgroundData?.name !== 'Custom' 
+        ? currentNPC.backgroundData.name 
+        : '';
+    
+    let html = `
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 8px;">Name your background:</label>
+            <input type="text" id="customBackgroundNameInput" 
+                   style="width: 100%; padding: 10px; border: 2px solid #dee2e6; border-radius: 6px; font-size: 1.1em;"
+                   placeholder="e.g., Wandering Merchant, Disgraced Knight, Street Performer..."
+                   value="${existingName}">
+        </div>
+        <div style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+            <i class="fa-solid fa-info-circle"></i> 
+            After naming your background, you'll be able to select 2 skill proficiencies and enter custom traits, ideals, bonds, and flaws.
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="saveCustomBackgroundName()" 
+                    style="flex: 1; padding: 10px; background: #58180d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                <i class="fa-solid fa-check"></i> Create Background
+            </button>
+            <button onclick="closeModal()" 
+                    style="flex: 1; padding: 10px; background: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                Cancel
+            </button>
+        </div>
+    `;
+    
+    modalContent.innerHTML = html;
+    
+    // Hide the default modal elements
+    const customInput = document.querySelector('#multiSelectModal .modal-custom-input');
+    if (customInput) customInput.style.display = 'none';
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = 'none';
+    
+    modal.classList.add('active');
+    
+    // Focus the input
+    setTimeout(() => {
+        document.getElementById('customBackgroundNameInput')?.focus();
+    }, 100);
+}
+
+function saveCustomBackgroundName() {
+    const nameInput = document.getElementById('customBackgroundNameInput');
+    const customName = nameInput?.value.trim() || 'Custom';
+    
+    currentNPC.background = 'custom';
+    currentNPC.backgroundData = {
+        name: customName,
+        skills: [],
+        tools: [],
+        traits: ['Click to enter your personality trait...'],
+        ideals: ['Click to enter your ideal...'],
+        bonds: ['Click to enter your bond...'],
+        flaws: ['Click to enter your flaw...']
+    };
+    currentNPC.personalityTrait = 'Click to enter your personality trait...';
+    currentNPC.ideal = 'Click to enter your ideal...';
+    currentNPC.bond = 'Click to enter your bond...';
+    currentNPC.flaw = 'Click to enter your flaw...';
+    currentNPC.toolProficiencies = [];
+    
     closeModal();
     displayNPC(currentNPC);
 }
