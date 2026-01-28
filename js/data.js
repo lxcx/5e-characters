@@ -245,7 +245,7 @@ const backgrounds = {
     folkhero: {
         name: 'Folk Hero', skills: ['Animal Handling', 'Survival'], tools: ['Artisan\'s tools', 'Vehicles (land)'],
         description: 'You come from a humble background but are destined for greatness. Skills: Animal Handling, Survival. Tools: Artisan\'s tools, Vehicles (land).',
-        equipment: ["Artisan"s tools", "Shovel", "Iron pot", "Common clothes", "10 gp"],
+        equipment: ["Artisan\'s tools", "Shovel", "Iron pot", "Common clothes", "10 gp"],
         feature: 'Rustic Hospitality',
         featureDesc: 'Since you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among commoners.',
         traits: ['I judge people by actions, not words.', 'I am always ready to help those in trouble.', 'I follow through on my commitments.', 'I have a strong sense of fair play.', 'I am confident in my abilities.', 'I prefer action over thinking.', 'I misuse long words in an attempt to sound smarter.', 'I feel far more comfortable around animals than people.'],
@@ -278,7 +278,7 @@ const backgrounds = {
     outlander: {
         name: 'Outlander', skills: ['Athletics', 'Survival'], tools: ['Musical instrument'], languages: 1,
         description: 'You grew up in the wilds, far from civilization. Skills: Athletics, Survival. Tools: Musical instrument. Languages: One of your choice.',
-        equipment: ["Staff", "Hunting trap", "Trophy from animal", "Traveler"s clothes", "10 gp"],
+        equipment: ["Staff", "Hunting trap", "Trophy from animal", "Traveler\'s clothes", "10 gp"],
         feature: 'Wanderer',
         featureDesc: 'You have an excellent memory for maps and geography. You can always recall the general layout of terrain, settlements, and other features. You can find food and water for up to six people each day.',
         traits: ['I am driven by wanderlust.', 'I watch over friends like newborn pups.', 'I once ran 25 miles to warn my clan.', 'I have a nature lesson for every situation.', 'I place no stock in the wealthy.', 'I was raised by wolves.', 'I feel far more comfortable around animals than people.', 'I was raised by wolves.'],
@@ -334,7 +334,7 @@ const backgrounds = {
     guildartisan: {
         name: 'Guild Artisan', skills: ['Insight', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You are a member of an artisan\'s guild, skilled in a particular field. Skills: Insight, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
-        equipment: ["Artisan"s tools", "Letter of introduction from guild", "Traveler"s clothes", "15 gp"],
+        equipment: ["Artisan\'s tools", "Letter of introduction from guild", "Traveler\'s clothes", "15 gp"],
         feature: 'Guild Membership',
         featureDesc: 'As an established member of a guild, your fellow guild members will provide you with lodging and food if necessary. The guild offers legal support and political connections.',
         traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.', 'I\'m well known for my work, and I want to make sure everyone appreciates it.', 'I\'ll settle for nothing less than perfection.'],
@@ -357,7 +357,7 @@ const backgrounds = {
     clancrafter: {
         name: 'Clan Crafter', skills: ['History', 'Insight'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You learned your craft among a clan of dwarves or similar artisan community. Skills: History, Insight. Tools: One type of artisan\'s tools. Languages: Dwarvish or one of your choice.',
-        equipment: ["Artisan"s tools", "Maker"s mark chisel", "Traveler"s clothes", "5 gp", "Gem worth 10 gp"],
+        equipment: ["Artisan\'s tools", "Maker\'s mark chisel", "Traveler\'s clothes", "5 gp", "Gem worth 10 gp"],
         feature: 'Respect of the Stout Folk',
         featureDesc: 'No one esteems clan crafters quite so highly as dwarves do. You always have free lodging and food at any establishment where dwarves or gnomes work.',
         traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.', 'I\'m well known for my work and want everyone to appreciate it.', 'I\'ll settle for nothing less than perfection.'],
@@ -368,7 +368,7 @@ const backgrounds = {
     cloisteredscholar: {
         name: 'Cloistered Scholar', skills: ['History'], languages: 2,
         description: 'You spent years learning the lore of the multiverse in a great library. Skills: History plus one from Arcana, Nature, or Religion. Languages: Two of your choice.',
-        equipment: ["Scholar"s robes", "Writing kit", "Borrowed book", "10 gp"],
+        equipment: ["Scholar\'s robes", "Writing kit", "Borrowed book", "10 gp"],
         feature: 'Library Access',
         featureDesc: 'You have access to a great library or university. You likely have easy access to most of its contents, and other resources available to you include maps and sages.',
         traits: ['I use polysyllabic words that convey the impression of great erudition.', 'I have read every book in the world\'s greatest libraries.', 'I am used to helping out those who are not as smart as I am.', 'There is nothing I like more than a good mystery.', 'I am willing to listen to every side of an argument.', 'I speak slowly when talking to idiots.', 'I\'m horribly awkward in social situations.', 'I\'m convinced people are trying to steal my secrets.'],
@@ -401,7 +401,7 @@ const backgrounds = {
     fartraveler: {
         name: 'Far Traveler', skills: ['Insight', 'Perception'], tools: ['Musical instrument or gaming set'], languages: 1,
         description: 'You come from a distant place few have heard of. Skills: Insight, Perception. Tools: One musical instrument or gaming set. Languages: One of your choice.',
-        equipment: ["Traveler"s clothes", "Musical instrument or gaming set", "Poorly wrought maps", "5 gp"],
+        equipment: ["Traveler\'s clothes", "Musical instrument or gaming set", "Poorly wrought maps", "5 gp"],
         feature: 'All Eyes on You',
         featureDesc: 'Your accent, mannerisms, and appearance mark you as foreign. Curious glances come your way, and you gain the friendly interest of scholars intrigued by far-off lands.',
         traits: ['I have different assumptions about personal space.', 'I have my own ideas about what is and is not food.', 'I have a strong code of honor or sense of propriety.', 'I express affection or contempt in ways unfamiliar to others.', 'I honor my deities through practices viewed as foreign.', 'I begin or end my day with small rituals unfamiliar to those around me.', 'I have a lesson for every situation from my homeland.', 'I never pass up a friendly wager.'],
@@ -412,7 +412,7 @@ const backgrounds = {
     inheritor: {
         name: 'Inheritor', skills: ['Survival'], tools: ['Gaming set or musical instrument'], languages: 1,
         description: 'You are the heir to something of great value, but also great danger. Skills: Survival plus one from Arcana, History, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
-        equipment: ["Inheritance (special item)", "Traveler"s clothes", "15 gp"],
+        equipment: ["Inheritance (special item)", "Traveler\'s clothes", "15 gp"],
         feature: 'Inheritance',
         featureDesc: 'You have inherited a special item of importance. Work with your DM to determine the nature and history of your inheritance.',
         traits: ['I keep my thoughts to myself and let my actions speak.', 'I have a strong sense of fair play.', 'I am confident in my own abilities.', 'I prefer action over contemplation.', 'I believe in the power of destiny.', 'I am driven by wanderlust that led me away from home.', 'I connect everything to a grand cosmic plan.', 'I am utterly serene, even in the face of disaster.'],
@@ -423,7 +423,7 @@ const backgrounds = {
     knightoftheorder: {
         name: 'Knight of the Order', skills: ['Persuasion'], tools: ['Gaming set or musical instrument'], languages: 1,
         description: 'You are a member of a knightly order dedicated to a cause. Skills: Persuasion plus one from Arcana, History, Nature, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
-        equipment: ["Seal of the order", "Banner or signet", "Traveler"s clothes", "10 gp"],
+        equipment: ["Seal of the order", "Banner or signet", "Traveler\'s clothes", "10 gp"],
         feature: 'Knightly Regard',
         featureDesc: 'You receive shelter and succor from members of your knightly order. Knights of your order will aid you if the cost is not too high.',
         traits: ['I am always polite and respectful.', 'I am haunted by memories of battles past.', 'I have lost too many friends and am slow to make new ones.', 'I am full of inspiring and cautionary tales from my order.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and protecting the weak.', 'I face problems head-on with a direct solution.', 'I have a strong sense of fair play.'],
@@ -456,7 +456,7 @@ const backgrounds = {
     uthgardttribemember: {
         name: 'Uthgardt Tribe Member', skills: ['Athletics', 'Survival'], tools: ['Artisan\'s tools or musical instrument'], languages: 1,
         description: 'You grew up among the Uthgardt barbarian tribes. Skills: Athletics, Survival. Tools: One type of artisan\'s tools or one musical instrument. Languages: One of your choice.',
-        equipment: ["Hunting trap", "Totem or tattoos of tribe", "Traveler"s clothes", "10 gp"],
+        equipment: ["Hunting trap", "Totem or tattoos of tribe", "Traveler\'s clothes", "10 gp"],
         feature: 'Uthgardt Heritage',
         featureDesc: 'You have excellent knowledge of your tribe\'s territory and the terrain and natural resources of the region. You can find Uthgardt holy sites without a map.',
         traits: ['I am driven by wanderlust that led me away from home.', 'I watch over my friends as if they were a litter of newborn pups.', 'I once ran twenty-five miles without stopping to warn my tribe.', 'I have a lesson for every situation, drawn from observing nature.', 'I place no stock in wealthy or well-mannered folk.', 'I was raised by wolves.', 'I feel far more comfortable around animals than people.', 'I have a lesson from nature for every situation.'],
@@ -570,7 +570,7 @@ const backgrounds = {
     selesnyainitiate: {
         name: 'Selesnya Initiate', skills: ['Nature', 'Persuasion'], languages: 2,
         description: 'You are part of the Selesnya Conclave, the guild of harmony and nature. Skills: Nature, Persuasion. Languages: Choose one of Elvish, Loxodon, or Sylvan.',
-        equipment: ["Selesnya insignia", "Healer"s kit", "Common clothes", "5 gp"],
+        equipment: ["Selesnya insignia", "Healer\'s kit", "Common clothes", "5 gp"],
         feature: 'Conclave\'s Shelter',
         featureDesc: 'You have access to the resources of the Selesnya Conclave. You can always find a place to stay at a Selesnya enclave or with members of the Conclave.',
         traits: ['I believe everyone can find peace in the Conclave.', 'I see the best in everyone.', 'I find comfort in the presence of others.', 'I believe in the power of community.', 'I prefer harmony to conflict.', 'I am patient and willing to listen.', 'I feel connected to everyone.', 'I trust in the wisdom of nature.'],
@@ -604,7 +604,7 @@ const backgrounds = {
     volstruckeragent: {
         name: 'Volstrucker Agent', skills: ['Deception', 'Stealth'], tools: ['Poisoner\'s kit'],
         description: 'You were trained by the Volstrucker, the covert assassins of the Cerberus Assembly. Skills: Deception, Stealth. Tools: Poisoner\'s kit. Languages: One of your choice.',
-        equipment: ["Fine clothes", "Poisoner"s kit", "Shadow symbol of the Volstrucker", "10 gp"],
+        equipment: ["Fine clothes", "Poisoner\'s kit", "Shadow symbol of the Volstrucker", "10 gp"],
         feature: 'Shadow Network',
         featureDesc: 'You have access to the Volstrucker network of informants and operatives. You can call on agents to gather information.',
         traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note the locations of everything valuable.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to the risks in a situation.', 'I work several identities at once.', 'I never reveal more than necessary.'],
@@ -616,7 +616,7 @@ const backgrounds = {
     athlete: {
         name: 'Athlete', skills: ['Acrobatics', 'Athletics'], tools: ['Vehicles (land)'], languages: 1,
         description: 'You strive to be the greatest athlete of your generation. Skills: Acrobatics, Athletics. Tools: Vehicles (land). Languages: One of your choice.',
-        equipment: ["Bronze discus or leather ball", "Lucky charm", "Traveler"s clothes", "10 gp"],
+        equipment: ["Bronze discus or leather ball", "Lucky charm", "Traveler\'s clothes", "10 gp"],
         feature: 'Echoes of Victory',
         featureDesc: 'You have attracted admiration among spectators, fellow athletes, and trainers. You can rely on free lodging and food at any place that hosts athletic events.',
         traits: ['I feel most alive when pushing my body to its limits.', 'I spread the good word of physical fitness wherever I go.', 'I am always seeking to improve myself.', 'I love a good competition.', 'I never back down from a challenge.', 'I train constantly to stay in peak condition.', 'I feel most alive when pushing my limits.', 'I love competition in any form.'],
@@ -628,7 +628,7 @@ const backgrounds = {
     hauntedone: {
         name: 'Haunted One', skills: ['Arcana', 'Investigation'], languages: 2,
         description: 'You are haunted by something so terrible that you dare not speak of it. Skills: Choose two from Arcana, Investigation, Religion, or Survival. Languages: Choose two, one of which must be exotic.',
-        equipment: ["Monster hunter"s pack", "Trinket of special significance", "Common clothes", "1 sp"],
+        equipment: ["Monster hunter\'s pack", "Trinket of special significance", "Common clothes", "1 sp"],
         feature: 'Heart of Darkness',
         featureDesc: 'Those who look into your eyes can see that you have faced unimaginable horror. Common folk may be afraid of you, but they will help you leave their community safely.',
         traits: ['I do not run from evil. Evil runs from me.', 'I like to read and memorize poetry.', 'I spend money freely and live life to the fullest.', 'I live for the thrill of the hunt.', 'I do not talk about what haunts me.', 'I expect danger around every corner.', 'I put no trust in divine beings.', 'I like to know my enemy\'s capabilities.'],
@@ -718,7 +718,7 @@ const backgrounds = {
     failedmerchant: {
         name: 'Failed Merchant', skills: ['Investigation', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'Your business went bankrupt, and now you seek fortune through adventure. Skills: Investigation, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
-        equipment: ["Merchant"s scale", "Fine clothes", "Cart with unsold inventory", "10 gp"],
+        equipment: ["Merchant\'s scale", "Fine clothes", "Cart with unsold inventory", "10 gp"],
         feature: 'Supply Chain',
         featureDesc: 'From your time as a merchant, you retain connections to suppliers. You can find sellers for unusual equipment and get a 10% discount on non-magical goods.',
         traits: ['I am always looking for a good deal.', 'I learned from my failures and am wiser now.', 'I still have connections in the merchant world.', 'I am suspicious of those who seem too generous.', 'I keep meticulous financial records.', 'I dream of one day being successful again.', 'I evaluate everything by its monetary value.', 'I\'m always looking for a good deal.'],
