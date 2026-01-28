@@ -150,10 +150,12 @@ function generateNPC() {
     // - Class is explicitly set to non-commoner (not random, not commoner)
     // - Occupation is explicitly set to non-infant (not random, not infant)
     // - Any multiclasses are set (adventurer training means no infants)
+    // - PC mode is active (PCs cannot be infants)
     const classBlocksInfant = npcClass !== 'random' && npcClass !== 'commoner';
     const occupationBlocksInfant = occupation !== 'random' && occupation !== 'infant';
     const hasMulticlasses = multiclasses.length > 0;
-    const infantAllowed = !classBlocksInfant && !occupationBlocksInfant && !hasMulticlasses;
+    const pcModeBlocksInfant = isPCMode();
+    const infantAllowed = !classBlocksInfant && !occupationBlocksInfant && !hasMulticlasses && !pcModeBlocksInfant;
 
     // Age - locked or generate new (determine before class and occupation)
     if (lockStates.age && currentNPC) {

@@ -2683,34 +2683,56 @@ function openBackgroundTraitModal(field, title, options, currentValue) {
     const modalTitle = document.getElementById('modalTitle');
     const modalContent = document.getElementById('modalOptions');
     
-    modalTitle.textContent = `Select ${title}`;
+    modalTitle.textContent = `Enter ${title}`;
     currentModalField = field;
     
-    let html = `
-        <div style="margin-bottom: 15px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Choose from ${title}s:</label>
-            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; border-radius: 6px; padding: 5px;">
-    `;
+    // Check if this is a custom background (options contain placeholder text)
+    const isCustomBackground = currentNPC && currentNPC.background === 'custom';
     
-    options.forEach((opt, index) => {
-        const isSelected = opt === currentValue;
+    let html = '';
+    
+    // Only show selection options for non-custom backgrounds
+    if (!isCustomBackground && options && options.length > 0 && !options[0].includes('Click to enter')) {
+        modalTitle.textContent = `Select ${title}`;
         html += `
-            <div class="modal-option ${isSelected ? 'selected' : ''}" 
-                 onclick="selectBackgroundTrait('${field}', this, ${index})"
-                 data-value="${index}"
-                 style="padding: 8px; margin: 4px 0; border-radius: 4px; cursor: pointer; ${isSelected ? 'background: #58180d; color: white;' : 'background: #f5f5f5;'}">
-                ${opt}
-            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Choose from ${title}s:</label>
+                <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; border-radius: 6px; padding: 5px;">
         `;
-    });
+        
+        options.forEach((opt, index) => {
+            const isSelected = opt === currentValue;
+            html += `
+                <div class="modal-option ${isSelected ? 'selected' : ''}" 
+                     onclick="selectBackgroundTrait('${field}', this, ${index})"
+                     data-value="${index}"
+                     style="padding: 8px; margin: 4px 0; border-radius: 4px; cursor: pointer; ${isSelected ? 'background: #58180d; color: white;' : 'background: #f5f5f5;'}">
+                    ${opt}
+                </div>
+            `;
+        });
+        
+        html += `
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Or enter custom ${title.toLowerCase()}:</label>
+        `;
+    } else {
+        html += `
+            <div>
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Enter your ${title.toLowerCase()}:</label>
+        `;
+    }
+    
+    // Get the current value for the textarea (exclude placeholder text)
+    const textareaValue = currentValue && !currentValue.includes('Click to enter') && (!options || !options.includes(currentValue)) 
+        ? currentValue 
+        : (currentValue && !currentValue.includes('Click to enter') ? currentValue : '');
     
     html += `
-            </div>
-        </div>
-        <div style="margin-top: 15px;">
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Or enter custom ${title.toLowerCase()}:</label>
-            <textarea id="customTraitInput" style="width: 100%; min-height: 60px; padding: 8px; border: 2px solid #dee2e6; border-radius: 6px; font-family: inherit;"
-                placeholder="Enter your own ${title.toLowerCase()}...">${currentValue && !options.includes(currentValue) ? currentValue : ''}</textarea>
+            <textarea id="customTraitInput" style="width: 100%; min-height: 80px; padding: 8px; border: 2px solid #dee2e6; border-radius: 6px; font-family: inherit;"
+                placeholder="Enter your own ${title.toLowerCase()}...">${textareaValue}</textarea>
         </div>
         <div style="margin-top: 15px; display: flex; gap: 10px;">
             <button onclick="saveBackgroundTrait('${field}')" style="flex: 1; padding: 10px; background: #58180d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
