@@ -1106,7 +1106,7 @@ function showBackgroundDescription() {
 
     const bgData = backgrounds[selectedBg];
     if (bgData) {
-        let html = `<strong style="margin-right: 8px;">${bgData.name}</strong>`;
+        let html = `<div style="font-weight: bold; margin-bottom: 4px;">${bgData.name}</div>`;
         
         // Build description with proper line breaks using divs
         const parts = [];
@@ -1114,12 +1114,12 @@ function showBackgroundDescription() {
         // Main flavor text (extract from description before "Skills:")
         const descMatch = bgData.description.match(/^([^.]+\.)/);
         if (descMatch) {
-            parts.push(`<div style="margin-top: 4px;">${descMatch[1]}</div>`);
+            parts.push(`<div>${descMatch[1]}</div>`);
         }
         
         // Skills
         if (bgData.skills && bgData.skills.length > 0) {
-            parts.push(`<div><strong>Skills:</strong> ${bgData.skills.join(', ')}</div>`);
+            parts.push(`<div style="margin-top: 2px;"><strong>Skills:</strong> ${bgData.skills.join(', ')}</div>`);
         }
         
         // Tools
