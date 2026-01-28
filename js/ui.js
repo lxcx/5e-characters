@@ -1051,6 +1051,25 @@ function showSubclassDescription() {
     descriptionDiv.style.display = 'none';
 }
 
+function showBackgroundDescription() {
+    const bgSelect = document.getElementById('background');
+    const descriptionDiv = document.getElementById('backgroundDescription');
+    const selectedBg = bgSelect.value;
+
+    if (selectedBg === 'random' || selectedBg === 'none' || !selectedBg) {
+        descriptionDiv.style.display = 'none';
+        return;
+    }
+
+    const bgData = backgrounds[selectedBg];
+    if (bgData && bgData.description) {
+        descriptionDiv.innerHTML = `<strong>${bgData.name}</strong> - ${bgData.description}`;
+        descriptionDiv.style.display = 'block';
+    } else {
+        descriptionDiv.style.display = 'none';
+    }
+}
+
 function showOccupationDescription() {
     const occSelect = document.getElementById('occupation');
     const descriptionDiv = document.getElementById('occupationDescription');

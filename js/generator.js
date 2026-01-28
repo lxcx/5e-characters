@@ -122,11 +122,14 @@ function generateNPC() {
         selectedAlignment = alignment === 'random' ? randomChoice(alignments) : alignment;
     }
 
-    // Background (for PC mode) - always random, user can change on generated side
+    // Background - read from selector, works for both NPCs and PCs
     let selectedBackground = null;
     let backgroundData = null;
-    if (isPCMode()) {
-        selectedBackground = randomChoice(Object.keys(backgrounds));
+    const bgSelect = document.getElementById('background');
+    const bgValue = bgSelect ? bgSelect.value : 'random';
+    
+    if (bgValue !== 'none') {
+        selectedBackground = bgValue === 'random' ? randomChoice(Object.keys(backgrounds)) : bgValue;
         backgroundData = backgrounds[selectedBackground];
     }
 
@@ -365,7 +368,7 @@ function generateNPC() {
         });
     }
 
-    // Skills - locked or generate new (combine from all classes)
+    // Skills - locked or generate new (combine from all classes, occupation, and background)
     let skills;
     if (lockStates.skills && currentNPC) {
         skills = [...currentNPC.skills];
@@ -378,7 +381,8 @@ function generateNPC() {
             }
         });
         const occSkills = occData.skills || [];
-        skills = [...new Set([...allClassSkills, ...occSkills])];
+        const bgSkills = backgroundData?.skills || [];
+        skills = [...new Set([...allClassSkills, ...occSkills, ...bgSkills])];
     }
 
     // Equipment - locked or generate new

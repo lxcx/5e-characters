@@ -200,6 +200,7 @@ const classes = {
 const backgrounds = {
     acolyte: {
         name: 'Acolyte', skills: ['Insight', 'Religion'], languages: 2,
+        description: 'You spent your life in service to a temple. Skills: Insight, Religion. Languages: Two of your choice.',
         traits: ['I idolize a hero of my faith.', 'I can find common ground between enemies.', 'I see omens in every event.', 'Nothing shakes my optimism.', 'I quote sacred texts constantly.', 'I am tolerant of other faiths.'],
         ideals: ['Tradition - Ancient traditions must be preserved.', 'Charity - I always help those in need.', 'Change - We must help bring about change.', 'Power - I seek to rise in my faith.', 'Faith - My deity guides my actions.', 'Aspiration - I seek to prove myself worthy.'],
         bonds: ['I would die to recover an ancient relic.', 'I will get revenge on the corrupt hierarchy.', 'I owe my life to the priest who took me in.', 'Everything I do is for the common people.', 'I will protect the temple where I served.', 'I seek to preserve a sacred text.'],
@@ -207,6 +208,7 @@ const backgrounds = {
     },
     charlatan: {
         name: 'Charlatan', skills: ['Deception', 'Sleight of Hand'], tools: ['Disguise kit', 'Forgery kit'],
+        description: 'You have always had a way with people. Skills: Deception, Sleight of Hand. Tools: Disguise kit, Forgery kit.',
         traits: ['I fall in and out of love easily.', 'I have a joke for every occasion.', 'Flattery is my preferred trick.', 'I cannot resist a risk.', 'I lie about almost everything.', 'Sarcasm is my weapon of choice.'],
         ideals: ['Independence - I am a free spirit.', 'Fairness - I never target those who cannot afford to lose.', 'Charity - I give money to those who need it.', 'Creativity - I never run the same con twice.', 'Friendship - Friends are worth more than gold.', 'Aspiration - I will make something of myself.'],
         bonds: ['I fleeced the wrong person and must avoid them.', 'I owe everything to my mentor.', 'I have a child who does not know me.', 'I will reclaim my noble lands someday.', 'Someone destroyed what I love; I want revenge.', 'I swindled someone who did not deserve it.'],
@@ -214,6 +216,7 @@ const backgrounds = {
     },
     criminal: {
         name: 'Criminal', skills: ['Deception', 'Stealth'], tools: ['Gaming set', 'Thieves\' tools'],
+        description: 'You have a history of breaking the law. Skills: Deception, Stealth. Tools: Gaming set, Thieves\' tools.',
         traits: ['I always have a backup plan.', 'I am always calm, no matter what.', 'I note the exits in any new place.', 'I prefer making friends to enemies.', 'I am slow to trust.', 'I ignore the risks in any situation.'],
         ideals: ['Honor - I do not steal from others in the trade.', 'Freedom - Chains are meant to be broken.', 'Charity - I steal from the wealthy to help the needy.', 'Greed - I will do whatever it takes to get rich.', 'People - I am loyal to my friends, not ideals.', 'Redemption - There is good in everyone.'],
         bonds: ['I am trying to pay off an old debt.', 'My ill-gotten gains support my family.', 'Something was taken from me; I will get it back.', 'I will become the greatest thief ever.', 'I seek redemption for a terrible crime.', 'Someone I loved died because of my mistake.'],
@@ -221,6 +224,7 @@ const backgrounds = {
     },
     entertainer: {
         name: 'Entertainer', skills: ['Acrobatics', 'Performance'], tools: ['Disguise kit', 'Musical instrument'],
+        description: 'You thrive in front of an audience. Skills: Acrobatics, Performance. Tools: Disguise kit, Musical instrument.',
         traits: ['I know a story for every situation.', 'I collect local rumors everywhere I go.', 'I am a hopeless romantic.', 'Nobody stays angry at me long.', 'I love a good insult, even at my expense.', 'I get bitter without attention.'],
         ideals: ['Beauty - My performance makes the world better.', 'Tradition - Old stories must be preserved.', 'Creativity - The world needs new ideas.', 'Greed - I am in it for money and fame.', 'People - I like seeing smiles.', 'Honesty - Art reflects the soul.'],
         bonds: ['My instrument is my most treasured possession.', 'Someone stole my instrument; I will get it back.', 'I want to be famous, whatever it takes.', 'I idolize a hero of old tales.', 'I will prove myself superior to my rival.', 'I would do anything for my troupe.'],
@@ -228,6 +232,7 @@ const backgrounds = {
     },
     folkhero: {
         name: 'Folk Hero', skills: ['Animal Handling', 'Survival'], tools: ['Artisan\'s tools', 'Vehicles (land)'],
+        description: 'You come from a humble background but are destined for greatness. Skills: Animal Handling, Survival. Tools: Artisan\'s tools, Vehicles (land).',
         traits: ['I judge people by actions, not words.', 'I am always ready to help those in trouble.', 'I follow through on my commitments.', 'I have a strong sense of fair play.', 'I am confident in my abilities.', 'I prefer action over thinking.'],
         ideals: ['Respect - People deserve dignity.', 'Fairness - No preferential treatment.', 'Freedom - Tyrants must not oppress.', 'Might - The strong take what they want.', 'Sincerity - I do not pretend to be something I am not.', 'Destiny - Nothing can stop fate.'],
         bonds: ['I protect my family above all.', 'I love the land I worked.', 'A noble beat me; I want revenge.', 'My tools symbolize my past.', 'I protect those who cannot protect themselves.', 'I wish my sweetheart had come with me.'],
@@ -235,6 +240,7 @@ const backgrounds = {
     },
     hermit: {
         name: 'Hermit', skills: ['Medicine', 'Religion'], tools: ['Herbalism kit'], languages: 1,
+        description: 'You lived in seclusion for a formative part of your life. Skills: Medicine, Religion. Tools: Herbalism kit. Languages: One of your choice.',
         traits: ['I speak rarely from long isolation.', 'I am serene, even in disaster.', 'I remember wise sayings for every topic.', 'I feel empathy for all who suffer.', 'I am oblivious to social expectations.', 'I connect everything to a grand plan.'],
         ideals: ['Greater Good - My gifts are meant to be shared.', 'Logic - Emotions must not cloud thinking.', 'Free Thinking - Inquiry is vital.', 'Power - Solitude leads to power.', 'Live and Let Live - Meddling causes trouble.', 'Self-Knowledge - Understanding oneself is paramount.'],
         bonds: ['Nothing is more important than my hermitage.', 'I entered seclusion to hide from hunters.', 'I am still seeking enlightenment.', 'I secluded myself for unrequited love.', 'My discovery could bring ruin if revealed.', 'My isolation showed me a great evil.'],
@@ -242,6 +248,7 @@ const backgrounds = {
     },
     noble: {
         name: 'Noble', skills: ['History', 'Persuasion'], tools: ['Gaming set'], languages: 1,
+        description: 'You understand wealth, power, and privilege. Skills: History, Persuasion. Tools: Gaming set. Languages: One of your choice.',
         traits: ['My flattery makes everyone feel wonderful.', 'The common folk love my kindness.', 'No one could doubt my noble bearing.', 'I take pains to always look my best.', 'I do not like getting my hands dirty.', 'Despite my birth, I do not place myself above others.'],
         ideals: ['Respect - All people deserve respect.', 'Responsibility - I must protect my people.', 'Independence - I must prove I can handle myself.', 'Power - With power, no one tells me what to do.', 'Family - Blood is thicker than water.', 'Noble Obligation - I protect the less fortunate.'],
         bonds: ['I will face any challenge for my family.', 'My house alliance must be sustained.', 'Nothing is more important than family.', 'I love the heir of a rival family.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero.'],
@@ -249,6 +256,7 @@ const backgrounds = {
     },
     outlander: {
         name: 'Outlander', skills: ['Athletics', 'Survival'], tools: ['Musical instrument'], languages: 1,
+        description: 'You grew up in the wilds, far from civilization. Skills: Athletics, Survival. Tools: Musical instrument. Languages: One of your choice.',
         traits: ['I am driven by wanderlust.', 'I watch over friends like newborn pups.', 'I once ran 25 miles to warn my clan.', 'I have a nature lesson for every situation.', 'I place no stock in the wealthy.', 'I was raised by wolves.'],
         ideals: ['Change - Life is like the seasons.', 'Greater Good - Each person must help.', 'Honor - Dishonoring myself dishonors my clan.', 'Might - The strongest rule.', 'Nature - The wild is more important than civilization.', 'Glory - I must earn glory in battle.'],
         bonds: ['My family, clan, or tribe is everything.', 'An injury to the wilderness is an injury to me.', 'I will bring wrath upon those who destroyed my homeland.', 'I am the last of my tribe.', 'I suffer visions of coming disaster.', 'I must provide children for my tribe.'],
@@ -256,6 +264,7 @@ const backgrounds = {
     },
     sage: {
         name: 'Sage', skills: ['Arcana', 'History'], languages: 2,
+        description: 'You spent years learning the lore of the multiverse. Skills: Arcana, History. Languages: Two of your choice.',
         traits: ['I use big words to sound smart.', 'I have read every book in the greatest libraries.', 'I help those who are not as smart.', 'I love a good mystery.', 'I listen to every argument.', 'I speak slowly to idiots.'],
         ideals: ['Knowledge - The path to power is through knowledge.', 'Beauty - What is beautiful points to truth.', 'Logic - Emotions must not cloud logic.', 'No Limits - Nothing should fetter existence.', 'Power - Knowledge is the path to power.', 'Self-Improvement - Learning never ends.'],
         bonds: ['I must protect my students.', 'I have an ancient text with terrible secrets.', 'I work to preserve a library.', 'My life work is a series of tomes.', 'I have searched my whole life for one answer.', 'I sold my soul for knowledge.'],
@@ -263,6 +272,7 @@ const backgrounds = {
     },
     sailor: {
         name: 'Sailor', skills: ['Athletics', 'Perception'], tools: ['Navigator\'s tools', 'Vehicles (water)'],
+        description: 'You sailed on a seagoing vessel for years. Skills: Athletics, Perception. Tools: Navigator\'s tools, Vehicles (water).',
         traits: ['My friends can rely on me.', 'I work hard so I can play hard.', 'I enjoy new ports and new friends.', 'I stretch the truth for a good story.', 'A tavern brawl is a nice way to know a city.', 'I never pass up a friendly wager.'],
         ideals: ['Respect - Respect keeps a ship together.', 'Fairness - We all share the work and rewards.', 'Freedom - The sea is freedom.', 'Mastery - Other ships are my prey.', 'People - I am committed to my crewmates.', 'Aspiration - I will own my own ship.'],
         bonds: ['I am loyal to my captain first.', 'The ship is most important.', 'I will always remember my first ship.', 'I have a paramour in a harbor town.', 'I was cheated of my fair share.', 'Pirates murdered my captain.'],
@@ -270,6 +280,7 @@ const backgrounds = {
     },
     soldier: {
         name: 'Soldier', skills: ['Athletics', 'Intimidation'], tools: ['Gaming set', 'Vehicles (land)'],
+        description: 'War has been your life for as long as you care to remember. Skills: Athletics, Intimidation. Tools: Gaming set, Vehicles (land).',
         traits: ['I am always polite and respectful.', 'I am haunted by war memories.', 'I have lost too many friends.', 'I am full of war stories.', 'I can stare down a hellhound.', 'I enjoy being strong and breaking things.'],
         ideals: ['Greater Good - Our lot is to lay down our lives.', 'Responsibility - I do what I must and obey authority.', 'Independence - Blind orders embrace tyranny.', 'Might - The stronger force wins.', 'Live and Let Live - Ideals are not worth dying for.', 'Nation - My people are all that matter.'],
         bonds: ['I would die for those I served with.', 'Someone saved my life; I must repay them.', 'My honor is my life.', 'I will never forget a crushing defeat.', 'Those beside me are worth dying for.', 'I fight for those who cannot.'],
@@ -277,6 +288,7 @@ const backgrounds = {
     },
     urchin: {
         name: 'Urchin', skills: ['Sleight of Hand', 'Stealth'], tools: ['Disguise kit', 'Thieves\' tools'],
+        description: 'You grew up on the streets alone, orphaned, and poor. Skills: Sleight of Hand, Stealth. Tools: Disguise kit, Thieves\' tools.',
         traits: ['I hide food and trinkets in my pockets.', 'I ask a lot of questions.', 'I like squeezing into small places.', 'I sleep with my back to a wall.', 'I eat like a pig with bad manners.', 'I think nice people have ulterior motives.'],
         ideals: ['Respect - All people deserve respect.', 'Community - We must take care of each other.', 'Change - The low are lifted, the high brought down.', 'Retribution - The rich need to see the gutters.', 'People - I help those who help me.', 'Aspiration - I will prove I deserve a better life.'],
         bonds: ['My city is my home; I will fight for it.', 'I sponsor an orphanage.', 'I owe my survival to another urchin.', 'I owe a debt I can never repay.', 'I escaped poverty by robbing an important person.', 'No one should endure my hardships.'],

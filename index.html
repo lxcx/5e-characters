@@ -2087,6 +2087,30 @@
                     </div>
                 </div>
 
+                <!-- Row: Background -->
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="background">Background</label>
+                        <select id="background" onchange="showBackgroundDescription()">
+                            <option value="random">Random</option>
+                            <option value="none">None</option>
+                            <option value="acolyte">Acolyte</option>
+                            <option value="charlatan">Charlatan</option>
+                            <option value="criminal">Criminal</option>
+                            <option value="entertainer">Entertainer</option>
+                            <option value="folkhero">Folk Hero</option>
+                            <option value="hermit">Hermit</option>
+                            <option value="noble">Noble</option>
+                            <option value="outlander">Outlander</option>
+                            <option value="sage">Sage</option>
+                            <option value="sailor">Sailor</option>
+                            <option value="soldier">Soldier</option>
+                            <option value="urchin">Urchin</option>
+                        </select>
+                        <div id="backgroundDescription" class="description-box" style="display: none; margin-top: 8px; padding: 10px; background: #f8f5f0; border-left: 3px solid #58180d; font-size: 0.9em; color: #555;"></div>
+                    </div>
+                </div>
+
                 <button id="generateBtn" onclick="generateNPC()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate NPC</button>
             </div>
 
