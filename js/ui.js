@@ -254,16 +254,41 @@ function displayNPC(npc) {
         `;
     }
     
-    // Languages (editable)
+    // Languages (editable) - separate actual languages from choice notes
+    const languageChoicePatterns = ['One other', 'Two others', 'Three others', 'One of your choice', 'Two of your choice'];
+    const actualLanguages = (npc.languages || []).filter(lang => !languageChoicePatterns.some(p => lang.includes(p) || lang.toLowerCase().includes('other') || lang.toLowerCase().includes('choice')));
+    const languageChoices = (npc.languages || []).filter(lang => languageChoicePatterns.some(p => lang.includes(p) || lang.toLowerCase().includes('other') || lang.toLowerCase().includes('choice')));
+    
+    // Add background language choices
+    if (npc.backgroundData && npc.backgroundData.languages) {
+        const bgLangCount = npc.backgroundData.languages;
+        if (bgLangCount === 1) {
+            languageChoices.push('One additional language (background)');
+        } else if (bgLangCount === 2) {
+            languageChoices.push('Two additional languages (background)');
+        } else if (bgLangCount > 2) {
+            languageChoices.push(`${bgLangCount} additional languages (background)`);
+        }
+    }
+    
     html += `
         <div class="section-header" style="margin-top: 10px;">
             <div class="info-item" style="flex: 1; margin-bottom: 0;">
                 <span class="info-label">Languages:</span>
-                <span class="editable" style="cursor: pointer;" onclick="event.stopPropagation(); openMultiSelectModal('languages', 'Languages', getAllLanguages(), currentNPC.languages)">${npc.languages && npc.languages.length > 0 ? npc.languages.join(', ') : 'None'}</span>
+                <span class="editable" style="cursor: pointer;" onclick="event.stopPropagation(); openMultiSelectModal('languages', 'Languages', getAllLanguages(), currentNPC.languages)">${actualLanguages.length > 0 ? actualLanguages.join(', ') : 'None'}</span>
             </div>
             ${lockBtn('languages')}
         </div>
     `;
+    
+    // Show language choices as a separate bold note
+    if (languageChoices.length > 0) {
+        html += `
+            <div style="margin-left: 10px; margin-top: 5px; font-weight: bold; color: #58180d; font-style: italic;">
+                + ${languageChoices.join(', ')}
+            </div>
+        `;
+    }
 
     // Tool Proficiencies (from background)
     if (npc.toolProficiencies && npc.toolProficiencies.length > 0) {
