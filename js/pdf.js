@@ -360,6 +360,12 @@ return html;
 
     ${npc.background ? `
     <h2>Background: ${capitalize(npc.background)}</h2>
+    ${npc.backgroundData?.feature ? `
+    <div class="trait-block" style="margin-bottom: 15px; border-left: 3px solid #58180d; padding-left: 10px; background: #f8f5f0;">
+        <strong style="color: #58180d;">Feature: ${npc.backgroundData.feature}</strong>
+        <p style="margin: 5px 0 0 0; font-size: 0.9em;">${npc.backgroundData.featureDesc || ''}</p>
+    </div>
+    ` : ''}
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
 <div class="trait-block"><strong>Personality Trait:</strong> ${npc.personalityTrait || 'None'}</div>
 <div class="trait-block"><strong>Ideal:</strong> ${npc.ideal || 'None'}</div>

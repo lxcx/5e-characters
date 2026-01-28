@@ -397,12 +397,15 @@ function generateNPC() {
         skills = [...new Set([...allClassSkills, ...occSkills, ...bgSkills])];
     }
 
-    // Equipment - locked or generate new
+    // Equipment - locked or generate new (combine occupation and background equipment)
     let equipment;
     if (lockStates.equipment && currentNPC) {
         equipment = [...currentNPC.equipment];
     } else {
-        equipment = occData.equipment || [];
+        const occEquipment = occData.equipment || [];
+        const bgEquipment = backgroundData?.equipment || [];
+        // Combine and remove duplicates
+        equipment = [...new Set([...occEquipment, ...bgEquipment])];
     }
 
     // Calculate total level and proficiency bonus (commoner is level 0, doesn't count)

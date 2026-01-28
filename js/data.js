@@ -201,6 +201,9 @@ const backgrounds = {
     acolyte: {
         name: 'Acolyte', skills: ['Insight', 'Religion'], languages: 2,
         description: 'You spent your life in service to a temple. Skills: Insight, Religion. Languages: Two of your choice.',
+        equipment: ["Holy symbol", "Prayer book or prayer wheel", "5 sticks of incense", "Vestments", "Common clothes", "15 gp"],
+        feature: 'Shelter of the Faithful',
+        featureDesc: 'As an acolyte, you command the respect of those who share your faith. You and your companions can expect free healing and care at a temple, shrine, or other established presence of your faith.',
         traits: ['I idolize a particular hero of my faith, and constantly refer to that person\'s deeds and example.', 'I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.', 'I see omens in every event and action. The gods try to speak to us, we just need to listen.', 'Nothing can shake my optimistic attitude.', 'I quote (or misquote) sacred texts and proverbs in almost every situation.', 'I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.', 'I have enjoyed fine food, drink, and high society among my temple\'s elite. Rough living grates on me.', 'I have spent so long in the temple that I have little practical experience dealing with people in the outside world.', 'I\'ve enjoyed fine food, drink, and high society. Rough living grates on me.', 'I\'ve spent so long in the temple that I have little experience with the outside world.'],
         ideals: ['Tradition - Ancient traditions must be preserved.', 'Charity - I always help those in need.', 'Change - We must help bring about change.', 'Power - I seek to rise in my faith.', 'Faith - My deity guides my actions.', 'Aspiration - I seek to prove myself worthy.'],
         bonds: ['I would die to recover an ancient relic.', 'I will get revenge on the corrupt hierarchy.', 'I owe my life to the priest who took me in.', 'Everything I do is for the common people.', 'I will protect the temple where I served.', 'I seek to preserve a sacred text.'],
@@ -209,6 +212,9 @@ const backgrounds = {
     charlatan: {
         name: 'Charlatan', skills: ['Deception', 'Sleight of Hand'], tools: ['Disguise kit', 'Forgery kit'],
         description: 'You have always had a way with people. Skills: Deception, Sleight of Hand. Tools: Disguise kit, Forgery kit.',
+        equipment: ["Fine clothes", "Disguise kit", "Tools of the con (bottles, weighted dice, marked cards)", "15 gp"],
+        feature: 'False Identity',
+        featureDesc: 'You have created a second identity that includes documentation, established acquaintances, and disguises. You can forge documents including official papers and personal letters.',
         traits: ['I fall in and out of love easily, and am always pursuing someone.', 'I have a joke for every occasion, especially occasions where humor is inappropriate.', 'Flattery is my preferred trick for getting what I want.', 'I am a born gambler who cannot resist taking a risk for a potential payoff.', 'I lie about almost everything, even when there is no good reason to.', 'Sarcasm and insults are my weapons of choice.', 'I keep multiple holy symbols on me and invoke whatever deity might come in useful at any given moment.', 'I pocket anything I see that might have some value.', 'I pocket anything I see that might have value.', 'I always have a backup plan.'],
         ideals: ['Independence - I am a free spirit.', 'Fairness - I never target those who cannot afford to lose.', 'Charity - I give money to those who need it.', 'Creativity - I never run the same con twice.', 'Friendship - Friends are worth more than gold.', 'Aspiration - I will make something of myself.'],
         bonds: ['I fleeced the wrong person and must avoid them.', 'I owe everything to my mentor.', 'I have a child who does not know me.', 'I will reclaim my noble lands someday.', 'Someone destroyed what I love; I want revenge.', 'I swindled someone who did not deserve it.'],
@@ -217,6 +223,9 @@ const backgrounds = {
     criminal: {
         name: 'Criminal', skills: ['Deception', 'Stealth'], tools: ['Gaming set', 'Thieves\' tools'],
         description: 'You have a history of breaking the law. Skills: Deception, Stealth. Tools: Gaming set, Thieves\' tools.',
+        equipment: ["Crowbar", "Dark common clothes with hood", "15 gp"],
+        feature: 'Criminal Contact',
+        featureDesc: 'You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact.',
         traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation. I never raise my voice or let my emotions control me.', 'The first thing I do in a new place is note the locations of everything valuable—or where such things could be hidden.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust. Those who seem the fairest often have the most to hide.', 'I do not pay attention to the risks in a situation. Never tell me the odds.', 'The best way to get me to do something is to tell me I cannot do it.', 'I blow up at the slightest insult.', 'The best way to get me to do something is to tell me I can\'t.', 'I blow up at the slightest insult.'],
         ideals: ['Honor - I do not steal from others in the trade.', 'Freedom - Chains are meant to be broken.', 'Charity - I steal from the wealthy to help the needy.', 'Greed - I will do whatever it takes to get rich.', 'People - I am loyal to my friends, not ideals.', 'Redemption - There is good in everyone.'],
         bonds: ['I am trying to pay off an old debt.', 'My ill-gotten gains support my family.', 'Something was taken from me; I will get it back.', 'I will become the greatest thief ever.', 'I seek redemption for a terrible crime.', 'Someone I loved died because of my mistake.'],
@@ -225,6 +234,9 @@ const backgrounds = {
     entertainer: {
         name: 'Entertainer', skills: ['Acrobatics', 'Performance'], tools: ['Disguise kit', 'Musical instrument'],
         description: 'You thrive in front of an audience. Skills: Acrobatics, Performance. Tools: Disguise kit, Musical instrument.',
+        equipment: ["Musical instrument", "Favor of an admirer", "Costume", "15 gp"],
+        feature: 'By Popular Demand',
+        featureDesc: 'You can always find a place to perform. You receive free lodging and food of a modest or comfortable standard as long as you perform each night.',
         traits: ['I know a story relevant to almost every situation.', 'Whenever I come to a new place, I collect local rumors and spread gossip.', 'I am a hopeless romantic, always searching for that special someone.', 'Nobody stays angry at me or around me for long, since I can defuse any amount of tension.', 'I love a good insult, even one directed at me.', 'I get bitter if I am not the center of attention.', 'I will settle for nothing less than perfection.', 'I change my mood or my mind as quickly as I change key in a song.', 'I change my mood or my mind as quickly as I change key in a song.', 'I\'m a sucker for a pretty face.'],
         ideals: ['Beauty - My performance makes the world better.', 'Tradition - Old stories must be preserved.', 'Creativity - The world needs new ideas.', 'Greed - I am in it for money and fame.', 'People - I like seeing smiles.', 'Honesty - Art reflects the soul.'],
         bonds: ['My instrument is my most treasured possession.', 'Someone stole my instrument; I will get it back.', 'I want to be famous, whatever it takes.', 'I idolize a hero of old tales.', 'I will prove myself superior to my rival.', 'I would do anything for my troupe.'],
@@ -233,6 +245,9 @@ const backgrounds = {
     folkhero: {
         name: 'Folk Hero', skills: ['Animal Handling', 'Survival'], tools: ['Artisan\'s tools', 'Vehicles (land)'],
         description: 'You come from a humble background but are destined for greatness. Skills: Animal Handling, Survival. Tools: Artisan\'s tools, Vehicles (land).',
+        equipment: ["Artisan"s tools", "Shovel", "Iron pot", "Common clothes", "10 gp"],
+        feature: 'Rustic Hospitality',
+        featureDesc: 'Since you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among commoners.',
         traits: ['I judge people by actions, not words.', 'I am always ready to help those in trouble.', 'I follow through on my commitments.', 'I have a strong sense of fair play.', 'I am confident in my abilities.', 'I prefer action over thinking.', 'I misuse long words in an attempt to sound smarter.', 'I feel far more comfortable around animals than people.'],
         ideals: ['Respect - People deserve dignity.', 'Fairness - No preferential treatment.', 'Freedom - Tyrants must not oppress.', 'Might - The strong take what they want.', 'Sincerity - I do not pretend to be something I am not.', 'Destiny - Nothing can stop fate.'],
         bonds: ['I protect my family above all.', 'I love the land I worked.', 'A noble beat me; I want revenge.', 'My tools symbolize my past.', 'I protect those who cannot protect themselves.', 'I wish my sweetheart had come with me.'],
@@ -241,6 +256,9 @@ const backgrounds = {
     hermit: {
         name: 'Hermit', skills: ['Medicine', 'Religion'], tools: ['Herbalism kit'], languages: 1,
         description: 'You lived in seclusion for a formative part of your life. Skills: Medicine, Religion. Tools: Herbalism kit. Languages: One of your choice.',
+        equipment: ["Scroll case with notes", "Winter blanket", "Common clothes", "Herbalism kit", "5 gp"],
+        feature: 'Discovery',
+        featureDesc: 'The quiet seclusion of your hermitage gave you access to a unique and powerful discovery. It might be a truth about the cosmos, the deities, or the forces of nature.',
         traits: ['I speak rarely from long isolation.', 'I am serene, even in disaster.', 'I remember wise sayings for every topic.', 'I feel empathy for all who suffer.', 'I am oblivious to social expectations.', 'I connect everything to a grand plan.', 'I often get lost in my own thoughts and contemplation.', 'I am working on a grand theory or piece of art.'],
         ideals: ['Greater Good - My gifts are meant to be shared.', 'Logic - Emotions must not cloud thinking.', 'Free Thinking - Inquiry is vital.', 'Power - Solitude leads to power.', 'Live and Let Live - Meddling causes trouble.', 'Self-Knowledge - Understanding oneself is paramount.'],
         bonds: ['Nothing is more important than my hermitage.', 'I entered seclusion to hide from hunters.', 'I am still seeking enlightenment.', 'I secluded myself for unrequited love.', 'My discovery could bring ruin if revealed.', 'My isolation showed me a great evil.'],
@@ -249,6 +267,9 @@ const backgrounds = {
     noble: {
         name: 'Noble', skills: ['History', 'Persuasion'], tools: ['Gaming set'], languages: 1,
         description: 'You understand wealth, power, and privilege. Skills: History, Persuasion. Tools: Gaming set. Languages: One of your choice.',
+        equipment: ["Fine clothes", "Signet ring", "Scroll of pedigree", "25 gp"],
+        feature: 'Position of Privilege',
+        featureDesc: 'Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society and can secure an audience with a local noble if you need to.',
         traits: ['My flattery makes everyone feel wonderful.', 'The common folk love my kindness.', 'No one could doubt my noble bearing.', 'I take pains to always look my best.', 'I do not like getting my hands dirty.', 'Despite my birth, I do not place myself above others.', 'If you do me an injury, I will crush you.', 'Despite my noble birth, I do not place myself above others.'],
         ideals: ['Respect - All people deserve respect.', 'Responsibility - I must protect my people.', 'Independence - I must prove I can handle myself.', 'Power - With power, no one tells me what to do.', 'Family - Blood is thicker than water.', 'Noble Obligation - I protect the less fortunate.'],
         bonds: ['I will face any challenge for my family.', 'My house alliance must be sustained.', 'Nothing is more important than family.', 'I love the heir of a rival family.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero.'],
@@ -257,6 +278,9 @@ const backgrounds = {
     outlander: {
         name: 'Outlander', skills: ['Athletics', 'Survival'], tools: ['Musical instrument'], languages: 1,
         description: 'You grew up in the wilds, far from civilization. Skills: Athletics, Survival. Tools: Musical instrument. Languages: One of your choice.',
+        equipment: ["Staff", "Hunting trap", "Trophy from animal", "Traveler"s clothes", "10 gp"],
+        feature: 'Wanderer',
+        featureDesc: 'You have an excellent memory for maps and geography. You can always recall the general layout of terrain, settlements, and other features. You can find food and water for up to six people each day.',
         traits: ['I am driven by wanderlust.', 'I watch over friends like newborn pups.', 'I once ran 25 miles to warn my clan.', 'I have a nature lesson for every situation.', 'I place no stock in the wealthy.', 'I was raised by wolves.', 'I feel far more comfortable around animals than people.', 'I was raised by wolves.'],
         ideals: ['Change - Life is like the seasons.', 'Greater Good - Each person must help.', 'Honor - Dishonoring myself dishonors my clan.', 'Might - The strongest rule.', 'Nature - The wild is more important than civilization.', 'Glory - I must earn glory in battle.'],
         bonds: ['My family, clan, or tribe is everything.', 'An injury to the wilderness is an injury to me.', 'I will bring wrath upon those who destroyed my homeland.', 'I am the last of my tribe.', 'I suffer visions of coming disaster.', 'I must provide children for my tribe.'],
@@ -265,6 +289,9 @@ const backgrounds = {
     sage: {
         name: 'Sage', skills: ['Arcana', 'History'], languages: 2,
         description: 'You spent years learning the lore of the multiverse. Skills: Arcana, History. Languages: Two of your choice.',
+        equipment: ["Bottle of black ink", "Quill", "Small knife", "Letter with unanswered question", "Common clothes", "10 gp"],
+        feature: 'Researcher',
+        featureDesc: 'When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it.',
         traits: ['I use big words to sound smart.', 'I have read every book in the greatest libraries.', 'I help those who are not as smart.', 'I love a good mystery.', 'I listen to every argument.', 'I speak slowly to idiots.', 'I am horribly awkward in social situations.', 'I\'m convinced that people are always trying to steal my secrets.'],
         ideals: ['Knowledge - The path to power is through knowledge.', 'Beauty - What is beautiful points to truth.', 'Logic - Emotions must not cloud logic.', 'No Limits - Nothing should fetter existence.', 'Power - Knowledge is the path to power.', 'Self-Improvement - Learning never ends.'],
         bonds: ['I must protect my students.', 'I have an ancient text with terrible secrets.', 'I work to preserve a library.', 'My life work is a series of tomes.', 'I have searched my whole life for one answer.', 'I sold my soul for knowledge.'],
@@ -273,6 +300,9 @@ const backgrounds = {
     sailor: {
         name: 'Sailor', skills: ['Athletics', 'Perception'], tools: ['Navigator\'s tools', 'Vehicles (water)'],
         description: 'You sailed on a seagoing vessel for years. Skills: Athletics, Perception. Tools: Navigator\'s tools, Vehicles (water).',
+        equipment: ["Belaying pin (club)", "50 feet of silk rope", "Lucky charm", "Common clothes", "10 gp"],
+        feature: 'Ship\'s Passage',
+        featureDesc: 'When you need to, you can secure free passage on a sailing ship for yourself and your companions. You might sail on the ship you served on, or another ship you have good relations with.',
         traits: ['My friends can rely on me.', 'I work hard so I can play hard.', 'I enjoy new ports and new friends.', 'I stretch the truth for a good story.', 'A tavern brawl is a nice way to know a city.', 'I never pass up a friendly wager.', 'My friends know they can rely on me, no matter what.', 'My language is as foul as an otyugh nest.'],
         ideals: ['Respect - Respect keeps a ship together.', 'Fairness - We all share the work and rewards.', 'Freedom - The sea is freedom.', 'Mastery - Other ships are my prey.', 'People - I am committed to my crewmates.', 'Aspiration - I will own my own ship.'],
         bonds: ['I am loyal to my captain first.', 'The ship is most important.', 'I will always remember my first ship.', 'I have a paramour in a harbor town.', 'I was cheated of my fair share.', 'Pirates murdered my captain.'],
@@ -281,6 +311,9 @@ const backgrounds = {
     soldier: {
         name: 'Soldier', skills: ['Athletics', 'Intimidation'], tools: ['Gaming set', 'Vehicles (land)'],
         description: 'War has been your life for as long as you care to remember. Skills: Athletics, Intimidation. Tools: Gaming set, Vehicles (land).',
+        equipment: ["Insignia of rank", "Trophy from fallen enemy", "Bone dice or deck of cards", "Common clothes", "10 gp"],
+        feature: 'Military Rank',
+        featureDesc: 'You have a military rank from your career as a soldier. Soldiers loyal to your former military organization still recognize your authority and influence.',
         traits: ['I am always polite and respectful.', 'I am haunted by war memories.', 'I have lost too many friends.', 'I am full of war stories.', 'I can stare down a hellhound.', 'I enjoy being strong and breaking things.', 'I face problems head-on with a simple, direct solution.', 'I have a crude sense of humor.'],
         ideals: ['Greater Good - Our lot is to lay down our lives.', 'Responsibility - I do what I must and obey authority.', 'Independence - Blind orders embrace tyranny.', 'Might - The stronger force wins.', 'Live and Let Live - Ideals are not worth dying for.', 'Nation - My people are all that matter.'],
         bonds: ['I would die for those I served with.', 'Someone saved my life; I must repay them.', 'My honor is my life.', 'I will never forget a crushing defeat.', 'Those beside me are worth dying for.', 'I fight for those who cannot.'],
@@ -289,6 +322,9 @@ const backgrounds = {
     urchin: {
         name: 'Urchin', skills: ['Sleight of Hand', 'Stealth'], tools: ['Disguise kit', 'Thieves\' tools'],
         description: 'You grew up on the streets alone, orphaned, and poor. Skills: Sleight of Hand, Stealth. Tools: Disguise kit, Thieves\' tools.',
+        equipment: ["Small knife", "Map of your home city", "Pet mouse", "Token to remember parents", "Common clothes", "10 gp"],
+        feature: 'City Secrets',
+        featureDesc: 'You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. You can travel between locations twice as fast when not in combat.',
         traits: ['I hide food and trinkets in my pockets.', 'I ask a lot of questions.', 'I like squeezing into small places.', 'I sleep with my back to a wall.', 'I eat like a pig with bad manners.', 'I think nice people have ulterior motives.', 'I bluntly say what others are hinting at.', 'I don\'t like to bathe.'],
         ideals: ['Respect - All people deserve respect.', 'Community - We must take care of each other.', 'Change - The low are lifted, the high brought down.', 'Retribution - The rich need to see the gutters.', 'People - I help those who help me.', 'Aspiration - I will prove I deserve a better life.'],
         bonds: ['My city is my home; I will fight for it.', 'I sponsor an orphanage.', 'I owe my survival to another urchin.', 'I owe a debt I can never repay.', 'I escaped poverty by robbing an important person.', 'No one should endure my hardships.'],
@@ -298,6 +334,9 @@ const backgrounds = {
     guildartisan: {
         name: 'Guild Artisan', skills: ['Insight', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You are a member of an artisan\'s guild, skilled in a particular field. Skills: Insight, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        equipment: ["Artisan"s tools", "Letter of introduction from guild", "Traveler"s clothes", "15 gp"],
+        feature: 'Guild Membership',
+        featureDesc: 'As an established member of a guild, your fellow guild members will provide you with lodging and food if necessary. The guild offers legal support and political connections.',
         traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.', 'I\'m well known for my work, and I want to make sure everyone appreciates it.', 'I\'ll settle for nothing less than perfection.'],
         ideals: ['Community - It is the duty of all to strengthen the bonds of community.', 'Generosity - My talents were given to me so I could use them to benefit the world.', 'Freedom - Everyone should be free to pursue their own livelihood.', 'Greed - I am only in it for the money.', 'People - I am committed to the people I care about.', 'Aspiration - I work hard to be the best there is at my craft.'],
         bonds: ['The workshop where I learned my trade is the most important place in the world to me.', 'I created a great work for someone and then found them unworthy; I am still looking for someone worthy.', 'I owe my guild a great debt for forging me into the person I am today.', 'I pursue wealth to secure someone\'s love.', 'One day I will return to my guild and prove that I am the greatest artisan of them all.', 'I will get revenge on the evil forces that destroyed my place of business.'],
@@ -307,6 +346,9 @@ const backgrounds = {
     citywatch: {
         name: 'City Watch', skills: ['Athletics', 'Insight'], languages: 2,
         description: 'You have served the community where you grew up, standing as its first line of defense. Skills: Athletics, Insight. Languages: Two of your choice.',
+        equipment: ["Uniform", "Horn for signaling", "Manacles", "10 gp"],
+        feature: 'Watcher\'s Eye',
+        featureDesc: 'Your experience in enforcing the law has given you a feel for local laws and criminals. You can easily find the local outpost of the watch and identify criminal dens.',
         traits: ['I am always polite and respectful.', 'I am haunted by memories of war.', 'I have lost too many friends.', 'I am full of inspiring stories from my service.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and breaking things.', 'I face problems head-on with a simple solution.', 'I have a crude sense of humor.'],
         ideals: ['Greater Good - Our lot is to lay down our lives in defense of others.', 'Responsibility - I do what I must and obey just authority.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - In life as in war, the stronger force wins.', 'Live and Let Live - Ideals are not worth killing over.', 'Nation - My city, nation, or people are all that matter.'],
         bonds: ['I would still lay down my life for the people I served with.', 'Someone saved my life on the watch. I will never leave a comrade behind.', 'My honor is my life.', 'I will never forget the crushing defeat my company suffered.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
@@ -315,6 +357,9 @@ const backgrounds = {
     clancrafter: {
         name: 'Clan Crafter', skills: ['History', 'Insight'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You learned your craft among a clan of dwarves or similar artisan community. Skills: History, Insight. Tools: One type of artisan\'s tools. Languages: Dwarvish or one of your choice.',
+        equipment: ["Artisan"s tools", "Maker"s mark chisel", "Traveler"s clothes", "5 gp", "Gem worth 10 gp"],
+        feature: 'Respect of the Stout Folk',
+        featureDesc: 'No one esteems clan crafters quite so highly as dwarves do. You always have free lodging and food at any establishment where dwarves or gnomes work.',
         traits: ['I believe that anything worth doing is worth doing right.', 'I am a snob who looks down on those who cannot appreciate fine art.', 'I always want to know how things work.', 'I am full of witty aphorisms and have a proverb for every occasion.', 'I am rude to people who lack my commitment to hard work.', 'I like to talk at length about my profession.', 'I\'m well known for my work and want everyone to appreciate it.', 'I\'ll settle for nothing less than perfection.'],
         ideals: ['Community - It is the duty of all to strengthen the bonds of community.', 'Generosity - My talents were given to me so I could use them to benefit the world.', 'Freedom - Everyone should be free to pursue their own livelihood.', 'Greed - I am only in it for the money.', 'People - I am committed to the people I care about.', 'Aspiration - I work hard to be the best there is at my craft.'],
         bonds: ['The workshop where I learned my trade is the most important place in the world to me.', 'I created a great work for someone and then found them unworthy.', 'I owe my guild a great debt for forging me into the person I am today.', 'I pursue wealth to secure someone\'s love.', 'One day I will return to my guild and prove that I am the greatest artisan.', 'I will get revenge on the evil forces that destroyed my place of business.'],
@@ -323,6 +368,9 @@ const backgrounds = {
     cloisteredscholar: {
         name: 'Cloistered Scholar', skills: ['History'], languages: 2,
         description: 'You spent years learning the lore of the multiverse in a great library. Skills: History plus one from Arcana, Nature, or Religion. Languages: Two of your choice.',
+        equipment: ["Scholar"s robes", "Writing kit", "Borrowed book", "10 gp"],
+        feature: 'Library Access',
+        featureDesc: 'You have access to a great library or university. You likely have easy access to most of its contents, and other resources available to you include maps and sages.',
         traits: ['I use polysyllabic words that convey the impression of great erudition.', 'I have read every book in the world\'s greatest libraries.', 'I am used to helping out those who are not as smart as I am.', 'There is nothing I like more than a good mystery.', 'I am willing to listen to every side of an argument.', 'I speak slowly when talking to idiots.', 'I\'m horribly awkward in social situations.', 'I\'m convinced people are trying to steal my secrets.'],
         ideals: ['Knowledge - The path to power and self-improvement is through knowledge.', 'Beauty - What is beautiful points us beyond itself toward what is true.', 'Logic - Emotions must not cloud our logical thinking.', 'No Limits - Nothing should fetter the infinite possibility inherent in all existence.', 'Power - Knowledge is the path to power and domination.', 'Self-Improvement - The goal of a life of study is the betterment of oneself.'],
         bonds: ['It is my duty to protect my students.', 'I have an ancient text that holds terrible secrets.', 'I work to preserve a library, university, scriptorium, or monastery.', 'My life\'s work is a series of tomes related to a specific field of lore.', 'I have been searching my whole life for the answer to a certain question.', 'I sold my soul for knowledge and hope to do great deeds to win it back.'],
@@ -331,6 +379,9 @@ const backgrounds = {
     courtier: {
         name: 'Courtier', skills: ['Insight', 'Persuasion'], languages: 2,
         description: 'You know the inner workings of courts and have served in a political environment. Skills: Insight, Persuasion. Languages: Two of your choice.',
+        equipment: ["Fine clothes", "5 gp"],
+        feature: 'Court Functionary',
+        featureDesc: 'Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government. You know who the movers and shakers are.',
         traits: ['I believe that anything worth doing is worth doing right.', 'My eloquent flattery makes everyone feel wonderful.', 'I always want to know how things work and who is in charge.', 'I am full of witty aphorisms and have insight for every occasion.', 'I am never rude to people of higher station.', 'I like to talk at length about court intrigues.', 'If you do me an injury, I will crush you.', 'I take great pains to always look my best.'],
         ideals: ['Respect - Respect is due to me because of my position.', 'Responsibility - It is my duty to respect the authority of those above me.', 'Independence - I must prove that I can handle myself without coddling.', 'Power - If I can attain more power, no one will tell me what to do.', 'Family - Blood runs thicker than water.', 'Noble Obligation - It is my duty to protect those beneath my station.'],
         bonds: ['I will face any challenge to win the approval of my patron.', 'My house\'s alliance with another noble family must be sustained.', 'Nothing is more important than the other members of my political faction.', 'I am in love with the heir of a family that my family despises.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero of the people.'],
@@ -339,6 +390,9 @@ const backgrounds = {
     factionagent: {
         name: 'Faction Agent', skills: ['Insight'], languages: 2,
         description: 'You serve a faction or organization and work toward its goals. Skills: Insight plus one Intelligence, Wisdom, or Charisma skill. Languages: Two of your choice.',
+        equipment: ["Badge or emblem of faction", "Copy of seminal faction text", "Common clothes", "15 gp"],
+        feature: 'Safe Haven',
+        featureDesc: 'As a faction agent, you have access to a secret network of supporters and operatives who can provide assistance on your adventures.',
         traits: ['I idolize a particular hero of my faction and constantly refer to that person\'s deeds.', 'I can find common ground between the fiercest enemies.', 'I see omens in every event and action. The gods try to speak to us.', 'Nothing can shake my optimistic attitude.', 'I quote (or misquote) sacred texts in almost every situation.', 'I am tolerant (or intolerant) of other factions and their ways.', 'I am utterly serene, even in the face of disaster.', 'I feel far more comfortable around faction members.'],
         ideals: ['Tradition - The ancient traditions of my faction must be preserved and upheld.', 'Charity - I always try to help those in need, no matter the personal cost.', 'Change - We must help bring about the changes our faction is working for.', 'Power - I hope to one day rise to the top of my faction\'s hierarchy.', 'Faith - I trust that my faction\'s leaders will guide my actions wisely.', 'Aspiration - I seek to prove myself worthy of my faction\'s favor.'],
         bonds: ['I would die to recover an artifact of my faction that was lost long ago.', 'I will someday get revenge on the corrupt leader who branded me a traitor.', 'I owe my life to a faction member who took me in when my parents died.', 'Everything I do is for the common people.', 'I will do anything to protect the faction I serve.', 'I seek to preserve a sacred text of my faction.'],
@@ -347,6 +401,9 @@ const backgrounds = {
     fartraveler: {
         name: 'Far Traveler', skills: ['Insight', 'Perception'], tools: ['Musical instrument or gaming set'], languages: 1,
         description: 'You come from a distant place few have heard of. Skills: Insight, Perception. Tools: One musical instrument or gaming set. Languages: One of your choice.',
+        equipment: ["Traveler"s clothes", "Musical instrument or gaming set", "Poorly wrought maps", "5 gp"],
+        feature: 'All Eyes on You',
+        featureDesc: 'Your accent, mannerisms, and appearance mark you as foreign. Curious glances come your way, and you gain the friendly interest of scholars intrigued by far-off lands.',
         traits: ['I have different assumptions about personal space.', 'I have my own ideas about what is and is not food.', 'I have a strong code of honor or sense of propriety.', 'I express affection or contempt in ways unfamiliar to others.', 'I honor my deities through practices viewed as foreign.', 'I begin or end my day with small rituals unfamiliar to those around me.', 'I have a lesson for every situation from my homeland.', 'I never pass up a friendly wager.'],
         ideals: ['Open - I have much to learn from the kindly folk I meet along my way.', 'Reserved - As someone new, I am careful to respect the local customs.', 'Adventure - I am far from home and everything is strange and wonderful.', 'Cunning - Though I may not know local ways, I can use them to my advantage.', 'Inquisitive - Everything is new, but I have a thirst to learn.', 'Suspicious - I must be careful, for I have no way of telling friend from foe here.'],
         bonds: ['So long as I have this token from my homeland, I can face any adversity.', 'The gods of my people are a comfort to me so far from home.', 'I hold no greater cause than my service to my people.', 'My freedom is my most precious possession.', 'I am fascinated by the beauty and wonder of this new land.', 'Though I had no choice, I lament leaving my loved ones behind.'],
@@ -355,6 +412,9 @@ const backgrounds = {
     inheritor: {
         name: 'Inheritor', skills: ['Survival'], tools: ['Gaming set or musical instrument'], languages: 1,
         description: 'You are the heir to something of great value, but also great danger. Skills: Survival plus one from Arcana, History, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        equipment: ["Inheritance (special item)", "Traveler"s clothes", "15 gp"],
+        feature: 'Inheritance',
+        featureDesc: 'You have inherited a special item of importance. Work with your DM to determine the nature and history of your inheritance.',
         traits: ['I keep my thoughts to myself and let my actions speak.', 'I have a strong sense of fair play.', 'I am confident in my own abilities.', 'I prefer action over contemplation.', 'I believe in the power of destiny.', 'I am driven by wanderlust that led me away from home.', 'I connect everything to a grand cosmic plan.', 'I am utterly serene, even in the face of disaster.'],
         ideals: ['Respect - Respect is due to those who have proven their worth.', 'Responsibility - I must be worthy of my inheritance.', 'Independence - I am not bound by the expectations of my predecessors.', 'Power - My inheritance is a source of power.', 'Legacy - I must honor those who came before me.', 'Change - My inheritance is a tool for changing the world.'],
         bonds: ['My inheritance is my most precious possession.', 'I must prove myself worthy of my inheritance.', 'I will find those who know the secrets of my inheritance.', 'I seek to learn the full history of my inheritance.', 'I will protect my inheritance at any cost.', 'My inheritance connects me to my family\'s past.'],
@@ -363,6 +423,9 @@ const backgrounds = {
     knightoftheorder: {
         name: 'Knight of the Order', skills: ['Persuasion'], tools: ['Gaming set or musical instrument'], languages: 1,
         description: 'You are a member of a knightly order dedicated to a cause. Skills: Persuasion plus one from Arcana, History, Nature, or Religion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        equipment: ["Seal of the order", "Banner or signet", "Traveler"s clothes", "10 gp"],
+        feature: 'Knightly Regard',
+        featureDesc: 'You receive shelter and succor from members of your knightly order. Knights of your order will aid you if the cost is not too high.',
         traits: ['I am always polite and respectful.', 'I am haunted by memories of battles past.', 'I have lost too many friends and am slow to make new ones.', 'I am full of inspiring and cautionary tales from my order.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and protecting the weak.', 'I face problems head-on with a direct solution.', 'I have a strong sense of fair play.'],
         ideals: ['Greater Good - My order exists to lay down lives in defense of others.', 'Responsibility - I do what I must and obey my order.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - The stronger force wins, and my order is mighty.', 'Faith - I trust that my order\'s cause is just.', 'Glory - I must earn glory in battle for myself and my order.'],
         bonds: ['I would die for the ideals of my order.', 'A fellow knight saved my life; I will never forget.', 'My honor is my life.', 'I will never forget a defeat suffered by my order.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
@@ -371,6 +434,9 @@ const backgrounds = {
     mercenaryveteran: {
         name: 'Mercenary Veteran', skills: ['Athletics', 'Persuasion'], tools: ['Gaming set', 'Vehicles (land)'],
         description: 'You served in a mercenary company, fighting for coin. Skills: Athletics, Persuasion. Tools: One gaming set, Vehicles (land).',
+        equipment: ["Uniform of company", "Insignia of rank", "Gaming set", "10 gp"],
+        feature: 'Mercenary Life',
+        featureDesc: 'You know the mercenary life well. You can identify mercenary companies by their emblems, know common customs, and can find mercenary work between adventures.',
         traits: ['I am always polite and respectful.', 'I am haunted by memories of war.', 'I have lost too many friends.', 'I am full of inspiring and cautionary tales from my service.', 'I can stare down a hell hound without flinching.', 'I enjoy being strong and breaking things.', 'I face problems head-on with direct action.', 'I have a crude sense of humor.'],
         ideals: ['Greater Good - Our lot is to lay down our lives in defense of others.', 'Responsibility - I do what I must and obey just authority.', 'Independence - When people follow orders blindly they embrace tyranny.', 'Might - In life as in war, the stronger force wins.', 'Live and Let Live - Ideals are not worth killing over.', 'Nation - My city, nation, or people are all that matter.'],
         bonds: ['I would still lay down my life for the people I served with.', 'Someone saved my life on the battlefield. I will never leave a comrade behind.', 'My honor is my life.', 'I will never forget the crushing defeat my company suffered.', 'Those who fight beside me are worth dying for.', 'I fight for those who cannot fight for themselves.'],
@@ -379,6 +445,9 @@ const backgrounds = {
     urbanbountyhunter: {
         name: 'Urban Bounty Hunter', skills: ['Insight', 'Stealth'], tools: ['Gaming set', 'Thieves\' tools or musical instrument'],
         description: 'You earn your living tracking people for the coin. Skills: Choose two from Deception, Insight, Persuasion, and Stealth. Tools: One gaming set, plus thieves\' tools or a musical instrument.',
+        equipment: ["Appropriate clothes", "Wanted poster", "20 gp"],
+        feature: 'Ear to the Ground',
+        featureDesc: 'You are in frequent contact with people in the criminal underworld. Your contacts can provide information about local criminals and possible bounties.',
         traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note exits.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to risks in a situation.', 'I blow up at the slightest insult.', 'I always have a backup plan for my backup plan.'],
         ideals: ['Honor - I do not kill unarmed targets.', 'Freedom - Chains are meant to be broken.', 'Charity - I take contracts against those who prey on the weak.', 'Greed - I will do anything for the right price.', 'People - I am loyal to my friends, not ideals.', 'Redemption - I hunt down evildoers.'],
         bonds: ['I am trying to pay off an old debt.', 'My ill-gotten gains support my family.', 'A target escaped me once; I will find them.', 'I will become the greatest bounty hunter.', 'I seek redemption for letting an innocent be taken.', 'Someone I loved was killed by a target; I hunt in their memory.'],
@@ -387,6 +456,9 @@ const backgrounds = {
     uthgardttribemember: {
         name: 'Uthgardt Tribe Member', skills: ['Athletics', 'Survival'], tools: ['Artisan\'s tools or musical instrument'], languages: 1,
         description: 'You grew up among the Uthgardt barbarian tribes. Skills: Athletics, Survival. Tools: One type of artisan\'s tools or one musical instrument. Languages: One of your choice.',
+        equipment: ["Hunting trap", "Totem or tattoos of tribe", "Traveler"s clothes", "10 gp"],
+        feature: 'Uthgardt Heritage',
+        featureDesc: 'You have excellent knowledge of your tribe\'s territory and the terrain and natural resources of the region. You can find Uthgardt holy sites without a map.',
         traits: ['I am driven by wanderlust that led me away from home.', 'I watch over my friends as if they were a litter of newborn pups.', 'I once ran twenty-five miles without stopping to warn my tribe.', 'I have a lesson for every situation, drawn from observing nature.', 'I place no stock in wealthy or well-mannered folk.', 'I was raised by wolves.', 'I feel far more comfortable around animals than people.', 'I have a lesson from nature for every situation.'],
         ideals: ['Change - Life is like the seasons, in constant change.', 'Greater Good - It is each person\'s responsibility to help.', 'Honor - If I dishonor myself, I dishonor my whole tribe.', 'Might - The strongest are meant to rule.', 'Nature - The natural world is more important than civilization.', 'Glory - I must earn glory in battle for myself and my tribe.'],
         bonds: ['My family, clan, or tribe is the most important thing in my life.', 'An injury to the unspoiled wilderness is an injury to me.', 'I will bring terrible wrath upon the evildoers who destroyed my homeland.', 'I am the last of my tribe, and I must ensure its legacy.', 'I suffer awful visions of a coming disaster and will do anything to prevent it.', 'My tribe\'s totem animal is my spiritual guide and protector.'],
@@ -395,6 +467,12 @@ const backgrounds = {
     waterdhaviannoble: {
         name: 'Waterdhavian Noble', skills: ['History', 'Persuasion'], tools: ['Gaming set or musical instrument'], languages: 1,
         description: 'You are a scion of one of the noble houses of Waterdeep. Skills: History, Persuasion. Tools: One gaming set or musical instrument. Languages: One of your choice.',
+        equipment: ["Fine clothes", "Signet ring", "Scroll of pedigree", "25 gp"],
+        feature: 'Position of Privilege',
+        featureDesc: 'Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society and can secure an audience with a local noble if you need to.',
+        equipment: ["Fine clothes", "Signet ring or brooch", "Scroll of pedigree", "20 gp"],
+        feature: 'Kept in Style',
+        featureDesc: 'While you are in Waterdeep or elsewhere in the North, your house sees to your everyday needs. Your name and signet are sufficient to cover most expenses.',
         traits: ['My eloquent flattery makes everyone feel wonderful.', 'The common folk love me for my kindness and generosity.', 'No one could doubt by looking at me that I am a cut above the rabble.', 'I take great pains to always look my best and follow the latest fashions.', 'I do not like to get my hands dirty.', 'Despite my noble birth, I do not place myself above other folk.', 'If you do me an injury, I will crush you.', 'Despite my noble birth, I do not place myself above others.', 'If you do me an injury, I will crush you.', 'I take great pains to always follow the latest fashions.'],
         ideals: ['Respect - Respect is due to me because of my position.', 'Responsibility - It is my duty to respect the authority of those above me.', 'Independence - I must prove that I can handle myself without coddling.', 'Power - If I can attain more power, no one will tell me what to do.', 'Family - Blood runs thicker than water.', 'Noble Obligation - It is my duty to protect those beneath my station.'],
         bonds: ['I will face any challenge to win the approval of my family.', 'My house\'s alliance with another noble family must be sustained.', 'Nothing is more important than the other members of my family.', 'I am in love with the heir of a family that my family despises.', 'My loyalty to my sovereign is unwavering.', 'The common folk must see me as a hero of the people.'],
@@ -404,6 +482,9 @@ const backgrounds = {
     azoriusfunctionary: {
         name: 'Azorius Functionary', skills: ['Insight', 'Intimidation'], languages: 2,
         description: 'You serve the Azorius Senate, the legislative body of Ravnica. Skills: Insight, Intimidation. Languages: Two of your choice.',
+        equipment: ["Azorius insignia", "Fine clothes", "Scroll with legal text", "10 gp"],
+        feature: 'Legal Authority',
+        featureDesc: 'You have the authority to enforce the laws of Ravnica. You can call on resources of the Azorius Senate to assist investigations.',
         traits: ['I try never to let my judgment become clouded by emotion.', 'I have a strong sense of fair play.', 'I believe that everything worth doing is worth doing right.', 'I do not let my emotions control my words or actions.', 'I am happiest when everything goes according to plan.', 'I keep detailed records of everything.', 'I am utterly serene in disaster.', 'I always follow proper procedures.'],
         ideals: ['Guild - My guild is all that really matters.', 'Order - The law is meant to ensure that the guilty are punished.', 'Peace - The ultimate object of the law is to remove violence.', 'Compliance - Obeying the law is not optional.', 'Justice - The guilty must be punished; the innocent protected.', 'Reform - The law must change with the times.'],
         bonds: ['I am beholden to an Azorius arrester who captured the criminal who killed my parents.', 'I hope to prove myself worthy of a position in the guild.', 'I owe my life to a Senate statesman who protected me.', 'The law is the only bulwark against chaos.', 'I will do anything to protect my loved ones from crime.', 'I seek to restore the reputation of the Azorius.'],
@@ -412,6 +493,9 @@ const backgrounds = {
     boroslegionnaire: {
         name: 'Boros Legionnaire', skills: ['Athletics', 'Intimidation'], languages: 2,
         description: 'You are a member of the Boros Legion, the righteous military guild. Skills: Athletics, Intimidation. Languages: Choose one of Celestial, Draconic, Goblin, or Minotaur.',
+        equipment: ["Boros insignia", "Tattered banner from victory", "Common clothes", "2 gp"],
+        feature: 'Legion Station',
+        featureDesc: 'You have access to Boros Legion resources. You can find rest at any Boros garrison and can requisition simple equipment for legitimate missions.',
         traits: ['I approach every task with the same dedication.', 'I am always looking for evil to fight.', 'Nothing gets my blood burning like a good fight.', 'I have a strong sense of fair play.', 'I keep my word, no matter what.', 'I believe that discipline is key.', 'I face problems directly.', 'I have a strong sense of duty.'],
         ideals: ['Guild - My guild is all that really matters.', 'Justice - The guilty must always be punished.', 'Protection - It is my duty to protect the innocent.', 'Solidarity - Strength comes from working together.', 'Order - Society needs order to function.', 'Conviction - A fight without conviction is meaningless.'],
         bonds: ['I would lay down my life for my fellow legionnaires.', 'I owe my life to a Boros commander who saved me.', 'I fight to protect those who cannot protect themselves.', 'The angels of the Boros inspire me.', 'I must prove myself worthy of my position.', 'I will never forget a comrade who fell in battle.'],
@@ -420,6 +504,9 @@ const backgrounds = {
     dimiroperative: {
         name: 'Dimir Operative', skills: ['Deception', 'Stealth'], languages: 2,
         description: 'You serve House Dimir, the guild of secrets and shadows. Skills: Deception, Stealth. Languages: Two of your choice.',
+        equipment: ["Dimir insignia", "Dark clothes with hood", "Three darts", "10 gp"],
+        feature: 'False Identity',
+        featureDesc: 'You have created a false identity complete with documentation and cover story that is known and recognized in the world.',
         traits: ['I have a cover identity I use to avoid suspicion.', 'I lie constantly, even when there is no reason to.', 'I keep secrets even from those closest to me.', 'I distrust everyone until they prove themselves.', 'I am always looking for leverage over others.', 'Information is my most valuable commodity.', 'I work several identities at once.', 'I never appear to be what I truly am.'],
         ideals: ['Guild - My guild is all that really matters.', 'Control - I like knowing I have leverage over others.', 'Secrecy - Ignorance is a form of protection.', 'Knowledge - Information is power.', 'Independence - I rely only on myself.', 'Ambition - I will rise to the top of my guild.'],
         bonds: ['I have pledged my life to Dimir.', 'I hold secrets that could bring down powerful people.', 'I have a rival who is always one step behind me.', 'Someone I love does not know my true nature.', 'I owe my position to a Dimir handler.', 'I seek hidden knowledge at any cost.'],
@@ -428,6 +515,9 @@ const backgrounds = {
     golgariagent: {
         name: 'Golgari Agent', skills: ['Nature', 'Survival'], languages: 2,
         description: 'You are part of the Golgari Swarm, masters of decay and rebirth. Skills: Nature, Survival. Languages: Choose one of Elvish, Giant, or Kraul.',
+        equipment: ["Golgari insignia", "Pet beetle or spider", "Common clothes", "10 gp"],
+        feature: 'Undercity Paths',
+        featureDesc: 'You know hidden, underground pathways that you can use to bypass crowds and obstacles in Ravnica, traveling at double speed when not in combat.',
         traits: ['I do not fear death; it is just another part of the cycle.', 'I find beauty in decay and rot.', 'I am patient and willing to wait for the right moment.', 'I believe nothing should go to waste.', 'I prefer the company of insects and fungus to people.', 'I accept the lowly position given to me.', 'I am utterly serene about death.', 'I find peace in the cycle of life.'],
         ideals: ['Guild - My guild is all that really matters.', 'Cycle - Life and death are part of one continuous cycle.', 'Nature - Nature is the source of all life.', 'Power - The strong survive; the weak become food.', 'Acceptance - Death is nothing to fear.', 'Ambition - I will rise from the rot.'],
         bonds: ['I owe my life to the Golgari who found me in the undercity.', 'I honor the spirits of my ancestors.', 'The undercity is my home; I will protect it.', 'I seek to understand the mysteries of life and death.', 'I nurture the rot gardens as my sacred duty.', 'I have a fondness for a particular undercity creature.'],
@@ -436,6 +526,9 @@ const backgrounds = {
     gruulanarch: {
         name: 'Gruul Anarch', skills: ['Animal Handling', 'Athletics'], languages: 2,
         description: 'You belong to the Gruul Clans, wild warriors opposing civilization. Skills: Animal Handling, Athletics. Languages: Choose one of Draconic, Giant, Goblin, or Sylvan.',
+        equipment: ["Gruul insignia", "Herbalism kit", "Skull of a boar", "Beast-hide cloak", "10 gp"],
+        feature: 'Rubblebelt Refuge',
+        featureDesc: 'You know secret paths through the rubblebelt and other wild areas. You can find a safe place to rest in the wilderness for you and up to six companions.',
         traits: ['I am driven by wanderlust.', 'I watch over my clan as if they were my family.', 'I have a lesson for every situation from nature.', 'I place no stock in wealthy or well-mannered folk.', 'Violence is my answer to almost any challenge.', 'I distrust magic and civilization.', 'I have no patience for elaborate plans.', 'I trust actions more than words.'],
         ideals: ['Guild - My clan is all that really matters.', 'Destruction - Civilization must be torn down.', 'Freedom - No one tells me what to do.', 'Might - The strong take what they want.', 'Nature - The natural world is sacred.', 'Rage - Fury is the only true emotion.'],
         bonds: ['My clan is my family, my life.', 'I will have revenge on civilized society.', 'I must prove my strength to my clanmates.', 'The wild places of Ravnica must be protected.', 'I follow a powerful beast as my totem.', 'I have a rival clan that I must defeat.'],
@@ -444,6 +537,9 @@ const backgrounds = {
     izzetengineer: {
         name: 'Izzet Engineer', skills: ['Arcana', 'Investigation'], languages: 2,
         description: 'You work for the Izzet League, the guild of chaotic innovation. Skills: Arcana, Investigation. Languages: Choose one of Draconic, Goblin, or Vedalken.',
+        equipment: ["Izzet insignia", "Protective goggles", "Singed common clothes", "5 gp"],
+        feature: 'Urban Infrastructure',
+        featureDesc: 'The Izzet built the infrastructure of Ravnica. You have knowledge of the city\'s systems and can find routes through pipes and other infrastructure.',
         traits: ['I have a habit of talking to myself or my creations.', 'I become obsessed with whatever project I am working on.', 'I am always scribbling notes and sketches.', 'I get excited about new ideas, especially impractical ones.', 'I believe that failure is just a step toward success.', 'I am always tinkering with something.', 'I pepper my speech with technical jargon.', 'I have trouble focusing on just one project.'],
         ideals: ['Guild - My guild is all that really matters.', 'Creativity - I am always thinking of new ideas.', 'Discovery - I must learn how everything works.', 'Freedom - Rules are meant to be broken for science.', 'Knowledge - Understanding the universe is paramount.', 'Expression - Creation is its own reward.'],
         bonds: ['I am devoted to the Firemind and his vision.', 'My inventions are my children.', 'I owe everything to my mentor.', 'I have a rival whose inventions I must surpass.', 'I seek to restore a lost Izzet discovery.', 'The laboratory is my home.'],
@@ -452,6 +548,9 @@ const backgrounds = {
     orzhovrepresentative: {
         name: 'Orzhov Representative', skills: ['Intimidation', 'Religion'], languages: 2,
         description: 'You serve the Orzhov Syndicate, the guild of wealth and spirits. Skills: Intimidation, Religion. Languages: Two of your choice.',
+        equipment: ["Orzhov insignia", "Fine clothes", "A debt ledger", "1 gp"],
+        feature: 'Leverage',
+        featureDesc: 'You can exert leverage over individuals below you in the Orzhov hierarchy and try to use blackmail, threats, or manipulation to get them to do what you want.',
         traits: ['I am meticulous about contracts and agreements.', 'I believe that wealth is a sign of virtue.', 'I treat everyone as a potential business partner.', 'I keep detailed records of debts owed to me.', 'I am always looking for ways to increase my wealth.', 'I believe in the sanctity of contracts.', 'I always read the fine print.', 'I never forget a debt.'],
         ideals: ['Guild - My guild is all that really matters.', 'Wealth - Money is power, and I want power.', 'Order - Contracts and laws must be upheld.', 'Power - I will rise to the top of the hierarchy.', 'Tradition - The ways of the Orzhov are sacred.', 'Family - The Syndicate is my family.'],
         bonds: ['I owe a tremendous debt to the Orzhov.', 'I seek to free myself or others from Orzhov debts.', 'I must accumulate wealth to prove my worth.', 'I serve a powerful Orzhov spirit.', 'I have secrets about Orzhov dealings.', 'I collect debts for the Syndicate.'],
@@ -460,6 +559,9 @@ const backgrounds = {
     rakdoscultist: {
         name: 'Rakdos Cultist', skills: ['Acrobatics', 'Performance'], languages: 2,
         description: 'You belong to the Cult of Rakdos, the guild of chaos and entertainment. Skills: Acrobatics, Performance. Languages: Choose one of Abyssal or Giant.',
+        equipment: ["Rakdos insignia", "Costume", "Performance props", "10 gp"],
+        feature: 'Fearsome Reputation',
+        featureDesc: 'People expect members of Rakdos to be violent and unpredictable. Your membership helps you intimidate others, granting advantage on Intimidation checks.',
         traits: ['I crave attention and will do anything to get it.', 'I love to make people laugh, even at my expense.', 'I am always working on a new performance.', 'I push boundaries to see how far I can go.', 'I believe pain and pleasure are two sides of the same coin.', 'I live in the moment.', 'I enjoy making others uncomfortable.', 'I have no fear of pain.'],
         ideals: ['Guild - My guild is all that really matters.', 'Chaos - Rules exist to be broken.', 'Freedom - No one can tell me what to do.', 'Pleasure - Life should be enjoyed to its fullest.', 'Pain - Suffering can be beautiful.', 'Fame - I want everyone to know my name.'],
         bonds: ['I am devoted to Rakdos and his vision.', 'My performance troupe is my family.', 'I seek to create the ultimate show.', 'I owe my freedom to the Cult.', 'I have a rival performer I must outshine.', 'I crave the thrill of a dangerous performance.'],
@@ -468,6 +570,9 @@ const backgrounds = {
     selesnyainitiate: {
         name: 'Selesnya Initiate', skills: ['Nature', 'Persuasion'], languages: 2,
         description: 'You are part of the Selesnya Conclave, the guild of harmony and nature. Skills: Nature, Persuasion. Languages: Choose one of Elvish, Loxodon, or Sylvan.',
+        equipment: ["Selesnya insignia", "Healer"s kit", "Common clothes", "5 gp"],
+        feature: 'Conclave\'s Shelter',
+        featureDesc: 'You have access to the resources of the Selesnya Conclave. You can always find a place to stay at a Selesnya enclave or with members of the Conclave.',
         traits: ['I believe everyone can find peace in the Conclave.', 'I see the best in everyone.', 'I find comfort in the presence of others.', 'I believe in the power of community.', 'I prefer harmony to conflict.', 'I am patient and willing to listen.', 'I feel connected to everyone.', 'I trust in the wisdom of nature.'],
         ideals: ['Guild - My guild is all that really matters.', 'Harmony - We are all connected to each other.', 'Peace - Violence is never the answer.', 'Community - Together we are stronger.', 'Nature - The natural world is sacred.', 'Order - Society needs structure.'],
         bonds: ['I am devoted to the Worldsoul.', 'My enclave is my family and home.', 'I seek to spread the message of harmony.', 'I owe my peace of mind to the Conclave.', 'I have a bond with a particular vernadi.', 'I will protect the natural places of Ravnica.'],
@@ -476,6 +581,9 @@ const backgrounds = {
     simicscientist: {
         name: 'Simic Scientist', skills: ['Arcana', 'Medicine'], languages: 2,
         description: 'You work for the Simic Combine, the guild of biological research. Skills: Arcana, Medicine. Languages: Two of your choice.',
+        equipment: ["Simic insignia", "Specimen jar", "Field notes", "10 gp"],
+        feature: 'Researcher',
+        featureDesc: 'When you attempt to learn information about scientific matters, you have access to Simic research facilities and can consult with other Simic researchers.',
         traits: ['I am always observing and analyzing.', 'I view everything through the lens of evolution.', 'I am constantly taking notes.', 'I am fascinated by all forms of life.', 'I believe in progress through adaptation.', 'I sometimes forget that subjects have feelings.', 'I pepper my speech with scientific terminology.', 'I keep detailed notes on everything.'],
         ideals: ['Guild - My guild is all that really matters.', 'Knowledge - Understanding life is paramount.', 'Progress - We must always improve.', 'Nature - We must work with nature, not against it.', 'Perfection - I seek to create the perfect organism.', 'Discovery - New species await discovery.'],
         bonds: ['I am devoted to my research.', 'My creations are my legacy.', 'I owe my position to a Simic mentor.', 'I seek to protect Ravnica\'s waterways.', 'I have a bond with an experimental creature.', 'I must complete my predecessor\'s research.'],
@@ -485,6 +593,9 @@ const backgrounds = {
     grinner: {
         name: 'Grinner', skills: ['Deception', 'Performance'], tools: ['Thieves\' tools or musical instrument'], languages: 1,
         description: 'You are a member of the Golden Grin, a secret network of spies and entertainers. Skills: Deception, Performance. Tools: One musical instrument or thieves\' tools. Languages: One of your choice.',
+        equipment: ["Disguise kit", "Musical instrument", "Gold-plated ring with Grin symbol", "15 gp"],
+        feature: 'Ballad of the Grinning Fool',
+        featureDesc: 'You know hidden signs and symbols that members of the Golden Grin use to identify each other. You can find hidden messages and safe houses of the Grin.',
         traits: ['I love being the center of attention.', 'Someone is always trying to cage me in, but I stay free.', 'I change my mood or mind as quickly as I change key in a song.', 'I enjoy playing tricks on people.', 'I can find common ground with anyone.', 'I am irrepressibly flirtatious.', 'I pocket anything valuable I see.', 'I never pass up a friendly wager.'],
         ideals: ['Beauty - The world is full of beauty; I want to show it to others.', 'Tradition - Old stories and songs are more important than progress.', 'Creativity - Art is the catalyst for change.', 'Freedom - When I perform, I make even the caged ones feel free.', 'Fairness - Everyone deserves to smile.', 'People - I like seeing the smiles on people\'s faces when I perform.'],
         bonds: ['My instrument is my most treasured possession.', 'A fellow Grinner taught me everything I know.', 'I will do anything to prove myself to the Golden Grin.', 'I would do anything for the other members of my troupe.', 'The oppressed must be freed, and I will be the one to do it.', 'I entered this life to escape oppression.'],
@@ -493,6 +604,9 @@ const backgrounds = {
     volstruckeragent: {
         name: 'Volstrucker Agent', skills: ['Deception', 'Stealth'], tools: ['Poisoner\'s kit'],
         description: 'You were trained by the Volstrucker, the covert assassins of the Cerberus Assembly. Skills: Deception, Stealth. Tools: Poisoner\'s kit. Languages: One of your choice.',
+        equipment: ["Fine clothes", "Poisoner"s kit", "Shadow symbol of the Volstrucker", "10 gp"],
+        feature: 'Shadow Network',
+        featureDesc: 'You have access to the Volstrucker network of informants and operatives. You can call on agents to gather information.',
         traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note the locations of everything valuable.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to the risks in a situation.', 'I work several identities at once.', 'I never reveal more than necessary.'],
         ideals: ['Order - The laws of the Dwendalian Empire must be upheld.', 'Knowledge - The path to power is through knowledge.', 'No Limits - Nothing should fetter the infinite possibilities of existence.', 'Power - Solitude and study are paths toward power.', 'Loyalty - I am loyal to the Assembly, no matter what.', 'Reform - The Empire\'s laws and government can be redeemed.'],
         bonds: ['I have a family member or loved one who depends on me.', 'My life\'s work is a series of tomes related to a specific field of magic.', 'I owe the Cerberus Assembly everything.', 'I have a rival in the Volstrucker whom I must prove myself against.', 'The Assembly\'s secrets are mine to guard.', 'I must atone for the missions I have carried out.'],
@@ -502,6 +616,9 @@ const backgrounds = {
     athlete: {
         name: 'Athlete', skills: ['Acrobatics', 'Athletics'], tools: ['Vehicles (land)'], languages: 1,
         description: 'You strive to be the greatest athlete of your generation. Skills: Acrobatics, Athletics. Tools: Vehicles (land). Languages: One of your choice.',
+        equipment: ["Bronze discus or leather ball", "Lucky charm", "Traveler"s clothes", "10 gp"],
+        feature: 'Echoes of Victory',
+        featureDesc: 'You have attracted admiration among spectators, fellow athletes, and trainers. You can rely on free lodging and food at any place that hosts athletic events.',
         traits: ['I feel most alive when pushing my body to its limits.', 'I spread the good word of physical fitness wherever I go.', 'I am always seeking to improve myself.', 'I love a good competition.', 'I never back down from a challenge.', 'I train constantly to stay in peak condition.', 'I feel most alive when pushing my limits.', 'I love competition in any form.'],
         ideals: ['Competition - I strive to test myself in all things.', 'Triumph - I must be the best; anything less is failure.', 'Camaraderie - The strongest bonds are forged through challenge.', 'People - I strive to inspire my fans.', 'Tradition - Every great athlete gives tribute to those who came before.', 'Greater Good - I use my gifts to inspire others.'],
         bonds: ['My teammates are my family.', 'I must prove myself worthy of a famous athlete\'s legacy.', 'I owe my training to a mentor who believed in me.', 'Completing my ultimate challenge is all that matters.', 'I represent my homeland in competition.', 'I will defeat the rival who humiliated me.'],
@@ -511,6 +628,9 @@ const backgrounds = {
     hauntedone: {
         name: 'Haunted One', skills: ['Arcana', 'Investigation'], languages: 2,
         description: 'You are haunted by something so terrible that you dare not speak of it. Skills: Choose two from Arcana, Investigation, Religion, or Survival. Languages: Choose two, one of which must be exotic.',
+        equipment: ["Monster hunter"s pack", "Trinket of special significance", "Common clothes", "1 sp"],
+        feature: 'Heart of Darkness',
+        featureDesc: 'Those who look into your eyes can see that you have faced unimaginable horror. Common folk may be afraid of you, but they will help you leave their community safely.',
         traits: ['I do not run from evil. Evil runs from me.', 'I like to read and memorize poetry.', 'I spend money freely and live life to the fullest.', 'I live for the thrill of the hunt.', 'I do not talk about what haunts me.', 'I expect danger around every corner.', 'I put no trust in divine beings.', 'I like to know my enemy\'s capabilities.'],
         ideals: ['I try to help those in need, no matter the personal cost.', 'I will stop the evil that haunts me.', 'I kill monsters to make the world safer for others.', 'I have a dark calling that puts me above the law.', 'I like to know my enemy inside and out.', 'I would sacrifice my life to protect the innocent.'],
         bonds: ['I keep my thoughts and discoveries in a journal.', 'I would sacrifice my life to destroy the thing that haunts me.', 'I have sworn revenge against the one who wronged me.', 'I have a loved one I must protect from danger.', 'The one who gave me my flaw must pay.', 'I seek the truth behind the supernatural.'],
@@ -519,6 +639,9 @@ const backgrounds = {
     investigator: {
         name: 'Investigator', skills: ['Insight', 'Investigation'], tools: ['Disguise kit', 'Thieves\' tools'],
         description: 'You have a nose for uncovering truth and solving mysteries. Skills: Choose two from Insight, Investigation, or Perception. Tools: Disguise kit, Thieves\' tools.',
+        equipment: ["Magnifying glass", "Evidence from past case", "Common clothes", "10 gp"],
+        feature: 'Official Inquiry',
+        featureDesc: 'You have experience dealing with local officials and can leverage your reputation to gain access to crime scenes, interview witnesses, and review evidence.',
         traits: ['I always have a plan for what to do when things go wrong.', 'I am always calm, no matter what the situation.', 'The first thing I do in a new place is note exits and hiding spots.', 'I would rather make a new friend than a new enemy.', 'I am incredibly slow to trust.', 'I do not pay attention to the risks in a situation.', 'I\'m confident in my own abilities.', 'Nothing can shake my determination.'],
         ideals: ['Truth - I must uncover the truth at any cost.', 'Justice - The guilty must be brought to justice.', 'Knowledge - Information is power.', 'Logic - Emotions must not cloud my judgment.', 'Order - Laws exist to protect the innocent.', 'People - I solve crimes to help victims.'],
         bonds: ['A cold case haunts me; I must solve it.', 'I owe my skills to a mentor who taught me.', 'Someone I care about was wrongly accused.', 'I hunt criminals who evade the law.', 'I collect evidence of a conspiracy.', 'I carry a memento from an unsolved case.'],
@@ -528,6 +651,9 @@ const backgrounds = {
     loreholdstudent: {
         name: 'Lorehold Student', skills: ['History', 'Religion'], languages: 2,
         description: 'You study history and archaeology at Strixhaven\'s Lorehold College. Skills: History, Religion. Languages: Two of your choice.',
+        equipment: ["Strixhaven insignia", "Artifact analysis tools", "Student uniform", "15 gp"],
+        feature: 'Lorehold Initiate',
+        featureDesc: 'You gain the Strixhaven Initiate feat or have advantage on History checks related to ancient civilizations. You have access to Lorehold research facilities.',
         traits: ['I thrill at learning about the civilizations of the past.', 'I am always referencing historical examples.', 'I believe the dead have much to teach us.', 'I am meticulous about preserving records.', 'I love a good mystery from the past.', 'I believe history repeats itself.', 'I often reference historical examples.', 'I see connections between past and present.'],
         ideals: ['Preservation - History must be preserved for future generations.', 'Knowledge - The past holds the keys to understanding.', 'Truth - Historical revisionism must be exposed.', 'Balance - We must learn from both triumphs and failures.', 'Legacy - Great deeds should be remembered.', 'Discovery - Lost history must be found.'],
         bonds: ['I am devoted to uncovering a historical mystery.', 'My family has a proud history I must honor.', 'I seek an artifact lost to history.', 'I owe my passion to a professor who inspired me.', 'I have a rivalry with another Lorehold student.', 'A spirit I summoned has become a friend.'],
@@ -536,6 +662,9 @@ const backgrounds = {
     prismaristudent: {
         name: 'Prismari Student', skills: ['Acrobatics', 'Performance'], languages: 2,
         description: 'You study creative expression at Strixhaven\'s Prismari College. Skills: Acrobatics, Performance. Languages: Two of your choice.',
+        equipment: ["Strixhaven insignia", "Artisan supplies", "Student uniform", "15 gp"],
+        feature: 'Prismari Initiate',
+        featureDesc: 'You gain the Strixhaven Initiate feat or have advantage on Performance checks related to artistic expression. You have access to Prismari studios.',
         traits: ['I am always working on a new creative project.', 'I see art everywhere, in everything.', 'I love dramatic flourishes in everything I do.', 'I believe in self-expression above all.', 'My emotions fuel my creativity.', 'I never do anything halfway.', 'I put my artistic expression before everything.', 'I\'m never satisfied with my work.'],
         ideals: ['Expression - Art is the highest form of expression.', 'Passion - Strong emotions drive great art.', 'Beauty - The world needs more beauty.', 'Freedom - True art cannot be constrained.', 'Innovation - Tradition is just yesterday\'s innovation.', 'Spectacle - Art should make people feel something.'],
         bonds: ['I am devoted to my art form.', 'My rivalry with another artist pushes me.', 'I owe my talent to a mentor who believed in me.', 'I seek to create my masterpiece.', 'My art tells the story of someone important to me.', 'I will prove the critics wrong.'],
@@ -544,6 +673,9 @@ const backgrounds = {
     quandrixstudent: {
         name: 'Quandrix Student', skills: ['Arcana', 'Nature'], languages: 2,
         description: 'You study mathematics and nature at Strixhaven\'s Quandrix College. Skills: Arcana, Nature. Languages: Two of your choice.',
+        equipment: ["Strixhaven insignia", "Calculator", "Student uniform", "15 gp"],
+        feature: 'Quandrix Initiate',
+        featureDesc: 'You gain the Strixhaven Initiate feat or have advantage on Intelligence checks involving mathematics. You have access to Quandrix laboratories.',
         traits: ['I see mathematical patterns everywhere.', 'I prefer working with numbers to working with people.', 'I am always calculating probabilities.', 'Nature follows mathematical laws I seek to understand.', 'I love puzzles and brain teasers.', 'I think in diagrams and equations.', 'I\'m obsessed with mathematical patterns.', 'I quantify everything I can.'],
         ideals: ['Knowledge - Mathematics is the language of the universe.', 'Logic - Everything can be understood through logic.', 'Pattern - The universe follows discernible patterns.', 'Nature - Mathematics reveals nature\'s secrets.', 'Order - Chaos is just patterns we do not understand.', 'Progress - New theories advance understanding.'],
         bonds: ['I am devoted to solving a mathematical mystery.', 'My research is my life\'s work.', 'I owe my love of math to a mentor.', 'I have a rivalry with another mathematician.', 'I seek to prove a controversial theorem.', 'Nature itself is my laboratory.'],
@@ -552,6 +684,9 @@ const backgrounds = {
     silverquillstudent: {
         name: 'Silverquill Student', skills: ['Intimidation', 'Persuasion'], languages: 2,
         description: 'You study eloquence and language at Strixhaven\'s Silverquill College. Skills: Intimidation, Persuasion. Languages: Two of your choice.',
+        equipment: ["Strixhaven insignia", "Fine ink and quill", "Student uniform", "15 gp"],
+        feature: 'Silverquill Initiate',
+        featureDesc: 'You gain the Strixhaven Initiate feat or have advantage on Persuasion or Intimidation checks when using words. You have access to Silverquill archives.',
         traits: ['I always have the perfect word for any situation.', 'I believe in the power of language to change minds.', 'I love a good debate.', 'My words can wound as easily as heal.', 'I collect sayings and phrases.', 'I choose my words very carefully.', 'I am never at a loss for words.', 'I wield language like a blade.'],
         ideals: ['Truth - Words should reveal truth.', 'Power - Language is power over others.', 'Justice - My voice speaks for the voiceless.', 'Freedom - Expression must be free.', 'Influence - The right words change the world.', 'Knowledge - Understanding language is understanding people.'],
         bonds: ['I am devoted to mastering language.', 'A debate club is my second family.', 'I owe my eloquence to a mentor.', 'I have a rival whose words I must surpass.', 'I write for a cause I believe in.', 'Someone silenced me once; never again.'],
@@ -560,6 +695,9 @@ const backgrounds = {
     witherbloomstudent: {
         name: 'Witherbloom Student', skills: ['Nature', 'Survival'], languages: 2,
         description: 'You study life and death at Strixhaven\'s Witherbloom College. Skills: Nature, Survival. Languages: Two of your choice.',
+        equipment: ["Strixhaven insignia", "Herbalism kit", "Student uniform", "15 gp"],
+        feature: 'Witherbloom Initiate',
+        featureDesc: 'You gain the Strixhaven Initiate feat or have advantage on Nature or Medicine checks related to plants and decay. You have access to Witherbloom gardens.',
         traits: ['I am fascinated by the cycle of life and death.', 'I find beauty in decay.', 'I am always collecting specimens.', 'I prefer animals and plants to people.', 'I believe in the practical over the theoretical.', 'I am not squeamish about death.', 'Death holds no fear for me.', 'I prefer working with plants and animals.'],
         ideals: ['Life - Preserving life is paramount.', 'Death - Death is natural and should be accepted.', 'Balance - Life and death must be in balance.', 'Nature - The natural cycle is sacred.', 'Knowledge - Understanding life means understanding death.', 'Power - Control over life and death is true power.'],
         bonds: ['I am devoted to studying a particular organism.', 'My familiar is my closest companion.', 'I owe my interest in nature to someone special.', 'I have a rivalry with another naturalist.', 'I seek a cure for a deadly disease.', 'A swamp or forest is my true home.'],
@@ -569,6 +707,9 @@ const backgrounds = {
     celebrityadventurersscion: {
         name: 'Celebrity Adventurer\'s Scion', skills: ['Perception', 'Performance'], tools: ['Disguise kit'],
         description: 'You are the child of a famous adventurer and live in their shadow. Skills: Perception, Performance. Tools: Disguise kit.',
+        equipment: ["Disguise kit", "Fine clothes", "Autograph book with famous signature", "30 gp"],
+        feature: 'Name Dropping',
+        featureDesc: 'You know people of influence in adventuring circles. When you invoke your famous parent\'s name, you can gain access to people and places otherwise unreachable.',
         traits: ['I do not care about the fame; I just want to live up to my parent\'s legacy.', 'I am used to getting what I want.', 'I have to prove I am more than just my famous parent\'s child.', 'I am uncomfortable with attention.', 'I love the spotlight and crave attention.', 'I name-drop constantly.', 'I drop my famous parent\'s name constantly.', 'I\'m used to getting special treatment.'],
         ideals: ['Justice - My parent stood for something; so do I.', 'Legacy - I will honor my family\'s name.', 'Fame - I want to be known for my own deeds.', 'Freedom - I will forge my own path.', 'Power - Fame is a kind of power.', 'Family - Family honor is everything.'],
         bonds: ['I will surpass my parent\'s legend.', 'I carry an heirloom from my famous parent.', 'My parent\'s old adventuring party watches over me.', 'I have an arch-rival who also descends from famous adventurers.', 'I must solve a mystery from my parent\'s past.', 'I protect my parent\'s reputation.'],
@@ -577,6 +718,9 @@ const backgrounds = {
     failedmerchant: {
         name: 'Failed Merchant', skills: ['Investigation', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'Your business went bankrupt, and now you seek fortune through adventure. Skills: Investigation, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        equipment: ["Merchant"s scale", "Fine clothes", "Cart with unsold inventory", "10 gp"],
+        feature: 'Supply Chain',
+        featureDesc: 'From your time as a merchant, you retain connections to suppliers. You can find sellers for unusual equipment and get a 10% discount on non-magical goods.',
         traits: ['I am always looking for a good deal.', 'I learned from my failures and am wiser now.', 'I still have connections in the merchant world.', 'I am suspicious of those who seem too generous.', 'I keep meticulous financial records.', 'I dream of one day being successful again.', 'I evaluate everything by its monetary value.', 'I\'m always looking for a good deal.'],
         ideals: ['Wealth - I want to be rich, really rich.', 'Redemption - I will prove I am not a failure.', 'Risk - You have to spend money to make money.', 'Fairness - Business should be conducted honestly.', 'Knowledge - I failed because I did not know enough.', 'People - Money is not as important as relationships.'],
         bonds: ['I owe money to dangerous people.', 'My former business partner betrayed me.', 'I have a family depending on me.', 'I know the secret to a profitable venture.', 'I must pay back everyone I disappointed.', 'I still have inventory I cannot seem to sell.'],
@@ -585,6 +729,9 @@ const backgrounds = {
     gambler: {
         name: 'Gambler', skills: ['Deception', 'Insight'], tools: ['Gaming set'], languages: 1,
         description: 'You make your living through games of chance and skill. Skills: Deception, Insight. Tools: One gaming set. Languages: One of your choice.',
+        equipment: ["Gaming set", "Lucky charm", "Fine clothes", "15 gp"],
+        feature: 'Never Tell Me the Odds',
+        featureDesc: 'You have a reputation as a gambler. You can gain access to gambling dens and find high-stakes games and underground gambling establishments.',
         traits: ['I stay calm, because panicking is the surest way to lose.', 'I evaluate everything in terms of risk and reward.', 'I cannot resist taking a gamble.', 'I have an unshakeable lucky streak.', 'I know every card game and dice game.', 'I always have a wager going.', 'I never reveal my hand too early.', 'I read people like playing cards.'],
         ideals: ['Luck - Fortune favors the bold.', 'Risk - Life is too short not to take chances.', 'Knowledge - The more I know, the better I can play.', 'Fairness - I never cheat.', 'Power - Winning gives me power over others.', 'Freedom - I live by my own rules.'],
         bonds: ['I owe a lot of money to a dangerous person.', 'A fellow gambler is my closest friend.', 'I have a lucky charm I never gamble without.', 'I am trying to win back something precious.', 'I must pay off my debts before they catch up.', 'A big score will solve all my problems.'],
@@ -593,6 +740,9 @@ const backgrounds = {
     plaintiff: {
         name: 'Plaintiff', skills: ['Medicine', 'Persuasion'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You were wronged and seek justice through adventure. Skills: Medicine, Persuasion. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        equipment: ["Fine clothes", "Legal documents", "Copy of legal code", "20 gp"],
+        feature: 'Legalese',
+        featureDesc: 'Your experience with contracts gives you advantage on Investigation and Insight checks related to legal documents. You can draft contracts that are difficult to exploit.',
         traits: ['I suffered a terrible wrong and demand justice.', 'I know the law better than most lawyers.', 'I am always preparing my case.', 'I document everything meticulously.', 'I never let a slight go unaddressed.', 'I have a keen sense of fairness.', 'I document every slight against me.', 'I know my rights and I exercise them.'],
         ideals: ['Justice - The wrongdoer must be punished.', 'Law - The legal system will give me satisfaction.', 'Revenge - If the law will not help, I will take matters into my own hands.', 'Fairness - Everyone deserves their day in court.', 'Order - Laws must be respected.', 'Truth - The truth of my case must be known.'],
         bonds: ['I was wronged by someone powerful.', 'I collect evidence against those who wronged me.', 'Other victims of the same wrong are my allies.', 'A lawyer or judge showed me kindness.', 'My case is all I think about.', 'I carry documents proving my claim.'],
@@ -601,6 +751,9 @@ const backgrounds = {
     rivalintern: {
         name: 'Rival Intern', skills: ['History', 'Investigation'], tools: ['Artisan\'s tools'], languages: 1,
         description: 'You trained with a rival organization and learned their secrets. Skills: History, Investigation. Tools: One type of artisan\'s tools. Languages: One of your choice.',
+        equipment: ["Ledger from previous employer", "Fine clothes", "Ink and quill", "10 gp"],
+        feature: 'Inside Information',
+        featureDesc: 'You have contacts at your former employer and know their methods of operation. You can gather information about the activities of your rival organization.',
         traits: ['I know how rival organizations operate.', 'I am always looking for insider information.', 'I am fiercely competitive.', 'I have contacts in multiple organizations.', 'I am good at corporate espionage.', 'I left my old organization under bad terms.', 'I keep tabs on my former colleagues.', 'I always know what the competition is doing.'],
         ideals: ['Competition - Being the best means beating the rest.', 'Knowledge - I must know what everyone else is doing.', 'Loyalty - My new allies have my complete devotion.', 'Power - Corporate power is real power.', 'Freedom - I work for whoever pays best.', 'Ambition - I will climb to the top.'],
         bonds: ['I have a rival from my old organization.', 'I left behind friends when I switched sides.', 'I have secrets that could damage my old organization.', 'I seek to bring down the organization that wronged me.', 'I carry documents from my old internship.', 'Someone from my old organization wants me silenced.'],

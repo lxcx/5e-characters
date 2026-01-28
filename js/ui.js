@@ -672,6 +672,13 @@ function displayNPC(npc) {
                     ${npc.flaw || 'Click to select'}
                 </span>
             </div>
+            
+            ${npc.backgroundData.feature ? `
+            <div class="info-item" style="margin-top: 12px; padding: 10px; background: #f8f5f0; border-left: 3px solid #58180d; border-radius: 4px;">
+                <span class="info-label" style="color: #58180d;">Feature: ${npc.backgroundData.feature}</span>
+                <div style="margin-top: 6px; font-size: 0.9em; color: #555;">${npc.backgroundData.featureDesc || ''}</div>
+            </div>
+            ` : ''}
         `;
     }
 
