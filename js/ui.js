@@ -2420,6 +2420,23 @@ function openBackgroundSelectModal() {
     };
     
     let optionsHtml = '';
+    
+    // Custom option at the top
+    const isCustom = currentNPC && currentNPC.background === 'custom';
+    optionsHtml += `
+        <div class="modal-option ${isCustom ? 'selected' : ''}" 
+             style="padding: 10px 12px; cursor: pointer; border-radius: 4px; margin: 2px 0; background: ${isCustom ? '#e8dcc8' : '#f5f0e6'}; border: 1px dashed #58180d;"
+             onmouseover="this.style.backgroundColor='#f0e8d8'"
+             onmouseout="this.style.backgroundColor='${isCustom ? '#e8dcc8' : '#f5f0e6'}'"
+             onclick="selectNewBackground('custom')">
+            <strong><i class="fa-solid fa-pen"></i> Custom Background</strong>
+            <div style="font-size: 0.85em; color: #666; margin-top: 2px;">
+                Create your own traits, ideals, bonds, and flaws
+            </div>
+        </div>
+    `;
+    optionsHtml += `<div style="border-bottom: 2px solid #58180d; margin: 15px 0;"></div>`;
+    
     for (const [source, bgKeys] of Object.entries(sourceGroups)) {
         optionsHtml += `<div style="font-weight: bold; margin-top: 10px; margin-bottom: 5px; color: #58180d; border-bottom: 1px solid #ddd; padding-bottom: 3px;">${source}</div>`;
         bgKeys.forEach(key => {
@@ -2455,8 +2472,33 @@ function openBackgroundSelectModal() {
 
 // Handle selecting a new background
 function selectNewBackground(bgKey) {
+    if (!currentNPC) return;
+    
+    // Handle custom background
+    if (bgKey === 'custom') {
+        currentNPC.background = 'custom';
+        currentNPC.backgroundData = {
+            name: 'Custom',
+            skills: [],
+            tools: [],
+            traits: ['Click to enter your personality trait...'],
+            ideals: ['Click to enter your ideal...'],
+            bonds: ['Click to enter your bond...'],
+            flaws: ['Click to enter your flaw...']
+        };
+        currentNPC.personalityTrait = 'Click to enter your personality trait...';
+        currentNPC.ideal = 'Click to enter your ideal...';
+        currentNPC.bond = 'Click to enter your bond...';
+        currentNPC.flaw = 'Click to enter your flaw...';
+        currentNPC.toolProficiencies = [];
+        
+        closeModal();
+        displayNPC(currentNPC);
+        return;
+    }
+    
     const bgData = backgrounds[bgKey];
-    if (!bgData || !currentNPC) return;
+    if (!bgData) return;
     
     // Update the NPC with the new background
     currentNPC.background = bgKey;
