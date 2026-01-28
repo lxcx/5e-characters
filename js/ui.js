@@ -742,6 +742,13 @@ function toggleCharacterType() {
         classSelect.value = 'commoner';
         onClassChange();
     }
+    
+    // Set background default based on mode
+    const bgSelect = document.getElementById('background');
+    if (bgSelect) {
+        bgSelect.value = isPC ? 'random' : 'none';
+        showBackgroundDescription();
+    }
 }
 
 function isPCMode() {
@@ -1062,8 +1069,39 @@ function showBackgroundDescription() {
     }
 
     const bgData = backgrounds[selectedBg];
-    if (bgData && bgData.description) {
-        descriptionDiv.innerHTML = `<strong>${bgData.name}</strong> - ${bgData.description}`;
+    if (bgData) {
+        let html = `<strong>${bgData.name}</strong>`;
+        
+        // Build description with proper line breaks
+        const parts = [];
+        
+        // Main flavor text (extract from description before "Skills:")
+        const descMatch = bgData.description.match(/^([^.]+\.)/);
+        if (descMatch) {
+            parts.push(descMatch[1]);
+        }
+        
+        // Skills
+        if (bgData.skills && bgData.skills.length > 0) {
+            parts.push(`<strong>Skills:</strong> ${bgData.skills.join(', ')}`);
+        }
+        
+        // Tools
+        if (bgData.tools && bgData.tools.length > 0) {
+            const toolList = Array.isArray(bgData.tools) ? bgData.tools.join(', ') : bgData.tools;
+            parts.push(`<strong>Tools:</strong> ${toolList}`);
+        }
+        
+        // Languages
+        if (bgData.languages) {
+            const langText = bgData.languages === 1 ? 'One of your choice' : 
+                            bgData.languages === 2 ? 'Two of your choice' : 
+                            `${bgData.languages} of your choice`;
+            parts.push(`<strong>Languages:</strong> ${langText}`);
+        }
+        
+        html += '<br>' + parts.join('<br>');
+        descriptionDiv.innerHTML = html;
         descriptionDiv.style.display = 'block';
     } else {
         descriptionDiv.style.display = 'none';
