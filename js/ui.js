@@ -2477,7 +2477,7 @@ function openBackgroundSelectModal() {
                          onmouseover="this.style.backgroundColor='#f0e8d8'"
                          onmouseout="this.style.backgroundColor='${isSelected ? '#e8dcc8' : 'transparent'}'"
                          onclick="selectNewBackground('${key}')">
-                        <strong>${bg.name}</strong><br>
+                        <strong style="margin-right: 5px;">${bg.name}</strong>
                         <span style="font-size: 0.85em; color: #666;">Skills: ${bg.skills ? bg.skills.join(', ') : 'None'}</span>
                     </div>
                 `;
