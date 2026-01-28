@@ -2528,6 +2528,12 @@ function closeModal() {
     if (warningDiv) {
         warningDiv.style.display = 'none';
     }
+    
+    // Restore hidden elements for next use
+    const customInput = document.querySelector('#multiSelectModal .modal-custom-input');
+    if (customInput) customInput.style.display = '';
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = '';
 }
 
 function saveModalSelections() {
