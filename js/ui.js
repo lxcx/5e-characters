@@ -634,12 +634,27 @@ function displayNPC(npc) {
 
     // Background traits (for PCs)
     if (npc.background && npc.backgroundData) {
+        // For custom backgrounds, show skill selector
+        const customSkillsHtml = npc.background === 'custom' ? `
+            <div class="info-item" style="margin-bottom: 8px;">
+                <span class="info-label">Skill Proficiencies (pick 2):</span>
+                <span class="editable" style="cursor: pointer; display: block; margin-top: 4px;" 
+                    onclick="openCustomBackgroundSkillsModal()">
+                    ${npc.backgroundData.skills && npc.backgroundData.skills.length > 0 
+                        ? npc.backgroundData.skills.join(', ') 
+                        : 'Click to select 2 skills'}
+                </span>
+            </div>
+        ` : '';
+        
         html += `
             <div class="section-title" style="margin-top: 15px;">
                 <i class="fa-solid fa-masks-theater"></i> Background: 
                 <span class="editable" style="cursor: pointer; border-bottom: 1px dashed #58180d;" 
                     onclick="openBackgroundSelectModal()">${capitalize(npc.background)}</span>
             </div>
+            
+            ${customSkillsHtml}
             
             <div class="info-item" style="margin-bottom: 8px;">
                 <span class="info-label">Personality Trait:</span>
@@ -2555,6 +2570,109 @@ function selectNewBackground(bgKey) {
     });
     
     // Close modal and refresh display
+    closeModal();
+    displayNPC(currentNPC);
+}
+
+// Custom background skill selection modal (limited to 2)
+function openCustomBackgroundSkillsModal() {
+    const modal = document.getElementById('multiSelectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalOptions');
+    
+    modalTitle.textContent = 'Select 2 Skill Proficiencies';
+    
+    const allSkills = [
+        'Acrobatics', 'Animal Handling', 'Arcana', 'Athletics', 'Deception',
+        'History', 'Insight', 'Intimidation', 'Investigation', 'Medicine',
+        'Nature', 'Perception', 'Performance', 'Persuasion', 'Religion',
+        'Sleight of Hand', 'Stealth', 'Survival'
+    ];
+    
+    const currentSelected = currentNPC.backgroundData?.skills || [];
+    
+    let html = `
+        <div style="margin-bottom: 10px; font-size: 0.9em; color: #666;">
+            Select exactly 2 skills for your custom background.
+            <span id="customSkillCount" style="font-weight: bold; color: ${currentSelected.length === 2 ? '#1e7b34' : '#58180d'};">
+                (${currentSelected.length}/2 selected)
+            </span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+    `;
+    
+    allSkills.forEach(skill => {
+        const isSelected = currentSelected.includes(skill);
+        const isDisabled = !isSelected && currentSelected.length >= 2;
+        html += `
+            <div class="skill-option" 
+                 style="padding: 8px; cursor: ${isDisabled ? 'not-allowed' : 'pointer'}; 
+                        border-radius: 4px; border: 1px solid ${isSelected ? '#58180d' : '#ddd'};
+                        background: ${isSelected ? '#f0e8d8' : (isDisabled ? '#f5f5f5' : 'white')};
+                        opacity: ${isDisabled ? '0.5' : '1'};"
+                 onclick="toggleCustomBackgroundSkill('${skill}', this)"
+                 data-skill="${skill}"
+                 data-selected="${isSelected}">
+                ${isSelected ? '<i class="fa-solid fa-check" style="color: #58180d; margin-right: 5px;"></i>' : ''}
+                ${skill}
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    
+    html += `
+        <div style="margin-top: 15px; text-align: right;">
+            <button onclick="saveCustomBackgroundSkills()" 
+                    style="padding: 8px 20px; background: #58180d; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Save Skills
+            </button>
+        </div>
+    `;
+    
+    modalContent.innerHTML = html;
+    
+    // Hide the default modal elements
+    const customInput = document.querySelector('#multiSelectModal .modal-custom-input');
+    if (customInput) customInput.style.display = 'none';
+    const modalFooter = document.querySelector('#multiSelectModal .modal-footer');
+    if (modalFooter) modalFooter.style.display = 'none';
+    
+    modal.classList.add('active');
+}
+
+function toggleCustomBackgroundSkill(skill, element) {
+    if (!currentNPC || !currentNPC.backgroundData) return;
+    
+    const skills = currentNPC.backgroundData.skills || [];
+    const isSelected = skills.includes(skill);
+    
+    if (isSelected) {
+        // Remove skill
+        currentNPC.backgroundData.skills = skills.filter(s => s !== skill);
+    } else if (skills.length < 2) {
+        // Add skill (only if under limit)
+        currentNPC.backgroundData.skills = [...skills, skill];
+    } else {
+        // At limit, can't add more
+        return;
+    }
+    
+    // Refresh the modal
+    openCustomBackgroundSkillsModal();
+}
+
+function saveCustomBackgroundSkills() {
+    if (!currentNPC || !currentNPC.backgroundData) return;
+    
+    // Add the custom background skills to the character's skills (avoiding duplicates)
+    const bgSkills = currentNPC.backgroundData.skills || [];
+    bgSkills.forEach(skill => {
+        if (!currentNPC.skills.includes(skill)) {
+            currentNPC.skills.push(skill);
+        }
+    });
+    
     closeModal();
     displayNPC(currentNPC);
 }
