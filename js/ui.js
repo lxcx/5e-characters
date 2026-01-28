@@ -182,6 +182,15 @@ function displayNPC(npc) {
                 <div class="section-title" style="border-bottom: none; padding-bottom: 0;"><i class="fa-solid fa-chart-simple"></i> Ability Scores</div>
                 ${lockBtn('stats')}
             </div>
+            <small style="color: #6c757d; display: block; margin-bottom: 8px;">
+                ${npc.ageCategory === 'infant' 
+                    ? '<i class="fa-solid fa-baby"></i> Stats: Infant (1d4 each)'
+                    : isPCMode() 
+                        ? '<i class="fa-solid fa-list-ol"></i> Stats: Standard Array (15, 14, 13, 12, 10, 8)'
+                        : npc.npcClass === 'commoner' && !npc.characterClasses?.some(c => c.className !== 'commoner')
+                            ? '<i class="fa-solid fa-dice"></i> Stats: Commoner (4d4 drop lowest)'
+                            : '<i class="fa-solid fa-dice"></i> Stats: Adventurer (4d6 drop lowest)'}
+            </small>
             <div style="border-bottom: 2px solid #e9ecef; margin-bottom: 10px;"></div>
             <div class="stat-grid">
     `;
@@ -624,10 +633,6 @@ function toggleCharacterType() {
     document.getElementById('npcLabel').style.color = isPC ? '#888' : '#58180d';
     document.getElementById('pcLabel').style.fontWeight = isPC ? 'bold' : 'normal';
     document.getElementById('pcLabel').style.color = isPC ? '#1e7b34' : '#888';
-    
-    document.getElementById('statMethodNote').innerHTML = isPC 
-        ? '<i class="fa-solid fa-list-ol"></i> Stats: Standard Array (15, 14, 13, 12, 10, 8)'
-        : '<i class="fa-solid fa-dice"></i> Stats: Rolled (4d6 drop lowest)';
     
     document.getElementById('backgroundGroup').style.display = isPC ? 'block' : 'none';
     
