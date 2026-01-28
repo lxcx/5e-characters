@@ -959,6 +959,40 @@ function calculateAC(primaryClassName, modifiers) {
     return { ac, armorName };
 }
 
+function showSubclassDescription() {
+    const classSelect = document.getElementById('npcClass');
+    const subclassSelect = document.getElementById('npcSubclass');
+    const descriptionDiv = document.getElementById('subclassDescription');
+    
+    const selectedClass = classSelect.value;
+    const selectedSubclass = subclassSelect.value;
+    
+    if (!selectedSubclass || selectedSubclass === 'random' || !selectedClass) {
+        descriptionDiv.style.display = 'none';
+        return;
+    }
+    
+    const subclassData = subclasses[selectedClass];
+    if (subclassData) {
+        const option = subclassData.options.find(opt => opt.id === selectedSubclass);
+        if (option) {
+            // Show brief description (first sentence or first 150 chars)
+            let brief = option.description;
+            const firstSentence = brief.match(/^[^.!?]+[.!?]/);
+            if (firstSentence) {
+                brief = firstSentence[0];
+            } else if (brief.length > 150) {
+                brief = brief.substring(0, 147) + '...';
+            }
+            descriptionDiv.innerHTML = `<strong>${option.name}</strong> (${option.source}) - ${brief}`;
+            descriptionDiv.style.display = 'block';
+            return;
+        }
+    }
+    
+    descriptionDiv.style.display = 'none';
+}
+
 function showOccupationDescription() {
     const occSelect = document.getElementById('occupation');
     const descriptionDiv = document.getElementById('occupationDescription');

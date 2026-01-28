@@ -1955,9 +1955,10 @@
                             <option value="20">Lvl 20</option>
                         </select>
                     </div>
-                    <select id="npcSubclass" class="subclass-select" style="display: none; margin-top: 8px;">
+                    <select id="npcSubclass" class="subclass-select" style="display: none; margin-top: 8px;" onchange="showSubclassDescription()">
                         <option value="random">Random Subclass</option>
                     </select>
+                    <div id="subclassDescription" class="description-box" style="display: none; margin-top: 8px; padding: 10px; background: #f8f5f0; border-left: 3px solid #58180d; font-size: 0.9em; color: #555;"></div>
                     <select id="occupation" class="subclass-select" style="margin-top: 8px;" onchange="showOccupationDescription()">
                         <option value="random">Random Occupation</option>
                         <optgroup label="Trades & Crafts">

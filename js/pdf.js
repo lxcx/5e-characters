@@ -268,6 +268,31 @@ table tr:last-child td { border-bottom: none; }
     <h2>Racial Traits</h2>
     ${traitsHtml}
 
+    ${(() => {
+        // Show subclass descriptions
+        const subclassDescriptions = [];
+        if (npc.characterClasses) {
+            npc.characterClasses.forEach(cc => {
+                if (cc.subclass && subclasses[cc.className]) {
+                    const subclassData = subclasses[cc.className];
+                    const option = subclassData.options.find(opt => opt.id === cc.subclass);
+                    if (option) {
+                        subclassDescriptions.push({
+                            name: option.name,
+                            source: option.source,
+                            description: option.description,
+                            className: cc.className
+                        });
+                    }
+                }
+            });
+        }
+        if (subclassDescriptions.length === 0) return '';
+        return `<h2>Subclass</h2>` + subclassDescriptions.map(s => 
+            `<div class="trait-block"><strong>${s.name}</strong> (${s.source})<br>${s.description}</div>`
+        ).join('');
+    })()}
+
     <h2>Class Features</h2>
     ${(() => {
 const features = getCharacterFeatures(npc.characterClasses || [{ className: npc.npcClass, level: npc.totalLevel || 1 }]);
