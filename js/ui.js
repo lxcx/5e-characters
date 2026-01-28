@@ -2385,9 +2385,11 @@ function openBackgroundTraitModal(field, title, options, currentValue) {
     
     modalContent.innerHTML = html;
     
-    // Hide the default save button and custom input
-    document.getElementById('addCustomContainer').style.display = 'none';
-    document.querySelector('.modal-content .save-btn')?.style.setProperty('display', 'none');
+    // Hide the default save button and custom input if they exist
+    const addCustomContainer = document.getElementById('addCustomContainer');
+    if (addCustomContainer) addCustomContainer.style.display = 'none';
+    const saveBtn = document.querySelector('.modal-content .save-btn');
+    if (saveBtn) saveBtn.style.display = 'none';
     
     modal.classList.add('active');
     
