@@ -180,6 +180,7 @@ table tr:last-child td { border-bottom: none; }
     <h2>Proficiencies</h2>
     <div class="info-row"><span class="info-label">Armor:</span> ${getArmorProficiencyText(npc.characterClasses || [])}</div>
     <div class="info-row"><span class="info-label">Weapons:</span> ${getWeaponProficiencyText(npc.characterClasses || [])}</div>
+    ${npc.toolProficiencies && npc.toolProficiencies.length > 0 ? `<div class="info-row"><span class="info-label">Tools:</span> ${npc.toolProficiencies.join(', ')}</div>` : ''}
 </div>
 
 <div class="column">
@@ -246,9 +247,21 @@ table tr:last-child td { border-bottom: none; }
         ${npc.equipment.map(item => `<li>${item}</li>`).join('')}
     </ul>
 
+    ${npc.currency ? `
+    <h2>Currency</h2>
+    <p><strong style="color: #b8860b;">${npc.currency.gp} gp</strong> · <strong style="color: #708090;">${npc.currency.sp} sp</strong> · <strong style="color: #cd7f32;">${npc.currency.cp} cp</strong></p>
+    ` : ''}
+
     <h2>Physical Traits</h2>
     <div class="info-row"><span class="info-label">Age:</span> ${npc.age === 0 ? 'Newborn' : npc.age + ' years (' + capitalize(npc.ageCategory) + ')'}</div>
     <div class="info-row"><span class="info-label">Size:</span> ${capitalize(npc.size)}</div>
+    ${npc.appearance ? `
+    <div class="info-row"><span class="info-label">Height:</span> ${npc.appearance.height}</div>
+    <div class="info-row"><span class="info-label">Weight:</span> ${npc.appearance.weight}</div>
+    <div class="info-row"><span class="info-label">Eyes:</span> ${capitalize(npc.appearance.eyes)}</div>
+    <div class="info-row"><span class="info-label">Hair:</span> ${capitalize(npc.appearance.hair)}</div>
+    <div class="info-row"><span class="info-label">Skin:</span> ${capitalize(npc.appearance.skin)}</div>
+    ` : ''}
 </div>
     </div>
 

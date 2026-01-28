@@ -3228,3 +3228,98 @@ const maturityAges = {
     'warforged': 2,
     'yuan-ti': 12
 };
+
+// Physical appearance options by race category
+const physicalAppearance = {
+    heightRanges: {
+        small: { min: 36, max: 48 },      // 3-4 feet (halflings, gnomes, goblins)
+        medium: { min: 60, max: 78 },     // 5-6.5 feet (humans, elves, etc)
+        tall: { min: 72, max: 96 },       // 6-8 feet (goliaths, firbolg, etc)
+        varies: { min: 48, max: 84 }      // variable races
+    },
+    weightRanges: {
+        light: { min: 35, max: 80 },      // small races
+        medium: { min: 110, max: 200 },   // average humanoids
+        heavy: { min: 200, max: 350 },    // bulky races
+        varies: { min: 80, max: 280 }     // variable
+    },
+    eyeColors: {
+        common: ['brown', 'blue', 'green', 'hazel', 'gray', 'amber'],
+        elven: ['blue', 'green', 'gold', 'silver', 'violet', 'amber'],
+        dwarven: ['brown', 'gray', 'blue', 'black', 'amber'],
+        exotic: ['red', 'gold', 'silver', 'white', 'black', 'purple', 'orange'],
+        reptilian: ['yellow', 'orange', 'red', 'gold', 'green', 'black'],
+        celestial: ['gold', 'silver', 'white', 'blue', 'violet'],
+        infernal: ['red', 'orange', 'yellow', 'black', 'gold']
+    },
+    hairColors: {
+        common: ['black', 'brown', 'blonde', 'red', 'auburn', 'gray', 'white'],
+        elven: ['black', 'silver', 'gold', 'copper', 'white', 'blue-black'],
+        dwarven: ['black', 'brown', 'red', 'auburn', 'gray', 'white'],
+        exotic: ['white', 'silver', 'blue', 'green', 'purple', 'pink'],
+        none: ['none', 'bald']
+    },
+    skinTones: {
+        common: ['pale', 'fair', 'light', 'tan', 'olive', 'brown', 'dark brown', 'black'],
+        elven: ['pale', 'bronze', 'copper', 'golden', 'alabaster'],
+        dwarven: ['ruddy', 'tan', 'brown', 'gray-brown', 'pale'],
+        exotic: ['blue', 'green', 'purple', 'gray', 'ashen', 'pale blue'],
+        scaled: ['green', 'brown', 'black', 'red', 'bronze', 'gold', 'silver', 'copper'],
+        furred: ['brown', 'black', 'gray', 'tan', 'spotted', 'striped', 'white']
+    },
+    raceCategories: {
+        human: { height: 'medium', weight: 'medium', eyes: 'common', hair: 'common', skin: 'common' },
+        elf: { height: 'medium', weight: 'medium', eyes: 'elven', hair: 'elven', skin: 'elven' },
+        dwarf: { height: 'small', weight: 'heavy', eyes: 'dwarven', hair: 'dwarven', skin: 'dwarven' },
+        halfling: { height: 'small', weight: 'light', eyes: 'common', hair: 'common', skin: 'common' },
+        gnome: { height: 'small', weight: 'light', eyes: 'common', hair: 'exotic', skin: 'common' },
+        dragonborn: { height: 'tall', weight: 'heavy', eyes: 'reptilian', hair: 'none', skin: 'scaled' },
+        tiefling: { height: 'medium', weight: 'medium', eyes: 'infernal', hair: 'exotic', skin: 'exotic' },
+        orc: { height: 'tall', weight: 'heavy', eyes: 'exotic', hair: 'common', skin: 'exotic' },
+        goblin: { height: 'small', weight: 'light', eyes: 'exotic', hair: 'common', skin: 'exotic' },
+        tabaxi: { height: 'medium', weight: 'medium', eyes: 'exotic', hair: 'none', skin: 'furred' },
+        lizardfolk: { height: 'medium', weight: 'heavy', eyes: 'reptilian', hair: 'none', skin: 'scaled' },
+        aasimar: { height: 'medium', weight: 'medium', eyes: 'celestial', hair: 'common', skin: 'common' },
+        construct: { height: 'medium', weight: 'heavy', eyes: 'exotic', hair: 'none', skin: 'exotic' }
+    }
+};
+
+// Map races to their physical category
+const racePhysicalCategory = {
+    'human': 'human', 'half-elf': 'human', 'half-orc': 'orc',
+    'elf': 'elf', 'eladrin': 'elf', 'sea elf': 'elf', 'shadar-kai': 'elf', 'astral elf': 'elf',
+    'dwarf': 'dwarf', 'duergar': 'dwarf',
+    'halfling': 'halfling', 'kender': 'halfling',
+    'gnome': 'gnome', 'deep gnome': 'gnome',
+    'dragonborn': 'dragonborn', 'kobold': 'dragonborn',
+    'tiefling': 'tiefling',
+    'orc': 'orc', 'goliath': 'orc', 'bugbear': 'orc', 'hobgoblin': 'orc', 'minotaur': 'orc', 'firbolg': 'orc',
+    'goblin': 'goblin', 'grung': 'goblin', 'verdan': 'goblin',
+    'tabaxi': 'tabaxi', 'leonin': 'tabaxi', 'harengon': 'tabaxi', 'hadozee': 'tabaxi',
+    'lizardfolk': 'lizardfolk', 'tortle': 'lizardfolk', 'yuan-ti': 'lizardfolk',
+    'aasimar': 'aasimar', 'kalashtar': 'aasimar',
+    'warforged': 'construct', 'autognome': 'construct',
+    'genasi': 'human', 'triton': 'elf', 'aarakocra': 'tabaxi', 'kenku': 'tabaxi', 'owlin': 'tabaxi',
+    'changeling': 'human', 'shifter': 'human', 'dhampir': 'human', 'hexblood': 'human', 'reborn': 'human',
+    'centaur': 'orc', 'satyr': 'human', 'fairy': 'gnome', 'loxodon': 'orc', 'vedalken': 'elf',
+    'simic hybrid': 'human', 'giff': 'orc', 'githyanki': 'elf', 'githzerai': 'elf',
+    'locathah': 'lizardfolk', 'thri-kreen': 'lizardfolk', 'plasmoid': 'construct'
+};
+
+// Starting gold ranges by class (based on 5e PHB)
+const startingGold = {
+    commoner: { dice: 2, sides: 4, multiplier: 1 },     // 2d4 gp (poor)
+    artificer: { dice: 5, sides: 4, multiplier: 10 },   // 5d4 × 10 gp
+    barbarian: { dice: 2, sides: 4, multiplier: 10 },   // 2d4 × 10 gp
+    bard: { dice: 5, sides: 4, multiplier: 10 },        // 5d4 × 10 gp
+    cleric: { dice: 5, sides: 4, multiplier: 10 },      // 5d4 × 10 gp
+    druid: { dice: 2, sides: 4, multiplier: 10 },       // 2d4 × 10 gp
+    fighter: { dice: 5, sides: 4, multiplier: 10 },     // 5d4 × 10 gp
+    monk: { dice: 5, sides: 4, multiplier: 1 },         // 5d4 gp
+    paladin: { dice: 5, sides: 4, multiplier: 10 },     // 5d4 × 10 gp
+    ranger: { dice: 5, sides: 4, multiplier: 10 },      // 5d4 × 10 gp
+    rogue: { dice: 4, sides: 4, multiplier: 10 },       // 4d4 × 10 gp
+    sorcerer: { dice: 3, sides: 4, multiplier: 10 },    // 3d4 × 10 gp
+    warlock: { dice: 4, sides: 4, multiplier: 10 },     // 4d4 × 10 gp
+    wizard: { dice: 4, sides: 4, multiplier: 10 }       // 4d4 × 10 gp
+};

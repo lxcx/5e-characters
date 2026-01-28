@@ -265,6 +265,16 @@ function displayNPC(npc) {
         </div>
     `;
 
+    // Tool Proficiencies (from background)
+    if (npc.toolProficiencies && npc.toolProficiencies.length > 0) {
+        html += `
+            <div class="info-item" style="margin-top: 5px;">
+                <span class="info-label">Tool Proficiencies:</span>
+                <span>${npc.toolProficiencies.join(', ')}</span>
+            </div>
+        `;
+    }
+
     // Weapons Section
     html += `
         <div class="section-header" style="margin-top: 15px;">
@@ -425,6 +435,27 @@ function displayNPC(npc) {
             </div>
     `;
     
+    // Physical Appearance
+    if (npc.appearance) {
+        html += `
+            <div class="info-item">
+                <span class="info-label">Height:</span>${npc.appearance.height}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Weight:</span>${npc.appearance.weight}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Eyes:</span>${capitalize(npc.appearance.eyes)}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Hair:</span>${capitalize(npc.appearance.hair)}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Skin:</span>${capitalize(npc.appearance.skin)}
+            </div>
+        `;
+    }
+    
     // Racial Traits
     if (npc.traits && npc.traits.length > 0) {
         html += `
@@ -563,6 +594,18 @@ function displayNPC(npc) {
     }
 
     html += `</div>`;
+
+    // Currency
+    if (npc.currency) {
+        html += `
+            <div class="section-title" style="margin-top: 15px;"><i class="fa-solid fa-coins"></i> Currency</div>
+            <div class="info-item">
+                <span style="color: #ffd700; font-weight: bold;">${npc.currency.gp} gp</span> · 
+                <span style="color: #c0c0c0;">${npc.currency.sp} sp</span> · 
+                <span style="color: #b87333;">${npc.currency.cp} cp</span>
+            </div>
+        `;
+    }
 
     if (npc.backstory) {
         html += `

@@ -1,5 +1,51 @@
 // D&D 5E NPC Generator - NPC Generation (age, stats, backstory)
 
+function generateStartingCurrency(className) {
+    const goldData = startingGold[className] || startingGold.commoner;
+    let total = 0;
+    for (let i = 0; i < goldData.dice; i++) {
+        total += Math.floor(Math.random() * goldData.sides) + 1;
+    }
+    total *= goldData.multiplier;
+    
+    // Convert to gp, sp, cp
+    const gp = total;
+    const sp = Math.floor(Math.random() * 10); // Random silver
+    const cp = Math.floor(Math.random() * 10); // Random copper
+    
+    return { gp, sp, cp };
+}
+
+function generatePhysicalAppearance(race, gender) {
+    const category = racePhysicalCategory[race.toLowerCase()] || 'human';
+    const traits = physicalAppearance.raceCategories[category] || physicalAppearance.raceCategories.human;
+    
+    // Height (in inches)
+    const heightRange = physicalAppearance.heightRanges[traits.height];
+    const heightInches = Math.floor(Math.random() * (heightRange.max - heightRange.min + 1)) + heightRange.min;
+    const feet = Math.floor(heightInches / 12);
+    const inches = heightInches % 12;
+    const height = `${feet}'${inches}"`;
+    
+    // Weight (in pounds)
+    const weightRange = physicalAppearance.weightRanges[traits.weight];
+    const weight = Math.floor(Math.random() * (weightRange.max - weightRange.min + 1)) + weightRange.min;
+    
+    // Eye color
+    const eyeOptions = physicalAppearance.eyeColors[traits.eyes] || physicalAppearance.eyeColors.common;
+    const eyes = eyeOptions[Math.floor(Math.random() * eyeOptions.length)];
+    
+    // Hair color/style
+    const hairOptions = physicalAppearance.hairColors[traits.hair] || physicalAppearance.hairColors.common;
+    const hair = hairOptions[Math.floor(Math.random() * hairOptions.length)];
+    
+    // Skin tone
+    const skinOptions = physicalAppearance.skinTones[traits.skin] || physicalAppearance.skinTones.common;
+    const skin = skinOptions[Math.floor(Math.random() * skinOptions.length)];
+    
+    return { height, weight: `${weight} lbs`, eyes, hair, skin };
+}
+
 function generateAge(category, race) {
     // Get lifespan and maturity age for the race
     const raceKey = race.toLowerCase();
@@ -474,6 +520,9 @@ function generateNPC() {
         ideal: backgroundData ? randomChoice(backgroundData.ideals) : null,
         bond: backgroundData ? randomChoice(backgroundData.bonds) : null,
         flaw: backgroundData ? randomChoice(backgroundData.flaws) : null,
+        toolProficiencies: backgroundData?.tools || [],
+        appearance: generatePhysicalAppearance(selectedRace, selectedGender),
+        currency: generateStartingCurrency(characterClasses[0]?.className || 'commoner'),
         ...calculateAC(characterClasses[0]?.className || 'commoner', modifiers)
     });
 }
