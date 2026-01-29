@@ -2080,8 +2080,10 @@
             margin-right: 8px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 5px;
             white-space: nowrap;
+            width: 80px;
         }
 
         .clear-spells-btn:hover:not(:disabled) {
