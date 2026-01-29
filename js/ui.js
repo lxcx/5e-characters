@@ -556,10 +556,11 @@ function displayNPC(npc) {
         const abilityNames = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
         const spellAbilityName = abilityNames[npc.spellData.ability] || 'Unknown';
         
+        const spellsLocked = lockedSections.spells;
         html += `
             <div class="section-header">
                 <div class="section-title" style="border-bottom: none; padding-bottom: 0;"><i class="fa-solid fa-hat-wizard"></i> Spellcasting</div>
-                <button class="clear-spells-btn" onclick="event.stopPropagation(); clearAllSpellsFromSection()" title="Clear all spells to select your own">
+                <button class="clear-spells-btn" onclick="event.stopPropagation(); clearAllSpellsFromSection()" title="Clear all spells to select your own" ${spellsLocked ? 'disabled' : ''}>
                     <i class="fa-solid fa-trash"></i> Clear
                 </button>
                 ${lockBtn('spells')}
