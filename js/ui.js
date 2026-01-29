@@ -595,6 +595,13 @@ function displayNPC(npc) {
                     }).join('')}
                 </div>
             `;
+        } else if (npc.spellData.cantripsKnown > 0) {
+            html += `
+                <div class="spell-section-title">Cantrips</div>
+                <button class="select-spells-btn" onclick="event.stopPropagation(); openSpellModal('cantrips')">
+                    <i class="fa-solid fa-wand-sparkles"></i> Select Cantrips (0/${npc.spellData.cantripsKnown})
+                </button>
+            `;
         }
         
         // Leveled Spells (grouped by level)
@@ -622,6 +629,13 @@ function displayNPC(npc) {
             });
             
             html += `</div>`;
+        } else if (npc.spellData.spellsKnownCount > 0) {
+            html += `
+                <div class="spell-section-title">Spells Known</div>
+                <button class="select-spells-btn" onclick="event.stopPropagation(); openSpellModal('spells')">
+                    <i class="fa-solid fa-book-sparkles"></i> Select Spells (0/${npc.spellData.spellsKnownCount})
+                </button>
+            `;
         }
     }
     
