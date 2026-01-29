@@ -2990,16 +2990,29 @@ function openSpellModal(type) {
     const slotLabels = ['Cantrip', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
     let currentLevel = -1;
     
+    // Count selected spells per level
+    const selectedPerLevel = {};
+    currentSpellSelections.forEach(spellId => {
+        const spell = spells[spellId];
+        if (spell) {
+            selectedPerLevel[spell.level] = (selectedPerLevel[spell.level] || 0) + 1;
+        }
+    });
+    
     availableSpells.forEach(spellId => {
         const spell = spells[spellId];
         if (spell.level !== currentLevel) {
             currentLevel = spell.level;
-            optionsHtml += `<div class="spell-modal-level-header">${slotLabels[currentLevel]} Level</div>`;
+            const selectedCount = selectedPerLevel[currentLevel] || 0;
+            optionsHtml += `<div class="spell-modal-level-header" data-level="${currentLevel}">
+                ${slotLabels[currentLevel]} Level
+                <span class="spell-level-count" id="spell-level-count-${currentLevel}">(${selectedCount} selected)</span>
+            </div>`;
         }
         
         const isSelected = currentSpellSelections.includes(spellId);
         optionsHtml += `
-            <div class="modal-option ${isSelected ? 'selected' : ''}" onclick="toggleSpellOption(this, '${spellId}')" title="${spell.description.substring(0, 300).replace(/"/g, '&quot;')}...">
+            <div class="modal-option ${isSelected ? 'selected' : ''}" data-spell-level="${spell.level}" onclick="toggleSpellOption(this, '${spellId}')" title="${spell.description.substring(0, 300).replace(/"/g, '&quot;')}...">
                 <span class="modal-option-checkbox"></span>
                 <span>${spell.name}</span>
                 <span class="spell-school">${spell.school}</span>
@@ -3034,6 +3047,25 @@ function updateSpellModalCount() {
     
     let statusClass = count <= maxCount ? 'ok' : 'over';
     modalTitle.innerHTML = `<i class="fa-solid fa-hat-wizard"></i> Edit ${isCantrips ? 'Cantrips' : 'Spells'} <span class="spell-count-${statusClass}">(${count}/${maxCount})</span>`;
+    
+    // Update per-level counts
+    const selectedPerLevel = {};
+    currentSpellSelections.forEach(spellId => {
+        const spell = spells[spellId];
+        if (spell) {
+            selectedPerLevel[spell.level] = (selectedPerLevel[spell.level] || 0) + 1;
+        }
+    });
+    
+    // Update all level count displays
+    for (let level = 0; level <= 9; level++) {
+        const countEl = document.getElementById(`spell-level-count-${level}`);
+        if (countEl) {
+            const selectedCount = selectedPerLevel[level] || 0;
+            countEl.textContent = `(${selectedCount} selected)`;
+            countEl.className = selectedCount > 0 ? 'spell-level-count has-selections' : 'spell-level-count';
+        }
+    }
 }
 
 function closeSpellModal() {
