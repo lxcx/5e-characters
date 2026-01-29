@@ -556,7 +556,7 @@ function displayNPC(npc) {
         const abilityNames = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
         const spellAbilityName = abilityNames[npc.spellData.ability] || 'Unknown';
         
-        const spellsLocked = lockedSections.spells;
+        const spellsLocked = lockStates.spells;
         html += `
             <div class="section-header">
                 <div class="section-title" style="border-bottom: none; padding-bottom: 0;"><i class="fa-solid fa-hat-wizard"></i> Spellcasting</div>
