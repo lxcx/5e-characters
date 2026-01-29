@@ -559,6 +559,9 @@ function displayNPC(npc) {
         html += `
             <div class="section-header">
                 <div class="section-title" style="border-bottom: none; padding-bottom: 0;"><i class="fa-solid fa-hat-wizard"></i> Spellcasting</div>
+                <button class="clear-spells-btn" onclick="event.stopPropagation(); clearAllSpellsFromSection()" title="Clear all spells to select your own">
+                    <i class="fa-solid fa-trash"></i> Clear
+                </button>
                 ${lockBtn('spells')}
             </div>
             <div class="spell-stats">
@@ -3031,6 +3034,17 @@ function clearAllSpells() {
     const checkboxes = document.querySelectorAll('#spellModalOptions input[type="checkbox"]');
     checkboxes.forEach(cb => cb.checked = false);
     updateSpellModalCount();
+}
+
+function clearAllSpellsFromSection() {
+    if (!currentNPC || !currentNPC.spellData) return;
+    
+    // Clear both cantrips and spells
+    currentNPC.spellData.cantrips = [];
+    currentNPC.spellData.spells = [];
+    
+    // Re-display the NPC to update the UI
+    displayNPC(currentNPC);
 }
 
 function saveSpellSelections() {
