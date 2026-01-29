@@ -382,6 +382,40 @@ function generateNPC() {
         });
     }
 
+    // Level Up Options - handle ASIs and feats
+    let characterFeats = [];
+    let asisTaken = 0;
+    let bonusFeat = false;
+    let pendingLevelUpChoice = false;
+    
+    const levelUpOptionsSelect = document.getElementById('levelUpOptions');
+    const levelUpOption = levelUpOptionsSelect ? levelUpOptionsSelect.value : 'random';
+    const totalASIs = countASIsEarned(characterClasses);
+    
+    if (lockStates.feats && currentNPC && currentNPC.feats) {
+        // Keep locked feats and ASI choices
+        characterFeats = [...currentNPC.feats];
+        asisTaken = currentNPC.asisTaken || 0;
+        bonusFeat = currentNPC.bonusFeat || false;
+    } else if (totalASIs > 0) {
+        if (levelUpOption === 'random') {
+            // Auto-optimize: Apply ASIs to best stats for the class
+            const asiResult = applyOptimalASIs(characterClasses, abilities, modifiers, totalASIs);
+            abilities = asiResult.abilities;
+            modifiers = asiResult.modifiers;
+            asisTaken = totalASIs;
+            characterFeats = [];
+            bonusFeat = false;
+        } else if (levelUpOption === 'choose') {
+            // Mark for modal to open after generation
+            pendingLevelUpChoice = true;
+            // Don't apply any ASIs yet - modal will handle it
+            asisTaken = 0;
+            characterFeats = [];
+            bonusFeat = false;
+        }
+    }
+
     // Skills - locked or generate new (combine from all classes, occupation, and background)
     let skills;
     if (lockStates.skills && currentNPC) {
@@ -501,6 +535,22 @@ function generateNPC() {
         characterWeapons = currentNPC.weapons;
     }
 
+    // Calculate proficiencies from all classes
+    const armorProficiencies = new Set();
+    const weaponProficiencies = new Set();
+    characterClasses.forEach(cc => {
+        const profs = classProficiencies[cc.className];
+        if (profs) {
+            profs.armor.forEach(a => armorProficiencies.add(a));
+            profs.weapons.forEach(w => weaponProficiencies.add(w));
+        }
+    });
+
+    // Calculate passive skills
+    const passivePerception = 10 + modifiers.wis + (skills.includes('Perception') ? proficiencyBonus : 0);
+    const passiveInvestigation = 10 + modifiers.int + (skills.includes('Investigation') ? proficiencyBonus : 0);
+    const passiveInsight = 10 + modifiers.wis + (skills.includes('Insight') ? proficiencyBonus : 0);
+
     // Display NPC
     displayNPC({
         name: fullName,
@@ -525,9 +575,11 @@ function generateNPC() {
         proficiencyBonus: proficiencyBonus,
         hitDie: classData.hitDie,
         savingThrows: primaryClassData.savingThrows || [],
-        // New stats
+        // Core stats
         initiative: modifiers.dex,
-        passivePerception: 10 + modifiers.wis + (skills.includes('Perception') ? proficiencyBonus : 0),
+        passivePerception: passivePerception,
+        passiveInvestigation: passiveInvestigation,
+        passiveInsight: passiveInsight,
         languages: raceData.languages || ['Common'],
         traits: raceData.traits || [],
         senses: raceData.senses || [],
@@ -542,6 +594,16 @@ function generateNPC() {
         toolProficiencies: backgroundData?.tools || [],
         appearance: generatePhysicalAppearance(selectedRace, selectedGender),
         currency: generateStartingCurrency(characterClasses[0]?.className || 'commoner'),
+        feats: characterFeats,
+        asisTaken: asisTaken,
+        bonusFeat: bonusFeat,
+        pendingLevelUpChoice: pendingLevelUpChoice,
+        // Proficiencies and passive skills
+        armorProficiencies: [...armorProficiencies],
+        weaponProficiencies: [...weaponProficiencies],
+        passiveInvestigation: passiveInvestigation,
+        passiveInsight: passiveInsight,
+        xp: xpThresholds[totalLevel] || 0,
         ...calculateAC(characterClasses[0]?.className || 'commoner', modifiers)
     });
 }
@@ -1216,6 +1278,365 @@ function generateBackstory(name, race, occupation, age, alignment, ageCategory, 
     
     const templates = backstoryTemplates[ageCategory] || backstoryTemplates['adult'];
     return randomChoice(templates);
+}
+
+// === FEAT SELECTION FUNCTIONS ===
+
+// Get ASI levels for a specific class (Fighter and Rogue get extra ASIs)
+function getASILevels(className) {
+    return asiLevels[className] || asiLevels.barbarian; // Default to standard ASI levels
+}
+
+// Count how many ASIs a character has earned based on their class levels
+function countASIsEarned(characterClasses) {
+    let totalASIs = 0;
+    
+    characterClasses.forEach(cc => {
+        if (cc.className === 'commoner' || cc.level <= 0) return;
+        
+        const classASILevels = getASILevels(cc.className);
+        totalASIs += classASILevels.filter(lvl => lvl <= cc.level).length;
+    });
+    
+    return totalASIs;
+}
+
+// Apply optimal ASIs for a class (used when "Random" is selected)
+function applyOptimalASIs(characterClasses, abilities, modifiers, totalASIs) {
+    const newAbilities = { ...abilities };
+    const newModifiers = { ...modifiers };
+    
+    // Get primary class for stat priorities
+    const primaryClass = characterClasses.find(cc => cc.className !== 'commoner')?.className || 'fighter';
+    const classData = classes[primaryClass];
+    
+    // Define stat priority based on class
+    const statPriority = [];
+    if (classData) {
+        if (classData.primaryStat && classData.primaryStat !== 'none') {
+            statPriority.push(classData.primaryStat);
+        }
+        if (classData.secondaryStat && classData.secondaryStat !== 'none') {
+            statPriority.push(classData.secondaryStat);
+        }
+    }
+    
+    // Add CON if not already there (always useful)
+    if (!statPriority.includes('con')) {
+        statPriority.push('con');
+    }
+    
+    // Fill remaining stats
+    const allStats = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+    allStats.forEach(stat => {
+        if (!statPriority.includes(stat)) {
+            statPriority.push(stat);
+        }
+    });
+    
+    // Each ASI = 2 points, spend optimally
+    let pointsRemaining = totalASIs * 2;
+    
+    while (pointsRemaining > 0) {
+        // Find the best stat to increase
+        let statIncreased = false;
+        
+        for (const stat of statPriority) {
+            // Check if this stat can be increased
+            if (newAbilities[stat] < 20) {
+                // Prefer +2 to primary stat if we have 2 points and it's not at 19
+                if (pointsRemaining >= 2 && newAbilities[stat] <= 18 && stat === statPriority[0]) {
+                    newAbilities[stat] += 2;
+                    pointsRemaining -= 2;
+                    statIncreased = true;
+                    break;
+                }
+                // Otherwise +1
+                else if (pointsRemaining >= 1) {
+                    newAbilities[stat] += 1;
+                    pointsRemaining -= 1;
+                    statIncreased = true;
+                    break;
+                }
+            }
+        }
+        
+        // If no stat could be increased (all maxed), break
+        if (!statIncreased) break;
+    }
+    
+    // Recalculate modifiers
+    Object.keys(newAbilities).forEach(ability => {
+        newModifiers[ability] = getModifier(newAbilities[ability]);
+    });
+    
+    return { abilities: newAbilities, modifiers: newModifiers };
+}
+
+// Check if a feat's prerequisites are met
+function meetsPrerequisites(feat, race, abilities, characterClasses, existingFeats) {
+    const prereqs = feat.prerequisites;
+    if (!prereqs) return true;
+    
+    // Check ability score requirements
+    if (prereqs.ability) {
+        for (const [ability, minScore] of Object.entries(prereqs.ability)) {
+            if (abilities[ability] < minScore) return false;
+        }
+    }
+    
+    // Check for alternative ability requirements (e.g., INT 13 OR WIS 13)
+    if (prereqs.abilityOr) {
+        let metAny = false;
+        for (const [ability, minScore] of Object.entries(prereqs.abilityOr)) {
+            if (abilities[ability] >= minScore) {
+                metAny = true;
+                break;
+            }
+        }
+        if (!metAny) return false;
+    }
+    
+    // Check race requirements
+    if (prereqs.race) {
+        const raceKey = race.toLowerCase();
+        // Check if race matches any in the list (handle sub-races like "wood elf" matching "elf")
+        const raceMatches = prereqs.race.some(r => {
+            const reqRace = r.toLowerCase();
+            return raceKey === reqRace || raceKey.includes(reqRace) || reqRace.includes(raceKey);
+        });
+        if (!raceMatches) return false;
+    }
+    
+    // Check spellcasting requirement
+    if (prereqs.spellcasting) {
+        const spellcastingClasses = ['artificer', 'bard', 'cleric', 'druid', 'paladin', 'ranger', 'sorcerer', 'warlock', 'wizard'];
+        const hasSpellcasting = characterClasses.some(cc => spellcastingClasses.includes(cc.className) && cc.level >= 1);
+        if (!hasSpellcasting) return false;
+    }
+    
+    // Check armor proficiency requirement
+    if (prereqs.armorProficiency) {
+        const armorProficiencyClasses = {
+            light: ['artificer', 'bard', 'cleric', 'druid', 'fighter', 'paladin', 'ranger', 'rogue', 'warlock'],
+            medium: ['artificer', 'barbarian', 'cleric', 'druid', 'fighter', 'paladin', 'ranger'],
+            heavy: ['fighter', 'paladin', 'cleric'] // Some clerics get heavy armor from domain
+        };
+        const hasArmor = characterClasses.some(cc => armorProficiencyClasses[prereqs.armorProficiency]?.includes(cc.className));
+        if (!hasArmor) return false;
+    }
+    
+    // Check weapon proficiency requirement
+    if (prereqs.weaponProficiency === 'martial') {
+        const martialClasses = ['barbarian', 'fighter', 'paladin', 'ranger'];
+        const hasMartial = characterClasses.some(cc => martialClasses.includes(cc.className));
+        if (!hasMartial) return false;
+    }
+    
+    // Check feat prerequisite (for feat chains)
+    if (prereqs.feat) {
+        if (!existingFeats.includes(prereqs.feat)) return false;
+    }
+    
+    return true;
+}
+
+// Select a feat for a character
+function selectFeat(characterClasses, race, abilities, existingFeats) {
+    // Get the primary class for recommendations
+    const primaryClass = characterClasses.find(cc => cc.className !== 'commoner')?.className || 'fighter';
+    
+    // Filter feats that:
+    // 1. The character meets prerequisites for
+    // 2. The character doesn't already have
+    const eligibleFeats = Object.entries(feats).filter(([featId, feat]) => {
+        // Skip if already has this feat
+        if (existingFeats.includes(featId)) return false;
+        
+        // Check prerequisites
+        if (!meetsPrerequisites(feat, race, abilities, characterClasses, existingFeats)) return false;
+        
+        return true;
+    });
+    
+    if (eligibleFeats.length === 0) return null;
+    
+    // Sort feats by priority:
+    // 1. Feats recommended for the character's class (weighted higher)
+    // 2. Half-feats that boost a relevant ability
+    // 3. General feats
+    const scoredFeats = eligibleFeats.map(([featId, feat]) => {
+        let score = 1;
+        
+        // Boost score if recommended for this class
+        if (feat.recommendedFor) {
+            if (feat.recommendedFor.includes(primaryClass)) {
+                score += 10;
+            } else if (feat.recommendedFor.includes('any')) {
+                score += 3;
+            }
+        }
+        
+        // Boost half-feats that would increase a useful stat
+        if (feat.abilityBonus) {
+            const classData = classes[primaryClass];
+            if (classData) {
+                if (feat.abilityBonus.choice.includes(classData.primaryStat)) {
+                    score += 5;
+                } else if (feat.abilityBonus.choice.includes(classData.secondaryStat)) {
+                    score += 3;
+                }
+            }
+        }
+        
+        // Add some randomness
+        score += Math.random() * 3;
+        
+        return { featId, feat, score };
+    });
+    
+    // Sort by score descending
+    scoredFeats.sort((a, b) => b.score - a.score);
+    
+    // Take from the top choices with weighted randomness
+    const topChoices = scoredFeats.slice(0, Math.min(5, scoredFeats.length));
+    const totalScore = topChoices.reduce((sum, f) => sum + f.score, 0);
+    let random = Math.random() * totalScore;
+    
+    for (const choice of topChoices) {
+        random -= choice.score;
+        if (random <= 0) {
+            return choice.featId;
+        }
+    }
+    
+    // Fallback to first choice
+    return topChoices[0]?.featId || null;
+}
+
+// Apply feat benefits (for half-feats that grant ability score bonuses)
+function applyFeatBenefits(featId, abilities, modifiers, primaryClass) {
+    const feat = feats[featId];
+    if (!feat || !feat.abilityBonus) return { abilities, modifiers };
+    
+    // Clone the objects
+    const newAbilities = { ...abilities };
+    const newModifiers = { ...modifiers };
+    
+    // For half-feats, choose the best ability from the choices
+    const choices = feat.abilityBonus.choice;
+    const amount = feat.abilityBonus.amount;
+    
+    // Prioritize: primary stat > secondary stat > highest available stat
+    const classData = classes[primaryClass];
+    let chosenAbility = null;
+    
+    if (classData && choices.includes(classData.primaryStat)) {
+        chosenAbility = classData.primaryStat;
+    } else if (classData && choices.includes(classData.secondaryStat)) {
+        chosenAbility = classData.secondaryStat;
+    } else {
+        // Pick the ability with the highest current score that's odd (to maximize benefit)
+        let bestChoice = choices[0];
+        let bestScore = -Infinity;
+        
+        for (const ability of choices) {
+            const score = newAbilities[ability];
+            // Prefer odd scores (will benefit more from +1)
+            const adjustedScore = score % 2 === 1 ? score + 0.5 : score;
+            if (adjustedScore > bestScore) {
+                bestScore = adjustedScore;
+                bestChoice = ability;
+            }
+        }
+        chosenAbility = bestChoice;
+    }
+    
+    if (chosenAbility) {
+        newAbilities[chosenAbility] += amount;
+        newModifiers[chosenAbility] = getModifier(newAbilities[chosenAbility]);
+    }
+    
+    return { abilities: newAbilities, modifiers: newModifiers };
+}
+
+// Generate feats for a character based on their level and ASI opportunities
+function generateFeats(characterClasses, race, abilities, modifiers, allowFeats) {
+    if (!allowFeats) return { feats: [], abilities, modifiers, asisTaken: 0, bonusFeat: false };
+    
+    const selectedFeats = [];
+    let currentAbilities = { ...abilities };
+    let currentModifiers = { ...modifiers };
+    let bonusFeat = false;
+    
+    const primaryClass = characterClasses.find(cc => cc.className !== 'commoner')?.className || 'fighter';
+    const raceKey = race.toLowerCase();
+    
+    // Variant Human / Custom Lineage: Get a free feat at level 1
+    // When feats are enabled and race is human, simulate Variant Human by giving a bonus feat
+    // Also applies to races with no fixed ability bonuses (Custom Lineage style)
+    const isVariantHumanEligible = raceKey === 'human';
+    const isCustomLineageEligible = ['reborn', 'hexblood', 'dhampir'].includes(raceKey);
+    
+    if (isVariantHumanEligible || isCustomLineageEligible) {
+        // 50% chance to use variant human/custom lineage option (to add variety)
+        if (Math.random() < 0.5) {
+            const bonusFeatId = selectFeat(characterClasses, race, currentAbilities, selectedFeats);
+            if (bonusFeatId) {
+                selectedFeats.push(bonusFeatId);
+                bonusFeat = true;
+                
+                // Apply feat benefits (half-feats add ability scores)
+                const result = applyFeatBenefits(bonusFeatId, currentAbilities, currentModifiers, primaryClass);
+                currentAbilities = result.abilities;
+                currentModifiers = result.modifiers;
+            }
+        }
+    }
+    
+    // Count how many ASIs this character has earned
+    const totalASIs = countASIsEarned(characterClasses);
+    
+    if (totalASIs === 0) return { 
+        feats: selectedFeats, 
+        abilities: currentAbilities, 
+        modifiers: currentModifiers, 
+        asisTaken: 0,
+        bonusFeat: bonusFeat
+    };
+    
+    // For each ASI opportunity, randomly decide: feat (50%) or ASI (50%)
+    let asisTaken = 0;
+    
+    for (let i = 0; i < totalASIs; i++) {
+        const takeFeat = Math.random() < 0.5;
+        
+        if (takeFeat) {
+            const featId = selectFeat(characterClasses, race, currentAbilities, selectedFeats);
+            
+            if (featId) {
+                selectedFeats.push(featId);
+                
+                // Apply feat benefits (half-feats add ability scores)
+                const result = applyFeatBenefits(featId, currentAbilities, currentModifiers, primaryClass);
+                currentAbilities = result.abilities;
+                currentModifiers = result.modifiers;
+            } else {
+                // No eligible feats, take ASI instead
+                asisTaken++;
+            }
+        } else {
+            asisTaken++;
+        }
+    }
+    
+    return {
+        feats: selectedFeats,
+        abilities: currentAbilities,
+        modifiers: currentModifiers,
+        asisTaken: asisTaken,
+        bonusFeat: bonusFeat
+    };
 }
 
 // Store current NPC data and lock states globally

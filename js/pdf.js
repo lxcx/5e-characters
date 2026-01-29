@@ -108,6 +108,20 @@ table tr:last-child td { border-bottom: none; }
 .info-label { font-weight: bold; color: #58180d; }
 .equipment-list { padding-left: 20px; }
 .proficient-note { font-size: 9pt; color: #666; margin-top: 5px; font-style: italic; }
+.death-saves { display: flex; gap: 15px; align-items: center; margin-top: 10px; }
+.death-save-group { display: flex; align-items: center; gap: 5px; }
+.death-save-label { font-size: 9pt; font-weight: bold; color: #58180d; }
+.death-save-circles { display: flex; gap: 4px; }
+.death-circle { width: 14px; height: 14px; border: 2px solid #58180d; border-radius: 50%; }
+.death-circle.success { border-color: #28a745; }
+.death-circle.failure { border-color: #dc3545; }
+.spell-slot-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.spell-slot-label { font-weight: bold; min-width: 50px; color: #58180d; }
+.spell-slot-circles { display: flex; gap: 4px; }
+.spell-circle { width: 16px; height: 16px; border: 2px solid #58180d; border-radius: 4px; }
+.current-hp-box { display: flex; align-items: center; gap: 5px; margin-top: 5px; }
+.hp-write-box { width: 50px; height: 25px; border: 2px solid #58180d; border-radius: 4px; }
+.hp-label { font-size: 9pt; color: #58180d; }
 @media print {
     body { padding: 0; }
     @page { margin: 0.5in; }
@@ -122,6 +136,27 @@ table tr:last-child td { border-bottom: none; }
         ${capitalize(npc.gender)} ${capitalize(npc.race)} ${classDisplay} | Level ${npc.totalLevel || 1}<br>
         ${npc.characterClasses?.some(cc => cc.className === 'commoner') ? capitalize(npc.occupation) + ' | ' : ''}${capitalize(npc.alignment)}
     </div>
+    <div class="death-saves">
+        <div class="death-save-group">
+            <span class="death-save-label">Death Saves:</span>
+        </div>
+        <div class="death-save-group">
+            <span class="death-save-label" style="color: #28a745;">Success</span>
+            <div class="death-save-circles">
+                <div class="death-circle success"></div>
+                <div class="death-circle success"></div>
+                <div class="death-circle success"></div>
+            </div>
+        </div>
+        <div class="death-save-group">
+            <span class="death-save-label" style="color: #dc3545;">Failure</span>
+            <div class="death-save-circles">
+                <div class="death-circle failure"></div>
+                <div class="death-circle failure"></div>
+                <div class="death-circle failure"></div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="header-portrait">
     ${portraitHtml}
@@ -130,23 +165,10 @@ table tr:last-child td { border-bottom: none; }
 
     <div class="columns">
 <div class="column">
-    <h2>Ability Scores</h2>
-    <div class="stat-grid">
-        ${Object.keys(npc.abilities).map(ability => {
-            const isProficient = npc.savingThrows && npc.savingThrows.includes(ability);
-            return `
-            <div class="stat-box ${isProficient ? 'proficient' : ''}">
-                <div class="stat-name">${abilityNames[ability]}</div>
-                <div class="stat-score">${npc.abilities[ability]}</div>
-                <div class="stat-mod">${formatModifier(npc.modifiers[ability])}</div>
-            </div>`;
-        }).join('')}
-    </div>
-
     <h2>Combat</h2>
     <div class="combat-stats">
         <div class="combat-box">
-            <div class="combat-label">HP</div>
+            <div class="combat-label">Max HP</div>
             <div class="combat-value">${npc.hitPoints}</div>
         </div>
         <div class="combat-box">
@@ -162,10 +184,125 @@ table tr:last-child td { border-bottom: none; }
             <div class="combat-value">+${profBonus}</div>
         </div>
     </div>
+    <div style="display: flex; gap: 15px; margin-bottom: 10px;">
+        <div class="current-hp-box">
+            <span class="hp-label">Current HP:</span>
+            <div class="hp-write-box"></div>
+        </div>
+        <div class="current-hp-box">
+            <span class="hp-label">Temp HP:</span>
+            <div class="hp-write-box" style="width: 40px;"></div>
+        </div>
+    </div>
     <div class="info-row"><span class="info-label">Hit Dice:</span> ${getHitDiceString(npc.characterClasses || [])}</div>
     <div class="info-row"><span class="info-label">Armor:</span> ${npc.armorName}</div>
     <div class="info-row"><span class="info-label">Speed:</span> ${npc.speed} ft</div>
     <div class="info-row"><span class="info-label">Passive Perception:</span> ${npc.passivePerception}</div>
+
+    ${(() => {
+        // Calculate class resources
+        const resources = [];
+        const chaMod = Math.max(1, npc.modifiers?.cha || 1);
+        const wisMod = Math.max(1, npc.modifiers?.wis || 1);
+        
+        (npc.characterClasses || []).forEach(cc => {
+            const level = cc.level || 1;
+            const className = cc.className;
+            
+            switch(className) {
+                case 'barbarian':
+                    if (level >= 1) {
+                        let rages = level >= 20 ? '∞' : (level >= 17 ? 6 : (level >= 12 ? 5 : (level >= 6 ? 4 : (level >= 3 ? 3 : 2))));
+                        resources.push({ name: 'Rage', count: rages === '∞' ? 0 : rages, unlimited: rages === '∞' });
+                    }
+                    break;
+                case 'bard':
+                    if (level >= 1) resources.push({ name: 'Bardic Inspiration', count: chaMod });
+                    break;
+                case 'cleric':
+                    if (level >= 2) {
+                        let cd = level >= 18 ? 3 : (level >= 6 ? 2 : 1);
+                        resources.push({ name: 'Channel Divinity', count: cd });
+                    }
+                    break;
+                case 'druid':
+                    if (level >= 2) resources.push({ name: 'Wild Shape', count: 2 });
+                    break;
+                case 'fighter':
+                    if (level >= 2) resources.push({ name: 'Action Surge', count: level >= 17 ? 2 : 1 });
+                    if (level >= 1) resources.push({ name: 'Second Wind', count: 1 });
+                    if (level >= 9) resources.push({ name: 'Indomitable', count: level >= 17 ? 3 : (level >= 13 ? 2 : 1) });
+                    break;
+                case 'monk':
+                    if (level >= 2) resources.push({ name: 'Ki Points', count: level });
+                    break;
+                case 'paladin':
+                    if (level >= 1) resources.push({ name: 'Lay on Hands', count: level * 5, isPool: true });
+                    if (level >= 1) resources.push({ name: 'Divine Sense', count: 1 + chaMod });
+                    if (level >= 3) resources.push({ name: 'Channel Divinity', count: 1 });
+                    break;
+                case 'ranger':
+                    if (level >= 1) resources.push({ name: 'Favored Foe', count: profBonus });
+                    break;
+                case 'sorcerer':
+                    if (level >= 2) resources.push({ name: 'Sorcery Points', count: level });
+                    if (level >= 5) resources.push({ name: 'Metamagic', count: level >= 17 ? 4 : (level >= 10 ? 3 : 2) });
+                    break;
+                case 'warlock':
+                    // Warlock spell slots handled separately
+                    break;
+                case 'wizard':
+                    if (level >= 2) resources.push({ name: 'Arcane Recovery', count: 1 });
+                    if (level >= 18) resources.push({ name: 'Spell Mastery', count: 2 });
+                    break;
+                case 'artificer':
+                    if (level >= 2) resources.push({ name: 'Infusions', count: level >= 18 ? 6 : (level >= 14 ? 5 : (level >= 10 ? 4 : (level >= 6 ? 3 : 2))) });
+                    if (level >= 7) resources.push({ name: 'Flash of Genius', count: Math.max(1, npc.modifiers?.int || 1) });
+                    break;
+            }
+        });
+        
+        if (resources.length === 0) return '';
+        
+        let html = '<div style="margin-top: 10px; padding: 10px; background: #fdf1dc; border-radius: 5px; border: 1px solid #c9ad6a;">';
+        html += '<div style="font-family: \'Nodesto Caps Condensed\', serif; font-size: 11pt; font-weight: bold; color: #58180d; margin-bottom: 8px;">Class Resources</div>';
+        
+        resources.forEach(r => {
+            html += '<div class="spell-slot-row">';
+            html += '<span class="spell-slot-label" style="min-width: 120px;">' + r.name + ':</span>';
+            if (r.unlimited) {
+                html += '<span style="font-weight: bold; color: #58180d;">Unlimited</span>';
+            } else if (r.isPool) {
+                html += '<span style="font-weight: bold; color: #58180d;">' + r.count + ' points</span> <div class="hp-write-box" style="width: 40px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 5px;"></div>';
+            } else if (r.count <= 10) {
+                html += '<div class="spell-slot-circles">';
+                for (let i = 0; i < r.count; i++) {
+                    html += '<div class="spell-circle"></div>';
+                }
+                html += '</div>';
+            } else {
+                html += '<div class="hp-write-box" style="width: 30px; height: 20px; display: inline-block; vertical-align: middle;"></div>';
+                html += '<span style="font-weight: bold; color: #58180d; margin: 0 5px;"> / ' + r.count + '</span>';
+            }
+            html += '</div>';
+        });
+        
+        html += '</div>';
+        return html;
+    })()}
+
+    <h2>Ability Scores</h2>
+    <div class="stat-grid">
+        ${Object.keys(npc.abilities).map(ability => {
+            const isProficient = npc.savingThrows && npc.savingThrows.includes(ability);
+            return `
+            <div class="stat-box ${isProficient ? 'proficient' : ''}">
+                <div class="stat-name">${abilityNames[ability]}</div>
+                <div class="stat-score">${npc.abilities[ability]}</div>
+                <div class="stat-mod">${formatModifier(npc.modifiers[ability])}</div>
+            </div>`;
+        }).join('')}
+    </div>
 
     <h2>Saving Throws</h2>
     <table>${savingThrows}</table>
@@ -300,6 +437,21 @@ if (features.length === 0) return '<p>None</p>';
 return features.map(f => `<div class="trait-block"><strong>${f.name} (Level ${f.level} ${capitalize(f.className)}).</strong> ${f.description}</div>`).join('');
     })()}
 
+    ${npc.feats && npc.feats.length > 0 ? `
+    <h2>Feats</h2>
+    ${npc.feats.map((featId, index) => {
+        const feat = feats[featId];
+        if (!feat) return '';
+        const isBonusFeat = npc.bonusFeat && index === 0;
+        const bonusLabel = isBonusFeat ? ' (Bonus Feat)' : '';
+        const abilityBonus = feat.abilityBonus ? 
+            ` Increase ${feat.abilityBonus.choice.map(a => a.toUpperCase()).join(' or ')} by ${feat.abilityBonus.amount}.` : '';
+        const benefits = feat.benefits && feat.benefits.length > 0 ? 
+            ' ' + feat.benefits.join(' ') : '';
+        return `<div class="trait-block"><strong>${feat.name}${bonusLabel}.</strong> <em style="color: #6c757d;">(${feat.source})</em> ${feat.description}${abilityBonus}${benefits}</div>`;
+    }).join('')}
+    ` : ''}
+
     ${npc.spellData ? `
     <h2>Spellcasting</h2>
     <div class="spellcasting-header" style="margin-bottom: 15px; padding: 10px; background: #fdf1dc; border-radius: 5px; border: 1px solid #c9ad6a;">
@@ -309,7 +461,17 @@ ${(() => {
     const slotLabels = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
     const activeSlots = npc.spellData.spellSlots.map((count, idx) => ({ label: slotLabels[idx], count })).filter(s => s.count > 0);
     if (activeSlots.length === 0) return '';
-    return '<div style="margin-top: 5px;"><strong>Spell Slots:</strong> ' + activeSlots.map(s => s.label + ': ' + s.count).join(' | ') + '</div>';
+    let html = '<div style="margin-top: 10px;"><strong>Spell Slots:</strong></div>';
+    html += '<div style="margin-top: 5px;">';
+    activeSlots.forEach(s => {
+        html += '<div class="spell-slot-row"><span class="spell-slot-label">' + s.label + ':</span><div class="spell-slot-circles">';
+        for (let i = 0; i < s.count; i++) {
+            html += '<div class="spell-circle"></div>';
+        }
+        html += '</div></div>';
+    });
+    html += '</div>';
+    return html;
 })()}
     </div>
     

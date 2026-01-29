@@ -15,7 +15,9 @@ const lockStates = {
     languages: false,
     backstory: false,
     spells: false,
-    weapons: false
+    weapons: false,
+    background: false,
+    feats: false
 };
 
 function toggleLock(field) {
@@ -211,8 +213,14 @@ function displayNPC(npc) {
 
             <!-- Combat Stats Section -->
             <div class="section-title"><i class="fa-solid fa-shield-halved"></i> Combat Stats</div>
+            
             <div class="info-item">
-                <span class="info-label">Hit Points:</span><span class="editable" id="editable-hp" onclick="event.stopPropagation(); editHPField()">${npc.hitPoints}</span> ${npc.customHP ? '(Custom)' : (npc.hitDice ? `(${npc.hitDice})` : '')}
+                <span class="info-label">Hit Points:</span>
+                <span class="editable" id="editable-hp" onclick="event.stopPropagation(); editHPField()">${npc.hitPoints}</span>
+                ${npc.customHP ? '(Custom)' : (npc.hitDice ? `(${npc.hitDice})` : '')}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Hit Dice:</span>${npc.hitDice || 'None'}
             </div>
             <div class="info-item">
                 <span class="info-label">Armor Class:</span><span class="editable" id="editable-ac" onclick="event.stopPropagation(); editACField()">${npc.ac}</span> ${npc.customAC ? '(Custom)' : `(${npc.armorName})`}
@@ -221,13 +229,26 @@ function displayNPC(npc) {
                 <span class="info-label">Initiative:</span>${npc.initiative >= 0 ? '+' : ''}${npc.initiative}
             </div>
             <div class="info-item">
-                <span class="info-label">Passive Perception:</span>${npc.passivePerception}
+                <span class="info-label">Speed:</span>${npc.speed} ft.
             </div>
             ${npc.proficiencyBonus ? `
             <div class="info-item">
                 <span class="info-label">Proficiency Bonus:</span>+${npc.proficiencyBonus}
             </div>
             ` : ''}
+            
+            <!-- Passive Skills -->
+            <div class="passive-skills-row">
+                <div class="passive-skill" title="Passive Perception">
+                    <i class="fa-solid fa-eye"></i> ${npc.passivePerception}
+                </div>
+                <div class="passive-skill" title="Passive Investigation">
+                    <i class="fa-solid fa-magnifying-glass"></i> ${npc.passiveInvestigation || 10 + (npc.modifiers?.int || 0)}
+                </div>
+                <div class="passive-skill" title="Passive Insight">
+                    <i class="fa-solid fa-brain"></i> ${npc.passiveInsight || 10 + (npc.modifiers?.wis || 0)}
+                </div>
+            </div>
     `;
     
     // Saving Throws with actual values
@@ -298,6 +319,34 @@ function displayNPC(npc) {
                 <span>${npc.toolProficiencies.join(', ')}</span>
             </div>
         `;
+    }
+
+    // Armor & Weapon Proficiencies
+    if ((npc.armorProficiencies && npc.armorProficiencies.length > 0) || 
+        (npc.weaponProficiencies && npc.weaponProficiencies.length > 0)) {
+        html += `
+            <div class="proficiencies-section" style="margin-top: 10px;">
+        `;
+        
+        if (npc.armorProficiencies && npc.armorProficiencies.length > 0) {
+            html += `
+                <div class="info-item">
+                    <span class="info-label">Armor:</span>
+                    <span>${npc.armorProficiencies.join(', ')}</span>
+                </div>
+            `;
+        }
+        
+        if (npc.weaponProficiencies && npc.weaponProficiencies.length > 0) {
+            html += `
+                <div class="info-item">
+                    <span class="info-label">Weapons:</span>
+                    <span>${npc.weaponProficiencies.join(', ')}</span>
+                </div>
+            `;
+        }
+        
+        html += `</div>`;
     }
 
     // Weapons Section
@@ -715,6 +764,30 @@ function displayNPC(npc) {
         `;
     }
 
+    // Pending Level Up section (if user chose "Choose Ability Scores & Feats")
+    if (npc.pendingLevelUpChoice) {
+        const totalASIs = countASIsEarned(npc.characterClasses || []);
+        const totalPoints = totalASIs * 2;
+        const raceKey = npc.race.toLowerCase();
+        const canHaveBonusFeat = raceKey === 'human' || ['reborn', 'hexblood', 'dhampir'].includes(raceKey);
+        
+        html += `
+            <div class="pending-levelup-section">
+                <div class="pending-levelup-icon"><i class="fa-solid fa-exclamation-triangle"></i></div>
+                <div class="pending-levelup-content">
+                    <div class="pending-levelup-title">Level Up Choices Required</div>
+                    <div class="pending-levelup-desc">
+                        You have <strong>${totalPoints} points</strong> to spend on ability scores and feats.
+                        ${canHaveBonusFeat ? '<br><span class="pending-levelup-bonus">Plus 1 free bonus feat from your race!</span>' : ''}
+                    </div>
+                    <button class="pending-levelup-btn" onclick="openLevelUpModal()">
+                        <i class="fa-solid fa-arrow-up"></i> Make Level Up Choices
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
     // Portrait section
     html += `
         <div class="portrait-section" id="portraitSection">
@@ -806,6 +879,12 @@ function toggleCharacterType() {
         bgSelect.value = isPC ? 'random' : 'none';
         showBackgroundDescription();
     }
+    
+    // Update level up options default based on mode
+    const levelUpOptionsSelect = document.getElementById('levelUpOptions');
+    if (levelUpOptionsSelect) {
+        levelUpOptionsSelect.value = isPC ? 'choose' : 'random';
+    }
 }
 
 function isPCMode() {
@@ -885,10 +964,53 @@ function onClassChange() {
     
     // Update subclass options
     updateSubclassOptions();
+    
+    // Update feats toggle visibility
+    updateFeatsToggleVisibility();
 }
 
 function onLevelChange() {
     updateSubclassOptions();
+    updateFeatsToggleVisibility();
+}
+
+// Show level up options when character has ASI levels (level 4+)
+function updateLevelUpOptionsVisibility() {
+    const classSelect = document.getElementById('npcClass');
+    const levelSelect = document.getElementById('npcClassLevel');
+    const levelUpOptionsRow = document.getElementById('levelUpOptionsRow');
+    const levelUpOptionsSelect = document.getElementById('levelUpOptions');
+    
+    if (!levelUpOptionsRow) return;
+    
+    const selectedClass = classSelect.value;
+    const selectedLevel = parseInt(levelSelect.value) || 1;
+    
+    // Show level up options if:
+    // 1. Class is an adventurer class (not commoner, not random)
+    // 2. Level is 4+ (when first ASI is available)
+    // Also consider multiclasses that might have levels 4+
+    const isAdventurer = selectedClass !== 'commoner' && selectedClass !== 'random';
+    const hasASILevel = selectedLevel >= 4;
+    
+    // Check multiclasses for level 4+
+    const multiclassHasASI = multiclasses.some(mc => mc.level >= 4);
+    
+    if ((isAdventurer && hasASILevel) || multiclassHasASI) {
+        levelUpOptionsRow.style.display = 'flex';
+        
+        // Set default based on character type: NPCs = random, PCs = choose
+        if (levelUpOptionsSelect) {
+            levelUpOptionsSelect.value = isPCMode() ? 'choose' : 'random';
+        }
+    } else {
+        levelUpOptionsRow.style.display = 'none';
+    }
+}
+
+// Alias for backward compatibility
+function updateFeatsToggleVisibility() {
+    updateLevelUpOptionsVisibility();
 }
 
 function updateSubclassOptions() {
@@ -939,11 +1061,13 @@ function addMulticlass() {
     });
     
     renderMulticlasses();
+    updateFeatsToggleVisibility();
 }
 
 function removeMulticlass(index) {
     multiclasses.splice(index, 1);
     renderMulticlasses();
+    updateFeatsToggleVisibility();
 }
 
 function updateMulticlass(index, field, value) {
@@ -960,6 +1084,7 @@ function updateMulticlass(index, field, value) {
             multiclasses[index].subclass = null;
         }
         renderMulticlasses(); // Re-render to show/hide subclass dropdown
+        updateFeatsToggleVisibility();
     } else if (field === 'subclass') {
         multiclasses[index].subclass = value;
     }
@@ -1449,6 +1574,12 @@ function editHPField() {
             displayNPC(currentNPC);
         }
     });
+}
+
+// Get XP needed for next level
+function getNextLevelXP(currentLevel) {
+    if (currentLevel >= 20) return xpThresholds[20];
+    return xpThresholds[currentLevel + 1] || 355000;
 }
 
 // Edit AC field
@@ -2091,6 +2222,704 @@ function updateSkillCountDisplay() {
         const lockedNote = locked > 0 ? ` (${locked} locked)` : '';
         countText.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${selected} selected — exceeds limit of ${max}${lockedNote}`;
     }
+}
+
+// ============================================
+// LEVEL UP MODAL FUNCTIONS
+// ============================================
+
+let levelUpState = {
+    totalPoints: 0,
+    pointsSpent: 0,
+    abilityIncreases: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
+    selectedFeats: [],
+    baseAbilities: {},
+    npcData: null
+};
+
+function openLevelUpModal(npcData) {
+    levelUpState.npcData = npcData || currentNPC;
+    if (!levelUpState.npcData) return;
+    
+    // Calculate total points: each ASI = 2 points
+    const totalASIs = countASIsEarned(levelUpState.npcData.characterClasses || []);
+    levelUpState.totalPoints = totalASIs * 2;
+    levelUpState.pointsSpent = 0;
+    levelUpState.abilityIncreases = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
+    levelUpState.selectedFeats = [];
+    levelUpState.baseAbilities = { ...levelUpState.npcData.abilities };
+    
+    // Check for bonus feat eligibility (variant human/custom lineage)
+    const raceKey = levelUpState.npcData.race.toLowerCase();
+    const canHaveBonusFeat = raceKey === 'human' || ['reborn', 'hexblood', 'dhampir'].includes(raceKey);
+    levelUpState.canHaveBonusFeat = canHaveBonusFeat;
+    levelUpState.bonusFeatUsed = false;
+    
+    renderLevelUpModal();
+    
+    const modal = document.getElementById('levelUpModal');
+    modal.classList.add('active');
+}
+
+function renderLevelUpModal() {
+    updateLevelUpPointsDisplay();
+    renderLevelUpAbilities();
+    renderLevelUpFeats();
+}
+
+function updateLevelUpPointsDisplay() {
+    const display = document.getElementById('levelUpPointsDisplay');
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    
+    let bonusFeatText = '';
+    if (levelUpState.canHaveBonusFeat && !levelUpState.bonusFeatUsed) {
+        bonusFeatText = ' <span style="font-size: 0.8em; opacity: 0.9;">(+1 free feat available)</span>';
+    }
+    
+    display.innerHTML = `
+        <div>
+            <div class="points-label">Level Up Points${bonusFeatText}</div>
+            <div style="font-size: 0.85em; opacity: 0.8;">Each ASI grants 2 points • Feats cost 2 points • Ability +1 costs 1 point</div>
+        </div>
+        <div class="points-remaining">${remaining} / ${levelUpState.totalPoints}</div>
+    `;
+}
+
+function renderLevelUpAbilities() {
+    const container = document.getElementById('levelUpAbilities');
+    const abilityNames = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    
+    // Calculate feat bonuses for each ability
+    const featBonuses = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
+    levelUpState.selectedFeats.forEach(featEntry => {
+        if (featEntry.abilityChoice) {
+            const feat = feats[featEntry.id];
+            if (feat && feat.abilityBonus) {
+                featBonuses[featEntry.abilityChoice] += feat.abilityBonus.amount;
+            }
+        }
+    });
+    
+    let html = '';
+    
+    Object.entries(abilityNames).forEach(([key, name]) => {
+        const baseScore = levelUpState.baseAbilities[key];
+        const increase = levelUpState.abilityIncreases[key];
+        const featBonus = featBonuses[key];
+        const currentScore = Math.min(20, baseScore + increase + featBonus); // Cap at 20
+        const modifier = Math.floor((currentScore - 10) / 2);
+        const modStr = modifier >= 0 ? `+${modifier}` : `${modifier}`;
+        
+        const canIncrease = currentScore < 20 && remaining >= 1;
+        const canDecrease = increase > 0;
+        
+        // Show breakdown of increases
+        let increaseText = '';
+        if (increase > 0 && featBonus > 0) {
+            increaseText = `+${increase} / +${featBonus}★`;
+        } else if (increase > 0) {
+            increaseText = `+${increase}`;
+        } else if (featBonus > 0) {
+            increaseText = `+${featBonus}★`;
+        }
+        
+        html += `
+            <div class="level-up-ability">
+                <div class="level-up-ability-info">
+                    <span class="level-up-ability-name">${name.substring(0, 3)}</span>
+                    <span class="level-up-ability-score">${currentScore}</span>
+                    <span class="level-up-ability-mod">(${modStr})</span>
+                </div>
+                <div class="level-up-ability-controls">
+                    <button class="level-up-ability-btn minus" onclick="decreaseAbility('${key}')" ${!canDecrease ? 'disabled' : ''}>
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <span class="level-up-ability-increase" title="${featBonus > 0 ? '★ = from feat' : ''}">${increaseText}</span>
+                    <button class="level-up-ability-btn plus" onclick="increaseAbility('${key}')" ${!canIncrease ? 'disabled' : ''}>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+function increaseAbility(ability) {
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    
+    // Calculate feat bonuses for this ability
+    let featBonus = 0;
+    levelUpState.selectedFeats.forEach(featEntry => {
+        if (featEntry.abilityChoice === ability) {
+            const feat = feats[featEntry.id];
+            if (feat && feat.abilityBonus) {
+                featBonus += feat.abilityBonus.amount;
+            }
+        }
+    });
+    
+    const currentScore = levelUpState.baseAbilities[ability] + levelUpState.abilityIncreases[ability] + featBonus;
+    
+    if (remaining >= 1 && currentScore < 20) {
+        levelUpState.abilityIncreases[ability]++;
+        levelUpState.pointsSpent++;
+        renderLevelUpModal();
+    }
+}
+
+function decreaseAbility(ability) {
+    if (levelUpState.abilityIncreases[ability] > 0) {
+        levelUpState.abilityIncreases[ability]--;
+        levelUpState.pointsSpent--;
+        renderLevelUpModal();
+    }
+}
+
+function renderLevelUpFeats() {
+    const abilityNames = { str: 'STR', dex: 'DEX', con: 'CON', int: 'INT', wis: 'WIS', cha: 'CHA' };
+    
+    // Render selected feats
+    const selectedContainer = document.getElementById('levelUpFeatsSelected');
+    if (levelUpState.selectedFeats.length > 0) {
+        selectedContainer.innerHTML = levelUpState.selectedFeats.map((featEntry, index) => {
+            const feat = feats[featEntry.id];
+            const isBonusFeat = levelUpState.canHaveBonusFeat && index === 0 && levelUpState.bonusFeatUsed;
+            const abilityText = featEntry.abilityChoice ? ` (+1 ${abilityNames[featEntry.abilityChoice]})` : '';
+            return `
+                <span class="level-up-feat-selected-tag ${isBonusFeat ? 'bonus-feat' : ''}">
+                    ${feat.name}${abilityText}${isBonusFeat ? ' (Free)' : ''}
+                    <span class="remove-feat" onclick="removeLevelUpFeat('${featEntry.id}')"><i class="fa-solid fa-xmark"></i></span>
+                </span>
+            `;
+        }).join('');
+    } else {
+        selectedContainer.innerHTML = '<div style="color: #999; font-style: italic; padding: 5px;">No feats selected</div>';
+    }
+    
+    // Render feat list
+    const listContainer = document.getElementById('levelUpFeatsList');
+    const searchTerm = (document.getElementById('levelUpFeatSearch')?.value || '').toLowerCase();
+    const filterValue = document.getElementById('levelUpFeatFilter')?.value || 'eligible';
+    
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    const canAffordFeat = remaining >= 2;
+    const canUseBonusFeat = levelUpState.canHaveBonusFeat && !levelUpState.bonusFeatUsed;
+    
+    // Build current abilities for prereq checking (including feat bonuses)
+    const currentAbilities = {};
+    const featBonuses = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
+    levelUpState.selectedFeats.forEach(featEntry => {
+        if (featEntry.abilityChoice) {
+            const feat = feats[featEntry.id];
+            if (feat && feat.abilityBonus) {
+                featBonuses[featEntry.abilityChoice] += feat.abilityBonus.amount;
+            }
+        }
+    });
+    Object.keys(levelUpState.baseAbilities).forEach(key => {
+        currentAbilities[key] = levelUpState.baseAbilities[key] + levelUpState.abilityIncreases[key] + featBonuses[key];
+    });
+    
+    // Get list of already selected feat IDs
+    const selectedFeatIds = levelUpState.selectedFeats.map(f => f.id);
+    
+    // Filter feats
+    const filteredFeats = Object.entries(feats).filter(([featId, feat]) => {
+        // Skip already selected
+        if (selectedFeatIds.includes(featId)) return false;
+        
+        // Search filter
+        if (searchTerm && !feat.name.toLowerCase().includes(searchTerm) && 
+            !feat.description.toLowerCase().includes(searchTerm)) {
+            return false;
+        }
+        
+        // Prerequisite filter
+        if (filterValue === 'eligible') {
+            const eligible = meetsPrerequisites(feat, levelUpState.npcData.race, currentAbilities, 
+                levelUpState.npcData.characterClasses || [], selectedFeatIds);
+            if (!eligible) return false;
+        }
+        
+        return true;
+    }).sort((a, b) => a[1].name.localeCompare(b[1].name));
+    
+    if (filteredFeats.length === 0) {
+        listContainer.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No feats match your criteria</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = filteredFeats.map(([featId, feat]) => {
+        const eligible = meetsPrerequisites(feat, levelUpState.npcData.race, currentAbilities, 
+            levelUpState.npcData.characterClasses || [], levelUpState.selectedFeats);
+        const canSelect = eligible && (canAffordFeat || canUseBonusFeat);
+        
+        const abilityBonus = feat.abilityBonus ? 
+            `<span class="level-up-feat-ability">+${feat.abilityBonus.amount} ${feat.abilityBonus.choice.map(a => a.toUpperCase()).join('/')}</span>` : '';
+        
+        // Build full tooltip with description and benefits
+        const benefitsText = feat.benefits ? feat.benefits.join(' • ') : '';
+        const tooltipText = (feat.description + (benefitsText ? '\n\nBenefits: ' + benefitsText : '')).replace(/"/g, '&quot;');
+        
+        return `
+            <div class="level-up-feat-item ${!canSelect ? 'ineligible' : ''}" 
+                 onclick="${canSelect ? `addLevelUpFeat('${featId}')` : ''}"
+                 title="${tooltipText}">
+                <div>
+                    <span class="level-up-feat-name">${feat.name}</span>
+                    <span class="level-up-feat-source">${feat.source}</span>
+                    <span class="level-up-feat-cost">${canUseBonusFeat && eligible ? 'Free or 2 pts' : '2 pts'}</span>
+                </div>
+                <div class="level-up-feat-desc">${feat.description.substring(0, 100)}${feat.description.length > 100 ? '...' : ''}</div>
+                ${abilityBonus}
+            </div>
+        `;
+    }).join('');
+}
+
+function addLevelUpFeat(featId) {
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    const canUseBonusFeat = levelUpState.canHaveBonusFeat && !levelUpState.bonusFeatUsed;
+    
+    if (levelUpState.selectedFeats.some(f => f.id === featId)) return;
+    
+    const feat = feats[featId];
+    if (!feat) return;
+    
+    // Check if feat has ability bonus that requires a choice
+    if (feat.abilityBonus && feat.abilityBonus.choice && feat.abilityBonus.choice.length > 1) {
+        // Prompt user to choose which ability to increase
+        openFeatAbilityChoiceModal(featId, feat, canUseBonusFeat && levelUpState.selectedFeats.length === 0);
+        return;
+    }
+    
+    // Single ability or no ability bonus - add directly
+    const featEntry = { 
+        id: featId, 
+        abilityChoice: feat.abilityBonus?.choice?.[0] || null 
+    };
+    
+    // Check if using bonus feat or spending points
+    if (canUseBonusFeat && levelUpState.selectedFeats.length === 0) {
+        levelUpState.bonusFeatUsed = true;
+        levelUpState.selectedFeats.push(featEntry);
+    } else if (remaining >= 2) {
+        levelUpState.pointsSpent += 2;
+        levelUpState.selectedFeats.push(featEntry);
+    }
+    
+    renderLevelUpModal();
+}
+
+// Modal to choose which ability to increase for half-feats
+function openFeatAbilityChoiceModal(featId, feat, isBonusFeat) {
+    const abilityNames = { str: 'Strength', dex: 'Dexterity', con: 'Constitution', int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
+    
+    const modal = document.getElementById('multiSelectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalOptions');
+    const modalFooter = modal ? modal.querySelector('.modal-footer') : null;
+    const customInput = modal ? modal.querySelector('.modal-custom-input') : null;
+    
+    // Hide elements not needed for this modal
+    if (customInput) customInput.style.display = 'none';
+    
+    modalTitle.textContent = `${feat.name} - Choose Ability`;
+    
+    let html = `
+        <div class="feat-ability-choice">
+            <p style="margin-bottom: 15px; color: #666;">This feat increases one ability score by ${feat.abilityBonus.amount}. Choose which ability to increase:</p>
+            <div class="feat-ability-options">
+    `;
+    
+    feat.abilityBonus.choice.forEach(ability => {
+        const currentScore = levelUpState.baseAbilities[ability] + levelUpState.abilityIncreases[ability];
+        const canIncrease = currentScore < 20;
+        
+        html += `
+            <button class="feat-ability-option ${!canIncrease ? 'disabled' : ''}" 
+                    onclick="${canIncrease ? `confirmFeatAbilityChoice('${featId}', '${ability}', ${isBonusFeat})` : ''}"
+                    ${!canIncrease ? 'disabled' : ''}>
+                <span class="feat-ability-option-name">${abilityNames[ability]}</span>
+                <span class="feat-ability-option-score">${currentScore} → ${currentScore + feat.abilityBonus.amount}</span>
+                ${!canIncrease ? '<span class="feat-ability-option-max">(Already 20)</span>' : ''}
+            </button>
+        `;
+    });
+    
+    html += `
+            </div>
+            <button class="modal-btn modal-btn-cancel" style="margin-top: 15px;" onclick="closeModal(); renderLevelUpModal();">Cancel</button>
+        </div>
+    `;
+    
+    modalContent.innerHTML = html;
+    if (modalFooter) modalFooter.style.display = 'none';
+    modal.classList.add('active');
+}
+
+function confirmFeatAbilityChoice(featId, ability, isBonusFeat) {
+    const remaining = levelUpState.totalPoints - levelUpState.pointsSpent;
+    
+    const featEntry = { id: featId, abilityChoice: ability };
+    
+    if (isBonusFeat) {
+        levelUpState.bonusFeatUsed = true;
+        levelUpState.selectedFeats.push(featEntry);
+    } else if (remaining >= 2) {
+        levelUpState.pointsSpent += 2;
+        levelUpState.selectedFeats.push(featEntry);
+    }
+    
+    closeModal();
+    renderLevelUpModal();
+}
+
+function removeLevelUpFeat(featId) {
+    const index = levelUpState.selectedFeats.findIndex(f => f.id === featId);
+    if (index === -1) return;
+    
+    // Check if this was the bonus feat
+    if (levelUpState.canHaveBonusFeat && index === 0 && levelUpState.bonusFeatUsed) {
+        levelUpState.bonusFeatUsed = false;
+    } else {
+        // Refund the 2 points
+        levelUpState.pointsSpent -= 2;
+    }
+    
+    levelUpState.selectedFeats.splice(index, 1);
+    renderLevelUpModal();
+}
+
+function filterLevelUpFeats() {
+    renderLevelUpFeats();
+}
+
+function closeLevelUpModal() {
+    const modal = document.getElementById('levelUpModal');
+    modal.classList.remove('active');
+    levelUpState = {
+        totalPoints: 0,
+        pointsSpent: 0,
+        abilityIncreases: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
+        selectedFeats: [],
+        baseAbilities: {},
+        npcData: null
+    };
+}
+
+function saveLevelUpChoices() {
+    if (!levelUpState.npcData) {
+        closeLevelUpModal();
+        return;
+    }
+    
+    // Apply ability increases from points spent
+    Object.keys(levelUpState.abilityIncreases).forEach(ability => {
+        levelUpState.npcData.abilities[ability] += levelUpState.abilityIncreases[ability];
+    });
+    
+    // Apply ability increases from feats
+    levelUpState.selectedFeats.forEach(featEntry => {
+        if (featEntry.abilityChoice) {
+            const feat = feats[featEntry.id];
+            if (feat && feat.abilityBonus) {
+                levelUpState.npcData.abilities[featEntry.abilityChoice] += feat.abilityBonus.amount;
+                // Cap at 20
+                levelUpState.npcData.abilities[featEntry.abilityChoice] = Math.min(20, levelUpState.npcData.abilities[featEntry.abilityChoice]);
+            }
+        }
+    });
+    
+    // Recalculate all modifiers
+    Object.keys(levelUpState.npcData.abilities).forEach(ability => {
+        levelUpState.npcData.modifiers[ability] = getModifier(levelUpState.npcData.abilities[ability]);
+    });
+    
+    // Store feats as just IDs for display (with ability choices stored separately)
+    levelUpState.npcData.feats = levelUpState.selectedFeats.map(f => f.id);
+    levelUpState.npcData.featChoices = levelUpState.selectedFeats; // Keep full info for reference
+    levelUpState.npcData.bonusFeat = levelUpState.bonusFeatUsed;
+    
+    // Calculate ASIs taken (points not spent on feats / 2, rounded)
+    const pointsOnAbilities = levelUpState.pointsSpent - (levelUpState.selectedFeats.length - (levelUpState.bonusFeatUsed ? 1 : 0)) * 2;
+    levelUpState.npcData.asisTaken = Math.floor(pointsOnAbilities / 2);
+    
+    // Clear the pending flag - choices have been made
+    levelUpState.npcData.pendingLevelUpChoice = false;
+    
+    // Recalculate derived stats
+    recalculateDerivedStats(levelUpState.npcData);
+    
+    // Update display
+    displayNPC(levelUpState.npcData);
+    closeLevelUpModal();
+}
+
+// Recalculate stats that depend on abilities/modifiers
+function recalculateDerivedStats(npc) {
+    // Recalculate initiative
+    npc.initiative = npc.modifiers.dex;
+    
+    // Recalculate passive perception
+    const hasPerception = npc.skills?.includes('Perception');
+    npc.passivePerception = 10 + npc.modifiers.wis + (hasPerception ? npc.proficiencyBonus : 0);
+    
+    // Recalculate HP if CON changed
+    // This is simplified - full recalc would need class hit dice info
+    
+    // Recalculate AC for unarmored classes
+    const primaryClass = npc.characterClasses?.[0]?.className;
+    if (primaryClass === 'barbarian') {
+        npc.ac = 10 + npc.modifiers.dex + npc.modifiers.con;
+        npc.acSource = 'Unarmored Defense';
+    } else if (primaryClass === 'monk') {
+        npc.ac = 10 + npc.modifiers.dex + npc.modifiers.wis;
+        npc.acSource = 'Unarmored Defense';
+    }
+    
+    // Update weapon attack/damage bonuses
+    if (npc.weapons) {
+        npc.weapons = npc.weapons.map(weapon => ({
+            ...weapon,
+            attackBonus: calculateAttackBonus(weapon, npc.modifiers, npc.proficiencyBonus, weapon.isProficient),
+            damageBonus: calculateDamageBonus(weapon, npc.modifiers)
+        }));
+    }
+    
+    // Update spell save DC and attack bonus if spellcaster
+    if (npc.spellData) {
+        const spellAbility = npc.spellData.ability;
+        npc.spellData.saveDC = 8 + npc.proficiencyBonus + npc.modifiers[spellAbility];
+        npc.spellData.attackBonus = npc.proficiencyBonus + npc.modifiers[spellAbility];
+    }
+}
+
+// ============================================
+// FEAT MODAL FUNCTIONS
+// ============================================
+
+let currentFeatSelections = [];
+let maxFeatsAllowed = 0;
+
+function openFeatModal() {
+    if (!currentNPC) return;
+    
+    // Get current selections
+    currentFeatSelections = currentNPC.feats ? [...currentNPC.feats] : [];
+    
+    // Calculate max feats allowed
+    const totalASIs = countASIsEarned(currentNPC.characterClasses || []);
+    const hasBonusFeat = currentNPC.bonusFeat || false;
+    maxFeatsAllowed = totalASIs + (hasBonusFeat ? 1 : 0);
+    
+    // If no ASIs and no bonus feat possible, allow at least 1 for manual selection
+    if (maxFeatsAllowed === 0) {
+        // Check if variant human/custom lineage eligible
+        const raceKey = currentNPC.race.toLowerCase();
+        if (raceKey === 'human' || ['reborn', 'hexblood', 'dhampir'].includes(raceKey)) {
+            maxFeatsAllowed = 1;
+        }
+    }
+    
+    renderFeatModalOptions();
+    
+    const modal = document.getElementById('featSelectModal');
+    modal.classList.add('active');
+    updateFeatLimitWarning();
+}
+
+function renderFeatModalOptions() {
+    const modalOptions = document.getElementById('featModalOptions');
+    const searchTerm = (document.getElementById('featSearchInput')?.value || '').toLowerCase();
+    const sourceFilter = document.getElementById('featSourceFilter')?.value || 'all';
+    const prereqFilter = document.getElementById('featPrereqFilter')?.value || 'eligible';
+    
+    // Get all feats
+    const allFeats = Object.entries(feats);
+    
+    // Filter and sort feats
+    const filteredFeats = allFeats.filter(([featId, feat]) => {
+        // Search filter
+        if (searchTerm && !feat.name.toLowerCase().includes(searchTerm) && 
+            !feat.description.toLowerCase().includes(searchTerm)) {
+            return false;
+        }
+        
+        // Source filter
+        if (sourceFilter !== 'all') {
+            if (sourceFilter === 'other') {
+                if (['PHB', 'TCoE', 'XGtE'].includes(feat.source)) return false;
+            } else {
+                if (feat.source !== sourceFilter) return false;
+            }
+        }
+        
+        // Prerequisite filter
+        if (prereqFilter === 'eligible') {
+            const eligible = meetsPrerequisites(feat, currentNPC.race, currentNPC.abilities, 
+                currentNPC.characterClasses || [], currentFeatSelections.filter(f => f !== featId));
+            if (!eligible) return false;
+        }
+        
+        return true;
+    }).sort((a, b) => a[1].name.localeCompare(b[1].name));
+    
+    // Build options HTML
+    let optionsHtml = '';
+    
+    if (filteredFeats.length === 0) {
+        optionsHtml = '<div style="text-align: center; color: #666; padding: 20px;">No feats match your filters</div>';
+    } else {
+        filteredFeats.forEach(([featId, feat]) => {
+            const isSelected = currentFeatSelections.includes(featId);
+            const eligible = meetsPrerequisites(feat, currentNPC.race, currentNPC.abilities, 
+                currentNPC.characterClasses || [], currentFeatSelections.filter(f => f !== featId));
+            
+            // Build prerequisite string
+            let prereqStr = '';
+            if (feat.prerequisites) {
+                const prereqs = [];
+                if (feat.prerequisites.ability) {
+                    for (const [ab, val] of Object.entries(feat.prerequisites.ability)) {
+                        prereqs.push(`${ab.toUpperCase()} ${val}+`);
+                    }
+                }
+                if (feat.prerequisites.race) {
+                    prereqs.push(`Race: ${feat.prerequisites.race.join(' or ')}`);
+                }
+                if (feat.prerequisites.spellcasting) {
+                    prereqs.push('Spellcasting');
+                }
+                if (feat.prerequisites.armorProficiency) {
+                    prereqs.push(`${feat.prerequisites.armorProficiency} armor proficiency`);
+                }
+                if (feat.prerequisites.weaponProficiency) {
+                    prereqs.push(`${feat.prerequisites.weaponProficiency} weapon proficiency`);
+                }
+                if (feat.prerequisites.feat) {
+                    const reqFeat = feats[feat.prerequisites.feat];
+                    prereqs.push(`Requires: ${reqFeat?.name || feat.prerequisites.feat}`);
+                }
+                prereqStr = prereqs.join(', ');
+            }
+            
+            // Build benefits string
+            const benefits = feat.benefits || [];
+            
+            // Ability bonus string
+            let abilityStr = '';
+            if (feat.abilityBonus) {
+                abilityStr = `+${feat.abilityBonus.amount} ${feat.abilityBonus.choice.map(a => a.toUpperCase()).join(' or ')}`;
+            }
+            
+            optionsHtml += `
+                <div class="feat-option ${isSelected ? 'selected' : ''} ${!eligible ? 'ineligible' : ''}" 
+                     onclick="${eligible || isSelected ? `toggleFeatOption(this, '${featId}')` : ''}"
+                     data-feat-id="${featId}">
+                    <input type="checkbox" class="feat-option-checkbox" ${isSelected ? 'checked' : ''} ${!eligible && !isSelected ? 'disabled' : ''}>
+                    <div class="feat-option-content">
+                        <div>
+                            <span class="feat-option-name">${feat.name}</span>
+                            <span class="feat-option-source">${feat.source}</span>
+                        </div>
+                        ${prereqStr ? `<div class="feat-option-prereq">Requires: ${prereqStr}</div>` : ''}
+                        <div class="feat-option-desc">${feat.description.substring(0, 150)}${feat.description.length > 150 ? '...' : ''}</div>
+                        ${benefits.length > 0 ? `
+                            <div class="feat-option-benefits">
+                                ${benefits.slice(0, 3).map(b => `<span class="feat-benefit-tag">${b}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        ${abilityStr ? `<span class="feat-option-ability">${abilityStr}</span>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+    }
+    
+    modalOptions.innerHTML = optionsHtml;
+}
+
+function toggleFeatOption(element, featId) {
+    const checkbox = element.querySelector('.feat-option-checkbox');
+    const isCurrentlySelected = element.classList.contains('selected');
+    
+    if (isCurrentlySelected) {
+        // Deselect
+        element.classList.remove('selected');
+        checkbox.checked = false;
+        currentFeatSelections = currentFeatSelections.filter(f => f !== featId);
+    } else {
+        // Select
+        element.classList.add('selected');
+        checkbox.checked = true;
+        if (!currentFeatSelections.includes(featId)) {
+            currentFeatSelections.push(featId);
+        }
+    }
+    
+    updateFeatLimitWarning();
+}
+
+function updateFeatLimitWarning() {
+    const warning = document.getElementById('featLimitWarning');
+    const count = currentFeatSelections.length;
+    
+    if (count > maxFeatsAllowed && maxFeatsAllowed > 0) {
+        warning.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> You have ${count} feats selected but only ${maxFeatsAllowed} ASI slot${maxFeatsAllowed !== 1 ? 's' : ''} available. Extra feats will still be saved.`;
+        warning.style.display = 'block';
+        warning.style.background = '#f8d7da';
+        warning.style.borderColor = '#dc3545';
+        warning.style.color = '#721c24';
+    } else if (maxFeatsAllowed > 0) {
+        warning.innerHTML = `<i class="fa-solid fa-info-circle"></i> Select up to ${maxFeatsAllowed} feat${maxFeatsAllowed !== 1 ? 's' : ''} (${count} selected). You can take feats instead of Ability Score Improvements.`;
+        warning.style.display = 'block';
+        warning.style.background = '#fff3cd';
+        warning.style.borderColor = '#ffc107';
+        warning.style.color = '#856404';
+    } else {
+        warning.innerHTML = `<i class="fa-solid fa-info-circle"></i> This character has no ASI levels yet. You can still add feats manually.`;
+        warning.style.display = 'block';
+    }
+}
+
+function filterFeatList() {
+    renderFeatModalOptions();
+}
+
+function closeFeatModal() {
+    const modal = document.getElementById('featSelectModal');
+    modal.classList.remove('active');
+    currentFeatSelections = [];
+}
+
+function saveFeatSelections() {
+    if (currentNPC) {
+        currentNPC.feats = [...currentFeatSelections];
+        
+        // Calculate how many ASIs were used vs feats
+        const totalASIs = countASIsEarned(currentNPC.characterClasses || []);
+        const numFeats = currentFeatSelections.length;
+        
+        // Check if first feat could be a bonus feat (variant human/custom lineage)
+        const raceKey = currentNPC.race.toLowerCase();
+        const couldHaveBonusFeat = raceKey === 'human' || ['reborn', 'hexblood', 'dhampir'].includes(raceKey);
+        
+        // If they have more feats than ASIs and could have bonus feat, mark it
+        if (numFeats > totalASIs && couldHaveBonusFeat) {
+            currentNPC.bonusFeat = true;
+            currentNPC.asisTaken = Math.max(0, totalASIs - (numFeats - 1));
+        } else {
+            currentNPC.bonusFeat = false;
+            currentNPC.asisTaken = Math.max(0, totalASIs - numFeats);
+        }
+        
+        displayNPC(currentNPC);
+    }
+    closeFeatModal();
 }
 
 // Spell Modal Variables

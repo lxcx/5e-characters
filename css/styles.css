@@ -245,6 +245,119 @@
             font-size: 0.85em;
         }
 
+        /* ============================================
+           CHARACTER SHEET STYLES
+           ============================================ */
+
+        /* Passive Skills */
+        .passive-skills-row {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+
+        .passive-skill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .passive-skill i {
+            color: #58180d;
+        }
+
+        /* XP Display */
+        .xp-row {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+
+        .xp-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .xp-label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .xp-value {
+            font-weight: bold;
+            color: #58180d;
+        }
+
+        .xp-next {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        /* Proficiencies Section */
+        .proficiencies-section {
+            border-top: 1px solid #dee2e6;
+            padding-top: 10px;
+        }
+
+        /* Feat Ability Choice Modal */
+        .feat-ability-choice {
+            padding: 10px;
+        }
+
+        .feat-ability-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feat-ability-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .feat-ability-option:hover:not(.disabled) {
+            border-color: #702963;
+            background: linear-gradient(135deg, #f8f5fc 0%, #efe8f3 100%);
+            transform: translateX(5px);
+        }
+
+        .feat-ability-option.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .feat-ability-option-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .feat-ability-option-score {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .feat-ability-option-max {
+            color: #dc3545;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
         .skill-tag.proficient {
             background: #58180d;
             color: white;
@@ -300,6 +413,551 @@
             font-size: 0.85em;
         }
 
+        /* Feat Styles */
+        .feats-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .feat-tag {
+            background: linear-gradient(135deg, #4a1942 0%, #702963 100%);
+            color: #fdf1dc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            cursor: help;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feat-tag:hover {
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(112, 41, 99, 0.4);
+        }
+
+        .feat-asi-info {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .edit-levelup-btn {
+            background: linear-gradient(135deg, #58180d 0%, #7a200d 100%);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+
+        .edit-levelup-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(88, 24, 13, 0.3);
+        }
+
+        /* Pending Level Up Section - Attention Banner */
+        .pending-levelup-section {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+            animation: pulse-attention 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-attention {
+            0%, 100% { box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(192, 57, 43, 0.6); }
+        }
+
+        .pending-levelup-icon {
+            font-size: 2.5em;
+            opacity: 0.9;
+        }
+
+        .pending-levelup-content {
+            flex: 1;
+        }
+
+        .pending-levelup-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .pending-levelup-desc {
+            font-size: 0.95em;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .pending-levelup-bonus {
+            color: #ffeaa7;
+            font-weight: 600;
+        }
+
+        .pending-levelup-btn {
+            background: white;
+            color: #c0392b;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pending-levelup-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 500px) {
+            .pending-levelup-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .pending-levelup-icon {
+                font-size: 2em;
+            }
+        }
+
+        .bonus-feat-note {
+            font-size: 0.75em;
+            font-weight: normal;
+            color: #702963;
+            margin-left: 5px;
+        }
+
+        .feat-tag.bonus-feat {
+            background: linear-gradient(135deg, #2d5a1e 0%, #4a8c33 100%);
+            box-shadow: 0 0 0 2px rgba(74, 140, 51, 0.3);
+        }
+
+        .feat-tag.bonus-feat:hover {
+            box-shadow: 0 2px 8px rgba(74, 140, 51, 0.5);
+        }
+
+        .bonus-label {
+            color: #ffd700;
+            margin-left: 3px;
+        }
+
+        /* Level Up Modal Styles */
+        .level-up-points-display {
+            background: linear-gradient(135deg, #58180d 0%, #7a200d 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .level-up-points-display .points-remaining {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .level-up-points-display .points-label {
+            opacity: 0.9;
+        }
+
+        .level-up-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 700px) {
+            .level-up-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .level-up-feats-list {
+                max-height: 150px;
+            }
+        }
+
+        .level-up-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .level-up-section h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .level-up-section-desc {
+            font-size: 0.85em;
+            color: #666;
+            margin: 0 0 15px 0;
+        }
+
+        .level-up-abilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .level-up-ability {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+
+        .level-up-ability-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .level-up-ability-name {
+            font-weight: 600;
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 0.85em;
+        }
+
+        .level-up-ability-score {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #58180d;
+        }
+
+        .level-up-ability-mod {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .level-up-ability-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .level-up-ability-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .level-up-ability-btn.minus {
+            background: #dc3545;
+            color: white;
+        }
+
+        .level-up-ability-btn.minus:hover {
+            background: #c82333;
+        }
+
+        .level-up-ability-btn.plus {
+            background: #28a745;
+            color: white;
+        }
+
+        .level-up-ability-btn.plus:hover {
+            background: #218838;
+        }
+
+        .level-up-ability-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .level-up-ability-increase {
+            font-weight: bold;
+            color: #28a745;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .level-up-feats-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .level-up-feats-controls input {
+            flex: 1;
+            min-width: 150px;
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+
+        .level-up-feats-controls input:focus {
+            outline: none;
+            border-color: #702963;
+        }
+
+        .level-up-feats-controls select {
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 0.95em;
+            min-width: 120px;
+        }
+
+        .level-up-feats-selected {
+            margin-bottom: 10px;
+        }
+
+        .level-up-feat-selected-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4a1942 0%, #702963 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 0.9em;
+        }
+
+        .level-up-feat-selected-tag .remove-feat {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .level-up-feat-selected-tag .remove-feat:hover {
+            opacity: 1;
+        }
+
+        .level-up-feats-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* Ensure feats section doesn't overflow */
+        .level-up-sections .level-up-section:last-child {
+            display: flex;
+            flex-direction: column;
+            max-height: 100%;
+        }
+
+        .level-up-feat-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .level-up-feat-item:last-child {
+            border-bottom: none;
+        }
+
+        .level-up-feat-item:hover {
+            background: #f8f5fc;
+        }
+
+        .level-up-feat-item.selected {
+            background: #efe8f3;
+        }
+
+        .level-up-feat-item.ineligible {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .level-up-feat-item.ineligible:hover {
+            background: white;
+        }
+
+        .level-up-feat-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .level-up-feat-source {
+            font-size: 0.8em;
+            color: #702963;
+            margin-left: 6px;
+        }
+
+        .level-up-feat-cost {
+            float: right;
+            background: #58180d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+
+        .level-up-feat-desc {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .level-up-feat-ability {
+            display: inline-block;
+            background: #d4edda;
+            color: #155724;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            margin-top: 4px;
+        }
+
+        /* Feat Modal Styles */
+        .feat-modal-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .feat-modal-filter {
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .feat-modal-search {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .feat-limit-warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .feat-option {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .feat-option:hover {
+            border-color: #702963;
+            background: #faf8fc;
+        }
+
+        .feat-option.selected {
+            border-color: #702963;
+            background: linear-gradient(135deg, #f5f0f8 0%, #efe8f3 100%);
+        }
+
+        .feat-option.ineligible {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .feat-option.ineligible:hover {
+            border-color: #e9ecef;
+            background: white;
+        }
+
+        .feat-option-checkbox {
+            margin-right: 12px;
+            margin-top: 3px;
+        }
+
+        .feat-option-content {
+            flex: 1;
+        }
+
+        .feat-option-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1em;
+        }
+
+        .feat-option-source {
+            font-size: 0.8em;
+            color: #702963;
+            margin-left: 8px;
+        }
+
+        .feat-option-prereq {
+            font-size: 0.8em;
+            color: #dc3545;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .feat-option-desc {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .feat-option-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 6px;
+        }
+
+        .feat-benefit-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+
+        .feat-option-ability {
+            background: #d4edda;
+            color: #155724;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            margin-top: 6px;
+            display: inline-block;
+        }
+
         /* Spell Styles */
         .spells-section {
             margin-top: 20px;
@@ -345,6 +1003,7 @@
             background: #6c757d;
             opacity: 0.5;
         }
+
 
         .spells-list {
             display: flex;
@@ -1516,6 +2175,11 @@
             transition: opacity 0.3s, visibility 0.3s;
         }
 
+        /* multiSelectModal needs higher z-index to appear above levelUpModal */
+        #multiSelectModal.active {
+            z-index: 1100;
+        }
+
         .modal-overlay.active {
             opacity: 1;
             visibility: visible;
@@ -1536,6 +2200,34 @@
 
         .modal-overlay.active .modal-content {
             transform: translateY(0);
+        }
+
+        /* Level Up Modal - fixed footer layout */
+        #levelUpModal .modal-content {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        #levelUpModal .modal-header {
+            padding: 20px 25px 15px;
+            flex-shrink: 0;
+        }
+
+        #levelUpModal .modal-body {
+            padding: 0 25px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
+        }
+
+        #levelUpModal .modal-footer {
+            padding: 15px 25px 20px;
+            flex-shrink: 0;
+            border-top: 2px solid #e9ecef;
+            background: white;
         }
 
         .modal-header {

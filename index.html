@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D 5E NPC Generator</title>
+    <title>D&D 5E Character Generator</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- D&D Style Fonts -->
@@ -14,8 +14,8 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fa-solid fa-dice-d20"></i> D&D 5E NPC Generator</h1>
-            <p>Create unique non-player characters for your campaign</p>
+            <h1><i class="fa-solid fa-dice-d20"></i> D&D 5E Character Generator</h1>
+            <p>Create unique NPCs and player characters for your campaign</p>
         </header>
 
         <div class="content">
@@ -390,6 +390,20 @@
                     </div>
                 </div>
 
+                <!-- Level Up Options (for leveled characters with ASIs) -->
+                <div class="form-row" id="levelUpOptionsRow" style="display: none;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="levelUpOptions"><i class="fa-solid fa-arrow-up" style="color: #58180d; margin-right: 5px;"></i> Level Up Options</label>
+                        <select id="levelUpOptions">
+                            <option value="random">Random (Optimize for Class)</option>
+                            <option value="choose">Choose Ability Scores & Feats</option>
+                        </select>
+                        <div style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                            At certain levels, characters can increase ability scores or take feats.
+                        </div>
+                    </div>
+                </div>
+
                 <button id="generateBtn" onclick="generateNPC()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate NPC</button>
             </div>
 
@@ -444,6 +458,87 @@
                 <button class="modal-btn modal-btn-cancel" onclick="closeModal()">Cancel</button>
                 <button class="modal-btn modal-btn-save" onclick="saveModalSelections()">
                     <i class="fa-solid fa-check"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Up Modal -->
+    <div id="levelUpModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-arrow-up"></i> Level Up Choices</h3>
+                <button class="modal-close" onclick="closeLevelUpModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="levelUpPointsDisplay" class="level-up-points-display"></div>
+                
+                <div class="level-up-sections">
+                    <!-- Ability Scores Section -->
+                    <div class="level-up-section">
+                        <h4><i class="fa-solid fa-dumbbell"></i> Ability Score Improvements</h4>
+                        <p class="level-up-section-desc">Spend 1 point to increase an ability score by 1 (max 20)</p>
+                        <div id="levelUpAbilities" class="level-up-abilities"></div>
+                    </div>
+                    
+                    <!-- Feats Section -->
+                    <div class="level-up-section">
+                        <h4><i class="fa-solid fa-medal"></i> Feats</h4>
+                        <p class="level-up-section-desc">Spend 2 points to gain a feat</p>
+                        <div class="level-up-feats-controls">
+                            <input type="text" id="levelUpFeatSearch" placeholder="Search feats..." oninput="filterLevelUpFeats()">
+                            <select id="levelUpFeatFilter" onchange="filterLevelUpFeats()">
+                                <option value="eligible">Eligible Only</option>
+                                <option value="all">Show All</option>
+                            </select>
+                        </div>
+                        <div id="levelUpFeatsSelected" class="level-up-feats-selected"></div>
+                        <div id="levelUpFeatsList" class="level-up-feats-list"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeLevelUpModal()">Cancel</button>
+                <button class="modal-btn modal-btn-save" onclick="saveLevelUpChoices()">
+                    <i class="fa-solid fa-check"></i> Apply Choices
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feat Select Modal -->
+    <div id="featSelectModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-medal"></i> Select Feats</h3>
+                <button class="modal-close" onclick="closeFeatModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="featLimitWarning" class="feat-limit-warning"></div>
+                <div class="feat-modal-filters">
+                    <input type="text" id="featSearchInput" class="feat-modal-filter feat-modal-search" placeholder="Search feats..." oninput="filterFeatList()">
+                    <select id="featSourceFilter" class="feat-modal-filter" onchange="filterFeatList()">
+                        <option value="all">All Sources</option>
+                        <option value="PHB">Player's Handbook</option>
+                        <option value="TCoE">Tasha's Cauldron</option>
+                        <option value="XGtE">Xanathar's Guide</option>
+                        <option value="other">Other Sources</option>
+                    </select>
+                    <select id="featPrereqFilter" class="feat-modal-filter" onchange="filterFeatList()">
+                        <option value="eligible">Eligible Only</option>
+                        <option value="all">Show All</option>
+                    </select>
+                </div>
+                <div id="featModalOptions" style="max-height: 50vh; overflow-y: auto;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeFeatModal()">Cancel</button>
+                <button class="modal-btn modal-btn-save" onclick="saveFeatSelections()">
+                    <i class="fa-solid fa-check"></i> Save Feats
                 </button>
             </div>
         </div>

@@ -1096,6 +1096,875 @@ const classFeatures = {
     commoner: []
 };
 
+// D&D 5e Feats (pre-2024 sources: PHB, Tasha's Cauldron of Everything, Xanathar's Guide to Everything)
+const feats = {
+    // === PLAYER'S HANDBOOK FEATS ===
+    'alert': {
+        name: 'Alert',
+        source: 'PHB',
+        description: 'Always on the lookout for danger, you gain the following benefits: +5 bonus to initiative, you can\'t be surprised while conscious, and other creatures don\'t gain advantage on attack rolls against you as a result of being unseen by you.',
+        prerequisites: null,
+        benefits: ['+5 to initiative', 'Cannot be surprised while conscious', 'Hidden creatures don\'t gain advantage against you'],
+        abilityBonus: null,
+        recommendedFor: ['rogue', 'ranger', 'fighter', 'monk']
+    },
+    'athlete': {
+        name: 'Athlete',
+        source: 'PHB',
+        description: 'You have undergone extensive physical training. Increase STR or DEX by 1, standing up uses only 5 feet of movement, climbing doesn\'t cost extra movement, and you can make running long/high jumps with only 5 feet of movement.',
+        prerequisites: null,
+        benefits: ['Standing costs 5 ft movement', 'Climbing costs no extra movement', 'Running jump with 5 ft movement'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['fighter', 'barbarian', 'monk', 'rogue']
+    },
+    'actor': {
+        name: 'Actor',
+        source: 'PHB',
+        description: 'Skilled at mimicry and dramatics. Increase CHA by 1, advantage on Deception and Performance checks when passing yourself off as another person, and you can mimic speech or sounds you\'ve heard.',
+        prerequisites: null,
+        benefits: ['Advantage on Deception/Performance to impersonate', 'Can mimic speech and sounds'],
+        abilityBonus: { choice: ['cha'], amount: 1 },
+        recommendedFor: ['bard', 'rogue', 'warlock']
+    },
+    'charger': {
+        name: 'Charger',
+        source: 'PHB',
+        description: 'When you use your action to Dash, you can use a bonus action to make one melee weapon attack or shove. If you move at least 10 feet in a straight line before attacking, you gain +5 damage or push 10 feet.',
+        prerequisites: null,
+        benefits: ['Bonus action attack after Dash', '+5 damage or 10 ft push with 10 ft charge'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'barbarian', 'paladin']
+    },
+    'crossbow-expert': {
+        name: 'Crossbow Expert',
+        source: 'PHB',
+        description: 'You ignore the loading property of crossbows, being within 5 feet of a hostile creature doesn\'t impose disadvantage on ranged attacks, and when you Attack with a one-handed weapon, you can use a bonus action to attack with a hand crossbow.',
+        prerequisites: null,
+        benefits: ['Ignore loading property', 'No disadvantage in melee', 'Bonus action hand crossbow attack'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'ranger', 'rogue']
+    },
+    'defensive-duelist': {
+        name: 'Defensive Duelist',
+        source: 'PHB',
+        description: 'When wielding a finesse weapon and another creature hits you with a melee attack, you can use your reaction to add your proficiency bonus to your AC for that attack, potentially causing it to miss.',
+        prerequisites: { ability: { dex: 13 } },
+        benefits: ['Reaction to add proficiency to AC against melee attack'],
+        abilityBonus: null,
+        recommendedFor: ['rogue', 'fighter', 'bard', 'ranger']
+    },
+    'dual-wielder': {
+        name: 'Dual Wielder',
+        source: 'PHB',
+        description: 'You master fighting with two weapons. +1 AC while wielding separate melee weapons in each hand, you can use two-weapon fighting with non-light weapons, and you can draw or stow two weapons at once.',
+        prerequisites: null,
+        benefits: ['+1 AC with two weapons', 'Two-weapon fighting with non-light weapons', 'Draw/stow two weapons'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'ranger', 'rogue', 'barbarian']
+    },
+    'dungeon-delver': {
+        name: 'Dungeon Delver',
+        source: 'PHB',
+        description: 'Alert to hidden traps and secret doors. Advantage on Perception and Investigation to detect secret doors, advantage on saves vs traps, resistance to trap damage, and you can search for traps at normal pace.',
+        prerequisites: null,
+        benefits: ['Advantage to detect secret doors', 'Advantage on saves vs traps', 'Resistance to trap damage'],
+        abilityBonus: null,
+        recommendedFor: ['rogue', 'ranger', 'artificer']
+    },
+    'durable': {
+        name: 'Durable',
+        source: 'PHB',
+        description: 'Hardy and resilient. Increase CON by 1. When you roll a Hit Die to regain hit points, the minimum number of hit points you regain equals twice your Constitution modifier (minimum of 2).',
+        prerequisites: null,
+        benefits: ['Minimum HP from Hit Dice = 2 × CON modifier'],
+        abilityBonus: { choice: ['con'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter', 'paladin', 'ranger']
+    },
+    'elemental-adept': {
+        name: 'Elemental Adept',
+        source: 'PHB',
+        description: 'Spells you cast ignore resistance to a chosen damage type (acid, cold, fire, lightning, or thunder). When you roll damage, treat any 1 as a 2.',
+        prerequisites: { spellcasting: true },
+        benefits: ['Ignore resistance to chosen element', 'Treat 1s as 2s on damage rolls'],
+        abilityBonus: null,
+        recommendedFor: ['sorcerer', 'wizard', 'warlock', 'druid']
+    },
+    'grappler': {
+        name: 'Grappler',
+        source: 'PHB',
+        description: 'You\'ve developed skills for close-quarters grappling. Advantage on attack rolls against creatures you\'re grappling, and you can use an action to pin a grappled creature (both restrained until grapple ends).',
+        prerequisites: { ability: { str: 13 } },
+        benefits: ['Advantage on attacks vs grappled creatures', 'Can pin grappled creatures'],
+        abilityBonus: null,
+        recommendedFor: ['barbarian', 'fighter', 'monk']
+    },
+    'great-weapon-master': {
+        name: 'Great Weapon Master',
+        source: 'PHB',
+        description: 'You\'ve learned to put the weight of a weapon to your advantage. On a critical hit or reducing a creature to 0 HP with a melee weapon, bonus action melee attack. Before attacking with a heavy weapon, you can take -5 to hit for +10 damage.',
+        prerequisites: null,
+        benefits: ['Bonus action attack on crit/kill', '-5 to hit for +10 damage with heavy weapons'],
+        abilityBonus: null,
+        recommendedFor: ['barbarian', 'fighter', 'paladin']
+    },
+    'healer': {
+        name: 'Healer',
+        source: 'PHB',
+        description: 'You are an able physician. Using a healer\'s kit to stabilize also restores 1 HP. As an action, spend one use of a healer\'s kit to restore 1d6+4 HP plus additional HP equal to the creature\'s max Hit Dice (once per rest per creature).',
+        prerequisites: null,
+        benefits: ['Stabilize restores 1 HP', 'Healer\'s kit restores 1d6+4+HD HP'],
+        abilityBonus: null,
+        recommendedFor: ['cleric', 'druid', 'bard', 'paladin']
+    },
+    'heavily-armored': {
+        name: 'Heavily Armored',
+        source: 'PHB',
+        description: 'You have trained to master the use of heavy armor. Increase STR by 1 and gain proficiency with heavy armor.',
+        prerequisites: { armorProficiency: 'medium' },
+        benefits: ['Heavy armor proficiency'],
+        abilityBonus: { choice: ['str'], amount: 1 },
+        recommendedFor: ['cleric', 'fighter', 'paladin']
+    },
+    'heavy-armor-master': {
+        name: 'Heavy Armor Master',
+        source: 'PHB',
+        description: 'You can use your armor to deflect strikes. Increase STR by 1. While wearing heavy armor, bludgeoning, piercing, and slashing damage from nonmagical weapons is reduced by 3.',
+        prerequisites: { armorProficiency: 'heavy' },
+        benefits: ['Reduce nonmagical B/P/S damage by 3 in heavy armor'],
+        abilityBonus: { choice: ['str'], amount: 1 },
+        recommendedFor: ['fighter', 'paladin', 'cleric']
+    },
+    'inspiring-leader': {
+        name: 'Inspiring Leader',
+        source: 'PHB',
+        description: 'You can spend 10 minutes inspiring your companions. Up to 6 friendly creatures within 30 feet who can see or hear you gain temporary HP equal to your level + your Charisma modifier.',
+        prerequisites: { ability: { cha: 13 } },
+        benefits: ['Grant temp HP = level + CHA mod to 6 creatures'],
+        abilityBonus: null,
+        recommendedFor: ['bard', 'paladin', 'sorcerer', 'warlock']
+    },
+    'keen-mind': {
+        name: 'Keen Mind',
+        source: 'PHB',
+        description: 'You have a mind that can track time, direction, and detail with uncanny precision. Increase INT by 1, always know north, always know hours until sunrise/sunset, and accurately recall anything seen or heard within the past month.',
+        prerequisites: null,
+        benefits: ['Always know north', 'Know time until sunrise/sunset', 'Perfect recall for 1 month'],
+        abilityBonus: { choice: ['int'], amount: 1 },
+        recommendedFor: ['wizard', 'artificer', 'rogue']
+    },
+    'lightly-armored': {
+        name: 'Lightly Armored',
+        source: 'PHB',
+        description: 'You have trained to master the use of light armor. Increase STR or DEX by 1 and gain proficiency with light armor.',
+        prerequisites: null,
+        benefits: ['Light armor proficiency'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['wizard', 'sorcerer', 'warlock']
+    },
+    'linguist': {
+        name: 'Linguist',
+        source: 'PHB',
+        description: 'You have studied languages and codes. Increase INT by 1, learn three languages, and you can create written ciphers that others can\'t decipher without the key or an INT check.',
+        prerequisites: null,
+        benefits: ['Learn 3 languages', 'Create ciphers'],
+        abilityBonus: { choice: ['int'], amount: 1 },
+        recommendedFor: ['wizard', 'bard', 'rogue']
+    },
+    'lucky': {
+        name: 'Lucky',
+        source: 'PHB',
+        description: 'You have inexplicable luck. You have 3 luck points. Whenever you make an attack roll, ability check, or saving throw, you can spend a luck point to roll an additional d20 and choose which to use. You can also use this when attacked.',
+        prerequisites: null,
+        benefits: ['3 luck points per long rest', 'Reroll attacks, checks, saves, or enemy attacks'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'mage-slayer': {
+        name: 'Mage Slayer',
+        source: 'PHB',
+        description: 'You have practiced techniques useful in melee combat against spellcasters. Reaction attack when adjacent creature casts spell, advantage on saves vs spells from adjacent creatures, and creatures have disadvantage on concentration checks from your damage.',
+        prerequisites: null,
+        benefits: ['Reaction attack on adjacent caster', 'Advantage vs adjacent spells', 'Impose disadvantage on concentration'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'barbarian', 'rogue', 'ranger']
+    },
+    'magic-initiate': {
+        name: 'Magic Initiate',
+        source: 'PHB',
+        description: 'Choose a class: bard, cleric, druid, sorcerer, warlock, or wizard. You learn two cantrips and one 1st-level spell from that class\'s spell list. You can cast the spell once per long rest without a spell slot.',
+        prerequisites: null,
+        benefits: ['Learn 2 cantrips', 'Learn 1 1st-level spell (cast 1/long rest)'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'martial-adept': {
+        name: 'Martial Adept',
+        source: 'PHB',
+        description: 'You have martial training that allows you to perform special combat maneuvers. Learn two maneuvers from the Battle Master archetype. You gain one superiority die (d6) which is regained on a short or long rest.',
+        prerequisites: null,
+        benefits: ['Learn 2 Battle Master maneuvers', '1 superiority die (d6)'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'ranger', 'barbarian']
+    },
+    'medium-armor-master': {
+        name: 'Medium Armor Master',
+        source: 'PHB',
+        description: 'You have practiced moving in medium armor. Wearing medium armor doesn\'t impose disadvantage on Stealth checks, and you can add 3 (instead of 2) from DEX when wearing medium armor.',
+        prerequisites: { armorProficiency: 'medium' },
+        benefits: ['No Stealth disadvantage in medium armor', '+3 max DEX in medium armor'],
+        abilityBonus: null,
+        recommendedFor: ['ranger', 'cleric', 'druid', 'artificer']
+    },
+    'mobile': {
+        name: 'Mobile',
+        source: 'PHB',
+        description: 'You are exceptionally speedy and agile. Your speed increases by 10 feet, difficult terrain doesn\'t cost extra movement when you Dash, and when you make a melee attack, you don\'t provoke opportunity attacks from that creature.',
+        prerequisites: null,
+        benefits: ['+10 ft speed', 'Dash ignores difficult terrain', 'No opportunity attacks from attacked creatures'],
+        abilityBonus: null,
+        recommendedFor: ['monk', 'rogue', 'fighter', 'barbarian']
+    },
+    'moderately-armored': {
+        name: 'Moderately Armored',
+        source: 'PHB',
+        description: 'You have trained to master the use of medium armor and shields. Increase STR or DEX by 1 and gain proficiency with medium armor and shields.',
+        prerequisites: { armorProficiency: 'light' },
+        benefits: ['Medium armor proficiency', 'Shield proficiency'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['warlock', 'bard', 'rogue']
+    },
+    'mounted-combatant': {
+        name: 'Mounted Combatant',
+        source: 'PHB',
+        description: 'You are a dangerous foe while mounted. Advantage on melee attacks vs unmounted creatures smaller than your mount, force attacks targeting your mount to target you instead, and your mount takes no damage on successful DEX saves (half on failed).',
+        prerequisites: null,
+        benefits: ['Advantage vs smaller unmounted creatures', 'Redirect attacks to you', 'Mount has Evasion'],
+        abilityBonus: null,
+        recommendedFor: ['paladin', 'fighter', 'ranger']
+    },
+    'observant': {
+        name: 'Observant',
+        source: 'PHB',
+        description: 'Quick to notice details of your environment. Increase INT or WIS by 1, you can read lips if you can see a creature\'s mouth, and +5 to passive Perception and Investigation scores.',
+        prerequisites: null,
+        benefits: ['+5 passive Perception', '+5 passive Investigation', 'Can read lips'],
+        abilityBonus: { choice: ['int', 'wis'], amount: 1 },
+        recommendedFor: ['rogue', 'ranger', 'druid', 'cleric']
+    },
+    'polearm-master': {
+        name: 'Polearm Master',
+        source: 'PHB',
+        description: 'You can keep enemies at bay with reach weapons. Bonus action attack with opposite end (1d4 bludgeoning) when attacking with glaive, halberd, quarterstaff, or spear. Creatures provoke opportunity attacks when entering your reach.',
+        prerequisites: null,
+        benefits: ['Bonus action butt attack', 'Opportunity attacks when enemies enter reach'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'barbarian']
+    },
+    'resilient': {
+        name: 'Resilient',
+        source: 'PHB',
+        description: 'Choose one ability score. Increase that score by 1 and gain proficiency in saving throws using that ability.',
+        prerequisites: null,
+        benefits: ['Proficiency in chosen save'],
+        abilityBonus: { choice: ['str', 'dex', 'con', 'int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'ritual-caster': {
+        name: 'Ritual Caster',
+        source: 'PHB',
+        description: 'You have learned a number of spells that you can cast as rituals. Choose a class (bard, cleric, druid, sorcerer, warlock, or wizard). You acquire a ritual book with two 1st-level ritual spells.',
+        prerequisites: { ability: { int: 13 }, abilityOr: { wis: 13 } },
+        benefits: ['Ritual book with 2 1st-level rituals', 'Can copy ritual spells'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'savage-attacker': {
+        name: 'Savage Attacker',
+        source: 'PHB',
+        description: 'Once per turn when you roll damage for a melee weapon attack, you can reroll the weapon\'s damage dice and use either total.',
+        prerequisites: null,
+        benefits: ['Reroll melee weapon damage once per turn'],
+        abilityBonus: null,
+        recommendedFor: ['barbarian', 'fighter', 'paladin']
+    },
+    'sentinel': {
+        name: 'Sentinel',
+        source: 'PHB',
+        description: 'You have mastered techniques to take advantage of every drop in any enemy\'s guard. Opportunity attacks reduce speed to 0, Disengage doesn\'t prevent your opportunity attacks, and reaction attack when creature within 5 ft attacks someone else.',
+        prerequisites: null,
+        benefits: ['Opportunity attacks reduce speed to 0', 'Can opportunity attack Disengaging creatures', 'Reaction attack when ally attacked'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'barbarian']
+    },
+    'sharpshooter': {
+        name: 'Sharpshooter',
+        source: 'PHB',
+        description: 'You have mastered ranged weapons. No disadvantage at long range, ignore half and three-quarters cover, and before attacking with a ranged weapon you can take -5 to hit for +10 damage.',
+        prerequisites: null,
+        benefits: ['No long range disadvantage', 'Ignore cover', '-5 to hit for +10 damage'],
+        abilityBonus: null,
+        recommendedFor: ['ranger', 'fighter', 'rogue']
+    },
+    'shield-master': {
+        name: 'Shield Master',
+        source: 'PHB',
+        description: 'You use shields not just for protection but also for offense. Bonus action to shove after Attack action, add shield\'s AC bonus to DEX saves against single-target effects, and take no damage on successful DEX saves (instead of half).',
+        prerequisites: null,
+        benefits: ['Bonus action shove after Attack', 'Shield AC applies to DEX saves', 'Evasion vs targeted DEX effects'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'cleric']
+    },
+    'skilled': {
+        name: 'Skilled',
+        source: 'PHB',
+        description: 'You gain proficiency in any combination of three skills or tools of your choice.',
+        prerequisites: null,
+        benefits: ['3 skill or tool proficiencies'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'skulker': {
+        name: 'Skulker',
+        source: 'PHB',
+        description: 'You are expert at slinking through shadows. You can try to hide when lightly obscured, missing with a ranged attack doesn\'t reveal your position, and dim light doesn\'t impose disadvantage on Perception checks.',
+        prerequisites: { ability: { dex: 13 } },
+        benefits: ['Hide in light obscurement', 'Missed ranged attacks don\'t reveal you', 'No dim light Perception disadvantage'],
+        abilityBonus: null,
+        recommendedFor: ['rogue', 'ranger']
+    },
+    'spell-sniper': {
+        name: 'Spell Sniper',
+        source: 'PHB',
+        description: 'You have learned techniques to enhance your attacks with certain kinds of spells. Double range of spell attacks, ignore half and three-quarters cover, and learn one cantrip that requires an attack roll.',
+        prerequisites: { spellcasting: true },
+        benefits: ['Double spell attack range', 'Ignore cover', 'Learn 1 attack cantrip'],
+        abilityBonus: null,
+        recommendedFor: ['sorcerer', 'warlock', 'wizard', 'cleric']
+    },
+    'tavern-brawler': {
+        name: 'Tavern Brawler',
+        source: 'PHB',
+        description: 'Accustomed to rough-and-tumble fighting. Increase STR or CON by 1, proficient with improvised weapons, unarmed strikes deal 1d4 damage, and bonus action grapple when you hit with unarmed strike or improvised weapon.',
+        prerequisites: null,
+        benefits: ['Improvised weapon proficiency', '1d4 unarmed damage', 'Bonus action grapple on hit'],
+        abilityBonus: { choice: ['str', 'con'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter', 'monk']
+    },
+    'tough': {
+        name: 'Tough',
+        source: 'PHB',
+        description: 'Your hit point maximum increases by an amount equal to twice your level when you gain this feat. Whenever you gain a level thereafter, your hit point maximum increases by an additional 2 hit points.',
+        prerequisites: null,
+        benefits: ['+2 HP per level'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'war-caster': {
+        name: 'War Caster',
+        source: 'PHB',
+        description: 'You have practiced casting spells in the midst of combat. Advantage on concentration checks, perform somatic components with hands full, and cast a spell as an opportunity attack instead of a melee attack.',
+        prerequisites: { spellcasting: true },
+        benefits: ['Advantage on concentration', 'Somatic components with full hands', 'Spell as opportunity attack'],
+        abilityBonus: null,
+        recommendedFor: ['cleric', 'paladin', 'sorcerer', 'wizard', 'druid']
+    },
+    'weapon-master': {
+        name: 'Weapon Master',
+        source: 'PHB',
+        description: 'You have practiced extensively with a variety of weapons. Increase STR or DEX by 1 and gain proficiency with four weapons of your choice.',
+        prerequisites: null,
+        benefits: ['4 weapon proficiencies'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['any']
+    },
+
+    // === TASHA'S CAULDRON OF EVERYTHING FEATS ===
+    'artificer-initiate': {
+        name: 'Artificer Initiate',
+        source: 'TCoE',
+        description: 'You\'ve learned some of an artificer\'s inventiveness. Learn one cantrip and one 1st-level spell from the artificer spell list (cast 1/long rest or with spell slots). Gain proficiency with one type of artisan\'s tools.',
+        prerequisites: null,
+        benefits: ['1 artificer cantrip', '1 1st-level artificer spell', '1 artisan tool proficiency'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'chef': {
+        name: 'Chef',
+        source: 'TCoE',
+        description: 'You\'ve mastered a variety of special recipes. Increase CON or WIS by 1. During short rest, you can cook special food that grants extra 1d8 HP when spending Hit Dice. You can also prepare treats that grant temp HP.',
+        prerequisites: null,
+        benefits: ['Extra 1d8 HP on short rest', 'Treats grant temp HP'],
+        abilityBonus: { choice: ['con', 'wis'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'crusher': {
+        name: 'Crusher',
+        source: 'TCoE',
+        description: 'You are practiced in crushing blows. Increase STR or CON by 1. When you hit with bludgeoning damage, move creature 5 ft once per turn. Critical hits with bludgeoning grant advantage on attacks against target until end of next turn.',
+        prerequisites: null,
+        benefits: ['Move target 5 ft with bludgeoning', 'Crit grants advantage to all'],
+        abilityBonus: { choice: ['str', 'con'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter', 'paladin']
+    },
+    'eldritch-adept': {
+        name: 'Eldritch Adept',
+        source: 'TCoE',
+        description: 'You\'ve learned to tap into eldritch power. You learn one Eldritch Invocation from the warlock class. If the invocation has a prerequisite, you must meet it. You can replace the invocation when you gain a level.',
+        prerequisites: { spellcasting: true },
+        benefits: ['Learn 1 Eldritch Invocation'],
+        abilityBonus: null,
+        recommendedFor: ['warlock', 'sorcerer', 'wizard']
+    },
+    'fey-touched': {
+        name: 'Fey Touched',
+        source: 'TCoE',
+        description: 'Your exposure to the Feywild\'s magic has changed you. Increase INT, WIS, or CHA by 1. You learn Misty Step and one 1st-level divination or enchantment spell. Cast each once per long rest free or with spell slots.',
+        prerequisites: null,
+        benefits: ['Learn Misty Step', 'Learn 1 1st-level divination/enchantment spell'],
+        abilityBonus: { choice: ['int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'fighting-initiate': {
+        name: 'Fighting Initiate',
+        source: 'TCoE',
+        description: 'Your martial training has helped you develop a particular style of fighting. You learn one Fighting Style option from the fighter class. You can replace it when you gain a level in a class that grants the Fighting Style feature.',
+        prerequisites: { weaponProficiency: 'martial' },
+        benefits: ['Learn 1 Fighting Style'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'ranger', 'barbarian']
+    },
+    'gunner': {
+        name: 'Gunner',
+        source: 'TCoE',
+        description: 'You have a quick hand and keen eye when employing firearms. Increase DEX by 1, gain proficiency with firearms, ignore loading property, and no disadvantage on ranged attacks within 5 feet.',
+        prerequisites: null,
+        benefits: ['Firearm proficiency', 'Ignore loading', 'No disadvantage in melee'],
+        abilityBonus: { choice: ['dex'], amount: 1 },
+        recommendedFor: ['fighter', 'ranger', 'rogue', 'artificer']
+    },
+    'metamagic-adept': {
+        name: 'Metamagic Adept',
+        source: 'TCoE',
+        description: 'You\'ve learned how to exert your will on your spells. You learn two Metamagic options from the sorcerer class and gain 2 sorcery points to spend on Metamagic (regain on long rest).',
+        prerequisites: { spellcasting: true },
+        benefits: ['2 Metamagic options', '2 sorcery points'],
+        abilityBonus: null,
+        recommendedFor: ['sorcerer', 'wizard', 'bard', 'warlock']
+    },
+    'piercer': {
+        name: 'Piercer',
+        source: 'TCoE',
+        description: 'You have achieved a penetrating precision in combat. Increase STR or DEX by 1. Once per turn, reroll one piercing damage die. Critical hits with piercing add one extra damage die.',
+        prerequisites: null,
+        benefits: ['Reroll 1 piercing damage die per turn', 'Extra die on piercing crits'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['fighter', 'rogue', 'ranger']
+    },
+    'poisoner': {
+        name: 'Poisoner',
+        source: 'TCoE',
+        description: 'You can prepare and deliver deadly poisons. Ignore resistance to poison damage, apply poison as bonus action, and spend 50 gp to create potent poison (2d8 damage, DC 14 CON save or poisoned).',
+        prerequisites: null,
+        benefits: ['Ignore poison resistance', 'Bonus action to apply poison', 'Create potent poison'],
+        abilityBonus: null,
+        recommendedFor: ['rogue', 'ranger', 'artificer']
+    },
+    'shadow-touched': {
+        name: 'Shadow Touched',
+        source: 'TCoE',
+        description: 'Your exposure to the Shadowfell\'s magic has changed you. Increase INT, WIS, or CHA by 1. You learn Invisibility and one 1st-level illusion or necromancy spell. Cast each once per long rest free or with spell slots.',
+        prerequisites: null,
+        benefits: ['Learn Invisibility', 'Learn 1 1st-level illusion/necromancy spell'],
+        abilityBonus: { choice: ['int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'skill-expert': {
+        name: 'Skill Expert',
+        source: 'TCoE',
+        description: 'You have honed your proficiency with particular skills. Increase one ability score by 1, gain proficiency in one skill, and choose one skill you\'re proficient in to gain expertise (double proficiency).',
+        prerequisites: null,
+        benefits: ['1 skill proficiency', '1 expertise'],
+        abilityBonus: { choice: ['str', 'dex', 'con', 'int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'slasher': {
+        name: 'Slasher',
+        source: 'TCoE',
+        description: 'You\'ve learned where to cut to have the greatest results. Increase STR or DEX by 1. Slashing damage reduces target speed by 10 ft once per turn. Critical slashing hits impose disadvantage on target\'s attacks until your next turn.',
+        prerequisites: null,
+        benefits: ['Reduce speed by 10 ft with slashing', 'Crit imposes attack disadvantage'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['fighter', 'barbarian', 'rogue', 'ranger']
+    },
+    'telekinetic': {
+        name: 'Telekinetic',
+        source: 'TCoE',
+        description: 'You learn to move things with your mind. Increase INT, WIS, or CHA by 1. Learn Mage Hand (invisible, bonus action). As a bonus action, shove creature within 30 ft 5 feet (STR save negates).',
+        prerequisites: null,
+        benefits: ['Invisible Mage Hand (bonus action)', 'Bonus action 5 ft shove'],
+        abilityBonus: { choice: ['int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'telepathic': {
+        name: 'Telepathic',
+        source: 'TCoE',
+        description: 'You awaken the ability to mentally connect with others. Increase INT, WIS, or CHA by 1. Telepathically speak to creatures within 60 ft. Cast Detect Thoughts once per long rest (no components).',
+        prerequisites: null,
+        benefits: ['60 ft telepathy', 'Cast Detect Thoughts 1/long rest'],
+        abilityBonus: { choice: ['int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+
+    // === XANATHAR'S GUIDE TO EVERYTHING - RACIAL FEATS ===
+    'bountiful-luck': {
+        name: 'Bountiful Luck',
+        source: 'XGtE',
+        description: 'Your people have extraordinary luck. When an ally within 30 feet rolls a 1 on an attack roll, ability check, or saving throw, you can use your reaction to let them reroll (using the new roll).',
+        prerequisites: { race: ['halfling'] },
+        benefits: ['Reaction to let ally reroll 1s'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'dragon-fear': {
+        name: 'Dragon Fear',
+        source: 'XGtE',
+        description: 'Your draconic ancestry manifests in terrifying ways. Increase STR, CON, or CHA by 1. Instead of exhaling destructive energy, you can roar and cause each creature within 30 ft to make a WIS save or be frightened.',
+        prerequisites: { race: ['dragonborn'] },
+        benefits: ['Breath weapon can frighten instead'],
+        abilityBonus: { choice: ['str', 'con', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'dragon-hide': {
+        name: 'Dragon Hide',
+        source: 'XGtE',
+        description: 'You manifest scales and claws reminiscent of your draconic ancestors. Increase STR, CON, or CHA by 1. Natural armor (AC 13 + DEX when unarmored). Retractable claws deal 1d4+STR slashing.',
+        prerequisites: { race: ['dragonborn'] },
+        benefits: ['Natural armor AC 13 + DEX', '1d4 claw attacks'],
+        abilityBonus: { choice: ['str', 'con', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'drow-high-magic': {
+        name: 'Drow High Magic',
+        source: 'XGtE',
+        description: 'You learn more of the magic typical of dark elves. You learn Detect Magic (at will), Levitate (1/long rest), and Dispel Magic (1/long rest). CHA is your spellcasting ability.',
+        prerequisites: { race: ['drow', 'elf'] },
+        benefits: ['Detect Magic at will', 'Levitate 1/long rest', 'Dispel Magic 1/long rest'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'dwarven-fortitude': {
+        name: 'Dwarven Fortitude',
+        source: 'XGtE',
+        description: 'You have the blood of dwarf heroes flowing through your veins. Increase CON by 1. Whenever you take the Dodge action in combat, you can spend one Hit Die to heal yourself.',
+        prerequisites: { race: ['dwarf', 'duergar'] },
+        benefits: ['Spend Hit Die when Dodging'],
+        abilityBonus: { choice: ['con'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'elven-accuracy': {
+        name: 'Elven Accuracy',
+        source: 'XGtE',
+        description: 'The accuracy of elves is legendary. Increase DEX, INT, WIS, or CHA by 1. Whenever you have advantage on an attack roll using DEX, INT, WIS, or CHA, you can reroll one of the dice once.',
+        prerequisites: { race: ['elf', 'half-elf', 'eladrin', 'sea elf', 'shadar-kai', 'astral elf', 'drow'] },
+        benefits: ['Reroll one die when attacking with advantage'],
+        abilityBonus: { choice: ['dex', 'int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['rogue', 'ranger', 'fighter', 'warlock']
+    },
+    'fade-away': {
+        name: 'Fade Away',
+        source: 'XGtE',
+        description: 'Your people are clever, with a knack for illusion magic. Increase DEX or INT by 1. When you take damage, you can use a reaction to become invisible until end of your next turn or until you attack/cast (1/short rest).',
+        prerequisites: { race: ['gnome', 'deep gnome'] },
+        benefits: ['Reaction invisibility when damaged (1/short rest)'],
+        abilityBonus: { choice: ['dex', 'int'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'fey-teleportation': {
+        name: 'Fey Teleportation',
+        source: 'XGtE',
+        description: 'Your study of high elven lore has unlocked fey power. Increase INT or CHA by 1. Learn Sylvan language. Cast Misty Step once per short rest.',
+        prerequisites: { race: ['elf', 'half-elf', 'eladrin'] },
+        benefits: ['Learn Sylvan', 'Misty Step 1/short rest'],
+        abilityBonus: { choice: ['int', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'flames-of-phlegethos': {
+        name: 'Flames of Phlegethos',
+        source: 'XGtE',
+        description: 'You learn to call on hellfire to serve your commands. Increase INT or CHA by 1. When you cast a fire damage spell, reroll 1s on damage. When you cast a fire spell, you can wreath yourself in flames (1d4 fire to melee attackers until next turn).',
+        prerequisites: { race: ['tiefling'] },
+        benefits: ['Reroll 1s on fire damage', 'Flame shield when casting fire spells'],
+        abilityBonus: { choice: ['int', 'cha'], amount: 1 },
+        recommendedFor: ['sorcerer', 'warlock', 'wizard']
+    },
+    'infernal-constitution': {
+        name: 'Infernal Constitution',
+        source: 'XGtE',
+        description: 'Fiendish blood runs strong in you. Increase CON by 1. Gain resistance to cold and poison damage. Advantage on saves against being poisoned.',
+        prerequisites: { race: ['tiefling'] },
+        benefits: ['Cold resistance', 'Poison resistance', 'Advantage vs poisoned'],
+        abilityBonus: { choice: ['con'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'orcish-fury': {
+        name: 'Orcish Fury',
+        source: 'XGtE',
+        description: 'Your inner fury burns tirelessly. Increase STR or CON by 1. When you hit with a weapon attack, add extra damage die once per short rest. When you use Relentless Endurance, you can make one weapon attack as reaction.',
+        prerequisites: { race: ['orc', 'half-orc'] },
+        benefits: ['Extra damage die 1/short rest', 'Reaction attack with Relentless Endurance'],
+        abilityBonus: { choice: ['str', 'con'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter']
+    },
+    'prodigy': {
+        name: 'Prodigy',
+        source: 'XGtE',
+        description: 'You have a knack for learning new things. Gain one skill proficiency, one tool proficiency, one language, and expertise in one skill you\'re proficient with.',
+        prerequisites: { race: ['human', 'half-elf', 'half-orc'] },
+        benefits: ['1 skill proficiency', '1 tool proficiency', '1 language', '1 expertise'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'second-chance': {
+        name: 'Second Chance',
+        source: 'XGtE',
+        description: 'Fortune favors you when someone tries to strike you. Increase DEX, CON, or CHA by 1. When a creature you can see hits you with an attack roll, you can force them to reroll (1/short rest).',
+        prerequisites: { race: ['halfling'] },
+        benefits: ['Force reroll on attack against you (1/short rest)'],
+        abilityBonus: { choice: ['dex', 'con', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'squat-nimbleness': {
+        name: 'Squat Nimbleness',
+        source: 'XGtE',
+        description: 'You are uncommonly nimble for your race. Increase STR or DEX by 1. Your walking speed increases by 5 feet. Gain proficiency in Acrobatics or Athletics. Advantage on checks to escape grapple.',
+        prerequisites: { race: ['dwarf', 'gnome', 'halfling', 'duergar', 'deep gnome'] },
+        benefits: ['+5 ft speed', 'Acrobatics or Athletics proficiency', 'Advantage to escape grapples'],
+        abilityBonus: { choice: ['str', 'dex'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'wood-elf-magic': {
+        name: 'Wood Elf Magic',
+        source: 'XGtE',
+        description: 'You learn the magic of the primeval woods. You learn one druid cantrip. You learn Longstrider and Pass without Trace (cast each 1/long rest). WIS is your spellcasting ability.',
+        prerequisites: { race: ['elf', 'wood elf'] },
+        benefits: ['1 druid cantrip', 'Longstrider 1/long rest', 'Pass without Trace 1/long rest'],
+        abilityBonus: null,
+        recommendedFor: ['ranger', 'druid', 'rogue']
+    },
+
+    // === ADDITIONAL FEATS FROM VARIOUS SOURCES ===
+    'aberrant-dragonmark': {
+        name: 'Aberrant Dragonmark',
+        source: 'ERLW',
+        description: 'You have manifested an aberrant dragonmark. Increase CON by 1. Learn one cantrip and one 1st-level spell from sorcerer spell list. When you cast the 1st-level spell, you can use HP instead of spell slot.',
+        prerequisites: { noMark: true },
+        benefits: ['1 sorcerer cantrip', '1 1st-level sorcerer spell', 'Can use HP to cast'],
+        abilityBonus: { choice: ['con'], amount: 1 },
+        recommendedFor: ['sorcerer', 'warlock']
+    },
+    'gift-of-the-chromatic-dragon': {
+        name: 'Gift of the Chromatic Dragon',
+        source: 'FToD',
+        description: 'You\'ve manifested some of the power of chromatic dragons. As a bonus action, touch a weapon and infuse it with elemental energy (extra 1d4 acid/cold/fire/lightning/poison for 1 minute). Reaction to gain resistance to one of those types when damaged.',
+        prerequisites: null,
+        benefits: ['Bonus action: +1d4 elemental damage to weapon', 'Reaction: elemental resistance'],
+        abilityBonus: null,
+        recommendedFor: ['fighter', 'paladin', 'ranger', 'barbarian']
+    },
+    'gift-of-the-metallic-dragon': {
+        name: 'Gift of the Metallic Dragon',
+        source: 'FToD',
+        description: 'You\'ve manifested some of the power of metallic dragons. Learn Cure Wounds (cast 1/long rest or with spell slots, INT/WIS/CHA). As a reaction when you or adjacent creature is hit, manifest spectral wings for +PB to AC.',
+        prerequisites: null,
+        benefits: ['Cure Wounds 1/long rest', 'Reaction: +PB AC to self or ally'],
+        abilityBonus: null,
+        recommendedFor: ['any']
+    },
+    'gift-of-the-gem-dragon': {
+        name: 'Gift of the Gem Dragon',
+        source: 'FToD',
+        description: 'You\'ve manifested some of the power of gem dragons. Increase INT, WIS, or CHA by 1. When you take damage from a creature within 10 ft, use reaction to deal 2d8 force and push 10 ft (CON save halves, no push). PB uses/long rest.',
+        prerequisites: null,
+        benefits: ['Reaction: 2d8 force damage and push when damaged'],
+        abilityBonus: { choice: ['int', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'strike-of-the-giants': {
+        name: 'Strike of the Giants',
+        source: 'BGG',
+        description: 'You have learned to imbue your attacks with giant power. Choose a type of giant. Once per turn when you hit with a melee weapon or thrown weapon, cause additional effect (varies by giant type). PB uses/long rest.',
+        prerequisites: { weaponProficiency: 'martial' },
+        benefits: ['Giant-themed strike effects (varies by type)'],
+        abilityBonus: null,
+        recommendedFor: ['barbarian', 'fighter', 'paladin']
+    },
+    'ember-of-the-fire-giant': {
+        name: 'Ember of the Fire Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the fiery combat emblematic of fire giants. Increase STR, CON, or WIS by 1. When you take fire damage, reduce it by 1d12 + CON. When you hit with Attack action, bonus action for 2d6 fire AOE.',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Reduce fire damage', 'Bonus action fire AOE after Attack'],
+        abilityBonus: { choice: ['str', 'con', 'wis'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter']
+    },
+    'fury-of-the-frost-giant': {
+        name: 'Fury of the Frost Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the icy might emblematic of frost giants. Increase STR, CON, or WIS by 1. When you take cold damage, reduce it by 1d12 + CON. Reaction when damaged to retaliate with 1d8+PB cold.',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Reduce cold damage', 'Reaction cold retaliation'],
+        abilityBonus: { choice: ['str', 'con', 'wis'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter']
+    },
+    'guile-of-the-cloud-giant': {
+        name: 'Guile of the Cloud Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the deceptive magic emblematic of cloud giants. Increase STR, DEX, or CHA by 1. When you take damage, reaction to become invisible and teleport 30 ft (PB/long rest).',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Reaction invisibility + teleport when damaged'],
+        abilityBonus: { choice: ['str', 'dex', 'cha'], amount: 1 },
+        recommendedFor: ['rogue', 'ranger', 'fighter']
+    },
+    'keenness-of-the-stone-giant': {
+        name: 'Keenness of the Stone Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the rock-throwing mastery emblematic of stone giants. Increase STR, CON, or WIS by 1. Increase thrown weapon range. Once per turn add 1d10 to thrown attack against Large or smaller, pushing 10 ft.',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Increased thrown range', 'Bonus damage + push on thrown attacks'],
+        abilityBonus: { choice: ['str', 'con', 'wis'], amount: 1 },
+        recommendedFor: ['fighter', 'barbarian']
+    },
+    'soul-of-the-storm-giant': {
+        name: 'Soul of the Storm Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the tempest magic emblematic of storm giants. Increase STR, WIS, or CHA by 1. When you take lightning/thunder damage, reduce by 1d12+CON. You have limited precognitive abilities.',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Reduce lightning/thunder damage', 'Precognition abilities'],
+        abilityBonus: { choice: ['str', 'wis', 'cha'], amount: 1 },
+        recommendedFor: ['any']
+    },
+    'vigor-of-the-hill-giant': {
+        name: 'Vigor of the Hill Giant',
+        source: 'BGG',
+        description: 'You\'ve manifested the resilience emblematic of hill giants. Increase STR, CON, or WIS by 1. As a bonus action, gain temp HP = 1d12+CON when you have half HP or less (PB/long rest). Eating advantage.',
+        prerequisites: { feat: 'strike-of-the-giants' },
+        benefits: ['Bonus action temp HP when below half HP', 'Eating advantages'],
+        abilityBonus: { choice: ['str', 'con', 'wis'], amount: 1 },
+        recommendedFor: ['barbarian', 'fighter']
+    },
+    'crusher-feat': {
+        name: 'Scion of the Outer Planes',
+        source: 'PSA',
+        description: 'Your connection to an Outer Plane infuses you with power. Choose a plane. You gain resistance to a damage type associated with that plane and learn a cantrip.',
+        prerequisites: null,
+        benefits: ['Resistance to plane-associated damage', 'Learn 1 cantrip'],
+        abilityBonus: null,
+        recommendedFor: ['warlock', 'sorcerer', 'cleric']
+    }
+};
+
+// ASI levels for each class (most get ASIs at 4, 8, 12, 16, 19 - Fighter and Rogue get extras)
+const asiLevels = {
+    artificer: [4, 8, 12, 16, 19],
+    barbarian: [4, 8, 12, 16, 19],
+    bard: [4, 8, 12, 16, 19],
+    cleric: [4, 8, 12, 16, 19],
+    druid: [4, 8, 12, 16, 19],
+    fighter: [4, 6, 8, 12, 14, 16, 19],
+    monk: [4, 8, 12, 16, 19],
+    paladin: [4, 8, 12, 16, 19],
+    ranger: [4, 8, 12, 16, 19],
+    rogue: [4, 8, 10, 12, 16, 19],
+    sorcerer: [4, 8, 12, 16, 19],
+    warlock: [4, 8, 12, 16, 19],
+    wizard: [4, 8, 12, 16, 19],
+    commoner: []
+};
+
+// Armor and Weapon proficiencies by class
+const classProficiencies = {
+    commoner: {
+        armor: [],
+        weapons: ['Simple weapons']
+    },
+    artificer: {
+        armor: ['Light armor', 'Medium armor', 'Shields'],
+        weapons: ['Simple weapons']
+    },
+    barbarian: {
+        armor: ['Light armor', 'Medium armor', 'Shields'],
+        weapons: ['Simple weapons', 'Martial weapons']
+    },
+    bard: {
+        armor: ['Light armor'],
+        weapons: ['Simple weapons', 'Hand crossbows', 'Longswords', 'Rapiers', 'Shortswords']
+    },
+    cleric: {
+        armor: ['Light armor', 'Medium armor', 'Shields'],
+        weapons: ['Simple weapons']
+    },
+    druid: {
+        armor: ['Light armor', 'Medium armor', 'Shields (non-metal)'],
+        weapons: ['Clubs', 'Daggers', 'Darts', 'Javelins', 'Maces', 'Quarterstaffs', 'Scimitars', 'Sickles', 'Slings', 'Spears']
+    },
+    fighter: {
+        armor: ['Light armor', 'Medium armor', 'Heavy armor', 'Shields'],
+        weapons: ['Simple weapons', 'Martial weapons']
+    },
+    monk: {
+        armor: [],
+        weapons: ['Simple weapons', 'Shortswords']
+    },
+    paladin: {
+        armor: ['Light armor', 'Medium armor', 'Heavy armor', 'Shields'],
+        weapons: ['Simple weapons', 'Martial weapons']
+    },
+    ranger: {
+        armor: ['Light armor', 'Medium armor', 'Shields'],
+        weapons: ['Simple weapons', 'Martial weapons']
+    },
+    rogue: {
+        armor: ['Light armor'],
+        weapons: ['Simple weapons', 'Hand crossbows', 'Longswords', 'Rapiers', 'Shortswords']
+    },
+    sorcerer: {
+        armor: [],
+        weapons: ['Daggers', 'Darts', 'Slings', 'Quarterstaffs', 'Light crossbows']
+    },
+    warlock: {
+        armor: ['Light armor'],
+        weapons: ['Simple weapons']
+    },
+    wizard: {
+        armor: [],
+        weapons: ['Daggers', 'Darts', 'Slings', 'Quarterstaffs', 'Light crossbows']
+    }
+};
+
+// XP thresholds for each level
+const xpThresholds = {
+    1: 0,
+    2: 300,
+    3: 900,
+    4: 2700,
+    5: 6500,
+    6: 14000,
+    7: 23000,
+    8: 34000,
+    9: 48000,
+    10: 64000,
+    11: 85000,
+    12: 100000,
+    13: 120000,
+    14: 140000,
+    15: 165000,
+    16: 195000,
+    17: 225000,
+    18: 265000,
+    19: 305000,
+    20: 355000
+};
+
 // Civilian occupations/jobs (affects backstory and roleplay, not combat)
 const occupations = {
     // Special
