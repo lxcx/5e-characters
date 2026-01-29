@@ -12,8 +12,3 @@ jobs:
       - name: Trigger Vercel Deployment
         run: |
           curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_B0ooidxWYsXms3JlWTNoS5SFVU95/PReVi8XmWz"
-      
-      - name: Notify Vercel
-        uses: 'vercel/repository-dispatch/actions/status@v1'
-        with:
-          name: Vercel - 5e-characters
