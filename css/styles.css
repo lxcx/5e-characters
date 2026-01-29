@@ -2421,6 +2421,19 @@
             box-shadow: none;
         }
 
+        .modal-btn-danger {
+            background: #fff5f5;
+            border: 2px solid #e74c3c;
+            color: #c0392b;
+        }
+
+        .modal-btn-danger:hover {
+            background: #e74c3c;
+            color: white;
+            transform: none;
+            box-shadow: none;
+        }
+
         .modal-btn-save {
             background: #58180d;
             border: 2px solid #58180d;

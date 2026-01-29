@@ -3025,6 +3025,14 @@ function closeSpellModal() {
     currentSpellSelections = [];
 }
 
+function clearAllSpells() {
+    currentSpellSelections = [];
+    // Uncheck all checkboxes in the modal
+    const checkboxes = document.querySelectorAll('#spellModalOptions input[type="checkbox"]');
+    checkboxes.forEach(cb => cb.checked = false);
+    updateSpellModalCount();
+}
+
 function saveSpellSelections() {
     if (currentSpellModalType && currentNPC && currentNPC.spellData) {
         if (currentSpellModalType === 'cantrips') {
