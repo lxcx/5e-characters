@@ -992,11 +992,38 @@ function onClassChange() {
     
     // Update feats toggle visibility
     updateFeatsToggleVisibility();
+    
+    // Update class label with total level
+    updateClassLabelWithTotalLevel();
 }
 
 function onLevelChange() {
     updateSubclassOptions();
     updateFeatsToggleVisibility();
+    updateClassLabelWithTotalLevel();
+}
+
+function updateClassLabelWithTotalLevel() {
+    const classSelect = document.getElementById('npcClass');
+    const levelSelect = document.getElementById('npcClassLevel');
+    const classLabel = document.getElementById('classLabel');
+    
+    if (!classLabel) return;
+    
+    const selectedClass = classSelect.value;
+    
+    // For commoner or random, don't show level
+    if (selectedClass === 'commoner' || selectedClass === 'random') {
+        classLabel.textContent = 'Class';
+        return;
+    }
+    
+    // Calculate total level from main class + multiclasses
+    const mainLevel = parseInt(levelSelect.value) || 1;
+    const multiclassLevels = multiclasses.reduce((sum, mc) => sum + (mc.level || 0), 0);
+    const totalLevel = mainLevel + multiclassLevels;
+    
+    classLabel.innerHTML = `Class <span style="color: #6c757d; font-weight: normal;">(Level ${totalLevel})</span>`;
 }
 
 // Show level up options when character has ASI levels (level 4+)
@@ -1087,12 +1114,14 @@ function addMulticlass() {
     
     renderMulticlasses();
     updateFeatsToggleVisibility();
+    updateClassLabelWithTotalLevel();
 }
 
 function removeMulticlass(index) {
     multiclasses.splice(index, 1);
     renderMulticlasses();
     updateFeatsToggleVisibility();
+    updateClassLabelWithTotalLevel();
 }
 
 function updateMulticlass(index, field, value) {
@@ -1110,6 +1139,7 @@ function updateMulticlass(index, field, value) {
         }
         renderMulticlasses(); // Re-render to show/hide subclass dropdown
         updateFeatsToggleVisibility();
+        updateClassLabelWithTotalLevel();
     } else if (field === 'subclass') {
         multiclasses[index].subclass = value;
     }
