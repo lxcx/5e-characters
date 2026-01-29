@@ -881,6 +881,13 @@ function toggleCharacterType() {
     }
     
     const classSelect = document.getElementById('npcClass');
+    const commonerOption = classSelect.querySelector('option[value="commoner"]');
+    
+    // Hide/show commoner option based on mode
+    if (commonerOption) {
+        commonerOption.style.display = isPC ? 'none' : '';
+    }
+    
     if (isPC && classSelect.value === 'commoner') {
         // PC mode: switch from commoner to random adventurer
         classSelect.value = 'random';
