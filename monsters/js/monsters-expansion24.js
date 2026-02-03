@@ -1,0 +1,316 @@
+// Expansion Pack 24 - More Creatures
+// Final comprehensive additions
+
+const MONSTERS_EXPANSION24 = {
+    // ===== More NPCs =====
+    "abjurer": {
+        name: "Abjurer",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 84,
+        hitDice: "13d8+26",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 14, int: 18, wis: 12, cha: 11 },
+        savingThrows: { int: 8, wis: 5 },
+        skills: { arcana: 8, history: 8 },
+        senses: [],
+        languages: "any four languages",
+        cr: 9,
+        environment: ["urban"],
+        role: "controller",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Arcane Ward", description: "The abjurer has a magical ward that has 30 hit points. Whenever the abjurer takes damage, the ward takes the damage instead. If the ward is reduced to 0 hit points, the abjurer takes any remaining damage. When the abjurer casts an abjuration spell of 1st level or higher, the ward regains a number of hit points equal to twice the level of the spell." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage, or 3 (1d8-1) bludgeoning damage if used with two hands." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 16,
+            attack: 8,
+            spells: {
+                cantrips: ["blade ward", "dancing lights", "mending", "message", "ray of frost"],
+                "1st": { slots: 4, spells: ["alarm", "mage armor", "magic missile", "shield"] },
+                "2nd": { slots: 3, spells: ["arcane lock", "invisibility"] },
+                "3rd": { slots: 3, spells: ["counterspell", "dispel magic", "fireball"] },
+                "4th": { slots: 3, spells: ["banishment", "stoneskin"] },
+                "5th": { slots: 2, spells: ["cone of cold", "wall of force"] },
+                "6th": { slots: 1, spells: ["flesh to stone", "globe of invulnerability"] },
+                "7th": { slots: 1, spells: ["symbol", "teleport"] }
+            }
+        }
+    },
+    "conjurer": {
+        name: "Conjurer",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 40,
+        hitDice: "9d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 11, int: 17, wis: 12, cha: 11 },
+        savingThrows: { int: 6, wis: 4 },
+        skills: { arcana: 6, history: 6 },
+        senses: [],
+        languages: "any four languages",
+        cr: 6,
+        environment: ["urban"],
+        role: "controller",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Benign Transportation (Recharges after the Conjurer Casts a Conjuration Spell of 1st Level or Higher)", description: "As a bonus action, the conjurer teleports up to 30 feet to an unoccupied space that it can see. If it instead chooses a space within range that is occupied by a willing Small or Medium creature, they both teleport, swapping places." }
+        ],
+        actions: [
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attack: 6,
+            spells: {
+                cantrips: ["acid splash", "mage hand", "poison spray", "prestidigitation"],
+                "1st": { slots: 4, spells: ["mage armor", "magic missile", "unseen servant"] },
+                "2nd": { slots: 3, spells: ["cloud of daggers", "misty step", "web"] },
+                "3rd": { slots: 3, spells: ["fireball", "stinking cloud"] },
+                "4th": { slots: 3, spells: ["Evard's black tentacles", "conjure minor elementals"] },
+                "5th": { slots: 1, spells: ["cloudkill", "conjure elemental"] }
+            }
+        }
+    },
+    "diviner": {
+        name: "Diviner",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 67,
+        hitDice: "15d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 11, int: 18, wis: 12, cha: 11 },
+        savingThrows: { int: 7, wis: 4 },
+        skills: { arcana: 7, history: 7 },
+        senses: [],
+        languages: "any four languages",
+        cr: 8,
+        environment: ["urban"],
+        role: "controller",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Portent (Recharges after the Diviner Casts a Divination Spell of 1st Level or Higher)", description: "When the diviner or a creature it can see makes an attack roll, a saving throw, or an ability check, the diviner can roll a d20 and choose to use this roll in place of the attack roll, saving throw, or ability check." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage, or 3 (1d8-1) bludgeoning damage if used with two hands." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 15,
+            attack: 7,
+            spells: {
+                cantrips: ["fire bolt", "light", "mage hand", "message", "true strike"],
+                "1st": { slots: 4, spells: ["detect magic", "feather fall", "mage armor"] },
+                "2nd": { slots: 3, spells: ["detect thoughts", "locate object", "scorching ray"] },
+                "3rd": { slots: 3, spells: ["clairvoyance", "fly", "fireball"] },
+                "4th": { slots: 3, spells: ["arcane eye", "ice storm", "stoneskin"] },
+                "5th": { slots: 2, spells: ["Rary's telepathic bond", "seeming"] },
+                "6th": { slots: 1, spells: ["mass suggestion", "true seeing"] }
+            }
+        }
+    },
+    "enchanter": {
+        name: "Enchanter",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 40,
+        hitDice: "9d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 11, int: 17, wis: 12, cha: 11 },
+        savingThrows: { int: 6, wis: 4 },
+        skills: { arcana: 6, history: 6 },
+        senses: [],
+        languages: "any four languages",
+        cr: 5,
+        environment: ["urban"],
+        role: "controller",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Instinctive Charm (Recharges after the Enchanter Casts an Enchantment Spell of 1st Level or Higher)", description: "The enchanter tries to magically divert an attack made against it, provided that the attacker is within 30 feet of it and visible to it. The enchanter must decide to do so before the attack hits or misses. The attacker must succeed on a DC 14 Wisdom saving throw, or the attacker must target the creature closest to it, other than the enchanter or itself. If multiple creatures are closest, the attacker chooses which one to target." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage, or 3 (1d8-1) bludgeoning damage if used with two hands." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attack: 6,
+            spells: {
+                cantrips: ["friends", "mage hand", "mending", "message"],
+                "1st": { slots: 4, spells: ["charm person", "mage armor", "magic missile"] },
+                "2nd": { slots: 3, spells: ["hold person", "invisibility", "suggestion"] },
+                "3rd": { slots: 3, spells: ["fireball", "haste", "tongues"] },
+                "4th": { slots: 3, spells: ["dominate beast", "stoneskin"] },
+                "5th": { slots: 1, spells: ["dominate person", "hold monster"] }
+            }
+        }
+    },
+    "evoker": {
+        name: "Evoker",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 66,
+        hitDice: "12d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 12, int: 17, wis: 12, cha: 11 },
+        savingThrows: { int: 7, wis: 5 },
+        skills: { arcana: 7, history: 7 },
+        senses: [],
+        languages: "any four languages",
+        cr: 9,
+        environment: ["urban"],
+        role: "artillery",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Sculpt Spells", description: "When the evoker casts an evocation spell that forces other creatures it can see to make a saving throw, it can choose a number of them equal to 1 + the spell's level. These creatures automatically succeed on their saving throws against the spell. If a successful save means a chosen creature would take half damage from the spell, it instead takes no damage from it." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage, or 3 (1d8-1) bludgeoning damage if used with two hands." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 15,
+            attack: 7,
+            spells: {
+                cantrips: ["fire bolt", "light", "prestidigitation", "ray of frost"],
+                "1st": { slots: 4, spells: ["burning hands", "mage armor", "magic missile"] },
+                "2nd": { slots: 3, spells: ["mirror image", "misty step", "shatter"] },
+                "3rd": { slots: 3, spells: ["counterspell", "fireball", "lightning bolt"] },
+                "4th": { slots: 3, spells: ["ice storm", "stoneskin"] },
+                "5th": { slots: 2, spells: ["Bigby's hand", "cone of cold"] },
+                "6th": { slots: 1, spells: ["chain lightning", "wall of ice"] }
+            }
+        }
+    },
+    "necromancer": {
+        name: "Necromancer",
+        source: "VGtM",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 66,
+        hitDice: "12d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 12, int: 17, wis: 12, cha: 11 },
+        savingThrows: { int: 7, wis: 5 },
+        skills: { arcana: 7, history: 7 },
+        senses: [],
+        languages: "any four languages",
+        cr: 9,
+        environment: ["urban"],
+        role: "controller",
+        tags: ["humanoid", "npc", "spellcaster"],
+        traits: [
+            { name: "Grim Harvest (1/Turn)", description: "When the necromancer kills a creature that is neither a construct nor undead with a spell of 1st level or higher, the necromancer regains hit points equal to twice the spell's level, or three times if it is a necromancy spell." }
+        ],
+        actions: [
+            { name: "Withering Touch", description: "Melee Spell Attack: +7 to hit, reach 5 ft., one creature. Hit: 5 (2d4) necrotic damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 15,
+            attack: 7,
+            spells: {
+                cantrips: ["chill touch", "dancing lights", "mage hand", "mending"],
+                "1st": { slots: 4, spells: ["false life", "mage armor", "ray of sickness"] },
+                "2nd": { slots: 3, spells: ["blindness/deafness", "ray of enfeeblement", "web"] },
+                "3rd": { slots: 3, spells: ["animate dead", "bestow curse", "vampiric touch"] },
+                "4th": { slots: 3, spells: ["blight", "dimension door", "stoneskin"] },
+                "5th": { slots: 2, spells: ["Bigby's hand", "cloudkill"] },
+                "6th": { slots: 1, spells: ["circle of death", "create undead"] }
+            }
+        }
+    },
+
+    // ===== More Misc Creatures =====
+    "flail-snail": {
+        name: "Flail Snail",
+        source: "VGtM",
+        size: "large",
+        type: "elemental",
+        alignment: "unaligned",
+        ac: 16,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "5d10+25",
+        speed: { walk: 10 },
+        abilityScores: { str: 17, dex: 5, con: 20, int: 3, wis: 10, cha: 5 },
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 60 ft.", "tremorsense 60 ft."],
+        languages: "—",
+        cr: 3,
+        environment: ["forest", "swamp", "underdark"],
+        role: "brute",
+        tags: ["elemental"],
+        traits: [
+            { name: "Antimagic Shell", description: "The snail has advantage on saving throws against spells, and any creature making a spell attack against the snail has disadvantage on the attack roll. If the snail succeeds on its saving throw against a spell or a spell attack misses it, an additional effect might occur, as determined by rolling a d6. 1-2: The spell has no additional effect. 3-4: The snail's shell converts some of the spell's energy into a burst of destructive force. Each creature within 30 feet of the snail must make a DC 15 Constitution saving throw, taking 1d6 force damage per level of the spell on a failed save, or half as much damage on a successful one. 5-6: The spell is reflected back at the caster. The spell has no effect on the snail and instead targets the caster, using the slot level, spell save DC, attack bonus, and spellcasting ability of the caster." },
+            { name: "Flail Tentacles", description: "The flail snail has five flail tentacles. Whenever the snail takes 10 damage or more on a single turn, one of its tentacles dies. If even one tentacle remains, the snail regrows all dead ones within 1d4 days. If all its tentacles die, the snail retracts into its shell, gaining total cover, and it begins wailing, a loud keening audible for 600 feet, stopping only when it dies 5d6 minutes later. Healing magic that restores limbs, such as the regenerate spell, can halt this dying process." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The flail snail makes as many Flail Tentacle attacks as it has flail tentacles, all against the same target." },
+            { name: "Flail Tentacle", description: "Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 6 (1d6+3) bludgeoning damage." },
+            { name: "Scintillating Shell (Recharges after a Short or Long Rest)", description: "The snail's shell emits dazzling, colored light until the end of the snail's next turn. During this time, the shell sheds bright light in a 30-foot radius and dim light for an additional 30 feet, and creatures that can see the snail have disadvantage on attack rolls against it. In addition, any creature within the bright light and able to see the snail when this power is activated must succeed on a DC 15 Wisdom saving throw or be stunned until the light ends." },
+            { name: "Shell Defense", description: "The flail snail withdraws into its shell, gaining a +4 bonus to AC until it emerges. It can emerge from its shell as a bonus action on its turn." }
+        ]
+    },
+    "tlincalli": {
+        name: "Tlincalli",
+        source: "VGtM",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral",
+        ac: 15,
+        acType: "natural armor",
+        hp: 85,
+        hitDice: "10d10+30",
+        speed: { walk: 40 },
+        abilityScores: { str: 16, dex: 13, con: 16, int: 8, wis: 12, cha: 8 },
+        skills: { perception: 4, stealth: 4, survival: 4 },
+        senses: ["darkvision 60 ft."],
+        languages: "Tlincalli",
+        cr: 5,
+        environment: ["desert"],
+        role: "soldier",
+        tags: ["monstrosity"],
+        actions: [
+            { name: "Multiattack", description: "The tlincalli makes two attacks: one with its longsword or spiked chain, and one with its sting." },
+            { name: "Longsword", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands." },
+            { name: "Spiked Chain", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d6+3) piercing damage, and the target is grappled (escape DC 11) if it is a Large or smaller creature. Until this grapple ends, the target is restrained, and the tlincalli can't use the spiked chain against another target." },
+            { name: "Sting", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 6 (1d6+3) piercing damage plus 14 (4d6) poison damage, and the target must succeed on a DC 14 Constitution saving throw or be poisoned for 1 minute. If it fails the saving throw by 5 or more, the target is also paralyzed while poisoned. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ]
+    }
+};

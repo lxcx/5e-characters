@@ -1,0 +1,1028 @@
+/* D&D 5E Monster Generator - Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bookinsanity', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1, h2, h3, .section-title, .monster-name, .stat-label {
+    font-family: 'Nodesto Caps Condensed', 'Segoe UI', Tahoma, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: 1.1em;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+}
+
+@media (max-width: 968px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+    
+    .container {
+        border-radius: 0;
+    }
+    
+    header {
+        padding: 20px 15px;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    .content {
+        padding: 15px;
+        gap: 20px;
+    }
+}
+
+.form-section, .result-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95em;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s;
+    background: white;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+@media (max-width: 500px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Type description */
+.type-description {
+    margin-top: 10px;
+    padding: 12px;
+    background: #fdf1dc;
+    border-left: 4px solid #7c3aed;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.type-description.hidden {
+    display: none;
+}
+
+.type-description strong {
+    color: #7c3aed;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+/* Result section */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.result-header h2 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.regenerate-btn {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+}
+
+.regenerate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Monster Card */
+.monster-card {
+    background: #fdf1dc;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #7c3aed;
+}
+
+.monster-header {
+    border-bottom: 2px solid #7c3aed;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.monster-name {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 2.2em;
+    color: #7c3aed;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.monster-basics {
+    color: #4a5568;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.stat-block-divider {
+    height: 3px;
+    background: linear-gradient(to right, #7c3aed, #c4b5fd, #7c3aed);
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+/* Stats Row */
+.monster-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.monster-stats-row .stat-item {
+    flex: 1;
+    min-width: 100px;
+}
+
+.stat-item {
+    background: rgba(124, 58, 237, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-label {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 0.85em;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #2c3e50;
+    display: block;
+}
+
+.stat-note {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+/* Ability Scores */
+.ability-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+    .ability-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.ability-item {
+    background: rgba(124, 58, 237, 0.1);
+    padding: 10px 5px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.ability-label {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 0.9em;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ability-score {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2c3e50;
+    display: block;
+}
+
+.ability-mod {
+    font-size: 0.9em;
+    color: #7c3aed;
+    font-weight: 600;
+}
+
+/* Monster Details */
+.monster-details p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.monster-details strong {
+    color: #7c3aed;
+}
+
+/* Section Title */
+.section-title {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #7c3aed;
+    margin: 20px 0 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #c4b5fd;
+    letter-spacing: 1px;
+}
+
+/* Traits */
+.traits-section, .actions-section, .legendary-section, .lair-section, .spellcasting-section {
+    margin-top: 15px;
+}
+
+.trait-item, .action-item, .legendary-item {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+}
+
+.trait-item p, .action-item p, .legendary-item p {
+    line-height: 1.6;
+}
+
+.trait-item strong, .action-item strong, .legendary-item strong {
+    color: #4c1d95;
+}
+
+/* Actions */
+.add-action-btn {
+    background: white;
+    color: #7c3aed;
+    border: 2px dashed #c4b5fd;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+
+.add-action-btn:hover {
+    background: #7c3aed;
+    color: white;
+    border-style: solid;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Legendary Intro */
+.legendary-intro, .lair-intro {
+    font-style: italic;
+    color: #4a5568;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.lair-list {
+    margin-left: 20px;
+}
+
+.lair-list li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Spell List */
+.spell-list p {
+    margin: 5px 0;
+}
+
+.spell-list strong {
+    color: #7c3aed;
+}
+
+/* Description */
+.monster-description {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #c4b5fd;
+}
+
+.monster-description p {
+    line-height: 1.7;
+    color: #4a5568;
+}
+
+/* Editable fields */
+.editable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: -2px -6px;
+}
+
+.editable:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+}
+
+.editable::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: '\f303';
+    font-size: 0.7em;
+    margin-left: 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: #7c3aed;
+}
+
+.editable:hover::after {
+    opacity: 1;
+}
+
+/* Portrait Section */
+.portrait-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #c4b5fd;
+}
+
+.portrait-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #c4b5fd;
+}
+
+.portrait-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #adb5bd;
+}
+
+.portrait-placeholder i {
+    font-size: 5em;
+}
+
+.portrait-placeholder span {
+    font-size: 0.95em;
+}
+
+.portrait-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portrait-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #7c3aed;
+}
+
+.portrait-loading i {
+    font-size: 3em;
+}
+
+.portrait-loading span {
+    font-size: 0.95em;
+}
+
+.generate-portrait-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.generate-portrait-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.generate-portrait-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.portrait-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.view-prompt-btn {
+    background: white;
+    color: #7c3aed;
+    border: 2px solid #7c3aed;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+}
+
+.view-prompt-btn:hover {
+    background: #7c3aed;
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Export Section */
+.export-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #c4b5fd;
+}
+
+.export-pdf-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.export-pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.modal-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: auto;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #2c3e50;
+    transform: none;
+    box-shadow: none;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 2px solid #e9ecef;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: auto;
+}
+
+.modal-btn-cancel {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    color: #495057;
+}
+
+.modal-btn-cancel:hover {
+    background: #e9ecef;
+    transform: none;
+    box-shadow: none;
+}
+
+.modal-btn-danger {
+    background: #fff5f5;
+    border: 2px solid #e74c3c;
+    color: #c0392b;
+}
+
+.modal-btn-danger:hover {
+    background: #e74c3c;
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+.modal-btn-save {
+    background: #7c3aed;
+    border: 2px solid #7c3aed;
+    color: white;
+}
+
+.modal-btn-save:hover {
+    background: #6d28d9;
+    border-color: #6d28d9;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Action Form */
+.action-form .form-group {
+    margin-bottom: 15px;
+}
+
+.action-form label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.action-form input,
+.action-form select,
+.action-form textarea {
+    font-size: 0.95em;
+}
+
+.action-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Trait Modal */
+.trait-modal-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.trait-modal-filter {
+    padding: 8px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.trait-modal-search {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Portrait Prompt Modal */
+.prompt-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.prompt-modal-overlay.active {
+    display: flex;
+}
+
+.prompt-modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.prompt-modal-header {
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prompt-modal-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.prompt-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.8;
+    width: auto;
+}
+
+.prompt-modal-close:hover {
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+}
+
+.prompt-modal-body {
+    padding: 20px;
+}
+
+.prompt-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95em;
+    line-height: 1.5;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.prompt-textarea:focus {
+    outline: none;
+    border-color: #7c3aed;
+}
+
+.prompt-modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: flex-end;
+}
+
+.copy-prompt-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+}
+
+.copy-prompt-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.copy-prompt-btn.copied {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    display: flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #7c3aed;
+}
+
+.mode-btn {
+    flex: 1 1 50%;
+    min-width: 0;
+    padding: 12px 16px;
+    margin: 0;
+    border: none;
+    background: white;
+    color: #7c3aed;
+    font-weight: 600;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.mode-btn:hover {
+    background: rgba(124, 58, 237, 0.1);
+    transform: none;
+    box-shadow: none;
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+    color: white;
+}
+
+.mode-btn.active:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+}
+
+/* Monster Library */
+#monsterSearch {
+    padding: 12px;
+    font-size: 1em;
+}
+
+#monsterSelect {
+    width: 100%;
+    padding: 0;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 0.95em;
+    background: white;
+}
+
+#monsterSelect option {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+#monsterSelect option:hover {
+    background: rgba(124, 58, 237, 0.1);
+}
+
+#monsterSelect option:checked {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: white;
+}
+
+.monster-preview {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.monster-preview-name {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 1.3em;
+    color: #7c3aed;
+    margin-bottom: 5px;
+}
+
+.monster-preview-stats {
+    color: #4a5568;
+}
+
+.monster-preview-stats strong {
+    color: #2c3e50;
+}
+
+#loadBtn {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    margin-top: 10px;
+}
+
+#loadBtn:hover {
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Monster count badge */
+.monster-count {
+    display: inline-block;
+    background: rgba(124, 58, 237, 0.1);
+    color: #7c3aed;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+/* Reactions section */
+.reactions-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #7c3aed;
+}
+
+.reactions-section .section-title {
+    color: #7c3aed;
+    margin-bottom: 15px;
+}

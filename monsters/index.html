@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5E Monster Generator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- D&D Style Fonts -->
+    <link href="https://db.onlinewebfonts.com/c/c391b9f3d65d9f9e311c80d964b696e1?family=Nodesto+Caps+Condensed" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/b9b59f3d31d975e265c5ed4c5433326f?family=Bookinsanity" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-dragon"></i> D&D 5E Monster Generator</h1>
+            <p>Create unique monsters and creatures for your campaign</p>
+        </header>
+
+        <div class="content">
+            <div class="form-section">
+                <h2 style="margin-bottom: 20px; color: #2c3e50;"><i class="fa-solid fa-sliders"></i> Generator Options</h2>
+                
+                <!-- Mode Selection -->
+                <div class="form-group">
+                    <label for="generatorMode">Mode</label>
+                    <div class="mode-toggle">
+                        <button type="button" class="mode-btn active" id="modeGenerate" onclick="setMode('generate')">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Random
+                        </button>
+                        <button type="button" class="mode-btn" id="modeSelect" onclick="setMode('select')">
+                            <i class="fa-solid fa-book"></i> Monster Library
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Monster Library Selection (hidden by default) -->
+                <div id="librarySection" class="form-group" style="display: none;">
+                    <label for="monsterSearch">Search Monsters (350+ creatures)</label>
+                    <input type="text" id="monsterSearch" placeholder="Type to search... (e.g., dragon, goblin, beholder)" oninput="filterMonsterList()" autocomplete="off">
+                    <select id="monsterSelect" size="8" style="margin-top: 10px; height: 200px;" onchange="previewSelectedMonster()">
+                        <!-- Options populated by JavaScript -->
+                    </select>
+                    <div id="monsterPreview" class="monster-preview" style="margin-top: 10px; padding: 10px; background: rgba(124, 58, 237, 0.1); border-radius: 8px; display: none;">
+                        <!-- Preview info shown here -->
+                    </div>
+                </div>
+
+                <!-- Generator Options (shown by default) -->
+                <div id="generatorSection">
+                <!-- Monster Type -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="monsterType">Monster Type</label>
+                        <select id="monsterType" onchange="showTypeDescription()">
+                            <option value="random">Random</option>
+                            <option value="aberration">Aberration</option>
+                            <option value="beast">Beast</option>
+                            <option value="celestial">Celestial</option>
+                            <option value="construct">Construct</option>
+                            <option value="dragon">Dragon</option>
+                            <option value="elemental">Elemental</option>
+                            <option value="fey">Fey</option>
+                            <option value="fiend">Fiend</option>
+                            <option value="giant">Giant</option>
+                            <option value="humanoid">Humanoid</option>
+                            <option value="monstrosity">Monstrosity</option>
+                            <option value="ooze">Ooze</option>
+                            <option value="plant">Plant</option>
+                            <option value="undead">Undead</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Size</label>
+                        <select id="size">
+                            <option value="random">Random</option>
+                            <option value="tiny">Tiny</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                            <option value="huge">Huge</option>
+                            <option value="gargantuan">Gargantuan</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="typeDescription" class="type-description hidden"></div>
+
+                <!-- Challenge Rating -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="challengeRating">Challenge Rating</label>
+                        <select id="challengeRating">
+                            <option value="random">Random</option>
+                            <option value="0">CR 0 (10 XP)</option>
+                            <option value="0.125">CR 1/8 (25 XP)</option>
+                            <option value="0.25">CR 1/4 (50 XP)</option>
+                            <option value="0.5">CR 1/2 (100 XP)</option>
+                            <option value="1">CR 1 (200 XP)</option>
+                            <option value="2">CR 2 (450 XP)</option>
+                            <option value="3">CR 3 (700 XP)</option>
+                            <option value="4">CR 4 (1,100 XP)</option>
+                            <option value="5">CR 5 (1,800 XP)</option>
+                            <option value="6">CR 6 (2,300 XP)</option>
+                            <option value="7">CR 7 (2,900 XP)</option>
+                            <option value="8">CR 8 (3,900 XP)</option>
+                            <option value="9">CR 9 (5,000 XP)</option>
+                            <option value="10">CR 10 (5,900 XP)</option>
+                            <option value="11">CR 11 (7,200 XP)</option>
+                            <option value="12">CR 12 (8,400 XP)</option>
+                            <option value="13">CR 13 (10,000 XP)</option>
+                            <option value="14">CR 14 (11,500 XP)</option>
+                            <option value="15">CR 15 (13,000 XP)</option>
+                            <option value="16">CR 16 (15,000 XP)</option>
+                            <option value="17">CR 17 (18,000 XP)</option>
+                            <option value="18">CR 18 (20,000 XP)</option>
+                            <option value="19">CR 19 (22,000 XP)</option>
+                            <option value="20">CR 20 (25,000 XP)</option>
+                            <option value="21">CR 21 (33,000 XP)</option>
+                            <option value="22">CR 22 (41,000 XP)</option>
+                            <option value="23">CR 23 (50,000 XP)</option>
+                            <option value="24">CR 24 (62,000 XP)</option>
+                            <option value="25">CR 25 (75,000 XP)</option>
+                            <option value="26">CR 26 (90,000 XP)</option>
+                            <option value="27">CR 27 (105,000 XP)</option>
+                            <option value="28">CR 28 (120,000 XP)</option>
+                            <option value="29">CR 29 (135,000 XP)</option>
+                            <option value="30">CR 30 (155,000 XP)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alignment">Alignment</label>
+                        <select id="alignment">
+                            <option value="random">Random</option>
+                            <option value="lawful good">Lawful Good</option>
+                            <option value="neutral good">Neutral Good</option>
+                            <option value="chaotic good">Chaotic Good</option>
+                            <option value="lawful neutral">Lawful Neutral</option>
+                            <option value="true neutral">True Neutral</option>
+                            <option value="chaotic neutral">Chaotic Neutral</option>
+                            <option value="lawful evil">Lawful Evil</option>
+                            <option value="neutral evil">Neutral Evil</option>
+                            <option value="chaotic evil">Chaotic Evil</option>
+                            <option value="unaligned">Unaligned</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Environment -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="environment">Environment</label>
+                        <select id="environment">
+                            <option value="random">Random</option>
+                            <option value="arctic">Arctic</option>
+                            <option value="coastal">Coastal</option>
+                            <option value="desert">Desert</option>
+                            <option value="forest">Forest</option>
+                            <option value="grassland">Grassland</option>
+                            <option value="hill">Hill</option>
+                            <option value="mountain">Mountain</option>
+                            <option value="swamp">Swamp</option>
+                            <option value="underdark">Underdark</option>
+                            <option value="underwater">Underwater</option>
+                            <option value="urban">Urban</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Combat Role</label>
+                        <select id="role">
+                            <option value="random">Random</option>
+                            <option value="artillery">Artillery (Ranged DPS)</option>
+                            <option value="brute">Brute (High HP, High Damage)</option>
+                            <option value="controller">Controller (Crowd Control)</option>
+                            <option value="lurker">Lurker (Ambush Predator)</option>
+                            <option value="skirmisher">Skirmisher (Mobile Striker)</option>
+                            <option value="soldier">Soldier (Frontline Tank)</option>
+                            <option value="support">Support (Buff/Heal Allies)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Special Options -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hasSpellcasting">
+                            <input type="checkbox" id="hasSpellcasting" style="width: auto; margin-right: 8px;">
+                            Spellcasting Ability
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="isLegendary">
+                            <input type="checkbox" id="isLegendary" style="width: auto; margin-right: 8px;">
+                            Legendary Creature
+                        </label>
+                    </div>
+                </div>
+
+                </div><!-- End generatorSection -->
+
+                <button id="generateBtn" onclick="handleGenerate()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Monster</button>
+                <button id="loadBtn" onclick="loadSelectedMonster()" style="display: none;"><i class="fa-solid fa-book-open"></i> Load Monster</button>
+            </div>
+
+            <div class="result-section">
+                <div class="result-header">
+                    <h2><i class="fa-solid fa-skull"></i> Generated Monster</h2>
+                    <button class="regenerate-btn" onclick="regenerateMonster()" id="regenerateBtn" style="display: none;">
+                        <i class="fa-solid fa-arrows-rotate"></i> Regenerate
+                    </button>
+                </div>
+                <div id="monsterResult" class="hidden">
+                    <!-- Monster will be displayed here -->
+                </div>
+                <div id="placeholder" style="text-align: center; color: #6c757d; padding: 40px;">
+                    <p id="placeholderText" style="font-size: 1.2em;">Fill out the form and click "Generate Monster" to create a creature</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript Files -->
+    <script src="js/data.js"></script>
+    <!-- Monster Library Data -->
+    <script src="js/monsters-mm-a.js"></script>
+    <script src="js/monsters-mm-b.js"></script>
+    <script src="js/monsters-mm-c.js"></script>
+    <script src="js/monsters-mm-d.js"></script>
+    <script src="js/monsters-mm-efg.js"></script>
+    <script src="js/monsters-mm-rest.js"></script>
+    <script src="js/monsters-mm-sz.js"></script>
+    <script src="js/monsters-volo.js"></script>
+    <script src="js/monsters-mtof.js"></script>
+    <script src="js/monsters-dragons.js"></script>
+    <script src="js/monsters-undead.js"></script>
+    <script src="js/monsters-giants.js"></script>
+    <script src="js/monsters-beasts.js"></script>
+    <script src="js/monsters-npcs.js"></script>
+    <script src="js/monsters-elementals.js"></script>
+    <script src="js/monsters-fiends.js"></script>
+    <script src="js/monsters-misc.js"></script>
+    <script src="js/monsters-mm-complete1.js"></script>
+    <script src="js/monsters-mm-complete2.js"></script>
+    <script src="js/monsters-mm-complete3.js"></script>
+    <script src="js/monsters-mm-complete4.js"></script>
+    <script src="js/monsters-volo-complete.js"></script>
+    <script src="js/monsters-mtof-complete.js"></script>
+    <script src="js/monsters-mtof-extended.js"></script>
+    <script src="js/monsters-eladrin.js"></script>
+    <script src="js/monsters-volo-extended.js"></script>
+    <script src="js/monsters-adventures.js"></script>
+    <script src="js/monsters-fiends-extended.js"></script>
+    <script src="js/monsters-classics.js"></script>
+    <script src="js/monsters-celestials.js"></script>
+    <script src="js/monsters-planar.js"></script>
+    <script src="js/monsters-final.js"></script>
+    <script src="js/monsters-expansion1.js"></script>
+    <script src="js/monsters-expansion2.js"></script>
+    <script src="js/monsters-expansion3.js"></script>
+    <script src="js/monsters-expansion4.js"></script>
+    <script src="js/monsters-expansion5.js"></script>
+    <script src="js/monsters-expansion6.js"></script>
+    <script src="js/monsters-expansion7.js"></script>
+    <script src="js/monsters-final-push.js"></script>
+    <script src="js/monsters-expansion8.js"></script>
+    <script src="js/monsters-expansion9.js"></script>
+    <script src="js/monsters-expansion10.js"></script>
+    <script src="js/monsters-expansion11.js"></script>
+    <script src="js/monsters-expansion12.js"></script>
+    <script src="js/monsters-expansion13.js"></script>
+    <script src="js/monsters-expansion14.js"></script>
+    <script src="js/monsters-expansion15.js"></script>
+    <script src="js/monsters-expansion16.js"></script>
+    <script src="js/monsters-expansion17.js"></script>
+    <script src="js/monsters-expansion18.js"></script>
+    <script src="js/monsters-expansion19.js"></script>
+    <script src="js/monsters-expansion20.js"></script>
+    <script src="js/monsters-expansion21.js"></script>
+    <script src="js/monsters-expansion22.js"></script>
+    <script src="js/monsters-expansion23.js"></script>
+    <script src="js/monsters-expansion24.js"></script>
+    <script src="js/monsters-expansion25.js"></script>
+    <script src="js/monsters-expansion26.js"></script>
+    <script src="js/monsters-expansion27.js"></script>
+    <script src="js/monsters-expansion28.js"></script>
+    <script src="js/monsters-expansion29.js"></script>
+    <script src="js/monsters-expansion30.js"></script>
+    <script src="js/monsters-expansion31.js"></script>
+    <script src="js/monsters-expansion32.js"></script>
+    <script src="js/monsters-expansion33.js"></script>
+    <script src="js/monsters-expansion34.js"></script>
+    <script src="js/monsters-expansion35.js"></script>
+    <script src="js/monsters-expansion36.js"></script>
+    <script src="js/monsters-expansion37.js"></script>
+    <script src="js/monsters-expansion38.js"></script>
+    <script src="js/monsters-expansion39.js"></script>
+    <script src="js/monsters-expansion40.js"></script>
+    <script src="js/monsters-expansion41.js"></script>
+    <script src="js/monsters-expansion42.js"></script>
+    <script src="js/monsters-expansion43.js"></script>
+    <script src="js/monsters-expansion44.js"></script>
+    <script src="js/monsters-expansion45.js"></script>
+    <script src="js/monsters-expansion46.js"></script>
+    <script src="js/monsters-expansion47.js"></script>
+    <script src="js/monsters-expansion48.js"></script>
+    <script src="js/monsters-expansion49.js"></script>
+    <script src="js/monsters-expansion50.js"></script>
+    <script src="js/monsters-expansion51.js"></script>
+    <script src="js/monsters-expansion52.js"></script>
+    <script src="js/monsters-expansion53.js"></script>
+    <script src="js/monsters-expansion54.js"></script>
+    <script src="js/monsters-expansion55.js"></script>
+    <script src="js/monsters-expansion56.js"></script>
+    <script src="js/monsters-index.js"></script>
+    <script src="js/monsters-categorization.js"></script>
+    <!-- Core Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/spells.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/pdf.js"></script>
+
+    <!-- Action Edit Modal -->
+    <div id="actionEditModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="actionModalTitle">Edit Action</h3>
+                <button class="modal-close" onclick="closeActionModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="action-form">
+                    <div class="form-group">
+                        <label>Action Name</label>
+                        <input type="text" id="actionName" placeholder="e.g., Claw, Bite, Fire Breath">
+                    </div>
+                    <div class="form-group">
+                        <label>Action Type</label>
+                        <select id="actionType">
+                            <option value="melee">Melee Weapon Attack</option>
+                            <option value="ranged">Ranged Weapon Attack</option>
+                            <option value="melee-spell">Melee Spell Attack</option>
+                            <option value="ranged-spell">Ranged Spell Attack</option>
+                            <option value="save">Saving Throw</option>
+                            <option value="special">Special Ability</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Attack Bonus / Save DC</label>
+                            <input type="text" id="actionBonus" placeholder="e.g., +7 or DC 15">
+                        </div>
+                        <div class="form-group">
+                            <label>Reach / Range</label>
+                            <input type="text" id="actionRange" placeholder="e.g., 5 ft. or 60/120 ft.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Damage / Effect</label>
+                        <input type="text" id="actionDamage" placeholder="e.g., 2d6+4 slashing">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="actionDescription" rows="3" placeholder="Additional effects, conditions, etc."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeActionModal()">Cancel</button>
+                <button class="modal-btn modal-btn-save" onclick="saveAction()">
+                    <i class="fa-solid fa-check"></i> Save Action
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spell Select Modal -->
+    <div id="spellSelectModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="spellModalTitle">Edit Spells</h3>
+                <button class="modal-close" onclick="closeSpellModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+                <div id="spellModalOptions"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-danger" onclick="clearAllSpells()" style="margin-right: auto;">
+                    <i class="fa-solid fa-trash"></i> Clear All
+                </button>
+                <button class="modal-btn modal-btn-cancel" onclick="closeSpellModal()">Cancel</button>
+                <button class="modal-btn modal-btn-save" onclick="saveSpellSelections()">
+                    <i class="fa-solid fa-check"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trait Select Modal -->
+    <div id="traitSelectModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 650px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-star"></i> Add Trait</h3>
+                <button class="modal-close" onclick="closeTraitModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="trait-modal-filters">
+                    <input type="text" id="traitSearchInput" class="trait-modal-filter trait-modal-search" placeholder="Search traits..." oninput="filterTraitList()">
+                    <select id="traitCategoryFilter" class="trait-modal-filter" onchange="filterTraitList()">
+                        <option value="all">All Categories</option>
+                        <option value="senses">Senses</option>
+                        <option value="movement">Movement</option>
+                        <option value="defensive">Defensive</option>
+                        <option value="offensive">Offensive</option>
+                        <option value="utility">Utility</option>
+                    </select>
+                </div>
+                <div id="traitModalOptions" style="max-height: 45vh; overflow-y: auto;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeTraitModal()">Cancel</button>
+                <button class="modal-btn modal-btn-save" onclick="addSelectedTrait()">
+                    <i class="fa-solid fa-plus"></i> Add Trait
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portrait Prompt Modal -->
+    <div id="portraitPromptModal" class="prompt-modal-overlay">
+        <div class="prompt-modal-content">
+            <div class="prompt-modal-header">
+                <h3><i class="fa-solid fa-image"></i> Portrait Prompt</h3>
+                <button class="prompt-modal-close" onclick="closePromptModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="prompt-modal-body">
+                <p style="margin-top: 0; color: #6c757d; font-size: 0.9em;">
+                    Copy this prompt and paste it into your preferred AI image generator (DALL-E, Midjourney, Stable Diffusion, etc.)
+                </p>
+                <textarea id="portraitPromptText" class="prompt-textarea" readonly></textarea>
+                <div class="prompt-modal-actions">
+                    <button class="copy-prompt-btn" id="copyPromptBtn" onclick="copyPromptToClipboard()">
+                        <i class="fa-solid fa-copy"></i> Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
