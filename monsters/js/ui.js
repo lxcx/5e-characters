@@ -431,9 +431,9 @@ function generatePortrait() {
     const prompt = buildMonsterPortraitPrompt(currentMonster);
     const encodedPrompt = encodeURIComponent(prompt);
     
-    // Pollinations.ai free image API
-    const seed = Math.floor(Math.random() * 1000000);
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&nologo=true`;
+    // Pollinations.ai free image API (flux model)
+    const seed = Math.floor(Math.random() * 999999999);
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&model=flux&nologo=true&safe=true&private=true`;
     
     // Show loading state
     const placeholder = document.getElementById('portraitPlaceholder');
