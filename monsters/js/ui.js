@@ -503,30 +503,33 @@ async function generatePortrait() {
 function buildMonsterPortraitPrompt(m) {
     let prompt = `Fantasy illustration of a ${m.size} ${m.type} monster called "${m.name}".`;
     
-    if (m.description) {
+    // Use visual description if available (most accurate)
+    if (m.visualDescription) {
+        prompt += ` ${m.visualDescription}`;
+    } else if (m.description) {
         prompt += ` ${m.description}`;
-    }
-    
-    // Add type-specific visual hints
-    const typeHints = {
-        'aberration': 'alien and unnatural appearance, tentacles or unusual anatomy',
-        'beast': 'natural animal features, realistic creature design',
-        'celestial': 'radiant glow, divine beauty, angelic features',
-        'construct': 'mechanical or magical construction, artificial being',
-        'dragon': 'scales, wings, powerful reptilian features, draconic majesty',
-        'elemental': 'made of pure elemental energy, embodiment of natural forces',
-        'fey': 'otherworldly beauty, magical aura, nature-connected features',
-        'fiend': 'demonic or devilish features, infernal appearance, dark aura',
-        'giant': 'massive humanoid proportions, towering and powerful',
-        'humanoid': 'humanlike features with distinctive racial characteristics',
-        'monstrosity': 'monstrous hybrid features, unnatural creature design',
-        'ooze': 'amorphous form, gelatinous body, semi-transparent',
-        'plant': 'vegetation features, organic plant-like appearance',
-        'undead': 'decayed or spectral appearance, deathly pallor, haunting presence'
-    };
-    
-    if (typeHints[m.type]) {
-        prompt += ` ${typeHints[m.type]}.`;
+    } else {
+        // Fallback to type-specific visual hints
+        const typeHints = {
+            'aberration': 'alien and unnatural appearance, tentacles or unusual anatomy',
+            'beast': 'natural animal features, realistic creature design',
+            'celestial': 'radiant glow, divine beauty, angelic features',
+            'construct': 'mechanical or magical construction, artificial being',
+            'dragon': 'scales, wings, powerful reptilian features, draconic majesty',
+            'elemental': 'made of pure elemental energy, embodiment of natural forces',
+            'fey': 'otherworldly beauty, magical aura, nature-connected features',
+            'fiend': 'demonic or devilish features, infernal appearance, dark aura',
+            'giant': 'massive humanoid proportions, towering and powerful',
+            'humanoid': 'humanlike features with distinctive racial characteristics',
+            'monstrosity': 'monstrous hybrid features, unnatural creature design',
+            'ooze': 'amorphous form, gelatinous body, semi-transparent',
+            'plant': 'vegetation features, organic plant-like appearance',
+            'undead': 'decayed or spectral appearance, deathly pallor, haunting presence'
+        };
+        
+        if (typeHints[m.type]) {
+            prompt += ` ${typeHints[m.type]}.`;
+        }
     }
     
     // Add power level description
