@@ -4015,10 +4015,10 @@ function generatePortrait() {
     const prompt = buildPortraitPrompt(currentNPC);
     const encodedPrompt = encodeURIComponent(prompt);
     
-    // Updated Pollinations.ai API (gen.pollinations.ai) with flux model
+    // Pollinations.ai free image API
     // Adding a random seed to avoid caching issues and get unique images
     const seed = Math.floor(Math.random() * 1000000);
-    const imageUrl = `https://gen.pollinations.ai/image/${encodedPrompt}?model=flux&width=512&height=512&seed=${seed}&nologo=true`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&nologo=true`;
     
     // Show loading state
     const placeholder = document.getElementById('portraitPlaceholder');
