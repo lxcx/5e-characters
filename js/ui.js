@@ -4006,26 +4006,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// PORTRAIT GENERATOR (Pollinations.ai)
+// PORTRAIT GENERATOR (Prodia API with Pollinations fallback)
 // ============================================
 
-let portraitRetryCount = 0;
-const MAX_PORTRAIT_RETRIES = 2;
-
-function generatePortrait() {
+async function generatePortrait() {
     if (!currentNPC) return;
     
-    portraitRetryCount = 0;
-    attemptPortraitGeneration();
-}
-
-function attemptPortraitGeneration() {
     const prompt = buildPortraitPrompt(currentNPC);
-    const encodedPrompt = encodeURIComponent(prompt);
-    
-    // Pollinations.ai free image API (flux model)
-    const seed = Math.floor(Math.random() * 999999999);
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&model=flux&nologo=true&safe=true&private=true`;
     
     // Show loading state
     const placeholder = document.getElementById('portraitPlaceholder');
@@ -4036,16 +4023,44 @@ function attemptPortraitGeneration() {
     if (placeholder) placeholder.style.display = 'none';
     if (loading) {
         loading.style.display = 'flex';
-        if (portraitRetryCount > 0) {
-            loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Retrying... (${portraitRetryCount}/${MAX_PORTRAIT_RETRIES})</span>`;
-        } else {
-            loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Generating portrait...</span>`;
-        }
+        loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Generating portrait...</span>`;
     }
     if (image) image.style.display = 'none';
     if (btn) btn.disabled = true;
     
-    // Create new image to load
+    // Try Prodia first (faster, more reliable)
+    try {
+        const response = await fetch('/api/generate-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt, width: 512, height: 512 })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.imageUrl) {
+                if (image) {
+                    image.src = data.imageUrl;
+                    image.style.display = 'block';
+                }
+                if (loading) loading.style.display = 'none';
+                if (btn) btn.disabled = false;
+                return;
+            }
+        }
+    } catch (error) {
+        console.log('Prodia failed, trying Pollinations fallback...');
+    }
+    
+    // Fallback to Pollinations
+    if (loading) {
+        loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Trying backup service...</span>`;
+    }
+    
+    const encodedPrompt = encodeURIComponent(prompt);
+    const seed = Math.floor(Math.random() * 999999999);
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&model=flux&nologo=true&safe=true&private=true`;
+    
     const newImage = new Image();
     newImage.onload = function() {
         if (image) {
@@ -4054,27 +4069,17 @@ function attemptPortraitGeneration() {
         }
         if (loading) loading.style.display = 'none';
         if (btn) btn.disabled = false;
-        portraitRetryCount = 0;
     };
     newImage.onerror = function() {
-        // Retry logic
-        if (portraitRetryCount < MAX_PORTRAIT_RETRIES) {
-            portraitRetryCount++;
-            setTimeout(attemptPortraitGeneration, 2000); // Wait 2 seconds before retry
-            return;
-        }
-        
-        // All retries failed - show helpful error
         if (loading) loading.style.display = 'none';
         if (placeholder) {
             placeholder.style.display = 'flex';
             placeholder.innerHTML = `
-                <i class="fa-solid fa-cloud-exclamation" style="font-size: 2.5em; color: #dc3545;"></i>
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5em; color: #dc3545;"></i>
                 <span style="text-align: center; font-size: 0.9em;">Image service unavailable.<br>Click "View Prompt" to copy for other AI generators.</span>
             `;
         }
         if (btn) btn.disabled = false;
-        portraitRetryCount = 0;
     };
     newImage.src = imageUrl;
 }
