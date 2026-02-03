@@ -669,7 +669,7 @@ const MONSTERS_VOLO_COMPLETE = {
         hitDice: "4d6+4",
         speed: { walk: 30, climb: 30 },
         abilityScores: { str: 8, dex: 18, con: 13, int: 6, wis: 12, cha: 7 },
-        skills: { perception: 3, sleight of hand: 6, stealth: 6 },
+        skills: { perception: 3, "sleight of hand": 6, stealth: 6 },
         damageResistances: ["fire"],
         senses: ["darkvision 60 ft."],
         languages: "Sylvan",

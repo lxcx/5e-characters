@@ -1686,9 +1686,3 @@ const monstersMM_EFG = {
         ]
     }
 };
-
-// Add to global monsters object
-if (typeof allMonsters === 'undefined') {
-    var allMonsters = {};
-}
-Object.assign(allMonsters, monstersMM_EFG);

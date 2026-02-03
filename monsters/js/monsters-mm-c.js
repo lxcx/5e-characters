@@ -540,9 +540,3 @@ const monstersMM_C = {
         ]
     }
 };
-
-// Add to global monsters object
-if (typeof allMonsters === 'undefined') {
-    var allMonsters = {};
-}
-Object.assign(allMonsters, monstersMM_C);
