@@ -9,6 +9,7 @@ export default async function handler(req, res) {
 
     const apiKey = process.env.PRODIA_API_KEY;
     if (!apiKey) {
+        console.error('PRODIA_API_KEY not set');
         return res.status(500).json({ error: 'API key not configured' });
     }
 
@@ -19,71 +20,42 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'Prompt is required' });
         }
 
-        // Create job with Prodia
-        const createResponse = await fetch('https://inference.prodia.com/v2/job', {
+        // Call Prodia API - request image directly with Accept header
+        const response = await fetch('https://inference.prodia.com/v2/job', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'image/jpeg'
             },
             body: JSON.stringify({
-                type: 'inference.flux.schnell.txt2img.v1',
+                type: 'inference.flux-fast.schnell.txt2img.v2',
                 config: {
                     prompt: prompt,
                     style_preset: 'fantasy-art',
                     width: width,
-                    height: height,
-                    steps: 4
+                    height: height
                 }
             })
         });
 
-        if (!createResponse.ok) {
-            const errorText = await createResponse.text();
-            console.error('Prodia create error:', errorText);
-            return res.status(createResponse.status).json({ error: 'Failed to create image job' });
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Prodia error:', response.status, errorText);
+            return res.status(response.status).json({ error: 'Image generation failed', details: errorText });
         }
 
-        const job = await createResponse.json();
-        const jobId = job.job;
-
-        // Poll for completion (max 30 seconds)
-        const maxAttempts = 30;
-        let attempts = 0;
+        // Get image as buffer and convert to base64 data URL
+        const imageBuffer = await response.arrayBuffer();
+        const base64 = Buffer.from(imageBuffer).toString('base64');
         
-        while (attempts < maxAttempts) {
-            const statusResponse = await fetch(`https://inference.prodia.com/v2/job/${jobId}`, {
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`
-                }
-            });
-
-            if (!statusResponse.ok) {
-                return res.status(500).json({ error: 'Failed to check job status' });
-            }
-
-            const status = await statusResponse.json();
-
-            if (status.status === 'succeeded') {
-                return res.status(200).json({ 
-                    success: true, 
-                    imageUrl: status.imageUrl 
-                });
-            }
-
-            if (status.status === 'failed') {
-                return res.status(500).json({ error: 'Image generation failed' });
-            }
-
-            // Wait 1 second before next poll
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            attempts++;
-        }
-
-        return res.status(408).json({ error: 'Image generation timed out' });
+        return res.status(200).json({
+            success: true,
+            imageUrl: `data:image/jpeg;base64,${base64}`
+        });
 
     } catch (error) {
         console.error('Prodia API error:', error);
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 }
