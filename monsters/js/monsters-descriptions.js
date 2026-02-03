@@ -254,7 +254,287 @@ const MONSTER_DESCRIPTIONS = {
     "yuan-ti-abomination": "Serpentine creature with a snake's body from the waist down and snake head. Most monstrous yuan-ti.",
     "yuan-ti-malison": "Humanoid with significant snake features like a snake head or snake arms.",
     "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features like slit pupils or patches of scales.",
-    "zombie": "Shambling undead with rotting flesh, vacant eyes, and jerky movements. Mindless hunger for the living."
+    "zombie": "Shambling undead with rotting flesh, vacant eyes, and jerky movements. Mindless hunger for the living.",
+
+    // ===== LEGENDARY CREATURES - EXTRA DETAILED =====
+    
+    // Tiamat - Queen of Evil Dragons
+    "tiamat": "The five-headed dragon goddess of evil. A colossal dragon with five heads - one white with icy blue eyes, one black dripping acid, one green with venomous fangs, one blue crackling with lightning, and one red wreathed in flames. Each head on a long serpentine neck. Massive body covered in multicolored scales, enormous bat-like wings that block out the sky, and a presence of overwhelming divine malevolence. Crown of horns adorns each head. The ultimate dragon deity.",
+    
+    // Strahd von Zarovich - The First Vampire
+    "strahd-von-zarovich": "Count Strahd von Zarovich, the first and most powerful vampire. A tall, gaunt nobleman with pale alabaster skin, slicked-back black hair with a prominent widow's peak, and burning red eyes that reflect centuries of torment and evil. Sharp aristocratic features with high cheekbones, a aquiline nose, and thin cruel lips hiding elongated fangs. Wears elegant black and red noble attire with a high collar and flowing cape lined with crimson silk. A signet ring bearing the crest of Barovia. His presence exudes both tragic romance and absolute terror. Master of Castle Ravenloft.",
+    
+    // Acererak - The Devourer
+    "acererak": "Acererak the Devourer, the legendary archlich. A floating skull wreathed in sickly green necromantic flames, with gems embedded in eye sockets and teeth - a ruby, an emerald, and a sapphire gleam with trapped souls. When manifesting fully, a skeletal figure in tattered black robes covered in arcane symbols, wielding a staff topped with a skull. Phylactery hidden, radiating immense magical power. Creator of the Tomb of Horrors, collector of souls.",
+    
+    // Vecna - The Whispered One  
+    "vecna": "Vecna the Whispered One, god of secrets and undeath. A lich of terrible power with a skeletal form wrapped in rotting robes and arcane vestments. Missing his left hand and left eye - the Hand and Eye of Vecna are separate artifacts. Remaining eye socket burns with green fire. Crowned with a circlet of black iron. Emanates an aura of forbidden knowledge and dread secrets. One of the most powerful beings to ever achieve lichdom.",
+    
+    // Demogorgon - Prince of Demons
+    "demogorgon": "Demogorgon, Prince of Demons and the Sibilant Beast. An 18-foot tall abomination with two baboon heads on serpentine necks, each head having its own personality - Aameul and Hethradiah. Blue-green reptilian body covered in scales and matted fur, with a forked tail and tentacles instead of arms that drain life. Walks on two legs with webbed, clawed feet. The two heads constantly argue yet work in terrible unison. Radiates madness and primal chaos.",
+    
+    // Orcus - Prince of Undeath
+    "orcus": "Orcus, Demon Prince of Undeath. A bloated, corpulent demon standing 15 feet tall with gray, decaying flesh. Goat-like head with curling ram horns, red glowing eyes, and a mouth filled with fangs. Massive bat wings too small for his body yet still functional. Goat legs ending in hooves. Wields the Wand of Orcus - a skull-topped rod of obsidian that can slay with a touch. Surrounded by an aura of death and decay. Lord of the undead.",
+    
+    // Yeenoghu - Prince of Gnolls
+    "yeenoghu": "Yeenoghu, the Beast of Butchery and demon lord of gnolls. A 14-foot tall hyena-headed demon with mangy yellow fur, a spine ridged with bony protrusions, and a perpetual bloody froth at the mouth. Lean, muscular body built for savage violence. Wields a triple-headed flail that howls when swung. Eyes burn with insatiable hunger. Surrounded by ghostly hyenas. The embodiment of senseless slaughter and carnage.",
+    
+    // Juiblex - The Faceless Lord
+    "juiblex": "Juiblex, the Faceless Lord, demon prince of oozes and slimes. A towering mass of living slime and corruption, constantly shifting between shapes. Acidic green and black with countless eyes and mouths forming and dissolving within its mass. Pseudopods emerge to grab prey. Smells of rot and chemical decay. The most alien of demon lords, with no comprehensible goals beyond consumption.",
+    
+    // Zuggtmoy - Lady of Fungi
+    "zuggtmoy": "Zuggtmoy, the Lady of Fungi and demon queen of decay. A towering fungal horror with a feminine humanoid form made entirely of mushrooms, molds, and rot. Her 'head' is a massive toadstool cap, with a 'face' of bioluminescent spots. Tendrils of mycelium trail from her form. Releases clouds of spores. Weirdly beautiful in her alien way, with colors of purple, blue, and sickly green. Surrounded by smaller fungal servants.",
+    
+    // Archdevils
+    "zariel": "Zariel, Archduke of Avernus and fallen angel. A powerful female figure with bronze skin, once-beautiful features now scarred by eons of war. Burning wings of fire and radiant energy. Wears battered but magnificent plate armor. One eye replaced with a glowing ember. Wields a flaming sword. Her halo is cracked and burning. Tragic and terrifying - an angel who fell through her own pride and bloodlust.",
+    
+    "bael": "Bael, Duke of Hell and general of the infernal armies. A humanoid devil with the head of a toad, body of a spider, and a second human head that speaks honeyed lies. Wears elaborate military regalia. Commands legions with tactical brilliance. Master of invisibility and deception.",
+    
+    "geryon": "Geryon, the Wild Beast and former archdevil of Stygia. A massive three-bodied giant fused at the waist, with serpentine tails. Three torsos, three heads with curved horns, and three sets of arms. Covered in ice and wielding a massive horn that summons minotaurs. Bestial and savage, fallen from grace.",
+    
+    // Beholders
+    "death-tyrant": "An undead beholder - a decayed sphere with rotting flesh, damaged eyestalks leaking necrotic energy, and a central eye that glows with deathly power instead of antimagic. Bones visible through holes in decomposing skin. Even more paranoid and hateful than living beholders.",
+    
+    "beholder-zombie": "A shambling beholder corpse, its once-proud form now rotted and controlled by dark magic. Eyestalks hang limp and useless, central eye clouded in death. Moves with jerking, unnatural motions.",
+    
+    // More Fiends
+    "moloch": "Moloch, former archdevil cast down from power. A massive humanoid devil with the head of a bull, covered in burning coals and ash. Horns of iron, hooves that scorch the ground. Once proud, now bitter and seeking to regain lost glory. Wields weapons of black iron heated to glowing.",
+    
+    "hutijin": "Hutijin, pit fiend general and Duke of Cania. A massive pit fiend even larger than most, with frost-covered wings and ice-blue flames. Serves Mephistopheles with absolute loyalty. Tactical genius encased in diabolic might.",
+    
+    "titivilus": "Titivilus, the Scribe of Hell. A handsome male devil with small horns, well-groomed appearance, and an ever-present quill and scroll. Silver-tongued and manipulative. Corrupts through bureaucracy and fine print.",
+    
+    // Mind Flayers
+    "ulitharid": "A noble mind flayer, larger than common illithids with six facial tentacles instead of four. Purple skin with an elongated cranium. Wears elaborate robes. Commands other mind flayers through powerful psionic might. Future elder brain.",
+    
+    "elder-brain": "The elder brain - a massive brain floating in a pool of brine, ten feet across and covered in pulsing veins. Tentacle-like ganglia extend into the pool. The collective consciousness of a mind flayer colony, ancient and scheming. Telepathic presence fills the area.",
+    
+    "alhoon": "A mind flayer lich - an illithid that has achieved undeath through forbidden arcane magic rather than psionics. Purple skin now grey and dessicated, tentacles withered. Glowing eyes in a gaunt skull-like face. Outcast from illithid society.",
+    
+    // Giants Extended  
+    "fire-giant-dreadnought": "Elite fire giant encased in heavy black iron armor that glows with internal heat. Massive shield and axe. Hotter and more armored than standard fire giants, bred for war.",
+    
+    "frost-giant-everlasting-one": "A frost giant blessed by Vaprak with regeneration. Covered in ritual scars that heal before your eyes. Wilder, more savage than other frost giants. Trophy bones woven into hair.",
+    
+    "storm-giant-quintessent": "A storm giant who has begun transforming into pure elemental storm. Semi-transparent, with lightning crackling through a body that shifts between solid and cloud. Eyes are miniature storms.",
+    
+    "mouth-of-grolantor": "A degenerate hill giant, bloated even beyond normal, with a distended jaw capable of swallowing creatures whole. Driven by insatiable hunger, covered in filth and old food.",
+    
+    // Yugoloths
+    "arcanaloth": "A yugoloth resembling a robed humanoid jackal, with elegant vestments and an aura of dark intellect. Long fingers end in black claws that write in infernal script. Keeper of contracts and dark bargains.",
+    
+    "ultroloth": "The masterminds of yugoloth kind - faceless humanoids with smooth gray skin, large oval eyes of pure white, and an aura of cold calculation. Wears fine dark robes. Telepathic and utterly ruthless.",
+    
+    "mezzoloth": "Insectoid yugoloth foot soldier with a chitinous exoskeleton, compound eyes, and wielding a trident. Clicks and buzzes when communicating. Expendable and numerous.",
+    
+    "nycaloth": "Winged yugoloth with green skin, massive bat wings, and clawed hands. Horned head with bestial features. Elite soldiers and enforcers of yugoloth contracts.",
+    
+    // Slaadi
+    "red-slaad": "Large frog-like aberration with red skin, sharp claws, and a chaotic, unpredictable demeanor. Implants eggs in victims with its claws.",
+    
+    "blue-slaad": "Larger than red slaadi, with blue skin and massive bone claws. More intelligent and vicious. Transforms victims into red slaadi.",
+    
+    "green-slaad": "Cunning slaad with green skin and shapeshifting abilities. Can assume humanoid forms. More calculating than its lesser kin.",
+    
+    "gray-slaad": "Gaunt slaad with gray skin and immense psionic power. Reclusive and dangerous. Often served by lesser slaadi.",
+    
+    "death-slaad": "The most powerful slaad, with jet black skin and the ability to assume any form. Masters of magic and manipulation. Schemes span centuries.",
+    
+    // Modrons
+    "monodrone": "Spherical construct with a single eye, two arms, two legs, and small wings. The simplest modron, following basic orders without question.",
+    
+    "duodrone": "Rectangular modron with two eyes, two arms, and two legs. Slightly more capable than monodrones, can relay orders.",
+    
+    "tridrone": "Triangular modron with three eyes, three arms, and three legs. Mid-level workers capable of simple problem solving.",
+    
+    "quadrone": "Cube-shaped modron with four eyes, four arms, and four wings. Capable fighters and administrators of lower modrons.",
+    
+    "pentadrone": "Flat, star-shaped modron with five eyes and five arms. Police and enforcers of Mechanus. Can communicate complex ideas.",
+    
+    // Star Spawn
+    "star-spawn-hulk": "Massive aberration from the Far Realm, with gray rubbery skin, multiple limbs, and a body covered in unblinking eyes. Psychic static surrounds it.",
+    
+    "star-spawn-seer": "Robed aberration with an elongated head and three eyes arranged vertically. Speaks prophecy in alien tongues. Reality warps around it.",
+    
+    "star-spawn-larva-mage": "A spellcaster transformed by contact with the Far Realm - humanoid but with writhing tentacles emerging from eye sockets and mouth. Casts warped magic.",
+    
+    // More Undead
+    "demilich": "A lich reduced to just its skull and a few gems containing its essence. Floats silently, covered in dust. The gems in eye sockets and teeth glow with trapped souls. Despite small size, incredibly dangerous.",
+    
+    "sword-wraith-commander": "Ghostly warrior in ancient armor, wielding a spectral greatsword. Commands lesser sword wraiths. Eyes burn with unfinished battle lust.",
+    
+    "boneclaw": "Undead horror with an emaciated humanoid body and arms that end in ten-foot long bone claws. Bound to a living master. Can teleport through shadows.",
+    
+    "bodak": "Undead created by exposure to absolute evil. Gaunt humanoid with gray skin, empty eye sockets that cause death, and a constant expression of despair.",
+    
+    "allip": "Incorporeal undead driven mad by forbidden knowledge. A ghostly figure clutching its head, surrounded by whispers of secrets. Maddening babble.",
+    
+    // Constructs Extended
+    "marut": "Inevitable construct of divine law - a massive golden humanoid inscribed with contract runes. Face is a mask of gold. Inexorable enforcer of cosmic agreements.",
+    
+    "retriever": "Spider-like construct built by demons, with a body of black metal and four eye-beams. Created to hunt and retrieve targets across planes.",
+    
+    "cadaver-collector": "Massive war construct that wades through battlefields collecting corpses. Humanoid torso atop spider legs, with impaled bodies decorating its frame.",
+    
+    "steel-predator": "Modron-built hunter construct resembling a metal panther with bladed limbs. Tracks targets across planes with relentless precision.",
+    
+    // Aberrations Extended
+    "neothelid": "Gargantuan worm-like aberration, the result of a mind flayer colony without an elder brain. Blind, covered in slime, with a massive tentacle-ringed maw. Radiates psionic terror.",
+    
+    "star-spawn-grue": "Small aberration with too many limbs and mouths. Exists in psychic static, hard to perceive directly. Feeds on fear and confusion.",
+    
+    "mindwitness": "A beholder transformed by mind flayers - its central eye replaced with a mass of tentacles, now serving as a living telepathic hub.",
+    
+    "sibriex": "Floating mass of flesh, eyes, and chains, dripping disease. Demon lord of mutation and corruption. Can reshape flesh with a thought.",
+    
+    // Named NPCs Extended
+    "iymrith": "Iymrith the Doom of the Desert, an ancient blue dragon who has infiltrated giant society. In dragon form - massive blue scales, enormous horn crackling with lightning, eyes gleaming with cunning and contempt for lesser beings.",
+    
+    // Lycanthropes Extended
+    "werewolf-lord": "Alpha werewolf, larger than others in hybrid form. Silver-streaked fur, intelligent yellow eyes, commanding presence. Scars from many battles for dominance.",
+    
+    // Hags
+    "bheur-hag": "Winter hag with blue-white skin, icicles for hair, and eyes like frozen pools. Wrapped in tattered furs. Rides a giant snowflake. Radiates supernatural cold.",
+    
+    "annis-hag": "Massive hag standing eight feet tall with iron-hard blue-black skin, claws that can rend metal, and a face of pure malevolence. The strongest of hags physically.",
+    
+    // ===== MORE DRAGONS =====
+    "ancient-brass-dragon": "Titanic brass dragon with scales burnished by millennia, massive swept-back horns, and eyes twinkling with ancient mischief. Friendly despite overwhelming power.",
+    "ancient-bronze-dragon": "Colossal bronze dragon with scales that shimmer like the sea, regal bearing, and webbed appendages. A champion of justice with the wisdom of ages.",
+    "ancient-copper-dragon": "Enormous copper dragon with reddish scales turned verdigris with age, a wry expression, and an aura of playful danger. A prankster with world-ending power.",
+    "ancient-gold-dragon": "The most magnificent of dragons - a gargantuan golden serpent with twin horns, whisker tendrils, and an aura of divine wisdom. Radiates benevolent power.",
+    "ancient-silver-dragon": "Massive silver dragon with scales like mirrors, a noble countenance, and a protective demeanor. Often found in humanoid form among those it guards.",
+    "ancient-green-dragon": "Titanic forest-green dragon with a crest of hornlets, sinuous body, and eyes gleaming with centuries of schemes. Master manipulator.",
+    "ancient-white-dragon": "Colossal white dragon with spiny ridges, bestial cunning, and an aura of supernatural cold. The most feral of ancient dragons.",
+    "dragon-wyrmling-black": "Small black dragon, cat-sized, with glossy scales and oversized horns. Already cruel despite youth.",
+    "dragon-wyrmling-red": "Small red dragon with crimson scales, smoking nostrils, and a proud bearing even at this young age.",
+    "dragon-wyrmling-gold": "Small golden dragon wyrmling with shimmering scales and wise eyes beyond its age. Curious and noble.",
+    
+    // ===== ELEMENTAL MYRMIDONS =====
+    "air-elemental-myrmidon": "Suit of armor animated by bound air elemental energy, with wind swirling through joints and visor. Wields a flail of solidified wind.",
+    "earth-elemental-myrmidon": "Heavy stone armor with an earth elemental bound within. Cracks reveal glowing earth. Carries a massive maul.",
+    "fire-elemental-myrmidon": "Plate armor wreathed in flames with a fire elemental trapped inside. Heat radiates from every joint. Wields a flaming sword.",
+    "water-elemental-myrmidon": "Armor filled with churning water and a bound water elemental. Water seeps from joints. Fights with a trident.",
+    
+    // ===== GENIES =====
+    "dao": "Earth genie with skin of polite stone, muscular build, and jewelry of precious gems. Lower body dissolves into swirling earth and sand. Arrogant and greedy.",
+    "djinni": "Air genie with blue skin, regal bearing, and lower body trailing into mist and cloud. Wears silks and gold. Proud but often honorable.",
+    "efreeti": "Fire genie with crimson skin, flames for hair, and a body of living fire below the waist. Cruel and arrogant, dripping with brass jewelry.",
+    "marid": "Water genie with blue-green skin, aquatic features, and a lower body of churning water. The most powerful and capricious of genies.",
+    
+    // ===== BEASTKIN & THERIANTHROPES =====
+    "werebear": "In hybrid form - massive humanoid with bear features, brown fur, and powerful claws. Usually good-natured despite fearsome appearance.",
+    "wereboar": "In hybrid form - humanoid with a boar's head, tusks, and coarse hair. Ill-tempered and aggressive.",
+    "wererat": "In hybrid form - humanoid with rat features, a pointed snout, and a long tail. Sneaky and disease-carrying.",
+    "weretiger": "In hybrid form - humanoid with tiger features, orange and black striped fur, and feline grace. Proud and territorial.",
+    "jackalwere": "Jackal that can assume human form - in true form, a large jackal with intelligent eyes. Serves lamias.",
+    
+    // ===== NAGA =====
+    "guardian-naga": "Serpent with an iridescent humanoid face, wise and protective. Golden and green scales. Serves good deities.",
+    "spirit-naga": "Evil serpent with a humanoid face twisted by malice. Dark purple scales. Schemes from jungle temples.",
+    "bone-naga": "Undead naga - a serpentine skeleton with a humanoid skull, green fire in eye sockets. Created by yuan-ti.",
+    
+    // ===== YUAN-TI =====
+    "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features - slit pupils, patches of scales, forked tongue. Infiltrators.",
+    "yuan-ti-malison": "Yuan-ti with significant snake features - perhaps a snake head on human body, or snake arms. Type varies.",
+    "yuan-ti-abomination": "Most monstrous yuan-ti - snake body from the waist down, humanoid torso, and a serpent head. Priests and leaders.",
+    "yuan-ti-anathema": "Massive yuan-ti abomination of divine power - six snake heads on a coiled serpent body. Avatar of Merrshaulk.",
+    
+    // ===== DROW =====
+    "drow-elite-warrior": "Dark elf in ornate black armor with house insignia. White hair, red eyes, and superior demeanor. Exceptional blade skills.",
+    "drow-mage": "Drow wizard in elegant robes, carrying a staff topped with a spider motif. Manipulates shadow and poison.",
+    "drow-priestess-of-lolth": "Drow cleric in spider-themed vestments, carrying a snake-headed whip. Fanatic devotee of the Spider Queen.",
+    "drider": "Dark elf from waist up, giant spider from waist down. Usually female, cursed by Lolth. White hair, multiple spider eyes.",
+    
+    // ===== GOBLINOIDS =====
+    "goblin-boss": "Larger goblin in better equipment, usually a stolen crown or trophy. Commands through cruelty and cunning.",
+    "hobgoblin-captain": "Hobgoblin officer in polished armor with house insignia. Disciplined and tactically minded.",
+    "hobgoblin-warlord": "Hobgoblin general in elaborate armor, scarred from many campaigns. Commands respect through proven victory.",
+    "bugbear-chief": "Largest bugbear with the most elaborate trophies, leading through intimidation and violence.",
+    "nilbog": "Goblin possessed by a trickster spirit, with manic behavior and reality-warping powers. Others treat it as blessed.",
+    
+    // ===== ORCS =====
+    "orc-war-chief": "Massive orc in heavy armor decorated with trophies, wielding a greataxe. Leads through strength.",
+    "orc-eye-of-gruumsh": "Orc shaman with one eye ritually removed, devoted to Gruumsh. Covered in ritual scars and war paint.",
+    "orog": "Elite orc with gray skin, more intelligent bearing, and superior equipment. Bred for war leadership.",
+    "tanarukk": "Orc-demon hybrid with red skin, horns, and claws. Fiendish rage in orc form.",
+    
+    // ===== GNOLLS =====
+    "gnoll-pack-lord": "Larger gnoll with better equipment and more kills to its name. Alpha of a warband.",
+    "gnoll-fang-of-yeenoghu": "Gnoll blessed by their demon lord, with a maddened gleam and ability to create more gnolls from kills.",
+    "flind": "Gnoll champion wielding a magical three-headed flail. Larger and more cunning than other gnolls.",
+    
+    // ===== GIANTS EXTENDED =====
+    "cloud-giant-smiling-one": "Rogue cloud giant who has embraced trickery, with an unsettling permanent smile and chaotic magic.",
+    "stone-giant-dreamwalker": "Stone giant lost in waking dreams, surrounded by floating stones and glimpses of other realities.",
+    
+    // ===== DEMONS EXTENDED =====
+    "shadow-demon": "Incorporeal demon of pure darkness, vaguely humanoid, with claws that drain warmth and light.",
+    "barlgura": "Ape-like demon with orange fur, massive fangs, and incredible strength. Leaps into combat with savage fury.",
+    "chasme": "Fly-headed demon with insectoid features, constantly droning. Tormentor of the Abyss.",
+    "maurezhi": "Ghoul-like demon that consumes the dead to assume their memories and appearance.",
+    "nabassu": "Gargoyle-like demon with gray skin and death-drinking gaze. Consumes souls.",
+    "rutterkin": "Deformed, misshapen demon covered in boils and sores. The lowest of demonkind.",
+    "bulezau": "Demon with a ram's head and bloated, diseased body. Spreads plague and pestilence.",
+    "dybbuk": "Possessing demon that animates corpses, making them speak and move unnaturally.",
+    "armanite": "Centaur-like demon with a horse's body, humanoid torso, and a head like a fanged skull.",
+    "goristro": "Massive minotaur demon, 20 feet tall with iron-hard skin and horns. Living siege weapon.",
+    "molydeus": "Two-headed demon - one wolf, one snake - serving as executioner for demon lords. Wields a massive axe.",
+    
+    // ===== DEVILS EXTENDED =====
+    "merregon": "Faceless devil foot soldier, covered in scars, wielding a halberd. Utterly expendable and obedient.",
+    "nupperibo": "Blind, bloated devil - failed souls twisted into lemure-like forms. Constantly regenerating.",
+    "spined-devil": "Small devil with bat wings and a body covered in poisonous spines. Aerial scouts of Hell.",
+    "bearded-devil": "Devil with a beard of writhing tendrils that cause bleeding wounds. Savage shock troops.",
+    "barbed-devil": "Devil covered in sharp barbs and spines, grasping victims to impale them. Cruel guards.",
+    "bone-devil": "Skeletal devil with a scorpion tail, commanding lesser devils. Calculating and patient.",
+    "orthon": "Devil assassin and bounty hunter, able to change appearance. Utterly relentless.",
+    "narzugon": "Devil cavalry mounted on nightmare steeds, in black armor with hellfire lances.",
+    "amnizu": "Bloated devil with tiny wings, commanding pit fiend armies. Genius strategists of Avernus.",
+    
+    // ===== CELESTIALS =====
+    "ki-rin": "Celestial creature with a horse's body covered in golden scales, stag-like horns, and a lion's mane. Walks on clouds.",
+    "empyrean": "Titan child of a god, standing 30 feet tall with perfect humanoid features and an aura of divine power.",
+    "unicorn": "Pure white horse with a spiraling horn of light, representing ultimate goodness and purity.",
+    "pegasus": "Magnificent white horse with large feathered wings and noble bearing.",
+    "couatl": "Feathered serpent with rainbow plumage, radiant wings, and benevolent wisdom.",
+    
+    // ===== PLANTS =====
+    "shambling-mound": "Heap of rotting vegetation roughly humanoid in shape. Vines and roots form limbs.",
+    "treant": "Living tree with a face in the bark, branch arms, and root legs. Ancient and wise protector.",
+    "awakened-tree": "Ordinary tree given consciousness by magic. Moves slowly but with purpose.",
+    "awakened-shrub": "Small bush brought to awareness. Often confused and frightened by its new existence.",
+    "myconid-adult": "Mushroom creature standing four feet tall, communicating through spores. Peaceful and communal.",
+    "myconid-sovereign": "Large myconid leader with a wide cap, releasing clouds of rapport spores.",
+    "vegepygmy": "Small plant creatures grown from russet mold. Thorn-covered with wooden features.",
+    "wood-woad": "Forest guardian - a humanoid of living wood and bark, sworn to protect a sacred site.",
+    "corpse-flower": "Horrific plant that grows from buried corpses, animating zombies from its mass.",
+    
+    // ===== SWARMS =====
+    "swarm-of-bats": "Cloud of hundreds of bats moving as one, chittering and biting.",
+    "swarm-of-rats": "Tide of rats flowing across surfaces, driven by hunger.",
+    "swarm-of-insects": "Mass of crawling insects - beetles, roaches, centipedes - moving with hive purpose.",
+    "swarm-of-poisonous-snakes": "Writhing mass of venomous serpents.",
+    "swarm-of-ravens": "Murder of ravens attacking in coordinated fury.",
+    "swarm-of-quippers": "Churning water filled with razor-toothed fish in feeding frenzy.",
+    
+    // ===== MISC CREATURES =====
+    "flumph": "Floating jellyfish creature with eye stalks and dangling tentacles. Surprisingly cute and benevolent.",
+    "gas-spore": "Fungus that looks exactly like a beholder - a deadly trap that explodes in spores.",
+    "gibbering-mouther": "Mass of eyes, mouths, and liquefied flesh that babbles constantly. Maddening horror.",
+    "grell": "Floating brain with a beak and ten dangling tentacles. Hunts from above.",
+    "rust-monster": "Insect creature with feathery antennae and a propeller tail. Corrodes metal on touch.",
+    "piercer": "Stalactite-shaped creature that drops on prey. Basically a living stone spike.",
+    "roper": "Looks like a stalagmite until it opens its single eye and extends grasping tendrils.",
+    "darkmantle": "Cave creature that resembles rock until it drops onto prey, enveloping their head.",
+    "cloaker": "Looks like a black cloak until it wraps around victims with its manta ray-like body.",
+    "girallon": "Four-armed ape of massive size with white fur and savage temperament.",
+    "froghemoth": "Enormous frog-like creature with tentacles instead of a tongue. Swamp horror.",
+    "catoblepas": "Wildebeest-like creature with a long neck and a death-gaze. Stench of decay.",
+    "gorgon": "Bull covered in iron plates instead of hide, with breath that petrifies.",
+    "leucrotta": "Badger-headed deer with a bony ridge instead of teeth. Mimics voices.",
+    "peryton": "Eagle-headed stag with wings, casting a humanoid shadow. Eats hearts.",
+    "displacer-beast": "Six-legged panther with shoulder tentacles, appearing offset from its true location."
 };
 
 // Apply descriptions to allMonsters
