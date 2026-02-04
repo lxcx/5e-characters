@@ -197,7 +197,7 @@ const MONSTER_DESCRIPTIONS = {
     "giant-weasel": "Weasel the size of a large dog, quick and bloodthirsty.",
     "giant-wolf-spider": "Hunting spider that doesn't spin webs, instead pursuing prey with speed.",
     "giff": "Hippopotamus-headed humanoid with a military bearing and love of firearms. Dressed in colonial military uniform.",
-    "girallon-zombie": "Undead four-armed ape, rotting but still possessing terrible strength.",
+    "girallon-zombie": "Undead massive four-armed ape with matted, rotting white fur and savage features. Gray decaying flesh visible through patches of missing fur. Still possesses terrible strength, moving with unnatural jerking motions.",
     "githyanki-gish": "Githyanki warrior-wizard combining martial prowess with arcane power. Yellow skin, pointed ears.",
     "githyanki-kithrak": "Elite githyanki cavalry, riding red dragons into battle.",
     "githyanki-knight": "Githyanki warrior in ornate armor, wielding a silver sword capable of severing astral cords.",
@@ -214,7 +214,7 @@ const MONSTER_DESCRIPTIONS = {
     "gnoll": "Hyena-headed humanoid with spotted fur, hunched posture, and a perpetual hungry snarl.",
     "gnoll-flesh-gnawer": "Gnoll that has gorged on humanoid flesh, larger and more savage than others.",
     "gnoll-hunter": "Stealthy gnoll scout with keen senses and tracking abilities.",
-    "gnoll-witherling": "Undead gnoll skeleton animated by Yeenoghu's power, mindlessly hunting.",
+    "gnoll-witherling": "Animated skeleton of a hyena-headed humanoid with elongated canine skull, hunched bone structure, and clawed hands. Burns with Yeenoghu's dark power, mindlessly hunting the living.",
     "goat": "Small hoofed mammal with curved horns and a stubborn temperament.",
     "goblin": "Small green-skinned humanoid with pointed ears, sharp teeth, and a mischievous or cowardly demeanor.",
     "gold-dragon-wyrmling": "Young gold dragon with brilliant scales and wise eyes beyond its age.",
@@ -325,7 +325,7 @@ const MONSTER_DESCRIPTIONS = {
     "mind-flayer-lich": "Illithilich - a mind flayer that has achieved undeath. Tentacles withered, eyes burning with dark power.",
     "mind-witness": "A beholder transformed by mind flayers - central eye replaced with tentacle mass, now a telepathic relay.",
     "minotaur": "Bull-headed humanoid with a massive muscular body, hooves, and large horns. Often carries a greataxe.",
-    "minotaur-skeleton": "Skeletal remains of a minotaur, animated and wielding its horns and weapons with undead fury.",
+    "minotaur-skeleton": "Animated skeleton of a bull-headed humanoid with massive bone structure, large curved horns on its skull, and hooved feet. Wields a greataxe with undead fury, eye sockets burning with necromantic light.",
     "morkoth": "Aberration resembling a humanoid fish with hypnotic eyes and tentacles, dwelling in maze-like lairs.",
     "mud-mephit": "Small elemental of wet earth, constantly squelching and dripping.",
     "mule": "Domesticated hybrid of horse and donkey. Stubborn but strong pack animal.",
@@ -355,7 +355,7 @@ const MONSTER_DESCRIPTIONS = {
     "oblex-spawn": "Young oblex, a small translucent ooze beginning to collect memories.",
     "octopus": "Eight-armed cephalopod with a soft body, camouflage ability, and surprising intelligence.",
     "ogre": "Hulking humanoid with yellowish skin, small eyes, and a stupid brutal expression. Nine feet of muscle and fat.",
-    "ogre-zombie": "Undead ogre, even more mindless than in life, rotting flesh and tremendous strength.",
+    "ogre-zombie": "Undead hulking nine-foot humanoid with rotting yellowish-gray skin, clouded small eyes, and decaying flesh hanging from its massive frame. Shambles forward with tremendous strength but no intelligence.",
     "oinoloth": "Yugoloth of disease and plague, withered and skeletal, spreading pestilence.",
     "oni": "Blue-skinned ogre-like creature with horns, tusks, and wild hair. Can change shape and fly.",
     "orc": "Pig-faced humanoid with gray-green skin, tusks, and a muscular build. Aggressive and warlike bearing.",
@@ -559,7 +559,7 @@ const MONSTER_DESCRIPTIONS = {
     "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features like slit pupils or patches of scales.",
     "zaratan": "Colossal turtle elemental, an island-sized creature of living earth.",
     "zombie": "Shambling undead with rotting flesh, vacant eyes, and jerky movements. Mindless hunger for the living.",
-    "zombie-tyrannosaurus": "Undead tyrannosaurus rex, rotting but still terrifyingly powerful.",
+    "zombie-tyrannosaurus": "Undead massive bipedal dinosaur with rotting scales, exposed bones, and a huge skull filled with decaying teeth. Tiny arms hang uselessly as the reanimated predator lurches forward with terrifying power despite chunks of flesh missing from its body.",
 
     // ===== LEGENDARY CREATURES - EXTRA DETAILED =====
     
@@ -600,7 +600,7 @@ const MONSTER_DESCRIPTIONS = {
     // Beholders
     "death-tyrant": "An undead beholder - a decayed sphere with rotting flesh, damaged eyestalks leaking necrotic energy, and a central eye that glows with deathly power instead of antimagic. Bones visible through holes in decomposing skin. Even more paranoid and hateful than living beholders.",
     
-    "beholder-zombie": "A shambling beholder corpse, its once-proud form now rotted and controlled by dark magic. Eyestalks hang limp and useless, central eye clouded in death. Moves with jerking, unnatural motions.",
+    "beholder-zombie": "Undead floating spherical body covered in rotting leathery skin, with one massive clouded central eye and ten smaller eyes on limp, decaying stalks. Wide mouth filled with yellowed teeth. The once-proud aberration now shambles through the air with jerking, unnatural motions, controlled by dark magic.",
     
     // More Fiends
     "moloch": "Moloch, former archdevil cast down from power. A massive humanoid devil with the head of a bull, covered in burning coals and ash. Horns of iron, hooves that scorch the ground. Once proud, now bitter and seeking to regain lost glory. Wields weapons of black iron heated to glowing.",
@@ -737,7 +737,7 @@ const MONSTER_DESCRIPTIONS = {
     // ===== NAGA =====
     "guardian-naga": "Serpent with an iridescent humanoid face, wise and protective. Golden and green scales. Serves good deities.",
     "spirit-naga": "Evil serpent with a humanoid face twisted by malice. Dark purple scales. Schemes from jungle temples.",
-    "bone-naga": "Undead naga - a serpentine skeleton with a humanoid skull, green fire in eye sockets. Created by yuan-ti.",
+    "bone-naga": "Undead serpentine skeleton - a long coiling snake skeleton with a humanoid-like skull, fanged jaws, and green necromantic fire burning in empty eye sockets. Created by yuan-ti dark magic.",
     
     // ===== YUAN-TI =====
     "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features - slit pupils, patches of scales, forked tongue. Infiltrators.",
