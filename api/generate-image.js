@@ -29,12 +29,12 @@ export default async function handler(req, res) {
                 'Accept': 'image/jpeg'
             },
             body: JSON.stringify({
-                type: 'inference.flux-fast.schnell.txt2img.v2',
+                type: 'inference.flux.schnell.txt2img.v1',
                 config: {
                     prompt: prompt,
-                    style_preset: 'fantasy-art',
                     width: width,
-                    height: height
+                    height: height,
+                    steps: 4
                 }
             })
         });
