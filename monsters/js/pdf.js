@@ -10,6 +10,10 @@ function exportToPDF() {
     const printWindow = window.open('', '_blank');
     const m = currentMonster;
     
+    // Get portrait image if it exists
+    const portraitImg = document.getElementById('portraitImage');
+    const hasPortrait = portraitImg && portraitImg.style.display !== 'none' && portraitImg.src;
+    
     const html = `
 <!DOCTYPE html>
 <html>
@@ -114,6 +118,18 @@ function exportToPDF() {
             margin-bottom: 10px;
         }
         
+        .portrait-section {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .portrait-image {
+            max-width: 250px;
+            max-height: 250px;
+            border: 2px solid #58180d;
+            border-radius: 8px;
+        }
+        
         @media print {
             body {
                 padding: 0;
@@ -126,6 +142,7 @@ function exportToPDF() {
 </head>
 <body>
     <div class="stat-block">
+        ${hasPortrait ? `<div class="portrait-section"><img src="${portraitImg.src}" class="portrait-image" alt="${m.name} portrait"></div>` : ''}
         <h1 class="monster-name">${m.name}</h1>
         <p class="monster-type">${capitalize(m.size)} ${m.type}, ${m.alignment}</p>
         
