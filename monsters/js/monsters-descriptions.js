@@ -90,7 +90,7 @@ const MONSTER_DESCRIPTIONS = {
     "copper-dragon-wyrmling": "Young copper dragon with reddish scales, small horns, and an impish, playful demeanor.",
     "crab": "Small crustacean with a hard shell, pincers, and sideways movement.",
     "cranium-rat": "Small rat with an exposed, enlarged brain that glows faintly. Gains intelligence in swarms.",
-    "crocodile": "Large reptile with armored scales, powerful jaws, and a long tail. Ambush predator."
+    "crocodile": "Large reptile with armored scales, powerful jaws, and a long tail. Ambush predator.",
     "centaur": "Upper body of a muscular humanoid attached to the body of a horse. Wild hair, often carrying a bow or spear.",
     "chain-devil": "Gaunt humanoid wrapped in animated chains that writhe and attack independently. Pale skin and burning eyes.",
     "chimera": "Three-headed monster with the front of a lion, a goat head growing from its back, and a dragon head on a serpentine tail. Bat-like wings.",
@@ -150,7 +150,7 @@ const MONSTER_DESCRIPTIONS = {
     "flying-snake": "Colorful serpent with wing-like fins allowing gliding flight. Found in jungles.",
     "flying-sword": "Animated blade that hovers and attacks independently. Enchanted steel with no visible wielder.",
     "fomorian": "Hideously deformed giant with asymmetrical features, one eye larger than the other, and twisted limbs. Cursed by the fey.",
-    "frog": "Small amphibian with moist skin, bulging eyes, and powerful jumping legs."
+    "frog": "Small amphibian with moist skin, bulging eyes, and powerful jumping legs.",
     "flameskull": "Floating humanoid skull wreathed in green flames, with glowing eye sockets and cackling jaw.",
     "flesh-golem": "Humanoid constructed from stitched-together body parts, with visible seams, metal bolts, and mismatched skin tones.",
     "flumph": "Floating jellyfish-like creature with a flat body, eye stalks, and dangling tentacles. Peaceful and cute appearance.",
@@ -228,7 +228,7 @@ const MONSTER_DESCRIPTIONS = {
     "grung": "Small frog-like humanoid with poisonous skin in vibrant colors indicating caste.",
     "grung-elite-warrior": "Grung warrior of high caste, more vibrantly colored and martially skilled.",
     "guard-drake": "Wingless dragon bred for guard duty, loyal and territorial.",
-    "gynosphinx": "Female sphinx with the body of a lion, wings of an eagle, and humanoid face. Poses riddles."
+    "gynosphinx": "Female sphinx with the body of a lion, wings of an eagle, and humanoid face. Poses riddles.",
     "gorgon": "Bull-like creature covered in iron plates instead of hide, with glowing eyes and breath that turns flesh to stone.",
     "gray-ooze": "Pool of gray sludge that looks like wet stone, with no discernible features except when it moves.",
     "green-hag": "Withered crone with sickly green skin, long stringy hair, and warts. Bent posture with long clawed fingers.",
@@ -255,7 +255,7 @@ const MONSTER_DESCRIPTIONS = {
     "hook-horror": "Vulture-headed aberration with a hard exoskeleton and arms ending in massive hooks instead of hands.",
     "howler": "Fiendish predator with a lean, hunted body covered in quills. Its howl causes fear.",
     "hunter-shark": "Large aggressive shark, ten feet long, common predator of coastal waters.",
-    "hyena": "Dog-like scavenger with spotted fur, powerful jaws, and a distinctive laughing call."
+    "hyena": "Dog-like scavenger with spotted fur, powerful jaws, and a distinctive laughing call.",
     "horned-devil": "Tall devil with red skin, massive wings, a long tail, and large curving horns. Carries a barbed fork.",
     "hydra": "Multi-headed serpentine creature with a massive body and multiple long necks each ending in a fanged head.",
     
@@ -285,7 +285,7 @@ const MONSTER_DESCRIPTIONS = {
     "kraken-priest": "Humanoid cultist devoted to a kraken, granted divine magic by their tentacled master.",
     "kuo-toa": "Fish-headed humanoid with slimy gray skin, bulging eyes, and webbed appendages. Mad and devoted to strange gods.",
     "kuo-toa-archpriest": "Kuo-toa high priest with greater divine power, leading worship of their manifested gods.",
-    "kuo-toa-whip": "Kuo-toa overseer wielding a pincer staff, enforcing the will of their priests."
+    "kuo-toa-whip": "Kuo-toa overseer wielding a pincer staff, enforcing the will of their priests.",
     
     // ===== L =====
     "lamia": "Upper body of a beautiful woman attached to the body of a lion. Seductive appearance hiding predatory nature.",
@@ -312,7 +312,7 @@ const MONSTER_DESCRIPTIONS = {
     "mephit-magma": "Small elemental of molten rock, dripping fire.",
     "mephit-mud": "Small elemental of wet earth, slimy and squelching.",
     "mephit-smoke": "Small elemental of ash and smoke, choking and obscuring.",
-    "mephit-steam": "Small elemental of hot water vapor, scalding and hissing."
+    "mephit-steam": "Small elemental of hot water vapor, scalding and hissing.",
     "mammoth": "Massive woolly elephant with long curved tusks and shaggy brown fur.",
     "manticore": "Lion-bodied creature with a human-like face, bat wings, and a tail covered in deadly spikes.",
     "marilith": "Six-armed female demon from the waist up, with a massive serpent body below. Wields six different weapons.",
@@ -330,7 +330,7 @@ const MONSTER_DESCRIPTIONS = {
     "mud-mephit": "Small elemental of wet earth, constantly squelching and dripping.",
     "mule": "Domesticated hybrid of horse and donkey. Stubborn but strong pack animal.",
     "mummy": "Undead wrapped in ancient bandages, with withered flesh visible beneath, and glowing eyes of hatred.",
-    "myconid-sprout": "Young mushroom creature, small and cap-headed, communicating through spores."
+    "myconid-sprout": "Young mushroom creature, small and cap-headed, communicating through spores.",
     "mummy-lord": "Royal mummy in ornate wrappings with gold and jewels, radiating an aura of ancient power and curses.",
     
     // ===== N-O =====
@@ -365,7 +365,7 @@ const MONSTER_DESCRIPTIONS = {
     "orc-nurtured-one-of-yurtrus": "Orc blessed by the death god, transformed into a disease-ridden horror.",
     "orc-red-fang-of-shargaas": "Orc assassin of the night god, moving in darkness and silence.",
     "orog": "Elite orc with darker gray skin, more intelligent eyes, and superior equipment and bearing.",
-    "owl": "Nocturnal bird of prey with large eyes, silent flight, and rotating head."
+    "owl": "Nocturnal bird of prey with large eyes, silent flight, and rotating head.",
     "otyugh": "Three-legged aberration with a massive mouth, two tentacles with spiked ends, and an eye on a stalk. Lives in filth.",
     "owlbear": "Bear-like creature with an owl's head, feathers mixed with fur, and a hooked beak.",
     
@@ -377,7 +377,7 @@ const MONSTER_DESCRIPTIONS = {
     "pixie": "Tiny winged fey with delicate features, gossamer wings, and mischievous nature. Glows faintly.",
     "poisonous-snake": "Small venomous serpent with distinctive markings warning of deadly venom.",
     "polar-bear": "Massive white-furred bear adapted to arctic conditions. Powerful swimmer and hunter.",
-    "pony": "Small horse, sturdy and good-natured. Often ridden by smaller humanoids."
+    "pony": "Small horse, sturdy and good-natured. Often ridden by smaller humanoids.",
     "phase-spider": "Giant spider that flickers in and out of visibility, with long legs and massive fangs dripping venom.",
     "pit-fiend": "Massive devil with red skin, bat wings, horns, and a body wreathed in flame. Pinnacle of devilkind.",
     "planetar": "Powerful angel with green skin, white wings, and a muscular build. Carries a greatsword of light.",
@@ -395,7 +395,7 @@ const MONSTER_DESCRIPTIONS = {
     
     // ===== R =====
     "rat": "Small rodent common in urban areas. Carries disease and nibbles at everything.",
-    "raven": "Black bird associated with omens and death. Intelligent and capable of mimicry."
+    "raven": "Black bird associated with omens and death. Intelligent and capable of mimicry.",
     "rakshasa": "Tiger-headed humanoid with hands that bend backward, wearing fine silks and an expression of cruel sophistication.",
     "remorhaz": "Massive arctic centipede with a blue carapace, internal fire glowing through segments, and massive mandibles.",
     "red-dragon-wyrmling": "Young red dragon with crimson scales, small horns, and already-proud bearing. Smoke wisps from nostrils.",
@@ -405,7 +405,7 @@ const MONSTER_DESCRIPTIONS = {
     "rhinoceros": "Large thick-skinned mammal with one or two horns. Charges threats with devastating force.",
     "riding-horse": "Domesticated horse bred for riding. Obedient and trained for travel.",
     "roc": "Gigantic bird of prey large enough to carry elephants, with brown feathers and a wingspan blocking out the sun.",
-    "rug-of-smothering": "Animated rug that wraps around victims to suffocate them. Appears ordinary until triggered."
+    "rug-of-smothering": "Animated rug that wraps around victims to suffocate them. Appears ordinary until triggered.",
     "roper": "Stalagmite-like creature with a single eye, toothy maw, and multiple grasping tendrils disguised as cave formations.",
     "rust-monster": "Insect-like creature with a propeller-shaped tail, feathery antennae, and a taste for metal.",
     
@@ -420,7 +420,7 @@ const MONSTER_DESCRIPTIONS = {
     "scout": "Light-footed tracker and spy in practical wilderness gear. Expert in survival.",
     "sea-horse": "Small aquatic creature with a curled tail and horse-like head.",
     "sea-lion": "Large aquatic mammal with flippers, whiskers, and a playful nature.",
-    "sea-spawn": "Humanoid transformed by undersea powers into a hybrid horror with aquatic mutations."
+    "sea-spawn": "Humanoid transformed by undersea powers into a hybrid horror with aquatic mutations.",
     "scorpion": "Giant arachnid with massive pincers, eight legs, and a curving stinger tail dripping venom.",
     "sea-hag": "Hideous aquatic crone with slimy green skin, seaweed-like hair, and cold dead eyes.",
     "shadar-kai-gloom-weaver": "Shadar-kai spellcaster drawing power from shadow, with pale skin and dark magic.",
@@ -445,7 +445,7 @@ const MONSTER_DESCRIPTIONS = {
     "sorrowsworn-lonely": "Shadowfell creature seeking connection, grasping and desperate.",
     "sorrowsworn-lost": "Shadowfell creature of confusion, leading others astray.",
     "sorrowsworn-wretched": "Smallest sorrowsworn, embodying misery and self-loathing.",
-    "soul-monger": "Creature that harvests souls, either for a dark master or its own power."
+    "soul-monger": "Creature that harvests souls, either for a dark master or its own power.",
     "spawn-of-kyuss": "Undead corpse infested with green worms that writhe from its eye sockets and mouth.",
     "spectator": "Lesser beholder-kin with four eyestalks, bound to guard a location. More reasonable than true beholders.",
     "specter": "Ghostly humanoid consumed by rage, with features twisted by hatred and trailing wisps of darkness.",
@@ -454,7 +454,7 @@ const MONSTER_DESCRIPTIONS = {
     "sphinx-gyno": "Female sphinx with a woman's face, keeper of secrets and riddles.",
     "spider": "Large arachnid with eight hairy legs, multiple eyes, and venomous fangs.",
     "spring-eladrin": "Fey elf of spring - vibrant green hair with flowers, youthful energy, and joy.",
-    "spy": "Professional infiltrator and information gatherer, nondescript by design."
+    "spy": "Professional infiltrator and information gatherer, nondescript by design.",
     "spirit-naga": "Serpent with a humanoid face, scales of purple and black, and an evil intelligence in its eyes.",
     "sprite": "Tiny winged fey with features like a miniature elf, often carrying a tiny sword and bow.",
     "star-spawn-mangler": "Aberration with too many joints, moving in wrong ways, with bladed limbs.",
@@ -475,7 +475,7 @@ const MONSTER_DESCRIPTIONS = {
     "swarm-of-spiders": "Carpet of spiders large and small, crawling over everything.",
     "swarm-of-wasps": "Angry cloud of stinging wasps attacking as one.",
     "swashbuckler": "Dashing duelist with a rapier, cape, and theatrical flair.",
-    "sword-wraith-warrior": "Ghostly soldier still fighting an eternal battle, wielding spectral weapons."
+    "sword-wraith-warrior": "Ghostly soldier still fighting an eternal battle, wielding spectral weapons.",
     
     // ===== T =====
     "tarrasque": "The most feared monster in existence - a towering beast with a spiked carapace, massive jaws, horns, and a tail like a siege weapon.",
@@ -488,7 +488,7 @@ const MONSTER_DESCRIPTIONS = {
     "trapper": "Living floor creature that lies flat and wraps around prey. Looks like stone until activated.",
     "tribal-warrior": "Warrior of a primitive culture, painted and fierce, fighting with traditional weapons.",
     "troglodyte": "Reptilian humanoid with gray scaly skin and a horrible stench. Cave dweller.",
-    "twig-blight": "Small plant creature resembling a bundle of dead branches, scratching and clawing."
+    "twig-blight": "Small plant creature resembling a bundle of dead branches, scratching and clawing.",
     "treant": "Living tree with a humanoid face in the bark, branch-like arms, and roots for legs. Ancient and wise.",
     "triceratops": "Large dinosaur with three horns, a bony frill, and a massive body built for charging.",
     "troll": "Tall, lanky humanoid with green rubbery skin, long arms with claws, and a face with a long nose. Constantly regenerating.",
@@ -504,7 +504,7 @@ const MONSTER_DESCRIPTIONS = {
     "vegepygmy-chief": "Leader of vegepygmy tribe, larger and more cunning, with elaborate thorny growths.",
     "velociraptor": "Small feathered dinosaur with a curved killing claw, pack hunter of deadly cunning.",
     "vine-blight": "Plant creature of tangled vines, strangling and grasping, mobile but slow.",
-    "vulture": "Bald-headed scavenger bird, patient and waiting for death."
+    "vulture": "Bald-headed scavenger bird, patient and waiting for death.",
     "veteran": "Scarred warrior in well-worn but maintained armor, with the bearing of someone who has seen many battles.",
     "violet-fungus": "Mushroom creature with four purple tentacles that rot flesh on contact.",
     "vrock": "Vulture-headed demon with wings, a hunched body covered in feathers, and taloned feet.",
@@ -526,13 +526,13 @@ const MONSTER_DESCRIPTIONS = {
     "white-dragon-wyrmling": "Young white dragon with ice-white scales and feral hunting instincts.",
     "wight": "Undead warrior with gray skin, burning eyes, and ancient armor. Drains life force with its touch.",
     "will-o-wisp": "Floating ball of pale light that lures travelers to their doom in swamps and marshes.",
-    "winter-eladrin": "Fey elf of winter - pale blue skin, white hair like frost, cold demeanor and icy magic."
+    "winter-eladrin": "Fey elf of winter - pale blue skin, white hair like frost, cold demeanor and icy magic.",
     "winter-wolf": "Massive white wolf with ice-blue eyes and breath that freezes solid.",
     "wolf": "Gray-furred canine predator with yellow eyes and sharp teeth, hunting in packs.",
     "worg": "Evil wolf of unusual size and intelligence, often ridden by goblins.",
     "wraith": "Incorporeal undead of pure darkness, with a vaguely humanoid shape and hatred for all living things.",
     "wyvern": "Dragon-like creature with wings instead of forelegs, two hind legs, and a venomous stinger tail.",
-    "xvart": "Small blue-skinned humanoid related to goblins, worshipping the demon lord Raxivort."
+    "xvart": "Small blue-skinned humanoid related to goblins, worshipping the demon lord Raxivort.",
     
     // ===== X-Z =====
     "xorn": "Three-armed aberration with a body like a boulder, three eyes, and a large mouth on top of its head. Eats gems and metal.",
@@ -545,7 +545,7 @@ const MONSTER_DESCRIPTIONS = {
     "young-copper-dragon": "Mischievous young dragon with copper scales and a love of pranks.",
     "young-gold-dragon": "Majestic young dragon with golden scales and a protective nature.",
     "young-remorhaz": "Younger arctic centipede, still dangerous with internal fire and crushing mandibles.",
-    "young-silver-dragon": "Gentle young dragon with silver scales and a desire to help others."
+    "young-silver-dragon": "Gentle young dragon with silver scales and a desire to help others.",
     "young-blue-dragon": "Blue-scaled dragon with a growing horn, crackling with electrical energy.",
     "young-green-dragon": "Forest-green dragon with developing horns and toxic breath, cunning despite its youth.",
     "young-red-dragon": "Crimson dragon with swept-back horns, already fearsome with fire breath.",
@@ -559,7 +559,7 @@ const MONSTER_DESCRIPTIONS = {
     "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features like slit pupils or patches of scales.",
     "zaratan": "Colossal turtle elemental, an island-sized creature of living earth.",
     "zombie": "Shambling undead with rotting flesh, vacant eyes, and jerky movements. Mindless hunger for the living.",
-    "zombie-tyrannosaurus": "Undead tyrannosaurus rex, rotting but still terrifyingly powerful."
+    "zombie-tyrannosaurus": "Undead tyrannosaurus rex, rotting but still terrifyingly powerful.",
 
     // ===== LEGENDARY CREATURES - EXTRA DETAILED =====
     
@@ -776,7 +776,7 @@ const MONSTER_DESCRIPTIONS = {
     "duergar-warlord": "Duergar military commander in ornate armor, bearing insignia of rank and authority.",
     "duergar-xarrorn": "Duergar flame-keeper wielding fire-based weapons and pyrotechnic devices.",
     "dust-devil": "Small air elemental mixed with earth, appearing as a whirling column of dust and debris.",
-    "dust-mephit": "Small elemental creature of powdered earth, with a dusty appearance and irritating presence."
+    "dust-mephit": "Small elemental creature of powdered earth, with a dusty appearance and irritating presence.",
     
     // ===== GOBLINOIDS =====
     "goblin-boss": "Larger goblin in better equipment, usually a stolen crown or trophy. Commands through cruelty and cunning.",
@@ -861,7 +861,7 @@ const MONSTER_DESCRIPTIONS = {
     "darkmantle": "Cave creature that resembles rock until it drops onto prey, enveloping their head.",
     "cloaker": "Looks like a black cloak until it wraps around victims with its manta ray-like body.",
     "cult-fanatic": "Wild-eyed humanoid in ritual robes, bearing unholy symbols and fanatical devotion.",
-    "cultist": "Hooded humanoid in dark robes with cult symbols, devoted to dark powers."
+    "cultist": "Hooded humanoid in dark robes with cult symbols, devoted to dark powers.",
     "girallon": "Four-armed ape of massive size with white fur and savage temperament.",
     "froghemoth": "Enormous frog-like creature with tentacles instead of a tongue. Swamp horror.",
     "catoblepas": "Wildebeest-like creature with a long neck and a death-gaze. Stench of decay.",
