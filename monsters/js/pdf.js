@@ -252,9 +252,17 @@ function renderPDFTraits(m) {
 
 function renderPDFActions(m) {
     return m.actions.map(action => {
+        // Library format: action has full description text
+        if (action.description && !action.attackBonus) {
+            return `<div class="action"><span class="action-name">${action.name}.</span> ${action.description}</div>`;
+        }
+        
+        // Generated format: breath weapon
         if (action.type === 'breath') {
             return `<div class="action"><span class="action-name">${action.name} (Recharge ${action.recharge}).</span> ${action.description}</div>`;
         }
+        
+        // Generated format: standard attack
         const attackType = action.type === 'melee' ? 'Melee Weapon Attack' : 'Ranged Weapon Attack';
         const rangeText = action.type === 'melee' ? `reach ${action.reach} ft.` : `range ${action.range}`;
         return `<div class="action"><span class="action-name">${action.name}.</span> <em>${attackType}:</em> ${formatModifier(action.attackBonus)} to hit, ${rangeText}, one target. <em>Hit:</em> ${action.damage} damage.</div>`;
