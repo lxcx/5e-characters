@@ -509,22 +509,22 @@ function buildMonsterPortraitPrompt(m) {
     } else if (m.description) {
         prompt += ` ${m.description}`;
     } else {
-        // Fallback to type-specific visual hints
+        // Fallback to detailed type-specific visual hints
         const typeHints = {
-            'aberration': 'alien and unnatural appearance, tentacles or unusual anatomy',
-            'beast': 'natural animal features, realistic creature design',
-            'celestial': 'radiant glow, divine beauty, angelic features',
-            'construct': 'mechanical or magical construction, artificial being',
-            'dragon': 'scales, wings, powerful reptilian features, draconic majesty',
-            'elemental': 'made of pure elemental energy, embodiment of natural forces',
-            'fey': 'otherworldly beauty, magical aura, nature-connected features',
-            'fiend': 'demonic or devilish features, infernal appearance, dark aura',
-            'giant': 'massive humanoid proportions, towering and powerful',
-            'humanoid': 'humanlike features with distinctive racial characteristics',
-            'monstrosity': 'monstrous hybrid features, unnatural creature design',
-            'ooze': 'amorphous form, gelatinous body, semi-transparent',
-            'plant': 'vegetation features, organic plant-like appearance',
-            'undead': 'decayed or spectral appearance, deathly pallor, haunting presence'
+            'aberration': 'Alien creature with writhing tentacles, multiple eyes on stalks, non-euclidean anatomy that hurts to look at, slimy otherworldly skin, and features that defy natural biology',
+            'beast': 'Natural animal with realistic fur or scales, powerful muscles, keen predatory eyes, and features evolved for survival in the wild',
+            'celestial': 'Divine being with luminous skin, feathered wings glowing with holy light, a halo or nimbus of golden energy, and serene yet powerful expression',
+            'construct': 'Artificial creation made of stone, metal, or wood, with glowing rune inscriptions, mechanical joints, and expressionless features animated by magic',
+            'dragon': 'Massive reptilian creature with armored scales, bat-like wings, horns crowning its head, fearsome jaws filled with fangs, and eyes burning with ancient intelligence',
+            'elemental': 'Living embodiment of elemental force - swirling winds, crackling flames, flowing water, or shifting stone forming a vaguely humanoid shape',
+            'fey': 'Ethereal creature of otherworldly beauty or strangeness, with features that shimmer between forms, pointed ears, and an aura of wild magic',
+            'fiend': 'Demonic or devilish creature with horns, leathery bat wings, cloven hooves or clawed feet, burning eyes, and skin ranging from red to black',
+            'giant': 'Enormous humanoid standing two to three times the height of a human, with proportionally massive muscles and a face weathered by age',
+            'humanoid': 'Bipedal creature with recognizable humanoid features but distinctive racial characteristics such as pointed ears, tusks, or unusual skin coloring',
+            'monstrosity': 'Horrific hybrid creature combining features of multiple animals in unnatural ways - chimeric, twisted, and wrong in fundamental ways',
+            'ooze': 'Amorphous blob of translucent or opaque slime, shapeless and flowing, with partially digested objects visible within its gelatinous mass',
+            'plant': 'Ambulatory vegetation with bark-like skin, vine tendrils for limbs, leaves for hair, and glowing sap-like eyes set in a wooden face',
+            'undead': 'Corpse-like creature with pallid or rotting flesh, hollow eye sockets glowing with spectral light, skeletal features, and an aura of grave-cold'
         };
         
         if (typeHints[m.type]) {

@@ -247,6 +247,9 @@ function generateMonster() {
     // Generate description/lore
     monster.description = generateDescription(monster);
     
+    // Generate visual description for image generation
+    monster.visualDescription = generateVisualDescription(monster);
+    
     currentMonster = monster;
     displayMonster(monster);
     
@@ -1064,6 +1067,194 @@ function generateDescription(monster) {
     ];
     
     return randomChoice(descriptions);
+}
+
+// Generate visual description for image generation
+function generateVisualDescription(monster) {
+    // Body form descriptors by type
+    const bodyForms = {
+        aberration: [
+            'writhing mass of tentacles and eyestalks',
+            'pulsating blob with multiple mouths',
+            'nightmarish fusion of incomprehensible anatomy',
+            'twisted form defying natural geometry',
+            'alien creature with too many limbs and eyes'
+        ],
+        beast: [
+            'powerful predatory animal with keen senses',
+            'sleek natural hunter with sharp claws',
+            'muscular creature built for survival',
+            'wild animal with primal ferocity'
+        ],
+        celestial: [
+            'radiant being wreathed in divine light',
+            'winged figure with a halo of golden energy',
+            'luminous entity of pure goodness',
+            'angelic form with shimmering wings'
+        ],
+        construct: [
+            'mechanical figure of metal and magic',
+            'animated statue of stone or metal',
+            'clockwork creation with glowing runes',
+            'artificial being held together by arcane energy'
+        ],
+        dragon: [
+            'scaled reptilian creature with massive wings',
+            'serpentine body covered in gleaming scales',
+            'draconic form with powerful jaws and claws',
+            'winged wyrm with a serpentine neck and tail'
+        ],
+        elemental: [
+            'swirling vortex of elemental energy',
+            'humanoid form composed of raw elemental matter',
+            'living embodiment of primal forces',
+            'crackling mass of elemental power'
+        ],
+        fey: [
+            'otherworldly figure with ethereal beauty',
+            'mystical being with an enchanting presence',
+            'nature spirit with wild features',
+            'magical creature touched by the Feywild'
+        ],
+        fiend: [
+            'demonic creature with horns and claws',
+            'infernal being wreathed in brimstone',
+            'twisted humanoid with bat-like wings',
+            'hellish monster with burning eyes'
+        ],
+        giant: [
+            'towering humanoid of immense proportions',
+            'massive figure with tree-trunk limbs',
+            'colossal humanoid radiating raw power'
+        ],
+        humanoid: [
+            'bipedal figure with distinctive features',
+            'humanlike creature with unique characteristics',
+            'intelligent being with expressive face'
+        ],
+        monstrosity: [
+            'horrific hybrid of multiple creatures',
+            'unnatural beast of twisted form',
+            'monstrous predator with nightmarish features',
+            'aberrant creature that defies classification'
+        ],
+        ooze: [
+            'amorphous blob of acidic slime',
+            'gelatinous mass that flows across surfaces',
+            'shapeless ooze with no discernible features',
+            'viscous puddle of corrosive matter'
+        ],
+        plant: [
+            'ambulatory mass of vegetation',
+            'creature of vines, thorns, and leaves',
+            'animated plant with grasping tendrils',
+            'botanical horror with wooden limbs'
+        ],
+        undead: [
+            'corpse animated by dark magic',
+            'skeletal figure wreathed in necromantic energy',
+            'decayed humanoid with hollow eyes',
+            'spectral presence emanating cold dread',
+            'shambling remains of the once-living'
+        ]
+    };
+    
+    // Size descriptors
+    const sizeDescriptors = {
+        Tiny: 'diminutive, no larger than a cat',
+        Small: 'small, about the size of a child',
+        Medium: 'human-sized',
+        Large: 'towering, twice the height of a human',
+        Huge: 'massive, the size of an elephant',
+        Gargantuan: 'colossal, the size of a building'
+    };
+    
+    // Feature details by role
+    const roleFeatures = {
+        artillery: 'with long-range adaptations and keen targeting organs',
+        brute: 'with thick muscles and powerful limbs built for destruction',
+        controller: 'with mesmerizing features and an aura of command',
+        lurker: 'with mottled coloring and features suited for ambush',
+        skirmisher: 'with a lean, agile build made for quick strikes',
+        soldier: 'with natural armor and a disciplined, martial bearing',
+        support: 'with features suggesting cunning intelligence'
+    };
+    
+    // Environment adaptations
+    const envAdaptations = {
+        arctic: 'Thick fur or pale coloring provides camouflage in snow.',
+        coastal: 'Webbed appendages and gills hint at amphibious nature.',
+        desert: 'Sandy coloring and heat-resistant features.',
+        forest: 'Bark-like skin or leaf-patterned coloring.',
+        grassland: 'Tawny coloring suited for open terrain.',
+        hill: 'Sturdy build adapted for rocky terrain.',
+        mountain: 'Sure-footed with thick hide against the cold.',
+        swamp: 'Slimy skin and features adapted for murky waters.',
+        underdark: 'Pale, eyeless, or with darkvision-adapted large eyes.',
+        underwater: 'Streamlined body with fins and gills.',
+        urban: 'Subtle features allowing it to blend into civilized areas.'
+    };
+    
+    // Power level descriptors
+    const powerDescriptors = {
+        weak: 'appears relatively harmless but should not be underestimated',
+        moderate: 'radiates an aura of danger',
+        strong: 'exudes palpable menace and raw power',
+        legendary: 'emanates an overwhelming presence that commands fear and respect'
+    };
+    
+    // Build the description
+    let bodyForm = randomChoice(bodyForms[monster.type] || bodyForms.monstrosity);
+    let sizeDesc = sizeDescriptors[monster.size] || 'medium-sized';
+    let roleDesc = roleFeatures[monster.role] || '';
+    let envDesc = envAdaptations[monster.environment] || '';
+    
+    let powerLevel = 'moderate';
+    if (monster.cr <= 2) powerLevel = 'weak';
+    else if (monster.cr >= 15) powerLevel = 'legendary';
+    else if (monster.cr >= 8) powerLevel = 'strong';
+    
+    let powerDesc = powerDescriptors[powerLevel];
+    
+    // Compose the visual description
+    let visual = `A ${sizeDesc} ${bodyForm}`;
+    if (roleDesc) {
+        visual += `, ${roleDesc}`;
+    }
+    visual += '. ';
+    
+    if (envDesc) {
+        visual += `${envDesc} `;
+    }
+    
+    // Add details based on defenses
+    if (monster.damageImmunities && monster.damageImmunities.length > 0) {
+        const immunity = monster.damageImmunities[0];
+        const immunityVisuals = {
+            fire: 'Flames flicker harmlessly across its form.',
+            cold: 'Frost crystals form on its body without effect.',
+            lightning: 'Static electricity crackles around it.',
+            poison: 'Sickly green ichor drips from its form.',
+            necrotic: 'An aura of death surrounds it.',
+            radiant: 'It glows with inner light.'
+        };
+        if (immunityVisuals[immunity]) {
+            visual += immunityVisuals[immunity] + ' ';
+        }
+    }
+    
+    // Add details based on senses
+    if (monster.senses) {
+        if (monster.senses.truesight) {
+            visual += 'Its eyes see through all deception, piercing illusions with an unsettling gaze. ';
+        } else if (monster.senses.blindsight) {
+            visual += 'It navigates without eyes, sensing the world through other means. ';
+        }
+    }
+    
+    visual += `The creature ${powerDesc}.`;
+    
+    return visual;
 }
 
 // Show type description

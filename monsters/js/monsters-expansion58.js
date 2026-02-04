@@ -32,7 +32,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The giant makes two greataxe attacks.' },
             { name: 'Greataxe', description: 'Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 26 (3d12 + 7) slashing damage, or 30 (3d12 + 11) slashing damage while raging.' },
             { name: 'Rock', description: 'Ranged Weapon Attack: +11 to hit, range 60/240 ft., one target. Hit: 29 (4d10 + 7) bludgeoning damage.' }
-        ]
+        ],
+        visualDescription: 'A monstrous frost giant blessed by Vaprak the Destroyer, with bluish-white skin covered in patches of matted fur and ice. Multiple troll-like heads sprout from its shoulders, each with tusked jaws and burning red eyes. Its body regenerates wounds visibly, flesh knitting back together with sickening speed.'
     },
     'ice-mephit': {
         name: 'Ice Mephit',
@@ -63,7 +64,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Claws', description: 'Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 3 (1d4 + 1) slashing damage plus 2 (1d4) cold damage.' },
             { name: 'Frost Breath (Recharge 6)', description: 'The mephit exhales a 15-foot cone of cold air. Each creature in that area must succeed on a DC 10 Dexterity saving throw, taking 5 (2d4) cold damage on a failed save, or half as much on a success.' }
-        ]
+        ],
+        visualDescription: 'A tiny elemental creature made of living ice and frigid wind. Its body is translucent blue-white, with icicle-like claws and wings of frozen mist. A permanent sneer of cold malice is frozen on its angular face, and frost crystals form wherever it passes.'
     },
     'yeti': {
         name: 'Yeti',
@@ -93,7 +95,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The yeti can use its Chilling Gaze and makes two claw attacks.' },
             { name: 'Claw', description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) slashing damage plus 3 (1d6) cold damage.' },
             { name: 'Chilling Gaze', description: 'The yeti targets one creature it can see within 30 feet of it. If the target can see the yeti, the target must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.' }
-        ]
+        ],
+        visualDescription: 'A towering ape-like creature covered in thick white fur, perfectly camouflaged against the snow. Its face is flat and eerily humanoid, with pale blue eyes that radiate supernatural cold. Long arms end in curved claws, and its breath mists in the frozen air even as frost forms on nearby surfaces.'
     },
     
     // Desert Environment
@@ -120,7 +123,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Bite', description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) piercing damage plus 3 (1d6) lightning damage.' },
             { name: 'Lightning Breath (Recharge 5-6)', description: 'The dragon exhales lightning in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much on a success.' }
-        ]
+        ],
+        visualDescription: 'A young dragon with deep sapphire-blue scales that shimmer like polished metal. A single horn protrudes from its snout, already crackling with electrical energy. Its eyes gleam with cruel intelligence, and sparks dance between its fangs when it opens its mouth.'
     },
     'dust-mephit': {
         name: 'Dust Mephit',
@@ -150,7 +154,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Claws', description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 4 (1d4 + 2) slashing damage.' },
             { name: 'Blinding Breath (Recharge 6)', description: 'The mephit exhales a 15-foot cone of blinding dust. Each creature in that area must succeed on a DC 10 Dexterity saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.' }
-        ]
+        ],
+        visualDescription: 'A small elemental creature composed of swirling sand and grit. Its form is vaguely humanoid but constantly shifting, with hollow eye sockets and a mouth that seems to inhale sand. Dust devils spiral around its body, and it leaves a trail of fine particles wherever it goes.'
     },
     'giant-scorpion': {
         name: 'Giant Scorpion',
@@ -173,7 +178,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The scorpion makes three attacks: two with its claws and one with its sting.' },
             { name: 'Claw', description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) bludgeoning damage, and the target is grappled (escape DC 12). The scorpion has two claws, each of which can grapple only one target.' },
             { name: 'Sting', description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 22 (4d10) poison damage on a failed save, or half as much on a success.' }
-        ]
+        ],
+        visualDescription: 'A massive arachnid the size of a horse, with a chitinous black exoskeleton and eight jointed legs. Two enormous pincers snap menacingly, and its segmented tail arches over its back, tipped with a wickedly curved stinger glistening with venom.'
     },
     'mummy': {
         name: 'Mummy',
@@ -201,7 +207,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The mummy can use its Dreadful Glare and makes one attack with its rotting fist.' },
             { name: 'Rotting Fist', description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage plus 10 (3d6) necrotic damage. If the target is a creature, it must succeed on a DC 12 Constitution saving throw or be cursed with mummy rot.' },
             { name: 'Dreadful Glare', description: 'The mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, it must succeed on a DC 11 Wisdom saving throw or be frightened until the end of the mummy\'s next turn. If the target fails by 5 or more, it is also paralyzed for the same duration.' }
-        ]
+        ],
+        visualDescription: 'A desiccated humanoid corpse wrapped in ancient linen bandages, stained with age and embalming fluids. Its eyes are sunken pits that glow with malevolent light, and its movements are jerky yet purposeful. The stench of ancient death and exotic spices surrounds it.'
     },
     
     // Forest/Woodland Environment
@@ -232,7 +239,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Club', description: 'Melee Weapon Attack: +2 to hit (+6 with shillelagh), reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage, or 8 (1d8 + 4) bludgeoning damage with shillelagh.' },
             { name: 'Fey Charm', description: 'The dryad targets one humanoid or beast that she can see within 30 feet of her. If the target can see the dryad, it must succeed on a DC 14 Wisdom saving throw or be magically charmed. The charmed creature regards the dryad as a trusted friend.' }
-        ]
+        ],
+        visualDescription: 'A beautiful fey woman with bark-like skin in shades of brown and green, and hair that flows like willow branches with leaves woven throughout. Her eyes are deep forest green, and flowers seem to bloom in her footsteps. Her form is lithe and graceful, appearing to be part of the forest itself.'
     },
     'owlbear': {
         name: 'Owlbear',
@@ -259,7 +267,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The owlbear makes two attacks: one with its beak and one with its claws.' },
             { name: 'Beak', description: 'Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 10 (1d10 + 5) piercing damage.' },
             { name: 'Claws', description: 'Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage.' }
-        ]
+        ],
+        visualDescription: 'A bizarre hybrid creature with the body of a massive bear covered in thick brown fur, but the head of a giant owl complete with a hooked beak and large yellow eyes. Its front claws are wickedly sharp, and it moves with surprising speed for its bulk. Feathers mixed with fur cover its shoulders.'
     },
     'treant': {
         name: 'Treant',
@@ -289,7 +298,8 @@ const monstersExpansion58 = {
             { name: 'Slam', description: 'Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 16 (3d6 + 6) bludgeoning damage.' },
             { name: 'Rock', description: 'Ranged Weapon Attack: +10 to hit, range 60/180 ft., one target. Hit: 28 (4d10 + 6) bludgeoning damage.' },
             { name: 'Animate Trees (1/Day)', description: 'The treant magically animates one or two trees it can see within 60 feet of it. These trees have the same statistics as a treant, except they have Intelligence and Charisma scores of 1, they can\'t speak, and they have only the Slam action option. An animated tree acts as an ally of the treant.' }
-        ]
+        ],
+        visualDescription: 'A massive humanoid tree standing thirty feet tall, with bark-covered skin, branch-like arms, and a face formed from knots and whorls in the wood. Leaves and moss grow across its body, and its eyes are deep hollows that glow with ancient green light. Birds nest in its branches, and its voice sounds like wind through leaves.'
     },
     
     // Swamp Environment
@@ -321,7 +331,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The shambling mound makes two slam attacks. If both attacks hit a Medium or smaller target, the target is grappled (escape DC 14), and the shambling mound uses its Engulf on it.' },
             { name: 'Slam', description: 'Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage.' },
             { name: 'Engulf', description: 'The shambling mound engulfs a Medium or smaller creature grappled by it. The engulfed target is blinded, restrained, and unable to breathe, and it must succeed on a DC 14 Constitution saving throw at the start of each of the mound\'s turns or take 13 (2d8 + 4) bludgeoning damage. If the mound moves, the engulfed target moves with it. The mound can have only one creature engulfed at a time.' }
-        ]
+        ],
+        visualDescription: 'A massive heap of rotting vegetation that has taken on a vaguely humanoid shape. Vines, moss, and decomposing plant matter form its body, with two arm-like appendages and a featureless "head." It smells of swamp rot and moves with a squelching, shuffling gait. Lightning seems to invigorate rather than harm it.'
     },
     'lizardfolk': {
         name: 'Lizardfolk',
@@ -350,7 +361,8 @@ const monstersExpansion58 = {
             { name: 'Heavy Club', description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage.' },
             { name: 'Javelin', description: 'Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6 + 2) piercing damage.' },
             { name: 'Spiked Shield', description: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.' }
-        ]
+        ],
+        visualDescription: 'A reptilian humanoid standing about six feet tall, with green-brown scaly skin, a long tail, and a crocodilian snout filled with sharp teeth. Its yellow eyes have vertical pupils, and it wears crude armor made from bones and hide. Webbed feet and clawed hands mark it as an amphibious hunter.'
     },
     'will-o-wisp': {
         name: 'Will-o\'-Wisp',
@@ -381,7 +393,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Shock', description: 'Melee Spell Attack: +4 to hit, reach 5 ft., one creature. Hit: 9 (2d8) lightning damage.' },
             { name: 'Invisibility', description: 'The will-o\'-wisp and its light magically become invisible until it attacks or uses its Consume Life, or until its concentration ends (as if concentrating on a spell).' }
-        ]
+        ],
+        visualDescription: 'A flickering ball of ghostly light, pale blue or sickly green, that floats through the air with no visible means of support. At its center, a faint skull-like face can sometimes be glimpsed. It pulses hypnotically, drawing the unwary deeper into dangerous swamps and bogs.'
     },
     
     // Underground/Underdark Environment
@@ -410,7 +423,8 @@ const monstersExpansion58 = {
         actions: [
             { name: 'Multiattack', description: 'The hook horror makes two hook attacks.' },
             { name: 'Hook', description: 'Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6 + 4) piercing damage.' }
-        ]
+        ],
+        visualDescription: 'A large insectoid creature resembling a vulture crossed with a beetle, with a hard gray exoskeleton and two massive hooked appendages instead of front legs. Its head is eyeless, relying on echolocation, and it climbs cave walls with ease. The hooks make a distinctive scraping sound against stone.'
     },
     'drider': {
         name: 'Drider',
@@ -442,7 +456,8 @@ const monstersExpansion58 = {
             { name: 'Bite', description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 2 (1d4) piercing damage plus 9 (2d8) poison damage.' },
             { name: 'Longsword', description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands.' },
             { name: 'Longbow', description: 'Ranged Weapon Attack: +6 to hit, range 150/600 ft., one target. Hit: 7 (1d8 + 3) piercing damage plus 4 (1d8) poison damage.' }
-        ]
+        ],
+        visualDescription: 'A horrifying fusion of dark elf and giant spider - the upper body is that of a drow with obsidian skin and white hair, while from the waist down extends the bloated body of a monstrous spider with eight hairy legs. Red eyes gleam with cruelty, and fangs drip with venom. A cursed creation of Lolth.'
     },
     'umber-hulk': {
         name: 'Umber Hulk',
@@ -469,7 +484,8 @@ const monstersExpansion58 = {
             { name: 'Multiattack', description: 'The umber hulk makes three attacks: two with its claws and one with its mandibles.' },
             { name: 'Claw', description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 5) slashing damage.' },
             { name: 'Mandibles', description: 'Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage.' }
-        ]
+        ],
+        visualDescription: 'A massive beetle-like creature standing eight feet tall, with a thick carapace of iron-gray chitin and four compound eyes that shimmer with hypnotic patterns. Powerful digging claws can tear through solid rock, and its mandibles can crush armor. Looking into its eyes causes disorientation and confusion.'
     },
     
     // Coastal/Aquatic Environment
@@ -498,7 +514,8 @@ const monstersExpansion58 = {
             { name: 'Claws', description: 'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.' },
             { name: 'Death Glare', description: 'The hag targets one frightened creature she can see within 30 feet of her. If the target can see the hag, it must succeed on a DC 11 Wisdom saving throw against this magic or drop to 0 hit points.' },
             { name: 'Illusory Appearance', description: 'The hag covers herself and anything she is wearing or carrying with a magical illusion that makes her look like an ugly creature of her general size and humanoid shape. The effect ends if the hag takes a bonus action to end it or if she dies.' }
-        ]
+        ],
+        visualDescription: 'A hideously ugly humanoid woman with sickly blue-green skin covered in fish scales and barnacles. Her hair is like tangled seaweed, and her eyes are pale and dead like a drowned corpse. Long clawed fingers and webbed feet mark her aquatic nature, and the stench of rotting fish surrounds her.'
     },
     'sahuagin': {
         name: 'Sahuagin',
@@ -528,7 +545,8 @@ const monstersExpansion58 = {
             { name: 'Bite', description: 'Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage.' },
             { name: 'Claws', description: 'Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) slashing damage.' },
             { name: 'Spear', description: 'Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack.' }
-        ]
+        ],
+        visualDescription: 'A fish-like humanoid with green scales, webbed hands and feet, and fins along its arms and back. Its face is that of a deep-sea predator with bulging black eyes and a mouth full of needle-sharp teeth. Gills flutter on its neck, and it carries a trident or spear made of coral and bone.'
     },
     'merrow': {
         name: 'Merrow',
@@ -555,7 +573,8 @@ const monstersExpansion58 = {
             { name: 'Bite', description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage.' },
             { name: 'Claws', description: 'Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4 + 4) slashing damage.' },
             { name: 'Harpoon', description: 'Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 (2d6 + 4) piercing damage. If the target is a Huge or smaller creature, it must succeed on a Strength contest against the merrow or be pulled up to 20 feet toward the merrow.' }
-        ]
+        ],
+        visualDescription: 'A brutish aquatic humanoid with mottled green-gray skin, the corrupted form of a mermaid transformed by demonic influence. Its lower body is a powerful fish tail, while its upper body is muscular and ape-like with webbed claws. Its face is a nightmarish blend of fish and human features, with a mouth full of fangs.'
     }
 };
 
