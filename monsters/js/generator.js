@@ -228,10 +228,18 @@ function generateMonster() {
         monster.multiattack = generateMultiattack(monster.actions);
     }
     
-    // Add legendary actions if legendary
-    if (options.isLegendary && options.cr >= 10) {
-        monster.legendaryActions = generateLegendaryActions(monster, options.cr);
-        monster.lairActions = options.cr >= 15 ? generateLairActions() : null;
+    // Add legendary actions if legendary (no CR restriction - any monster can be legendary)
+    if (options.isLegendary) {
+        // Start with basic legendary actions - user can customize
+        monster.legendaryActions = {
+            count: 3,
+            actions: [
+                { name: "Detect", cost: 1, description: "Makes a Wisdom (Perception) check." },
+                { name: "Move", cost: 1, description: "Moves up to half its speed without provoking opportunity attacks." },
+                { name: "Attack", cost: 2, description: "Makes one weapon attack." }
+            ]
+        };
+        monster.lairActions = null; // User can add lair actions separately if desired
     }
     
     // Add spellcasting if enabled

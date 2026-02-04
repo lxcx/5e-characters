@@ -63,7 +63,7 @@ function displayMonster(monster) {
             
             ${renderReactions(monster)}
             
-            ${monster.isLegendary ? renderLegendaryActions(monster) : ''}
+            ${monster.isLegendary ? renderLegendaryActions(monster) : renderAddLegendaryOption()}
             
             ${monster.lairActions ? renderLairActions(monster) : ''}
             
@@ -290,30 +290,259 @@ function renderReactions(monster) {
 function renderLegendaryActions(monster) {
     if (!monster.legendaryActions) return '';
     const actions = monster.legendaryActions.actions;
-    if (!actions || !Array.isArray(actions) || actions.length === 0) return '';
     
     // Support both formats: count (generated) and perRound (library)
     const actionCount = monster.legendaryActions.count || monster.legendaryActions.perRound || 3;
+    
+    let actionsHtml = '';
+    if (actions && Array.isArray(actions) && actions.length > 0) {
+        actionsHtml = actions.map((action, index) => {
+            // Check if cost is included in name (library format) or as separate property
+            const hasCostInName = action.name.includes('Costs') || action.name.includes('costs');
+            const costSuffix = !hasCostInName && action.cost > 1 ? ` (Costs ${action.cost} Actions)` : '';
+            
+            return `
+                <div class="legendary-item">
+                    <p>
+                        <strong>${action.name}${costSuffix}.</strong> ${action.description
+                            .replace('{dc}', 8 + monster.proficiencyBonus + (monster.abilityModifiers?.str || 0))
+                            .replace('{damage}', getDamageDice(monster.cr, 'secondary'))
+                            .replace('{bonus}', '+' + (monster.proficiencyBonus + (monster.abilityModifiers?.str || 0)))
+                        }
+                        <button class="remove-legendary-btn" onclick="removeLegendaryAction(${index})" title="Remove this legendary action">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </p>
+                </div>
+            `;
+        }).join('');
+    }
     
     return `
         <div class="legendary-section">
             <h3 class="section-title"><i class="fa-solid fa-crown"></i> Legendary Actions</h3>
             <p class="legendary-intro">The creature can take ${actionCount} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
-            ${actions.map(action => {
-                // Check if cost is included in name (library format) or as separate property
-                const hasCostInName = action.name.includes('Costs') || action.name.includes('costs');
-                const costSuffix = !hasCostInName && action.cost > 1 ? ` (Costs ${action.cost} Actions)` : '';
-                
-                return `
-                <div class="legendary-item">
-                    <p><strong>${action.name}${costSuffix}.</strong> ${action.description
-                        .replace('{dc}', 8 + monster.proficiencyBonus + (monster.abilityModifiers?.str || 0))
-                        .replace('{damage}', getDamageDice(monster.cr, 'secondary'))
-                    }</p>
-                </div>
-            `}).join('')}
+            ${actionsHtml}
+            <div class="legendary-actions-controls">
+                <button class="add-legendary-btn" onclick="openLegendaryActionModal()">
+                    <i class="fa-solid fa-plus"></i> Add Legendary Action
+                </button>
+            </div>
         </div>
     `;
+}
+
+// Render option to add legendary actions for non-legendary monsters
+function renderAddLegendaryOption() {
+    return `
+        <div class="add-legendary-section">
+            <button class="add-legendary-btn" onclick="openLegendaryActionModal()">
+                <i class="fa-solid fa-crown"></i> Make Legendary (Add Legendary Actions)
+            </button>
+        </div>
+    `;
+}
+
+// Open modal to add legendary action
+function openLegendaryActionModal() {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('legendaryActionModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'legendaryActionModal';
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content legendary-modal">
+                <h3><i class="fa-solid fa-crown"></i> Add Legendary Action</h3>
+                
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchLegendaryTab('preset')">Select Preset</button>
+                    <button class="modal-tab" onclick="switchLegendaryTab('custom')">Custom Action</button>
+                </div>
+                
+                <div id="legendaryPresetTab" class="legendary-tab-content">
+                    <div class="preset-actions-list">
+                        ${getLegendaryActionOptions()}
+                    </div>
+                </div>
+                
+                <div id="legendaryCustomTab" class="legendary-tab-content" style="display: none;">
+                    <div class="form-group">
+                        <label>Action Name</label>
+                        <input type="text" id="customLegendaryName" placeholder="e.g., Tail Sweep">
+                    </div>
+                    <div class="form-group">
+                        <label>Cost (Actions)</label>
+                        <select id="customLegendaryCost">
+                            <option value="1">1 Action</option>
+                            <option value="2">2 Actions</option>
+                            <option value="3">3 Actions</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="customLegendaryDesc" rows="3" placeholder="Describe what this legendary action does..."></textarea>
+                    </div>
+                    <button class="modal-btn primary" onclick="addCustomLegendaryAction()">
+                        <i class="fa-solid fa-plus"></i> Add Custom Action
+                    </button>
+                </div>
+                
+                <button class="modal-close-btn" onclick="closeLegendaryActionModal()">
+                    <i class="fa-solid fa-times"></i> Close
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    modal.style.display = 'flex';
+}
+
+// Get legendary action preset options HTML
+function getLegendaryActionOptions() {
+    const templates = [
+        { name: "Detect", cost: 1, description: "Makes a Wisdom (Perception) check." },
+        { name: "Tail Attack", cost: 1, description: "Makes a tail attack." },
+        { name: "Wing Attack", cost: 2, description: "Beats its wings. Each creature within 15 feet must succeed on a Dexterity saving throw or take bludgeoning damage and be knocked prone. The creature can then fly up to half its flying speed." },
+        { name: "Move", cost: 1, description: "Moves up to half its speed without provoking opportunity attacks." },
+        { name: "Attack", cost: 2, description: "Makes one weapon attack." },
+        { name: "Cast a Spell", cost: 3, description: "Casts a spell from its list of spells, using a spell slot as normal." },
+        { name: "Claw Attack", cost: 1, description: "Makes one claw attack." },
+        { name: "Bite Attack", cost: 2, description: "Makes one bite attack." },
+        { name: "Frightening Presence", cost: 1, description: "Uses Frightful Presence." },
+        { name: "Teleport", cost: 2, description: "Magically teleports up to 60 feet to an unoccupied space it can see." },
+        { name: "Command Ally", cost: 1, description: "One ally within 30 feet that can hear the creature can use its reaction to move up to its speed or make one weapon attack." },
+        { name: "Eye Ray", cost: 2, description: "Uses one random eye ray." },
+        { name: "Disrupt Life", cost: 3, description: "Each non-undead creature within 20 feet must make a Constitution saving throw, taking necrotic damage on a failed save, or half as much on a successful one." },
+        { name: "Energy Drain", cost: 2, description: "Melee Spell Attack against one creature. On hit, deals necrotic damage and the target must succeed on a Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken." },
+        { name: "Unearthly Howl", cost: 2, description: "Each creature within 60 feet that can hear the creature must succeed on a Wisdom saving throw or become frightened until the end of the creature's next turn." },
+        { name: "Tendril", cost: 1, description: "Makes one tendril attack." },
+        { name: "Psychic Blast", cost: 2, description: "Each creature within 30 feet must succeed on an Intelligence saving throw or take psychic damage." },
+        { name: "Consume Magic", cost: 2, description: "Targets one creature within 60 feet that is concentrating on a spell. The target must succeed on a Constitution saving throw or lose concentration." }
+    ];
+    
+    return templates.map((t, i) => `
+        <div class="preset-action-item" onclick="addPresetLegendaryAction(${i})">
+            <strong>${t.name}</strong> <span class="cost-badge">${t.cost} action${t.cost > 1 ? 's' : ''}</span>
+            <p>${t.description}</p>
+        </div>
+    `).join('');
+}
+
+// Switch between preset and custom tabs
+function switchLegendaryTab(tab) {
+    const presetTab = document.getElementById('legendaryPresetTab');
+    const customTab = document.getElementById('legendaryCustomTab');
+    const tabs = document.querySelectorAll('.modal-tab');
+    
+    tabs.forEach(t => t.classList.remove('active'));
+    
+    if (tab === 'preset') {
+        presetTab.style.display = 'block';
+        customTab.style.display = 'none';
+        tabs[0].classList.add('active');
+    } else {
+        presetTab.style.display = 'none';
+        customTab.style.display = 'block';
+        tabs[1].classList.add('active');
+    }
+}
+
+// Add preset legendary action
+function addPresetLegendaryAction(index) {
+    const templates = [
+        { name: "Detect", cost: 1, description: "Makes a Wisdom (Perception) check." },
+        { name: "Tail Attack", cost: 1, description: "Makes a tail attack." },
+        { name: "Wing Attack", cost: 2, description: "Beats its wings. Each creature within 15 feet must succeed on a Dexterity saving throw or take bludgeoning damage and be knocked prone. The creature can then fly up to half its flying speed." },
+        { name: "Move", cost: 1, description: "Moves up to half its speed without provoking opportunity attacks." },
+        { name: "Attack", cost: 2, description: "Makes one weapon attack." },
+        { name: "Cast a Spell", cost: 3, description: "Casts a spell from its list of spells, using a spell slot as normal." },
+        { name: "Claw Attack", cost: 1, description: "Makes one claw attack." },
+        { name: "Bite Attack", cost: 2, description: "Makes one bite attack." },
+        { name: "Frightening Presence", cost: 1, description: "Uses Frightful Presence." },
+        { name: "Teleport", cost: 2, description: "Magically teleports up to 60 feet to an unoccupied space it can see." },
+        { name: "Command Ally", cost: 1, description: "One ally within 30 feet that can hear the creature can use its reaction to move up to its speed or make one weapon attack." },
+        { name: "Eye Ray", cost: 2, description: "Uses one random eye ray." },
+        { name: "Disrupt Life", cost: 3, description: "Each non-undead creature within 20 feet must make a Constitution saving throw, taking necrotic damage on a failed save, or half as much on a successful one." },
+        { name: "Energy Drain", cost: 2, description: "Melee Spell Attack against one creature. On hit, deals necrotic damage and the target must succeed on a Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken." },
+        { name: "Unearthly Howl", cost: 2, description: "Each creature within 60 feet that can hear the creature must succeed on a Wisdom saving throw or become frightened until the end of the creature's next turn." },
+        { name: "Tendril", cost: 1, description: "Makes one tendril attack." },
+        { name: "Psychic Blast", cost: 2, description: "Each creature within 30 feet must succeed on an Intelligence saving throw or take psychic damage." },
+        { name: "Consume Magic", cost: 2, description: "Targets one creature within 60 feet that is concentrating on a spell. The target must succeed on a Constitution saving throw or lose concentration." }
+    ];
+    
+    if (!currentMonster) return;
+    
+    const action = { ...templates[index] };
+    
+    if (!currentMonster.legendaryActions) {
+        currentMonster.legendaryActions = { count: 3, actions: [] };
+    }
+    if (!currentMonster.legendaryActions.actions) {
+        currentMonster.legendaryActions.actions = [];
+    }
+    
+    currentMonster.legendaryActions.actions.push(action);
+    currentMonster.isLegendary = true;
+    
+    closeLegendaryActionModal();
+    displayMonster(currentMonster);
+}
+
+// Add custom legendary action
+function addCustomLegendaryAction() {
+    const name = document.getElementById('customLegendaryName').value.trim();
+    const cost = parseInt(document.getElementById('customLegendaryCost').value);
+    const description = document.getElementById('customLegendaryDesc').value.trim();
+    
+    if (!name || !description) {
+        alert('Please fill in both name and description.');
+        return;
+    }
+    
+    if (!currentMonster) return;
+    
+    if (!currentMonster.legendaryActions) {
+        currentMonster.legendaryActions = { count: 3, actions: [] };
+    }
+    if (!currentMonster.legendaryActions.actions) {
+        currentMonster.legendaryActions.actions = [];
+    }
+    
+    currentMonster.legendaryActions.actions.push({ name, cost, description });
+    currentMonster.isLegendary = true;
+    
+    // Clear form
+    document.getElementById('customLegendaryName').value = '';
+    document.getElementById('customLegendaryDesc').value = '';
+    document.getElementById('customLegendaryCost').value = '1';
+    
+    closeLegendaryActionModal();
+    displayMonster(currentMonster);
+}
+
+// Remove legendary action
+function removeLegendaryAction(index) {
+    if (!currentMonster || !currentMonster.legendaryActions || !currentMonster.legendaryActions.actions) return;
+    
+    currentMonster.legendaryActions.actions.splice(index, 1);
+    
+    // If no actions left, remove legendary status
+    if (currentMonster.legendaryActions.actions.length === 0) {
+        currentMonster.isLegendary = false;
+        currentMonster.legendaryActions = null;
+    }
+    
+    displayMonster(currentMonster);
+}
+
+// Close legendary action modal
+function closeLegendaryActionModal() {
+    const modal = document.getElementById('legendaryActionModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
 // Render lair actions

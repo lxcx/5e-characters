@@ -1225,3 +1225,224 @@ button:active {
     text-decoration: underline;
     text-decoration-style: dashed;
 }
+
+/* Add Legendary Section (for non-legendary monsters) */
+.add-legendary-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(88, 24, 13, 0.05);
+    border: 1px dashed #58180d;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Legendary Action Controls */
+.legendary-actions-controls {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+.add-legendary-btn {
+    background: #58180d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.add-legendary-btn:hover {
+    background: #7c3aed;
+}
+
+.remove-legendary-btn {
+    background: transparent;
+    border: none;
+    color: #c53030;
+    cursor: pointer;
+    padding: 2px 6px;
+    margin-left: 8px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.remove-legendary-btn:hover {
+    opacity: 1;
+}
+
+.legendary-item {
+    position: relative;
+}
+
+.legendary-item p {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.legendary-item .remove-legendary-btn {
+    margin-left: auto;
+}
+
+/* Legendary Action Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fdf1dc;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    margin: 0 0 20px 0;
+    color: #58180d;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid #58180d;
+    background: transparent;
+    color: #58180d;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.modal-tab.active {
+    background: #58180d;
+    color: white;
+}
+
+.modal-tab:hover:not(.active) {
+    background: rgba(88, 24, 13, 0.1);
+}
+
+.preset-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.preset-action-item {
+    padding: 12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preset-action-item:hover {
+    border-color: #58180d;
+    background: #fff8f0;
+    transform: translateX(4px);
+}
+
+.preset-action-item strong {
+    color: #58180d;
+}
+
+.preset-action-item p {
+    margin: 5px 0 0 0;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.cost-badge {
+    background: #58180d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    margin-left: 8px;
+}
+
+.legendary-tab-content .form-group {
+    margin-bottom: 15px;
+}
+
+.legendary-tab-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #58180d;
+}
+
+.legendary-tab-content input,
+.legendary-tab-content select,
+.legendary-tab-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.legendary-tab-content textarea {
+    resize: vertical;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.modal-btn.primary {
+    background: #58180d;
+    color: white;
+}
+
+.modal-btn.primary:hover {
+    background: #7c3aed;
+}
+
+.modal-close-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+    background: #444;
+}
