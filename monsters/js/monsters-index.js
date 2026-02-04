@@ -177,7 +177,11 @@ function initializeMonsterLibrary() {
         // Expansion Pack 55 (VGtM Missing)
         typeof MONSTERS_EXPANSION55 !== 'undefined' ? MONSTERS_EXPANSION55 : {},
         // Expansion Pack 56 (MToF Missing)
-        typeof MONSTERS_EXPANSION56 !== 'undefined' ? MONSTERS_EXPANSION56 : {}
+        typeof MONSTERS_EXPANSION56 !== 'undefined' ? MONSTERS_EXPANSION56 : {},
+        // Expansion Pack 57 (Iconic Monsters - Tarrasque, Demon Lords, Archdevils, Common)
+        typeof monstersExpansion57 !== 'undefined' ? monstersExpansion57 : {},
+        // Expansion Pack 58 (Environment-Specific Creatures)
+        typeof monstersExpansion58 !== 'undefined' ? monstersExpansion58 : {}
     ];
     
     for (const source of monsterSources) {

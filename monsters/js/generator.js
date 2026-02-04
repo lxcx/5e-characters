@@ -579,6 +579,8 @@ function generateLanguages(type, cr) {
 function generateTraits(type, cr, role) {
     const traits = [];
     const typeInfo = monsterTypes[type];
+    const profBonus = crToProficiency[cr] || 2;
+    const dc = 8 + profBonus + Math.floor(cr / 4);
     
     // Add typical type traits
     for (const traitId of typeInfo.typicalTraits) {
@@ -595,20 +597,128 @@ function generateTraits(type, cr, role) {
         traits.push({ ...monsterTraits['magic-resistance'], id: 'magic-resistance' });
     }
     
-    // Role-specific traits
-    if (role === 'lurker' && !traits.find(t => t.id === 'sneak-attack')) {
-        const dice = `${Math.max(1, Math.floor(cr / 2))}d6`;
-        traits.push({ 
-            ...monsterTraits['sneak-attack'], 
-            id: 'sneak-attack',
-            description: monsterTraits['sneak-attack'].description.replace('{dice}', dice)
-        });
+    // Add legendary resistance for very high CR
+    if (cr >= 15 && Math.random() > 0.3) {
+        traits.push({ ...monsterTraits['legendary-resistance'], id: 'legendary-resistance' });
     }
-    if (role === 'brute' && Math.random() > 0.5) {
-        traits.push({ ...monsterTraits['reckless'], id: 'reckless' });
+    
+    // Role-specific traits with more variety
+    if (role === 'lurker') {
+        if (!traits.find(t => t.id === 'sneak-attack')) {
+            const dice = `${Math.max(1, Math.floor(cr / 2))}d6`;
+            traits.push({ 
+                ...monsterTraits['sneak-attack'], 
+                id: 'sneak-attack',
+                description: monsterTraits['sneak-attack'].description.replace('{dice}', dice)
+            });
+        }
+        if (Math.random() > 0.5) {
+            traits.push({ ...monsterTraits['shadow-stealth'], id: 'shadow-stealth' });
+        }
+        if (Math.random() > 0.6) {
+            traits.push({ ...monsterTraits['ambusher'], id: 'ambusher' });
+        }
     }
+    
+    if (role === 'brute') {
+        if (Math.random() > 0.5) {
+            traits.push({ ...monsterTraits['reckless'], id: 'reckless' });
+        }
+        if (Math.random() > 0.6) {
+            traits.push({ ...monsterTraits['aggressive'], id: 'aggressive' });
+        }
+        if (Math.random() > 0.7 && cr >= 3) {
+            const threshold = Math.max(7, Math.floor(cr * 2));
+            traits.push({ 
+                ...monsterTraits['relentless'], 
+                id: 'relentless',
+                description: monsterTraits['relentless'].description.replace('{threshold}', threshold)
+            });
+        }
+    }
+    
     if (role === 'skirmisher') {
         traits.push({ ...monsterTraits['flyby'], id: 'flyby' });
+        if (Math.random() > 0.6) {
+            traits.push({ ...monsterTraits['evasion'], id: 'evasion' });
+        }
+    }
+    
+    if (role === 'soldier') {
+        if (Math.random() > 0.5) {
+            traits.push({ ...monsterTraits['pack-tactics'], id: 'pack-tactics' });
+        }
+    }
+    
+    if (role === 'controller') {
+        if (cr >= 6 && Math.random() > 0.5) {
+            traits.push({ 
+                ...monsterTraits['frightful-presence'], 
+                id: 'frightful-presence',
+                description: monsterTraits['frightful-presence'].description.replace('{range}', 60).replace('{dc}', dc)
+            });
+        }
+    }
+    
+    // Type-specific bonus traits
+    if (type === 'beast' && Math.random() > 0.4) {
+        const keenType = randomChoice(['sight', 'hearing', 'smell', 'hearing and smell']);
+        traits.push({ 
+            ...monsterTraits['keen-senses'], 
+            id: 'keen-senses',
+            description: monsterTraits['keen-senses'].description.replace('{senses}', keenType)
+        });
+    }
+    
+    if (type === 'monstrosity' && Math.random() > 0.5 && cr >= 2) {
+        const distance = 20 + (cr * 2);
+        traits.push({ 
+            ...monsterTraits['charge'], 
+            id: 'charge',
+            description: monsterTraits['charge'].description
+                .replace('{distance}', distance)
+                .replace('{attack}', 'gore')
+                .replace('{dice}', `${Math.ceil(cr / 2)}d6`)
+                .replace('{dc}', dc)
+        });
+    }
+    
+    if (type === 'undead' && Math.random() > 0.5) {
+        if (!traits.find(t => t.id === 'sunlight-sensitivity')) {
+            traits.push({ ...monsterTraits['sunlight-sensitivity'], id: 'sunlight-sensitivity' });
+        }
+    }
+    
+    if ((type === 'fiend' || type === 'celestial') && cr >= 5 && Math.random() > 0.6) {
+        traits.push({ 
+            ...monsterTraits['telepathy'], 
+            id: 'telepathy',
+            description: monsterTraits['telepathy'].description.replace('{range}', 60 + cr * 5)
+        });
+    }
+    
+    if (type === 'plant' && Math.random() > 0.5) {
+        traits.push({ 
+            ...monsterTraits['false-appearance'], 
+            id: 'false-appearance',
+            description: monsterTraits['false-appearance'].description.replace('{object}', 'an ordinary plant')
+        });
+    }
+    
+    if (type === 'ooze' && Math.random() > 0.4) {
+        traits.push({ ...monsterTraits['amphibious'], id: 'amphibious' });
+    }
+    
+    // CR-based chance for blood frenzy (predators)
+    if ((type === 'beast' || type === 'monstrosity') && cr >= 2 && Math.random() > 0.7) {
+        if (!traits.find(t => t.id === 'blood-frenzy')) {
+            traits.push({ ...monsterTraits['blood-frenzy'], id: 'blood-frenzy' });
+        }
+    }
+    
+    // High CR might get rampage
+    if (cr >= 4 && (type === 'fiend' || type === 'undead') && Math.random() > 0.7) {
+        traits.push({ ...monsterTraits['rampage'], id: 'rampage' });
     }
     
     return traits;
@@ -697,6 +807,79 @@ function generateActions(cr, type, role, size) {
             damage: `${breathDamage} ${template.damage}`,
             description: `The creature exhales ${template.damage.replace(' damage', '')} in a ${range}. Each creature in that area must make a DC ${dc} ${template.save} saving throw, taking ${breathDamage} ${template.damage} damage on a failed save, or half as much damage on a successful one.`
         });
+    }
+    
+    // Special actions based on type
+    if (actionTemplates.special) {
+        const dc = 8 + profBonus + 3;
+        const specialDamage = getDamageDice(cr, 'secondary');
+        
+        // Aberrations and some undead get gaze attacks
+        if ((type === 'aberration' || (type === 'undead' && cr >= 5)) && Math.random() > 0.5) {
+            const gazeOptions = ['frighteningGaze', 'charmingGaze'];
+            if (cr >= 8) gazeOptions.push('petrifyingGaze');
+            const gazeType = randomChoice(gazeOptions);
+            const template = actionTemplates.special[gazeType];
+            
+            actions.push({
+                name: template.name,
+                type: 'special',
+                saveDC: dc,
+                saveType: template.save,
+                description: `When a creature that can see the creature's eyes starts its turn within ${template.range} feet of the creature, the creature can force it to make a DC ${dc} ${template.save} saving throw if the creature isn't incapacitated and can see the creature. On a failed save, the creature is ${template.effect} for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.`
+            });
+        }
+        
+        // Undead get life drain
+        if (type === 'undead' && cr >= 3 && Math.random() > 0.4) {
+            const template = actionTemplates.special.drainLife;
+            actions.push({
+                name: template.name,
+                type: 'special',
+                attackBonus: attackBonus,
+                saveDC: dc,
+                saveType: template.save,
+                damage: `${specialDamage} ${template.damage}`,
+                description: `Melee Weapon Attack: +${attackBonus} to hit, reach 5 ft., one creature. Hit: ${specialDamage} necrotic damage. The target must succeed on a DC ${dc} ${template.save} saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest.`
+            });
+        }
+        
+        // Oozes get engulf
+        if (type === 'ooze' && cr >= 2 && Math.random() > 0.3) {
+            const template = actionTemplates.special.engulf;
+            actions.push({
+                name: template.name,
+                type: 'special',
+                saveDC: dc,
+                saveType: template.save,
+                description: `The creature moves up to its speed. While doing so, it can enter ${template.sizeLimit} creatures' spaces. Whenever the creature enters a creature's space, the creature must make a DC ${dc} ${template.save} saving throw. On a successful save, the creature can choose to be pushed 5 feet back or to the side. A creature that chooses not to be pushed suffers the consequences of a failed save. On a failed save, the creature takes ${specialDamage} bludgeoning damage and is engulfed. The engulfed creature can't breathe, is restrained, and takes ${specialDamage} bludgeoning damage at the start of each of the ooze's turns.`
+            });
+        }
+        
+        // Large+ monstrosities and dragons can swallow
+        if ((type === 'monstrosity' || type === 'dragon') && 
+            ['Large', 'Huge', 'Gargantuan'].includes(size) && 
+            cr >= 5 && Math.random() > 0.6) {
+            const template = actionTemplates.special.swallow;
+            const swallowDamage = getDamageDice(cr, 'secondary');
+            actions.push({
+                name: template.name,
+                type: 'special',
+                description: `The creature makes one bite attack against a ${template.sizeLimit} target it is grappling. If the attack hits, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the creature, and it takes ${swallowDamage} acid damage at the start of each of the creature's turns. If the creature takes 20 damage or more on a single turn from a creature inside it, the creature must succeed on a DC ${dc} Constitution saving throw at the end of that turn or regurgitate all swallowed creatures.`
+            });
+        }
+        
+        // Fiends and aberrations can possess at high CR
+        if ((type === 'fiend' || type === 'aberration') && cr >= 10 && Math.random() > 0.7) {
+            const template = actionTemplates.special.possession;
+            actions.push({
+                name: template.name,
+                type: 'special',
+                saveDC: dc,
+                saveType: template.save,
+                description: `One humanoid that the creature can see within 5 feet of it must succeed on a DC ${dc} ${template.save} saving throw or be possessed by the creature; the creature then disappears, and the target is incapacitated and loses control of its body. The creature now controls the body but doesn't deprive the target of awareness. The creature can't be targeted by any attack, spell, or other effect, and it retains its alignment, Intelligence, Wisdom, Charisma, and immunity to being charmed and frightened.`
+            });
+        }
     }
     
     return actions;

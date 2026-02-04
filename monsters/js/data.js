@@ -300,6 +300,18 @@ const monsterTraits = {
         category: "movement",
         description: "Doesn't provoke opportunity attacks when it flies out of an enemy's reach."
     },
+    "incorporeal-movement": {
+        name: "Incorporeal Movement",
+        category: "movement",
+        description: "Can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+    },
+    "standing-leap": {
+        name: "Standing Leap",
+        category: "movement",
+        description: "Its long jump is up to {distance} feet and its high jump is up to {height} feet, with or without a running start.",
+        defaultDistance: 30,
+        defaultHeight: 15
+    },
     
     // Defensive
     "magic-resistance": {
@@ -331,6 +343,26 @@ const monsterTraits = {
         description: "Is immune to the {conditions} condition.",
         options: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"]
     },
+    "legendary-resistance": {
+        name: "Legendary Resistance (3/Day)",
+        category: "defensive",
+        description: "If the creature fails a saving throw, it can choose to succeed instead."
+    },
+    "evasion": {
+        name: "Evasion",
+        category: "defensive",
+        description: "If subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+    },
+    "sunlight-sensitivity": {
+        name: "Sunlight Sensitivity",
+        category: "defensive",
+        description: "While in sunlight, has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+    },
+    "limited-magic-immunity": {
+        name: "Limited Magic Immunity",
+        category: "defensive",
+        description: "Can't be affected or detected by spells of {level}th level or lower unless it wishes to be."
+    },
     
     // Offensive
     "pack-tactics": {
@@ -353,6 +385,47 @@ const monsterTraits = {
         name: "Reckless",
         category: "offensive",
         description: "At the start of its turn, can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn."
+    },
+    "aggressive": {
+        name: "Aggressive",
+        category: "offensive",
+        description: "As a bonus action, can move up to its speed toward a hostile creature that it can see."
+    },
+    "charge": {
+        name: "Charge",
+        category: "offensive",
+        description: "If moves at least {distance} feet straight toward a target and then hits it with a {attack} attack on the same turn, the target takes an extra {dice} damage. If the target is a creature, it must succeed on a DC {dc} Strength saving throw or be knocked prone.",
+        defaultDistance: 20,
+        defaultAttack: "gore",
+        defaultDice: "2d6"
+    },
+    "frightful-presence": {
+        name: "Frightful Presence",
+        category: "offensive",
+        description: "Each creature of the monster's choice that is within {range} feet and aware of it must succeed on a DC {dc} Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        defaultRange: 60
+    },
+    "rampage": {
+        name: "Rampage",
+        category: "offensive",
+        description: "When reduces a creature to 0 hit points with a melee attack on its turn, can take a bonus action to move up to half its speed and make a bite attack."
+    },
+    "blood-frenzy": {
+        name: "Blood Frenzy",
+        category: "offensive",
+        description: "Has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+    },
+    "surprise-attack": {
+        name: "Surprise Attack",
+        category: "offensive",
+        description: "If surprises a creature and hits it with an attack during the first round of combat, the target takes an extra {dice} damage from the attack.",
+        defaultDice: "2d6"
+    },
+    "relentless": {
+        name: "Relentless (Recharges after a Short or Long Rest)",
+        category: "offensive",
+        description: "If takes {threshold} damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead.",
+        defaultThreshold: 14
     },
     
     // Utility
@@ -377,6 +450,38 @@ const monsterTraits = {
         category: "utility",
         description: "Can magically communicate simple ideas, emotions, and images telepathically with any creature within {range} feet that can understand a language.",
         defaultRange: 120
+    },
+    "false-appearance": {
+        name: "False Appearance",
+        category: "utility",
+        description: "While motionless, is indistinguishable from a {object}.",
+        defaultObject: "natural rock formation"
+    },
+    "ambusher": {
+        name: "Ambusher",
+        category: "utility",
+        description: "Has advantage on attack rolls against any creature it has surprised."
+    },
+    "hold-breath": {
+        name: "Hold Breath",
+        category: "utility",
+        description: "Can hold its breath for {duration} minutes.",
+        defaultDuration: 15
+    },
+    "labyrinthine-recall": {
+        name: "Labyrinthine Recall",
+        category: "utility",
+        description: "Can perfectly recall any path it has traveled."
+    },
+    "shadow-stealth": {
+        name: "Shadow Stealth",
+        category: "utility",
+        description: "While in dim light or darkness, can take the Hide action as a bonus action."
+    },
+    "innate-spellcasting": {
+        name: "Innate Spellcasting",
+        category: "utility",
+        description: "The creature's innate spellcasting ability is {ability} (spell save DC {dc}). It can innately cast the following spells, requiring no material components."
     }
 };
 
@@ -391,21 +496,59 @@ const actionTemplates = {
         gore: { name: "Gore", damage: "piercing", reach: 5 },
         fist: { name: "Fist", damage: "bludgeoning", reach: 5 },
         longsword: { name: "Longsword", damage: "slashing", reach: 5 },
-        greataxe: { name: "Greataxe", damage: "slashing", reach: 5 }
+        greataxe: { name: "Greataxe", damage: "slashing", reach: 5 },
+        greatsword: { name: "Greatsword", damage: "slashing", reach: 5 },
+        morningstar: { name: "Morningstar", damage: "piercing", reach: 5 },
+        scimitar: { name: "Scimitar", damage: "slashing", reach: 5 },
+        rapier: { name: "Rapier", damage: "piercing", reach: 5 },
+        dagger: { name: "Dagger", damage: "piercing", reach: 5 },
+        maul: { name: "Maul", damage: "bludgeoning", reach: 5 },
+        warhammer: { name: "Warhammer", damage: "bludgeoning", reach: 5 },
+        halberd: { name: "Halberd", damage: "slashing", reach: 10 },
+        glaive: { name: "Glaive", damage: "slashing", reach: 10 },
+        pike: { name: "Pike", damage: "piercing", reach: 10 },
+        spear: { name: "Spear", damage: "piercing", reach: 5 },
+        sting: { name: "Sting", damage: "piercing", reach: 5 },
+        talons: { name: "Talons", damage: "slashing", reach: 5 },
+        hooves: { name: "Hooves", damage: "bludgeoning", reach: 5 },
+        pseudopod: { name: "Pseudopod", damage: "bludgeoning", reach: 5 },
+        constrict: { name: "Constrict", damage: "bludgeoning", reach: 5, grapple: true },
+        touch: { name: "Withering Touch", damage: "necrotic", reach: 5 }
     },
     ranged: {
         longbow: { name: "Longbow", damage: "piercing", range: "150/600 ft." },
         shortbow: { name: "Shortbow", damage: "piercing", range: "80/320 ft." },
         javelin: { name: "Javelin", damage: "piercing", range: "30/120 ft." },
         rock: { name: "Rock", damage: "bludgeoning", range: "60/240 ft." },
-        spit: { name: "Spit", damage: "acid", range: "30 ft." }
+        spit: { name: "Spit", damage: "acid", range: "30 ft." },
+        lightCrossbow: { name: "Light Crossbow", damage: "piercing", range: "80/320 ft." },
+        heavyCrossbow: { name: "Heavy Crossbow", damage: "piercing", range: "100/400 ft." },
+        handCrossbow: { name: "Hand Crossbow", damage: "piercing", range: "30/120 ft." },
+        dart: { name: "Dart", damage: "piercing", range: "20/60 ft." },
+        eyeRay: { name: "Eye Ray", damage: "varies", range: "120 ft." },
+        web: { name: "Web (Recharge 5-6)", damage: "none", range: "30/60 ft.", special: "restrained" },
+        spine: { name: "Spine", damage: "piercing", range: "30/60 ft." },
+        etherealBolt: { name: "Ethereal Bolt", damage: "force", range: "60 ft." }
     },
     breath: {
         fire: { name: "Fire Breath", damage: "fire", shape: "cone", save: "Dexterity" },
         cold: { name: "Cold Breath", damage: "cold", shape: "cone", save: "Constitution" },
         lightning: { name: "Lightning Breath", damage: "lightning", shape: "line", save: "Dexterity" },
         acid: { name: "Acid Breath", damage: "acid", shape: "line", save: "Dexterity" },
-        poison: { name: "Poison Breath", damage: "poison", shape: "cone", save: "Constitution" }
+        poison: { name: "Poison Breath", damage: "poison", shape: "cone", save: "Constitution" },
+        necrotic: { name: "Necrotic Breath", damage: "necrotic", shape: "cone", save: "Constitution" },
+        radiant: { name: "Radiant Breath", damage: "radiant", shape: "cone", save: "Dexterity" },
+        thunder: { name: "Sonic Roar", damage: "thunder", shape: "cone", save: "Constitution" },
+        psychic: { name: "Mind Blast", damage: "psychic", shape: "cone", save: "Intelligence" }
+    },
+    special: {
+        frighteningGaze: { name: "Frightening Gaze", save: "Wisdom", effect: "frightened", range: 30 },
+        petrifyingGaze: { name: "Petrifying Gaze", save: "Constitution", effect: "petrified", range: 30 },
+        charmingGaze: { name: "Charming Gaze", save: "Wisdom", effect: "charmed", range: 30 },
+        drainLife: { name: "Life Drain", save: "Constitution", effect: "hp max reduction", damage: "necrotic" },
+        engulf: { name: "Engulf", save: "Dexterity", effect: "restrained and damage", sizeLimit: "Large or smaller" },
+        swallow: { name: "Swallow", save: "none", effect: "blinded, restrained, and damage", sizeLimit: "Medium or smaller" },
+        possession: { name: "Possession (Recharge 6)", save: "Charisma", effect: "possessed" }
     }
 };
 
@@ -416,7 +559,16 @@ const legendaryActionTemplates = [
     { name: "Wing Attack", cost: 2, description: "Beats its wings. Each creature within 15 feet must succeed on a DC {dc} Dexterity saving throw or take {damage} bludgeoning damage and be knocked prone. The creature can then fly up to half its flying speed." },
     { name: "Move", cost: 1, description: "Moves up to half its speed without provoking opportunity attacks." },
     { name: "Attack", cost: 2, description: "Makes one weapon attack." },
-    { name: "Cast a Spell", cost: 3, description: "Casts a spell from its list of spells, using a spell slot as normal." }
+    { name: "Cast a Spell", cost: 3, description: "Casts a spell from its list of spells, using a spell slot as normal." },
+    { name: "Claw Attack", cost: 1, description: "Makes one claw attack." },
+    { name: "Bite Attack", cost: 2, description: "Makes one bite attack." },
+    { name: "Frightening Presence", cost: 1, description: "Uses Frightful Presence." },
+    { name: "Teleport", cost: 2, description: "Magically teleports up to 60 feet to an unoccupied space it can see." },
+    { name: "Command Ally", cost: 1, description: "One ally within 30 feet that can hear the creature can use its reaction to move up to its speed or make one weapon attack." },
+    { name: "Eye Ray", cost: 2, description: "Uses one random eye ray." },
+    { name: "Disrupt Life", cost: 3, description: "Each non-undead creature within 20 feet must make a DC {dc} Constitution saving throw, taking {damage} necrotic damage on a failed save, or half as much on a successful one." },
+    { name: "Energy Drain", cost: 2, description: "Melee Spell Attack: +{bonus} to hit, reach 5 ft., one creature. Hit: {damage} necrotic damage. The target must succeed on a DC {dc} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken." },
+    { name: "Unearthly Howl", cost: 2, description: "Each creature within 60 feet that can hear the creature must succeed on a DC {dc} Wisdom saving throw or become frightened until the end of the creature's next turn." }
 ];
 
 // Lair action templates
@@ -425,7 +577,15 @@ const lairActionTemplates = [
     { description: "Pools of water within 90 feet surge outward. Each creature on the ground within 20 feet of such a pool must succeed on a DC 15 Strength saving throw or be pulled up to 20 feet into the pool and knocked prone." },
     { description: "The creature creates a wall of stone on a solid surface within 120 feet. The wall can be up to 60 feet long, 10 feet high, and 5 feet thick." },
     { description: "Magical darkness spreads from a point within 60 feet, filling a 15-foot-radius sphere until the creature dismisses it or uses this lair action again." },
-    { description: "The ground in a 20-foot radius centered on a point within 120 feet becomes difficult terrain until the next initiative count 20." }
+    { description: "The ground in a 20-foot radius centered on a point within 120 feet becomes difficult terrain until the next initiative count 20." },
+    { description: "Grasping tendrils of shadow reach out from a wall within 60 feet. Each creature within 10 feet of the wall must succeed on a DC 15 Dexterity saving throw or be grappled (escape DC 15). Until this grapple ends, the creature is restrained." },
+    { description: "The creature causes up to three corpses within its lair to rise as zombies. The zombies act immediately after the creature's lair action and are hostile to all non-undead creatures." },
+    { description: "A 20-foot radius of fire erupts from a point on the ground the creature can see within 120 feet. Each creature in that area must make a DC 15 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much on a successful one." },
+    { description: "Freezing fog fills a 20-foot-radius sphere centered on a point the creature can see within 120 feet. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog must make a DC 15 Constitution saving throw, taking 10 (3d6) cold damage on a failed save, or half as much on a successful one." },
+    { description: "Lightning arcs, forming a 5-foot-wide line between two solid surfaces the creature can see within 120 feet. Each creature in that line must make a DC 15 Dexterity saving throw, taking 10 (3d6) lightning damage on a failed save, or half as much on a successful one." },
+    { description: "The creature summons a spectral chain that wraps around one creature it can see within 60 feet. The target must succeed on a DC 15 Strength saving throw or be restrained until initiative count 20 on the next round." },
+    { description: "The creature magically summons 1d4 loyal servants (use appropriate CR creature statistics). The summoned creatures appear in unoccupied spaces within 60 feet and act on the creature's initiative." },
+    { description: "A tremor shakes the lair. Each creature on the ground within 60 feet of the creature must succeed on a DC 15 Dexterity saving throw or be knocked prone." }
 ];
 
 // Monster name parts for generation
