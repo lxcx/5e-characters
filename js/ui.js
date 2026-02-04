@@ -4147,7 +4147,7 @@ function buildPortraitPrompt(npc) {
     // Build the prompt - for non-human races, lead with strong non-human instruction
     let prompt;
     if (isNonHuman) {
-        prompt = `DO NOT DRAW A HUMAN. ${raceFeatures} Fantasy character portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
+        prompt = `DnD 5e ${npc.race}. DO NOT DRAW A HUMAN. ${raceFeatures} Fantasy character portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
     } else {
         prompt = `DnD 5e ${npc.race}. Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
     }
