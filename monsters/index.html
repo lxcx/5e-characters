@@ -449,14 +449,14 @@
                     Edit the prompt below to customize the generated image. Remove unwanted elements (e.g., "wings", "horns") or add specific details.
                 </p>
                 <textarea id="portraitPromptText" class="prompt-textarea" rows="8"></textarea>
-                <div class="prompt-modal-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="generate-prompt-btn" onclick="generateWithCustomPrompt()" style="flex: 1; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em;">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Image
+                <div class="prompt-modal-actions" style="display: flex; gap: 10px;">
+                    <button class="generate-prompt-btn" onclick="generateWithCustomPrompt()" style="flex: 1; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate
                     </button>
-                    <button class="copy-prompt-btn" id="copyPromptBtn" onclick="copyPromptToClipboard()" style="flex: 1; background: #3b82f6; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em;">
+                    <button class="copy-prompt-btn" id="copyPromptBtn" onclick="copyPromptToClipboard()" style="flex: 1; background: #3b82f6; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <i class="fa-solid fa-copy"></i> Copy
                     </button>
-                    <button class="reset-prompt-btn" onclick="resetPromptToDefault()" style="flex: 1; background: #6c757d; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em;">
+                    <button class="reset-prompt-btn" onclick="resetPromptToDefault()" style="flex: 1; background: #6c757d; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <i class="fa-solid fa-arrows-rotate"></i> Reset
                     </button>
                 </div>

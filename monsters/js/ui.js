@@ -50,8 +50,8 @@ function displayMonster(monster) {
                 ${renderSavingThrows(monster)}
                 ${renderSkills(monster)}
                 ${renderDefenses(monster)}
-                <p><strong>Senses</strong> ${monster.senses && monster.senses.length > 0 ? monster.senses.join(', ') : 'passive Perception ' + (10 + (monster.skills?.perception || monster.abilityModifiers?.wis || 0))}</p>
-                <p><strong>Languages</strong> ${monster.languages || '—'}</p>
+                <p><strong>Senses</strong> <span class="editable multi-edit" id="editable-senses" onclick="editMonsterMultiField('senses', getSenseOptions(), event)">${monster.senses && monster.senses.length > 0 ? monster.senses.join(', ') : 'passive Perception ' + (10 + (monster.skills?.perception || monster.abilityModifiers?.wis || 0))}</span></p>
+                <p><strong>Languages</strong> <span class="editable multi-edit" id="editable-languages" onclick="editMonsterMultiField('languages', getLanguageOptions(), event)">${monster.languages || '—'}</span></p>
                 <p><strong>Challenge</strong> ${formatCR(monster.cr)} (${formatNumber(monster.xp)} XP)</p>
                 <p><strong>Proficiency Bonus</strong> +${monster.proficiencyBonus}</p>
                 ${monster.source ? `<p><strong>Source</strong> ${monster.source}</p>` : ''}
@@ -166,38 +166,71 @@ function renderSkills(monster) {
 function renderDefenses(monster) {
     let html = '';
     
-    if (monster.damageResistances && monster.damageResistances.length > 0) {
-        html += `<p><strong>Damage Resistances</strong> ${monster.damageResistances.join(', ')}</p>`;
-    }
-    if (monster.damageImmunities && monster.damageImmunities.length > 0) {
-        html += `<p><strong>Damage Immunities</strong> ${monster.damageImmunities.join(', ')}</p>`;
-    }
-    if (monster.conditionImmunities && monster.conditionImmunities.length > 0) {
-        html += `<p><strong>Condition Immunities</strong> ${monster.conditionImmunities.join(', ')}</p>`;
-    }
+    // Always show damage resistances (editable)
+    const resistances = monster.damageResistances && monster.damageResistances.length > 0 
+        ? monster.damageResistances.join(', ') 
+        : '—';
+    html += `<p><strong>Damage Resistances</strong> <span class="editable multi-edit" id="editable-damageResistances" onclick="editMonsterMultiField('damageResistances', getDamageTypeOptions(), event)">${resistances}</span></p>`;
+    
+    // Always show damage immunities (editable)
+    const immunities = monster.damageImmunities && monster.damageImmunities.length > 0 
+        ? monster.damageImmunities.join(', ') 
+        : '—';
+    html += `<p><strong>Damage Immunities</strong> <span class="editable multi-edit" id="editable-damageImmunities" onclick="editMonsterMultiField('damageImmunities', getDamageTypeOptions(), event)">${immunities}</span></p>`;
+    
+    // Always show condition immunities (editable)
+    const conditions = monster.conditionImmunities && monster.conditionImmunities.length > 0 
+        ? monster.conditionImmunities.join(', ') 
+        : '—';
+    html += `<p><strong>Condition Immunities</strong> <span class="editable multi-edit" id="editable-conditionImmunities" onclick="editMonsterMultiField('conditionImmunities', getConditionOptions(), event)">${conditions}</span></p>`;
     
     return html;
 }
 
 // Render traits
 function renderTraits(monster) {
-    if (!monster.traits || monster.traits.length === 0) {
-        return '';
+    const hasTraits = monster.traits && monster.traits.length > 0;
+    
+    let traitsHtml = '';
+    if (hasTraits) {
+        traitsHtml = monster.traits.map((trait, index) => `
+            <div class="trait-item">
+                <p>
+                    <strong>${trait.name}.</strong> ${trait.description
+                        .replace('{range}', trait.defaultRange || '60')
+                        .replace('{amount}', trait.defaultAmount || '10')
+                        .replace('{dice}', trait.defaultDice || '2d6')
+                        .replace('{dc}', 8 + monster.proficiencyBonus + (monster.abilityModifiers?.str || 0))
+                        .replace('{threshold}', trait.defaultThreshold || '14')
+                        .replace('{distance}', trait.defaultDistance || '20')
+                        .replace('{height}', trait.defaultHeight || '15')
+                        .replace('{attack}', trait.defaultAttack || 'melee')
+                        .replace('{senses}', trait.defaultSenses || 'smell')
+                        .replace('{object}', trait.defaultObject || 'a natural object')
+                        .replace('{duration}', trait.defaultDuration || '15')
+                        .replace('{level}', trait.defaultLevel || '6')
+                        .replace('{forms}', trait.defaultForms || 'another form')
+                        .replace('{ability}', trait.defaultAbility || 'Intelligence')
+                        .replace('{types}', trait.defaultTypes || 'a damage type')
+                        .replace('{conditions}', trait.defaultConditions || 'a condition')
+                    }
+                    <button class="remove-trait-btn" onclick="removeTrait(${index})" title="Remove this trait">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </p>
+            </div>
+        `).join('');
     }
     
     return `
         <div class="traits-section">
             <h3 class="section-title"><i class="fa-solid fa-star"></i> Traits</h3>
-            ${monster.traits.map(trait => `
-                <div class="trait-item">
-                    <p><strong>${trait.name}.</strong> ${trait.description
-                        .replace('{range}', trait.defaultRange || '60')
-                        .replace('{amount}', trait.defaultAmount || '10')
-                        .replace('{dice}', trait.defaultDice || '2d6')
-                        .replace('{dc}', 8 + monster.proficiencyBonus + (monster.abilityModifiers.str || 0))
-                    }</p>
-                </div>
-            `).join('')}
+            ${traitsHtml}
+            <div class="traits-controls">
+                <button class="add-trait-btn" onclick="openTraitModal()">
+                    <i class="fa-solid fa-plus"></i> Add Trait
+                </button>
+            </div>
         </div>
     `;
 }
@@ -396,7 +429,9 @@ function openLegendaryActionModal() {
         document.body.appendChild(modal);
     }
     
+    // Show modal using class (CSS uses opacity/visibility)
     modal.style.display = 'flex';
+    modal.classList.add('active');
 }
 
 // Get legendary action preset options HTML
@@ -434,18 +469,19 @@ function getLegendaryActionOptions() {
 function switchLegendaryTab(tab) {
     const presetTab = document.getElementById('legendaryPresetTab');
     const customTab = document.getElementById('legendaryCustomTab');
-    const tabs = document.querySelectorAll('.modal-tab');
+    const modal = document.getElementById('legendaryActionModal');
+    const tabs = modal ? modal.querySelectorAll('.modal-tab') : [];
     
     tabs.forEach(t => t.classList.remove('active'));
     
     if (tab === 'preset') {
         presetTab.style.display = 'block';
         customTab.style.display = 'none';
-        tabs[0].classList.add('active');
+        if (tabs[0]) tabs[0].classList.add('active');
     } else {
         presetTab.style.display = 'none';
         customTab.style.display = 'block';
-        tabs[1].classList.add('active');
+        if (tabs[1]) tabs[1].classList.add('active');
     }
 }
 
@@ -541,9 +577,288 @@ function removeLegendaryAction(index) {
 function closeLegendaryActionModal() {
     const modal = document.getElementById('legendaryActionModal');
     if (modal) {
+        modal.classList.remove('active');
         modal.style.display = 'none';
     }
 }
+
+// ==================== TRAIT MODAL FUNCTIONS ====================
+
+// Open modal to add trait
+function openTraitModal() {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('traitModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'traitModal';
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content trait-modal">
+                <h3><i class="fa-solid fa-star"></i> Add Trait</h3>
+                
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTraitTab('preset')">Select Preset</button>
+                    <button class="modal-tab" onclick="switchTraitTab('custom')">Custom Trait</button>
+                </div>
+                
+                <div id="traitPresetTab" class="trait-tab-content">
+                    <div class="trait-category-filter">
+                        <label>Filter by Category:</label>
+                        <select id="traitCategoryFilter" onchange="filterTraitsByCategory()">
+                            <option value="all">All Categories</option>
+                            <option value="defensive">Defensive</option>
+                            <option value="offensive">Offensive</option>
+                            <option value="movement">Movement</option>
+                            <option value="senses">Senses</option>
+                            <option value="utility">Utility</option>
+                        </select>
+                    </div>
+                    <div class="preset-traits-list" id="presetTraitsList">
+                        ${getTraitOptions()}
+                    </div>
+                </div>
+                
+                <div id="traitCustomTab" class="trait-tab-content" style="display: none;">
+                    <div class="form-group">
+                        <label>Trait Name</label>
+                        <input type="text" id="customTraitName" placeholder="e.g., Keen Hearing">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="customTraitDesc" rows="4" placeholder="Describe what the trait does..."></textarea>
+                    </div>
+                    <button class="modal-btn primary" onclick="addCustomTrait()">
+                        <i class="fa-solid fa-plus"></i> Add Custom Trait
+                    </button>
+                </div>
+                
+                <button class="modal-close-btn" onclick="closeTraitModal()">
+                    <i class="fa-solid fa-times"></i> Close
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    // Show modal using class (CSS uses opacity/visibility)
+    modal.style.display = 'flex';
+    modal.classList.add('active');
+}
+
+// Get preset trait options HTML
+function getTraitOptions(category = 'all') {
+    const traits = [
+        // Defensive
+        { id: 'magic-resistance', name: 'Magic Resistance', category: 'defensive', description: 'Has advantage on saving throws against spells and other magical effects.' },
+        { id: 'legendary-resistance', name: 'Legendary Resistance (3/Day)', category: 'defensive', description: 'If the creature fails a saving throw, it can choose to succeed instead.' },
+        { id: 'evasion', name: 'Evasion', category: 'defensive', description: 'If subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.' },
+        { id: 'regeneration', name: 'Regeneration', category: 'defensive', description: 'Regains 10 hit points at the start of its turn.' },
+        { id: 'sunlight-sensitivity', name: 'Sunlight Sensitivity', category: 'defensive', description: 'While in sunlight, has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.' },
+        { id: 'limited-magic-immunity', name: 'Limited Magic Immunity', category: 'defensive', description: "Can't be affected or detected by spells of 6th level or lower unless it wishes to be." },
+        
+        // Offensive
+        { id: 'pack-tactics', name: 'Pack Tactics', category: 'offensive', description: "Has advantage on attack rolls against a creature if at least one of the monster's allies is within 5 feet of the creature and the ally isn't incapacitated." },
+        { id: 'sneak-attack', name: 'Sneak Attack (2d6)', category: 'offensive', description: "Once per turn, deals an extra 2d6 damage when it hits a target with a weapon attack and has advantage, or when the target is within 5 feet of an ally that isn't incapacitated and the monster doesn't have disadvantage." },
+        { id: 'pounce', name: 'Pounce', category: 'offensive', description: 'If moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, the target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, can make one bite attack against it as a bonus action.' },
+        { id: 'reckless', name: 'Reckless', category: 'offensive', description: 'At the start of its turn, can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn.' },
+        { id: 'aggressive', name: 'Aggressive', category: 'offensive', description: 'As a bonus action, can move up to its speed toward a hostile creature that it can see.' },
+        { id: 'charge', name: 'Charge', category: 'offensive', description: 'If moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 2d6 damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone.' },
+        { id: 'frightful-presence', name: 'Frightful Presence', category: 'offensive', description: "Each creature of the monster's choice that is within 60 feet and aware of it must succeed on a DC 14 Wisdom saving throw or become frightened for 1 minute." },
+        { id: 'rampage', name: 'Rampage', category: 'offensive', description: 'When reduces a creature to 0 hit points with a melee attack on its turn, can take a bonus action to move up to half its speed and make a bite attack.' },
+        { id: 'blood-frenzy', name: 'Blood Frenzy', category: 'offensive', description: "Has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+        { id: 'surprise-attack', name: 'Surprise Attack (2d6)', category: 'offensive', description: 'If surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 2d6 damage from the attack.' },
+        { id: 'relentless', name: 'Relentless', category: 'offensive', description: 'If takes 14 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead. (Recharges after a Short or Long Rest)' },
+        
+        // Movement
+        { id: 'amphibious', name: 'Amphibious', category: 'movement', description: 'Can breathe air and water.' },
+        { id: 'spider-climb', name: 'Spider Climb', category: 'movement', description: 'Can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.' },
+        { id: 'flyby', name: 'Flyby', category: 'movement', description: "Doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+        { id: 'incorporeal-movement', name: 'Incorporeal Movement', category: 'movement', description: 'Can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object.' },
+        { id: 'standing-leap', name: 'Standing Leap', category: 'movement', description: 'Its long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start.' },
+        
+        // Senses
+        { id: 'darkvision-trait', name: 'Superior Darkvision', category: 'senses', description: 'Can see in dim light within 120 feet as if it were bright light, and in darkness as if it were dim light.' },
+        { id: 'blindsight-trait', name: 'Blindsight', category: 'senses', description: 'Can perceive its surroundings within 60 feet without relying on sight.' },
+        { id: 'tremorsense-trait', name: 'Tremorsense', category: 'senses', description: 'Can detect and pinpoint the origin of vibrations within 60 feet, provided the monster and the source are in contact with the same ground or substance.' },
+        { id: 'truesight-trait', name: 'Truesight', category: 'senses', description: 'Can see in normal and magical darkness, see invisible creatures, automatically detect visual illusions, perceive original form of shapechangers, and see into the Ethereal Plane within 120 feet.' },
+        { id: 'keen-hearing', name: 'Keen Hearing', category: 'senses', description: 'Has advantage on Wisdom (Perception) checks that rely on hearing.' },
+        { id: 'keen-sight', name: 'Keen Sight', category: 'senses', description: 'Has advantage on Wisdom (Perception) checks that rely on sight.' },
+        { id: 'keen-smell', name: 'Keen Smell', category: 'senses', description: 'Has advantage on Wisdom (Perception) checks that rely on smell.' },
+        { id: 'keen-hearing-smell', name: 'Keen Hearing and Smell', category: 'senses', description: 'Has advantage on Wisdom (Perception) checks that rely on hearing or smell.' },
+        
+        // Utility
+        { id: 'mimicry', name: 'Mimicry', category: 'utility', description: 'Can mimic sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check.' },
+        { id: 'shapechanger', name: 'Shapechanger', category: 'utility', description: 'Can use its action to polymorph into another form, or back into its true form. Its statistics are the same in each form.' },
+        { id: 'telepathy', name: 'Telepathy', category: 'utility', description: 'Can magically communicate simple ideas, emotions, and images telepathically with any creature within 120 feet that can understand a language.' },
+        { id: 'false-appearance', name: 'False Appearance', category: 'utility', description: 'While motionless, is indistinguishable from a natural object or ordinary creature.' },
+        { id: 'ambusher', name: 'Ambusher', category: 'utility', description: 'Has advantage on attack rolls against any creature it has surprised.' },
+        { id: 'hold-breath', name: 'Hold Breath', category: 'utility', description: 'Can hold its breath for 15 minutes.' },
+        { id: 'labyrinthine-recall', name: 'Labyrinthine Recall', category: 'utility', description: 'Can perfectly recall any path it has traveled.' },
+        { id: 'shadow-stealth', name: 'Shadow Stealth', category: 'utility', description: 'While in dim light or darkness, can take the Hide action as a bonus action.' },
+        { id: 'web-sense', name: 'Web Sense', category: 'utility', description: 'While in contact with a web, knows the exact location of any other creature in contact with the same web.' },
+        { id: 'web-walker', name: 'Web Walker', category: 'utility', description: 'Ignores movement restrictions caused by webbing.' }
+    ];
+    
+    const filteredTraits = category === 'all' ? traits : traits.filter(t => t.category === category);
+    
+    return filteredTraits.map((trait, index) => `
+        <div class="preset-trait-item" data-category="${trait.category}" onclick="addPresetTrait('${trait.id}')">
+            <strong>${trait.name}</strong>
+            <span class="trait-category-badge ${trait.category}">${capitalize(trait.category)}</span>
+            <p>${trait.description}</p>
+        </div>
+    `).join('');
+}
+
+// Filter traits by category
+function filterTraitsByCategory() {
+    const category = document.getElementById('traitCategoryFilter').value;
+    const listContainer = document.getElementById('presetTraitsList');
+    if (listContainer) {
+        listContainer.innerHTML = getTraitOptions(category);
+    }
+}
+
+// Switch between preset and custom tabs
+function switchTraitTab(tab) {
+    const presetTab = document.getElementById('traitPresetTab');
+    const customTab = document.getElementById('traitCustomTab');
+    const tabs = document.querySelectorAll('#traitModal .modal-tab');
+    
+    tabs.forEach(t => t.classList.remove('active'));
+    
+    if (tab === 'preset') {
+        presetTab.style.display = 'block';
+        customTab.style.display = 'none';
+        tabs[0].classList.add('active');
+    } else {
+        presetTab.style.display = 'none';
+        customTab.style.display = 'block';
+        tabs[1].classList.add('active');
+    }
+}
+
+// Add preset trait
+function addPresetTrait(traitId) {
+    if (!currentMonster) return;
+    
+    // Get trait data from preset list
+    const presetTraits = {
+        'magic-resistance': { name: 'Magic Resistance', description: 'Has advantage on saving throws against spells and other magical effects.' },
+        'legendary-resistance': { name: 'Legendary Resistance (3/Day)', description: 'If the creature fails a saving throw, it can choose to succeed instead.' },
+        'evasion': { name: 'Evasion', description: 'If subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.' },
+        'regeneration': { name: 'Regeneration', description: 'Regains 10 hit points at the start of its turn.' },
+        'sunlight-sensitivity': { name: 'Sunlight Sensitivity', description: 'While in sunlight, has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.' },
+        'limited-magic-immunity': { name: 'Limited Magic Immunity', description: "Can't be affected or detected by spells of 6th level or lower unless it wishes to be." },
+        'pack-tactics': { name: 'Pack Tactics', description: "Has advantage on attack rolls against a creature if at least one of the monster's allies is within 5 feet of the creature and the ally isn't incapacitated." },
+        'sneak-attack': { name: 'Sneak Attack (2d6)', description: "Once per turn, deals an extra 2d6 damage when it hits a target with a weapon attack and has advantage, or when the target is within 5 feet of an ally that isn't incapacitated and the monster doesn't have disadvantage." },
+        'pounce': { name: 'Pounce', description: 'If moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, the target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, can make one bite attack against it as a bonus action.' },
+        'reckless': { name: 'Reckless', description: 'At the start of its turn, can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn.' },
+        'aggressive': { name: 'Aggressive', description: 'As a bonus action, can move up to its speed toward a hostile creature that it can see.' },
+        'charge': { name: 'Charge', description: 'If moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 2d6 damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone.' },
+        'frightful-presence': { name: 'Frightful Presence', description: "Each creature of the monster's choice that is within 60 feet and aware of it must succeed on a DC 14 Wisdom saving throw or become frightened for 1 minute." },
+        'rampage': { name: 'Rampage', description: 'When reduces a creature to 0 hit points with a melee attack on its turn, can take a bonus action to move up to half its speed and make a bite attack.' },
+        'blood-frenzy': { name: 'Blood Frenzy', description: "Has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+        'surprise-attack': { name: 'Surprise Attack (2d6)', description: 'If surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 2d6 damage from the attack.' },
+        'relentless': { name: 'Relentless', description: 'If takes 14 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead. (Recharges after a Short or Long Rest)' },
+        'amphibious': { name: 'Amphibious', description: 'Can breathe air and water.' },
+        'spider-climb': { name: 'Spider Climb', description: 'Can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.' },
+        'flyby': { name: 'Flyby', description: "Doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+        'incorporeal-movement': { name: 'Incorporeal Movement', description: 'Can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object.' },
+        'standing-leap': { name: 'Standing Leap', description: 'Its long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start.' },
+        'darkvision-trait': { name: 'Superior Darkvision', description: 'Can see in dim light within 120 feet as if it were bright light, and in darkness as if it were dim light.' },
+        'blindsight-trait': { name: 'Blindsight', description: 'Can perceive its surroundings within 60 feet without relying on sight.' },
+        'tremorsense-trait': { name: 'Tremorsense', description: 'Can detect and pinpoint the origin of vibrations within 60 feet, provided the monster and the source are in contact with the same ground or substance.' },
+        'truesight-trait': { name: 'Truesight', description: 'Can see in normal and magical darkness, see invisible creatures, automatically detect visual illusions, perceive original form of shapechangers, and see into the Ethereal Plane within 120 feet.' },
+        'keen-hearing': { name: 'Keen Hearing', description: 'Has advantage on Wisdom (Perception) checks that rely on hearing.' },
+        'keen-sight': { name: 'Keen Sight', description: 'Has advantage on Wisdom (Perception) checks that rely on sight.' },
+        'keen-smell': { name: 'Keen Smell', description: 'Has advantage on Wisdom (Perception) checks that rely on smell.' },
+        'keen-hearing-smell': { name: 'Keen Hearing and Smell', description: 'Has advantage on Wisdom (Perception) checks that rely on hearing or smell.' },
+        'mimicry': { name: 'Mimicry', description: 'Can mimic sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check.' },
+        'shapechanger': { name: 'Shapechanger', description: 'Can use its action to polymorph into another form, or back into its true form. Its statistics are the same in each form.' },
+        'telepathy': { name: 'Telepathy', description: 'Can magically communicate simple ideas, emotions, and images telepathically with any creature within 120 feet that can understand a language.' },
+        'false-appearance': { name: 'False Appearance', description: 'While motionless, is indistinguishable from a natural object or ordinary creature.' },
+        'ambusher': { name: 'Ambusher', description: 'Has advantage on attack rolls against any creature it has surprised.' },
+        'hold-breath': { name: 'Hold Breath', description: 'Can hold its breath for 15 minutes.' },
+        'labyrinthine-recall': { name: 'Labyrinthine Recall', description: 'Can perfectly recall any path it has traveled.' },
+        'shadow-stealth': { name: 'Shadow Stealth', description: 'While in dim light or darkness, can take the Hide action as a bonus action.' },
+        'web-sense': { name: 'Web Sense', description: 'While in contact with a web, knows the exact location of any other creature in contact with the same web.' },
+        'web-walker': { name: 'Web Walker', description: 'Ignores movement restrictions caused by webbing.' }
+    };
+    
+    const trait = presetTraits[traitId];
+    if (!trait) return;
+    
+    // Initialize traits array if it doesn't exist
+    if (!currentMonster.traits) {
+        currentMonster.traits = [];
+    }
+    
+    // Check if trait already exists
+    if (currentMonster.traits.some(t => t.name === trait.name)) {
+        alert('This trait has already been added.');
+        return;
+    }
+    
+    currentMonster.traits.push({
+        id: traitId,
+        name: trait.name,
+        description: trait.description
+    });
+    
+    closeTraitModal();
+    displayMonster(currentMonster);
+}
+
+// Add custom trait
+function addCustomTrait() {
+    const name = document.getElementById('customTraitName').value.trim();
+    const description = document.getElementById('customTraitDesc').value.trim();
+    
+    if (!name || !description) {
+        alert('Please fill in both the name and description.');
+        return;
+    }
+    
+    if (!currentMonster) return;
+    
+    // Initialize traits array if it doesn't exist
+    if (!currentMonster.traits) {
+        currentMonster.traits = [];
+    }
+    
+    currentMonster.traits.push({
+        id: 'custom-' + Date.now(),
+        name: name,
+        description: description
+    });
+    
+    // Clear inputs
+    document.getElementById('customTraitName').value = '';
+    document.getElementById('customTraitDesc').value = '';
+    
+    closeTraitModal();
+    displayMonster(currentMonster);
+}
+
+// Remove trait
+function removeTrait(index) {
+    if (!currentMonster || !currentMonster.traits) return;
+    
+    currentMonster.traits.splice(index, 1);
+    displayMonster(currentMonster);
+}
+
+// Close trait modal
+function closeTraitModal() {
+    const modal = document.getElementById('traitModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+    }
+}
+
+// ==================== END TRAIT MODAL FUNCTIONS ====================
 
 // Render lair actions
 function renderLairActions(monster) {
@@ -704,6 +1019,109 @@ function getAlignmentOptions() {
         { value: 'chaotic evil', label: 'Chaotic Evil' },
         { value: 'unaligned', label: 'Unaligned' },
         { value: 'any alignment', label: 'Any Alignment' }
+    ];
+}
+
+// Get damage type options for dropdown
+function getDamageTypeOptions() {
+    return [
+        { value: 'acid', label: 'Acid' },
+        { value: 'bludgeoning', label: 'Bludgeoning' },
+        { value: 'cold', label: 'Cold' },
+        { value: 'fire', label: 'Fire' },
+        { value: 'force', label: 'Force' },
+        { value: 'lightning', label: 'Lightning' },
+        { value: 'necrotic', label: 'Necrotic' },
+        { value: 'piercing', label: 'Piercing' },
+        { value: 'poison', label: 'Poison' },
+        { value: 'psychic', label: 'Psychic' },
+        { value: 'radiant', label: 'Radiant' },
+        { value: 'slashing', label: 'Slashing' },
+        { value: 'thunder', label: 'Thunder' },
+        { value: 'bludgeoning, piercing, and slashing from nonmagical attacks', label: 'BPS (Nonmagical)' },
+        { value: 'bludgeoning, piercing, and slashing from nonmagical attacks that aren\'t silvered', label: 'BPS (Non-Silvered)' },
+        { value: 'bludgeoning, piercing, and slashing from nonmagical attacks that aren\'t adamantine', label: 'BPS (Non-Adamantine)' }
+    ];
+}
+
+// Get condition options for dropdown
+function getConditionOptions() {
+    return [
+        { value: 'blinded', label: 'Blinded' },
+        { value: 'charmed', label: 'Charmed' },
+        { value: 'deafened', label: 'Deafened' },
+        { value: 'exhaustion', label: 'Exhaustion' },
+        { value: 'frightened', label: 'Frightened' },
+        { value: 'grappled', label: 'Grappled' },
+        { value: 'incapacitated', label: 'Incapacitated' },
+        { value: 'invisible', label: 'Invisible' },
+        { value: 'paralyzed', label: 'Paralyzed' },
+        { value: 'petrified', label: 'Petrified' },
+        { value: 'poisoned', label: 'Poisoned' },
+        { value: 'prone', label: 'Prone' },
+        { value: 'restrained', label: 'Restrained' },
+        { value: 'stunned', label: 'Stunned' },
+        { value: 'unconscious', label: 'Unconscious' }
+    ];
+}
+
+// Get sense options for dropdown
+function getSenseOptions() {
+    return [
+        { value: 'blindsight 10 ft.', label: 'Blindsight 10 ft.' },
+        { value: 'blindsight 30 ft.', label: 'Blindsight 30 ft.' },
+        { value: 'blindsight 60 ft.', label: 'Blindsight 60 ft.' },
+        { value: 'blindsight 120 ft.', label: 'Blindsight 120 ft.' },
+        { value: 'blindsight 60 ft. (blind beyond this radius)', label: 'Blindsight 60 ft. (Blind Beyond)' },
+        { value: 'darkvision 30 ft.', label: 'Darkvision 30 ft.' },
+        { value: 'darkvision 60 ft.', label: 'Darkvision 60 ft.' },
+        { value: 'darkvision 90 ft.', label: 'Darkvision 90 ft.' },
+        { value: 'darkvision 120 ft.', label: 'Darkvision 120 ft.' },
+        { value: 'tremorsense 30 ft.', label: 'Tremorsense 30 ft.' },
+        { value: 'tremorsense 60 ft.', label: 'Tremorsense 60 ft.' },
+        { value: 'truesight 30 ft.', label: 'Truesight 30 ft.' },
+        { value: 'truesight 60 ft.', label: 'Truesight 60 ft.' },
+        { value: 'truesight 120 ft.', label: 'Truesight 120 ft.' },
+        { value: 'passive Perception 10', label: 'Passive Perception 10' },
+        { value: 'passive Perception 12', label: 'Passive Perception 12' },
+        { value: 'passive Perception 14', label: 'Passive Perception 14' },
+        { value: 'passive Perception 16', label: 'Passive Perception 16' },
+        { value: 'passive Perception 18', label: 'Passive Perception 18' },
+        { value: 'passive Perception 20', label: 'Passive Perception 20' },
+        { value: 'passive Perception 22', label: 'Passive Perception 22' },
+        { value: 'passive Perception 25', label: 'Passive Perception 25' }
+    ];
+}
+
+// Get language options for dropdown
+function getLanguageOptions() {
+    return [
+        { value: 'Common', label: 'Common' },
+        { value: 'Dwarvish', label: 'Dwarvish' },
+        { value: 'Elvish', label: 'Elvish' },
+        { value: 'Giant', label: 'Giant' },
+        { value: 'Gnomish', label: 'Gnomish' },
+        { value: 'Goblin', label: 'Goblin' },
+        { value: 'Halfling', label: 'Halfling' },
+        { value: 'Orc', label: 'Orc' },
+        { value: 'Abyssal', label: 'Abyssal' },
+        { value: 'Celestial', label: 'Celestial' },
+        { value: 'Draconic', label: 'Draconic' },
+        { value: 'Deep Speech', label: 'Deep Speech' },
+        { value: 'Infernal', label: 'Infernal' },
+        { value: 'Primordial', label: 'Primordial' },
+        { value: 'Sylvan', label: 'Sylvan' },
+        { value: 'Undercommon', label: 'Undercommon' },
+        { value: 'Aquan', label: 'Aquan' },
+        { value: 'Auran', label: 'Auran' },
+        { value: 'Ignan', label: 'Ignan' },
+        { value: 'Terran', label: 'Terran' },
+        { value: 'telepathy 30 ft.', label: 'Telepathy 30 ft.' },
+        { value: 'telepathy 60 ft.', label: 'Telepathy 60 ft.' },
+        { value: 'telepathy 120 ft.', label: 'Telepathy 120 ft.' },
+        { value: 'all', label: 'All Languages' },
+        { value: 'the languages it knew in life', label: 'Languages Known in Life' },
+        { value: '—', label: 'None' }
     ];
 }
 
@@ -985,6 +1403,97 @@ function editMonsterAbilityScore(ability, event) {
             displayMonster(currentMonster);
         }
     });
+}
+
+// Edit multi-select field (Damage Resistances, Immunities, Conditions, Senses, Languages)
+function editMonsterMultiField(field, options, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-${field}`);
+    if (!element) { isEditing = false; return; }
+    
+    // Get current values (handle both array and string formats)
+    let currentValues = [];
+    if (field === 'languages') {
+        // Languages is a string, split by comma
+        const langValue = currentMonster[field] || '—';
+        if (langValue && langValue !== '—') {
+            currentValues = langValue.split(',').map(v => v.trim());
+        }
+    } else {
+        // Arrays (senses, damageResistances, etc.)
+        currentValues = currentMonster[field] || [];
+    }
+    
+    // Create the multi-select container
+    const container = document.createElement('div');
+    container.className = 'multi-select-container';
+    
+    // Create checkboxes for each option
+    const checkboxesHtml = options.map(opt => {
+        const isChecked = currentValues.some(v => 
+            v.toLowerCase() === opt.value.toLowerCase() || 
+            v.toLowerCase().includes(opt.value.toLowerCase())
+        );
+        return `
+            <label class="multi-select-option">
+                <input type="checkbox" value="${opt.value}" ${isChecked ? 'checked' : ''}>
+                <span>${opt.label}</span>
+            </label>
+        `;
+    }).join('');
+    
+    container.innerHTML = `
+        <div class="multi-select-options">${checkboxesHtml}</div>
+        <div class="multi-select-buttons">
+            <button type="button" class="multi-select-save">Save</button>
+            <button type="button" class="multi-select-cancel">Cancel</button>
+        </div>
+    `;
+    
+    element.innerHTML = '';
+    element.appendChild(container);
+    element.classList.remove('editable');
+    
+    // Handle save
+    const saveBtn = container.querySelector('.multi-select-save');
+    const cancelBtn = container.querySelector('.multi-select-cancel');
+    
+    const saveEdit = () => {
+        const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
+        const newValues = Array.from(checkboxes).map(cb => cb.value);
+        
+        if (field === 'languages') {
+            // Languages is stored as a string
+            currentMonster[field] = newValues.length > 0 ? newValues.join(', ') : '—';
+        } else {
+            // Arrays
+            currentMonster[field] = newValues;
+        }
+        
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    const cancelEdit = () => {
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    saveBtn.addEventListener('click', saveEdit);
+    cancelBtn.addEventListener('click', cancelEdit);
+    
+    // Close on click outside
+    setTimeout(() => {
+        document.addEventListener('click', function closeOnOutsideClick(e) {
+            if (!container.contains(e.target)) {
+                document.removeEventListener('click', closeOnOutsideClick);
+                if (isEditing) cancelEdit();
+            }
+        });
+    }, 100);
 }
 
 // Portrait generation (Prodia API with Pollinations fallback)
@@ -1430,17 +1939,4 @@ function clearAllSpells() {
 
 function saveSpellSelections() {
     closeSpellModal();
-}
-
-// Trait modal functions
-function closeTraitModal() {
-    document.getElementById('traitSelectModal').classList.remove('active');
-}
-
-function filterTraitList() {
-    // TODO: Implement
-}
-
-function addSelectedTrait() {
-    closeTraitModal();
 }
