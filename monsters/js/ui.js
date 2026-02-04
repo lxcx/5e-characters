@@ -52,7 +52,7 @@ function displayMonster(monster) {
                 ${renderDefenses(monster)}
                 <p><strong>Senses</strong> <span class="editable multi-edit" id="editable-senses" onclick="editMonsterMultiField('senses', getSenseOptions(), event)">${monster.senses && monster.senses.length > 0 ? monster.senses.join(', ') : 'passive Perception ' + (10 + (monster.skills?.perception || monster.abilityModifiers?.wis || 0))}</span></p>
                 <p><strong>Languages</strong> <span class="editable multi-edit" id="editable-languages" onclick="editMonsterMultiField('languages', getLanguageOptions(), event)">${monster.languages || '—'}</span></p>
-                <p><strong>Challenge</strong> ${formatCR(monster.cr)} (${formatNumber(monster.xp)} XP)</p>
+                <p><strong>Challenge</strong> <span class="editable" id="editable-cr" onclick="editMonsterCR(event)">${formatCR(monster.cr)} (${formatNumber(monster.xp)} XP)</span></p>
                 <p><strong>Proficiency Bonus</strong> +${monster.proficiencyBonus}</p>
                 ${monster.source ? `<p><strong>Source</strong> ${monster.source}</p>` : ''}
             </div>
@@ -1106,14 +1106,14 @@ function renderSpellcasting(monster) {
     
     let spellList = '';
     
-    // Render spell categories with remove buttons
+    // Render spell categories with inline remove buttons
     const renderSpellCategory = (key, spellIds, label) => {
         if (!spellIds || spellIds.length === 0) return '';
         const spellItems = spellIds.map((id, idx) => {
             const spellName = typeof spells !== 'undefined' && spells[id]?.name || id;
-            return `<span class="spell-item">${spellName}<button class="remove-spell-btn" onclick="removeSpell('${key}', ${idx})" title="Remove spell"><i class="fa-solid fa-times"></i></button></span>`;
-        }).join(', ');
-        return `<p class="spell-category"><strong>${label}:</strong> <em>${spellItems}</em></p>`;
+            return `<span class="spell-tag">${spellName}<button class="spell-remove-x" onclick="removeSpell('${key}', ${idx})" title="Remove">&times;</button></span>`;
+        }).join('');
+        return `<p class="spell-category"><strong>${label}:</strong> ${spellItems}</p>`;
     };
     
     // Handle library format spells
@@ -1557,6 +1557,141 @@ function editMonsterNumberField(field, event) {
     });
 }
 
+// CR to Proficiency mapping
+const crToProficiencyMap = {
+    0: 2, 0.125: 2, 0.25: 2, 0.5: 2,
+    1: 2, 2: 2, 3: 2, 4: 2,
+    5: 3, 6: 3, 7: 3, 8: 3,
+    9: 4, 10: 4, 11: 4, 12: 4,
+    13: 5, 14: 5, 15: 5, 16: 5,
+    17: 6, 18: 6, 19: 6, 20: 6,
+    21: 7, 22: 7, 23: 7, 24: 7,
+    25: 8, 26: 8, 27: 8, 28: 8,
+    29: 9, 30: 9
+};
+
+// CR to XP mapping
+const crToXPMap = {
+    0: 10, 0.125: 25, 0.25: 50, 0.5: 100,
+    1: 200, 2: 450, 3: 700, 4: 1100,
+    5: 1800, 6: 2300, 7: 2900, 8: 3900,
+    9: 5000, 10: 5900, 11: 7200, 12: 8400,
+    13: 10000, 14: 11500, 15: 13000, 16: 15000,
+    17: 18000, 18: 20000, 19: 22000, 20: 25000,
+    21: 33000, 22: 41000, 23: 50000, 24: 62000,
+    25: 75000, 26: 90000, 27: 105000, 28: 120000,
+    29: 135000, 30: 155000
+};
+
+// Get CR options for dropdown
+function getCROptions() {
+    return [
+        { value: '0', label: '0' },
+        { value: '0.125', label: '1/8' },
+        { value: '0.25', label: '1/4' },
+        { value: '0.5', label: '1/2' },
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+        { value: '8', label: '8' },
+        { value: '9', label: '9' },
+        { value: '10', label: '10' },
+        { value: '11', label: '11' },
+        { value: '12', label: '12' },
+        { value: '13', label: '13' },
+        { value: '14', label: '14' },
+        { value: '15', label: '15' },
+        { value: '16', label: '16' },
+        { value: '17', label: '17' },
+        { value: '18', label: '18' },
+        { value: '19', label: '19' },
+        { value: '20', label: '20' },
+        { value: '21', label: '21' },
+        { value: '22', label: '22' },
+        { value: '23', label: '23' },
+        { value: '24', label: '24' },
+        { value: '25', label: '25' },
+        { value: '26', label: '26' },
+        { value: '27', label: '27' },
+        { value: '28', label: '28' },
+        { value: '29', label: '29' },
+        { value: '30', label: '30' }
+    ];
+}
+
+// Edit Challenge Rating
+function editMonsterCR(event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById('editable-cr');
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster.cr;
+    
+    const select = document.createElement('select');
+    select.className = 'inline-edit-select';
+    
+    getCROptions().forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.label;
+        if (parseFloat(opt.value) === currentValue) {
+            option.selected = true;
+        }
+        select.appendChild(option);
+    });
+    
+    element.innerHTML = '';
+    element.appendChild(select);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        select.focus();
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newCR = parseFloat(select.value);
+        if (newCR !== currentValue) {
+            currentMonster.cr = newCR;
+            currentMonster.proficiencyBonus = crToProficiencyMap[newCR] || 2;
+            currentMonster.xp = crToXPMap[newCR] || 0;
+            
+            // Recalculate spell save DC and attack bonus if monster has spellcasting
+            if (currentMonster.spellcasting) {
+                const ability = currentMonster.spellcasting.ability || 'int';
+                const abilityMod = currentMonster.abilityModifiers?.[ability] || 0;
+                currentMonster.spellcasting.saveDC = 8 + abilityMod + currentMonster.proficiencyBonus;
+                currentMonster.spellcasting.attackBonus = abilityMod + currentMonster.proficiencyBonus;
+            }
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        select.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    select.addEventListener('change', saveEdit);
+    
+    select.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
+    });
+}
+
 // Edit ability score
 function editMonsterAbilityScore(ability, event) {
     if (event) event.stopPropagation();
@@ -1670,7 +1805,14 @@ function editMonsterMultiField(field, options, event) {
     const saveBtn = container.querySelector('.multi-select-save');
     const cancelBtn = container.querySelector('.multi-select-cancel');
     
+    let outsideClickHandler = null;
+    
     const saveEdit = () => {
+        // Remove outside click listener first
+        if (outsideClickHandler) {
+            document.removeEventListener('click', outsideClickHandler);
+        }
+        
         const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
         const newValues = Array.from(checkboxes).map(cb => cb.value);
         
@@ -1687,21 +1829,32 @@ function editMonsterMultiField(field, options, event) {
     };
     
     const cancelEdit = () => {
+        // Remove outside click listener first
+        if (outsideClickHandler) {
+            document.removeEventListener('click', outsideClickHandler);
+        }
         isEditing = false;
         displayMonster(currentMonster);
     };
     
-    saveBtn.addEventListener('click', saveEdit);
-    cancelBtn.addEventListener('click', cancelEdit);
+    saveBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        saveEdit();
+    });
+    cancelBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cancelEdit();
+    });
     
     // Close on click outside
     setTimeout(() => {
-        document.addEventListener('click', function closeOnOutsideClick(e) {
+        outsideClickHandler = function(e) {
             if (!container.contains(e.target)) {
-                document.removeEventListener('click', closeOnOutsideClick);
+                document.removeEventListener('click', outsideClickHandler);
                 if (isEditing) cancelEdit();
             }
-        });
+        };
+        document.addEventListener('click', outsideClickHandler);
     }, 100);
 }
 

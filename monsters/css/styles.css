@@ -1771,32 +1771,40 @@ button:active {
     box-shadow: 0 4px 12px rgba(88, 24, 13, 0.3);
 }
 
-.spell-item {
+.spell-tag {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    background: #f3e5f5;
+    border: 1px solid #ce93d8;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: 2px 4px 2px 0;
+    font-size: 0.9em;
+    font-style: italic;
 }
 
-.remove-spell-btn {
-    background: #dc3545;
-    color: white;
+.spell-remove-x {
+    background: none;
     border: none;
-    padding: 1px 4px;
-    border-radius: 3px;
+    color: #9c27b0;
     cursor: pointer;
-    font-size: 0.65em;
-    opacity: 0.7;
-    transition: all 0.2s;
-    margin-left: 2px;
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1;
+    margin-left: 4px;
+    padding: 0 2px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
 }
 
-.remove-spell-btn:hover {
+.spell-remove-x:hover {
     opacity: 1;
-    background: #c82333;
+    color: #c82333;
 }
 
-.spell-category:hover .remove-spell-btn {
-    opacity: 1;
+.spell-category {
+    margin: 8px 0;
+    line-height: 1.8;
 }
 
 /* Spell Modal Styles */
