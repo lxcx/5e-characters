@@ -38,6 +38,24 @@ function displayItem(item) {
                 ${item.description || 'No description available.'}
             </div>
             
+            <!-- Item Image Section -->
+            <div class="item-image-section">
+                <div class="section-title"><i class="fa-solid fa-image"></i> Item Image</div>
+                <div class="item-image-container" id="itemImageContainer">
+                    <div class="item-image-placeholder" id="itemImagePlaceholder">
+                        <i class="fa-solid fa-gem"></i>
+                        <span>Upload an image for this item</span>
+                    </div>
+                    <img id="itemImage" class="item-image" style="display: none;" alt="Item Image">
+                </div>
+                <div class="item-image-actions">
+                    <button class="upload-image-btn" onclick="triggerItemImageUpload()">
+                        <i class="fa-solid fa-upload"></i> Upload Image
+                    </button>
+                    <input type="file" id="itemImageUploadInput" accept="image/*" style="display: none;" onchange="handleItemImageUpload(event)">
+                </div>
+            </div>
+            
             ${item.cursed ? `
                 <div class="cursed-warning">
                     <i class="fa-solid fa-skull"></i>
@@ -187,4 +205,38 @@ function formatModifier(mod) {
 // Format number with commas
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// ============================================
+// IMAGE UPLOAD FUNCTIONS
+// ============================================
+
+// Trigger file upload dialog
+function triggerItemImageUpload() {
+    document.getElementById('itemImageUploadInput').click();
+}
+
+// Handle uploaded image
+function handleItemImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const placeholder = document.getElementById('itemImagePlaceholder');
+        const image = document.getElementById('itemImage');
+        
+        if (placeholder) placeholder.style.display = 'none';
+        if (image) {
+            image.src = e.target.result;
+            image.style.display = 'block';
+        }
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
 }

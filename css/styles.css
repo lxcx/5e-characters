@@ -1852,6 +1852,26 @@
             box-shadow: none;
         }
 
+        .upload-image-btn {
+            background: white;
+            color: #059669;
+            border: 2px solid #059669;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upload-image-btn:hover {
+            background: #059669;
+            color: white;
+        }
+
         /* Export section */
         .export-section {
             margin-top: 20px;

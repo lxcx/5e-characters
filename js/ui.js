@@ -828,6 +828,10 @@ function displayNPC(npc) {
                 <button class="view-prompt-btn" onclick="generatePortraitPrompt()">
                     <i class="fa-solid fa-eye"></i> View Prompt
                 </button>
+                <button class="upload-image-btn" onclick="triggerImageUpload()">
+                    <i class="fa-solid fa-upload"></i> Upload
+                </button>
+                <input type="file" id="imageUploadInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
             </div>
         </div>
         
@@ -4008,6 +4012,38 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 // PORTRAIT GENERATOR (Prodia API with Pollinations fallback)
 // ============================================
+
+// Trigger file upload dialog
+function triggerImageUpload() {
+    document.getElementById('imageUploadInput').click();
+}
+
+// Handle uploaded image
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const placeholder = document.getElementById('portraitPlaceholder');
+        const loading = document.getElementById('portraitLoading');
+        const image = document.getElementById('portraitImage');
+        
+        if (placeholder) placeholder.style.display = 'none';
+        if (loading) loading.style.display = 'none';
+        if (image) {
+            image.src = e.target.result;
+            image.style.display = 'block';
+        }
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
+}
 
 async function generatePortrait() {
     if (!currentNPC) return;
