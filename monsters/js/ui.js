@@ -96,6 +96,10 @@ function displayMonster(monster) {
                     ${monster.source ? `<button class="official-art-btn" onclick="loadOfficialArt()">
                         <i class="fa-solid fa-book"></i> Official Art
                     </button>` : ''}
+                    <button class="upload-image-btn" onclick="triggerImageUpload()">
+                        <i class="fa-solid fa-upload"></i> Upload
+                    </button>
+                    <input type="file" id="imageUploadInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
                 </div>
             </div>
             
@@ -705,6 +709,42 @@ function resetPromptToDefault() {
     if (!currentMonster) return;
     const prompt = buildMonsterPortraitPrompt(currentMonster);
     document.getElementById('portraitPromptText').value = prompt;
+}
+
+// Trigger file upload dialog
+function triggerImageUpload() {
+    document.getElementById('imageUploadInput').click();
+}
+
+// Handle uploaded image
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate it's an image
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        return;
+    }
+    
+    // Read and display the image
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const placeholder = document.getElementById('portraitPlaceholder');
+        const loading = document.getElementById('portraitLoading');
+        const image = document.getElementById('portraitImage');
+        
+        if (placeholder) placeholder.style.display = 'none';
+        if (loading) loading.style.display = 'none';
+        if (image) {
+            image.src = e.target.result; // Base64 data URL
+            image.style.display = 'block';
+        }
+    };
+    reader.readAsDataURL(file);
+    
+    // Reset the input so the same file can be selected again
+    event.target.value = '';
 }
 
 // Load official art from 5e.tools
