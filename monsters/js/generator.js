@@ -284,6 +284,11 @@ function getFormValues() {
         size = randomChoice(sizesArr);
     }
     
+    // Giants must be large, huge, or gargantuan
+    if (type === 'giant' && ['tiny', 'small', 'medium'].includes(size)) {
+        size = randomChoice(['large', 'huge', 'gargantuan']);
+    }
+    
     let cr = crSelect.value;
     if (cr === 'random') {
         const crs = Object.keys(crToXP).map(Number);
