@@ -1595,6 +1595,33 @@ button:active {
     opacity: 1;
 }
 
+/* Remove action button */
+.remove-action-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75em;
+    margin-left: 8px;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.remove-action-btn:hover {
+    opacity: 1;
+    background: #c82333;
+}
+
+.action-item {
+    position: relative;
+}
+
+.action-item:hover .remove-action-btn {
+    opacity: 1;
+}
+
 /* Trait Modal Styles */
 .trait-modal {
     max-width: 600px;

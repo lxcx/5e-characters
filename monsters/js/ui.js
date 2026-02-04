@@ -239,7 +239,7 @@ function renderTraits(monster) {
 function renderActions(monster) {
     let html = `
         <div class="actions-section">
-            <h3 class="section-title"><i class="fa-solid fa-swords"></i> Actions</h3>
+            <h3 class="section-title"><i class="fa-solid fa-clapperboard"></i> Actions</h3>
     `;
     
     // Multiattack first if present
@@ -251,10 +251,10 @@ function renderActions(monster) {
         `;
     }
     
-    // Regular actions
-    for (const action of monster.actions) {
-        html += renderAction(action, monster);
-    }
+    // Regular actions with index for removal
+    monster.actions.forEach((action, index) => {
+        html += renderAction(action, monster, index);
+    });
     
     html += `
             <button class="add-action-btn" onclick="openActionModal()">
@@ -267,7 +267,9 @@ function renderActions(monster) {
 }
 
 // Render single action
-function renderAction(action, monster) {
+function renderAction(action, monster, index) {
+    const removeBtn = `<button class="remove-action-btn" onclick="removeAction(${index})" title="Remove this action"><i class="fa-solid fa-times"></i></button>`;
+    
     // If action has a full description (library format), use it directly
     if (action.description && !action.attackBonus) {
         // Check if it's a recharge ability
@@ -276,7 +278,7 @@ function renderAction(action, monster) {
         
         return `
             <div class="action-item">
-                <p><strong>${displayName}.</strong> ${action.description}</p>
+                <p><strong>${displayName}.</strong> ${action.description} ${removeBtn}</p>
             </div>
         `;
     }
@@ -285,7 +287,7 @@ function renderAction(action, monster) {
     if (action.type === 'breath') {
         return `
             <div class="action-item">
-                <p><strong>${action.name} (Recharge ${action.recharge}).</strong> ${action.description}</p>
+                <p><strong>${action.name} (Recharge ${action.recharge}).</strong> ${action.description} ${removeBtn}</p>
             </div>
         `;
     }
@@ -296,7 +298,7 @@ function renderAction(action, monster) {
     
     return `
         <div class="action-item">
-            <p><strong>${action.name}.</strong> <em>${attackType}:</em> ${formatModifier(action.attackBonus)} to hit, ${rangeText}, one target. <em>Hit:</em> ${action.damage} damage.</p>
+            <p><strong>${action.name}.</strong> <em>${attackType}:</em> ${formatModifier(action.attackBonus)} to hit, ${rangeText}, one target. <em>Hit:</em> ${action.damage} damage. ${removeBtn}</p>
         </div>
     `;
 }
@@ -627,7 +629,7 @@ function openTraitModal() {
                         <label>Description</label>
                         <textarea id="customTraitDesc" rows="4" placeholder="Describe what the trait does..."></textarea>
                     </div>
-                    <button class="modal-btn primary" onclick="addCustomTrait()">
+                    <button class="modal-btn primary" style="width: 100%;" onclick="addCustomTrait()">
                         <i class="fa-solid fa-plus"></i> Add Custom Trait
                     </button>
                 </div>
@@ -1926,6 +1928,19 @@ function closeActionModal() {
 function saveAction() {
     // TODO: Implement action saving
     closeActionModal();
+}
+
+// Remove action with confirmation
+function removeAction(index) {
+    if (!currentMonster || !currentMonster.actions) return;
+    
+    const action = currentMonster.actions[index];
+    const actionName = action ? action.name : 'this action';
+    
+    if (confirm(`Are you sure you want to remove "${actionName}"?`)) {
+        currentMonster.actions.splice(index, 1);
+        displayMonster(currentMonster);
+    }
 }
 
 // Spell modal functions
