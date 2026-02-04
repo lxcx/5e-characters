@@ -509,9 +509,17 @@ function buildMonsterPortraitPrompt(m) {
     
     let prompt = `Fantasy illustration of a ${m.size} ${m.type} ${subjectWord} called "${m.name}".`;
     
+    // Try to get visual description - check monster object first, then MONSTER_DESCRIPTIONS directly
+    let visualDesc = m.visualDescription;
+    if (!visualDesc && typeof MONSTER_DESCRIPTIONS !== 'undefined') {
+        // Try to look up by normalized key (lowercase, spaces to hyphens)
+        const key = m.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        visualDesc = MONSTER_DESCRIPTIONS[key];
+    }
+    
     // Use visual description if available (most accurate)
-    if (m.visualDescription) {
-        prompt += ` ${m.visualDescription}`;
+    if (visualDesc) {
+        prompt += ` ${visualDesc}`;
     } else if (m.description) {
         prompt += ` ${m.description}`;
     } else {
