@@ -4144,14 +4144,22 @@ function buildPortraitPrompt(npc) {
     ];
     const isNonHuman = nonHumanRaces.includes(npc.race.toLowerCase());
     
-    // Build the prompt - prefix with "dnd 5e [race]" for better race-specific generation
-    let prompt = `DnD 5e ${npc.race}. Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
+    // Build the prompt - for non-human races, lead with strong non-human instruction
+    let prompt;
+    if (isNonHuman) {
+        prompt = `DO NOT DRAW A HUMAN. ${raceFeatures} Fantasy character portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
+    } else {
+        prompt = `DnD 5e ${npc.race}. Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
+    }
     
     if (className !== 'commoner') {
         prompt += ` and ${className}`;
     }
     
-    prompt += `. ${raceFeatures}`;
+    // Add race features (only for human races - non-human already has it at the start)
+    if (!isNonHuman) {
+        prompt += `. ${raceFeatures}`;
+    }
     
     // Add alignment-based expression/demeanor
     const alignmentVibes = getAlignmentVisuals(npc.alignment);
@@ -4226,29 +4234,29 @@ function getRaceVisualFeatures(race) {
         'fairy': 'Tiny fairy with delicate features, gossamer wings, and ethereal glow.',
         
         // Non-human faces - EXPLICIT descriptions needed
-        'aarakocra': 'NOT HUMAN. Bird-person with eagle/parrot head, sharp beak instead of mouth, feathers covering entire body, bird eyes, taloned feet, large feathered wings. Avian humanoid creature.',
-        'kenku': 'NOT HUMAN. Crow-person with black feathered raven/crow head, long pointed beak instead of mouth, black feathers covering entire body, beady bird eyes. Corvid humanoid creature.',
-        'owlin': 'NOT HUMAN. Owl-person with owl head, flat owl face with large round owl eyes, small hooked beak, feathers covering entire body, owl-like wings. Owl humanoid creature.',
-        'tabaxi': 'NOT HUMAN. Cat-person with feline cat head, fur-covered face with cat nose and whiskers, cat ears on top of head, slit-pupil cat eyes, fur covering entire body. Feline humanoid creature.',
-        'leonin': 'NOT HUMAN. Lion-person with lion head, full lion mane, lion face with muzzle and fangs, fur covering entire body. Lion humanoid creature.',
-        'lizardfolk': 'NOT HUMAN. Lizard-person with reptilian head, scaly snout with sharp teeth, no hair, scales covering entire body, reptilian yellow eyes with slit pupils. Reptilian humanoid creature.',
-        'dragonborn': 'NOT HUMAN. Dragon-person with dragon head, scaly draconic snout, no hair, scales covering entire body, dragon eyes. Draconic humanoid creature with proud bearing.',
-        'tortle': 'NOT HUMAN. Turtle-person with reptilian turtle head, beak-like mouth, large shell on back, scaly skin, wise ancient eyes. Turtle humanoid creature.',
-        'yuan-ti': 'NOT HUMAN. Snake-person with serpentine features, forked tongue, scales covering body, snake-like eyes with slit pupils. Serpent humanoid creature.',
-        'kobold': 'NOT HUMAN. Small dragon-like creature with reptilian head, scaly snout, scales covering entire body, small horns, dragon-like eyes. Tiny draconic humanoid.',
-        'bugbear': 'Bugbear with hulking furry body, flat goblinoid face with pointed ears, long arms, shaggy fur covering body.',
-        'minotaur': 'NOT HUMAN. Bull-person with full bull head, bovine snout with nose ring, large curved horns, bull ears, fur covering body. Minotaur creature.',
-        'harengon': 'NOT HUMAN. Rabbit-person with rabbit head, long rabbit ears, rabbit nose and whiskers, fur covering body, large rabbit feet. Rabbit humanoid creature.',
+        'aarakocra': 'BIRD CREATURE - NO HUMAN FACE. Eagle-person with full bird head, sharp hooked beak (no human mouth), feathers instead of hair and skin, round bird eyes, taloned bird feet, large feathered wings on back.',
+        'kenku': 'BIRD CREATURE - NO HUMAN FACE. Crow-person with full raven head, long black beak (no human mouth), black feathers covering entire face and body, small round crow eyes.',
+        'owlin': 'BIRD CREATURE - NO HUMAN FACE. Owl-person with full owl head, flat feathered owl face, large round forward-facing owl eyes, small hooked beak (no human mouth), feathered body and wings.',
+        'tabaxi': 'CAT CREATURE - NO HUMAN FACE. Bipedal cat with full feline face, cat muzzle with whiskers, fur covering entire face and body, pointed cat ears on top of head, vertical slit cat pupils, pink cat nose.',
+        'leonin': 'LION CREATURE - NO HUMAN FACE. Bipedal lion with full lion head, lion muzzle with fangs, thick lion mane around face, fur covering entire body, golden lion eyes.',
+        'lizardfolk': 'REPTILE CREATURE - NO HUMAN FACE. Bipedal lizard with full reptilian head, scaly snout with sharp teeth, no hair anywhere, green/brown scales covering entire face and body, yellow reptile eyes with slit pupils.',
+        'dragonborn': 'DRAGON CREATURE - NO HUMAN FACE. Bipedal dragon with full draconic head, scaled snout, no hair, scales covering entire face and body, proud dragon horns, piercing dragon eyes.',
+        'tortle': 'TURTLE CREATURE - NO HUMAN FACE. Bipedal turtle with reptilian turtle head, beak-like mouth (no human lips), large domed shell on back, wrinkled scaly green skin, wise ancient turtle eyes.',
+        'yuan-ti': 'SNAKE CREATURE - NO HUMAN FACE. Serpent-person with snake-like features, scales covering face and body, forked tongue, snake eyes with vertical slit pupils, possibly snake head or hood.',
+        'kobold': 'SMALL DRAGON CREATURE - NO HUMAN FACE. Tiny bipedal dragon/lizard with reptilian head, small scaly snout, scales covering entire body, small horns, large dragon-like eyes. Very small creature.',
+        'bugbear': 'GOBLINOID CREATURE. Large hairy goblin with flat face, pointed ears, fangs, long gangly arms, shaggy brown fur covering entire hulking body.',
+        'minotaur': 'BULL CREATURE - NO HUMAN FACE. Bipedal bull with full bull head, bovine snout and nostrils, large curved horns, cow ears, fur covering muscular body, hooved feet.',
+        'harengon': 'RABBIT CREATURE - NO HUMAN FACE. Bipedal rabbit with full rabbit head, long upright rabbit ears, twitching rabbit nose, buck teeth, soft fur covering entire face and body, large rabbit feet.',
         'firbolg': 'Tall firbolg with cow-like broad nose, long pointed ears, blue or gray skin tones, gentle giant appearance.',
         'shifter': 'Shifter with bestial features, pointed ears, sharp fangs, wild hair, and animalistic traits showing lycanthrope heritage.',
         'centaur': 'Centaur with human upper body attached to full horse body with four horse legs. Half-human half-horse.',
         'satyr': 'Satyr with human upper body, small curved horns on head, pointed ears, goat legs with hooves below the waist.',
-        'warforged': 'NOT ORGANIC. Living construct with mechanical/wooden body, armored plates, glowing eyes set in metallic face, no skin or flesh. Robot-like humanoid.',
-        'autognome': 'NOT ORGANIC. Small mechanical gnome-robot, clockwork body made of metal and gears, glowing eyes, constructed mechanical face. Tiny robot creature.',
-        'loxodon': 'NOT HUMAN. Elephant-person with elephant head, long trunk, large floppy ears, tusks, gray thick skin. Elephant humanoid creature.',
-        'grung': 'NOT HUMAN. Frog-person with frog head, wide frog mouth, bulging frog eyes, smooth amphibian skin, bright colored poison frog. Small frog humanoid.',
-        'locathah': 'NOT HUMAN. Fish-person with fish head, gills, fish eyes on sides of head, scales covering body, fins. Aquatic fish humanoid.',
-        'thri-kreen': 'NOT HUMAN. Insect-person with mantis head, compound insect eyes, mandibles instead of mouth, four arms, chitinous exoskeleton. Bug humanoid creature.',
+        'warforged': 'ROBOT - NO HUMAN SKIN OR FLESH. Living construct made of metal, wood, and stone. Metal face plate with glowing eyes, no mouth or nose, armored body with visible joints and plates. Mechanical golem creature.',
+        'autognome': 'ROBOT - NO HUMAN SKIN OR FLESH. Small clockwork gnome-robot made entirely of metal, gears, and cogs. Metal face with glowing lens eyes, no organic features, brass/copper mechanical body. Steampunk robot creature.',
+        'loxodon': 'ELEPHANT CREATURE - NO HUMAN FACE. Bipedal elephant with full elephant head, long prehensile trunk, large floppy elephant ears, tusks, thick gray wrinkled elephant skin covering entire body.',
+        'grung': 'FROG CREATURE - NO HUMAN FACE. Small bipedal poison frog with full frog head, wide frog mouth, large bulging frog eyes on top of head, smooth wet amphibian skin, brightly colored (red/blue/green/orange).',
+        'locathah': 'FISH CREATURE - NO HUMAN FACE. Bipedal fish-person with full fish head, fish eyes on sides of head, gills on neck, scales covering entire body, fins on arms and back, wide fish mouth.',
+        'thri-kreen': 'INSECT CREATURE - NO HUMAN FACE. Bipedal mantis with insect head, large compound bug eyes, clicking mandibles instead of mouth, antennae, four arms, hard chitinous exoskeleton body, no skin.',
         'gith': 'Gaunt humanoid with yellow-green skin, pointed ears, angular features, sunken eyes.',
         'vedalken': 'Tall humanoid with blue skin, no hair, large blue eyes, elongated head, logical expression.'
     };
