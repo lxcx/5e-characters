@@ -387,23 +387,23 @@ button:active {
 
 /* Actions */
 .add-action-btn {
-    background: white;
-    color: #7c3aed;
-    border: 2px dashed #c4b5fd;
-    padding: 10px 20px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #58180d 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 0.9em;
     margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     transition: all 0.2s;
 }
 
 .add-action-btn:hover {
-    background: #7c3aed;
-    color: white;
-    border-style: solid;
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 24, 13, 0.3);
 }
 
 /* Legendary Intro */
