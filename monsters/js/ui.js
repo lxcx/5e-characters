@@ -24,13 +24,13 @@ function displayMonster(monster) {
             <div class="monster-stats-row">
                 <div class="stat-item">
                     <span class="stat-label">Armor Class</span>
-                    <span class="stat-value">${monster.ac}</span>
+                    <span class="stat-value editable" id="editable-ac" onclick="editMonsterNumberField('ac', event)">${monster.ac}</span>
                     <span class="stat-note">(${monster.acType})</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Hit Points</span>
-                    <span class="stat-value">${monster.hp}</span>
-                    <span class="stat-note">(${monster.hpFormula})</span>
+                    <span class="stat-value editable" id="editable-hp" onclick="editMonsterNumberField('hp', event)">${monster.hp}</span>
+                    <span class="stat-note">(${monster.hpFormula || monster.hitDice || ''})</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Speed</span>
@@ -127,7 +127,7 @@ function renderAbilityScores(monster) {
             ${abilities.map(ability => `
                 <div class="ability-item">
                     <span class="ability-label">${labels[ability]}</span>
-                    <span class="ability-score">${monster.abilityScores[ability]}</span>
+                    <span class="ability-score editable" id="editable-ability-${ability}" onclick="editMonsterAbilityScore('${ability}', event)">${monster.abilityScores[ability]}</span>
                     <span class="ability-mod">(${formatModifier(monster.abilityModifiers[ability])})</span>
                 </div>
             `).join('')}
@@ -643,6 +643,118 @@ function editMonsterTextareaField(field, event) {
             displayMonster(currentMonster);
         }
         // Allow Enter for newlines in textarea - use Escape to cancel or click away to save
+    });
+}
+
+// Edit number field (AC, HP)
+function editMonsterNumberField(field, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-${field}`);
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster[field] || 0;
+    
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.className = 'inline-edit-input inline-edit-number';
+    input.value = currentValue;
+    input.min = 1;
+    input.max = field === 'ac' ? 30 : 9999;
+    
+    element.innerHTML = '';
+    element.appendChild(input);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        input.focus();
+        input.select();
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newValue = parseInt(input.value, 10);
+        if (!isNaN(newValue) && newValue > 0 && newValue !== currentValue) {
+            currentMonster[field] = newValue;
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        input.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            saveEdit();
+        } else if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
+    });
+}
+
+// Edit ability score
+function editMonsterAbilityScore(ability, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-ability-${ability}`);
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster.abilityScores[ability] || 10;
+    
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.className = 'inline-edit-input inline-edit-number';
+    input.value = currentValue;
+    input.min = 1;
+    input.max = 30;
+    
+    element.innerHTML = '';
+    element.appendChild(input);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        input.focus();
+        input.select();
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newValue = parseInt(input.value, 10);
+        if (!isNaN(newValue) && newValue >= 1 && newValue <= 30 && newValue !== currentValue) {
+            currentMonster.abilityScores[ability] = newValue;
+            // Recalculate modifier
+            currentMonster.abilityModifiers[ability] = Math.floor((newValue - 10) / 2);
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        input.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            saveEdit();
+        } else if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
     });
 }
 

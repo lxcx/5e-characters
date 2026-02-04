@@ -1205,6 +1205,21 @@ button:active {
     min-width: 120px;
 }
 
+.inline-edit-number {
+    width: 70px;
+    text-align: center;
+}
+
+.ability-score.editable:hover {
+    background: rgba(88, 24, 13, 0.1);
+    border-radius: 4px;
+}
+
+.stat-value.editable:hover {
+    background: rgba(88, 24, 13, 0.1);
+    border-radius: 4px;
+}
+
 .monster-name.editable:hover {
     border-bottom: none;
     text-decoration: underline;
