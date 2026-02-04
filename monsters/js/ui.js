@@ -503,6 +503,9 @@ async function generatePortrait() {
 }
 
 function buildMonsterPortraitPrompt(m) {
+    // Start with strong D&D identifier - models trained on D&D art will recognize monster names
+    let prompt = `D&D 5e ${m.name}, Dungeons and Dragons monster.`;
+    
     // Customize subject word based on type to avoid biasing the AI
     const isHumanoid = m.type === 'humanoid';
     const isElemental = m.type === 'elemental';
@@ -518,7 +521,7 @@ function buildMonsterPortraitPrompt(m) {
     if (isElemental) typeDesc = 'elemental force';
     if (isOoze) typeDesc = 'amorphous ooze';
     
-    let prompt = `Fantasy illustration of a ${m.size} ${typeDesc} ${subjectWord} called "${m.name}".`;
+    prompt += ` ${m.size} ${typeDesc} ${subjectWord}.`;
     
     // Try to get visual description - check monster object first, then MONSTER_DESCRIPTIONS directly
     let visualDesc = m.visualDescription;
