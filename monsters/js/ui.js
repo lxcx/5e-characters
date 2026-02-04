@@ -577,12 +577,23 @@ function buildMonsterPortraitPrompt(m) {
 }
 
 // Portrait prompt viewer
+// Track if we've set a custom prompt for this monster
+let lastPromptMonsterName = null;
+
 function showPortraitPrompt() {
     if (!currentMonster) return;
     
-    const prompt = buildMonsterPortraitPrompt(currentMonster);
+    const textarea = document.getElementById('portraitPromptText');
     
-    document.getElementById('portraitPromptText').value = prompt;
+    // Only auto-fill prompt if:
+    // 1. Textarea is empty, OR
+    // 2. We switched to a different monster
+    if (!textarea.value.trim() || lastPromptMonsterName !== currentMonster.name) {
+        const prompt = buildMonsterPortraitPrompt(currentMonster);
+        textarea.value = prompt;
+        lastPromptMonsterName = currentMonster.name;
+    }
+    
     document.getElementById('portraitPromptModal').classList.add('active');
 }
 
