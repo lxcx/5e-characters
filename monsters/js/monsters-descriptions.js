@@ -873,21 +873,26 @@ const MONSTER_DESCRIPTIONS = {
 
 // Apply descriptions to allMonsters
 function applyMonsterDescriptions() {
-    if (typeof allMonsters === 'undefined') return;
+    if (typeof allMonsters === 'undefined') {
+        console.warn('Monster descriptions: allMonsters not yet defined');
+        return false;
+    }
 
+    let applied = 0;
     for (const [key, description] of Object.entries(MONSTER_DESCRIPTIONS)) {
         if (allMonsters[key] && !allMonsters[key].visualDescription) {
             allMonsters[key].visualDescription = description;
+            applied++;
         }
     }
-    console.log(`Applied visual descriptions to ${Object.keys(MONSTER_DESCRIPTIONS).length} monsters`);
+    console.log(`Applied visual descriptions to ${applied} of ${Object.keys(MONSTER_DESCRIPTIONS).length} monsters`);
+    return true;
 }
 
-// Run when DOM is ready
+// Run immediately since allMonsters should already exist (monsters-index.js loads before this)
+applyMonsterDescriptions();
+
+// Also run on DOMContentLoaded as fallback in case of timing issues
 if (typeof document !== 'undefined') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', applyMonsterDescriptions);
-    } else {
-        setTimeout(applyMonsterDescriptions, 100);
-    }
+    document.addEventListener('DOMContentLoaded', applyMonsterDescriptions);
 }

@@ -503,7 +503,11 @@ async function generatePortrait() {
 }
 
 function buildMonsterPortraitPrompt(m) {
-    let prompt = `Fantasy illustration of a ${m.size} ${m.type} monster called "${m.name}".`;
+    // For humanoids, use "character" instead of "monster" to get better results
+    const isHumanoid = m.type === 'humanoid';
+    const subjectWord = isHumanoid ? 'character' : 'creature';
+    
+    let prompt = `Fantasy illustration of a ${m.size} ${m.type} ${subjectWord} called "${m.name}".`;
     
     // Use visual description if available (most accurate)
     if (m.visualDescription) {
@@ -522,7 +526,7 @@ function buildMonsterPortraitPrompt(m) {
             'fey': 'Ethereal creature of otherworldly beauty or strangeness, with features that shimmer between forms, pointed ears, and an aura of wild magic',
             'fiend': 'Demonic or devilish creature with horns, leathery bat wings, cloven hooves or clawed feet, burning eyes, and skin ranging from red to black',
             'giant': 'Enormous humanoid standing two to three times the height of a human, with proportionally massive muscles and a face weathered by age',
-            'humanoid': 'Bipedal creature with recognizable humanoid features but distinctive racial characteristics such as pointed ears, tusks, or unusual skin coloring',
+            'humanoid': 'Human or human-like person with realistic proportions and features',
             'monstrosity': 'Horrific hybrid creature combining features of multiple animals in unnatural ways - chimeric, twisted, and wrong in fundamental ways',
             'ooze': 'Amorphous blob of translucent or opaque slime, shapeless and flowing, with partially digested objects visible within its gelatinous mass',
             'plant': 'Ambulatory vegetation with bark-like skin, vine tendrils for limbs, leaves for hair, and glowing sap-like eyes set in a wooden face',
@@ -534,16 +538,21 @@ function buildMonsterPortraitPrompt(m) {
         }
     }
     
-    // Add power level description
+    // Add power level description (skip for low-CR humanoids to keep them realistic)
     if (m.cr >= 20) {
         prompt += ' Legendary and godlike power, apocalyptic presence.';
     } else if (m.cr >= 10) {
         prompt += ' Extremely powerful and intimidating, boss-level threat.';
-    } else if (m.cr >= 5) {
+    } else if (m.cr >= 5 && !isHumanoid) {
         prompt += ' Dangerous and formidable creature.';
     }
     
-    prompt += ' Dark fantasy art style, detailed creature design, dramatic lighting, D&D monster manual style illustration, full body portrait.';
+    // Use different style prompts for humanoids vs monsters
+    if (isHumanoid) {
+        prompt += ' Dark fantasy art style, detailed character design, dramatic lighting, realistic human proportions, D&D character portrait, full body portrait.';
+    } else {
+        prompt += ' Dark fantasy art style, detailed creature design, dramatic lighting, D&D monster manual style illustration, full body portrait.';
+    }
     
     return prompt;
 }
