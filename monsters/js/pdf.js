@@ -304,12 +304,27 @@ function renderPDFSpells(m) {
     const isInnate = sd.innate;
     
     let spellList = '';
+    const allSpellIds = new Set(); // Collect all spell IDs for descriptions
+    
+    // Helper function to collect spell IDs
+    const collectSpells = (spellArray) => {
+        if (Array.isArray(spellArray)) {
+            spellArray.forEach(id => {
+                // Normalize spell ID (handle both "fireball" and "Fireball" formats)
+                const normalizedId = id.toLowerCase().replace(/\s+/g, '-');
+                allSpellIds.add(normalizedId);
+                // Also try the original ID
+                allSpellIds.add(id);
+            });
+        }
+    };
     
     // Handle library format spells (cantrips, 1st, 2nd, etc.)
     if (sd.spells) {
         for (const [key, value] of Object.entries(sd.spells)) {
             if (Array.isArray(value) && value.length > 0) {
                 // Direct array of spell names (atWill, cantrips, etc)
+                collectSpells(value);
                 const spellNames = value.map(id => (typeof spells !== 'undefined' && spells[id]?.name) || id).join(', ');
                 const label = key === 'atWill' ? 'At will' : 
                               key === 'cantrips' ? 'Cantrips (at will)' :
@@ -321,10 +336,12 @@ function renderPDFSpells(m) {
             } else if (typeof value === 'object' && !Array.isArray(value)) {
                 // Spell slot format { slots: X, spells: [...] }
                 if (value.slots !== undefined && value.spells) {
+                    collectSpells(value.spells);
                     const spellNames = value.spells.map(id => (typeof spells !== 'undefined' && spells[id]?.name) || id).join(', ');
                     const levelLabel = key === 'cantrips' ? 'Cantrips (at will)' : `${key} level (${value.slots} slots)`;
                     spellList += `<p><strong>${levelLabel}:</strong> <em>${spellNames}</em></p>`;
                 } else if (Array.isArray(value.spells)) {
+                    collectSpells(value.spells);
                     const spellNames = value.spells.join(', ');
                     spellList += `<p><strong>${key}:</strong> <em>${spellNames}</em></p>`;
                 }
@@ -337,9 +354,54 @@ function renderPDFSpells(m) {
         `The creature's innate spellcasting ability is ${abilityNames[sd.ability]} (spell save DC ${saveDC}${attackBonus ? `, ${formatModifier(attackBonus)} to hit with spell attacks` : ''}). It can innately cast the following spells, requiring no material components:` :
         `The creature is a spellcaster. Its spellcasting ability is ${abilityNames[sd.ability]} (spell save DC ${saveDC}${attackBonus ? `, ${formatModifier(attackBonus)} to hit with spell attacks` : ''}).`;
     
+    // Build spell descriptions section
+    let spellDescriptions = '';
+    if (typeof spells !== 'undefined' && allSpellIds.size > 0) {
+        const describedSpells = [];
+        allSpellIds.forEach(id => {
+            const spell = spells[id];
+            if (spell && spell.description) {
+                describedSpells.push(spell);
+            }
+        });
+        
+        // Sort spells by level, then alphabetically
+        describedSpells.sort((a, b) => {
+            if (a.level !== b.level) return a.level - b.level;
+            return a.name.localeCompare(b.name);
+        });
+        
+        // Remove duplicates by name
+        const uniqueSpells = [];
+        const seenNames = new Set();
+        describedSpells.forEach(spell => {
+            if (!seenNames.has(spell.name)) {
+                seenNames.add(spell.name);
+                uniqueSpells.push(spell);
+            }
+        });
+        
+        if (uniqueSpells.length > 0) {
+            spellDescriptions = `
+                <h2 class="section-title" style="margin-top: 20px;">Spell Descriptions</h2>
+                ${uniqueSpells.map(spell => `
+                    <p style="margin-bottom: 8px;"><strong><em>${spell.name}</em></strong> (${spell.level === 0 ? 'cantrip' : `${spell.level}${getOrdinalSuffix(spell.level)} level`}${spell.school ? `, ${spell.school}` : ''}): ${spell.description}</p>
+                `).join('')}
+            `;
+        }
+    }
+    
     return `
         <h2 class="section-title">${title}</h2>
         <p>${intro}</p>
         ${spellList}
+        ${spellDescriptions}
     `;
+}
+
+// Helper function for ordinal suffixes
+function getOrdinalSuffix(n) {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return s[(v - 20) % 10] || s[v] || s[0];
 }
