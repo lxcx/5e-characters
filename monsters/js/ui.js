@@ -1340,8 +1340,19 @@ function loadOfficialArt() {
         }
     }
     
-    // 5e.tools URL format
-    const imageUrl = `https://5e.tools/img/bestiary/${source}/${encodeURIComponent(monsterName)}.webp`;
+    // Build list of sources to try (primary source first, then fallbacks)
+    const sourcesToTry = [source];
+    // Add MM/XMM fallbacks - try both Monster Manual versions
+    if (source === 'MM') {
+        sourcesToTry.push('XMM');
+    } else if (source === 'XMM') {
+        sourcesToTry.push('MM');
+    } else {
+        // For other sources, also try both MM versions as fallback
+        sourcesToTry.push('MM', 'XMM');
+    }
+    
+    const encodedName = encodeURIComponent(monsterName);
     
     // Show loading state
     const placeholder = document.getElementById('portraitPlaceholder');
@@ -1355,26 +1366,43 @@ function loadOfficialArt() {
     }
     if (image) image.style.display = 'none';
     
-    // Try to load the image
-    const testImage = new Image();
-    testImage.onload = function() {
-        if (image) {
-            image.src = imageUrl;
-            image.style.display = 'block';
+    // Try each source in order until one works
+    let currentIndex = 0;
+    
+    function tryNextSource() {
+        if (currentIndex >= sourcesToTry.length) {
+            // All sources exhausted, show error
+            if (loading) loading.style.display = 'none';
+            if (placeholder) {
+                placeholder.style.display = 'flex';
+                placeholder.innerHTML = `
+                    <i class="fa-solid fa-image-slash" style="font-size: 2em; color: #6c757d;"></i>
+                    <span style="text-align: center;">No official art found for this monster.<br>Try generating one instead!</span>
+                `;
+            }
+            return;
         }
-        if (loading) loading.style.display = 'none';
-    };
-    testImage.onerror = function() {
-        if (loading) loading.style.display = 'none';
-        if (placeholder) {
-            placeholder.style.display = 'flex';
-            placeholder.innerHTML = `
-                <i class="fa-solid fa-image-slash" style="font-size: 2em; color: #6c757d;"></i>
-                <span style="text-align: center;">No official art found for this monster.<br>Try generating one instead!</span>
-            `;
-        }
-    };
-    testImage.src = imageUrl;
+        
+        const trySource = sourcesToTry[currentIndex];
+        const imageUrl = `https://5e.tools/img/bestiary/${trySource}/${encodedName}.webp`;
+        
+        const testImage = new Image();
+        testImage.onload = function() {
+            if (image) {
+                image.src = imageUrl;
+                image.style.display = 'block';
+            }
+            if (loading) loading.style.display = 'none';
+        };
+        testImage.onerror = function() {
+            // Try next source
+            currentIndex++;
+            tryNextSource();
+        };
+        testImage.src = imageUrl;
+    }
+    
+    tryNextSource();
 }
 
 // Action modal functions

@@ -983,7 +983,7 @@ const MONSTERS_MM_COMPLETE4 = {
     },
     "abominable-yeti": {
         name: "Abominable Yeti",
-        source: "MM",
+        source: "XMM",
         size: "huge",
         type: "monstrosity",
         alignment: "chaotic evil",
