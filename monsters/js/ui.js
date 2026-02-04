@@ -503,11 +503,22 @@ async function generatePortrait() {
 }
 
 function buildMonsterPortraitPrompt(m) {
-    // For humanoids, use "character" instead of "monster" to get better results
+    // Customize subject word based on type to avoid biasing the AI
     const isHumanoid = m.type === 'humanoid';
-    const subjectWord = isHumanoid ? 'character' : 'creature';
+    const isElemental = m.type === 'elemental';
+    const isOoze = m.type === 'ooze';
     
-    let prompt = `Fantasy illustration of a ${m.size} ${m.type} ${subjectWord} called "${m.name}".`;
+    let subjectWord = 'creature';
+    if (isHumanoid) subjectWord = 'character';
+    else if (isElemental) subjectWord = 'being';
+    else if (isOoze) subjectWord = 'entity';
+    
+    // For elementals, don't say "elemental creature" - say "elemental force" or similar
+    let typeDesc = m.type;
+    if (isElemental) typeDesc = 'elemental force';
+    if (isOoze) typeDesc = 'amorphous ooze';
+    
+    let prompt = `Fantasy illustration of a ${m.size} ${typeDesc} ${subjectWord} called "${m.name}".`;
     
     // Try to get visual description - check monster object first, then MONSTER_DESCRIPTIONS directly
     let visualDesc = m.visualDescription;
@@ -530,7 +541,7 @@ function buildMonsterPortraitPrompt(m) {
             'celestial': 'Divine being with luminous skin, feathered wings glowing with holy light, a halo or nimbus of golden energy, and serene yet powerful expression',
             'construct': 'Artificial creation made of stone, metal, or wood, with glowing rune inscriptions, mechanical joints, and expressionless features animated by magic',
             'dragon': 'Massive reptilian creature with armored scales, bat-like wings, horns crowning its head, fearsome jaws filled with fangs, and eyes burning with ancient intelligence',
-            'elemental': 'Living embodiment of elemental force - swirling winds, crackling flames, flowing water, or shifting stone forming a vaguely humanoid shape',
+            'elemental': 'Living natural force taking vague humanoid shape - NOT a creature with a face or body, just raw elemental energy (wind, fire, water, or earth) in loose form. No animal features, no dragon features.',
             'fey': 'Ethereal creature of otherworldly beauty or strangeness, with features that shimmer between forms, pointed ears, and an aura of wild magic',
             'fiend': 'Demonic or devilish creature with horns, leathery bat wings, cloven hooves or clawed feet, burning eyes, and skin ranging from red to black',
             'giant': 'Enormous humanoid standing two to three times the height of a human, with proportionally massive muscles and a face weathered by age',

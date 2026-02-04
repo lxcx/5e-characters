@@ -25,7 +25,7 @@ const MONSTER_DESCRIPTIONS = {
     "adult-red-dragon": "Fearsome dragon with crimson scales, swept-back horns, and a frilled neck. Massive, muscular build with smoke curling from the nostrils.",
     "adult-silver-dragon": "Elegant dragon with gleaming silver scales, twin horns, and a ruff around the head. Noble features with a gentle but powerful presence.",
     "adult-white-dragon": "Feral-looking dragon with ice-white scales, spiny ridges, and cold blue eyes. Lean, predatory build adapted for arctic hunting.",
-    "air-elemental": "Swirling vortex of wind and cloud, vaguely humanoid in shape, with debris and leaves caught in the constant motion.",
+    "air-elemental": "Living tornado - a swirling vortex of wind, cloud, and mist in a loose humanoid silhouette. No face, no solid features, just flowing currents of air. Wispy and translucent with debris and leaves caught in the constant motion. NOT a creature with a body, just animated wind taking rough shape.",
     "ancient-black-dragon": "Colossal dragon with jet-black scales corroded by age, massive curved horns, and eyes burning with malice. Skeletal wings span an enormous distance.",
     "ancient-blue-dragon": "Titanic dragon with midnight-blue scales, a massive horn crackling with lightning, and an aura of supreme arrogance.",
     "ancient-red-dragon": "Gargantuan dragon with blood-red scales, enormous swept horns, and a body wreathed in heat shimmer. The ultimate apex predator.",
@@ -119,7 +119,7 @@ const MONSTER_DESCRIPTIONS = {
     "duergar": "Gray-skinned dwarf with bald head, white beard, and eyes adapted to darkness. Dour expression and iron equipment.",
     
     // ===== E =====
-    "earth-elemental": "Humanoid shape formed of rock, earth, and gemstones. Craggy features with glowing mineral eyes.",
+    "earth-elemental": "Living mound of rock and soil in a rough humanoid shape. Craggy boulder body with no distinct face, just darker crevices suggesting features. Stones, dirt, and crystals forming a massive lumbering form. A walking landslide, not a creature.",
     "efreeti": "Towering genie with crimson skin, flames for hair, and brass jewelry. Lower body dissolves into smoke and fire.",
     "erinyes": "Fallen angel with black feathered wings, beautiful but cold features, and armor of hellish design. Carries a bow.",
     "ettercap": "Spider-like humanoid with gray skin, multiple eyes, and spinnerets. Hunched posture with elongated limbs.",
@@ -141,7 +141,7 @@ const MONSTER_DESCRIPTIONS = {
     // ===== F =====
     "faerie-dragon": "Tiny dragon with butterfly wings, iridescent scales, and a mischievous personality. Color changes with age.",
     "faerie-dragon-red": "Mature faerie dragon with red scales, full magical abilities, and centuries of pranking experience.",
-    "fire-elemental": "Humanoid shape of living flame, constantly shifting and flickering, with eyes of white-hot intensity.",
+    "fire-elemental": "Living bonfire in a loose humanoid silhouette. Constantly shifting flames with no solid body, just fire taking rough shape. Bright orange and yellow with white-hot core. No face, just flickering tongues of flame. A walking inferno, not a creature with features.",
     "fire-giant": "Massive humanoid with coal-black skin, flaming orange hair, and a body built like a blacksmith. Wears armor of dark iron.",
     "fire-snake": "Serpent made of living fire, slithering through the air and leaving trails of flame.",
     "firenewt-warlock-of-imix": "Firenewt spellcaster devoted to the fire lord Imix, with glowing runes and enhanced flame powers.",
@@ -511,7 +511,7 @@ const MONSTER_DESCRIPTIONS = {
     
     // ===== W =====
     "warhorse": "Large, muscular horse bred for battle, with armor barding and a fierce temperament.",
-    "water-elemental": "Humanoid shape of living water, constantly flowing and reforming, with waves for features.",
+    "water-elemental": "Living wave in a rough humanoid silhouette. Translucent flowing water constantly churning and reshaping. No solid features, just currents and eddies suggesting a form. Blue-green and clear like ocean water. A walking tidal surge, not a creature with a face.",
     "werebear": "Humanoid that transforms into a massive bear, or a hybrid with ursine features. Usually good-natured.",
     "wereboar": "Humanoid that transforms into a boar, or a hybrid with tusks and coarse hair. Ill-tempered.",
     "wererat": "Humanoid that transforms into a giant rat, or a hybrid with rat features. Sneaky and disease-carrying.",
