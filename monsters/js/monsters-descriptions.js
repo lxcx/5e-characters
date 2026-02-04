@@ -14,7 +14,7 @@ const MONSTER_DESCRIPTIONS = {
     "androsphinx": "Male sphinx with a human male face, massive mane, lion's body, and great wings. Poses deadly challenges.",
     "animated-table": "A table animated by magic, attacking with legs and body slams.",
     "ankylosaurus": "Armored dinosaur with a club-like tail, bony plates, and a low, tanklike body.",
-    "autumn-eladrin": "Fey elf embodying autumn - hair of red and gold leaves, melancholic expression, aura of peaceful endings."
+    "autumn-eladrin": "Fey elf embodying autumn - hair of red and gold leaves, melancholic expression, aura of peaceful endings.",
     "adult-black-dragon": "Sleek dragon with glossy black scales, curved horns sweeping back, and acid-scarred flesh. Skeletal, serpentine build with tattered wing membranes.",
     "adult-blue-dragon": "Majestic dragon with deep blue scales, single large horn on the snout, and frilled ears. Muscular build with crackling electricity between its teeth.",
     "adult-brass-dragon": "Warm-colored dragon with brass-tinted scales, twin horns curving backward, and a friendly demeanor. Broad wings and a ridge of small spines down the back.",

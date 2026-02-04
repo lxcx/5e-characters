@@ -280,6 +280,8 @@ function renderReactions(monster) {
 // Render legendary actions
 function renderLegendaryActions(monster) {
     if (!monster.legendaryActions) return '';
+    const actions = monster.legendaryActions.actions;
+    if (!actions || !Array.isArray(actions) || actions.length === 0) return '';
     
     // Support both formats: count (generated) and perRound (library)
     const actionCount = monster.legendaryActions.count || monster.legendaryActions.perRound || 3;
@@ -288,7 +290,7 @@ function renderLegendaryActions(monster) {
         <div class="legendary-section">
             <h3 class="section-title"><i class="fa-solid fa-crown"></i> Legendary Actions</h3>
             <p class="legendary-intro">The creature can take ${actionCount} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
-            ${monster.legendaryActions.actions.map(action => {
+            ${actions.map(action => {
                 // Check if cost is included in name (library format) or as separate property
                 const hasCostInName = action.name.includes('Costs') || action.name.includes('costs');
                 const costSuffix = !hasCostInName && action.cost > 1 ? ` (Costs ${action.cost} Actions)` : '';

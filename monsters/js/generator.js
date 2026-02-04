@@ -167,7 +167,8 @@ function convertLibraryMonster(data) {
         spellcasting: data.spellcasting || null,
         isLegendary: !!data.legendaryActions,
         hasSpellcasting: !!data.spellcasting,
-        description: `A ${data.size} ${data.type} from the ${data.source || 'Monster Manual'}.`,
+        description: data.description || `A ${data.size} ${data.type} from the ${data.source || 'Monster Manual'}.`,
+        visualDescription: data.visualDescription || undefined,
         isFromLibrary: true
     };
 }
