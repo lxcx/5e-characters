@@ -4136,6 +4136,14 @@ function buildPortraitPrompt(npc) {
     // Get race-specific features
     const raceFeatures = getRaceVisualFeatures(npc.race);
     
+    // Check if this is a non-human race that needs extra emphasis
+    const nonHumanRaces = [
+        'aarakocra', 'kenku', 'owlin', 'tabaxi', 'leonin', 'lizardfolk', 'dragonborn',
+        'tortle', 'yuan-ti', 'kobold', 'minotaur', 'harengon', 'loxodon', 'grung',
+        'locathah', 'thri-kreen', 'warforged', 'autognome'
+    ];
+    const isNonHuman = nonHumanRaces.includes(npc.race.toLowerCase());
+    
     // Build the prompt - prefix with "dnd 5e [race]" for better race-specific generation
     let prompt = `DnD 5e ${npc.race}. Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
     
@@ -4155,8 +4163,12 @@ function buildPortraitPrompt(npc) {
         prompt += ` ${attireHints}`;
     }
 
-    // Art style
-    prompt += ` Detailed fantasy art, dramatic lighting, character portrait, Dungeons and Dragons style, digital painting.`;
+    // Art style - add stronger non-human emphasis if needed
+    if (isNonHuman) {
+        prompt += ` Detailed fantasy art, dramatic lighting, character portrait, Dungeons and Dragons style, digital painting. IMPORTANT: This is NOT a human - do not give this character a human face.`;
+    } else {
+        prompt += ` Detailed fantasy art, dramatic lighting, character portrait, Dungeons and Dragons style, digital painting.`;
+    }
 
     return prompt;
 }
@@ -4184,6 +4196,7 @@ function generatePortraitPrompt() {
 
 function getRaceVisualFeatures(race) {
     const features = {
+        // Humanoid races (human-like faces)
         'human': 'Human with varied features.',
         'elf': 'Elegant elven features with pointed ears and graceful build.',
         'high elf': 'High elf with refined features, pointed ears, and an air of arcane nobility.',
@@ -4200,34 +4213,44 @@ function getRaceVisualFeatures(race) {
         'rock gnome': 'Rock gnome with clever eyes, wild hair, and inventive spark.',
         'half-elf': 'Half-elf combining human and elven features with slightly pointed ears.',
         'half-orc': 'Half-orc with grayish-green skin, prominent jaw, and tusks.',
-        'tiefling': 'Tiefling with reddish skin, horns, and a long tail. Infernal heritage visible.',
-        'dragonborn': 'Dragonborn with scaled skin, draconic features, and proud bearing.',
+        'tiefling': 'Tiefling with reddish skin, curved horns on head, and a long tail. Infernal heritage visible.',
         'aasimar': 'Aasimar with celestial beauty, glowing eyes, and ethereal presence.',
         'goliath': 'Massive goliath with gray skin, bald head, and tribal markings.',
-        'firbolg': 'Tall firbolg with bovine-like features, large nose, and gentle eyes.',
-        'kenku': 'Kenku with black feathered body, beak, and corvid features.',
-        'lizardfolk': 'Lizardfolk with scaled green skin, reptilian features, and cold eyes.',
-        'tabaxi': 'Tabaxi with feline features, fur patterns, and cat-like eyes.',
-        'tortle': 'Tortle with shell on back, reptilian features, and wise eyes.',
-        'aarakocra': 'Aarakocra with bird-like features, feathered body, and wings.',
         'genasi': 'Genasi with elemental features reflecting their heritage.',
-        'warforged': 'Warforged with mechanical body, glowing eyes, and constructed appearance.',
         'changeling': 'Changeling with pale features and slightly unsettling androgynous appearance.',
         'kalashtar': 'Kalashtar with serene human-like features and distant, dreamlike gaze.',
-        'shifter': 'Shifter with bestial features, sharp teeth, and animalistic traits.',
-        'yuan-ti': 'Yuan-ti with snake-like features, scales, and serpentine eyes.',
         'triton': 'Triton with blue-green skin, webbed fingers, and aquatic features.',
-        'bugbear': 'Bugbear with hulking furry body, pointed ears, and menacing presence.',
         'goblin': 'Small goblin with green skin, pointed ears, and sharp features.',
         'hobgoblin': 'Hobgoblin with orange-red skin, military bearing, and disciplined expression.',
-        'kobold': 'Small kobold with reptilian features, scales, and dragon-like appearance.',
         'orc': 'Full orc with green skin, tusks, and powerful savage features.',
-        'centaur': 'Centaur with human upper body and horse lower body.',
-        'minotaur': 'Minotaur with bull head, horns, and powerful humanoid body.',
-        'satyr': 'Satyr with goat legs, small horns, and mischievous features.',
         'fairy': 'Tiny fairy with delicate features, gossamer wings, and ethereal glow.',
-        'harengon': 'Harengon with rabbit-like features, long ears, and alert expression.',
-        'owlin': 'Owlin with owl-like features, feathers, and large wise eyes.'
+        
+        // Non-human faces - EXPLICIT descriptions needed
+        'aarakocra': 'NOT HUMAN. Bird-person with eagle/parrot head, sharp beak instead of mouth, feathers covering entire body, bird eyes, taloned feet, large feathered wings. Avian humanoid creature.',
+        'kenku': 'NOT HUMAN. Crow-person with black feathered raven/crow head, long pointed beak instead of mouth, black feathers covering entire body, beady bird eyes. Corvid humanoid creature.',
+        'owlin': 'NOT HUMAN. Owl-person with owl head, flat owl face with large round owl eyes, small hooked beak, feathers covering entire body, owl-like wings. Owl humanoid creature.',
+        'tabaxi': 'NOT HUMAN. Cat-person with feline cat head, fur-covered face with cat nose and whiskers, cat ears on top of head, slit-pupil cat eyes, fur covering entire body. Feline humanoid creature.',
+        'leonin': 'NOT HUMAN. Lion-person with lion head, full lion mane, lion face with muzzle and fangs, fur covering entire body. Lion humanoid creature.',
+        'lizardfolk': 'NOT HUMAN. Lizard-person with reptilian head, scaly snout with sharp teeth, no hair, scales covering entire body, reptilian yellow eyes with slit pupils. Reptilian humanoid creature.',
+        'dragonborn': 'NOT HUMAN. Dragon-person with dragon head, scaly draconic snout, no hair, scales covering entire body, dragon eyes. Draconic humanoid creature with proud bearing.',
+        'tortle': 'NOT HUMAN. Turtle-person with reptilian turtle head, beak-like mouth, large shell on back, scaly skin, wise ancient eyes. Turtle humanoid creature.',
+        'yuan-ti': 'NOT HUMAN. Snake-person with serpentine features, forked tongue, scales covering body, snake-like eyes with slit pupils. Serpent humanoid creature.',
+        'kobold': 'NOT HUMAN. Small dragon-like creature with reptilian head, scaly snout, scales covering entire body, small horns, dragon-like eyes. Tiny draconic humanoid.',
+        'bugbear': 'Bugbear with hulking furry body, flat goblinoid face with pointed ears, long arms, shaggy fur covering body.',
+        'minotaur': 'NOT HUMAN. Bull-person with full bull head, bovine snout with nose ring, large curved horns, bull ears, fur covering body. Minotaur creature.',
+        'harengon': 'NOT HUMAN. Rabbit-person with rabbit head, long rabbit ears, rabbit nose and whiskers, fur covering body, large rabbit feet. Rabbit humanoid creature.',
+        'firbolg': 'Tall firbolg with cow-like broad nose, long pointed ears, blue or gray skin tones, gentle giant appearance.',
+        'shifter': 'Shifter with bestial features, pointed ears, sharp fangs, wild hair, and animalistic traits showing lycanthrope heritage.',
+        'centaur': 'Centaur with human upper body attached to full horse body with four horse legs. Half-human half-horse.',
+        'satyr': 'Satyr with human upper body, small curved horns on head, pointed ears, goat legs with hooves below the waist.',
+        'warforged': 'NOT ORGANIC. Living construct with mechanical/wooden body, armored plates, glowing eyes set in metallic face, no skin or flesh. Robot-like humanoid.',
+        'autognome': 'NOT ORGANIC. Small mechanical gnome-robot, clockwork body made of metal and gears, glowing eyes, constructed mechanical face. Tiny robot creature.',
+        'loxodon': 'NOT HUMAN. Elephant-person with elephant head, long trunk, large floppy ears, tusks, gray thick skin. Elephant humanoid creature.',
+        'grung': 'NOT HUMAN. Frog-person with frog head, wide frog mouth, bulging frog eyes, smooth amphibian skin, bright colored poison frog. Small frog humanoid.',
+        'locathah': 'NOT HUMAN. Fish-person with fish head, gills, fish eyes on sides of head, scales covering body, fins. Aquatic fish humanoid.',
+        'thri-kreen': 'NOT HUMAN. Insect-person with mantis head, compound insect eyes, mandibles instead of mouth, four arms, chitinous exoskeleton. Bug humanoid creature.',
+        'gith': 'Gaunt humanoid with yellow-green skin, pointed ears, angular features, sunken eyes.',
+        'vedalken': 'Tall humanoid with blue skin, no hair, large blue eyes, elongated head, logical expression.'
     };
     return features[race.toLowerCase()] || `${capitalize(race)} with distinctive racial features.`;
 }
