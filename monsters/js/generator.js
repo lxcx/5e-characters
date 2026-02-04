@@ -217,6 +217,12 @@ function generateMonster() {
         hasSpellcasting: options.hasSpellcasting
     };
     
+    // Calculate modifiers (needed for spellcasting, saving throws, skills)
+    monster.abilityModifiers = {};
+    for (const [ability, score] of Object.entries(monster.abilityScores)) {
+        monster.abilityModifiers[ability] = getModifier(score);
+    }
+    
     // Add multiattack if appropriate
     if (options.cr >= 1 && monster.actions.length > 1) {
         monster.multiattack = generateMultiattack(monster.actions);
@@ -231,12 +237,6 @@ function generateMonster() {
     // Add spellcasting if enabled
     if (options.hasSpellcasting) {
         monster.spellcasting = generateSpellcasting(monster, options.cr);
-    }
-    
-    // Calculate modifiers
-    monster.abilityModifiers = {};
-    for (const [ability, score] of Object.entries(monster.abilityScores)) {
-        monster.abilityModifiers[ability] = getModifier(score);
     }
     
     // Calculate saving throws
