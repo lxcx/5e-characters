@@ -589,9 +589,94 @@ function copyPromptToClipboard() {
     btn.classList.add('copied');
     
     setTimeout(() => {
-        btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy to Clipboard';
+        btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy';
         btn.classList.remove('copied');
     }, 2000);
+}
+
+// Generate portrait with custom/edited prompt
+async function generateWithCustomPrompt() {
+    const customPrompt = document.getElementById('portraitPromptText').value.trim();
+    if (!customPrompt) return;
+    
+    // Close modal
+    closePromptModal();
+    
+    // Show loading state
+    const placeholder = document.getElementById('portraitPlaceholder');
+    const loading = document.getElementById('portraitLoading');
+    const image = document.getElementById('portraitImage');
+    const btn = document.querySelector('.generate-portrait-btn');
+    
+    if (placeholder) placeholder.style.display = 'none';
+    if (loading) {
+        loading.style.display = 'flex';
+        loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Generating with custom prompt...</span>`;
+    }
+    if (image) image.style.display = 'none';
+    if (btn) btn.disabled = true;
+    
+    // Try Prodia first
+    try {
+        const response = await fetch('/api/generate-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: customPrompt, width: 512, height: 512 })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.imageUrl) {
+                if (image) {
+                    image.src = data.imageUrl;
+                    image.style.display = 'block';
+                }
+                if (loading) loading.style.display = 'none';
+                if (btn) btn.disabled = false;
+                return;
+            }
+        }
+    } catch (error) {
+        console.log('Prodia failed, trying Pollinations fallback...');
+    }
+    
+    // Fallback to Pollinations
+    if (loading) {
+        loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Trying backup service...</span>`;
+    }
+    
+    const encodedPrompt = encodeURIComponent(customPrompt);
+    const seed = Math.floor(Math.random() * 999999999);
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&seed=${seed}&model=flux&nologo=true&safe=true&private=true`;
+    
+    const newImage = new Image();
+    newImage.onload = function() {
+        if (image) {
+            image.src = imageUrl;
+            image.style.display = 'block';
+        }
+        if (loading) loading.style.display = 'none';
+        if (btn) btn.disabled = false;
+    };
+    newImage.onerror = function() {
+        if (loading) loading.style.display = 'none';
+        if (placeholder) {
+            placeholder.style.display = 'flex';
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5em; color: #dc3545;"></i>
+                <span style="text-align: center; font-size: 0.9em;">Image generation failed.<br>Try editing the prompt.</span>
+            `;
+        }
+        if (btn) btn.disabled = false;
+    };
+    newImage.src = imageUrl;
+}
+
+// Reset prompt to auto-generated default
+function resetPromptToDefault() {
+    if (!currentMonster) return;
+    const prompt = buildMonsterPortraitPrompt(currentMonster);
+    document.getElementById('portraitPromptText').value = prompt;
 }
 
 // Action modal functions
