@@ -91,8 +91,11 @@ function displayMonster(monster) {
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Portrait
                     </button>
                     <button class="view-prompt-btn" onclick="showPortraitPrompt()">
-                        <i class="fa-solid fa-scroll"></i> View Prompt
+                        <i class="fa-solid fa-scroll"></i> Edit Prompt
                     </button>
+                    ${monster.source ? `<button class="official-art-btn" onclick="loadOfficialArt()">
+                        <i class="fa-solid fa-book"></i> Official Art
+                    </button>` : ''}
                 </div>
             </div>
             
@@ -702,6 +705,65 @@ function resetPromptToDefault() {
     if (!currentMonster) return;
     const prompt = buildMonsterPortraitPrompt(currentMonster);
     document.getElementById('portraitPromptText').value = prompt;
+}
+
+// Load official art from 5e.tools
+function loadOfficialArt() {
+    if (!currentMonster || !currentMonster.source) return;
+    
+    // Map source names to 5e.tools source codes
+    const sourceMap = {
+        'MM': 'MM',
+        'Monster Manual': 'MM',
+        'VGtM': 'VGM',
+        "Volo's Guide to Monsters": 'VGM',
+        'MToF': 'MTF',
+        "Mordenkainen's Tome of Foes": 'MTF',
+        'XGtE': 'XGE',
+        'TCoE': 'TCE',
+        'FToD': 'FTD',
+        'MotM': 'MPMM',
+        'Basic Rules': 'MM'
+    };
+    
+    const source = sourceMap[currentMonster.source] || currentMonster.source;
+    const monsterName = currentMonster.name;
+    
+    // 5e.tools URL format
+    const imageUrl = `https://5e.tools/img/bestiary/${source}/${encodeURIComponent(monsterName)}.webp`;
+    
+    // Show loading state
+    const placeholder = document.getElementById('portraitPlaceholder');
+    const loading = document.getElementById('portraitLoading');
+    const image = document.getElementById('portraitImage');
+    
+    if (placeholder) placeholder.style.display = 'none';
+    if (loading) {
+        loading.style.display = 'flex';
+        loading.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Loading official art...</span>`;
+    }
+    if (image) image.style.display = 'none';
+    
+    // Try to load the image
+    const testImage = new Image();
+    testImage.onload = function() {
+        if (image) {
+            image.src = imageUrl;
+            image.style.display = 'block';
+        }
+        if (loading) loading.style.display = 'none';
+    };
+    testImage.onerror = function() {
+        if (loading) loading.style.display = 'none';
+        if (placeholder) {
+            placeholder.style.display = 'flex';
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash" style="font-size: 2em; color: #6c757d;"></i>
+                <span style="text-align: center;">No official art found for this monster.<br>Try generating one instead!</span>
+            `;
+        }
+    };
+    testImage.src = imageUrl;
 }
 
 // Action modal functions
