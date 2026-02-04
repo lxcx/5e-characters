@@ -767,7 +767,22 @@ function loadOfficialArt() {
     };
     
     const source = sourceMap[currentMonster.source] || currentMonster.source;
-    const monsterName = currentMonster.name;
+    
+    // Normalize monster name for 5e.tools image URLs
+    // 5e.tools often uses simplified names (e.g., "Green Dragon" instead of "Adult Green Dragon")
+    let monsterName = currentMonster.name;
+    
+    // Remove age prefixes from dragons and other creatures
+    const agePrefixes = ['Adult ', 'Young ', 'Ancient ', 'Wyrmling ', 'Elder ', 'Greater ', 'Lesser '];
+    for (const prefix of agePrefixes) {
+        if (monsterName.startsWith(prefix)) {
+            // For dragons, remove the prefix
+            if (monsterName.includes('Dragon') || monsterName.includes('Dracolich')) {
+                monsterName = monsterName.substring(prefix.length);
+                break;
+            }
+        }
+    }
     
     // 5e.tools URL format
     const imageUrl = `https://5e.tools/img/bestiary/${source}/${encodeURIComponent(monsterName)}.webp`;
