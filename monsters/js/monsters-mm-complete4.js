@@ -981,7 +981,7 @@ const MONSTERS_MM_COMPLETE4 = {
             { name: "Chilling Gaze", description: "The yeti targets one creature it can see within 30 feet of it. If the target can see the yeti, the target must succeed on a DC 13 Constitution saving throw against this magic or take 10 (3d6) cold damage and then be paralyzed for 1 minute, unless it is immune to cold damage. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If the target's saving throw is successful, or if the effect ends on it, the target is immune to the Chilling Gaze of all yetis (but not abominable yetis) for 1 hour." }
         ]
     },
-    "yeti-abominable": {
+    "abominable-yeti": {
         name: "Abominable Yeti",
         source: "MM",
         size: "huge",

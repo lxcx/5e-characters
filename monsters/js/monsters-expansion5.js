@@ -3,117 +3,10 @@
 
 const MONSTERS_EXPANSION5 = {
     // ===== Kobolds & Goblins =====
-    "kobold": {
-        name: "Kobold",
-        source: "MM",
-        size: "small",
-        type: "humanoid",
-        subtype: "kobold",
-        alignment: "lawful evil",
-        ac: 12,
-        hp: 5,
-        hitDice: "2d6-2",
-        speed: { walk: 30 },
-        abilityScores: { str: 7, dex: 15, con: 9, int: 8, wis: 7, cha: 8 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Draconic",
-        cr: 0.125,
-        environment: ["forest", "hill", "mountain", "underdark"],
-        role: "minion",
-        tags: ["humanoid", "kobold"],
-        traits: [
-            { name: "Sunlight Sensitivity", description: "While in sunlight, the kobold has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." },
-            { name: "Pack Tactics", description: "The kobold has advantage on an attack roll against a creature if at least one of the kobold's allies is within 5 feet of the creature and the ally isn't incapacitated." }
-        ],
-        actions: [
-            { name: "Dagger", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage." },
-            { name: "Sling", description: "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4+2) bludgeoning damage." }
-        ]
-    },
-    "goblin": {
-        name: "Goblin",
-        source: "MM",
-        size: "small",
-        type: "humanoid",
-        subtype: "goblinoid",
-        alignment: "neutral evil",
-        ac: 15,
-        acType: "leather armor, shield",
-        hp: 7,
-        hitDice: "2d6",
-        speed: { walk: 30 },
-        abilityScores: { str: 8, dex: 14, con: 10, int: 10, wis: 8, cha: 8 },
-        skills: { stealth: 6 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Goblin",
-        cr: 0.25,
-        environment: ["forest", "grassland", "hill", "underdark"],
-        role: "minion",
-        tags: ["humanoid", "goblinoid"],
-        traits: [
-            { name: "Nimble Escape", description: "The goblin can take the Disengage or Hide action as a bonus action on each of its turns." }
-        ],
-        actions: [
-            { name: "Scimitar", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage." },
-            { name: "Shortbow", description: "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6+2) piercing damage." }
-        ]
-    },
-    "hobgoblin": {
-        name: "Hobgoblin",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        subtype: "goblinoid",
-        alignment: "lawful evil",
-        ac: 18,
-        acType: "chain mail, shield",
-        hp: 11,
-        hitDice: "2d8+2",
-        speed: { walk: 30 },
-        abilityScores: { str: 13, dex: 12, con: 12, int: 10, wis: 10, cha: 9 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Goblin",
-        cr: 0.5,
-        environment: ["forest", "grassland", "hill", "underdark"],
-        role: "soldier",
-        tags: ["humanoid", "goblinoid"],
-        traits: [
-            { name: "Martial Advantage", description: "Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the hobgoblin that isn't incapacitated." }
-        ],
-        actions: [
-            { name: "Longsword", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) slashing damage, or 6 (1d10+1) slashing damage if used with two hands." },
-            { name: "Longbow", description: "Ranged Weapon Attack: +3 to hit, range 150/600 ft., one target. Hit: 5 (1d8+1) piercing damage." }
-        ]
-    },
-    "bugbear": {
-        name: "Bugbear",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        subtype: "goblinoid",
-        alignment: "chaotic evil",
-        ac: 16,
-        acType: "hide armor, shield",
-        hp: 27,
-        hitDice: "5d8+5",
-        speed: { walk: 30 },
-        abilityScores: { str: 15, dex: 14, con: 13, int: 8, wis: 11, cha: 9 },
-        skills: { stealth: 6, survival: 2 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Goblin",
-        cr: 1,
-        environment: ["forest", "grassland", "underdark"],
-        role: "brute",
-        tags: ["humanoid", "goblinoid"],
-        traits: [
-            { name: "Brute", description: "A melee weapon deals one extra die of its damage when the bugbear hits with it (included in the attack)." },
-            { name: "Surprise Attack", description: "If the bugbear surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack." }
-        ],
-        actions: [
-            { name: "Morningstar", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d8+2) piercing damage." },
-            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 9 (2d6+2) piercing damage in melee or 5 (1d6+2) piercing damage at range." }
-        ]
-    },
+    
+    
+    
+    
 
     // ===== Orcs =====
     "orc": {
@@ -183,34 +76,7 @@ const MONSTERS_EXPANSION5 = {
     },
 
     // ===== Gnolls =====
-    "gnoll": {
-        name: "Gnoll",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        subtype: "gnoll",
-        alignment: "chaotic evil",
-        ac: 15,
-        acType: "hide armor, shield",
-        hp: 22,
-        hitDice: "5d8",
-        speed: { walk: 30 },
-        abilityScores: { str: 14, dex: 12, con: 11, int: 6, wis: 10, cha: 7 },
-        senses: ["darkvision 60 ft."],
-        languages: "Gnoll",
-        cr: 0.5,
-        environment: ["forest", "grassland", "hill"],
-        role: "brute",
-        tags: ["humanoid", "gnoll"],
-        traits: [
-            { name: "Rampage", description: "When the gnoll reduces a creature to 0 hit points with a melee attack on its turn, the gnoll can take a bonus action to move up to half its speed and make a bite attack." }
-        ],
-        actions: [
-            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 4 (1d4+2) piercing damage." },
-            { name: "Spear", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack." },
-            { name: "Longbow", description: "Ranged Weapon Attack: +3 to hit, range 150/600 ft., one target. Hit: 5 (1d8+1) piercing damage." }
-        ]
-    },
+    
     "gnoll-pack-lord": {
         name: "Gnoll Pack Lord",
         source: "MM",
@@ -272,44 +138,7 @@ const MONSTERS_EXPANSION5 = {
     },
 
     // ===== Drow =====
-    "drow": {
-        name: "Drow",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        subtype: "elf",
-        alignment: "neutral evil",
-        ac: 15,
-        acType: "chain shirt",
-        hp: 13,
-        hitDice: "3d8",
-        speed: { walk: 30 },
-        abilityScores: { str: 10, dex: 14, con: 10, int: 11, wis: 11, cha: 12 },
-        skills: { perception: 2, stealth: 4 },
-        senses: ["darkvision 120 ft."],
-        languages: "Elvish, Undercommon",
-        cr: 0.25,
-        environment: ["underdark"],
-        role: "skirmisher",
-        tags: ["humanoid", "elf", "drow"],
-        traits: [
-            { name: "Fey Ancestry", description: "The drow has advantage on saving throws against being charmed, and magic can't put the drow to sleep." },
-            { name: "Sunlight Sensitivity", description: "While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
-        ],
-        actions: [
-            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." },
-            { name: "Hand Crossbow", description: "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the target is also unconscious while poisoned in this way." }
-        ],
-        spellcasting: {
-            innate: true,
-            ability: "cha",
-            dc: 11,
-            spells: {
-                atWill: ["dancing lights"],
-                "1/day each": ["darkness", "faerie fire"]
-            }
-        }
-    },
+    
     "drow-elite-warrior": {
         name: "Drow Elite Warrior",
         source: "MM",
@@ -473,159 +302,11 @@ const MONSTERS_EXPANSION5 = {
             { name: "Claw", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage." }
         ]
     },
-    "kuo-toa": {
-        name: "Kuo-toa",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        subtype: "kuo-toa",
-        alignment: "neutral evil",
-        ac: 13,
-        acType: "natural armor, shield",
-        hp: 18,
-        hitDice: "4d8",
-        speed: { walk: 30, swim: 30 },
-        abilityScores: { str: 13, dex: 10, con: 11, int: 11, wis: 10, cha: 8 },
-        skills: { perception: 4 },
-        senses: ["darkvision 120 ft."],
-        languages: "Undercommon",
-        cr: 0.25,
-        environment: ["underdark", "underwater"],
-        role: "soldier",
-        tags: ["humanoid", "kuo-toa", "aquatic"],
-        traits: [
-            { name: "Amphibious", description: "The kuo-toa can breathe air and water." },
-            { name: "Otherworldly Perception", description: "The kuo-toa can sense the presence of any creature within 30 feet of it that is invisible or on the Ethereal Plane. It can pinpoint such a creature that is moving." },
-            { name: "Slippery", description: "The kuo-toa has advantage on ability checks and saving throws made to escape a grapple." },
-            { name: "Sunlight Sensitivity", description: "While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
-        ],
-        actions: [
-            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) piercing damage." },
-            { name: "Spear", description: "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6+1) piercing damage, or 5 (1d8+1) piercing damage if used with two hands to make a melee attack." },
-            { name: "Net", description: "Ranged Weapon Attack: +3 to hit, range 5/15 ft., one Large or smaller creature. Hit: The target is restrained. A creature can use its action to make a DC 10 Strength check to free itself or another creature in a net, ending the effect on a success. Dealing 5 slashing damage to the net (AC 10) frees the target without harming it and destroys the net." }
-        ],
-        reactions: [
-            { name: "Sticky Shield", description: "When a creature misses the kuo-toa with a melee weapon attack, the kuo-toa uses its sticky shield to catch the weapon. The attacker must succeed on a DC 11 Strength saving throw, or the weapon becomes stuck to the kuo-toa's shield. If the weapon's wielder can't or won't let go of the weapon, the wielder is grappled while the weapon is stuck. While stuck, the weapon can't be used. A creature can pull the weapon free by taking an action to make a DC 11 Strength check and succeeding." }
-        ]
-    },
+    
 
     // ===== More Classic Creatures =====
-    "mimic": {
-        name: "Mimic",
-        source: "MM",
-        size: "medium",
-        type: "monstrosity",
-        subtype: "shapechanger",
-        alignment: "neutral",
-        ac: 12,
-        acType: "natural armor",
-        hp: 58,
-        hitDice: "9d8+18",
-        speed: { walk: 15 },
-        abilityScores: { str: 17, dex: 12, con: 15, int: 5, wis: 13, cha: 8 },
-        skills: { stealth: 5 },
-        damageImmunities: ["acid"],
-        conditionImmunities: ["prone"],
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 2,
-        environment: ["underdark", "dungeon"],
-        role: "lurker",
-        tags: ["monstrosity", "shapechanger"],
-        traits: [
-            { name: "Shapechanger", description: "The mimic can use its action to polymorph into an object or back into its true, amorphous form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies." },
-            { name: "Adhesive (Object Form Only)", description: "The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also grappled by it (escape DC 13). Ability checks made to escape this grapple have disadvantage." },
-            { name: "False Appearance (Object Form Only)", description: "While the mimic remains motionless, it is indistinguishable from an ordinary object." },
-            { name: "Grappler", description: "The mimic has advantage on attack rolls against any creature grappled by it." }
-        ],
-        actions: [
-            { name: "Pseudopod", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage. If the mimic is in object form, the target is subjected to its Adhesive trait." },
-            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage plus 4 (1d8) acid damage." }
-        ]
-    },
-    "phase-spider": {
-        name: "Phase Spider",
-        source: "MM",
-        size: "large",
-        type: "monstrosity",
-        alignment: "unaligned",
-        ac: 13,
-        acType: "natural armor",
-        hp: 32,
-        hitDice: "5d10+5",
-        speed: { walk: 30, climb: 30 },
-        abilityScores: { str: 15, dex: 15, con: 12, int: 6, wis: 10, cha: 6 },
-        skills: { stealth: 6 },
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 3,
-        environment: ["underdark", "forest"],
-        role: "lurker",
-        tags: ["monstrosity", "spider", "ethereal"],
-        traits: [
-            { name: "Ethereal Jaunt", description: "As a bonus action, the spider can magically shift from the Material Plane to the Ethereal Plane, or vice versa." },
-            { name: "Spider Climb", description: "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." },
-            { name: "Web Walker", description: "The spider ignores movement restrictions caused by webbing." }
-        ],
-        actions: [
-            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (1d10+2) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 18 (4d8) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way." }
-        ]
-    },
-    "carrion-crawler": {
-        name: "Carrion Crawler",
-        source: "MM",
-        size: "large",
-        type: "monstrosity",
-        alignment: "unaligned",
-        ac: 13,
-        acType: "natural armor",
-        hp: 51,
-        hitDice: "6d10+18",
-        speed: { walk: 30, climb: 30 },
-        abilityScores: { str: 14, dex: 13, con: 16, int: 1, wis: 12, cha: 5 },
-        skills: { perception: 3 },
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 2,
-        environment: ["underdark"],
-        role: "lurker",
-        tags: ["monstrosity"],
-        traits: [
-            { name: "Keen Smell", description: "The carrion crawler has advantage on Wisdom (Perception) checks that rely on smell." },
-            { name: "Spider Climb", description: "The carrion crawler can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The carrion crawler makes two attacks: one with its tentacles and one with its bite." },
-            { name: "Tentacles", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one creature. Hit: 4 (1d4+2) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 minute. Until this poison ends, the target is paralyzed. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success." },
-            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) piercing damage." }
-        ]
-    },
-    "grick": {
-        name: "Grick",
-        source: "MM",
-        size: "medium",
-        type: "monstrosity",
-        alignment: "neutral",
-        ac: 14,
-        acType: "natural armor",
-        hp: 27,
-        hitDice: "6d8",
-        speed: { walk: 30, climb: 30 },
-        abilityScores: { str: 14, dex: 14, con: 11, int: 3, wis: 14, cha: 5 },
-        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 2,
-        environment: ["underdark"],
-        role: "lurker",
-        tags: ["monstrosity"],
-        traits: [
-            { name: "Stone Camouflage", description: "The grick has advantage on Dexterity (Stealth) checks made to hide in rocky terrain." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The grick makes one attack with its tentacles. If that attack hits, the grick can make one beak attack against the same target." },
-            { name: "Tentacles", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) slashing damage." },
-            { name: "Beak", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." }
-        ]
-    }
+    
+    
+    
+    
 };

@@ -3,98 +3,9 @@
 
 const monstersMM_D = {
     // ===== D =====
-    "darkmantle": {
-        name: "Darkmantle",
-        source: "MM",
-        size: "small",
-        type: "monstrosity",
-        alignment: "unaligned",
-        ac: 11,
-        hp: 22,
-        hitDice: "5d6+5",
-        speed: { walk: "10 ft.", fly: "30 ft." },
-        abilityScores: { str: 16, dex: 12, con: 13, int: 2, wis: 10, cha: 5 },
-        skills: { stealth: 3 },
-        senses: ["blindsight 60 ft.", "passive Perception 10"],
-        languages: "—",
-        cr: 0.5,
-        traits: [
-            { name: "Echolocation", description: "The darkmantle can't use its blindsight while deafened." },
-            { name: "False Appearance", description: "While the darkmantle remains motionless, it is indistinguishable from a cave formation such as a stalactite or stalagmite." }
-        ],
-        actions: [
-            { name: "Crush", type: "melee", attackBonus: 5, reach: 5, damage: "1d6+3 bludgeoning", additionalText: "The darkmantle attaches to the target. If the target is Medium or smaller and the darkmantle has advantage on the attack roll, it attaches by engulfing the target's head, and the target is also blinded and unable to breathe while the darkmantle is attached in this way.\n\nWhile attached to the target, the darkmantle can attack no other creature except the target but has advantage on its attack rolls. The darkmantle's speed also becomes 0, it can't benefit from any bonus to its speed, and it moves with the target.\n\nA creature can detach the darkmantle by taking an action to make a DC 13 Strength check and succeeding." },
-            { name: "Darkness Aura (1/Day)", description: "A 15-foot radius of magical darkness extends out from the darkmantle, moves with it, and spreads around corners. The darkness lasts as long as the darkmantle maintains concentration, up to 10 minutes. Darkvision can't penetrate this darkness, and no natural light can illuminate it. If any of the darkness overlaps with an area of light created by a spell of 2nd level or lower, the spell creating the light is dispelled." }
-        ]
-    },
-    "death-dog": {
-        name: "Death Dog",
-        source: "MM",
-        size: "medium",
-        type: "monstrosity",
-        alignment: "neutral evil",
-        ac: 12,
-        hp: 39,
-        hitDice: "6d8+12",
-        speed: { walk: "40 ft." },
-        abilityScores: { str: 15, dex: 14, con: 14, int: 3, wis: 13, cha: 6 },
-        skills: { perception: 5, stealth: 4 },
-        senses: ["darkvision 120 ft.", "passive Perception 15"],
-        languages: "—",
-        cr: 1,
-        traits: [
-            { name: "Two-Headed", description: "The dog has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The dog makes two bite attacks." },
-            { name: "Bite", type: "melee", attackBonus: 4, reach: 5, damage: "1d6+2 piercing", additionalText: "If the target is a creature, it must succeed on a DC 12 Constitution saving throw against disease or become poisoned until the disease is cured. Every 24 hours that elapse, the creature must repeat the saving throw, reducing its hit point maximum by 5 (1d10) on a failure. This reduction lasts until the disease is cured. The creature dies if the disease reduces its hit point maximum to 0." }
-        ]
-    },
-    "death-knight": {
-        name: "Death Knight",
-        source: "MM",
-        size: "medium",
-        type: "undead",
-        alignment: "chaotic evil",
-        ac: 20,
-        acType: "plate, shield",
-        hp: 180,
-        hitDice: "19d8+95",
-        speed: { walk: "30 ft." },
-        abilityScores: { str: 20, dex: 11, con: 20, int: 12, wis: 16, cha: 18 },
-        savingThrows: { dex: 6, wis: 9, cha: 10 },
-        damageImmunities: ["necrotic", "poison"],
-        conditionImmunities: ["exhaustion", "frightened", "poisoned"],
-        senses: ["darkvision 120 ft.", "passive Perception 13"],
-        languages: "Abyssal, Common",
-        cr: 17,
-        traits: [
-            { name: "Magic Resistance", description: "The death knight has advantage on saving throws against spells and other magical effects." },
-            { name: "Marshal Undead", description: "Unless the death knight is incapacitated, it and undead creatures of its choice within 60 feet of it have advantage on saving throws against features that turn undead." }
-        ],
-        spellcasting: {
-            ability: "cha",
-            saveDC: 18,
-            attackBonus: 10,
-            level: 19,
-            slots: { 1: 4, 2: 3, 3: 3, 4: 3, 5: 2 },
-            spells: {
-                1: ["command", "compelled-duel", "searing-smite"],
-                2: ["hold-person", "magic-weapon"],
-                3: ["dispel-magic", "elemental-weapon"],
-                4: ["banishment", "staggering-smite"],
-                5: ["destructive-wave (necrotic)"]
-            }
-        },
-        actions: [
-            { name: "Multiattack", description: "The death knight makes three longsword attacks." },
-            { name: "Longsword", type: "melee", attackBonus: 11, reach: 5, damage: "1d8+5 slashing plus 4d8 necrotic" },
-            { name: "Hellfire Orb (1/Day)", description: "The death knight hurls a magical ball of fire that explodes at a point it can see within 120 feet of it. Each creature in a 20-foot-radius sphere centered on that point must make a DC 18 Dexterity saving throw. The sphere spreads around corners. A creature takes 35 (10d6) fire damage and 35 (10d6) necrotic damage on a failed save, or half as much damage on a successful one." }
-        ],
-        reactions: [
-            { name: "Parry", description: "The death knight adds 6 to its AC against one melee attack that would hit it. To do so, the death knight must see the attacker and be wielding a melee weapon." }
-        ]
-    },
+    
+    
+    
     "death-tyrant": {
         name: "Death Tyrant",
         source: "MM",
@@ -163,63 +74,8 @@ const monstersMM_D = {
             { name: "Poisoned Dart", type: "ranged", attackBonus: 4, range: "30/120 ft.", damage: "1d4+2 piercing", additionalText: "The target must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute." }
         ]
     },
-    "deer": {
-        name: "Deer",
-        source: "MM",
-        size: "medium",
-        type: "beast",
-        alignment: "unaligned",
-        ac: 13,
-        hp: 4,
-        hitDice: "1d8",
-        speed: { walk: "50 ft." },
-        abilityScores: { str: 11, dex: 16, con: 11, int: 2, wis: 14, cha: 5 },
-        senses: ["passive Perception 12"],
-        languages: "—",
-        cr: 0,
-        actions: [
-            { name: "Bite", type: "melee", attackBonus: 2, reach: 5, damage: "1d4 piercing" }
-        ]
-    },
-    "deva": {
-        name: "Deva",
-        source: "MM",
-        size: "medium",
-        type: "celestial",
-        alignment: "lawful good",
-        ac: 17,
-        acType: "natural armor",
-        hp: 136,
-        hitDice: "16d8+64",
-        speed: { walk: "30 ft.", fly: "90 ft." },
-        abilityScores: { str: 18, dex: 18, con: 18, int: 17, wis: 20, cha: 20 },
-        savingThrows: { wis: 9, cha: 9 },
-        skills: { insight: 9, perception: 9 },
-        damageResistances: ["radiant", "bludgeoning, piercing, and slashing from nonmagical attacks"],
-        conditionImmunities: ["charmed", "exhaustion", "frightened"],
-        senses: ["darkvision 120 ft.", "passive Perception 19"],
-        languages: "all, telepathy 120 ft.",
-        cr: 10,
-        traits: [
-            { name: "Angelic Weapons", description: "The deva's weapon attacks are magical. When the deva hits with any weapon, the weapon deals an extra 4d8 radiant damage (included in the attack)." },
-            { name: "Magic Resistance", description: "The deva has advantage on saving throws against spells and other magical effects." }
-        ],
-        spellcasting: {
-            ability: "cha",
-            saveDC: 17,
-            innate: true,
-            spells: {
-                "at will": ["detect-evil-and-good"],
-                "1/day each": ["commune", "raise-dead"]
-            }
-        },
-        actions: [
-            { name: "Multiattack", description: "The deva makes two melee attacks." },
-            { name: "Mace", type: "melee", attackBonus: 8, reach: 5, damage: "1d6+4 bludgeoning plus 4d8 radiant" },
-            { name: "Healing Touch (3/Day)", description: "The deva touches another creature. The target magically regains 20 (4d8+2) hit points and is freed from any curse, disease, poison, blindness, or deafness." },
-            { name: "Change Shape", description: "The deva magically polymorphs into a humanoid or beast that has a challenge rating equal to or less than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the deva's choice)." }
-        ]
-    },
+    
+    
     "dire-wolf": {
         name: "Dire Wolf",
         source: "MM",
@@ -305,78 +161,9 @@ const monstersMM_D = {
             { name: "Create Whirlwind", description: "A 5-foot-radius, 30-foot-tall cylinder of swirling air magically forms on a point the djinni can see within 120 feet of it. The whirlwind lasts as long as the djinni maintains concentration (as if concentrating on a spell). Any creature but the djinni that enters the whirlwind must succeed on a DC 18 Strength saving throw or be restrained by it. The djinni can move the whirlwind up to 60 feet as an action, and creatures restrained by the whirlwind move with it. The whirlwind ends if the djinni loses sight of it.\n\nA creature can use its action to free a creature restrained by the whirlwind, including itself, by succeeding on a DC 18 Strength check. If the check succeeds, the creature is no longer restrained and moves to the nearest space outside the whirlwind." }
         ]
     },
-    "doppelganger": {
-        name: "Doppelganger",
-        source: "MM",
-        size: "medium",
-        type: "monstrosity",
-        tags: ["shapechanger"],
-        alignment: "neutral",
-        ac: 14,
-        hp: 52,
-        hitDice: "8d8+16",
-        speed: { walk: "30 ft." },
-        abilityScores: { str: 11, dex: 18, con: 14, int: 11, wis: 12, cha: 14 },
-        skills: { deception: 6, insight: 3 },
-        conditionImmunities: ["charmed"],
-        senses: ["darkvision 60 ft.", "passive Perception 11"],
-        languages: "Common",
-        cr: 3,
-        traits: [
-            { name: "Shapechanger", description: "The doppelganger can use its action to polymorph into a Small or Medium humanoid it has seen, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies." },
-            { name: "Ambusher", description: "In the first round of combat, the doppelganger has advantage on attack rolls against any creature it surprised." },
-            { name: "Surprise Attack", description: "If the doppelganger surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 10 (3d6) damage from the attack." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The doppelganger makes two melee attacks." },
-            { name: "Slam", type: "melee", attackBonus: 6, reach: 5, damage: "1d6+4 bludgeoning" },
-            { name: "Read Thoughts", description: "The doppelganger magically reads the surface thoughts of one creature within 60 feet of it. The effect can penetrate barriers, but 3 feet of wood or dirt, 2 feet of stone, 2 inches of metal, or a thin sheet of lead blocks it. While the target is in range, the doppelganger can continue reading its thoughts, as long as the doppelganger's concentration isn't broken (as if concentrating on a spell). While reading the target's mind, the doppelganger has advantage on Wisdom (Insight) and Charisma (Deception, Intimidation, and Persuasion) checks against the target." }
-        ]
-    },
-    "draft-horse": {
-        name: "Draft Horse",
-        source: "MM",
-        size: "large",
-        type: "beast",
-        alignment: "unaligned",
-        ac: 10,
-        hp: 19,
-        hitDice: "3d10+3",
-        speed: { walk: "40 ft." },
-        abilityScores: { str: 18, dex: 10, con: 12, int: 2, wis: 11, cha: 7 },
-        senses: ["passive Perception 10"],
-        languages: "—",
-        cr: 0.25,
-        actions: [
-            { name: "Hooves", type: "melee", attackBonus: 6, reach: 5, damage: "2d4+4 bludgeoning" }
-        ]
-    },
-    "dretch": {
-        name: "Dretch",
-        source: "MM",
-        size: "small",
-        type: "fiend",
-        tags: ["demon"],
-        alignment: "chaotic evil",
-        ac: 11,
-        acType: "natural armor",
-        hp: 18,
-        hitDice: "4d6+4",
-        speed: { walk: "20 ft." },
-        abilityScores: { str: 11, dex: 11, con: 12, int: 5, wis: 8, cha: 3 },
-        damageResistances: ["cold", "fire", "lightning"],
-        damageImmunities: ["poison"],
-        conditionImmunities: ["poisoned"],
-        senses: ["darkvision 60 ft.", "passive Perception 9"],
-        languages: "Abyssal, telepathy 60 ft. (works only with creatures that understand Abyssal)",
-        cr: 0.25,
-        actions: [
-            { name: "Multiattack", description: "The dretch makes two attacks: one with its bite and one with its claws." },
-            { name: "Bite", type: "melee", attackBonus: 2, reach: 5, damage: "1d6 piercing" },
-            { name: "Claws", type: "melee", attackBonus: 2, reach: 5, damage: "2d4 slashing" },
-            { name: "Fetid Cloud (1/Day)", description: "A 10-foot radius of disgusting green gas extends out from the dretch. The gas spreads around corners, and its area is lightly obscured. It lasts for 1 minute or until a strong wind disperses it. Any creature that starts its turn in that area must succeed on a DC 11 Constitution saving throw or be poisoned until the start of its next turn. While poisoned in this way, the target can take either an action or a bonus action on its turn, not both, and can't take reactions." }
-        ]
-    },
+    
+    
+    
     "drider": {
         name: "Drider",
         source: "MM",
@@ -450,39 +237,7 @@ const monstersMM_D = {
             { name: "Hand Crossbow", type: "ranged", attackBonus: 4, range: "30/120 ft.", damage: "1d6+2 piercing", additionalText: "The target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the target is also unconscious while poisoned in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awake." }
         ]
     },
-    "druid": {
-        name: "Druid",
-        source: "MM",
-        size: "medium",
-        type: "humanoid",
-        tags: ["any race"],
-        alignment: "any alignment",
-        ac: 11,
-        acType: "16 with barkskin",
-        hp: 27,
-        hitDice: "5d8+5",
-        speed: { walk: "30 ft." },
-        abilityScores: { str: 10, dex: 12, con: 13, int: 12, wis: 15, cha: 11 },
-        skills: { medicine: 4, nature: 3, perception: 4 },
-        senses: ["passive Perception 14"],
-        languages: "Druidic plus any two languages",
-        cr: 2,
-        spellcasting: {
-            ability: "wis",
-            saveDC: 12,
-            attackBonus: 4,
-            level: 4,
-            slots: { 1: 4, 2: 3 },
-            spells: {
-                cantrips: ["druidcraft", "produce-flame", "shillelagh"],
-                1: ["entangle", "longstrider", "speak-with-animals", "thunderwave"],
-                2: ["animal-messenger", "barkskin"]
-            }
-        },
-        actions: [
-            { name: "Quarterstaff", type: "melee", attackBonus: 2, reach: 5, damage: "1d6 bludgeoning (1d8 with shillelagh)" }
-        ]
-    },
+    
     "dryad": {
         name: "Dryad",
         source: "MM",

@@ -42,49 +42,7 @@ const MONSTERS_EXPANSION20 = {
             { name: "Swoop (Costs 2 Actions)", description: "The phoenix moves up to its speed and attacks with its fiery talons." }
         ]
     },
-    "zaratan": {
-        name: "Zaratan",
-        source: "MToF",
-        size: "gargantuan",
-        type: "elemental",
-        alignment: "neutral",
-        ac: 21,
-        acType: "natural armor",
-        hp: 307,
-        hitDice: "15d20+150",
-        speed: { walk: 40, swim: 40 },
-        abilityScores: { str: 30, dex: 10, con: 30, int: 2, wis: 21, cha: 18 },
-        savingThrows: { wis: 12, cha: 11 },
-        damageResistances: ["cold", "fire", "lightning; bludgeoning, piercing, and slashing from nonmagical attacks"],
-        damageImmunities: ["poison"],
-        conditionImmunities: ["exhaustion", "paralyzed", "petrified", "poisoned", "stunned"],
-        senses: ["darkvision 60 ft.", "tremorsense 60 ft."],
-        languages: "—",
-        cr: 22,
-        environment: ["coastal", "desert", "forest", "grassland", "hill", "mountain"],
-        role: "brute",
-        tags: ["elemental", "earth"],
-        traits: [
-            { name: "Earth-Shaking Movement", description: "As a bonus action after moving at least 10 feet on the ground, the zaratan can send a shock wave through the ground in a 120-foot-radius circle centered on itself. That area becomes difficult terrain for 1 minute. Each creature on the ground that is concentrating must succeed on a DC 25 Constitution saving throw or the creature's concentration is broken. The shock wave deals 100 thunder damage to all structures in contact with the ground in the area. If a creature is near a structure that collapses, the creature might be buried; a creature within half the distance of the structure's height must make a DC 25 Dexterity saving throw. On a failed save, the creature takes 17 (5d6) bludgeoning damage, is knocked prone, and is trapped in the rubble." },
-            { name: "Legendary Resistance (3/Day)", description: "If the zaratan fails a saving throw, it can choose to succeed instead." },
-            { name: "Magic Weapons", description: "The zaratan's weapon attacks are magical." },
-            { name: "Siege Monster", description: "The elemental deals double damage to objects and structures (included in Earth-Shaking Movement)." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The zaratan makes two attacks: one with its bite and one with its stomp." },
-            { name: "Bite", description: "Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 28 (4d8+10) piercing damage." },
-            { name: "Stomp", description: "Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 26 (3d10+10) bludgeoning damage." },
-            { name: "Spit Rock", description: "Ranged Weapon Attack: +17 to hit, range 120/240 ft., one target. Hit: 31 (6d6+10) bludgeoning damage." },
-            { name: "Swallow", description: "The zaratan makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, the target is also swallowed, and the grapple ends. A swallowed creature is blinded and restrained, has total cover against attacks and other effects outside the zaratan, and takes 28 (8d6) bludgeoning damage at the start of each of the zaratan's turns. A swallowed creature can cut its way free, emerging in a space of its choice within 10 feet of the zaratan, by dealing 30 or more slashing damage in a single turn." }
-        ],
-        legendaryActions: [
-            { name: "Stomp", description: "The zaratan makes one stomp attack." },
-            { name: "Move", description: "The zaratan moves up to its speed." },
-            { name: "Spit (Costs 2 Actions)", description: "The zaratan uses Spit Rock." },
-            { name: "Retract (Costs 2 Actions)", description: "The zaratan retracts into its shell. Until it takes its Emerge action, it has resistance to all damage, and it is restrained. The next time it takes a legendary action, it must take its Emerge action." },
-            { name: "Emerge (Costs 2 Actions)", description: "The zaratan emerges from its shell and uses Earth-Shaking Movement. It can use this action only if it previously used its Retract action." }
-        ]
-    },
+    
     "leviathan": {
         name: "Leviathan",
         source: "MToF",

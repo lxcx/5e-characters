@@ -538,7 +538,6 @@ const MONSTER_DESCRIPTIONS = {
     "xorn": "Three-armed aberration with a body like a boulder, three eyes, and a large mouth on top of its head. Eats gems and metal.",
     "yeth-hound": "Headless hound from the Shadowfell that terrifies victims with its baying.",
     "yeti": "Large ape-like creature covered in white fur, with blue eyes and claws of ice. Adapted to arctic environments.",
-    "yeti-abominable": "Massive yeti, twice the size of others, an alpha predator of the frozen wastes.",
     "young-black-dragon": "Sleek black dragon with emerging horns and acidic breath, smaller but already deadly.",
     "young-brass-dragon": "Friendly young dragon with brass-colored scales, eager to converse.",
     "young-bronze-dragon": "Noble young dragon with bronze scales and a sense of justice.",

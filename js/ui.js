@@ -4136,8 +4136,8 @@ function buildPortraitPrompt(npc) {
     // Get race-specific features
     const raceFeatures = getRaceVisualFeatures(npc.race);
     
-    // Build the prompt
-    let prompt = `Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
+    // Build the prompt - prefix with "dnd 5e [race]" for better race-specific generation
+    let prompt = `DnD 5e ${npc.race}. Fantasy portrait of a ${ageDesc} ${npc.gender} ${npc.race} ${occupationName}`;
     
     if (className !== 'commoner') {
         prompt += ` and ${className}`;

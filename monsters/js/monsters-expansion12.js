@@ -3,36 +3,7 @@
 
 const MONSTERS_EXPANSION12 = {
     // ===== More Classic D&D Monsters =====
-    "intellect-devourer": {
-        name: "Intellect Devourer",
-        source: "MM",
-        size: "tiny",
-        type: "aberration",
-        alignment: "lawful evil",
-        ac: 12,
-        hp: 21,
-        hitDice: "6d4+6",
-        speed: { walk: 40 },
-        abilityScores: { str: 6, dex: 14, con: 13, int: 12, wis: 11, cha: 10 },
-        skills: { perception: 2, stealth: 4 },
-        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
-        conditionImmunities: ["blinded"],
-        senses: ["blindsight 60 ft. (blind beyond this radius)"],
-        languages: "understands Deep Speech but can't speak, telepathy 60 ft.",
-        cr: 2,
-        environment: ["underdark"],
-        role: "lurker",
-        tags: ["aberration", "mind flayer"],
-        traits: [
-            { name: "Detect Sentience", description: "The intellect devourer can sense the presence and location of any creature within 300 feet of it that has an Intelligence of 3 or higher, regardless of interposing barriers, unless the creature is protected by a mind blank spell." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The intellect devourer makes one attack with its claws and uses Devour Intellect." },
-            { name: "Claws", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) slashing damage." },
-            { name: "Devour Intellect", description: "The intellect devourer targets one creature it can see within 10 feet of it that has a brain. The target must succeed on a DC 12 Intelligence saving throw against this magic or take 11 (2d10) psychic damage. Also on a failure, roll 3d6: If the total equals or exceeds the target's Intelligence score, that score is reduced to 0. The target is stunned until it regains at least one point of Intelligence." },
-            { name: "Body Thief", description: "The intellect devourer initiates an Intelligence contest with an incapacitated humanoid within 5 feet of it that isn't protected by protection from evil and good. If it wins the contest, the intellect devourer magically consumes the target's brain, teleports into the target's skull, and takes control of the target's body." }
-        ]
-    },
+    
     "flail-snail": {
         name: "Flail Snail",
         source: "VGtM",
@@ -63,102 +34,11 @@ const MONSTERS_EXPANSION12 = {
             { name: "Shell Defense", description: "The flail snail withdraws into its shell, gaining a +4 bonus to AC until it emerges. It can emerge from its shell as a bonus action on its turn." }
         ]
     },
-    "froghemoth": {
-        name: "Froghemoth",
-        source: "VGtM",
-        size: "huge",
-        type: "monstrosity",
-        alignment: "unaligned",
-        ac: 14,
-        acType: "natural armor",
-        hp: 184,
-        hitDice: "16d12+80",
-        speed: { walk: 30, swim: 30 },
-        abilityScores: { str: 23, dex: 13, con: 20, int: 2, wis: 12, cha: 5 },
-        savingThrows: { con: 9, wis: 5 },
-        skills: { perception: 9, stealth: 5 },
-        damageResistances: ["fire", "lightning"],
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 10,
-        environment: ["swamp"],
-        role: "brute",
-        tags: ["monstrosity"],
-        traits: [
-            { name: "Amphibious", description: "The froghemoth can breathe air and water." },
-            { name: "Shock Susceptibility", description: "If the froghemoth takes lightning damage, it suffers several adverse effects until the end of its next turn: its speed is halved, it takes a −2 penalty to AC and Dexterity saving throws, it can't use reactions or Multiattack, and on its turn, it can use either an action or a bonus action, not both." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The froghemoth makes two attacks with its tentacles. It can also use its tongue or bite." },
-            { name: "Tentacle", description: "Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 19 (3d8+6) bludgeoning damage, and the target is grappled (escape DC 16) if it is a Huge or smaller creature. Until the grapple ends, the froghemoth can't use this tentacle on another target. The froghemoth has four tentacles." },
-            { name: "Bite", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 22 (3d10+6) piercing damage, and the target is swallowed if it is a Medium or smaller creature. A swallowed creature is blinded and restrained, has total cover against attacks and other effects outside the froghemoth, and takes 10 (3d6) acid damage at the start of each of the froghemoth's turns." },
-            { name: "Tongue", description: "The froghemoth targets one Medium or smaller creature that it can see within 20 feet of it. The target must make a DC 18 Strength saving throw. On a failed save, the target is pulled into an unoccupied space within 5 feet of the froghemoth." }
-        ]
-    },
+    
 
     // ===== Beholder Variants =====
-    "death-tyrant": {
-        name: "Death Tyrant",
-        source: "MM",
-        size: "large",
-        type: "undead",
-        alignment: "lawful evil",
-        ac: 19,
-        acType: "natural armor",
-        hp: 187,
-        hitDice: "25d10+50",
-        speed: { walk: 0, fly: 20 },
-        abilityScores: { str: 10, dex: 14, con: 14, int: 19, wis: 15, cha: 19 },
-        savingThrows: { str: 5, con: 7, int: 9, wis: 7, cha: 9 },
-        skills: { perception: 12 },
-        damageImmunities: ["poison"],
-        conditionImmunities: ["charmed", "exhaustion", "paralyzed", "petrified", "poisoned", "prone"],
-        senses: ["darkvision 120 ft."],
-        languages: "Deep Speech, Undercommon",
-        cr: 14,
-        environment: ["underdark"],
-        role: "controller",
-        tags: ["undead", "beholder"],
-        traits: [
-            { name: "Negative Energy Cone", description: "The death tyrant's central eye emits an invisible, magical 150-foot cone of negative energy. At the start of each of its turns, the tyrant decides which way the cone faces and whether the cone is active. Any creature in that area can't regain hit points. Any humanoid that dies there becomes a zombie under the tyrant's command." }
-        ],
-        actions: [
-            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 14 (4d6) piercing damage." },
-            { name: "Eye Rays", description: "The death tyrant shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it." }
-        ],
-        legendaryActions: [
-            { name: "Eye Ray", description: "The death tyrant uses one random eye ray." }
-        ]
-    },
-    "gazer": {
-        name: "Gazer",
-        source: "VGtM",
-        size: "tiny",
-        type: "aberration",
-        alignment: "neutral evil",
-        ac: 13,
-        hp: 13,
-        hitDice: "3d4+6",
-        speed: { walk: 0, fly: 30 },
-        abilityScores: { str: 3, dex: 17, con: 14, int: 3, wis: 10, cha: 7 },
-        savingThrows: { wis: 2 },
-        skills: { perception: 4, stealth: 5 },
-        conditionImmunities: ["prone"],
-        senses: ["darkvision 60 ft."],
-        languages: "—",
-        cr: 0.5,
-        environment: ["underdark"],
-        role: "minion",
-        tags: ["aberration", "beholder-kin"],
-        traits: [
-            { name: "Aggressive", description: "As a bonus action, the gazer can move up to its speed toward a hostile creature that it can see." },
-            { name: "Mimicry", description: "The gazer can mimic simple sounds of speech it has heard, in any language. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check." }
-        ],
-        actions: [
-            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage." },
-            { name: "Eye Rays", description: "The gazer shoots two of the following magical eye rays at random (reroll duplicates), choosing one or two targets it can see within 60 feet of it: 1. Dazing Ray, 2. Fear Ray, 3. Frost Ray, 4. Telekinetic Ray." }
-        ]
-    },
+    
+    
 
     // ===== More NPCs =====
     "champion": {
@@ -366,49 +246,4 @@ const MONSTERS_EXPANSION12 = {
             { name: "Spiked Chain", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d6+3) piercing damage, and the target is grappled (escape DC 11) if it is a Large or smaller creature. Until this grapple ends, the target is restrained, and the tlincalli can't use the spiked chain against another target." },
             { name: "Sting", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 6 (1d6+3) piercing damage plus 14 (4d6) poison damage, and the target must succeed on a DC 14 Constitution saving throw or be poisoned for 1 minute. If it fails the saving throw by 5 or more, the target is also paralyzed while poisoned. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
         ]
-    },
-    "yuan-ti-abomination": {
-        name: "Yuan-ti Abomination",
-        source: "MM",
-        size: "large",
-        type: "monstrosity",
-        subtype: "shapechanger, yuan-ti",
-        alignment: "neutral evil",
-        ac: 15,
-        acType: "natural armor",
-        hp: 127,
-        hitDice: "15d10+45",
-        speed: { walk: 40 },
-        abilityScores: { str: 19, dex: 16, con: 17, int: 17, wis: 15, cha: 18 },
-        skills: { perception: 5, stealth: 6 },
-        damageImmunities: ["poison"],
-        conditionImmunities: ["poisoned"],
-        senses: ["darkvision 60 ft."],
-        languages: "Abyssal, Common, Draconic",
-        cr: 7,
-        environment: ["forest", "swamp", "desert"],
-        role: "skirmisher",
-        tags: ["monstrosity", "yuan-ti", "shapechanger"],
-        traits: [
-            { name: "Shapechanger", description: "The yuan-ti can use its action to polymorph into a Large snake, or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed." },
-            { name: "Magic Resistance", description: "The yuan-ti has advantage on saving throws against spells and other magical effects." }
-        ],
-        actions: [
-            { name: "Multiattack (Abomination Form Only)", description: "The yuan-ti makes two ranged attacks or three melee attacks, but can use its bite and constrict attacks only once each." },
-            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 7 (1d6+4) piercing damage plus 10 (3d6) poison damage." },
-            { name: "Constrict", description: "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) bludgeoning damage, and the target is grappled (escape DC 14). Until this grapple ends, the target is restrained, and the yuan-ti can't constrict another target." },
-            { name: "Scimitar (Abomination Form Only)", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
-            { name: "Longbow (Abomination Form Only)", description: "Ranged Weapon Attack: +6 to hit, range 150/600 ft., one target. Hit: 12 (2d8+3) piercing damage plus 10 (3d6) poison damage." }
-        ],
-        spellcasting: {
-            innate: true,
-            ability: "cha",
-            dc: 15,
-            spells: {
-                atWill: ["animal friendship (snakes only)"],
-                "3/day": ["suggestion"],
-                "1/day": ["fear"]
-            }
-        }
-    }
-};
+    }};

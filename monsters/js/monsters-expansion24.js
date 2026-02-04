@@ -256,61 +256,6 @@ const MONSTERS_EXPANSION24 = {
     },
 
     // ===== More Misc Creatures =====
-    "flail-snail": {
-        name: "Flail Snail",
-        source: "VGtM",
-        size: "large",
-        type: "elemental",
-        alignment: "unaligned",
-        ac: 16,
-        acType: "natural armor",
-        hp: 52,
-        hitDice: "5d10+25",
-        speed: { walk: 10 },
-        abilityScores: { str: 17, dex: 5, con: 20, int: 3, wis: 10, cha: 5 },
-        damageImmunities: ["fire", "poison"],
-        conditionImmunities: ["poisoned"],
-        senses: ["darkvision 60 ft.", "tremorsense 60 ft."],
-        languages: "—",
-        cr: 3,
-        environment: ["forest", "swamp", "underdark"],
-        role: "brute",
-        tags: ["elemental"],
-        traits: [
-            { name: "Antimagic Shell", description: "The snail has advantage on saving throws against spells, and any creature making a spell attack against the snail has disadvantage on the attack roll. If the snail succeeds on its saving throw against a spell or a spell attack misses it, an additional effect might occur, as determined by rolling a d6. 1-2: The spell has no additional effect. 3-4: The snail's shell converts some of the spell's energy into a burst of destructive force. Each creature within 30 feet of the snail must make a DC 15 Constitution saving throw, taking 1d6 force damage per level of the spell on a failed save, or half as much damage on a successful one. 5-6: The spell is reflected back at the caster. The spell has no effect on the snail and instead targets the caster, using the slot level, spell save DC, attack bonus, and spellcasting ability of the caster." },
-            { name: "Flail Tentacles", description: "The flail snail has five flail tentacles. Whenever the snail takes 10 damage or more on a single turn, one of its tentacles dies. If even one tentacle remains, the snail regrows all dead ones within 1d4 days. If all its tentacles die, the snail retracts into its shell, gaining total cover, and it begins wailing, a loud keening audible for 600 feet, stopping only when it dies 5d6 minutes later. Healing magic that restores limbs, such as the regenerate spell, can halt this dying process." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The flail snail makes as many Flail Tentacle attacks as it has flail tentacles, all against the same target." },
-            { name: "Flail Tentacle", description: "Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 6 (1d6+3) bludgeoning damage." },
-            { name: "Scintillating Shell (Recharges after a Short or Long Rest)", description: "The snail's shell emits dazzling, colored light until the end of the snail's next turn. During this time, the shell sheds bright light in a 30-foot radius and dim light for an additional 30 feet, and creatures that can see the snail have disadvantage on attack rolls against it. In addition, any creature within the bright light and able to see the snail when this power is activated must succeed on a DC 15 Wisdom saving throw or be stunned until the light ends." },
-            { name: "Shell Defense", description: "The flail snail withdraws into its shell, gaining a +4 bonus to AC until it emerges. It can emerge from its shell as a bonus action on its turn." }
-        ]
-    },
-    "tlincalli": {
-        name: "Tlincalli",
-        source: "VGtM",
-        size: "large",
-        type: "monstrosity",
-        alignment: "neutral",
-        ac: 15,
-        acType: "natural armor",
-        hp: 85,
-        hitDice: "10d10+30",
-        speed: { walk: 40 },
-        abilityScores: { str: 16, dex: 13, con: 16, int: 8, wis: 12, cha: 8 },
-        skills: { perception: 4, stealth: 4, survival: 4 },
-        senses: ["darkvision 60 ft."],
-        languages: "Tlincalli",
-        cr: 5,
-        environment: ["desert"],
-        role: "soldier",
-        tags: ["monstrosity"],
-        actions: [
-            { name: "Multiattack", description: "The tlincalli makes two attacks: one with its longsword or spiked chain, and one with its sting." },
-            { name: "Longsword", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands." },
-            { name: "Spiked Chain", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 6 (1d6+3) piercing damage, and the target is grappled (escape DC 11) if it is a Large or smaller creature. Until this grapple ends, the target is restrained, and the tlincalli can't use the spiked chain against another target." },
-            { name: "Sting", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 6 (1d6+3) piercing damage plus 14 (4d6) poison damage, and the target must succeed on a DC 14 Constitution saving throw or be poisoned for 1 minute. If it fails the saving throw by 5 or more, the target is also paralyzed while poisoned. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
-        ]
-    }
+    
+    
 };

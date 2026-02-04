@@ -103,73 +103,8 @@ const MONSTERS_MTOF_EXTENDED = {
             }
         }
     },
-    "githyanki-kithrak": {
-        name: "Githyanki Kith'rak",
-        source: "MToF",
-        size: "medium",
-        type: "humanoid",
-        subtype: "gith",
-        alignment: "lawful evil",
-        ac: 18,
-        acType: "plate",
-        hp: 180,
-        hitDice: "24d8+72",
-        speed: { walk: 30 },
-        abilityScores: { str: 18, dex: 16, con: 17, int: 16, wis: 15, cha: 17 },
-        savingThrows: { con: 7, int: 7, wis: 6 },
-        skills: { intimidation: 7, perception: 6 },
-        senses: [],
-        languages: "Gith",
-        cr: 12,
-        environment: ["astral", "urban"],
-        role: "leader",
-        tags: ["gith", "extraplanar", "psionic", "commander"],
-        traits: [
-            { name: "Innate Spellcasting (Psionics)", description: "The githyanki's innate spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). It can innately cast the following spells, requiring no components: At will: mage hand (the hand is invisible); 3/day each: blur, jump, misty step, nondetection (self only); 1/day each: plane shift, telekinesis." },
-            { name: "Rally the Troops", description: "As a bonus action, the githyanki can magically end the charmed and frightened conditions on itself and each creature of its choice that it can see within 30 feet of it." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The githyanki makes three greatsword attacks." },
-            { name: "Greatsword", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage plus 17 (5d6) psychic damage." }
-        ]
-    },
-    "githyanki-supreme-commander": {
-        name: "Githyanki Supreme Commander",
-        source: "MToF",
-        size: "medium",
-        type: "humanoid",
-        subtype: "gith",
-        alignment: "lawful evil",
-        ac: 18,
-        acType: "plate",
-        hp: 187,
-        hitDice: "22d8+88",
-        speed: { walk: 30 },
-        abilityScores: { str: 19, dex: 17, con: 18, int: 16, wis: 16, cha: 18 },
-        savingThrows: { con: 9, int: 8, wis: 8 },
-        skills: { insight: 8, intimidation: 9, perception: 8 },
-        senses: [],
-        languages: "Gith",
-        cr: 14,
-        environment: ["astral", "urban"],
-        role: "leader",
-        tags: ["gith", "extraplanar", "psionic", "legendary"],
-        traits: [
-            { name: "Innate Spellcasting (Psionics)", description: "The githyanki's innate spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no components: At will: mage hand (the hand is invisible); 3/day each: jump, levitate (self only), misty step, nondetection (self only); 1/day each: Bigby's hand, mass suggestion, plane shift, telekinesis." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The githyanki makes two greatsword attacks." },
-            { name: "Silver Greatsword", description: "Melee Weapon Attack: +12 to hit, reach 5 ft., one target. Hit: 14 (2d6+7) slashing damage plus 17 (5d6) psychic damage. On a critical hit against a target in an astral body (as with the astral projection spell), the githyanki can cut the silvery cord that tethers the target to its material body, instead of dealing damage." }
-        ],
-        legendaryActions: {
-            perRound: 3,
-            actions: [
-                { name: "Attack (2 Actions)", description: "The githyanki makes a greatsword attack." },
-                { name: "Command Ally", description: "The githyanki targets one ally it can see within 30 feet of it. If the target can see or hear the githyanki, the target can make one melee weapon attack using its reaction, if available, and has advantage on the attack roll." },
-                { name: "Teleport", description: "The githyanki magically teleports, along with any equipment it is wearing and carrying, to an unoccupied space it can see within 30 feet of it. It also becomes insubstantial until the start of its next turn. While insubstantial, it can move through other creatures and objects as if they were difficult terrain. If it ends its turn inside an object, it takes 16 (3d10) force damage and is moved to the nearest unoccupied space." }
-            ]
-        }
-    },
+    
+    
     "githzerai-monk": {
         name: "Githzerai Monk",
         source: "MM",
@@ -228,73 +163,8 @@ const MONSTERS_MTOF_EXTENDED = {
             { name: "Unarmed Strike", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage plus 13 (3d8) psychic damage." }
         ]
     },
-    "githzerai-anarch": {
-        name: "Githzerai Anarch",
-        source: "MToF",
-        size: "medium",
-        type: "humanoid",
-        subtype: "gith",
-        alignment: "lawful neutral",
-        ac: 20,
-        hp: 144,
-        hitDice: "17d8+68",
-        speed: { walk: 30, fly: 40 },
-        abilityScores: { str: 16, dex: 21, con: 18, int: 18, wis: 20, cha: 14 },
-        savingThrows: { str: 8, dex: 10, int: 9, wis: 10 },
-        skills: { arcana: 9, insight: 10, perception: 10 },
-        senses: [],
-        languages: "Gith",
-        cr: 16,
-        environment: ["limbo"],
-        role: "controller",
-        tags: ["gith", "extraplanar", "psionic", "legendary"],
-        traits: [
-            { name: "Innate Spellcasting (Psionics)", description: "The githzerai's innate spellcasting ability is Wisdom (spell save DC 18, +10 to hit with spell attacks). It can innately cast the following spells, requiring no components: At will: mage hand (the hand is invisible); 3/day each: feather fall, jump, see invisibility, shield, telekinesis; 1/day each: globe of invulnerability, plane shift, teleportation circle, wall of force." },
-            { name: "Psychic Defense", description: "While the anarch is wearing no armor and wielding no shield, its AC includes its Wisdom modifier." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The githzerai makes three unarmed strikes." },
-            { name: "Unarmed Strike", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 9 (1d8+5) bludgeoning damage plus 18 (4d8) psychic damage." }
-        ],
-        legendaryActions: {
-            perRound: 3,
-            actions: [
-                { name: "Strike", description: "The githzerai makes one unarmed strike." },
-                { name: "Teleport", description: "The githzerai teleports, along with any equipment it is wearing or carrying, to an unoccupied space it can see within 30 feet of it." },
-                { name: "Change Gravity (Costs 3 Actions)", description: "The githzerai casts the reverse gravity spell. The spell has the normal effect, except that the githzerai can orient the area in any direction and creatures and objects fall toward the end of the area." }
-            ]
-        }
-    },
-    "githzerai-enlightened": {
-        name: "Githzerai Enlightened",
-        source: "MToF",
-        size: "medium",
-        type: "humanoid",
-        subtype: "gith",
-        alignment: "lawful neutral",
-        ac: 18,
-        hp: 112,
-        hitDice: "15d8+45",
-        speed: { walk: 30 },
-        abilityScores: { str: 14, dex: 19, con: 16, int: 17, wis: 19, cha: 13 },
-        savingThrows: { str: 6, dex: 8, int: 7, wis: 8 },
-        skills: { arcana: 7, insight: 8, perception: 8 },
-        senses: [],
-        languages: "Gith",
-        cr: 10,
-        environment: ["limbo", "urban"],
-        role: "controller",
-        tags: ["gith", "extraplanar", "psionic", "monk"],
-        traits: [
-            { name: "Innate Spellcasting (Psionics)", description: "The githzerai's innate spellcasting ability is Wisdom (spell save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no components: At will: mage hand (the hand is invisible); 3/day each: blur, expeditious retreat, feather fall, jump, see invisibility, shield; 1/day each: haste, plane shift, teleport." },
-            { name: "Psychic Defense", description: "While the githzerai is wearing no armor and wielding no shield, its AC includes its Wisdom modifier." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The githzerai makes three unarmed strikes." },
-            { name: "Unarmed Strike", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage plus 13 (3d8) psychic damage." },
-            { name: "Temporal Strike (Recharge 6)", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one creature. Hit: 13 (2d8+4) bludgeoning damage plus 52 (8d12) psychic damage. The target must succeed on a DC 16 Wisdom saving throw or move 1 round forward in time. A target moved forward in time vanishes for the duration. When the effect ends, the target reappears in the space it left or in an unoccupied space nearest to that space if it's occupied." }
-        ]
-    },
+    
+    
 
     // ===== Shadar-kai =====
     "shadar-kai-gloom-weaver": {

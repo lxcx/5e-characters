@@ -654,7 +654,6 @@ const MONSTER_CATEGORIZATION = {
     "winter-eladrin": { environment: ["forest", "feywild"], role: "controller", tags: ["fey", "elf", "eladrin", "spellcaster"] },
     "wood-woad": { environment: ["forest"], role: "soldier", tags: ["plant"] },
     "yeth-hound": { environment: ["forest", "hill"], role: "brute", tags: ["fey"] },
-    "yeti-abominable": { environment: ["arctic"], role: "brute", tags: ["monstrosity"] },
     "young-remorhaz": { environment: ["arctic"], role: "brute", tags: ["monstrosity"] },
     "yuan-ti-anathema": { environment: ["forest", "swamp"], role: "controller", tags: ["monstrosity", "yuan-ti", "spellcaster", "legendary"] },
     "yuan-ti-broodguard": { environment: ["forest", "swamp"], role: "soldier", tags: ["humanoid", "yuan-ti"] },

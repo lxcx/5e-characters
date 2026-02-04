@@ -576,34 +576,7 @@ const MONSTERS_ELEMENTALS = {
             { name: "Pseudopod", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage plus 7 (2d6) acid damage, and if the target is wearing nonmagical metal armor, its armor is partly corroded and takes a permanent and cumulative −1 penalty to the AC it offers. The armor is destroyed if the penalty reduces its AC to 10." }
         ]
     },
-    "ochre-jelly": {
-        name: "Ochre Jelly",
-        source: "MM",
-        size: "large",
-        type: "ooze",
-        alignment: "unaligned",
-        ac: 8,
-        hp: 45,
-        hitDice: "6d10+12",
-        speed: { walk: 10, climb: 10 },
-        abilityScores: { str: 15, dex: 6, con: 14, int: 2, wis: 6, cha: 1 },
-        damageResistances: ["acid"],
-        damageImmunities: ["lightning", "slashing"],
-        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "prone"],
-        senses: ["blindsight 60 ft. (blind beyond this radius)"],
-        languages: "—",
-        cr: 2,
-        traits: [
-            { name: "Amorphous", description: "The jelly can move through a space as narrow as 1 inch wide without squeezing." },
-            { name: "Spider Climb", description: "The jelly can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
-        ],
-        actions: [
-            { name: "Pseudopod", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) bludgeoning damage plus 3 (1d6) acid damage." }
-        ],
-        reactions: [
-            { name: "Split", description: "When a jelly that is Medium or larger is subjected to lightning or slashing damage, it splits into two new jellies if it has at least 10 hit points. Each new jelly has hit points equal to half the original jelly's, rounded down. New jellies are one size smaller than the original jelly." }
-        ]
-    },
+    
 
     // ===== CONSTRUCTS =====
     "animated-armor": {

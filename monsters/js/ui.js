@@ -763,6 +763,8 @@ function loadOfficialArt() {
         'TCoE': 'TCE',
         'FToD': 'FTD',
         'MotM': 'MPMM',
+        'XMM': 'XMM',
+        '2024 Monster Manual': 'XMM',
         'Basic Rules': 'MM'
     };
     

@@ -148,76 +148,8 @@ const MONSTERS_EXPANSION18 = {
             { name: "Eye Ray", description: "The mind witness shoots one magical eye ray at random (reroll duplicates), choosing one target it can see within 120 feet of it. See the beholder stat block for a list of possible eye rays." }
         ]
     },
-    "neogi": {
-        name: "Neogi",
-        source: "VGtM",
-        size: "small",
-        type: "aberration",
-        alignment: "lawful evil",
-        ac: 15,
-        acType: "natural armor",
-        hp: 33,
-        hitDice: "6d6+12",
-        speed: { walk: 30, climb: 30 },
-        abilityScores: { str: 6, dex: 16, con: 14, int: 13, wis: 12, cha: 15 },
-        skills: { intimidation: 4, perception: 3 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Deep Speech, Undercommon",
-        cr: 3,
-        environment: ["underdark"],
-        role: "controller",
-        tags: ["aberration"],
-        traits: [
-            { name: "Mental Fortitude", description: "The neogi has advantage on saving throws against being charmed or frightened, and magic can't put the neogi to sleep." },
-            { name: "Spider Climb", description: "The neogi can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The neogi makes two attacks: one with its bite and one with its claws." },
-            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 14 (4d6) poison damage, and the target must succeed on a DC 12 Constitution saving throw or become poisoned for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." },
-            { name: "Claws", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4+3) slashing damage." },
-            { name: "Enslave (Recharges after a Short or Long Rest)", description: "The neogi targets one creature it can see within 30 feet of it. The target must succeed on a DC 14 Wisdom saving throw or be magically charmed by the neogi for 1 day, or until the neogi dies or is more than 1 mile from the target. The charmed target obeys the neogi's commands and can't take reactions, and the neogi and the target can communicate telepathically with each other at a distance of up to 1 mile. Whenever the charmed target takes damage, it can repeat the saving throw, ending the effect on itself on a success." }
-        ]
-    },
-    "neogi-master": {
-        name: "Neogi Master",
-        source: "VGtM",
-        size: "medium",
-        type: "aberration",
-        alignment: "lawful evil",
-        ac: 15,
-        acType: "natural armor",
-        hp: 71,
-        hitDice: "11d8+22",
-        speed: { walk: 30, climb: 30 },
-        abilityScores: { str: 6, dex: 16, con: 14, int: 16, wis: 12, cha: 18 },
-        savingThrows: { wis: 3 },
-        skills: { arcana: 5, deception: 6, intimidation: 6, perception: 3, persuasion: 6 },
-        senses: ["darkvision 120 ft."],
-        languages: "Common, Deep Speech, Undercommon, telepathy 30 ft.",
-        cr: 4,
-        environment: ["underdark"],
-        role: "controller",
-        tags: ["aberration", "spellcaster"],
-        traits: [
-            { name: "Mental Fortitude", description: "The neogi has advantage on saving throws against being charmed or frightened, and magic can't put the neogi to sleep." },
-            { name: "Spider Climb", description: "The neogi can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The neogi makes two attacks: one with its bite and one with its claws." },
-            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 14 (4d6) poison damage, and the target must succeed on a DC 12 Constitution saving throw or become poisoned for 1 minute." },
-            { name: "Claws", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4+3) slashing damage." },
-            { name: "Enslave (Recharges after a Short or Long Rest)", description: "The neogi targets one creature it can see within 30 feet of it. The target must succeed on a DC 14 Wisdom saving throw or be magically charmed by the neogi for 1 day, or until the neogi dies or is more than 1 mile from the target." }
-        ],
-        spellcasting: {
-            innate: true,
-            ability: "cha",
-            dc: 14,
-            spells: {
-                atWill: ["guidance", "mage hand", "minor illusion", "prestidigitation"],
-                "1/day each": ["dimension door", "fear", "hold person", "invisibility"]
-            }
-        }
-    },
+    
+    
 
     // ===== More Creatures =====
     "meenlock": {
@@ -249,35 +181,7 @@ const MONSTERS_EXPANSION18 = {
             { name: "Claws", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) slashing damage, and the target must succeed on a DC 11 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
         ]
     },
-    "redcap": {
-        name: "Redcap",
-        source: "VGtM",
-        size: "small",
-        type: "fey",
-        alignment: "chaotic evil",
-        ac: 13,
-        acType: "natural armor",
-        hp: 45,
-        hitDice: "6d6+24",
-        speed: { walk: 25 },
-        abilityScores: { str: 18, dex: 13, con: 18, int: 10, wis: 12, cha: 9 },
-        skills: { athletics: 6, perception: 3 },
-        senses: ["darkvision 60 ft."],
-        languages: "Common, Sylvan",
-        cr: 3,
-        environment: ["forest", "swamp", "urban"],
-        role: "brute",
-        tags: ["fey"],
-        traits: [
-            { name: "Iron Boots", description: "While moving, the redcap has disadvantage on Dexterity (Stealth) checks." },
-            { name: "Outsize Strength", description: "While grappling, the redcap is considered to be Medium. Also, wielding a heavy weapon doesn't impose disadvantage on its attack rolls." }
-        ],
-        actions: [
-            { name: "Multiattack", description: "The redcap makes three attacks with its wicked sickle." },
-            { name: "Wicked Sickle", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4+4) slashing damage." },
-            { name: "Ironbound Pursuit", description: "The redcap moves up to its speed to a creature it can see and kicks with its iron boots. The target must succeed on a DC 14 Dexterity saving throw or take 20 (3d10+4) bludgeoning damage and be knocked prone." }
-        ]
-    },
+    
     "korred": {
         name: "Korred",
         source: "VGtM",
