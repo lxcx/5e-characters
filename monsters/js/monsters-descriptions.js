@@ -66,7 +66,7 @@ const MONSTER_DESCRIPTIONS = {
     "brontosaurus": "Massive long-necked dinosaur with a whip-like tail, small head, and columnar legs. Gentle herbivore.",
     "bronze-dragon-wyrmling": "Young bronze dragon with shimmering scales, developing webbed features, and an inquisitive nature.",
     "brown-bear": "Large bear with thick brown fur, powerful build, and formidable claws. Can stand on hind legs.",
-    "bullywug": "Frog-like humanoid with mottled green skin, bulging eyes, and a croaking voice. Wears crude armor and carries a spear."
+    "bullywug": "Frog-like humanoid with mottled green skin, bulging eyes, and a croaking voice. Wears crude armor and carries a spear.",
     "beholder": "Floating spherical body covered in leathery skin, with one massive central eye and ten smaller eyes on writhing stalks. Wide mouth filled with sharp teeth.",
     "berserker": "Wild-eyed warrior with ritual scars, wearing minimal armor, and wielding a greataxe with bloodthirsty intensity.",
     "black-pudding": "Amorphous blob of pure darkness, viscous and tar-like, that flows across surfaces dissolving everything it touches.",
