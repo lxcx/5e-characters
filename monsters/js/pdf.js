@@ -297,16 +297,49 @@ function renderPDFLair(m) {
 function renderPDFSpells(m) {
     const abilityNames = { int: 'Intelligence', wis: 'Wisdom', cha: 'Charisma' };
     const sd = m.spellcasting;
+    
+    // Handle both library format (dc/attack) and generated format (saveDC/attackBonus)
+    const saveDC = sd.dc || sd.saveDC;
+    const attackBonus = sd.attack || sd.attackBonus;
+    const isInnate = sd.innate;
+    
     let spellList = '';
     
-    if (sd.spells.atWill?.length > 0) spellList += `<p><strong>At will:</strong> ${sd.spells.atWill.map(id => spells[id]?.name || id).join(', ')}</p>`;
-    if (sd.spells.perDay3?.length > 0) spellList += `<p><strong>3/day each:</strong> ${sd.spells.perDay3.map(id => spells[id]?.name || id).join(', ')}</p>`;
-    if (sd.spells.perDay2?.length > 0) spellList += `<p><strong>2/day each:</strong> ${sd.spells.perDay2.map(id => spells[id]?.name || id).join(', ')}</p>`;
-    if (sd.spells.perDay1?.length > 0) spellList += `<p><strong>1/day each:</strong> ${sd.spells.perDay1.map(id => spells[id]?.name || id).join(', ')}</p>`;
+    // Handle library format spells (cantrips, 1st, 2nd, etc.)
+    if (sd.spells) {
+        for (const [key, value] of Object.entries(sd.spells)) {
+            if (Array.isArray(value) && value.length > 0) {
+                // Direct array of spell names (atWill, cantrips, etc)
+                const spellNames = value.map(id => (typeof spells !== 'undefined' && spells[id]?.name) || id).join(', ');
+                const label = key === 'atWill' ? 'At will' : 
+                              key === 'cantrips' ? 'Cantrips (at will)' :
+                              key === 'perDay3' ? '3/day each' :
+                              key === 'perDay2' ? '2/day each' :
+                              key === 'perDay1' ? '1/day each' :
+                              key;
+                spellList += `<p><strong>${label}:</strong> <em>${spellNames}</em></p>`;
+            } else if (typeof value === 'object' && !Array.isArray(value)) {
+                // Spell slot format { slots: X, spells: [...] }
+                if (value.slots !== undefined && value.spells) {
+                    const spellNames = value.spells.map(id => (typeof spells !== 'undefined' && spells[id]?.name) || id).join(', ');
+                    const levelLabel = key === 'cantrips' ? 'Cantrips (at will)' : `${key} level (${value.slots} slots)`;
+                    spellList += `<p><strong>${levelLabel}:</strong> <em>${spellNames}</em></p>`;
+                } else if (Array.isArray(value.spells)) {
+                    const spellNames = value.spells.join(', ');
+                    spellList += `<p><strong>${key}:</strong> <em>${spellNames}</em></p>`;
+                }
+            }
+        }
+    }
+    
+    const title = isInnate ? 'Innate Spellcasting' : 'Spellcasting';
+    const intro = isInnate ? 
+        `The creature's innate spellcasting ability is ${abilityNames[sd.ability]} (spell save DC ${saveDC}${attackBonus ? `, ${formatModifier(attackBonus)} to hit with spell attacks` : ''}). It can innately cast the following spells, requiring no material components:` :
+        `The creature is a spellcaster. Its spellcasting ability is ${abilityNames[sd.ability]} (spell save DC ${saveDC}${attackBonus ? `, ${formatModifier(attackBonus)} to hit with spell attacks` : ''}).`;
     
     return `
-        <h2 class="section-title">Innate Spellcasting</h2>
-        <p>The creature's innate spellcasting ability is ${abilityNames[sd.ability]} (spell save DC ${sd.saveDC}, ${formatModifier(sd.attackBonus)} to hit with spell attacks). It can innately cast the following spells, requiring no material components:</p>
+        <h2 class="section-title">${title}</h2>
+        <p>${intro}</p>
         ${spellList}
     `;
 }
