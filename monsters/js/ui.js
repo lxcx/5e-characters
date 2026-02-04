@@ -67,7 +67,7 @@ function displayMonster(monster) {
             
             ${monster.lairActions ? renderLairActions(monster) : ''}
             
-            ${monster.hasSpellcasting ? renderSpellcasting(monster) : ''}
+            ${monster.hasSpellcasting ? renderSpellcasting(monster) : renderAddSpellcastingOption()}
             
             <div class="monster-description">
                 <h3 class="section-title"><i class="fa-solid fa-book"></i> Description</h3>
@@ -862,6 +862,219 @@ function closeTraitModal() {
 
 // ==================== END TRAIT MODAL FUNCTIONS ====================
 
+// ==================== SPELL MODAL FUNCTIONS ====================
+
+// Render option to add spellcasting for non-spellcasters
+function renderAddSpellcastingOption() {
+    return `
+        <div class="add-spellcasting-section">
+            <button class="add-spell-btn" onclick="openSpellModal()">
+                <i class="fa-solid fa-hat-wizard"></i> Add Spellcasting
+            </button>
+        </div>
+    `;
+}
+
+// Open modal to add spell
+function openSpellModal() {
+    let modal = document.getElementById('spellAddModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'spellAddModal';
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content spell-modal">
+                <h3><i class="fa-solid fa-hat-wizard"></i> Add Spell</h3>
+                
+                <div class="form-row" style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Spellcasting Ability</label>
+                        <select id="spellAbility" onchange="updateSpellcastingAbility()">
+                            <option value="int">Intelligence</option>
+                            <option value="wis">Wisdom</option>
+                            <option value="cha">Charisma</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Frequency</label>
+                        <select id="spellFrequency">
+                            <option value="atWill">At Will</option>
+                            <option value="perDay3">3/day</option>
+                            <option value="perDay2">2/day</option>
+                            <option value="perDay1">1/day</option>
+                            <option value="cantrips">Cantrips</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Filter by Spell Level</label>
+                    <select id="spellLevelFilter" onchange="filterSpellList()">
+                        <option value="all">All Levels</option>
+                        <option value="0">Cantrips</option>
+                        <option value="1">1st Level</option>
+                        <option value="2">2nd Level</option>
+                        <option value="3">3rd Level</option>
+                        <option value="4">4th Level</option>
+                        <option value="5">5th Level</option>
+                        <option value="6">6th Level</option>
+                        <option value="7">7th Level</option>
+                        <option value="8">8th Level</option>
+                        <option value="9">9th Level</option>
+                    </select>
+                </div>
+                
+                <div class="preset-spells-list" id="presetSpellsList">
+                    ${getSpellOptionsHtml()}
+                </div>
+                
+                <button class="modal-close-btn" onclick="closeSpellAddModal()">
+                    <i class="fa-solid fa-times"></i> Close
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    } else {
+        // Refresh spell list
+        document.getElementById('presetSpellsList').innerHTML = getSpellOptionsHtml();
+    }
+    
+    // Set current ability if monster already has spellcasting
+    if (currentMonster && currentMonster.spellcasting && currentMonster.spellcasting.ability) {
+        document.getElementById('spellAbility').value = currentMonster.spellcasting.ability;
+    }
+    
+    modal.style.display = 'flex';
+    modal.classList.add('active');
+}
+
+// Get spell options HTML
+function getSpellOptionsHtml(filterLevel = 'all') {
+    if (typeof spells === 'undefined') return '<p>No spells available</p>';
+    
+    const spellEntries = Object.entries(spells)
+        .filter(([id, spell]) => filterLevel === 'all' || spell.level === parseInt(filterLevel))
+        .sort((a, b) => {
+            // Sort by level, then name
+            if (a[1].level !== b[1].level) return a[1].level - b[1].level;
+            return a[1].name.localeCompare(b[1].name);
+        });
+    
+    if (spellEntries.length === 0) return '<p>No spells found for this level</p>';
+    
+    return spellEntries.map(([id, spell]) => {
+        const levelText = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
+        return `
+            <div class="preset-spell-item" onclick="addSpellToMonster('${id}')">
+                <strong>${spell.name}</strong>
+                <span class="spell-level-badge">${levelText}</span>
+                <p>${spell.description ? spell.description.substring(0, 100) + '...' : spell.school || ''}</p>
+            </div>
+        `;
+    }).join('');
+}
+
+// Filter spell list by level
+function filterSpellList() {
+    const level = document.getElementById('spellLevelFilter').value;
+    document.getElementById('presetSpellsList').innerHTML = getSpellOptionsHtml(level);
+}
+
+// Update spellcasting ability when changed in modal
+function updateSpellcastingAbility() {
+    if (!currentMonster) return;
+    
+    const ability = document.getElementById('spellAbility').value;
+    
+    if (currentMonster.spellcasting) {
+        currentMonster.spellcasting.ability = ability;
+        const abilityMod = currentMonster.abilityModifiers?.[ability] || 0;
+        const profBonus = currentMonster.proficiencyBonus || 2;
+        currentMonster.spellcasting.saveDC = 8 + profBonus + abilityMod;
+        currentMonster.spellcasting.attackBonus = profBonus + abilityMod;
+        // Refresh the display to show updated DC/attack bonus
+        displayMonster(currentMonster);
+    }
+}
+
+// Add spell to monster
+function addSpellToMonster(spellId) {
+    if (!currentMonster) return;
+    
+    const frequency = document.getElementById('spellFrequency').value;
+    const ability = document.getElementById('spellAbility').value;
+    
+    // Initialize spellcasting if it doesn't exist
+    if (!currentMonster.spellcasting) {
+        const abilityMod = currentMonster.abilityModifiers?.[ability] || 0;
+        const profBonus = currentMonster.proficiencyBonus || 2;
+        currentMonster.spellcasting = {
+            ability: ability,
+            saveDC: 8 + profBonus + abilityMod,
+            attackBonus: profBonus + abilityMod,
+            innate: true,
+            spells: {}
+        };
+        currentMonster.hasSpellcasting = true;
+    }
+    
+    // Initialize spells object if needed
+    if (!currentMonster.spellcasting.spells) {
+        currentMonster.spellcasting.spells = {};
+    }
+    
+    // Initialize frequency array if needed
+    if (!currentMonster.spellcasting.spells[frequency]) {
+        currentMonster.spellcasting.spells[frequency] = [];
+    }
+    
+    // Check if spell already exists in this frequency
+    if (currentMonster.spellcasting.spells[frequency].includes(spellId)) {
+        alert('This spell is already added to this frequency.');
+        return;
+    }
+    
+    currentMonster.spellcasting.spells[frequency].push(spellId);
+    
+    closeSpellAddModal();
+    displayMonster(currentMonster);
+}
+
+// Remove spell from monster
+function removeSpell(frequency, index) {
+    if (!currentMonster || !currentMonster.spellcasting || !currentMonster.spellcasting.spells) return;
+    
+    const spellArray = currentMonster.spellcasting.spells[frequency];
+    if (!spellArray || !Array.isArray(spellArray)) return;
+    
+    spellArray.splice(index, 1);
+    
+    // Clean up empty arrays
+    if (spellArray.length === 0) {
+        delete currentMonster.spellcasting.spells[frequency];
+    }
+    
+    // Check if any spells remain
+    const hasSpells = Object.values(currentMonster.spellcasting.spells).some(arr => Array.isArray(arr) && arr.length > 0);
+    if (!hasSpells) {
+        currentMonster.hasSpellcasting = false;
+        currentMonster.spellcasting = null;
+    }
+    
+    displayMonster(currentMonster);
+}
+
+// Close spell add modal
+function closeSpellAddModal() {
+    const modal = document.getElementById('spellAddModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = 'none';
+    }
+}
+
+// ==================== END SPELL MODAL FUNCTIONS ====================
+
 // Render lair actions
 function renderLairActions(monster) {
     if (!monster.lairActions) return '';
@@ -893,48 +1106,37 @@ function renderSpellcasting(monster) {
     
     let spellList = '';
     
+    // Render spell categories with remove buttons
+    const renderSpellCategory = (key, spellIds, label) => {
+        if (!spellIds || spellIds.length === 0) return '';
+        const spellItems = spellIds.map((id, idx) => {
+            const spellName = typeof spells !== 'undefined' && spells[id]?.name || id;
+            return `<span class="spell-item">${spellName}<button class="remove-spell-btn" onclick="removeSpell('${key}', ${idx})" title="Remove spell"><i class="fa-solid fa-times"></i></button></span>`;
+        }).join(', ');
+        return `<p class="spell-category"><strong>${label}:</strong> <em>${spellItems}</em></p>`;
+    };
+    
     // Handle library format spells
     if (spellData.spells) {
         for (const [key, value] of Object.entries(spellData.spells)) {
             if (Array.isArray(value) && value.length > 0) {
                 // Direct array of spell names (atWill, etc)
-                const spellNames = value.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
                 const label = key === 'atWill' ? 'At will' : 
                               key === 'cantrips' ? 'Cantrips (at will)' :
+                              key === 'perDay3' ? '3/day each' :
+                              key === 'perDay2' ? '2/day each' :
+                              key === 'perDay1' ? '1/day each' :
                               key;
-                spellList += `<p><strong>${label}:</strong> <em>${spellNames}</em></p>`;
+                spellList += renderSpellCategory(key, value, label);
             } else if (typeof value === 'object' && !Array.isArray(value)) {
                 // Spell slot format { slots: X, spells: [...] }
                 if (value.slots && value.spells) {
-                    const spellNames = value.spells.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
                     const levelLabel = key === 'cantrips' ? 'Cantrips (at will)' : `${key} level (${value.slots} slots)`;
-                    spellList += `<p><strong>${levelLabel}:</strong> <em>${spellNames}</em></p>`;
+                    spellList += renderSpellCategory(key, value.spells, levelLabel);
                 } else if (Array.isArray(value.spells)) {
-                    // Just spells array
-                    const spellNames = value.spells.join(', ');
-                    spellList += `<p><strong>${key}:</strong> <em>${spellNames}</em></p>`;
+                    spellList += renderSpellCategory(key, value.spells, key);
                 }
             }
-        }
-    }
-    
-    // Fallback to old generated format
-    if (!spellList && spellData.spells) {
-        if (spellData.spells.atWill?.length > 0) {
-            const spellNames = spellData.spells.atWill.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
-            spellList += `<p><strong>At will:</strong> <em>${spellNames}</em></p>`;
-        }
-        if (spellData.spells.perDay3?.length > 0) {
-            const spellNames = spellData.spells.perDay3.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
-            spellList += `<p><strong>3/day each:</strong> <em>${spellNames}</em></p>`;
-        }
-        if (spellData.spells.perDay2?.length > 0) {
-            const spellNames = spellData.spells.perDay2.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
-            spellList += `<p><strong>2/day each:</strong> <em>${spellNames}</em></p>`;
-        }
-        if (spellData.spells.perDay1?.length > 0) {
-            const spellNames = spellData.spells.perDay1.map(id => typeof spells !== 'undefined' && spells[id]?.name || id).join(', ');
-            spellList += `<p><strong>1/day each:</strong> <em>${spellNames}</em></p>`;
         }
     }
     
@@ -949,6 +1151,11 @@ function renderSpellcasting(monster) {
             <p>${intro}</p>
             <div class="spell-list">
                 ${spellList}
+            </div>
+            <div class="spellcasting-controls">
+                <button class="add-spell-btn" onclick="openSpellModal()">
+                    <i class="fa-solid fa-plus"></i> Add Spell
+                </button>
             </div>
         </div>
     `;
