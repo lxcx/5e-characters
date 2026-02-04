@@ -205,7 +205,6 @@ const MONSTER_DESCRIPTIONS = {
     "githzerai-zerth": "Githzerai warrior-monk combining martial arts with time manipulation.",
     "gladiator": "Professional arena fighter with scarred body, honed muscles, and showman's flair.",
     "gloom-weaver": "Shadar-kai spellcaster who draws power from the Shadowfell. Pale, with shadow magic.",
-    "giant-spider": "House-sized arachnid with hairy legs, multiple gleaming eyes, and dripping fangs.",
     "githyanki-warrior": "Gaunt humanoid with yellow-green skin, pointed ears, and ornate armor. Carries a silver sword.",
     "githzerai-monk": "Ascetic humanoid with yellow-brown skin, calm features, and simple robes. Radiates mental discipline.",
     "glabrezu": "Massive demon with the torso of a humanoid, four arms (two ending in massive pincers), dog-like head, and goat legs.",
@@ -594,9 +593,7 @@ const MONSTER_DESCRIPTIONS = {
     
     "geryon": "Geryon, the Wild Beast and former archdevil of Stygia. A massive three-bodied giant fused at the waist, with serpentine tails. Three torsos, three heads with curved horns, and three sets of arms. Covered in ice and wielding a massive horn that summons minotaurs. Bestial and savage, fallen from grace.",
     
-    // Beholders
-    "death-tyrant": "An undead beholder - a decayed sphere with rotting flesh, damaged eyestalks leaking necrotic energy, and a central eye that glows with deathly power instead of antimagic. Bones visible through holes in decomposing skin. Even more paranoid and hateful than living beholders.",
-    
+    // Beholders    
     "beholder-zombie": "Undead floating spherical body covered in rotting leathery skin, with one massive clouded central eye and ten smaller eyes on limp, decaying stalks. Wide mouth filled with yellowed teeth. The once-proud aberration now shambles through the air with jerking, unnatural motions, controlled by dark magic.",
     
     // More Fiends
@@ -721,32 +718,20 @@ const MONSTER_DESCRIPTIONS = {
     // ===== GENIES =====
     "dao": "Earth genie with skin of polite stone, muscular build, and jewelry of precious gems. Lower body dissolves into swirling earth and sand. Arrogant and greedy.",
     "djinni": "Air genie with blue skin, regal bearing, and lower body trailing into mist and cloud. Wears silks and gold. Proud but often honorable.",
-    "efreeti": "Fire genie with crimson skin, flames for hair, and a body of living fire below the waist. Cruel and arrogant, dripping with brass jewelry.",
     "marid": "Water genie with blue-green skin, aquatic features, and a lower body of churning water. The most powerful and capricious of genies.",
     
-    // ===== BEASTKIN & THERIANTHROPES =====
-    "werebear": "In hybrid form - massive humanoid with bear features, brown fur, and powerful claws. Usually good-natured despite fearsome appearance.",
-    "wereboar": "In hybrid form - humanoid with a boar's head, tusks, and coarse hair. Ill-tempered and aggressive.",
-    "wererat": "In hybrid form - humanoid with rat features, a pointed snout, and a long tail. Sneaky and disease-carrying.",
-    "weretiger": "In hybrid form - humanoid with tiger features, orange and black striped fur, and feline grace. Proud and territorial.",
-    "jackalwere": "Jackal that can assume human form - in true form, a large jackal with intelligent eyes. Serves lamias.",
+    // ===== BEASTKIN & THERIANTHROPES =====    "jackalwere": "Jackal that can assume human form - in true form, a large jackal with intelligent eyes. Serves lamias.",
     
     // ===== NAGA =====
     "guardian-naga": "Serpent with an iridescent humanoid face, wise and protective. Golden and green scales. Serves good deities.",
-    "spirit-naga": "Evil serpent with a humanoid face twisted by malice. Dark purple scales. Schemes from jungle temples.",
     "bone-naga": "Undead serpentine skeleton - a long coiling snake skeleton with a humanoid-like skull, fanged jaws, and green necromantic fire burning in empty eye sockets. Created by yuan-ti dark magic.",
     
-    // ===== YUAN-TI =====
-    "yuan-ti-pureblood": "Nearly human yuan-ti with only subtle snake features - slit pupils, patches of scales, forked tongue. Infiltrators.",
-    "yuan-ti-malison": "Yuan-ti with significant snake features - perhaps a snake head on human body, or snake arms. Type varies.",
-    "yuan-ti-abomination": "Most monstrous yuan-ti - snake body from the waist down, humanoid torso, and a serpent head. Priests and leaders.",
-    "yuan-ti-anathema": "Massive yuan-ti abomination of divine power - six snake heads on a coiled serpent body. Avatar of Merrshaulk.",
+    // ===== YUAN-TI =====    "yuan-ti-anathema": "Massive yuan-ti abomination of divine power - six snake heads on a coiled serpent body. Avatar of Merrshaulk.",
     
     // ===== DROW =====
     "drow-elite-warrior": "Dark elf in ornate black armor with house insignia. White hair, red eyes, and superior demeanor. Exceptional blade skills.",
     "drow-mage": "Drow wizard in elegant robes, carrying a staff topped with a spider motif. Manipulates shadow and poison.",
     "drow-priestess-of-lolth": "Drow cleric in spider-themed vestments, carrying a snake-headed whip. Fanatic devotee of the Spider Queen.",
-    "drider": "Dark elf from waist up, giant spider from waist down. Usually female, cursed by Lolth. White hair, multiple spider eyes.",
     "darkling-elder": "Taller darkling with more defined features and greater magical power. Still wreathed in shadow.",
     "darklings": "Small shadow fey with pitch-black skin that absorbs light. Burns brightly when killed.",
     "death-dog": "Two-headed mastiff with black fur, each head capable of independent thought. Spreads disease.",
@@ -785,7 +770,6 @@ const MONSTER_DESCRIPTIONS = {
     // ===== ORCS =====
     "orc-war-chief": "Massive orc in heavy armor decorated with trophies, wielding a greataxe. Leads through strength.",
     "orc-eye-of-gruumsh": "Orc shaman with one eye ritually removed, devoted to Gruumsh. Covered in ritual scars and war paint.",
-    "orog": "Elite orc with gray skin, more intelligent bearing, and superior equipment. Bred for war leadership.",
     "tanarukk": "Orc-demon hybrid with red skin, horns, and claws. Fiendish rage in orc form.",
     
     // ===== GNOLLS =====
@@ -824,14 +808,8 @@ const MONSTER_DESCRIPTIONS = {
     // ===== CELESTIALS =====
     "ki-rin": "Celestial creature with a horse's body covered in golden scales, stag-like horns, and a lion's mane. Walks on clouds.",
     "empyrean": "Titan child of a god, standing 30 feet tall with perfect humanoid features and an aura of divine power.",
-    "unicorn": "Pure white horse with a spiraling horn of light, representing ultimate goodness and purity.",
-    "pegasus": "Magnificent white horse with large feathered wings and noble bearing.",
-    "couatl": "Feathered serpent with rainbow plumage, radiant wings, and benevolent wisdom.",
     
-    // ===== PLANTS =====
-    "shambling-mound": "Heap of rotting vegetation roughly humanoid in shape. Vines and roots form limbs.",
-    "treant": "Living tree with a face in the bark, branch arms, and root legs. Ancient and wise protector.",
-    "awakened-tree": "Ordinary tree given consciousness by magic. Moves slowly but with purpose.",
+    // ===== PLANTS =====    "awakened-tree": "Ordinary tree given consciousness by magic. Moves slowly but with purpose.",
     "awakened-shrub": "Small bush brought to awareness. Often confused and frightened by its new existence.",
     "myconid-adult": "Mushroom creature standing four feet tall, communicating through spores. Peaceful and communal.",
     "myconid-sovereign": "Large myconid leader with a wide cap, releasing clouds of rapport spores.",
@@ -847,25 +825,17 @@ const MONSTER_DESCRIPTIONS = {
     "swarm-of-ravens": "Murder of ravens attacking in coordinated fury.",
     "swarm-of-quippers": "Churning water filled with razor-toothed fish in feeding frenzy.",
     
-    // ===== MISC CREATURES =====
-    "flumph": "Floating jellyfish creature with eye stalks and dangling tentacles. Surprisingly cute and benevolent.",
-    "gas-spore": "Fungus that looks exactly like a beholder - a deadly trap that explodes in spores.",
+    // ===== MISC CREATURES =====    "gas-spore": "Fungus that looks exactly like a beholder - a deadly trap that explodes in spores.",
     "gibbering-mouther": "Mass of eyes, mouths, and liquefied flesh that babbles constantly. Maddening horror.",
     "grell": "Floating brain with a beak and ten dangling tentacles. Hunts from above.",
-    "rust-monster": "Insect creature with feathery antennae and a propeller tail. Corrodes metal on touch.",
     "piercer": "Stalactite-shaped creature that drops on prey. Basically a living stone spike.",
-    "roper": "Looks like a stalagmite until it opens its single eye and extends grasping tendrils.",
-    "darkmantle": "Cave creature that resembles rock until it drops onto prey, enveloping their head.",
-    "cloaker": "Looks like a black cloak until it wraps around victims with its manta ray-like body.",
     "cult-fanatic": "Wild-eyed humanoid in ritual robes, bearing unholy symbols and fanatical devotion.",
     "cultist": "Hooded humanoid in dark robes with cult symbols, devoted to dark powers.",
     "girallon": "Four-armed ape of massive size with white fur and savage temperament.",
     "froghemoth": "Enormous frog-like creature with tentacles instead of a tongue. Swamp horror.",
     "catoblepas": "Wildebeest-like creature with a long neck and a death-gaze. Stench of decay.",
-    "gorgon": "Bull covered in iron plates instead of hide, with breath that petrifies.",
     "leucrotta": "Badger-headed deer with a bony ridge instead of teeth. Mimics voices.",
     "peryton": "Eagle-headed stag with wings, casting a humanoid shadow. Eats hearts.",
-    "displacer-beast": "Six-legged panther with shoulder tentacles, appearing offset from its true location."
 };
 
 // Apply descriptions to allMonsters
