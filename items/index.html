@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5E Item Generator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- D&D Style Fonts -->
+    <link href="https://db.onlinewebfonts.com/c/c391b9f3d65d9f9e311c80d964b696e1?family=Nodesto+Caps+Condensed" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/b9b59f3d31d975e265c5ed4c5433326f?family=Bookinsanity" rel="stylesheet">
+    <link rel="stylesheet" href="/items/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-gem"></i> D&D 5E Item Generator</h1>
+            <p>Discover magical treasures and mundane equipment for your campaign</p>
+        </header>
+
+        <div class="content">
+            <div class="form-section">
+                <h2 style="margin-bottom: 20px; color: #2c3e50;"><i class="fa-solid fa-sliders"></i> Generator Options</h2>
+                
+                <!-- Mode Selection -->
+                <div class="form-group">
+                    <label for="generatorMode">Mode</label>
+                    <div class="mode-toggle">
+                        <button type="button" class="mode-btn active" id="modeGenerate" onclick="setMode('generate')">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Random
+                        </button>
+                        <button type="button" class="mode-btn" id="modeSelect" onclick="setMode('select')">
+                            <i class="fa-solid fa-book"></i> Item Library
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item Library Selection (hidden by default) -->
+                <div id="librarySection" class="form-group" style="display: none;">
+                    <label for="itemSearch">Search Items <span class="item-count"></span></label>
+                    <input type="text" id="itemSearch" placeholder="Type to search... (e.g., sword, potion, ring)" oninput="filterItemList()" autocomplete="off">
+                    <select id="itemSelect" size="8" style="margin-top: 10px; height: 200px;" onchange="previewSelectedItem()">
+                        <!-- Options populated by JavaScript -->
+                    </select>
+                    <div id="itemPreview" class="item-preview" style="margin-top: 10px; padding: 10px; background: rgba(201, 162, 39, 0.1); border-radius: 8px; display: none;">
+                        <!-- Preview info shown here -->
+                    </div>
+                </div>
+
+                <!-- Generator Options (shown by default) -->
+                <div id="generatorSection">
+                    <!-- Item Category -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemCategory">Item Category</label>
+                            <select id="itemCategory">
+                                <option value="random">Random</option>
+                                <optgroup label="Equipment">
+                                    <option value="armor">Armor</option>
+                                    <option value="weapon">Weapon</option>
+                                    <option value="shield">Shield</option>
+                                </optgroup>
+                                <optgroup label="Adventuring Gear">
+                                    <option value="adventuring-gear">Adventuring Gear</option>
+                                    <option value="ammunition">Ammunition</option>
+                                    <option value="container">Container</option>
+                                    <option value="tool">Tools</option>
+                                </optgroup>
+                                <optgroup label="Magic Items">
+                                    <option value="potion">Potion</option>
+                                    <option value="ring">Ring</option>
+                                    <option value="rod">Rod</option>
+                                    <option value="scroll">Scroll</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="wand">Wand</option>
+                                    <option value="wondrous-item">Wondrous Item</option>
+                                </optgroup>
+                                <optgroup label="Spellcasting Focuses">
+                                    <option value="arcane-focus">Arcane Focus</option>
+                                    <option value="druidic-focus">Druidic Focus</option>
+                                    <option value="holy-symbol">Holy Symbol</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="artisan-tools">Artisan's Tools</option>
+                                    <option value="gaming-set">Gaming Set</option>
+                                    <option value="instrument">Musical Instrument</option>
+                                    <option value="mount-gear">Mount & Gear</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rarity">Rarity</label>
+                            <select id="rarity">
+                                <option value="random">Random</option>
+                                <option value="mundane">Mundane (Non-magical)</option>
+                                <option value="common">Common</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="rare">Rare</option>
+                                <option value="very-rare">Very Rare</option>
+                                <option value="legendary">Legendary</option>
+                                <option value="artifact">Artifact</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Source Filter -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="source">Source Book</label>
+                            <select id="source">
+                                <option value="all">All Sources</option>
+                                <option value="PHB">Player's Handbook</option>
+                                <option value="DMG">Dungeon Master's Guide</option>
+                                <option value="XGE">Xanathar's Guide</option>
+                                <option value="TCE">Tasha's Cauldron</option>
+                                <option value="FTOD">Fizban's Treasury</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="magicOnly">
+                                <input type="checkbox" id="magicOnly" style="width: auto; margin-right: 8px;">
+                                Magic Items Only
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Treasure Tables -->
+                    <div class="treasure-table-section">
+                        <h4><i class="fa-solid fa-coins"></i> Quick Roll - Treasure Tables</h4>
+                        <div class="treasure-roll">
+                            <button type="button" class="roll-btn" onclick="rollTreasureTable('A')">Table A<br><small>Common</small></button>
+                            <button type="button" class="roll-btn" onclick="rollTreasureTable('B')">Table B<br><small>Uncommon</small></button>
+                            <button type="button" class="roll-btn" onclick="rollTreasureTable('C')">Table C<br><small>Rare</small></button>
+                            <button type="button" class="roll-btn" onclick="rollTreasureTable('D')">Table D<br><small>V. Rare</small></button>
+                            <button type="button" class="roll-btn" onclick="rollTreasureTable('E')">Table E<br><small>Legendary</small></button>
+                        </div>
+                    </div>
+
+                </div><!-- End generatorSection -->
+
+                <button id="generateBtn" onclick="handleGenerate()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Item</button>
+                <button id="loadBtn" onclick="loadSelectedItem()" style="display: none;"><i class="fa-solid fa-book-open"></i> Load Item</button>
+            </div>
+
+            <div class="result-section">
+                <div class="result-header">
+                    <h2><i class="fa-solid fa-treasure-chest"></i> Generated Item</h2>
+                    <button class="regenerate-btn" onclick="regenerateItem()" id="regenerateBtn" style="display: none;">
+                        <i class="fa-solid fa-arrows-rotate"></i> Regenerate
+                    </button>
+                </div>
+                <div id="itemResult" class="hidden">
+                    <!-- Item will be displayed here -->
+                </div>
+                <div id="placeholder" style="text-align: center; color: #6c757d; padding: 40px;">
+                    <p id="placeholderText" style="font-size: 1.2em;">Select your options and click "Generate Item" to discover treasure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <!-- Item Data -->
+    <script src="/items/js/items-core.js"></script>
+    <script src="/items/js/items-armor.js"></script>
+    <script src="/items/js/items-mundane.js"></script>
+    <script src="/items/js/items-tools.js"></script>
+    <script src="/items/js/items-potions.js"></script>
+    <script src="/items/js/items-magic-a.js"></script>
+    <script src="/items/js/items-magic-b.js"></script>
+    <script src="/items/js/items-magic-c.js"></script>
+    <script src="/items/js/items-magic-d.js"></script>
+    <script src="/items/js/items-magic-efgh.js"></script>
+    <!-- Core Scripts -->
+    <script src="/items/js/generator.js"></script>
+    <script src="/items/js/ui.js"></script>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span class="footer-label">D&D 5E Tools:</span>
+            <nav class="footer-nav">
+                <a href="/" class="footer-link">
+                    <i class="fa-solid fa-user"></i> NPC Generator
+                </a>
+                <a href="/monsters/" class="footer-link">
+                    <i class="fa-solid fa-dragon"></i> Monster Generator
+                </a>
+                <a href="/items/" class="footer-link active">
+                    <i class="fa-solid fa-gem"></i> Item Generator
+                </a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
