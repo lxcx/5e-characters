@@ -1,5 +1,7 @@
 // D&D 5E Monster Generator - UI Functions
 
+let isEditing = false;
+
 // Display generated monster
 function displayMonster(monster) {
     const resultEl = document.getElementById('monsterResult');
@@ -8,11 +10,11 @@ function displayMonster(monster) {
         <div class="monster-card">
             <div class="monster-header">
                 <div class="monster-name-section">
-                    <h1 class="monster-name editable" onclick="editField('name')">${monster.name}</h1>
+                    <h1 class="monster-name editable" id="editable-name" onclick="editMonsterTextField('name', event)">${monster.name}</h1>
                     <p class="monster-basics">
-                        <span class="editable" onclick="editField('size')">${capitalize(monster.size)}</span>
-                        <span class="editable" onclick="editField('type')">${monster.type}</span>,
-                        <span class="editable" onclick="editField('alignment')">${monster.alignment}</span>
+                        <span class="editable" id="editable-size" onclick="editMonsterSelectField('size', getSizeOptions(), event)">${capitalize(monster.size)}</span>
+                        <span class="editable" id="editable-type" onclick="editMonsterSelectField('type', getTypeOptions(), event)">${monster.type}</span>,
+                        <span class="editable" id="editable-alignment" onclick="editMonsterSelectField('alignment', getAlignmentOptions(), event)">${monster.alignment}</span>
                     </p>
                 </div>
             </div>
@@ -69,7 +71,7 @@ function displayMonster(monster) {
             
             <div class="monster-description">
                 <h3 class="section-title"><i class="fa-solid fa-book"></i> Description</h3>
-                <p class="editable" onclick="editField('description')">${monster.description}</p>
+                <p class="editable" id="editable-description" onclick="editMonsterTextareaField('description', event)">${monster.description}</p>
             </div>
             
             <!-- Portrait Section -->
@@ -427,10 +429,221 @@ function formatCR(cr) {
     return cr.toString();
 }
 
-// Edit field
-function editField(field) {
-    // TODO: Implement inline editing
-    console.log('Edit field:', field);
+// Get size options for dropdown
+function getSizeOptions() {
+    return [
+        { value: 'tiny', label: 'Tiny' },
+        { value: 'small', label: 'Small' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'large', label: 'Large' },
+        { value: 'huge', label: 'Huge' },
+        { value: 'gargantuan', label: 'Gargantuan' }
+    ];
+}
+
+// Get type options for dropdown
+function getTypeOptions() {
+    return [
+        { value: 'aberration', label: 'Aberration' },
+        { value: 'beast', label: 'Beast' },
+        { value: 'celestial', label: 'Celestial' },
+        { value: 'construct', label: 'Construct' },
+        { value: 'dragon', label: 'Dragon' },
+        { value: 'elemental', label: 'Elemental' },
+        { value: 'fey', label: 'Fey' },
+        { value: 'fiend', label: 'Fiend' },
+        { value: 'giant', label: 'Giant' },
+        { value: 'humanoid', label: 'Humanoid' },
+        { value: 'monstrosity', label: 'Monstrosity' },
+        { value: 'ooze', label: 'Ooze' },
+        { value: 'plant', label: 'Plant' },
+        { value: 'undead', label: 'Undead' }
+    ];
+}
+
+// Get alignment options for dropdown
+function getAlignmentOptions() {
+    return [
+        { value: 'lawful good', label: 'Lawful Good' },
+        { value: 'neutral good', label: 'Neutral Good' },
+        { value: 'chaotic good', label: 'Chaotic Good' },
+        { value: 'lawful neutral', label: 'Lawful Neutral' },
+        { value: 'neutral', label: 'Neutral' },
+        { value: 'chaotic neutral', label: 'Chaotic Neutral' },
+        { value: 'lawful evil', label: 'Lawful Evil' },
+        { value: 'neutral evil', label: 'Neutral Evil' },
+        { value: 'chaotic evil', label: 'Chaotic Evil' },
+        { value: 'unaligned', label: 'Unaligned' },
+        { value: 'any alignment', label: 'Any Alignment' }
+    ];
+}
+
+// Edit text field (Name)
+function editMonsterTextField(field, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-${field}`);
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster[field] || '';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'inline-edit-input';
+    input.value = currentValue;
+    
+    element.innerHTML = '';
+    element.appendChild(input);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        input.focus();
+        input.select();
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newValue = input.value.trim();
+        if (newValue && newValue !== currentValue) {
+            currentMonster[field] = newValue;
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        input.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            saveEdit();
+        } else if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
+    });
+}
+
+// Edit select field (Size, Type, Alignment)
+function editMonsterSelectField(field, options, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-${field}`);
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster[field] || '';
+    
+    const select = document.createElement('select');
+    select.className = 'inline-edit-select';
+    
+    options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.label;
+        if (opt.value === currentValue || opt.value === currentValue.toLowerCase()) {
+            option.selected = true;
+        }
+        select.appendChild(option);
+    });
+    
+    element.innerHTML = '';
+    element.appendChild(select);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        select.focus();
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newValue = select.value;
+        if (newValue !== currentValue && newValue !== currentValue.toLowerCase()) {
+            currentMonster[field] = newValue;
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        select.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    select.addEventListener('change', () => {
+        saveEdit();
+    });
+    
+    select.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            saveEdit();
+        } else if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
+    });
+}
+
+// Edit textarea field (Description)
+function editMonsterTextareaField(field, event) {
+    if (event) event.stopPropagation();
+    if (isEditing || !currentMonster) return;
+    isEditing = true;
+    
+    const element = document.getElementById(`editable-${field}`);
+    if (!element) { isEditing = false; return; }
+    
+    const currentValue = currentMonster[field] || '';
+    
+    const textarea = document.createElement('textarea');
+    textarea.className = 'inline-edit-textarea';
+    textarea.value = currentValue;
+    textarea.rows = 4;
+    
+    element.innerHTML = '';
+    element.appendChild(textarea);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+    }, 10);
+    
+    let saved = false;
+    const saveEdit = () => {
+        if (saved) return;
+        saved = true;
+        const newValue = textarea.value.trim();
+        if (newValue !== currentValue) {
+            currentMonster[field] = newValue;
+        }
+        isEditing = false;
+        displayMonster(currentMonster);
+    };
+    
+    setTimeout(() => {
+        textarea.addEventListener('blur', saveEdit);
+    }, 100);
+    
+    textarea.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            saved = true;
+            isEditing = false;
+            displayMonster(currentMonster);
+        }
+        // Allow Enter for newlines in textarea - use Escape to cancel or click away to save
+    });
 }
 
 // Portrait generation (Prodia API with Pollinations fallback)

@@ -1154,3 +1154,59 @@ button:active {
         min-width: 120px;
     }
 }
+
+/* Inline Editing Styles */
+.editable {
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.2s;
+}
+
+.editable:hover {
+    border-bottom-color: #58180d;
+}
+
+.inline-edit-input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 4px 8px;
+    border: 2px solid #58180d;
+    border-radius: 6px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.inline-edit-textarea {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px;
+    border: 2px solid #58180d;
+    border-radius: 6px;
+    outline: none;
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.inline-edit-select {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 4px 8px;
+    border: 2px solid #58180d;
+    border-radius: 6px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.monster-name.editable:hover {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
