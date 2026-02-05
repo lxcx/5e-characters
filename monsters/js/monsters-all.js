@@ -33841,6 +33841,409 @@ const allMonsters = {
                 "2nd": { slots: 3, spells: ["hold person", "misty step"] }
             }
         }
+    },
+
+    // ===== Hoard of the Dragon Queen / Rise of Tiamat (HotDQ/RoT) =====
+    "langdedrosa cyanwrath": {
+        name: "Langdedrosa Cyanwrath",
+        source: "HotDQ",
+        size: "large",
+        type: "humanoid",
+        subtype: "half-dragon",
+        alignment: "lawful evil",
+        ac: 17,
+        acType: "splint",
+        hp: 57,
+        hitDice: "6d10+24",
+        speed: { walk: 30 },
+        abilityScores: { str: 19, dex: 13, con: 18, int: 12, wis: 14, cha: 14 },
+        savingThrows: { str: 6, con: 6 },
+        skills: { athletics: 6, intimidation: 4, perception: 4 },
+        damageResistances: ["lightning"],
+        senses: ["blindsight 10 ft., darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: 4,
+        traits: [
+            { name: "Action Surge (Recharges after a Short or Long Rest)", description: "On his turn, Langdedrosa can take one additional action." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Langdedrosa makes two greatsword attacks." },
+            { name: "Greatsword", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Lightning Breath (Recharge 5-6)", description: "Langdedrosa exhales lightning in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "severin": {
+        name: "Severin",
+        source: "RoT",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 16,
+        hp: 150,
+        hitDice: "20d8+60",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 13, con: 16, int: 17, wis: 12, cha: 20 },
+        savingThrows: { dex: 5, wis: 5 },
+        skills: { arcana: 7, religion: 7 },
+        damageResistances: ["fire"],
+        senses: ["passive Perception 11"],
+        languages: "Common, Draconic, Infernal",
+        cr: 11,
+        traits: [
+            { name: "Special Equipment", description: "Severin wears the Mask of the Dragon Queen." },
+            { name: "Legendary Resistance (5/Day)", description: "If Severin fails a saving throw while wearing the Mask of the Dragon Queen, he can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Burning Touch", description: "Melee Spell Attack: +9 to hit, reach 5 ft., one target. Hit: 18 (4d8) fire damage." },
+            { name: "Scorching Burst", description: "Ranged Spell Attack: +9 to hit, range 60 ft., one target. Hit: 14 (4d6) fire damage, and the target is on fire. At the start of each of its turns, a creature on fire takes 3 (1d6) fire damage. A creature can use an action to extinguish the fire on itself or another creature within reach." }
+        ],
+        legendaryActions: [
+            { name: "Attack", description: "Severin makes one attack." },
+            { name: "Fiery Teleport (Costs 2 Actions)", description: "Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 (1d10) fire damage." },
+            { name: "Hellish Chains (Costs 3 Actions)", description: "Severin targets a creature he can see within 30 feet of him. The creature must succeed on a DC 17 Constitution saving throw or be paralyzed until the end of its next turn and take 21 (6d6) fire damage." }
+        ]
+    },
+    "rezmir": {
+        name: "Rezmir",
+        source: "HotDQ",
+        size: "medium",
+        type: "humanoid",
+        subtype: "half-black dragon",
+        alignment: "neutral evil",
+        ac: 13,
+        hp: 90,
+        hitDice: "12d8+36",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 16, con: 16, int: 15, wis: 12, cha: 14 },
+        savingThrows: { dex: 6, wis: 4 },
+        skills: { arcana: 5, stealth: 9 },
+        damageResistances: ["acid"],
+        conditionImmunities: ["charmed", "frightened"],
+        senses: ["blindsight 10 ft., darkvision 120 ft."],
+        languages: "Common, Draconic, Infernal, Giant, Netherese",
+        cr: 7,
+        traits: [
+            { name: "Dark Blessing", description: "Rezmir adds her Charisma modifier to her saving throws against spells and other magical effects (already factored into her statistics)." },
+            { name: "Draconic Heritage", description: "Rezmir can hold her breath for 15 minutes." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Rezmir makes two melee attacks with Hazirawn or one melee attack and uses her breath weapon." },
+            { name: "Hazirawn", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage plus 7 (2d6) necrotic damage." },
+            { name: "Acid Breath (Recharge 5-6)", description: "Rezmir exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+
+    // ===== Candlekeep Mysteries (CM) =====
+    "animated armor horror": {
+        name: "Animated Armor Horror",
+        source: "CM",
+        size: "medium",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 18,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "7d8+21",
+        speed: { walk: 25 },
+        abilityScores: { str: 16, dex: 8, con: 16, int: 1, wis: 3, cha: 1 },
+        damageImmunities: ["poison", "psychic"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["blindsight 60 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: 4,
+        traits: [
+            { name: "Antimagic Susceptibility", description: "The armor is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute." },
+            { name: "False Appearance", description: "While the armor remains motionless, it is indistinguishable from a normal suit of armor." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The armor makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) bludgeoning damage." },
+            { name: "Frightful Presence", description: "Each creature of the armor's choice within 60 feet of it and aware of it must succeed on a DC 11 Wisdom saving throw or become frightened for 1 minute." }
+        ]
+    },
+    "stonky": {
+        name: "Stonky",
+        source: "CM",
+        size: "small",
+        type: "humanoid",
+        subtype: "gnome",
+        alignment: "chaotic good",
+        ac: 12,
+        hp: 16,
+        hitDice: "3d6+6",
+        speed: { walk: 25 },
+        abilityScores: { str: 6, dex: 14, con: 14, int: 18, wis: 10, cha: 10 },
+        skills: { arcana: 6, history: 6, investigation: 6 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic, Gnomish",
+        cr: "1/2",
+        traits: [
+            { name: "Gnome Cunning", description: "Stonky has advantage on Intelligence, Wisdom, and Charisma saving throws against magic." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 (1d6-2) bludgeoning damage, or 2 (1d8-2) bludgeoning damage if used with two hands." },
+            { name: "Shocking Grasp (Cantrip)", description: "Melee Spell Attack: +6 to hit, reach 5 ft., one creature. Hit: 4 (1d8) lightning damage, and the target can't take reactions until the start of its next turn." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                cantrips: ["mending", "minor illusion", "prestidigitation", "shocking grasp"],
+                "1st": { slots: 4, spells: ["identify", "mage armor", "shield"] },
+                "2nd": { slots: 2, spells: ["knock", "shatter"] }
+            }
+        }
+    },
+
+    // ===== Journeys through the Radiant Citadel (JttRC) =====
+    "serpentscale hydra": {
+        name: "Serpentscale Hydra",
+        source: "JttRC",
+        size: "huge",
+        type: "monstrosity",
+        alignment: "typically chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 172,
+        hitDice: "15d12+75",
+        speed: { walk: 30, swim: 40 },
+        abilityScores: { str: 21, dex: 12, con: 20, int: 4, wis: 10, cha: 7 },
+        skills: { perception: 6 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 10,
+        traits: [
+            { name: "Hold Breath", description: "The hydra can hold its breath for 1 hour." },
+            { name: "Multiple Heads", description: "The hydra has five heads. While it has more than one head, the hydra has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." },
+            { name: "Reactive Heads", description: "For each head the hydra has beyond one, it gets an extra reaction that can be used only for opportunity attacks." },
+            { name: "Wakeful", description: "While the hydra sleeps, at least one of its heads is awake." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hydra makes as many bite attacks as it has heads." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 10 (1d10+5) piercing damage plus 5 (1d10) poison damage." },
+            { name: "Poison Spit (Recharge 5-6)", description: "The hydra spits poison at one creature it can see within 60 feet of it. The target must make a DC 17 Constitution saving throw, taking 33 (6d10) poison damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "wishsteed": {
+        name: "Wishsteed",
+        source: "JttRC",
+        size: "medium",
+        type: "celestial",
+        alignment: "chaotic good",
+        ac: 13,
+        hp: 60,
+        hitDice: "8d8+24",
+        speed: { walk: 60, fly: 90 },
+        abilityScores: { str: 18, dex: 17, con: 16, int: 10, wis: 14, cha: 16 },
+        senses: ["passive Perception 12"],
+        languages: "Celestial, Common, telepathy 60 ft.",
+        cr: 3,
+        traits: [
+            { name: "Magic Resistance", description: "The wishsteed has advantage on saving throws against spells and other magical effects." },
+            { name: "Magic Weapons", description: "The wishsteed's weapon attacks are magical." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The wishsteed makes two Hooves attacks." },
+            { name: "Hooves", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage." },
+            { name: "Ethereal Stride", description: "The wishsteed and up to three willing creatures within 5 feet of it magically enter the Ethereal Plane from the Material Plane, or vice versa." }
+        ]
+    },
+
+    // ===== Critical Role: Call of the Netherdeep (CRCotN) =====
+    "alyxian the tormented": {
+        name: "Alyxian the Tormented",
+        source: "CRCotN",
+        size: "large",
+        type: "celestial",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 198,
+        hitDice: "17d10+102",
+        speed: { walk: 40, swim: 40 },
+        abilityScores: { str: 22, dex: 14, con: 22, int: 15, wis: 18, cha: 20 },
+        savingThrows: { str: 11, con: 11, wis: 9, cha: 10 },
+        skills: { athletics: 11, intimidation: 10, perception: 9 },
+        damageResistances: ["psychic", "radiant"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["truesight 120 ft."],
+        languages: "all, telepathy 120 ft.",
+        cr: 16,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If Alyxian fails a saving throw, he can choose to succeed instead." },
+            { name: "Magic Resistance", description: "Alyxian has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Alyxian makes three Slam attacks or two Radiant Javelin attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 19 (3d8+6) bludgeoning damage." },
+            { name: "Radiant Javelin", description: "Ranged Weapon Attack: +11 to hit, range 120 ft., one target. Hit: 24 (4d8+6) radiant damage." },
+            { name: "Apathy Pulse (Recharge 5-6)", description: "Alyxian emits magical energy that fills a 30-foot-radius sphere centered on himself. Each creature in that area must make a DC 18 Wisdom saving throw. On a failed save, a creature takes 45 (10d8) psychic damage and has its speed reduced to 0 until the end of its next turn. On a successful save, a creature takes half as much damage and its speed isn't reduced." }
+        ],
+        legendaryActions: [
+            { name: "Vicious Slam", description: "Alyxian makes one Slam attack." },
+            { name: "Telekinetic Pull (Costs 2 Actions)", description: "Alyxian targets a Huge or smaller creature he can see within 120 feet of him. The target must succeed on a DC 18 Strength saving throw or be pulled up to 30 feet straight toward Alyxian." }
+        ]
+    },
+
+    // ===== Dragon of Icespire Peak (DoIP) =====
+    "cryovain": {
+        name: "Cryovain",
+        source: "DoIP",
+        size: "large",
+        type: "dragon",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 133,
+        hitDice: "14d10+56",
+        speed: { walk: 40, burrow: 20, fly: 80, swim: 40 },
+        abilityScores: { str: 18, dex: 10, con: 18, int: 6, wis: 11, cha: 12 },
+        savingThrows: { dex: 3, con: 7, wis: 3, cha: 4 },
+        skills: { perception: 6, stealth: 3 },
+        damageImmunities: ["cold"],
+        senses: ["blindsight 30 ft., darkvision 120 ft."],
+        languages: "Common, Draconic",
+        cr: 6,
+        traits: [
+            { name: "Ice Walk", description: "Cryovain can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn't cost it extra moment." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Cryovain makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage plus 4 (1d8) cold damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Cold Breath (Recharge 5-6)", description: "Cryovain exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 15 Constitution saving throw, taking 45 (10d8) cold damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+
+    // ===== Acquisitions Incorporated (AI) =====
+    "fascinatrix": {
+        name: "Fascinatrix",
+        source: "AI",
+        size: "medium",
+        type: "fiend",
+        subtype: "devil",
+        alignment: "lawful evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 71,
+        hitDice: "11d8+22",
+        speed: { walk: 30, fly: 50 },
+        abilityScores: { str: 12, dex: 17, con: 14, int: 16, wis: 14, cha: 21 },
+        savingThrows: { dex: 6, con: 5, wis: 5, cha: 8 },
+        skills: { deception: 11, insight: 5, perception: 5, persuasion: 11, stealth: 6 },
+        damageResistances: ["cold", "bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered"],
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "Common, Infernal, telepathy 60 ft.",
+        cr: 6,
+        traits: [
+            { name: "Devil's Sight", description: "Magical darkness doesn't impede the fascinatrix's darkvision." },
+            { name: "Magic Resistance", description: "The fascinatrix has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The fascinatrix makes two attacks: one with its tail and one with its kiss." },
+            { name: "Tail", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) piercing damage." },
+            { name: "Draining Kiss", description: "The fascinatrix kisses a creature charmed by it or a willing creature. The target must make a DC 16 Constitution saving throw against this magic, taking 32 (5d10+5) psychic damage on a failed save, or half as much damage on a successful one. The target's hit point maximum is reduced by an amount equal to the damage taken." },
+            { name: "Charm", description: "One humanoid the fascinatrix can see within 30 feet of it must succeed on a DC 16 Wisdom saving throw or be magically charmed for 1 day." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 16,
+            spells: {
+                atWill: ["alter self", "detect thoughts", "suggestion"],
+                "1/day each": ["dominate person", "etherealness"]
+            }
+        }
+    },
+    "verbeeg longstrider": {
+        name: "Verbeeg Longstrider",
+        source: "AI",
+        size: "large",
+        type: "giant",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "hide armor",
+        hp: 85,
+        hitDice: "10d10+30",
+        speed: { walk: 40 },
+        abilityScores: { str: 19, dex: 14, con: 16, int: 11, wis: 12, cha: 9 },
+        savingThrows: { dex: 5 },
+        skills: { athletics: 7, perception: 4, stealth: 5 },
+        senses: ["passive Perception 14"],
+        languages: "Common, Giant",
+        cr: 4,
+        traits: [
+            { name: "Simple Bounty", description: "The verbeeg can take 10 minutes to consume a meal, after which it regains 10 hit points." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The verbeeg makes two spear attacks." },
+            { name: "Spear", description: "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 14 (3d6+4) piercing damage, or 17 (3d8+4) piercing damage if used with two hands to make a melee attack." },
+            { name: "Rock", description: "Ranged Weapon Attack: +7 to hit, range 60/240 ft., one target. Hit: 15 (2d10+4) bludgeoning damage." }
+        ]
+    },
+
+    // ===== The Tortle Package (TP) =====
+    "decapus": {
+        name: "Decapus",
+        source: "TP",
+        size: "large",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 75,
+        hitDice: "10d10+20",
+        speed: { walk: 15, climb: 30 },
+        abilityScores: { str: 15, dex: 14, con: 14, int: 4, wis: 10, cha: 7 },
+        skills: { athletics: 4, perception: 2, stealth: 4 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 4,
+        traits: [
+            { name: "Tentacle Regeneration", description: "If the decapus loses a tentacle, it regrows a new one in 1 minute." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The decapus makes two tentacle attacks." },
+            { name: "Tentacle", description: "Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 9 (2d6+2) bludgeoning damage, and the target is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the decapus can't use this tentacle against another target. The decapus has ten tentacles." },
+            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature grappled by the decapus. Hit: 7 (2d4+2) piercing damage." }
+        ]
+    },
+
+    // ===== Locathah Rising (LR) =====
+    "sahuagin baron": {
+        name: "Sahuagin Baron",
+        source: "LR",
+        size: "large",
+        type: "humanoid",
+        subtype: "sahuagin",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "breastplate",
+        hp: 76,
+        hitDice: "9d10+27",
+        speed: { walk: 30, swim: 50 },
+        abilityScores: { str: 19, dex: 15, con: 16, int: 14, wis: 13, cha: 17 },
+        savingThrows: { dex: 5, con: 6, int: 5, wis: 4 },
+        skills: { perception: 7 },
+        senses: ["darkvision 120 ft."],
+        languages: "Sahuagin",
+        cr: 5,
+        traits: [
+            { name: "Blood Frenzy", description: "The sahuagin has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+            { name: "Limited Amphibiousness", description: "The sahuagin can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating." },
+            { name: "Shark Telepathy", description: "The sahuagin can magically command any shark within 120 feet of it, using a limited telepathy." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The sahuagin makes three attacks: one with its bite and two with its claws or trident." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 9 (2d4+4) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Trident", description: "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 (2d6+4) piercing damage, or 13 (2d8+4) piercing damage if used with two hands to make a melee attack." }
+        ]
     }
 };
 
