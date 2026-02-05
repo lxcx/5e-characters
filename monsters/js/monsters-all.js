@@ -21819,6 +21819,5600 @@ const allMonsters = {
                 "1/day each": ["confusion", "feeblemind", "telekinesis"]
             }
         }
+    },
+
+    // ===== Curse of Strahd (CoS) =====
+    "baba lysaga": {
+        name: "Baba Lysaga",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human, shapechanger",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 120,
+        hitDice: "16d8+48",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 10, con: 16, int: 20, wis: 17, cha: 13 },
+        savingThrows: { wis: 7 },
+        skills: { arcana: 13, religion: 13 },
+        senses: ["passive Perception 13"],
+        languages: "Abyssal, Common, Draconic, Dwarvish, Giant",
+        cr: 11,
+        traits: [
+            { name: "Shapechanger", description: "Baba Lysaga can use an action to polymorph into a swarm of insects (flies) or back into her true form. While in swarm form, she has a walking speed of 5 feet and a flying speed of 30 feet." },
+            { name: "Blessing of Mother Night", description: "Baba Lysaga is shielded against divination magic, as though protected by a nondetection spell." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Baba Lysaga makes three attacks with her quarterstaff." },
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage, or 8 (1d8+4) bludgeoning damage if wielded with two hands." },
+            { name: "Summon Swarms of Insects (Recharges after a Short or Long Rest)", description: "Baba Lysaga summons 1d4 swarms of insects. A summoned swarm appears in an unoccupied space within 60 feet of Baba Lysaga and acts as her ally." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 17,
+            attackBonus: 9,
+            spells: {
+                cantrips: ["acid splash", "fire bolt", "light", "mage hand", "prestidigitation"],
+                "1st": { slots: 4, spells: ["detect magic", "magic missile", "sleep", "witch bolt"] },
+                "2nd": { slots: 3, spells: ["crown of madness", "enlarge/reduce", "misty step"] },
+                "3rd": { slots: 3, spells: ["dispel magic", "fireball", "lightning bolt"] },
+                "4th": { slots: 3, spells: ["blight", "evard's black tentacles", "polymorph"] },
+                "5th": { slots: 2, spells: ["cloudkill", "geas", "scrying"] },
+                "6th": { slots: 1, spells: ["programmed illusion", "true seeing"] },
+                "7th": { slots: 1, spells: ["finger of death", "mirage arcane"] },
+                "8th": { slots: 1, spells: ["power word stun"] }
+            }
+        }
+    },
+    "baba lysaga's creeping hut": {
+        name: "Baba Lysaga's Creeping Hut",
+        source: "CoS",
+        size: "gargantuan",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 16,
+        acType: "natural armor",
+        hp: 263,
+        hitDice: "17d20+85",
+        speed: { walk: 30 },
+        abilityScores: { str: 26, dex: 7, con: 20, int: 1, wis: 3, cha: 3 },
+        savingThrows: { con: 9, wis: 0 },
+        damageImmunities: ["poison", "psychic"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["blindsight 120 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: 11,
+        traits: [
+            { name: "Antimagic Susceptibility", description: "The hut is incapacitated while the magic gem that animates it is in the area of an antimagic field. If targeted by dispel magic, the hut must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute." },
+            { name: "Siege Monster", description: "The hut deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hut makes three attacks with its roots. It can replace one of these attacks with a rock attack." },
+            { name: "Root", description: "Melee Weapon Attack: +12 to hit, reach 60 ft., one target. Hit: 30 (4d10+8) bludgeoning damage." },
+            { name: "Rock", description: "Ranged Weapon Attack: +12 to hit, range 120 ft., one target. Hit: 21 (3d8+8) bludgeoning damage." }
+        ]
+    },
+    "mongrelfolk": {
+        name: "Mongrelfolk",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "mongrelfolk",
+        alignment: "any alignment",
+        ac: 11,
+        acType: "natural armor",
+        hp: 26,
+        hitDice: "4d8+8",
+        speed: { walk: 20 },
+        abilityScores: { str: 12, dex: 9, con: 15, int: 9, wis: 10, cha: 6 },
+        skills: { deception: 2, perception: 2, stealth: 3 },
+        senses: ["passive Perception 12"],
+        languages: "Common",
+        cr: "1/4",
+        traits: [
+            { name: "Extraordinary Feature", description: "The mongrelfolk has one extraordinary feature determined randomly: Amphibious, Darkvision 60 ft., Flight (40 ft.), Keen Hearing and Smell, Spider Climb, Standing Leap, or Two-Headed." },
+            { name: "Mimicry", description: "The mongrelfolk can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 12 Wisdom (Insight) check." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The mongrelfolk makes two attacks: one with its bite and one with its claw or dagger." },
+            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) slashing damage." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 (1d4+1) piercing damage." }
+        ]
+    },
+    "strahd zombie": {
+        name: "Strahd Zombie",
+        source: "CoS",
+        size: "medium",
+        type: "undead",
+        alignment: "unaligned",
+        ac: 8,
+        hp: 30,
+        hitDice: "4d8+12",
+        speed: { walk: 20 },
+        abilityScores: { str: 13, dex: 6, con: 16, int: 3, wis: 6, cha: 5 },
+        savingThrows: { wis: 0 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands the languages it knew in life but can't speak",
+        cr: 1,
+        traits: [
+            { name: "Loathsome Limbs", description: "Whenever the zombie takes at least 5 bludgeoning or slashing damage at one time, roll a d20 to determine what happens: 1-8 leg severed, 9-16 arm severed, 17-20 decapitated. Severed parts continue to act independently." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The zombie makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) slashing damage." }
+        ]
+    },
+    "wereraven": {
+        name: "Wereraven",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human, shapechanger",
+        alignment: "lawful good",
+        ac: 12,
+        hp: 31,
+        hitDice: "7d8",
+        speed: { walk: 30, fly: 50 },
+        abilityScores: { str: 10, dex: 15, con: 11, int: 13, wis: 15, cha: 14 },
+        skills: { insight: 4, perception: 6 },
+        damageImmunities: ["bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons"],
+        senses: ["passive Perception 16"],
+        languages: "Common (can't speak in raven form)",
+        cr: 2,
+        traits: [
+            { name: "Shapechanger", description: "The wereraven can use its action to polymorph into a raven-humanoid hybrid or into a raven, or back into its human form. Any equipment it is wearing or carrying isn't transformed. It reverts to its human form if it dies." },
+            { name: "Mimicry", description: "The wereraven can mimic simple sounds it has heard. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check." }
+        ],
+        actions: [
+            { name: "Multiattack (Human or Hybrid Form Only)", description: "The wereraven makes two weapon attacks, one of which can be with its hand crossbow." },
+            { name: "Beak (Raven or Hybrid Form Only)", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 (1d4+2) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy." },
+            { name: "Shortsword (Humanoid or Hybrid Form Only)", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." },
+            { name: "Hand Crossbow (Humanoid or Hybrid Form Only)", description: "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ]
+    },
+    "tree blight": {
+        name: "Tree Blight",
+        source: "CoS",
+        size: "huge",
+        type: "plant",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 149,
+        hitDice: "13d12+65",
+        speed: { walk: 30 },
+        abilityScores: { str: 23, dex: 10, con: 20, int: 6, wis: 10, cha: 3 },
+        conditionImmunities: ["blinded", "deafened"],
+        senses: ["blindsight 60 ft. (blind beyond this radius)"],
+        languages: "understands Common and Druidic but doesn't speak",
+        cr: 7,
+        traits: [
+            { name: "False Appearance", description: "While the blight remains motionless, it is indistinguishable from a dead tree." },
+            { name: "Siege Monster", description: "The blight deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target grappled, the blight can also make a bite attack against the target as a bonus action." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 19 (3d8+6) piercing damage." },
+            { name: "Branch", description: "Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit: 16 (3d6+6) bludgeoning damage." },
+            { name: "Grasping Root", description: "Melee Weapon Attack: +9 to hit, reach 15 ft., one creature not grappled by the blight. Hit: The target is grappled (escape DC 15). Until the grapple ends, the target takes 9 (1d6+6) bludgeoning damage at the start of each of its turns." }
+        ]
+    },
+    "barovian witch": {
+        name: "Barovian Witch",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 10,
+        hp: 16,
+        hitDice: "3d8+3",
+        speed: { walk: 30 },
+        abilityScores: { str: 7, dex: 11, con: 13, int: 14, wis: 11, cha: 12 },
+        skills: { arcana: 4, perception: 2 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: "1/2",
+        traits: [
+            { name: "Dark Devotion", description: "The witch has advantage on saving throws against being charmed or frightened." }
+        ],
+        actions: [
+            { name: "Claws (Requires Alter Self)", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) slashing damage. This attack is magical." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +2 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 (1d4) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 12,
+            attackBonus: 4,
+            spells: {
+                cantrips: ["mage hand", "prestidigitation", "ray of frost"],
+                "1st": { slots: 3, spells: ["ray of sickness", "sleep", "tasha's hideous laughter"] },
+                "2nd": { slots: 2, spells: ["alter self", "invisibility"] }
+            }
+        }
+    },
+    "phantom warrior": {
+        name: "Phantom Warrior",
+        source: "CoS",
+        size: "medium",
+        type: "undead",
+        alignment: "any alignment",
+        ac: 16,
+        hp: 45,
+        hitDice: "6d8+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 11, con: 16, int: 8, wis: 10, cha: 15 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["cold", "necrotic", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained"],
+        senses: ["darkvision 60 ft."],
+        languages: "any languages it knew in life",
+        cr: 1,
+        traits: [
+            { name: "Ethereal Sight", description: "The phantom warrior can see 60 feet into the Ethereal Plane when it is on the Material Plane, and vice versa." },
+            { name: "Incorporeal Movement", description: "The phantom warrior can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object." },
+            { name: "Spectral Armor and Shield", description: "The phantom warrior's AC accounts for its spectral armor and shield." }
+        ],
+        actions: [
+            { name: "Spectral Longsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) force damage." },
+            { name: "Etherealness", description: "The phantom warrior enters the Ethereal Plane from the Material Plane, or vice versa. It is visible on the Material Plane while it is in the Border Ethereal, and vice versa, yet it can't affect or be affected by anything on the other plane." }
+        ]
+    },
+    "pidlwick ii": {
+        name: "Pidlwick II",
+        source: "CoS",
+        size: "small",
+        type: "construct",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 10,
+        hitDice: "3d6",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 14, con: 11, int: 8, wis: 13, cha: 10 },
+        skills: { performance: 2 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands Common but can't speak",
+        cr: "1/4",
+        traits: [
+            { name: "False Appearance", description: "While Pidlwick II remains motionless, it is indistinguishable from a lifeless puppet." }
+        ],
+        actions: [
+            { name: "Club", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage." },
+            { name: "Dart", description: "Ranged Weapon Attack: +4 to hit, range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ]
+    },
+    "broom of animated attack": {
+        name: "Broom of Animated Attack",
+        source: "CoS",
+        size: "small",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 17,
+        hitDice: "5d6",
+        speed: { walk: 0, fly: 50 },
+        abilityScores: { str: 10, dex: 17, con: 10, int: 1, wis: 5, cha: 1 },
+        damageImmunities: ["poison", "psychic"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: "1/4",
+        traits: [
+            { name: "Antimagic Susceptibility", description: "The broom is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the broom must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute." },
+            { name: "False Appearance", description: "While the broom remains motionless and isn't flying, it is indistinguishable from a normal broom." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The broom makes two melee attacks." },
+            { name: "Broomstick", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) bludgeoning damage." }
+        ]
+    },
+    "guardian portrait": {
+        name: "Guardian Portrait",
+        source: "CoS",
+        size: "medium",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 5,
+        hp: 22,
+        hitDice: "5d8",
+        speed: { walk: 0 },
+        abilityScores: { str: 1, dex: 1, con: 10, int: 14, wis: 10, cha: 10 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, plus up to two other languages",
+        cr: 1,
+        traits: [
+            { name: "Antimagic Susceptibility", description: "The portrait is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the portrait must succeed on a Constitution saving throw against the caster's spell save DC or become unconscious for 1 minute." },
+            { name: "False Appearance", description: "While motionless, the portrait is indistinguishable from a normal painting." }
+        ],
+        actions: [
+            { name: "Frightening Visage", description: "Each creature within 60 feet of the portrait that can see it must succeed on a DC 12 Wisdom saving throw or be frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ]
+    },
+    "izek strazni": {
+        name: "Izek Strazni",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "studded leather",
+        hp: 112,
+        hitDice: "15d8+45",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 15, con: 16, int: 10, wis: 9, cha: 15 },
+        skills: { intimidation: 8, perception: 2 },
+        senses: ["passive Perception 12"],
+        languages: "Common",
+        cr: 5,
+        traits: [
+            { name: "Brute", description: "A melee weapon deals one extra die of its damage when Izek hits with it (included in the attack)." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Izek makes two attacks with his battleaxe or his hurl flame ability." },
+            { name: "Battleaxe", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage, or 15 (2d10+4) slashing damage if used with two hands." },
+            { name: "Hurl Flame", description: "Ranged Spell Attack: +5 to hit, range 60 ft., one target. Hit: 10 (3d6) fire damage. If the target is a flammable object that isn't being worn or carried, it also catches fire." }
+        ]
+    },
+    "vladimir horngaard": {
+        name: "Vladimir Horngaard",
+        source: "CoS",
+        size: "medium",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 17,
+        acType: "half plate",
+        hp: 192,
+        hitDice: "16d8+64",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 14, con: 18, int: 13, wis: 16, cha: 18 },
+        savingThrows: { str: 7, con: 7, wis: 6, cha: 7 },
+        damageResistances: ["necrotic", "psychic"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned", "stunned"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: 7,
+        traits: [
+            { name: "Regeneration", description: "Vladimir regains 10 hit points at the start of his turn. If he takes fire or radiant damage, this trait doesn't function at the start of his next turn. Vladimir's body is destroyed only if he starts his turn with 0 hit points and doesn't regenerate." },
+            { name: "Rejuvenation", description: "When Vladimir's body is destroyed, his soul lingers. After 24 hours, the soul inhabits and animates another corpse on the same plane of existence." },
+            { name: "Turn Immunity", description: "Vladimir is immune to effects that turn undead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Vladimir makes two fist attacks or two attacks with his +2 greatsword." },
+            { name: "+2 Greatsword", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 20 (4d6+6) slashing damage. Against Strahd, Vladimir deals an extra 14 (4d6) slashing damage with this weapon." },
+            { name: "Fist", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Constitution saving throw or be paralyzed until the end of the target's next turn." },
+            { name: "Vengeful Glare", description: "Vladimir targets one creature he can see within 30 feet of him and against which he has a vendetta. The target must make a DC 15 Wisdom saving throw. On a failure, the target is paralyzed until Vladimir deals damage to it, or until the end of Vladimir's next turn." }
+        ]
+    },
+    "rahadin": {
+        name: "Rahadin",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "elf",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "studded leather",
+        hp: 135,
+        hitDice: "18d8+54",
+        speed: { walk: 35 },
+        abilityScores: { str: 14, dex: 22, con: 17, int: 15, wis: 16, cha: 18 },
+        savingThrows: { con: 7, wis: 7 },
+        skills: { deception: 8, insight: 7, intimidation: 12, perception: 11, stealth: 14 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Elvish",
+        cr: 10,
+        traits: [
+            { name: "Deathly Choir", description: "Any creature within 10 feet of Rahadin that isn't protected by a mind blank spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 (3d10) psychic damage on a failed save, or half as much damage on a successful one." },
+            { name: "Fey Ancestry", description: "Rahadin has advantage on saving throws against being charmed, and magic can't put him to sleep." },
+            { name: "Mask of the Wild", description: "Rahadin can attempt to hide even when he is only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Rahadin makes three weapon attacks." },
+            { name: "Scimitar", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 9 (1d6+6) slashing damage." },
+            { name: "Poisoned Dart", description: "Ranged Weapon Attack: +10 to hit, range 20/60 ft., one target. Hit: 8 (1d4+6) piercing damage plus 5 (2d4) poison damage." }
+        ]
+    },
+    "madam eva": {
+        name: "Madam Eva",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic neutral",
+        ac: 10,
+        hp: 88,
+        hitDice: "16d8+16",
+        speed: { walk: 20 },
+        abilityScores: { str: 8, dex: 11, con: 12, int: 17, wis: 20, cha: 18 },
+        savingThrows: { con: 4 },
+        skills: { arcana: 6, deception: 7, insight: 11, intimidation: 7, perception: 8, religion: 6 },
+        senses: ["darkvision 120 ft."],
+        languages: "Abyssal, Common, Elvish, Infernal",
+        cr: 10,
+        traits: [
+            { name: "Shapechanger", description: "Madam Eva can use an action to polymorph into a Medium cloud of mist or back into her true form. While in mist form, she can't take any actions, speak, or manipulate objects." }
+        ],
+        actions: [
+            { name: "Dagger", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage." },
+            { name: "Curse (Recharges after a Long Rest)", description: "Madam Eva targets one creature she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target's hit point maximum is halved." },
+            { name: "Evil Eye (Recharges after a Short or Long Rest)", description: "Madam Eva targets one creature she can see within 10 feet of her and casts one of the following spells on the target (save DC 17): animal friendship, charm person, or hold person." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 17,
+            attackBonus: 9,
+            spells: {
+                cantrips: ["light", "mage hand", "prestidigitation"],
+                "1st": { slots: 4, spells: ["detect magic", "fog cloud", "sleep"] },
+                "2nd": { slots: 3, spells: ["detect thoughts", "locate object", "ray of enfeeblement"] },
+                "3rd": { slots: 3, spells: ["bestow curse", "clairvoyance", "remove curse"] },
+                "4th": { slots: 3, spells: ["divination", "phantasmal killer", "polymorph"] },
+                "5th": { slots: 2, spells: ["dream", "scrying"] },
+                "6th": { slots: 1, spells: ["mass suggestion", "true seeing"] }
+            }
+        }
+    },
+    "ezmerelda d'avenir": {
+        name: "Ezmerelda d'Avenir",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic good",
+        ac: 17,
+        acType: "studded leather +1",
+        hp: 82,
+        hitDice: "11d8+33",
+        speed: { walk: 30 },
+        abilityScores: { str: 14, dex: 19, con: 16, int: 16, wis: 11, cha: 17 },
+        savingThrows: { wis: 3 },
+        skills: { acrobatics: 7, arcana: 6, deception: 9, insight: 3, medicine: 3, perception: 6, performance: 9, sleight_of_hand: 7, stealth: 7, survival: 6 },
+        senses: ["passive Perception 16"],
+        languages: "Common",
+        cr: 8,
+        traits: [
+            { name: "Special Equipment", description: "In addition to her magic armor and weapons, Ezmerelda has two potions of greater healing, six vials of holy water, and three wooden stakes." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Ezmerelda makes three attacks: two with her +1 rapier and one with her +1 handaxe or her silvered shortsword." },
+            { name: "+1 Rapier", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8+5) piercing damage." },
+            { name: "+1 Handaxe", description: "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) slashing damage." },
+            { name: "Silvered Shortsword", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage." },
+            { name: "Curse (Recharges after a Long Rest)", description: "Ezmerelda targets one creature she can see within 30 feet of her. The target must succeed on a DC 14 Wisdom saving throw or be cursed. While cursed, the target's hit point maximum is halved." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                "1st": { slots: 3, spells: ["protection from evil and good", "magic missile"] }
+            }
+        }
+    },
+    "rictavio": {
+        name: "Rictavio",
+        source: "CoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "lawful good",
+        ac: 12,
+        acType: "leather armor",
+        hp: 77,
+        hitDice: "14d8+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 12, con: 13, int: 16, wis: 18, cha: 16 },
+        savingThrows: { con: 4, wis: 7 },
+        skills: { arcana: 9, insight: 10, medicine: 10, perception: 7, religion: 6, sleight_of_hand: 4 },
+        senses: ["passive Perception 17"],
+        languages: "Abyssal, Common, Elvish, Infernal",
+        cr: 5,
+        traits: [
+            { name: "Special Equipment", description: "Rictavio wears a hat of disguise, a ring of mind shielding, and an amulet of proof against detection and location. He carries a sword cane, and concealed inside a pocket of his cloak is a spell scroll of raise dead." },
+            { name: "Undead Slayer", description: "When Rictavio hits an undead with a weapon attack, the undead takes an extra 10 (3d6) damage of the weapon's type." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Rictavio makes two attacks with his sword cane." },
+            { name: "Sword Cane", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage (wooden cane) or piercing damage (sword blade)." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 15,
+            attackBonus: 7,
+            spells: {
+                cantrips: ["light", "mending", "thaumaturgy"],
+                "1st": { slots: 4, spells: ["comprehend languages", "detect evil and good", "protection from evil and good"] },
+                "2nd": { slots: 3, spells: ["augury", "lesser restoration", "protection from poison"] },
+                "3rd": { slots: 3, spells: ["magic circle", "remove curse", "speak with dead"] },
+                "4th": { slots: 3, spells: ["death ward", "divination", "freedom of movement"] },
+                "5th": { slots: 2, spells: ["dispel evil and good", "greater restoration"] }
+            }
+        }
+    },
+
+    // ===== Out of the Abyss (OotA) =====
+    "ixitxachitl": {
+        name: "Ixitxachitl",
+        source: "OotA",
+        size: "small",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 18,
+        hitDice: "4d6+4",
+        speed: { swim: 30 },
+        abilityScores: { str: 12, dex: 16, con: 13, int: 12, wis: 13, cha: 7 },
+        senses: ["darkvision 60 ft."],
+        languages: "Abyssal, Ixitxachitl",
+        cr: "1/4",
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage." }
+        ],
+        reactions: [
+            { name: "Barbed Tail", description: "When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite: Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage." }
+        ]
+    },
+    "ixitxachitl cleric": {
+        name: "Ixitxachitl Cleric",
+        source: "OotA",
+        size: "small",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 18,
+        hitDice: "4d6+4",
+        speed: { swim: 30 },
+        abilityScores: { str: 12, dex: 16, con: 13, int: 12, wis: 13, cha: 7 },
+        senses: ["darkvision 60 ft."],
+        languages: "Abyssal, Ixitxachitl",
+        cr: "1/4",
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 11,
+            attackBonus: 3,
+            spells: {
+                cantrips: ["guidance", "thaumaturgy"],
+                "1st": { slots: 2, spells: ["charm person", "create or destroy water"] }
+            }
+        }
+    },
+    "vampiric ixitxachitl": {
+        name: "Vampiric Ixitxachitl",
+        source: "OotA",
+        size: "medium",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 44,
+        hitDice: "8d8+8",
+        speed: { swim: 30 },
+        abilityScores: { str: 14, dex: 18, con: 13, int: 12, wis: 13, cha: 7 },
+        senses: ["darkvision 60 ft."],
+        languages: "Abyssal, Ixitxachitl",
+        cr: 2,
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage. The target's hit point maximum is reduced by an amount equal to the damage taken. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried rises the following night as a vampire spawn under the ixitxachitl's control." }
+        ]
+    },
+    "the pudding king": {
+        name: "The Pudding King",
+        source: "OotA",
+        size: "small",
+        type: "humanoid",
+        subtype: "gnome, shapechanger",
+        alignment: "chaotic evil",
+        ac: 13,
+        hp: 49,
+        hitDice: "9d6+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 16, con: 14, int: 12, wis: 8, cha: 17 },
+        savingThrows: { con: 5, cha: 6 },
+        skills: { arcana: 4, perception: 2, stealth: 6, survival: 2 },
+        damageResistances: ["acid", "poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "Abyssal, Gnomish, Terran, Undercommon",
+        cr: 4,
+        traits: [
+            { name: "Stone Camouflage", description: "The Pudding King has advantage on Dexterity (Stealth) checks made to hide in rocky terrain." },
+            { name: "Gnome Cunning", description: "The Pudding King has advantage on Intelligence, Wisdom, and Charisma saving throws against magic." },
+            { name: "Insanity", description: "The Pudding King has advantage on saving throws against being charmed or frightened." }
+        ],
+        actions: [
+            { name: "War Pick", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d8) piercing damage." },
+            { name: "Change Shape", description: "The Pudding King magically transforms into an ooze, or back into his true form. He reverts to his true form if he dies." },
+            { name: "Create Green Slime (Recharges after a Long Rest)", description: "The Pudding King creates a patch of green slime. The slime appears on a section of wall, ceiling, or floor within 30 feet of the Pudding King." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                cantrips: ["acid splash", "light", "mage hand", "poison spray", "prestidigitation"],
+                "1st": { slots: 4, spells: ["false life", "mage armor", "ray of sickness", "shield"] },
+                "2nd": { slots: 3, spells: ["crown of madness", "misty step"] },
+                "3rd": { slots: 3, spells: ["gaseous form", "stinking cloud"] },
+                "4th": { slots: 3, spells: ["blight", "confusion"] },
+                "5th": { slots: 1, spells: ["cloudkill"] }
+            }
+        }
+    },
+    "awakened zurkhwood": {
+        name: "Awakened Zurkhwood",
+        source: "OotA",
+        size: "huge",
+        type: "plant",
+        alignment: "unaligned",
+        ac: 13,
+        acType: "natural armor",
+        hp: 59,
+        hitDice: "7d12+14",
+        speed: { walk: 20 },
+        abilityScores: { str: 19, dex: 6, con: 15, int: 10, wis: 10, cha: 7 },
+        damageVulnerabilities: ["fire"],
+        damageResistances: ["bludgeoning", "piercing"],
+        senses: ["darkvision 120 ft."],
+        languages: "one language known by its creator",
+        cr: 2,
+        traits: [
+            { name: "False Appearance", description: "While the tree remains motionless, it is indistinguishable from a normal zurkhwood mushroom." },
+            { name: "Mute", description: "If the awakened zurkhwood was created by a myconid sovereign, it can't speak." }
+        ],
+        actions: [
+            { name: "Slam", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6+4) bludgeoning damage." }
+        ]
+    },
+    "bridesmaid of zuggtmoy": {
+        name: "Bridesmaid of Zuggtmoy",
+        source: "OotA",
+        size: "medium",
+        type: "plant",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 22,
+        hitDice: "5d8",
+        speed: { walk: 20 },
+        abilityScores: { str: 10, dex: 12, con: 10, int: 6, wis: 9, cha: 13 },
+        damageResistances: ["bludgeoning", "piercing"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: "1/8",
+        traits: [
+            { name: "Fungal Aura", description: "Any creature that starts its turn within 5 feet of the bridesmaid must succeed on a DC 10 Constitution saving throw or be poisoned for 1 minute. A poisoned creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The bridesmaid makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage." }
+        ]
+    },
+    "chamberlain of zuggtmoy": {
+        name: "Chamberlain of Zuggtmoy",
+        source: "OotA",
+        size: "large",
+        type: "plant",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 45,
+        hitDice: "6d10+12",
+        speed: { walk: 20 },
+        abilityScores: { str: 17, dex: 10, con: 14, int: 6, wis: 11, cha: 15 },
+        damageResistances: ["bludgeoning", "piercing"],
+        senses: ["darkvision 60 ft."],
+        languages: "Abyssal, telepathy 30 ft.",
+        cr: 2,
+        traits: [
+            { name: "Poison Spores", description: "Whenever the chamberlain takes damage, it releases a cloud of spores. Each creature within 5 feet of the chamberlain must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The chamberlain makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) bludgeoning damage." },
+            { name: "Infestation Spores (1/Day)", description: "The chamberlain releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 12 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy." }
+        ]
+    },
+    "drow spore servant": {
+        name: "Drow Spore Servant",
+        source: "OotA",
+        size: "medium",
+        type: "plant",
+        alignment: "unaligned",
+        ac: 13,
+        acType: "natural armor, shield",
+        hp: 13,
+        hitDice: "3d8",
+        speed: { walk: 20 },
+        abilityScores: { str: 10, dex: 14, con: 10, int: 2, wis: 6, cha: 1 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "frightened", "paralyzed", "poisoned"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: "1/8",
+        actions: [
+            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ]
+    },
+    "duergar spore servant": {
+        name: "Duergar Spore Servant",
+        source: "OotA",
+        size: "medium",
+        type: "plant",
+        alignment: "unaligned",
+        ac: 16,
+        acType: "scale mail, shield",
+        hp: 26,
+        hitDice: "4d8+8",
+        speed: { walk: 15 },
+        abilityScores: { str: 14, dex: 11, con: 14, int: 2, wis: 6, cha: 1 },
+        damageResistances: ["poison"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "frightened", "paralyzed", "poisoned"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: "1/2",
+        actions: [
+            { name: "War Pick", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ]
+    },
+    "hook horror spore servant": {
+        name: "Hook Horror Spore Servant",
+        source: "OotA",
+        size: "large",
+        type: "plant",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 75,
+        hitDice: "10d10+20",
+        speed: { walk: 20, climb: 20 },
+        abilityScores: { str: 18, dex: 10, con: 15, int: 2, wis: 6, cha: 1 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "frightened", "paralyzed", "poisoned"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: 3,
+        actions: [
+            { name: "Multiattack", description: "The spore servant makes two hook attacks." },
+            { name: "Hook", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) piercing damage." }
+        ]
+    },
+    "chuul spore servant": {
+        name: "Chuul Spore Servant",
+        source: "OotA",
+        size: "large",
+        type: "plant",
+        alignment: "unaligned",
+        ac: 16,
+        acType: "natural armor",
+        hp: 93,
+        hitDice: "11d10+33",
+        speed: { walk: 20, swim: 20 },
+        abilityScores: { str: 19, dex: 10, con: 16, int: 2, wis: 6, cha: 1 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "frightened", "paralyzed", "poisoned"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "—",
+        cr: 4,
+        traits: [
+            { name: "Amphibious", description: "The spore servant can breathe air and water." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The spore servant makes two pincer attacks." },
+            { name: "Pincer", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) bludgeoning damage. The target is grappled (escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures grappled." }
+        ]
+    },
+    "duergar soulblade": {
+        name: "Duergar Soulblade",
+        source: "OotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "dwarf",
+        alignment: "lawful evil",
+        ac: 14,
+        acType: "leather armor",
+        hp: 27,
+        hitDice: "6d8",
+        speed: { walk: 25 },
+        abilityScores: { str: 16, dex: 16, con: 10, int: 11, wis: 10, cha: 12 },
+        damageResistances: ["poison"],
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 1,
+        traits: [
+            { name: "Duergar Resilience", description: "The soulblade has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the soulblade has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Enlarge (Recharges after a Short or Long Rest)", description: "For 1 minute, the soulblade magically increases in size, along with anything it is wearing or carrying. While enlarged, the soulblade is Large, doubles its damage dice on Strength-based weapon attacks, and makes Strength checks and Strength saving throws with advantage." },
+            { name: "Soulblade", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) force damage, or 10 (2d6+3) force damage while enlarged." },
+            { name: "Invisibility (Recharges after a Short or Long Rest)", description: "The soulblade magically turns invisible for up to 1 hour or until it attacks, it casts a spell, or its concentration is broken." }
+        ]
+    },
+    "duergar stone guard": {
+        name: "Duergar Stone Guard",
+        source: "OotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "dwarf",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "chain mail, shield",
+        hp: 39,
+        hitDice: "6d8+12",
+        speed: { walk: 25 },
+        abilityScores: { str: 18, dex: 11, con: 14, int: 11, wis: 10, cha: 9 },
+        damageResistances: ["poison"],
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 2,
+        traits: [
+            { name: "Duergar Resilience", description: "The stone guard has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed." },
+            { name: "Phalanx Formation", description: "The stone guard has advantage on attack rolls and Dexterity saving throws while standing within 5 feet of a duergar ally wielding a shield." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the stone guard has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Enlarge (Recharges after a Short or Long Rest)", description: "For 1 minute, the stone guard magically increases in size. While enlarged, the stone guard is Large, doubles its damage dice on Strength-based weapon attacks, and makes Strength checks and Strength saving throws with advantage." },
+            { name: "King's Knife", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage, or 13 (2d8+4) piercing damage while enlarged." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 7 (1d6+4) piercing damage, or 11 (2d6+4) piercing damage while enlarged." },
+            { name: "Invisibility (Recharges after a Short or Long Rest)", description: "The stone guard magically turns invisible for up to 1 hour or until it attacks or casts a spell." }
+        ]
+    },
+    "duergar xarrorn": {
+        name: "Duergar Xarrorn",
+        source: "OotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "dwarf",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "plate armor",
+        hp: 26,
+        hitDice: "4d8+8",
+        speed: { walk: 25 },
+        abilityScores: { str: 16, dex: 11, con: 14, int: 11, wis: 10, cha: 9 },
+        damageResistances: ["poison"],
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 2,
+        traits: [
+            { name: "Duergar Resilience", description: "The xarrorn has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the xarrorn has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Fire Lance", description: "Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 9 (1d12+3) piercing damage plus 3 (1d6) fire damage, or 16 (2d12+3) piercing damage plus 3 (1d6) fire damage while enlarged." },
+            { name: "Fire Spray (Recharge 5-6)", description: "The xarrorn uses a bellows device to spray fire in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one." },
+            { name: "Enlarge (Recharges after a Short or Long Rest)", description: "For 1 minute, the xarrorn magically increases in size. While enlarged, the xarrorn is Large, doubles its damage dice on Strength-based weapon attacks, and makes Strength checks and Strength saving throws with advantage." },
+            { name: "Invisibility (Recharges after a Short or Long Rest)", description: "The xarrorn magically turns invisible for up to 1 hour or until it attacks or casts a spell." }
+        ]
+    },
+    "duergar kavalrachni": {
+        name: "Duergar Kavalrachni",
+        source: "OotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "dwarf",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "scale mail, shield",
+        hp: 26,
+        hitDice: "4d8+8",
+        speed: { walk: 25 },
+        abilityScores: { str: 14, dex: 11, con: 14, int: 11, wis: 10, cha: 9 },
+        damageResistances: ["poison"],
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 2,
+        traits: [
+            { name: "Cavalry Training", description: "When the kavalrachni hits a target with a melee attack while mounted on a female steeder, the steeder can make one melee attack against the same target as a reaction." },
+            { name: "Duergar Resilience", description: "The kavalrachni has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the kavalrachni has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "War Pick", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged." },
+            { name: "Heavy Crossbow", description: "Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage." },
+            { name: "Enlarge (Recharges after a Short or Long Rest)", description: "For 1 minute, the kavalrachni magically increases in size. While enlarged, the kavalrachni is Large, doubles its damage dice on Strength-based weapon attacks, and makes Strength checks and Strength saving throws with advantage." },
+            { name: "Invisibility (Recharges after a Short or Long Rest)", description: "The kavalrachni magically turns invisible for up to 1 hour or until it attacks or casts a spell." }
+        ]
+    },
+    "male steeder": {
+        name: "Male Steeder",
+        source: "OotA",
+        size: "medium",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 12,
+        acType: "natural armor",
+        hp: 13,
+        hitDice: "2d8+4",
+        speed: { walk: 30, climb: 30 },
+        abilityScores: { str: 15, dex: 12, con: 14, int: 2, wis: 10, cha: 3 },
+        skills: { stealth: 5, perception: 4 },
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: "1/4",
+        traits: [
+            { name: "Spider Climb", description: "The steeder can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." },
+            { name: "Extraordinary Leap", description: "The distance of the steeder's long jumps is tripled; every foot of its walking speed that it spends on the jump allows it to move 3 feet." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage plus 4 (1d8) poison damage." }
+        ]
+    },
+    "female steeder": {
+        name: "Female Steeder",
+        source: "OotA",
+        size: "large",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 30,
+        hitDice: "4d10+8",
+        speed: { walk: 30, climb: 30 },
+        abilityScores: { str: 15, dex: 16, con: 14, int: 2, wis: 10, cha: 3 },
+        skills: { stealth: 7, perception: 4 },
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Spider Climb", description: "The steeder can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." },
+            { name: "Extraordinary Leap", description: "The distance of the steeder's long jumps is tripled; every foot of its walking speed that it spends on the jump allows it to move 3 feet." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage plus 9 (2d8) poison damage." },
+            { name: "Sticky Leg", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one Small or Tiny creature. Hit: The target is stuck to the steeder's leg and is grappled (escape DC 12). The steeder can have only one creature grappled at a time." }
+        ]
+    },
+    "troglodyte champion of laogzed": {
+        name: "Troglodyte Champion of Laogzed",
+        source: "OotA",
+        size: "large",
+        type: "humanoid",
+        subtype: "troglodyte",
+        alignment: "chaotic evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 59,
+        hitDice: "7d10+21",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 12, con: 16, int: 6, wis: 12, cha: 8 },
+        skills: { athletics: 6, intimidation: 3, stealth: 3 },
+        senses: ["darkvision 60 ft."],
+        languages: "Troglodyte",
+        cr: 3,
+        traits: [
+            { name: "Chameleon Skin", description: "The troglodyte has advantage on Dexterity (Stealth) checks made to hide." },
+            { name: "Stench", description: "Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a DC 14 Constitution saving throw or be poisoned until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the troglodyte has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The troglodyte makes three attacks: one with its bite and two with either its claws or its greatclub." },
+            { name: "Bite", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4+4) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4+4) slashing damage." },
+            { name: "Greatclub", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage, or 13 (2d8+4) bludgeoning damage while enlarged." },
+            { name: "Acid Spray (Recharge 6)", description: "The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 13 Dexterity saving throw, taking 10 (3d6) acid damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "yestabrod": {
+        name: "Yestabrod",
+        source: "OotA",
+        size: "large",
+        type: "monstrosity",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 75,
+        hitDice: "10d10+20",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 10, con: 14, int: 13, wis: 15, cha: 11 },
+        savingThrows: { con: 5, wis: 5 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 120 ft., tremorsense 60 ft."],
+        languages: "Abyssal, telepathy 60 ft.",
+        cr: 4,
+        traits: [
+            { name: "Legendary Resistance (1/Day)", description: "If Yestabrod fails a saving throw, it can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Yestabrod makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage plus 7 (2d6) poison damage." },
+            { name: "Caustic Spores (1/Day)", description: "Yestabrod releases spores in a 30-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 21 (6d6) acid damage on a failed save, or half as much damage on a successful one." },
+            { name: "Infestation Spores (1/Day)", description: "Yestabrod releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it. The cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 13 Constitution saving throw. On a failed save, the creature is infected with the spores of Zuggtmoy." }
+        ]
+    },
+    "derro savant": {
+        name: "Derro Savant",
+        source: "OotA",
+        size: "small",
+        type: "humanoid",
+        subtype: "derro",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "leather armor",
+        hp: 49,
+        hitDice: "11d6+11",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 12, int: 11, wis: 5, cha: 14 },
+        skills: { stealth: 4 },
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 3,
+        traits: [
+            { name: "Magic Resistance", description: "The derro has advantage on saving throws against spells and other magical effects." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 12,
+            attackBonus: 4,
+            spells: {
+                atWill: ["minor illusion"],
+                "1/day each": ["darkness", "fear", "shatter"]
+            }
+        }
+    },
+    "narrak": {
+        name: "Narrak",
+        source: "OotA",
+        size: "small",
+        type: "humanoid",
+        subtype: "derro",
+        alignment: "chaotic evil",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 40,
+        hitDice: "9d6+9",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 14, con: 13, int: 14, wis: 5, cha: 16 },
+        skills: { arcana: 4, stealth: 4 },
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 2,
+        traits: [
+            { name: "Insanity", description: "Narrak has advantage on saving throws against being charmed or frightened." },
+            { name: "Magic Resistance", description: "Narrak has advantage on saving throws against spells and other magical effects." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, Narrak has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Dagger", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["friends", "mage hand", "message", "prestidigitation"],
+                "1st": { slots: 4, spells: ["charm person", "hellish rebuke", "mage armor"] },
+                "2nd": { slots: 2, spells: ["crown of madness", "phantasmal force"] }
+            }
+        }
+    },
+    "droki": {
+        name: "Droki",
+        source: "OotA",
+        size: "small",
+        type: "humanoid",
+        subtype: "derro",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "studded leather",
+        hp: 31,
+        hitDice: "7d6+7",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 16, con: 13, int: 10, wis: 5, cha: 16 },
+        skills: { stealth: 5 },
+        senses: ["darkvision 120 ft."],
+        languages: "Dwarvish, Undercommon",
+        cr: 2,
+        traits: [
+            { name: "Insanity", description: "Droki has advantage on saving throws against being charmed or frightened." },
+            { name: "Magic Resistance", description: "Droki has advantage on saving throws against spells and other magical effects." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, Droki has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." },
+            { name: "Special Equipment", description: "Droki wears boots of speed and carries a hat of disguise." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Droki makes two attacks with his shortsword." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the poison must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "grisha": {
+        name: "Grisha",
+        source: "OotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 14,
+        acType: "hide armor",
+        hp: 45,
+        hitDice: "7d8+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 14, dex: 15, con: 14, int: 10, wis: 15, cha: 11 },
+        skills: { athletics: 4, perception: 4, stealth: 4, survival: 4 },
+        senses: ["passive Perception 14"],
+        languages: "Common",
+        cr: 2,
+        traits: [
+            { name: "Keen Hearing and Sight", description: "Grisha has advantage on Wisdom (Perception) checks that rely on hearing or sight." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Grisha makes three melee attacks or two ranged attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8+2) piercing damage." }
+        ]
+    },
+
+    // ===== Princes of the Apocalypse (PotA) =====
+    "black earth guard": {
+        name: "Black Earth Guard",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 39,
+        hitDice: "6d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 17, dex: 11, con: 14, int: 10, wis: 10, cha: 9 },
+        skills: { intimidation: 1, perception: 2 },
+        senses: ["passive Perception 12"],
+        languages: "Common",
+        cr: 2,
+        actions: [
+            { name: "Multiattack", description: "The guard makes two melee attacks." },
+            { name: "Morningstar", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage." }
+        ],
+        reactions: [
+            { name: "Unyielding", description: "When the guard is subjected to an effect that would move it, knock it prone, or both, it can use its reaction to be neither moved nor knocked prone." }
+        ]
+    },
+    "black earth priest": {
+        name: "Black Earth Priest",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 17,
+        acType: "splint",
+        hp: 45,
+        hitDice: "7d8+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 11, con: 14, int: 12, wis: 10, cha: 16 },
+        skills: { intimidation: 5, persuasion: 5, religion: 3 },
+        senses: ["passive Perception 10"],
+        languages: "Common, Terran",
+        cr: 3,
+        actions: [
+            { name: "Multiattack", description: "The priest makes two melee attacks." },
+            { name: "Glaive", description: "Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 7 (1d10+2) slashing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["blade ward", "light", "mending", "mold earth"],
+                "1st": { slots: 4, spells: ["earth tremor", "expeditious retreat", "shield"] },
+                "2nd": { slots: 2, spells: ["shatter", "spike growth"] }
+            }
+        }
+    },
+    "sacred stone monk": {
+        name: "Sacred Stone Monk",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "lawful evil",
+        ac: 14,
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 40 },
+        abilityScores: { str: 13, dex: 15, con: 12, int: 10, wis: 14, cha: 9 },
+        skills: { acrobatics: 4, athletics: 3, perception: 4 },
+        senses: ["tremorsense 10 ft."],
+        languages: "Common",
+        cr: "1/2",
+        traits: [
+            { name: "Unarmored Defense", description: "While the monk is wearing no armor and wielding no shield, its AC includes its Wisdom modifier." },
+            { name: "Unarmored Movement", description: "While the monk is wearing no armor and wielding no shield, its walking speed increases by 10 feet." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The monk makes two melee attacks." },
+            { name: "Unarmed Strike", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage." }
+        ],
+        reactions: [
+            { name: "Parry", description: "The monk adds 2 to its AC against one melee attack that would hit it. To do so, the monk must see the attacker." }
+        ]
+    },
+    "burrowshark": {
+        name: "Burrowshark",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 82,
+        hitDice: "11d8+33",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 12, con: 16, int: 9, wis: 11, cha: 8 },
+        skills: { animal_handling: 2, athletics: 6, intimidation: 1, perception: 2 },
+        senses: ["passive Perception 12"],
+        languages: "Common",
+        cr: 4,
+        traits: [
+            { name: "Bond of the Black Earth", description: "The burrowshark is magically bound to a bulette trained to serve as its mount. While mounted on its bulette, the burrowshark shares the bulette's senses and can ride the bulette while it burrows." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The burrowshark makes three melee attacks." },
+            { name: "Lance", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 10 (1d12+4) piercing damage." },
+            { name: "Heavy Pick", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage." }
+        ],
+        reactions: [
+            { name: "Unyielding", description: "When the burrowshark is subjected to an effect that would move it, knock it prone, or both, it can use its reaction to be neither moved nor knocked prone." }
+        ]
+    },
+    "stonemelder": {
+        name: "Stonemelder",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 17,
+        acType: "splint",
+        hp: 75,
+        hitDice: "10d8+30",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 10, con: 16, int: 12, wis: 11, cha: 17 },
+        skills: { intimidation: 5, perception: 2 },
+        senses: ["tremorsense 30 ft."],
+        languages: "Common, Terran",
+        cr: 4,
+        actions: [
+            { name: "Black Earth Rod", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage. The stonemelder can also expend a spell slot to deal extra damage, dealing 2d8 thunder damage for a 1st-level slot, plus 1d8 for each level of slot higher than 1st." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["acid splash", "blade ward", "light", "mold earth", "shocking grasp"],
+                "1st": { slots: 4, spells: ["earth tremor", "shield", "witch bolt"] },
+                "2nd": { slots: 3, spells: ["shatter", "spike growth"] },
+                "3rd": { slots: 2, spells: ["erupting earth", "meld into stone"] }
+            }
+        }
+    },
+    "marlos urnrayle": {
+        name: "Marlos Urnrayle",
+        source: "PotA",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 136,
+        hitDice: "16d8+64",
+        speed: { walk: 30 },
+        abilityScores: { str: 17, dex: 12, con: 18, int: 12, wis: 13, cha: 17 },
+        savingThrows: { str: 6, con: 7, wis: 4 },
+        skills: { arcana: 4, deception: 6, perception: 4 },
+        damageResistances: ["acid"],
+        senses: ["darkvision 60 ft., tremorsense 60 ft."],
+        languages: "Common, Terran",
+        cr: 8,
+        traits: [
+            { name: "Earth Armor", description: "Marlos doesn't provoke opportunity attacks when he burrows." },
+            { name: "Legendary Resistance (2/Day)", description: "If Marlos fails a saving throw, he can choose to succeed instead." },
+            { name: "Petrifying Gaze", description: "When a creature that can see Marlos's eyes starts its turn within 30 feet of Marlos, Marlos can force it to make a DC 14 Constitution saving throw if Marlos isn't incapacitated and can see the creature. On a failed save, the creature is petrified." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Marlos makes three melee attacks, one with his snake hair and two with Ironfang." },
+            { name: "Snake Hair", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 7 (2d6) poison damage." },
+            { name: "Ironfang", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage, or 8 (1d10+3) piercing damage if used with two hands, plus 4 (1d8) thunder damage." }
+        ],
+        legendaryActions: [
+            { name: "Earth Rumble", description: "Marlos causes the ground to shake. Each creature other than Marlos within 5 feet of him must succeed on a DC 15 Dexterity saving throw or fall prone." },
+            { name: "Ironfang Strike", description: "Marlos makes one attack with Ironfang." },
+            { name: "Petrifying Glare (Costs 2 Actions)", description: "Marlos fixes his gaze on one creature he can see within 30 feet of him. The target must succeed on a DC 14 Constitution saving throw or begin to turn to stone and be restrained until the end of its next turn, when it must repeat the saving throw. On a success, the effect ends. On a failure, the target is petrified." }
+        ]
+    },
+    "howling hatred priest": {
+        name: "Howling Hatred Priest",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "studded leather",
+        hp: 45,
+        hitDice: "10d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 12, dex: 16, con: 10, int: 14, wis: 10, cha: 14 },
+        skills: { acrobatics: 5, intimidation: 4, religion: 4 },
+        senses: ["passive Perception 10"],
+        languages: "Auran, Common",
+        cr: 2,
+        actions: [
+            { name: "Multiattack", description: "The priest makes two melee attacks or two ranged attacks." },
+            { name: "Scimitar", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +5 to hit, range 150/600 ft., one target. Hit: 7 (1d8+3) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 12,
+            attackBonus: 4,
+            spells: {
+                cantrips: ["gust", "message", "prestidigitation"],
+                "1st": { slots: 4, spells: ["expeditious retreat", "feather fall", "thunderwave"] },
+                "2nd": { slots: 2, spells: ["dust devil", "gust of wind"] }
+            }
+        }
+    },
+    "skyweaver": {
+        name: "Skyweaver",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 44,
+        hitDice: "8d8+8",
+        speed: { walk: 30 },
+        abilityScores: { str: 8, dex: 14, con: 12, int: 14, wis: 11, cha: 15 },
+        skills: { perception: 2, stealth: 4 },
+        senses: ["passive Perception 12"],
+        languages: "Auran, Common",
+        cr: 3,
+        actions: [
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 12,
+            attackBonus: 4,
+            spells: {
+                cantrips: ["gust", "mage hand", "message", "ray of frost", "shocking grasp"],
+                "1st": { slots: 4, spells: ["feather fall", "mage armor", "witch bolt"] },
+                "2nd": { slots: 3, spells: ["gust of wind", "invisibility"] },
+                "3rd": { slots: 2, spells: ["fly", "lightning bolt"] }
+            }
+        }
+    },
+    "hurricane": {
+        name: "Hurricane",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 14,
+        hp: 33,
+        hitDice: "6d8+6",
+        speed: { walk: 45 },
+        abilityScores: { str: 12, dex: 18, con: 12, int: 10, wis: 14, cha: 10 },
+        skills: { acrobatics: 6, athletics: 3 },
+        damageResistances: ["lightning"],
+        senses: ["passive Perception 12"],
+        languages: "Auran, Common",
+        cr: 2,
+        traits: [
+            { name: "Unarmored Defense", description: "While the hurricane is wearing no armor and wielding no shield, its AC includes its Wisdom modifier." },
+            { name: "Unarmored Movement", description: "While the hurricane is wearing no armor and wielding no shield, its walking speed increases by 15 feet." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hurricane makes two melee attacks." },
+            { name: "Unarmed Strike", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage." }
+        ],
+        reactions: [
+            { name: "Deflect Missiles", description: "When hit by a ranged weapon attack, the hurricane can reduce the damage by 1d10+10. If the damage is reduced to 0, the hurricane can catch the missile." }
+        ]
+    },
+    "aerisi kalinoth": {
+        name: "Aerisi Kalinoth",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "elf",
+        alignment: "neutral evil",
+        ac: 13,
+        acType: "16 with mage armor",
+        hp: 66,
+        hitDice: "12d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 8, dex: 16, con: 12, int: 17, wis: 10, cha: 16 },
+        savingThrows: { int: 6, wis: 3 },
+        skills: { arcana: 6, history: 6, perception: 3 },
+        senses: ["darkvision 60 ft."],
+        languages: "Auran, Common, Elvish",
+        cr: 7,
+        traits: [
+            { name: "Fey Ancestry", description: "Aerisi has advantage on saving throws against being charmed, and magic can't put her to sleep." },
+            { name: "Howling Defeat", description: "When Aerisi drops to 0 hit points, her body disappears in a howling whirlwind." },
+            { name: "Legendary Resistance (2/Day)", description: "If Aerisi fails a saving throw, she can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Windvane", description: "Melee or Ranged Weapon Attack: +9 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 9 (1d6+6) piercing damage, or 10 (1d8+6) piercing damage if used with two hands to make a melee attack, plus 3 (1d6) lightning damage." }
+        ],
+        legendaryActions: [
+            { name: "Cantrip", description: "Aerisi casts one of her at-will spells." },
+            { name: "Windvane (Costs 2 Actions)", description: "Aerisi uses Windvane or casts a spell that summons an air elemental." },
+            { name: "Lightning Strike (Costs 3 Actions)", description: "Aerisi calls down a bolt of lightning from a cloud overhead, striking up to three creatures she can see within 100 feet of her. Each target must make a DC 14 Dexterity saving throw, taking 14 (4d6) lightning damage on a failed save, or half as much on a successful one." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                cantrips: ["gust", "mage hand", "message", "prestidigitation", "ray of frost", "shocking grasp"],
+                "1st": { slots: 4, spells: ["charm person", "feather fall", "mage armor", "thunderwave"] },
+                "2nd": { slots: 3, spells: ["dust devil", "gust of wind", "invisibility"] },
+                "3rd": { slots: 3, spells: ["fly", "gaseous form", "lightning bolt"] },
+                "4th": { slots: 3, spells: ["ice storm", "storm sphere"] },
+                "5th": { slots: 1, spells: ["cloudkill"] }
+            }
+        }
+    },
+    "eternal flame priest": {
+        name: "Eternal Flame Priest",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 12,
+        acType: "15 with mage armor",
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 30 },
+        abilityScores: { str: 12, dex: 15, con: 14, int: 10, wis: 11, cha: 16 },
+        skills: { deception: 5, intimidation: 5, religion: 2 },
+        damageResistances: ["fire"],
+        senses: ["passive Perception 10"],
+        languages: "Common, Ignan",
+        cr: 3,
+        actions: [
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["control flames", "create bonfire", "fire bolt", "light", "minor illusion"],
+                "1st": { slots: 4, spells: ["burning hands", "faerie fire", "mage armor"] },
+                "2nd": { slots: 3, spells: ["flaming sphere", "scorching ray"] },
+                "3rd": { slots: 2, spells: ["fireball"] }
+            }
+        }
+    },
+    "eternal flame guardian": {
+        name: "Eternal Flame Guardian",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 17,
+        acType: "chain shirt, shield",
+        hp: 45,
+        hitDice: "7d8+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 13, con: 14, int: 8, wis: 11, cha: 13 },
+        skills: { intimidation: 3, perception: 2 },
+        damageResistances: ["fire"],
+        senses: ["passive Perception 12"],
+        languages: "Common",
+        cr: 2,
+        traits: [
+            { name: "Flaming Weapon", description: "As a bonus action, the guardian can wreath one melee weapon it is wielding in flame. The guardian is unharmed by this fire, which lasts until the end of the guardian's next turn. While wreathed in flame, the weapon deals an extra 3 (1d6) fire damage on a hit." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The guardian makes two melee attacks." },
+            { name: "Longsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage." }
+        ]
+    },
+    "razerblast": {
+        name: "Razerblast",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "studded leather",
+        hp: 112,
+        hitDice: "15d8+45",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 16, con: 16, int: 11, wis: 10, cha: 13 },
+        skills: { intimidation: 4, perception: 3 },
+        damageImmunities: ["fire"],
+        senses: ["passive Perception 13"],
+        languages: "Common, Ignan",
+        cr: 5,
+        traits: [
+            { name: "Searing Weapons", description: "When the razerblast hits with a metal melee weapon, it deals an extra 3 (1d6) fire damage (included in the attack)." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The razerblast makes three melee attacks." },
+            { name: "Scimitar", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage plus 3 (1d6) fire damage." }
+        ]
+    },
+    "vanifer": {
+        name: "Vanifer",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "tiefling",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "studded leather",
+        hp: 112,
+        hitDice: "15d8+45",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 16, con: 17, int: 12, wis: 13, cha: 19 },
+        savingThrows: { con: 6, wis: 4 },
+        skills: { arcana: 4, deception: 7, performance: 7 },
+        damageResistances: ["fire"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Ignan, Infernal",
+        cr: 9,
+        traits: [
+            { name: "Legendary Resistance (2/Day)", description: "If Vanifer fails a saving throw, she can choose to succeed instead." },
+            { name: "Summon Demon (1/Day)", description: "Vanifer can use an action to attempt to summon an efreeti or 2d4 fire elementals." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Vanifer makes two attacks." },
+            { name: "Tinderstrike", description: "Melee or Ranged Weapon Attack: +9 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d4+5) piercing damage plus 7 (2d6) fire damage." }
+        ],
+        legendaryActions: [
+            { name: "Cantrip", description: "Vanifer casts one of her at-will spells." },
+            { name: "Scorching Bolts (Costs 2 Actions)", description: "Vanifer casts scorching ray." },
+            { name: "Summon Fire Elemental (Costs 3 Actions)", description: "Vanifer summons a fire elemental." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 15,
+            attackBonus: 7,
+            spells: {
+                cantrips: ["control flames", "fire bolt", "friends", "light", "mage hand", "message", "thaumaturgy"],
+                "1st": { slots: 4, spells: ["burning hands", "color spray", "mage armor"] },
+                "2nd": { slots: 3, spells: ["flaming sphere", "misty step", "scorching ray"] },
+                "3rd": { slots: 3, spells: ["counterspell", "fireball"] },
+                "4th": { slots: 3, spells: ["dimension door", "wall of fire"] },
+                "5th": { slots: 2, spells: ["conjure elemental"] }
+            }
+        }
+    },
+    "crushing wave priest": {
+        name: "Crushing Wave Priest",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 13,
+        acType: "chain shirt",
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 15, dex: 11, con: 14, int: 10, wis: 11, cha: 16 },
+        skills: { deception: 5, religion: 2, stealth: 2 },
+        senses: ["passive Perception 10"],
+        languages: "Aquan, Common",
+        cr: 2,
+        traits: [
+            { name: "Amphibious", description: "The priest can breathe air and water." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) bludgeoning damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["minor illusion", "shape water"],
+                "1st": { slots: 4, spells: ["create or destroy water", "fog cloud", "ice knife", "thunderwave"] },
+                "2nd": { slots: 2, spells: ["hold person", "misty step"] }
+            }
+        }
+    },
+    "crushing wave reaver": {
+        name: "Crushing Wave Reaver",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "shield",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 14, con: 13, int: 10, wis: 11, cha: 8 },
+        skills: { athletics: 4, stealth: 4 },
+        senses: ["passive Perception 10"],
+        languages: "Common",
+        cr: "1/2",
+        actions: [
+            { name: "Sharktoothed Longsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage, or 7 (1d10+2) slashing damage if used with two hands." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ]
+    },
+    "fathomer": {
+        name: "Fathomer",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 10,
+        acType: "13 with mage armor",
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 30 },
+        abilityScores: { str: 14, dex: 11, con: 14, int: 11, wis: 11, cha: 15 },
+        skills: { arcana: 2, perception: 4, stealth: 4 },
+        senses: ["passive Perception 14"],
+        languages: "Aquan, Common",
+        cr: 2,
+        traits: [
+            { name: "Shapechanger", description: "The fathomer can use its action to polymorph into a Medium serpent composed of water, or back into its true form." }
+        ],
+        actions: [
+            { name: "Constrict (Serpent Form Only)", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) bludgeoning damage. If the target is Medium or smaller, it is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the fathomer can't constrict another target." },
+            { name: "Dagger (Human Form Only)", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 12,
+            attackBonus: 4,
+            spells: {
+                cantrips: ["friends", "mage hand", "minor illusion"],
+                "1st": { slots: 4, spells: ["disguise self", "mage armor", "sleep"] },
+                "2nd": { slots: 2, spells: ["hold person", "misty step"] }
+            }
+        }
+    },
+    "gar shatterkeel": {
+        name: "Gar Shatterkeel",
+        source: "PotA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 112,
+        hitDice: "15d8+45",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 15, dex: 15, con: 16, int: 12, wis: 18, cha: 13 },
+        savingThrows: { dex: 5, wis: 7 },
+        skills: { nature: 4, survival: 7 },
+        damageResistances: ["cold"],
+        senses: ["passive Perception 14"],
+        languages: "Aquan, Common",
+        cr: 9,
+        traits: [
+            { name: "Amphibious", description: "Gar can breathe air and water." },
+            { name: "Legendary Resistance (2/Day)", description: "If Gar fails a saving throw, he can choose to succeed instead." },
+            { name: "Water Walk", description: "Gar can stand and move on liquid surfaces as if they were solid ground." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Gar makes two melee attacks, one with his claw and one with Drown." },
+            { name: "Claw", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) bludgeoning damage, and the target is grappled (escape DC 13). Until the grapple ends, Gar can't attack other creatures with his claw." },
+            { name: "Drown", description: "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 9 (1d6+6) piercing damage plus 3 (1d6) cold damage." }
+        ],
+        legendaryActions: [
+            { name: "Cantrip", description: "Gar casts one of his at-will spells." },
+            { name: "Drown Attack", description: "Gar makes one attack with Drown." },
+            { name: "Call of the Deep (Costs 3 Actions)", description: "Gar targets one creature he can see within 60 feet of him that is either submerged in water or carrying water. If the target fails a DC 15 Constitution saving throw, it takes 22 (4d10) cold damage." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 15,
+            attackBonus: 7,
+            spells: {
+                cantrips: ["mending", "resistance", "shape water"],
+                "1st": { slots: 4, spells: ["create or destroy water", "fog cloud", "ice knife", "thunderwave"] },
+                "2nd": { slots: 3, spells: ["hold person", "misty step", "protection from poison"] },
+                "3rd": { slots: 3, spells: ["call lightning", "sleet storm", "tidal wave"] },
+                "4th": { slots: 3, spells: ["control water", "ice storm"] },
+                "5th": { slots: 2, spells: ["conjure elemental"] }
+            }
+        }
+    },
+    "air elemental myrmidon": {
+        name: "Air Elemental Myrmidon",
+        source: "PotA",
+        size: "medium",
+        type: "elemental",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 117,
+        hitDice: "18d8+36",
+        speed: { walk: 30, fly: 30 },
+        abilityScores: { str: 18, dex: 14, con: 14, int: 9, wis: 10, cha: 10 },
+        damageResistances: ["lightning", "thunder", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "Auran, one language of its creator's choice",
+        cr: 7,
+        actions: [
+            { name: "Multiattack", description: "The myrmidon makes three flail attacks." },
+            { name: "Flail", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage." },
+            { name: "Lightning Strike (Recharge 6)", description: "The myrmidon makes one flail attack. On a hit, the target takes an extra 18 (4d8) lightning damage, and the target must succeed on a DC 13 Constitution saving throw or be stunned until the end of the myrmidon's next turn." }
+        ]
+    },
+    "earth elemental myrmidon": {
+        name: "Earth Elemental Myrmidon",
+        source: "PotA",
+        size: "medium",
+        type: "elemental",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 127,
+        hitDice: "17d8+51",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 10, con: 17, int: 8, wis: 10, cha: 10 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "Terran, one language of its creator's choice",
+        cr: 7,
+        actions: [
+            { name: "Multiattack", description: "The myrmidon makes two maul attacks." },
+            { name: "Maul", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage." },
+            { name: "Thunderous Strike (Recharge 6)", description: "The myrmidon makes one maul attack. On a hit, the target takes an extra 16 (3d10) thunder damage, and the target must succeed on a DC 14 Strength saving throw or be knocked prone." }
+        ]
+    },
+    "fire elemental myrmidon": {
+        name: "Fire Elemental Myrmidon",
+        source: "PotA",
+        size: "medium",
+        type: "elemental",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 117,
+        hitDice: "18d8+36",
+        speed: { walk: 40 },
+        abilityScores: { str: 13, dex: 18, con: 15, int: 9, wis: 10, cha: 10 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "Ignan, one language of its creator's choice",
+        cr: 7,
+        traits: [
+            { name: "Illumination", description: "The myrmidon sheds bright light in a 20-foot radius and dim light in an additional 20 feet." },
+            { name: "Water Susceptibility", description: "For every 5 feet the myrmidon moves in water, or for every gallon of water splashed on it, it takes 1 cold damage." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The myrmidon makes three scimitar attacks." },
+            { name: "Scimitar", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) slashing damage." },
+            { name: "Fiery Strikes (Recharge 6)", description: "The myrmidon uses Multiattack. Each attack that hits deals an extra 5 (1d10) fire damage." }
+        ]
+    },
+    "water elemental myrmidon": {
+        name: "Water Elemental Myrmidon",
+        source: "PotA",
+        size: "medium",
+        type: "elemental",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "plate",
+        hp: 127,
+        hitDice: "17d8+51",
+        speed: { walk: 40, swim: 40 },
+        abilityScores: { str: 18, dex: 14, con: 16, int: 8, wis: 10, cha: 10 },
+        damageResistances: ["acid", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "Aquan, one language of its creator's choice",
+        cr: 7,
+        actions: [
+            { name: "Multiattack", description: "The myrmidon makes three trident attacks." },
+            { name: "Trident", description: "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d6+4) piercing damage, or 8 (1d8+4) piercing damage if used with two hands to make a melee attack." },
+            { name: "Freezing Strikes (Recharge 6)", description: "The myrmidon uses Multiattack. Each attack that hits deals an extra 5 (1d10) cold damage. A target that is hit by one or more of these attacks has its speed reduced by 10 feet until the end of the myrmidon's next turn." }
+        ]
+    },
+
+    // ===== Baldur's Gate: Descent into Avernus (BGDIA) =====
+    "abyssal chicken": {
+        name: "Abyssal Chicken",
+        source: "BGDIA",
+        size: "tiny",
+        type: "fiend",
+        subtype: "demon",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 10,
+        hitDice: "3d4+3",
+        speed: { walk: 30, fly: 30 },
+        abilityScores: { str: 6, dex: 14, con: 13, int: 4, wis: 9, cha: 5 },
+        damageResistances: ["cold", "fire", "lightning"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "poisoned"],
+        senses: ["blindsight 30 ft. (blind beyond this radius)"],
+        languages: "understands Abyssal but can't speak",
+        cr: "1/4",
+        traits: [
+            { name: "Bad Flier", description: "The abyssal chicken falls at the end of a turn if it's airborne and the only thing holding it aloft is its flying speed." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The abyssal chicken makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage." }
+        ]
+    },
+    "hellwasp": {
+        name: "Hellwasp",
+        source: "BGDIA",
+        size: "large",
+        type: "fiend",
+        alignment: "lawful evil",
+        ac: 19,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "8d10+8",
+        speed: { walk: 10, fly: 60 },
+        abilityScores: { str: 18, dex: 15, con: 12, int: 10, wis: 10, cha: 7 },
+        savingThrows: { dex: 5, wis: 3 },
+        damageVulnerabilities: ["cold"],
+        damageImmunities: ["fire"],
+        senses: ["darkvision 60 ft."],
+        languages: "Infernal, telepathy 300 ft. (with other hellwasps only)",
+        cr: 5,
+        traits: [
+            { name: "Magic Weapons", description: "The hellwasp's weapon attacks are magical." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hellwasp makes two attacks: one with its sting and one with its sword talons." },
+            { name: "Sting", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 8 (1d8+4) piercing damage plus 7 (2d6) fire damage, and the target must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute." },
+            { name: "Sword Talons", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage." }
+        ]
+    },
+    "fiendish flesh golem": {
+        name: "Fiendish Flesh Golem",
+        source: "BGDIA",
+        size: "large",
+        type: "construct",
+        alignment: "neutral",
+        ac: 12,
+        acType: "natural armor",
+        hp: 210,
+        hitDice: "20d10+100",
+        speed: { walk: 30 },
+        abilityScores: { str: 20, dex: 9, con: 20, int: 7, wis: 10, cha: 5 },
+        damageResistances: ["cold", "fire"],
+        damageImmunities: ["lightning", "poison", "bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands the languages of its creator but can't speak",
+        cr: 8,
+        traits: [
+            { name: "Berserk", description: "Whenever the golem starts its turn with 100 hit points or fewer, roll a d6. On a 6, the golem goes berserk." },
+            { name: "Immutable Form", description: "The golem is immune to any spell or effect that would alter its form." },
+            { name: "Lightning Absorption", description: "Whenever the golem is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt." },
+            { name: "Magic Resistance", description: "The golem has advantage on saving throws against spells and other magical effects." },
+            { name: "Magic Weapons", description: "The golem's weapon attacks are magical." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The golem makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 16 (2d10+5) bludgeoning damage." }
+        ]
+    },
+    "bone whelk": {
+        name: "Bone Whelk",
+        source: "BGDIA",
+        size: "large",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 12,
+        acType: "natural armor",
+        hp: 27,
+        hitDice: "5d10",
+        speed: { walk: 15, climb: 15 },
+        abilityScores: { str: 10, dex: 11, con: 11, int: 6, wis: 9, cha: 3 },
+        senses: ["darkvision 60 ft., tremorsense 30 ft."],
+        languages: "—",
+        cr: "1/4",
+        traits: [
+            { name: "Adhesive Shell", description: "The bone whelk adheres to anything that touches its shell. A Huge or smaller creature adhered to the bone whelk is also grappled by it (escape DC 10)." },
+            { name: "Death Scream", description: "When the bone whelk dies, it emits a blood-curdling shriek that can be heard out to a range of 120 feet." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 5 (2d4) piercing damage." },
+            { name: "Retch Debris", description: "The bone whelk regurgitates a piece ofite debris at one creature it can see within 20 feet of it. The target must succeed on a DC 10 Dexterity saving throw or take 5 (2d4) bludgeoning damage." }
+        ]
+    },
+    "crokek'toeck": {
+        name: "Crokek'toeck",
+        source: "BGDIA",
+        size: "gargantuan",
+        type: "fiend",
+        subtype: "demon",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 297,
+        hitDice: "17d20+119",
+        speed: { walk: 60, swim: 60 },
+        abilityScores: { str: 28, dex: 10, con: 24, int: 6, wis: 10, cha: 13 },
+        savingThrows: { str: 14, con: 12 },
+        damageResistances: ["cold", "fire", "lightning"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "understands Abyssal but can't speak",
+        cr: 14,
+        traits: [
+            { name: "Amphibious", description: "Crokek'toeck can breathe air and water." },
+            { name: "Magic Resistance", description: "Crokek'toeck has advantage on saving throws against spells and other magical effects." },
+            { name: "Siege Monster", description: "Crokek'toeck deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Crokek'toeck makes two attacks: one with its bite and one with its tail." },
+            { name: "Bite", description: "Melee Weapon Attack: +14 to hit, reach 15 ft., one target. Hit: 28 (3d12+9) piercing damage, and the target must succeed on a DC 22 Dexterity saving throw or be swallowed." },
+            { name: "Tail", description: "Melee Weapon Attack: +14 to hit, reach 20 ft., one target. Hit: 22 (3d8+9) bludgeoning damage. If the target is a creature, it must succeed on a DC 22 Strength saving throw or be pushed up to 20 feet away from Crokek'toeck and knocked prone." }
+        ]
+    },
+    "hollyphant": {
+        name: "Hollyphant",
+        source: "BGDIA",
+        size: "small",
+        type: "celestial",
+        alignment: "lawful good",
+        ac: 18,
+        acType: "natural armor",
+        hp: 36,
+        hitDice: "8d6+8",
+        speed: { walk: 20, fly: 120 },
+        abilityScores: { str: 10, dex: 11, con: 12, int: 16, wis: 19, cha: 16 },
+        savingThrows: { dex: 2, con: 3, cha: 5 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["passive Perception 14"],
+        languages: "Celestial, telepathy 120 ft.",
+        cr: 5,
+        traits: [
+            { name: "Aura of Invulnerability", description: "An invisible aura forms a 10-foot-radius sphere around the hollyphant for as long as it lives. Any spell of 5th level or lower cast from outside the barrier can't affect creatures or objects within it." },
+            { name: "Magic Weapons", description: "The hollyphant's weapon attacks are magical." }
+        ],
+        actions: [
+            { name: "Gore", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) piercing damage." },
+            { name: "Trumpet (3/Day)", description: "The hollyphant blows air through its trunk, creating a trumpet sound. The trumpet has one of the following effects: healing (each creature within 30 feet that can hear it regains 9 (2d8) hit points) or shockwave (each creature within 30 feet must succeed on a DC 14 Constitution saving throw or take 11 (2d10) radiant damage and be deafened for 1 minute)." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "wis",
+            dc: 14,
+            spells: {
+                atWill: ["bless", "cure wounds", "light", "minor illusion", "protection from evil and good"],
+                "2/day each": ["banishment", "heal", "raise dead", "shapechange (mammoth only)", "teleport (with no chance of error)"]
+            }
+        }
+    },
+    "narzugon": {
+        name: "Narzugon",
+        source: "BGDIA",
+        size: "medium",
+        type: "fiend",
+        subtype: "devil",
+        alignment: "lawful evil",
+        ac: 20,
+        acType: "plate, shield",
+        hp: 112,
+        hitDice: "15d8+45",
+        speed: { walk: 30 },
+        abilityScores: { str: 20, dex: 10, con: 17, int: 16, wis: 14, cha: 19 },
+        savingThrows: { dex: 4, con: 7, cha: 8 },
+        skills: { perception: 6 },
+        damageResistances: ["acid", "cold", "bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered"],
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["charmed", "frightened", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "Common, Infernal, telepathy 120 ft.",
+        cr: 13,
+        traits: [
+            { name: "Diabolical Sense", description: "The narzugon has advantage on Wisdom (Perception) checks made to perceive good-aligned creatures." },
+            { name: "Infernal Tack", description: "The narzugon wears spurs that are part of infernal tack, which allow it to summon its nightmare mount." },
+            { name: "Magic Resistance", description: "The narzugon has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The narzugon makes three hellfire lance attacks." },
+            { name: "Hellfire Lance", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 11 (1d12+5) piercing damage plus 16 (3d10) fire damage." },
+            { name: "Infernal Command", description: "Each ally of the narzugon within 60 feet of it can't be charmed or frightened until the end of the narzugon's next turn." },
+            { name: "Terrifying Command", description: "Each creature that isn't a fiend within 60 feet of the narzugon that can hear it must succeed on a DC 16 Charisma saving throw or become frightened of it for 1 minute." }
+        ]
+    },
+    "fist of bane": {
+        name: "Fist of Bane",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "chain mail, shield",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 11, con: 13, int: 10, wis: 12, cha: 11 },
+        skills: { intimidation: 2, perception: 3, religion: 2 },
+        conditionImmunities: ["frightened"],
+        senses: ["passive Perception 13"],
+        languages: "Common",
+        cr: "1/2",
+        traits: [
+            { name: "Tactical Discipline", description: "The fist of Bane has advantage on all ability checks and saving throws made during combat." }
+        ],
+        actions: [
+            { name: "Mace", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) bludgeoning damage." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +2 to hit, range 150/600 ft., one target. Hit: 4 (1d8) piercing damage." }
+        ]
+    },
+    "iron consul": {
+        name: "Iron Consul",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "chain mail",
+        hp: 45,
+        hitDice: "6d8+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 17, dex: 11, con: 16, int: 12, wis: 15, cha: 16 },
+        savingThrows: { wis: 4 },
+        skills: { intimidation: 5, perception: 4, religion: 3 },
+        conditionImmunities: ["frightened"],
+        senses: ["passive Perception 14"],
+        languages: "Common",
+        cr: 2,
+        traits: [
+            { name: "Tactical Discipline", description: "The iron consul has advantage on all ability checks and saving throws made during combat." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The iron consul makes two melee attacks." },
+            { name: "Spear", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) piercing damage, or 7 (1d8+3) piercing damage if used with two hands to make a melee attack." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["guidance", "sacred flame", "thaumaturgy"],
+                "1st": { slots: 4, spells: ["bane", "bless", "command", "cure wounds", "guiding bolt"] },
+                "2nd": { slots: 2, spells: ["blindness/deafness", "hold person", "silence"] }
+            }
+        }
+    },
+    "black gauntlet of bane": {
+        name: "Black Gauntlet of Bane",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "chain mail",
+        hp: 51,
+        hitDice: "6d8+24",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 11, con: 18, int: 12, wis: 15, cha: 18 },
+        savingThrows: { wis: 5 },
+        skills: { athletics: 7, intimidation: 7, perception: 5, religion: 4 },
+        conditionImmunities: ["frightened"],
+        senses: ["passive Perception 15"],
+        languages: "Common",
+        cr: 6,
+        traits: [
+            { name: "Aura of Terror", description: "When a hostile creature within 5 feet of the black gauntlet makes an attack roll or saving throw, it has disadvantage on the roll." },
+            { name: "Tactical Discipline", description: "The black gauntlet has advantage on all ability checks and saving throws made during combat." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The black gauntlet makes two melee attacks." },
+            { name: "Mace", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage plus 13 (3d8) necrotic damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 15,
+            attackBonus: 7,
+            spells: {
+                cantrips: ["guidance", "mending", "sacred flame", "thaumaturgy"],
+                "1st": { slots: 4, spells: ["bane", "bless", "command", "cure wounds", "guiding bolt", "inflict wounds"] },
+                "2nd": { slots: 3, spells: ["blindness/deafness", "hold person", "silence", "spiritual weapon"] },
+                "3rd": { slots: 2, spells: ["bestow curse", "dispel magic", "mass healing word", "spirit guardians"] }
+            }
+        }
+    },
+    "night blade": {
+        name: "Night Blade",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 12,
+        hp: 11,
+        hitDice: "2d8+2",
+        speed: { walk: 40 },
+        abilityScores: { str: 11, dex: 15, con: 12, int: 10, wis: 11, cha: 14 },
+        skills: { intimidation: 4, stealth: 6 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: "1/4",
+        actions: [
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 12,
+            spells: {
+                "1/day": ["disguise self"]
+            }
+        }
+    },
+    "reaper of bhaal": {
+        name: "Reaper of Bhaal",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 15,
+        hp: 27,
+        hitDice: "5d8+5",
+        speed: { walk: 40 },
+        abilityScores: { str: 11, dex: 20, con: 13, int: 15, wis: 12, cha: 16 },
+        skills: { intimidation: 5, perception: 3, persuasion: 5, stealth: 9 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: 2,
+        traits: [
+            { name: "Assassinate", description: "During its first turn, the reaper has advantage on attack rolls against any creature that hasn't taken a turn. Any hit the reaper scores against a surprised creature is a critical hit." },
+            { name: "Aura of Murder", description: "As long as the reaper is not incapacitated, hostile creatures within 5 feet of it gain vulnerability to piercing damage unless they have resistance or immunity to such damage." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The reaper makes two dagger attacks." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d4+5) piercing damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 13,
+            spells: {
+                "1/day": ["charm person", "disguise self", "sanctuary"]
+            }
+        }
+    },
+    "death's head of bhaal": {
+        name: "Death's Head of Bhaal",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 15,
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 50 },
+        abilityScores: { str: 13, dex: 20, con: 14, int: 16, wis: 13, cha: 18 },
+        savingThrows: { dex: 8, int: 6 },
+        skills: { intimidation: 7, perception: 4, persuasion: 7, stealth: 11 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: 5,
+        traits: [
+            { name: "Aura of Murder", description: "As long as the death's head is not incapacitated, hostile creatures within 5 feet of it gain vulnerability to piercing damage unless they have resistance or immunity to such damage." },
+            { name: "Magic Resistance", description: "The death's head has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The death's head makes two dagger attacks." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +8 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d4+5) piercing damage plus 18 (4d8) poison damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 15,
+            spells: {
+                atWill: ["disguise self"],
+                "1/day each": ["charm person", "crown of madness", "phantasmal killer", "sanctuary"]
+            }
+        }
+    },
+    "necromite of myrkul": {
+        name: "Necromite of Myrkul",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 11,
+        hp: 13,
+        hitDice: "2d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 13, con: 15, int: 16, wis: 11, cha: 10 },
+        skills: { arcana: 5, religion: 5 },
+        senses: ["passive Perception 10"],
+        languages: "Abyssal, Common, Infernal",
+        cr: "1/2",
+        actions: [
+            { name: "Skull Flail", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["chill touch", "mending", "thaumaturgy"],
+                "1st": { slots: 2, spells: ["false life", "inflict wounds", "ray of sickness"] }
+            }
+        }
+    },
+    "skull lasher of myrkul": {
+        name: "Skull Lasher of Myrkul",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 12,
+        hp: 32,
+        hitDice: "5d8+10",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 14, con: 15, int: 16, wis: 13, cha: 10 },
+        savingThrows: { wis: 3 },
+        skills: { arcana: 5, religion: 5 },
+        senses: ["passive Perception 11"],
+        languages: "Abyssal, Common, Infernal",
+        cr: 1,
+        actions: [
+            { name: "Multiattack", description: "The skull lasher makes two attacks with its flail." },
+            { name: "Skull Flail", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage plus 7 (2d6) necrotic damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["chill touch", "mending", "message", "thaumaturgy"],
+                "1st": { slots: 3, spells: ["bane", "false life", "inflict wounds", "ray of sickness"] }
+            }
+        }
+    },
+    "master of souls": {
+        name: "Master of Souls",
+        source: "BGDIA",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "neutral evil",
+        ac: 12,
+        hp: 45,
+        hitDice: "6d8+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 14, con: 17, int: 19, wis: 14, cha: 13 },
+        savingThrows: { wis: 4 },
+        skills: { arcana: 6, religion: 6 },
+        damageImmunities: ["necrotic"],
+        senses: ["passive Perception 12"],
+        languages: "Abyssal, Common, Infernal",
+        cr: 4,
+        traits: [
+            { name: "Grave Magic", description: "When the master of souls casts a spell that deals damage, it can change the spell's damage type to necrotic." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The master of souls makes two flail attacks." },
+            { name: "Skull Flail", description: "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage plus 14 (4d6) necrotic damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                cantrips: ["chill touch", "mending", "message", "prestidigitation"],
+                "1st": { slots: 4, spells: ["bane", "command", "false life", "inflict wounds", "ray of sickness"] },
+                "2nd": { slots: 3, spells: ["blindness/deafness", "gentle repose", "hold person", "ray of enfeeblement", "silence", "spiritual weapon"] },
+                "3rd": { slots: 2, spells: ["animate dead", "feign death", "speak with dead"] }
+            }
+        }
+    },
+    "zariel": {
+        name: "Zariel",
+        source: "BGDIA",
+        size: "large",
+        type: "fiend",
+        subtype: "devil",
+        alignment: "lawful evil",
+        ac: 21,
+        acType: "natural armor",
+        hp: 580,
+        hitDice: "40d10+360",
+        speed: { walk: 50, fly: 150 },
+        abilityScores: { str: 27, dex: 24, con: 28, int: 26, wis: 27, cha: 30 },
+        savingThrows: { int: 16, wis: 16, cha: 18 },
+        skills: { intimidation: 18, perception: 16 },
+        damageResistances: ["cold", "fire", "radiant", "bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered"],
+        damageImmunities: ["necrotic", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "all, telepathy 120 ft.",
+        cr: 26,
+        traits: [
+            { name: "Devil's Sight", description: "Magical darkness doesn't impede Zariel's darkvision." },
+            { name: "Legendary Resistance (3/Day)", description: "If Zariel fails a saving throw, she can choose to succeed instead." },
+            { name: "Magic Resistance", description: "Zariel has advantage on saving throws against spells and other magical effects." },
+            { name: "Magic Weapons", description: "Zariel's weapon attacks are magical." },
+            { name: "Regeneration", description: "Zariel regains 20 hit points at the start of her turn. If she takes radiant damage, this trait doesn't function at the start of her next turn. Zariel dies only if she starts her turn with 0 hit points and doesn't regenerate." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Zariel attacks twice with her flail and once with Matalotok. She can substitute Horrid Touch for Matalotok." },
+            { name: "Flail", description: "Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 17 (2d8+8) bludgeoning damage plus 36 (8d8) fire damage." },
+            { name: "Matalotok (Warhammer)", description: "Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 17 (2d8+8) bludgeoning damage, or 19 (2d10+8) bludgeoning damage when used with two hands, plus 36 (8d8) cold damage." },
+            { name: "Horrid Touch (Recharge 5-6)", description: "Zariel touches one creature within 10 feet of her. The target must succeed on a DC 26 Constitution saving throw or take 44 (8d10) necrotic damage and be poisoned for 1 minute." },
+            { name: "Teleport", description: "Zariel magically teleports, along with any equipment she is wearing or carrying, up to 120 feet to an unoccupied space she can see." }
+        ],
+        legendaryActions: [
+            { name: "Teleport", description: "Zariel uses her Teleport action." },
+            { name: "Immolating Gaze (Costs 2 Actions)", description: "Zariel turns her magical gaze toward one creature she can see within 120 feet of her and commands it to combust. The target must succeed on a DC 26 Wisdom saving throw or take 22 (4d10) fire damage." }
+        ]
+    },
+
+    // ===== Eberron: Rising from the Last War (ERLW) =====
+    "dolgrim": {
+        name: "Dolgrim",
+        source: "ERLW",
+        size: "small",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor, shield",
+        hp: 13,
+        hitDice: "3d6+3",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 14, con: 13, int: 8, wis: 8, cha: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "Deep Speech, Goblin",
+        cr: "1/2",
+        traits: [
+            { name: "Dual Consciousness", description: "The dolgrim has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dolgrim makes three attacks." },
+            { name: "Morningstar", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage." },
+            { name: "Spear", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack." },
+            { name: "Hand Crossbow", description: "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ]
+    },
+    "dolgaunt": {
+        name: "Dolgaunt",
+        source: "ERLW",
+        size: "medium",
+        type: "aberration",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 33,
+        hitDice: "6d8+6",
+        speed: { walk: 40 },
+        abilityScores: { str: 14, dex: 18, con: 12, int: 13, wis: 14, cha: 11 },
+        skills: { acrobatics: 6, perception: 4, stealth: 6 },
+        conditionImmunities: ["blinded"],
+        senses: ["blindsight 120 ft. (blind beyond this radius)"],
+        languages: "Deep Speech, Goblin",
+        cr: 3,
+        traits: [
+            { name: "Evasion", description: "If the dolgaunt is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails." },
+            { name: "Unarmored Defense", description: "While the dolgaunt is wearing no armor and wielding no shield, its AC includes its Wisdom modifier." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dolgaunt makes two tentacle attacks and two unarmed strikes." },
+            { name: "Tentacle", description: "Melee Weapon Attack: +6 to hit, reach 15 ft., one target. Hit: 7 (1d6+4) bludgeoning damage, and the target must succeed on a DC 12 Constitution saving throw or take 9 (2d8) necrotic damage. The dolgaunt regains hit points equal to the necrotic damage taken." },
+            { name: "Unarmed Strike", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4+4) bludgeoning damage." }
+        ]
+    },
+    "warforged soldier": {
+        name: "Warforged Soldier",
+        source: "ERLW",
+        size: "medium",
+        type: "humanoid",
+        subtype: "warforged",
+        alignment: "any alignment",
+        ac: 16,
+        acType: "natural armor, shield",
+        hp: 30,
+        hitDice: "4d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 12, con: 16, int: 10, wis: 14, cha: 11 },
+        skills: { athletics: 5, perception: 4, survival: 4 },
+        damageResistances: ["poison"],
+        senses: ["passive Perception 14"],
+        languages: "Common",
+        cr: 1,
+        traits: [
+            { name: "Warforged Resilience", description: "The warforged has advantage on saving throws against being poisoned, and it is immune to disease. Magic can't put it to sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The warforged makes two armblade attacks." },
+            { name: "Armblade", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 (1d6+3) piercing damage." }
+        ]
+    },
+    "iron defender": {
+        name: "Iron Defender",
+        source: "ERLW",
+        size: "medium",
+        type: "construct",
+        alignment: "neutral",
+        ac: 17,
+        acType: "natural armor",
+        hp: 30,
+        hitDice: "4d8+12",
+        speed: { walk: 40 },
+        abilityScores: { str: 16, dex: 14, con: 16, int: 8, wis: 11, cha: 7 },
+        skills: { perception: 4, stealth: 4 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands the languages of its creator but can't speak",
+        cr: 1,
+        traits: [
+            { name: "Keen Senses", description: "The iron defender has advantage on Wisdom (Perception) checks." },
+            { name: "Vigilant", description: "The iron defender can't be surprised." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone." }
+        ],
+        reactions: [
+            { name: "Defensive Pounce", description: "The iron defender imposes disadvantage on the attack roll of one creature it can see that is within 5 feet of it, provided the attack roll is against a creature other than the iron defender." }
+        ]
+    },
+    "living spell": {
+        name: "Living Burning Hands",
+        source: "ERLW",
+        size: "medium",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 15,
+        hitDice: "2d8+6",
+        speed: { walk: 25, fly: 25 },
+        abilityScores: { str: 10, dex: 12, con: 16, int: 3, wis: 6, cha: 6 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["fire"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Amorphous", description: "The living spell can move through a space as narrow as 1 inch wide without squeezing." },
+            { name: "Magic Resistance", description: "The living spell has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Magical Strike", description: "Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (3d6) fire damage." },
+            { name: "Spell Mimicry (Recharge 5-6)", description: "The living spell unleashes a 15-foot cone of fire. Each creature in that area must make a DC 13 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "living lightning bolt": {
+        name: "Living Lightning Bolt",
+        source: "ERLW",
+        size: "large",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 57,
+        hitDice: "6d10+24",
+        speed: { walk: 25, fly: 25 },
+        abilityScores: { str: 10, dex: 15, con: 18, int: 3, wis: 10, cha: 6 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["lightning"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 5,
+        traits: [
+            { name: "Amorphous", description: "The living spell can move through a space as narrow as 1 inch wide without squeezing." },
+            { name: "Magic Resistance", description: "The living spell has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The living spell makes two Magical Strike attacks." },
+            { name: "Magical Strike", description: "Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 21 (6d6) lightning damage." },
+            { name: "Spell Mimicry (Recharge 5-6)", description: "The living spell unleashes a bolt of lightning in a line 100 feet long and 5 feet wide. Each creature in the line must make a DC 15 Dexterity saving throw, taking 28 (8d6) lightning damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "living cloudkill": {
+        name: "Living Cloudkill",
+        source: "ERLW",
+        size: "large",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 73,
+        hitDice: "7d10+35",
+        speed: { walk: 25, fly: 25 },
+        abilityScores: { str: 10, dex: 15, con: 20, int: 3, wis: 11, cha: 6 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 7,
+        traits: [
+            { name: "Amorphous", description: "The living spell can move through a space as narrow as 1 inch wide without squeezing." },
+            { name: "Magic Resistance", description: "The living spell has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The living spell makes two Magical Strike attacks." },
+            { name: "Magical Strike", description: "Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 24 (7d6) poison damage." },
+            { name: "Spell Mimicry (Recharge 5-6)", description: "The living spell fills a 20-foot-radius sphere centered on itself with poisonous fog. Each creature in that area must make a DC 16 Constitution saving throw, taking 22 (5d8) poison damage on a failed save, or half as much damage on a successful one. A creature is also poisoned for 1 minute on a failed save." }
+        ]
+    },
+    "dyrrn": {
+        name: "Dyrrn",
+        source: "ERLW",
+        size: "medium",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 21,
+        acType: "natural armor",
+        hp: 325,
+        hitDice: "31d8+186",
+        speed: { walk: 40, fly: 40 },
+        abilityScores: { str: 26, dex: 21, con: 22, int: 26, wis: 23, cha: 24 },
+        savingThrows: { int: 15, wis: 13, cha: 14 },
+        skills: { arcana: 15, history: 15, insight: 13, perception: 13 },
+        damageResistances: ["poison", "psychic"],
+        conditionImmunities: ["blinded", "charmed", "exhaustion", "frightened", "poisoned", "prone"],
+        senses: ["truesight 120 ft."],
+        languages: "Deep Speech, telepathy 120 ft.",
+        cr: 24,
+        traits: [
+            { name: "Alien Mind", description: "If a creature tries to read Dyrrn's thoughts or deals psychic damage to it, that creature must succeed on a DC 23 Intelligence saving throw or be stunned for 1 minute." },
+            { name: "Legendary Resistance (3/Day)", description: "If Dyrrn fails a saving throw, it can choose to succeed instead." },
+            { name: "Magic Resistance", description: "Dyrrn has advantage on saving throws against spells and other magical effects." },
+            { name: "Regeneration", description: "Dyrrn regains 20 hit points at the start of its turn. If Dyrrn takes radiant damage, this trait doesn't function at the start of its next turn." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Dyrrn makes one Tentacle Whip attack and uses Corruption." },
+            { name: "Tentacle Whip", description: "Melee Weapon Attack: +15 to hit, reach 10 ft., one target. Hit: 24 (3d10+8) slashing damage." },
+            { name: "Corruption", description: "Dyrrn targets one creature it can see within 60 feet of it. The target must succeed on a DC 23 Constitution saving throw or take 22 (4d10) necrotic damage. On a failed save, the creature is also corrupted for 1 minute. While corrupted, the creature can't regain hit points." }
+        ],
+        legendaryActions: [
+            { name: "Tentacle Whip", description: "Dyrrn makes one Tentacle Whip attack." },
+            { name: "Spawn Aberration (Costs 2 Actions)", description: "Dyrrn causes one creature it has corrupted within 60 feet of it to transform into a dolgrim or dolgaunt (Dyrrn's choice)." },
+            { name: "Mind Blast (Costs 3 Actions)", description: "Dyrrn magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 23 Intelligence saving throw or take 30 (5d10+3) psychic damage and be stunned for 1 minute." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "int",
+            dc: 23,
+            spells: {
+                atWill: ["detect magic", "dimension door", "dispel magic", "feeblemind"],
+                "1/day each": ["gate", "mass suggestion", "plane shift"]
+            }
+        }
+    },
+    "belashyrra": {
+        name: "Belashyrra",
+        source: "ERLW",
+        size: "medium",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 19,
+        acType: "natural armor",
+        hp: 304,
+        hitDice: "32d8+160",
+        speed: { walk: 40, fly: 40 },
+        abilityScores: { str: 24, dex: 21, con: 20, int: 25, wis: 22, cha: 23 },
+        savingThrows: { int: 14, wis: 13, cha: 13 },
+        skills: { arcana: 14, perception: 13 },
+        damageResistances: ["poison", "psychic"],
+        conditionImmunities: ["blinded", "charmed", "exhaustion", "frightened", "poisoned", "prone"],
+        senses: ["truesight 120 ft."],
+        languages: "Deep Speech, telepathy 120 ft.",
+        cr: 22,
+        traits: [
+            { name: "Alien Mind", description: "If a creature tries to read Belashyrra's thoughts or deals psychic damage to it, that creature must succeed on a DC 22 Intelligence saving throw or be stunned for 1 minute." },
+            { name: "Eye Thief", description: "Belashyrra can see through the eyes of all creatures within 120 feet of it. It can use its Eye Ray through the eyes of any creature within 120 feet of it." },
+            { name: "Legendary Resistance (3/Day)", description: "If Belashyrra fails a saving throw, it can choose to succeed instead." },
+            { name: "Magic Resistance", description: "Belashyrra has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "Belashyrra makes two Claw attacks and uses Eye Ray." },
+            { name: "Claw", description: "Melee Weapon Attack: +14 to hit, reach 5 ft., one target. Hit: 17 (3d6+7) slashing damage." },
+            { name: "Eye Ray", description: "Belashyrra shoots one of the following magical eye rays, choosing one target it can see within 120 feet of it: Charm Ray, Fear Ray, Petrification Ray, Slowing Ray, or Enervation Ray." }
+        ],
+        legendaryActions: [
+            { name: "Claw", description: "Belashyrra makes one Claw attack." },
+            { name: "Eye Ray", description: "Belashyrra uses Eye Ray." },
+            { name: "Rend Reality (Costs 3 Actions)", description: "Belashyrra tears a rift in reality. Each creature in a 10-foot-radius sphere centered on a point Belashyrra can see within 60 feet of it must make a DC 22 Constitution saving throw, taking 40 (9d8) force damage on a failed save, or half as much on a successful one." }
+        ]
+    },
+    "clawfoot": {
+        name: "Clawfoot",
+        source: "ERLW",
+        size: "medium",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 13,
+        hp: 19,
+        hitDice: "3d8+6",
+        speed: { walk: 40 },
+        abilityScores: { str: 12, dex: 16, con: 14, int: 4, wis: 12, cha: 6 },
+        skills: { perception: 3, stealth: 5 },
+        senses: ["passive Perception 13"],
+        languages: "—",
+        cr: "1/2",
+        traits: [
+            { name: "Pack Tactics", description: "The clawfoot has advantage on an attack roll against a creature if at least one of the clawfoot's allies is within 5 feet of the creature and the ally isn't incapacitated." },
+            { name: "Pounce", description: "If the clawfoot moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 11 Strength saving throw or be knocked prone." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The clawfoot makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage." }
+        ]
+    },
+    "fastieth": {
+        name: "Fastieth",
+        source: "ERLW",
+        size: "medium",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 14,
+        hp: 9,
+        hitDice: "2d8",
+        speed: { walk: 50 },
+        abilityScores: { str: 12, dex: 18, con: 10, int: 4, wis: 11, cha: 4 },
+        senses: ["passive Perception 10"],
+        languages: "—",
+        cr: "1/4",
+        traits: [
+            { name: "Quickness", description: "The fastieth can take the Dash or Disengage action as a bonus action on each of its turns." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage." }
+        ]
+    },
+    "homunculus servant": {
+        name: "Homunculus Servant",
+        source: "ERLW",
+        size: "tiny",
+        type: "construct",
+        alignment: "neutral",
+        ac: 13,
+        acType: "natural armor",
+        hp: 1,
+        hitDice: "1d4-1",
+        speed: { walk: 20, fly: 30 },
+        abilityScores: { str: 4, dex: 15, con: 12, int: 10, wis: 10, cha: 7 },
+        savingThrows: { dex: 4 },
+        skills: { perception: 4, stealth: 4 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["exhaustion", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands the languages of its creator but can't speak",
+        cr: 0,
+        traits: [
+            { name: "Evasion", description: "If the homunculus is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw." }
+        ],
+        actions: [
+            { name: "Force Strike", description: "Ranged Weapon Attack: +4 to hit, range 30 ft., one target. Hit: 5 (1d4+3) force damage." }
+        ],
+        reactions: [
+            { name: "Channel Magic", description: "The homunculus delivers a spell with a range of touch. The homunculus must be within 120 feet of its master." }
+        ]
+    },
+    "karrnathi undead soldier": {
+        name: "Karrnathi Undead Soldier",
+        source: "ERLW",
+        size: "medium",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 17,
+        acType: "half plate",
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 14, con: 14, int: 10, wis: 10, cha: 8 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["exhaustion", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: 3,
+        traits: [
+            { name: "Undead Fortitude", description: "If damage reduces the soldier to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the soldier drops to 1 hit point instead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The soldier makes two longsword attacks." },
+            { name: "Longsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 (1d6+3) piercing damage." }
+        ]
+    },
+
+    // ===== Mythic Odysseys of Theros (MOoT) =====
+    "anvilwrought raptor": {
+        name: "Anvilwrought Raptor",
+        source: "MOoT",
+        size: "small",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 18,
+        hitDice: "4d6+4",
+        speed: { walk: 10, fly: 60 },
+        abilityScores: { str: 12, dex: 16, con: 13, int: 3, wis: 14, cha: 1 },
+        skills: { perception: 4 },
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Flyby", description: "The raptor doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+            { name: "Keen Sight", description: "The raptor has advantage on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Beak", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 3 (1d6) fire damage." },
+            { name: "Talons", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4+3) slashing damage plus 3 (1d6) fire damage." }
+        ]
+    },
+    "bronze sable": {
+        name: "Bronze Sable",
+        source: "MOoT",
+        size: "medium",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 13,
+        hp: 32,
+        hitDice: "5d8+10",
+        speed: { walk: 40 },
+        abilityScores: { str: 13, dex: 16, con: 15, int: 3, wis: 14, cha: 1 },
+        skills: { perception: 4, stealth: 7 },
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "False Appearance", description: "While the sable remains motionless, it is indistinguishable from a normal bronze statue." },
+            { name: "Pack Tactics", description: "The sable has advantage on attack rolls against a creature if at least one of the sable's allies is within 5 feet of the creature and the ally isn't incapacitated." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 3 (1d6) fire damage." }
+        ]
+    },
+    "gold-forged sentinel": {
+        name: "Gold-Forged Sentinel",
+        source: "MOoT",
+        size: "large",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 18,
+        acType: "natural armor",
+        hp: 76,
+        hitDice: "8d10+32",
+        speed: { walk: 30 },
+        abilityScores: { str: 20, dex: 10, con: 18, int: 3, wis: 14, cha: 1 },
+        skills: { perception: 5 },
+        damageImmunities: ["fire", "poison", "psychic"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "understands the languages of its creator but can't speak",
+        cr: 5,
+        traits: [
+            { name: "False Appearance", description: "While the sentinel remains motionless, it is indistinguishable from a normal gold statue." },
+            { name: "Immutable Form", description: "The sentinel is immune to any spell or effect that would alter its form." },
+            { name: "Magic Weapons", description: "The sentinel's weapon attacks are magical." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The sentinel makes two melee attacks." },
+            { name: "Hammer", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 18 (3d8+5) bludgeoning damage plus 7 (2d6) fire damage." }
+        ]
+    },
+    "returned sentry": {
+        name: "Returned Sentry",
+        source: "MOoT",
+        size: "medium",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 14,
+        acType: "studded leather",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 14, dex: 14, con: 12, int: 9, wis: 10, cha: 8 },
+        skills: { athletics: 4, perception: 2 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["exhaustion", "poisoned"],
+        senses: ["passive Perception 12"],
+        languages: "the languages it knew in life",
+        cr: 1,
+        traits: [
+            { name: "Fleeting Memories", description: "A creature can speak a Returned's true name to that Returned, causing the Returned to be incapacitated for 1 round as memories flash through its mind." },
+            { name: "Turn Resistance", description: "The Returned has advantage on saving throws against any effect that turns undead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The Returned makes two melee attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage plus 3 (1d6) poison damage." }
+        ]
+    },
+    "returned palamnite": {
+        name: "Returned Palamnite",
+        source: "MOoT",
+        size: "medium",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "chain shirt, shield",
+        hp: 45,
+        hitDice: "6d8+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 17, dex: 14, con: 16, int: 10, wis: 12, cha: 11 },
+        savingThrows: { str: 5, wis: 3 },
+        skills: { athletics: 5, perception: 3 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["exhaustion", "poisoned"],
+        senses: ["passive Perception 13"],
+        languages: "the languages it knew in life",
+        cr: 3,
+        traits: [
+            { name: "Turn Resistance", description: "The Returned has advantage on saving throws against any effect that turns undead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The Returned makes two melee attacks." },
+            { name: "Longsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands, plus 4 (1d8) necrotic damage." }
+        ]
+    },
+    "leonin iconoclast": {
+        name: "Leonin Iconoclast",
+        source: "MOoT",
+        size: "medium",
+        type: "humanoid",
+        subtype: "leonin",
+        alignment: "chaotic neutral",
+        ac: 14,
+        acType: "hide armor",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 35 },
+        abilityScores: { str: 14, dex: 14, con: 12, int: 10, wis: 13, cha: 10 },
+        skills: { athletics: 4, perception: 5, stealth: 4, survival: 3 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Leonin",
+        cr: "1/2",
+        traits: [
+            { name: "Hunter's Instincts", description: "The leonin has advantage on Wisdom (Perception) and Wisdom (Survival) checks that rely on smell." },
+            { name: "Pounce", description: "If the leonin moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone." }
+        ],
+        actions: [
+            { name: "Claw", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage." },
+            { name: "Spear", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack." },
+            { name: "Daunting Roar (Recharges after a Short or Long Rest)", description: "Each hostile creature within 10 feet of the leonin that can hear it must succeed on a DC 11 Wisdom saving throw or be frightened until the end of the leonin's next turn." }
+        ]
+    },
+    "satyr reveler": {
+        name: "Satyr Reveler",
+        source: "MOoT",
+        size: "medium",
+        type: "fey",
+        alignment: "chaotic neutral",
+        ac: 13,
+        acType: "leather armor",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 40 },
+        abilityScores: { str: 11, dex: 15, con: 12, int: 12, wis: 10, cha: 16 },
+        skills: { acrobatics: 4, performance: 7, persuasion: 5, stealth: 4 },
+        senses: ["passive Perception 10"],
+        languages: "Common, Sylvan",
+        cr: 1,
+        traits: [
+            { name: "Magic Resistance", description: "The satyr has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage." },
+            { name: "Shortbow", description: "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6+2) piercing damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["minor illusion", "vicious mockery"],
+                "1st": { slots: 4, spells: ["charm person", "dissonant whispers", "heroism", "sleep"] },
+                "2nd": { slots: 2, spells: ["suggestion"] }
+            }
+        }
+    },
+    "satyr thornbearer": {
+        name: "Satyr Thornbearer",
+        source: "MOoT",
+        size: "medium",
+        type: "fey",
+        alignment: "chaotic neutral",
+        ac: 14,
+        acType: "hide armor",
+        hp: 38,
+        hitDice: "7d8+7",
+        speed: { walk: 40 },
+        abilityScores: { str: 12, dex: 15, con: 12, int: 10, wis: 15, cha: 13 },
+        skills: { nature: 2, perception: 4, stealth: 4, survival: 4 },
+        senses: ["passive Perception 14"],
+        languages: "Common, Sylvan",
+        cr: 2,
+        traits: [
+            { name: "Magic Resistance", description: "The satyr has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The satyr makes two ram attacks or two shortbow attacks." },
+            { name: "Ram", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (2d6+1) bludgeoning damage." },
+            { name: "Shortbow", description: "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6+2) piercing damage, and the target must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "wis",
+            dc: 12,
+            spells: {
+                atWill: ["druidcraft"],
+                "1/day each": ["entangle", "spike growth"]
+            }
+        }
+    },
+    "triton shorestalker": {
+        name: "Triton Shorestalker",
+        source: "MOoT",
+        size: "medium",
+        type: "humanoid",
+        subtype: "triton",
+        alignment: "lawful good",
+        ac: 13,
+        hp: 32,
+        hitDice: "5d8+10",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 11, dex: 16, con: 14, int: 10, wis: 15, cha: 11 },
+        skills: { nature: 2, perception: 4, stealth: 5, survival: 4 },
+        damageResistances: ["cold"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Primordial",
+        cr: 2,
+        traits: [
+            { name: "Amphibious", description: "The triton can breathe air and water." },
+            { name: "Sneak Attack (1/Turn)", description: "The triton deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the triton that isn't incapacitated and the triton doesn't have disadvantage on the attack roll." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The triton makes two shortsword attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage." },
+            { name: "Light Crossbow", description: "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 7 (1d8+3) piercing damage." }
+        ]
+    },
+    "underworld cerberus": {
+        name: "Underworld Cerberus",
+        source: "MOoT",
+        size: "large",
+        type: "monstrosity",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 104,
+        hitDice: "11d10+44",
+        speed: { walk: 60 },
+        abilityScores: { str: 19, dex: 12, con: 18, int: 6, wis: 16, cha: 6 },
+        savingThrows: { con: 7, wis: 6 },
+        skills: { perception: 9, stealth: 4 },
+        damageImmunities: ["fire", "necrotic"],
+        senses: ["truesight 60 ft."],
+        languages: "—",
+        cr: 6,
+        traits: [
+            { name: "Aggressive", description: "As a bonus action, the cerberus can move up to its speed toward a hostile creature it can see." },
+            { name: "Multiheaded", description: "The cerberus has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." },
+            { name: "Pack Tactics", description: "The cerberus has advantage on an attack roll against a creature if at least one of the cerberus's allies is within 5 feet of the creature and the ally isn't incapacitated." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The cerberus makes three bite attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage plus 3 (1d6) fire damage." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The cerberus exhales a 30-foot cone of molten rock. Each creature in that area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one. On a failed save, a creature is also restrained by the rock as it begins to harden. A restrained creature can make a DC 15 Strength check, freeing itself on a success. If the creature is still restrained at the start of the cerberus's next turn, the rock hardens completely, and the creature is petrified." }
+        ]
+    },
+
+    // ===== Guildmasters' Guide to Ravnica (GGR) =====
+    "skyjek roc": {
+        name: "Skyjek Roc",
+        source: "GGR",
+        size: "huge",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 136,
+        hitDice: "13d12+52",
+        speed: { walk: 20, fly: 120 },
+        abilityScores: { str: 26, dex: 14, con: 18, int: 3, wis: 16, cha: 8 },
+        savingThrows: { dex: 5, con: 7, wis: 6, cha: 2 },
+        skills: { perception: 9 },
+        senses: ["passive Perception 19"],
+        languages: "—",
+        cr: 7,
+        traits: [
+            { name: "Keen Sight", description: "The roc has advantage on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The roc makes two attacks: one with its beak and one with its talons." },
+            { name: "Beak", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 22 (4d6+8) piercing damage." },
+            { name: "Talons", description: "Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 26 (4d8+8) slashing damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the roc can't use its talons on another target." }
+        ]
+    },
+    "category 1 krasis": {
+        name: "Category 1 Krasis",
+        source: "GGR",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 19,
+        hitDice: "3d8+6",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 16, dex: 15, con: 14, int: 2, wis: 13, cha: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Amphibious", description: "The krasis can breathe air and water." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The krasis makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." }
+        ]
+    },
+    "category 2 krasis": {
+        name: "Category 2 Krasis",
+        source: "GGR",
+        size: "large",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 76,
+        hitDice: "8d10+32",
+        speed: { walk: 40, swim: 40 },
+        abilityScores: { str: 18, dex: 14, con: 18, int: 2, wis: 13, cha: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 4,
+        traits: [
+            { name: "Amphibious", description: "The krasis can breathe air and water." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The krasis makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (2d4+4) slashing damage." }
+        ]
+    },
+    "category 3 krasis": {
+        name: "Category 3 Krasis",
+        source: "GGR",
+        size: "huge",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 16,
+        acType: "natural armor",
+        hp: 168,
+        hitDice: "16d12+64",
+        speed: { walk: 40, climb: 40, swim: 40 },
+        abilityScores: { str: 20, dex: 12, con: 18, int: 3, wis: 14, cha: 10 },
+        savingThrows: { con: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 9,
+        traits: [
+            { name: "Amphibious", description: "The krasis can breathe air and water." },
+            { name: "Siege Monster", description: "The krasis deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The krasis makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 19 (4d6+5) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 15 (4d4+5) slashing damage." }
+        ]
+    },
+    "biomancer": {
+        name: "Biomancer",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "neutral good",
+        ac: 17,
+        acType: "splint",
+        hp: 110,
+        hitDice: "17d8+34",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 15, con: 14, int: 20, wis: 14, cha: 15 },
+        savingThrows: { int: 9, wis: 6 },
+        skills: { arcana: 9, nature: 9 },
+        senses: ["passive Perception 12"],
+        languages: "Common plus any two languages",
+        cr: 10,
+        traits: [
+            { name: "Bolstering Presence", description: "The biomancer's allies in a 30-foot radius have advantage on saving throws against being frightened and on death saving throws." },
+            { name: "Magic Resistance", description: "The biomancer has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The biomancer makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 17,
+            attackBonus: 9,
+            spells: {
+                cantrips: ["acid splash", "mending", "thorn whip"],
+                "1st": { slots: 4, spells: ["detect magic", "entangle", "fog cloud", "healing word"] },
+                "2nd": { slots: 3, spells: ["alter self", "enhance ability", "enlarge/reduce", "hold person"] },
+                "3rd": { slots: 3, spells: ["dispel magic", "haste", "protection from energy"] },
+                "4th": { slots: 3, spells: ["giant insect", "grasping vine", "polymorph"] },
+                "5th": { slots: 2, spells: ["awaken", "hold monster"] }
+            }
+        }
+    },
+    "hybrid spy": {
+        name: "Hybrid Spy",
+        source: "GGR",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "neutral good",
+        ac: 13,
+        hp: 44,
+        hitDice: "8d8+8",
+        speed: { walk: 40 },
+        abilityScores: { str: 11, dex: 17, con: 12, int: 14, wis: 14, cha: 10 },
+        skills: { perception: 4, stealth: 5 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common plus any one language",
+        cr: 2,
+        traits: [
+            { name: "Shapechanger", description: "The hybrid can use its action to polymorph into a humanoid form or into a hybrid form that combines humanoid and animal features, or back into its true form." },
+            { name: "Keen Senses", description: "The hybrid has advantage on Wisdom (Perception) checks that rely on hearing or smell." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hybrid makes two attacks: one with its bite and one with its shortsword, or it makes two shortsword attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) piercing damage." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage." },
+            { name: "Claws (Hybrid Form Only)", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." }
+        ]
+    },
+    "flux blaster": {
+        name: "Flux Blaster",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "goblin",
+        alignment: "chaotic neutral",
+        ac: 12,
+        hp: 27,
+        hitDice: "5d8+5",
+        speed: { walk: 30 },
+        abilityScores: { str: 8, dex: 15, con: 12, int: 14, wis: 10, cha: 8 },
+        skills: { arcana: 4 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Goblin",
+        cr: 2,
+        traits: [
+            { name: "Nimble Escape", description: "The goblin can take the Disengage or Hide action as a bonus action on each of its turns." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The flux blaster makes two flux cannon attacks." },
+            { name: "Flux Cannon", description: "Ranged Spell Attack: +4 to hit, range 120 ft., one target. Hit: 7 (1d10+2) force damage." },
+            { name: "Flux Overload (Recharge 5-6)", description: "The flux blaster fires a blast of chaotic energy in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 18 (4d8) force damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "rakdos performer": {
+        name: "Rakdos Performer",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "chaotic evil",
+        ac: 13,
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 16, con: 12, int: 10, wis: 9, cha: 15 },
+        skills: { acrobatics: 5, performance: 4 },
+        senses: ["passive Perception 9"],
+        languages: "Common plus any one language",
+        cr: 1,
+        traits: [
+            { name: "Pack Tactics", description: "The performer has advantage on attack rolls against a creature if at least one of the performer's allies is within 5 feet of the creature and the ally isn't incapacitated." }
+        ],
+        actions: [
+            { name: "Scimitar", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." },
+            { name: "Fire Breath (Recharge 5-6)", description: "The performer exhales fire in a 15-foot cone. Each creature in that area must make a DC 11 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "rakdos lampooner": {
+        name: "Rakdos Lampooner",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "any race",
+        alignment: "chaotic evil",
+        ac: 12,
+        hp: 27,
+        hitDice: "6d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 14, con: 11, int: 12, wis: 9, cha: 16 },
+        skills: { acrobatics: 4, deception: 5, performance: 5 },
+        senses: ["passive Perception 9"],
+        languages: "Common plus any one language",
+        cr: 2,
+        actions: [
+            { name: "Multiattack", description: "The lampooner makes two attacks: one with its dagger and one with its scimitar." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." },
+            { name: "Scimitar", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 13,
+            spells: {
+                atWill: ["vicious mockery"],
+                "1/day each": ["crown of madness", "dissonant whispers", "Tasha's hideous laughter"]
+            }
+        }
+    },
+    "deathpact angel": {
+        name: "Deathpact Angel",
+        source: "GGR",
+        size: "medium",
+        type: "celestial",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 175,
+        hitDice: "27d8+54",
+        speed: { walk: 30, fly: 90 },
+        abilityScores: { str: 16, dex: 18, con: 14, int: 19, wis: 20, cha: 23 },
+        savingThrows: { int: 9, wis: 10, cha: 11 },
+        skills: { insight: 10, intimidation: 11, perception: 10, persuasion: 11 },
+        damageResistances: ["necrotic", "radiant"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["truesight 120 ft."],
+        languages: "all",
+        cr: 14,
+        traits: [
+            { name: "Exploitation of the Debtors", description: "When any creature within 30 feet of the angel makes an ability check, an attack roll, or a saving throw, the angel can use its reaction to give that creature a bonus equal to the angel's Charisma modifier." },
+            { name: "Flyby", description: "The angel doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+            { name: "Magic Resistance", description: "The angel has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The angel makes two scythe attacks and uses Chains of Obligation." },
+            { name: "Scythe", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 9 (1d10+4) slashing damage plus 18 (4d8) necrotic damage." },
+            { name: "Chains of Obligation", description: "Each creature within 30 feet of the angel that has accepted a gift from it must succeed on a DC 19 Charisma saving throw or be paralyzed for 1 minute. A paralyzed creature can repeat the saving throw at the end of each of its turns, ending the effect on a success." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 19,
+            spells: {
+                atWill: ["command", "detect evil and good"],
+                "1/day each": ["charm person", "darkness", "suggestion"]
+            }
+        }
+    },
+    "arclight phoenix": {
+        name: "Arclight Phoenix",
+        source: "GGR",
+        size: "medium",
+        type: "elemental",
+        alignment: "chaotic neutral",
+        ac: 16,
+        hp: 142,
+        hitDice: "19d8+57",
+        speed: { walk: 0, fly: 120 },
+        abilityScores: { str: 15, dex: 22, con: 17, int: 5, wis: 12, cha: 11 },
+        savingThrows: { dex: 10 },
+        damageResistances: ["thunder", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["fire", "lightning", "poison"],
+        conditionImmunities: ["exhaustion", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 12,
+        traits: [
+            { name: "Arclight Form", description: "The phoenix can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the phoenix or hits it with a melee attack while within 5 feet of it takes 9 (2d8) lightning damage. In addition, the phoenix can enter a hostile creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes 9 (2d8) lightning damage." },
+            { name: "Flyby", description: "The phoenix doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+            { name: "Grounded Rebirth", description: "When the phoenix dies, its body discharges its remaining electricity in a 30-foot-radius sphere. Each creature in that area must make a DC 18 Dexterity saving throw, taking 36 (8d8) lightning damage on a failed save, or half as much damage on a successful one. After 1d6 minutes, a new arclight phoenix rises from the area." },
+            { name: "Illumination", description: "The phoenix sheds bright light in a 15-foot radius and dim light for an additional 15 feet." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The phoenix makes three shock attacks." },
+            { name: "Shock", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 27 (6d6+6) lightning damage." },
+            { name: "Arclight Eruption (Recharge 5-6)", description: "The phoenix releases a burst of lightning in a 30-foot-radius sphere centered on itself. Each creature in that area must make a DC 18 Dexterity saving throw, taking 36 (8d8) lightning damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "golgari shaman": {
+        name: "Golgari Shaman",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "elf",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "hide armor",
+        hp: 88,
+        hitDice: "16d8+16",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 15, con: 12, int: 12, wis: 19, cha: 15 },
+        savingThrows: { con: 4, wis: 7 },
+        skills: { insight: 7, nature: 4, religion: 4, survival: 7 },
+        damageResistances: ["necrotic"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Elvish",
+        cr: 5,
+        traits: [
+            { name: "Fey Ancestry", description: "The shaman has advantage on saving throws against being charmed, and magic can't put it to sleep." }
+        ],
+        actions: [
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage, or 4 (1d8) bludgeoning damage if used with two hands." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 15,
+            attackBonus: 7,
+            spells: {
+                cantrips: ["poison spray", "spare the dying", "thorn whip"],
+                "1st": { slots: 4, spells: ["cure wounds", "entangle", "ray of sickness"] },
+                "2nd": { slots: 3, spells: ["pass without trace", "ray of enfeeblement", "spike growth"] },
+                "3rd": { slots: 3, spells: ["animate dead", "plant growth", "revivify"] },
+                "4th": { slots: 3, spells: ["blight", "giant insect"] },
+                "5th": { slots: 1, spells: ["cloudkill", "insect plague"] }
+            }
+        }
+    },
+    "devkarin lich": {
+        name: "Devkarin Lich",
+        source: "GGR",
+        size: "medium",
+        type: "undead",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 97,
+        hitDice: "15d8+30",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 16, con: 14, int: 19, wis: 16, cha: 16 },
+        savingThrows: { con: 6, int: 8, wis: 7 },
+        skills: { arcana: 12, insight: 7, perception: 7 },
+        damageResistances: ["necrotic"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["truesight 120 ft."],
+        languages: "Common, Elvish, Kraul",
+        cr: 14,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the lich fails a saving throw, it can choose to succeed instead." },
+            { name: "Regeneration", description: "The lich regains 10 hit points at the start of its turn. If the lich takes fire or radiant damage, this trait doesn't function at the start of the lich's next turn." },
+            { name: "Turn Resistance", description: "The lich has advantage on saving throws against any effect that turns undead." }
+        ],
+        actions: [
+            { name: "Noxious Touch", description: "Melee Spell Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (4d6) poison damage, and the target must succeed on a DC 16 Constitution saving throw or be poisoned for 1 minute." }
+        ],
+        legendaryActions: [
+            { name: "Cantrip", description: "The lich casts one of its cantrips." },
+            { name: "Noxious Touch (Costs 2 Actions)", description: "The lich uses Noxious Touch." },
+            { name: "Disrupt Life (Costs 3 Actions)", description: "Each non-undead creature within 30 feet of the lich must make a DC 16 Constitution saving throw, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one." }
+        ],
+        spellcasting: {
+            ability: "int",
+            dc: 16,
+            attackBonus: 8,
+            spells: {
+                cantrips: ["chill touch", "mage hand", "poison spray", "prestidigitation"],
+                "1st": { slots: 4, spells: ["detect magic", "magic missile", "ray of sickness", "sleep"] },
+                "2nd": { slots: 3, spells: ["darkness", "misty step", "ray of enfeeblement"] },
+                "3rd": { slots: 3, spells: ["animate dead", "counterspell", "dispel magic"] },
+                "4th": { slots: 3, spells: ["blight", "Evard's black tentacles"] },
+                "5th": { slots: 2, spells: ["cloudkill", "insect plague"] },
+                "6th": { slots: 1, spells: ["create undead", "circle of death"] },
+                "7th": { slots: 1, spells: ["finger of death"] }
+            }
+        }
+    },
+    "kraul warrior": {
+        name: "Kraul Warrior",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "kraul",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 27,
+        hitDice: "5d8+5",
+        speed: { walk: 30, climb: 30, fly: 40 },
+        abilityScores: { str: 15, dex: 12, con: 13, int: 10, wis: 11, cha: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "Kraul",
+        cr: 1,
+        traits: [
+            { name: "Hive Mind", description: "The kraul is immune to the charmed and frightened conditions while within 30 feet of at least one other kraul." },
+            { name: "Pack Tactics", description: "The kraul has advantage on attack rolls against a creature if at least one of the kraul's allies is within 5 feet of the creature and the ally isn't incapacitated." },
+            { name: "Spider Climb", description: "The kraul can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
+        ],
+        actions: [
+            { name: "Spear", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack." }
+        ]
+    },
+    "kraul death priest": {
+        name: "Kraul Death Priest",
+        source: "GGR",
+        size: "medium",
+        type: "humanoid",
+        subtype: "kraul",
+        alignment: "neutral evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 65,
+        hitDice: "10d8+20",
+        speed: { walk: 30, climb: 30, fly: 40 },
+        abilityScores: { str: 16, dex: 12, con: 14, int: 12, wis: 15, cha: 10 },
+        savingThrows: { con: 4, wis: 4 },
+        skills: { insight: 4, nature: 3, religion: 3 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Kraul",
+        cr: 4,
+        traits: [
+            { name: "Feed on Death", description: "When a creature dies within 30 feet of the death priest, the death priest or one kraul it can see regains 7 (2d6) hit points." },
+            { name: "Hive Mind", description: "The kraul is immune to the charmed and frightened conditions while within 30 feet of at least one other kraul." },
+            { name: "Pack Tactics", description: "The kraul has advantage on attack rolls against a creature if at least one of the kraul's allies is within 5 feet of the creature and the ally isn't incapacitated." },
+            { name: "Spider Climb", description: "The kraul can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The kraul makes one attack with its claws and casts one of its spells with a casting time of 1 action." },
+            { name: "Claws", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "wis",
+            dc: 12,
+            spells: {
+                atWill: ["chill touch", "poison spray"],
+                "1/day each": ["animate dead", "blight", "vampiric touch"]
+            }
+        }
+    },
+    "undercity medusa": {
+        name: "Undercity Medusa",
+        source: "GGR",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "lawful evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 78,
+        hitDice: "12d8+24",
+        speed: { walk: 30 },
+        abilityScores: { str: 11, dex: 15, con: 14, int: 12, wis: 13, cha: 15 },
+        skills: { deception: 4, insight: 3, perception: 3, stealth: 4 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common",
+        cr: 6,
+        traits: [
+            { name: "Petrifying Gaze", description: "When a creature that can see the medusa's eyes starts its turn within 30 feet of the medusa, the medusa can force it to make a DC 14 Constitution saving throw if the medusa isn't incapacitated and can see the creature. If the saving throw fails by 5 or more, the creature is instantly petrified. Otherwise, a creature that fails the save begins to turn to stone and is restrained. The restrained creature must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The medusa makes two claw attacks or two longbow attacks." },
+            { name: "Claw", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage plus 7 (2d6) poison damage." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8+2) piercing damage plus 7 (2d6) poison damage." }
+        ]
+    },
+
+    // ===== Van Richten's Guide to Ravenloft (VRGR) =====
+    "boneless": {
+        name: "Boneless",
+        source: "VRGR",
+        size: "medium",
+        type: "undead",
+        alignment: "chaotic evil",
+        ac: 12,
+        hp: 26,
+        hitDice: "4d8+8",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 14, con: 15, int: 6, wis: 10, cha: 1 },
+        damageResistances: ["bludgeoning"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Compression", description: "The boneless can move through any opening at least 1 inch wide without squeezing. It can also squeeze to fit into a space that a Tiny creature could fit in." },
+            { name: "Unusual Nature", description: "The boneless doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The boneless makes two Slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) bludgeoning damage." },
+            { name: "Crushing Embrace", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one Medium or smaller creature. Hit: 8 (1d10+3) bludgeoning damage, and the target is grappled (escape DC 13). Until the grapple ends, the target takes 8 (1d10+3) bludgeoning damage at the start of each of the boneless's turns, and the boneless can't use Crushing Embrace on another target." }
+        ]
+    },
+    "brain in a jar": {
+        name: "Brain in a Jar",
+        source: "VRGR",
+        size: "small",
+        type: "undead",
+        alignment: "any alignment",
+        ac: 11,
+        acType: "natural armor",
+        hp: 55,
+        hitDice: "10d6+20",
+        speed: { walk: 0, fly: 10 },
+        abilityScores: { str: 1, dex: 3, con: 15, int: 19, wis: 12, cha: 14 },
+        savingThrows: { int: 6, cha: 4 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned", "prone"],
+        senses: ["blindsight 120 ft. (blind beyond this radius)"],
+        languages: "the languages it knew in life, telepathy 120 ft.",
+        cr: 3,
+        traits: [
+            { name: "Magic Resistance", description: "The brain has advantage on saving throws against spells and other magical effects." },
+            { name: "Unusual Nature", description: "The brain doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Mind Blast (Recharge 5-6)", description: "The brain magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 14 Intelligence saving throw or take 17 (3d10+1) psychic damage and be stunned for 1 minute. A stunned creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "int",
+            dc: 14,
+            spells: {
+                atWill: ["chill touch", "detect thoughts", "mage hand", "zone of truth"],
+                "3/day each": ["charm person", "hold person"],
+                "1/day each": ["compulsion", "hold monster", "sleep (as a 5th-level spell)", "Tasha's hideous laughter"]
+            }
+        }
+    },
+    "carrionette": {
+        name: "Carrionette",
+        source: "VRGR",
+        size: "small",
+        type: "construct",
+        alignment: "chaotic evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 27,
+        hitDice: "6d6+6",
+        speed: { walk: 25 },
+        abilityScores: { str: 10, dex: 15, con: 12, int: 8, wis: 14, cha: 14 },
+        senses: ["darkvision 60 ft."],
+        languages: "understands Common but can't speak",
+        cr: 1,
+        traits: [
+            { name: "False Object", description: "If the carrionette is motionless at the start of combat, it has advantage on its initiative roll." },
+            { name: "Unusual Nature", description: "The carrionette doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Silver Needle", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 1 piercing damage plus 3 (1d6) psychic damage, and the target must succeed on a DC 12 Charisma saving throw or become cursed for 1 minute. While cursed in this way, the target's speed is halved, and it has disadvantage on attack rolls against the carrionette." },
+            { name: "Soul Swap", description: "The carrionette targets a humanoid within 15 feet of it that is cursed by its Silver Needle. Unless the target is protected by protection from evil and good, it must succeed on a DC 12 Charisma saving throw or the carrionette swaps bodies with the target, whereupon the target's soul is trapped inside the carrionette body." }
+        ]
+    },
+    "death's head": {
+        name: "Death's Head",
+        source: "VRGR",
+        size: "tiny",
+        type: "undead",
+        alignment: "neutral evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 17,
+        hitDice: "5d4+5",
+        speed: { walk: 0, fly: 30 },
+        abilityScores: { str: 8, dex: 13, con: 12, int: 5, wis: 14, cha: 3 },
+        damageResistances: ["necrotic"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned", "prone"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: "1/2",
+        traits: [
+            { name: "Beheaded Form", description: "When created, a death's head takes one of three forms: Aberrant Head, Gnashing Head, or Petrifying Head. This form determines the head's saving throw proficiency, immunities, and special actions." },
+            { name: "Unusual Nature", description: "The death's head doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage plus 7 (2d6) necrotic damage." }
+        ]
+    },
+    "dullahan": {
+        name: "Dullahan",
+        source: "VRGR",
+        size: "medium",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "breastplate",
+        hp: 135,
+        hitDice: "18d8+54",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 14, con: 16, int: 11, wis: 15, cha: 16 },
+        savingThrows: { con: 7 },
+        skills: { perception: 6 },
+        damageResistances: ["cold", "lightning", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["truesight 120 ft."],
+        languages: "understands the languages it knew in life but can't speak",
+        cr: 10,
+        traits: [
+            { name: "Headless Summoning (Recharges after a Short or Long Rest)", description: "If the dullahan is reduced to 0 hit points, it doesn't die or fall unconscious. Instead, it regains 97 hit points. In addition, all creatures within 10 feet of the dullahan that can see it must succeed on a DC 15 Wisdom saving throw or become frightened of the dullahan for 1 minute." },
+            { name: "Legendary Resistance (1/Day)", description: "If the dullahan fails a saving throw, it can choose to succeed instead." },
+            { name: "Unusual Nature", description: "The dullahan doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dullahan makes two attacks." },
+            { name: "Battleaxe", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage, or 9 (1d10+4) slashing damage if used with two hands, plus 11 (2d10) necrotic damage." },
+            { name: "Fiery Skull", description: "Ranged Spell Attack: +7 to hit, range 120 ft., one target. Hit: 14 (2d10+3) fire damage." }
+        ],
+        legendaryActions: [
+            { name: "Attack", description: "The dullahan makes one attack." },
+            { name: "Frightful Presence (Costs 2 Actions)", description: "Each creature of the dullahan's choice within 30 feet of it must succeed on a DC 15 Wisdom saving throw or become frightened for 1 minute." },
+            { name: "Head Hunt (Costs 3 Actions)", description: "The dullahan moves up to its speed without provoking opportunity attacks and can move through creatures. Each creature the dullahan moves through must make a DC 15 Dexterity saving throw. On a failure, the creature takes 14 (2d10+3) slashing damage." }
+        ]
+    },
+    "gallows speaker": {
+        name: "Gallows Speaker",
+        source: "VRGR",
+        size: "medium",
+        type: "undead",
+        alignment: "neutral evil",
+        ac: 12,
+        hp: 85,
+        hitDice: "19d8",
+        speed: { walk: 0, fly: 40 },
+        abilityScores: { str: 8, dex: 14, con: 10, int: 10, wis: 12, cha: 18 },
+        savingThrows: { wis: 4, cha: 7 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["cold", "necrotic", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained"],
+        senses: ["darkvision 60 ft."],
+        languages: "any languages it knew in life",
+        cr: 6,
+        traits: [
+            { name: "Divination Senses", description: "The gallows speaker can see 60 feet into the Ethereal Plane when it is on the Material Plane and vice versa." },
+            { name: "Incorporeal Movement", description: "The gallows speaker can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object." },
+            { name: "Unusual Nature", description: "The gallows speaker doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The gallows speaker makes two Foretelling Touch attacks." },
+            { name: "Foretelling Touch", description: "Melee Spell Attack: +7 to hit, reach 5 ft., one creature. Hit: 17 (3d8+4) psychic damage, and the target must roll a d4 and subtract the number rolled from the next attack roll or saving throw it makes before the start of the gallows speaker's next turn." }
+        ]
+    },
+    "inquisitor of the mind fire": {
+        name: "Inquisitor of the Mind Fire",
+        source: "VRGR",
+        size: "medium",
+        type: "humanoid",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "breastplate",
+        hp: 77,
+        hitDice: "14d8+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 14, con: 12, int: 17, wis: 16, cha: 19 },
+        savingThrows: { int: 6, wis: 6, cha: 7 },
+        skills: { insight: 9, perception: 6, religion: 6 },
+        conditionImmunities: ["charmed", "frightened"],
+        senses: ["truesight 30 ft."],
+        languages: "any three languages, telepathy 120 ft.",
+        cr: 8,
+        traits: [
+            { name: "Innate Spellcasting (Psionics)", description: "The inquisitor's innate spellcasting ability is Intelligence (spell save DC 14). It can innately cast the following spells, requiring no components." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The inquisitor makes two Silver Sword attacks." },
+            { name: "Silver Sword", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage plus 14 (4d6) force damage." },
+            { name: "Implode (Recharge 4-6)", description: "Each creature in a 20-foot-radius sphere centered on a point the inquisitor can see within 120 feet of it must succeed on a DC 15 Constitution saving throw or take 31 (6d8+4) force damage and be knocked prone and moved to the unoccupied space closest to the center of the sphere." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "int",
+            dc: 14,
+            spells: {
+                atWill: ["detect magic", "detect thoughts", "dispel magic", "sending"],
+                "1/day each": ["mass suggestion", "suggestion"]
+            }
+        }
+    },
+    "jiangshi": {
+        name: "Jiangshi",
+        source: "VRGR",
+        size: "medium",
+        type: "undead",
+        alignment: "chaotic evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 119,
+        hitDice: "14d8+56",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 3, con: 18, int: 17, wis: 14, cha: 12 },
+        savingThrows: { con: 8, wis: 6 },
+        damageResistances: ["necrotic"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "any languages it knew in life",
+        cr: 9,
+        traits: [
+            { name: "Breath Tracker", description: "The jiangshi doesn't have a sense of sight but is unaffected by spells and effects that would blind it. A creature that is holding its breath is invisible to the jiangshi." },
+            { name: "Jiangshi Weaknesses", description: "The jiangshi has the following flaws: If a creature uses an action to throw cooked glutinous rice at the jiangshi, the jiangshi must succeed on a DC 15 Constitution saving throw or be restrained by the rice until the end of its next turn. The jiangshi is incapacitated while in the area of a consecrate spell." },
+            { name: "Unusual Nature", description: "The jiangshi doesn't require air or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The jiangshi makes three Slam attacks and can use Consume Energy." },
+            { name: "Slam", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage." },
+            { name: "Consume Energy", description: "The jiangshi drains energy from a creature within 5 feet of it. The target must succeed on a DC 16 Constitution saving throw or take 18 (4d8) necrotic damage. The jiangshi regains hit points equal to half the damage dealt." }
+        ]
+    },
+    "loup garou": {
+        name: "Loup Garou",
+        source: "VRGR",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "chaotic evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 170,
+        hitDice: "20d8+80",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 18, con: 18, int: 14, wis: 16, cha: 16 },
+        savingThrows: { dex: 9, con: 9, wis: 8 },
+        skills: { perception: 13, stealth: 9 },
+        damageImmunities: ["bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered"],
+        conditionImmunities: ["charmed", "frightened"],
+        senses: ["darkvision 120 ft."],
+        languages: "Common (can't speak in hybrid or wolf form)",
+        cr: 13,
+        traits: [
+            { name: "Blood Frenzy", description: "The loup garou has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+            { name: "Legendary Resistance (2/Day)", description: "If the loup garou fails a saving throw, it can choose to succeed instead." },
+            { name: "Regeneration", description: "The loup garou regains 10 hit points at the start of its turn. If the loup garou takes damage from a silvered weapon, this trait doesn't function at the start of the loup garou's next turn." },
+            { name: "Shapechanger", description: "The loup garou can use its action to polymorph into a Large wolf-humanoid hybrid, into a Large dire wolf, or back into its humanoid form." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The loup garou makes two attacks: one with its Bite and one with its Claws." },
+            { name: "Bite (Hybrid or Wolf Form Only)", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) piercing damage plus 14 (4d6) necrotic damage. If the target is a Humanoid, it must succeed on a DC 17 Constitution saving throw or be cursed with loup garou lycanthropy." },
+            { name: "Claws (Hybrid Form Only)", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." }
+        ],
+        legendaryActions: [
+            { name: "Swipe", description: "The loup garou makes one Claws attack (hybrid form only) or swipes with a spectral claw that deals 8 (1d8+4) slashing damage to one creature (humanoid or wolf form)." },
+            { name: "Mauling Pounce (Costs 2 Actions)", description: "The loup garou moves up to its speed without provoking opportunity attacks, and it can make one Bite attack and one Claws attack during this move." }
+        ]
+    },
+    "nosferatu": {
+        name: "Nosferatu",
+        source: "VRGR",
+        size: "medium",
+        type: "undead",
+        alignment: "neutral evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 150,
+        hitDice: "20d8+60",
+        speed: { walk: 40, climb: 40 },
+        abilityScores: { str: 20, dex: 18, con: 16, int: 17, wis: 15, cha: 18 },
+        savingThrows: { dex: 9, wis: 7, cha: 9 },
+        skills: { perception: 12, stealth: 14 },
+        damageResistances: ["necrotic", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        senses: ["darkvision 120 ft."],
+        languages: "the languages it knew in life",
+        cr: 13,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the nosferatu fails a saving throw, it can choose to succeed instead." },
+            { name: "Regeneration", description: "The nosferatu regains 20 hit points at the start of its turn. If the nosferatu takes radiant damage, this trait doesn't function at the start of the nosferatu's next turn." },
+            { name: "Spider Climb", description: "The nosferatu can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The nosferatu makes two Claw attacks, and it can make one Bite attack." },
+            { name: "Bite", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one creature. Hit: 12 (2d6+5) piercing damage plus 10 (3d6) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken." },
+            { name: "Claw", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage." }
+        ],
+        legendaryActions: [
+            { name: "Move", description: "The nosferatu moves up to its speed without provoking opportunity attacks." },
+            { name: "Blood Siphon (Costs 2 Actions)", description: "The nosferatu makes one Bite attack." }
+        ]
+    },
+    "priest of osybus": {
+        name: "Priest of Osybus",
+        source: "VRGR",
+        size: "medium",
+        type: "humanoid",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "studded leather",
+        hp: 60,
+        hitDice: "8d8+24",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 14, con: 16, int: 18, wis: 17, cha: 11 },
+        savingThrows: { int: 7, wis: 6 },
+        skills: { perception: 6, religion: 7 },
+        damageResistances: ["necrotic"],
+        conditionImmunities: ["frightened"],
+        senses: ["darkvision 120 ft."],
+        languages: "any two languages",
+        cr: 6,
+        traits: [
+            { name: "Tattoo of Osybus", description: "The priest has advantage on death saving throws and on saving throws against being charmed or frightened. If the priest dies, its body is destroyed, but a blight or specter appears in its space (DM's choice)." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The priest makes two Soul Blade attacks." },
+            { name: "Soul Blade", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) necrotic damage." },
+            { name: "Circle of Death (Recharge 5-6)", description: "Necrotic energy ripples out from the priest. Each creature within 10 feet of the priest must make a DC 14 Constitution saving throw, taking 28 (8d6) necrotic damage on a failed save, or half as much damage on a successful one." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "int",
+            dc: 15,
+            spells: {
+                atWill: ["chill touch", "spare the dying", "thaumaturgy"],
+                "1/day each": ["bane", "bestow curse", "blindness/deafness", "darkness", "hold person", "speak with dead"]
+            }
+        }
+    },
+    "relentless slasher": {
+        name: "Relentless Slasher",
+        source: "VRGR",
+        size: "medium",
+        type: "fiend",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 84,
+        hitDice: "13d8+26",
+        speed: { walk: 40 },
+        abilityScores: { str: 14, dex: 17, con: 15, int: 10, wis: 14, cha: 16 },
+        savingThrows: { str: 5, con: 5 },
+        skills: { athletics: 5, perception: 5, survival: 5 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "understands all languages but can't speak",
+        cr: 6,
+        traits: [
+            { name: "Brute", description: "A melee weapon deals one extra die of its damage when the slasher hits with it (included in the attack)." },
+            { name: "Implacable", description: "The slasher can't be surprised. It also can't be dazed or slowed by magic, and it ignores difficult terrain." },
+            { name: "Legendary Resistance (1/Day)", description: "If the slasher fails a saving throw, it can choose to succeed instead." },
+            { name: "Unusual Nature", description: "The slasher doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The slasher makes two Slashing Claw attacks." },
+            { name: "Slashing Claw", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) slashing damage." }
+        ],
+        legendaryActions: [
+            { name: "Pursuit", description: "The slasher moves up to its speed toward a creature it can see without provoking opportunity attacks." },
+            { name: "Slash", description: "The slasher makes one Slashing Claw attack." }
+        ]
+    },
+    "relentless juggernaut": {
+        name: "Relentless Juggernaut",
+        source: "VRGR",
+        size: "large",
+        type: "fiend",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 161,
+        hitDice: "17d10+68",
+        speed: { walk: 30 },
+        abilityScores: { str: 22, dex: 12, con: 19, int: 6, wis: 14, cha: 8 },
+        savingThrows: { str: 10, con: 8 },
+        skills: { athletics: 10, perception: 6 },
+        damageImmunities: ["poison", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "understands all languages but can't speak",
+        cr: 12,
+        traits: [
+            { name: "Implacable", description: "The juggernaut can't be surprised. It also can't be dazed or slowed by magic, and it ignores difficult terrain." },
+            { name: "Legendary Resistance (2/Day)", description: "If the juggernaut fails a saving throw, it can choose to succeed instead." },
+            { name: "Regeneration", description: "The juggernaut regains 15 hit points at the start of its turn. If the juggernaut takes radiant damage, this trait doesn't function at the start of the juggernaut's next turn." },
+            { name: "Unusual Nature", description: "The juggernaut doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The juggernaut makes two Executioner's Axe attacks." },
+            { name: "Executioner's Axe", description: "Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 25 (3d12+6) slashing damage." }
+        ],
+        legendaryActions: [
+            { name: "Pursuit", description: "The juggernaut moves up to its speed toward a creature it can see without provoking opportunity attacks." },
+            { name: "Swing (Costs 2 Actions)", description: "The juggernaut makes one Executioner's Axe attack." }
+        ]
+    },
+    "zombie clot": {
+        name: "Zombie Clot",
+        source: "VRGR",
+        size: "huge",
+        type: "undead",
+        alignment: "neutral evil",
+        ac: 12,
+        acType: "natural armor",
+        hp: 104,
+        hitDice: "11d12+33",
+        speed: { walk: 40 },
+        abilityScores: { str: 20, dex: 10, con: 16, int: 3, wis: 8, cha: 10 },
+        savingThrows: { con: 6 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands the languages it knew in life but can't speak",
+        cr: 6,
+        traits: [
+            { name: "Deathly Stench", description: "Any creature that starts its turn within 10 feet of the zombie must succeed on a DC 14 Constitution saving throw or take 9 (2d8) poison damage and be poisoned until the start of the creature's next turn." },
+            { name: "Undead Fortitude", description: "If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead." },
+            { name: "Unusual Nature", description: "The zombie doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The zombie makes two Slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 18 (2d12+5) bludgeoning damage." },
+            { name: "Flesh Entomb (Recharge 5-6)", description: "The zombie flings a detached clump of corpses at a creature it can see within 30 feet of it. The target must succeed on a DC 16 Strength saving throw or take 16 (3d10) bludgeoning damage, be knocked prone, and be restrained by the mass of corpses until it escapes. A creature, including the restrained one, can use an action to try to free the restrained creature, doing so with a successful DC 16 Strength check." }
+        ]
+    },
+
+    // ===== Fizban's Treasury of Dragons (FToD) =====
+    "dragonflesh grafter": {
+        name: "Dragonflesh Grafter",
+        source: "FToD",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "7d10+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 11, con: 14, int: 10, wis: 10, cha: 6 },
+        skills: { athletics: 5, intimidation: 0 },
+        damageResistances: ["fire"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: 3,
+        traits: [
+            { name: "Draconic Grafts", description: "The grafter has advantage on saving throws against being charmed or frightened." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The grafter makes two Greatclub or Breath Weapon attacks." },
+            { name: "Greatclub", description: "Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 12 (2d8+3) bludgeoning damage." },
+            { name: "Breath Weapon", description: "Ranged Weapon Attack: +2 to hit, range 20/60 ft., one target. Hit: 13 (3d8) fire damage." }
+        ]
+    },
+    "dragonflesh abomination": {
+        name: "Dragonflesh Abomination",
+        source: "FToD",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 66,
+        hitDice: "7d10+28",
+        speed: { walk: 30, climb: 30, fly: 40 },
+        abilityScores: { str: 18, dex: 10, con: 19, int: 6, wis: 12, cha: 6 },
+        savingThrows: { str: 6, con: 6 },
+        skills: { athletics: 6, perception: 3 },
+        damageImmunities: ["fire"],
+        senses: ["blindsight 30 ft., darkvision 60 ft."],
+        languages: "understands Draconic but can't speak",
+        cr: 4,
+        traits: [
+            { name: "Cloying Miasma", description: "Creatures that start their turn within 5 feet of the abomination must succeed on a DC 14 Constitution saving throw or be poisoned until the start of their next turn." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The abomination makes three attacks: two with its Claws and one with its Tail." },
+            { name: "Claws", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 9 (1d10+4) bludgeoning damage." },
+            { name: "Acid Breath (Recharge 5-6)", description: "The abomination exhales acid in a 15-foot cone. Each creature in that area must make a DC 14 Dexterity saving throw, taking 22 (4d10) acid damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "dragon turtle wyrmling": {
+        name: "Dragon Turtle Wyrmling",
+        source: "FToD",
+        size: "large",
+        type: "dragon",
+        alignment: "neutral",
+        ac: 18,
+        acType: "natural armor",
+        hp: 90,
+        hitDice: "12d10+24",
+        speed: { walk: 20, swim: 30 },
+        abilityScores: { str: 17, dex: 10, con: 15, int: 8, wis: 10, cha: 10 },
+        savingThrows: { dex: 2, con: 4, wis: 2 },
+        damageResistances: ["fire"],
+        senses: ["darkvision 120 ft."],
+        languages: "Aquan, Draconic",
+        cr: 4,
+        traits: [
+            { name: "Amphibious", description: "The dragon turtle can breathe air and water." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dragon turtle makes two attacks: one with its Bite and one with its Tail." },
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) piercing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 12 (2d8+3) bludgeoning damage." },
+            { name: "Steam Breath (Recharge 5-6)", description: "The dragon turtle exhales steam in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 18 (4d8) fire damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "drake warden": {
+        name: "Drake Warden",
+        source: "FToD",
+        size: "medium",
+        type: "humanoid",
+        alignment: "any alignment",
+        ac: 14,
+        acType: "studded leather",
+        hp: 45,
+        hitDice: "6d8+18",
+        speed: { walk: 30 },
+        abilityScores: { str: 12, dex: 15, con: 16, int: 10, wis: 15, cha: 10 },
+        savingThrows: { dex: 4, wis: 4 },
+        skills: { nature: 2, perception: 4, survival: 4 },
+        damageResistances: ["one of the following damage types of the warden's choice: acid, cold, fire, lightning, or poison"],
+        senses: ["passive Perception 14"],
+        languages: "Common, Draconic",
+        cr: 2,
+        actions: [
+            { name: "Multiattack", description: "The drake warden makes two Shortsword attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage plus 3 (1d6) damage of the type determined by the drake warden's Damage Resistance trait." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8+2) piercing damage plus 3 (1d6) damage of the type determined by the drake warden's Damage Resistance trait." }
+        ]
+    },
+    "dracohydra": {
+        name: "Dracohydra",
+        source: "FToD",
+        size: "huge",
+        type: "monstrosity",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 218,
+        hitDice: "19d12+95",
+        speed: { walk: 30, fly: 30, swim: 30 },
+        abilityScores: { str: 20, dex: 12, con: 20, int: 6, wis: 12, cha: 7 },
+        skills: { perception: 9 },
+        damageImmunities: ["acid, cold, fire, lightning, poison"],
+        senses: ["darkvision 60 ft."],
+        languages: "understands Draconic but can't speak",
+        cr: 11,
+        traits: [
+            { name: "Multiple Heads", description: "The dracohydra has five heads. While it has more than one head, the dracohydra has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." },
+            { name: "Reactive Heads", description: "For each head the dracohydra has beyond one, it gets an extra reaction that can be used only for opportunity attacks." },
+            { name: "Wakeful", description: "While the dracohydra sleeps, at least one of its heads is awake." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dracohydra makes as many bite attacks as it has heads." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 10 (1d10+5) piercing damage plus 7 (2d6) damage of a type determined by the attacking head: acid, cold, fire, lightning, or poison." },
+            { name: "Prismatic Breath (Recharge 4-6)", description: "The dracohydra's heads exhale a prismatic blast in a 60-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw. On a failure, a creature takes 44 (8d10) damage and is blinded until the end of its next turn." }
+        ]
+    },
+    "hoard scarab": {
+        name: "Hoard Scarab",
+        source: "FToD",
+        size: "tiny",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 7,
+        hitDice: "2d4+2",
+        speed: { walk: 20, burrow: 20, fly: 20 },
+        abilityScores: { str: 4, dex: 16, con: 12, int: 1, wis: 8, cha: 6 },
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["darkvision 60 ft., tremorsense 60 ft."],
+        languages: "—",
+        cr: "1/8",
+        traits: [
+            { name: "False Appearance", description: "While the scarab remains motionless, it is indistinguishable from an ordinary gemstone or a gold coin." },
+            { name: "Swarm Tactics", description: "The scarab has advantage on attack rolls against a creature if at least one of the scarab's allies is within 5 feet of the creature and the ally isn't incapacitated." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) piercing damage." }
+        ]
+    },
+    "swarm of hoard scarabs": {
+        name: "Swarm of Hoard Scarabs",
+        source: "FToD",
+        size: "medium",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 31,
+        hitDice: "7d8",
+        speed: { walk: 20, burrow: 20, fly: 20 },
+        abilityScores: { str: 6, dex: 16, con: 10, int: 1, wis: 8, cha: 6 },
+        damageResistances: ["bludgeoning, piercing, slashing"],
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned"],
+        senses: ["darkvision 60 ft., tremorsense 60 ft."],
+        languages: "—",
+        cr: 2,
+        traits: [
+            { name: "Swarm", description: "The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny construct." }
+        ],
+        actions: [
+            { name: "Bites", description: "Melee Weapon Attack: +5 to hit, reach 0 ft., one target in the swarm's space. Hit: 14 (4d6) piercing damage, or 7 (2d6) piercing damage if the swarm has half of its hit points or fewer." }
+        ]
+    },
+    "moonstone dragon wyrmling": {
+        name: "Moonstone Dragon Wyrmling",
+        source: "FToD",
+        size: "medium",
+        type: "dragon",
+        alignment: "neutral",
+        ac: 17,
+        acType: "natural armor",
+        hp: 39,
+        hitDice: "6d8+12",
+        speed: { walk: 30, fly: 60 },
+        abilityScores: { str: 16, dex: 14, con: 14, int: 16, wis: 14, cha: 17 },
+        savingThrows: { dex: 4, con: 4, int: 5, wis: 4, cha: 5 },
+        skills: { perception: 4, stealth: 4 },
+        conditionImmunities: ["charmed"],
+        senses: ["blindsight 10 ft., darkvision 60 ft."],
+        languages: "Draconic",
+        cr: 2,
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10+3) piercing damage plus 3 (1d6) radiant damage." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (sleep gas in a 15-foot cone) or Moonlight Breath (radiant damage in a 15-foot cone)." }
+        ]
+    },
+    "young moonstone dragon": {
+        name: "Young Moonstone Dragon",
+        source: "FToD",
+        size: "large",
+        type: "dragon",
+        alignment: "neutral",
+        ac: 18,
+        acType: "natural armor",
+        hp: 144,
+        hitDice: "17d10+51",
+        speed: { walk: 40, fly: 80 },
+        abilityScores: { str: 18, dex: 16, con: 17, int: 18, wis: 17, cha: 19 },
+        savingThrows: { dex: 7, con: 7, int: 8, wis: 7, cha: 8 },
+        skills: { perception: 7, persuasion: 8, stealth: 7 },
+        conditionImmunities: ["charmed"],
+        senses: ["blindsight 30 ft., darkvision 120 ft."],
+        languages: "Common, Draconic, Sylvan",
+        cr: 8,
+        actions: [
+            { name: "Multiattack", description: "The dragon makes three attacks: one with its Bite and two with its Claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage plus 5 (1d10) radiant damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (sleep gas in a 30-foot cone) or Moonlight Breath (radiant damage in a 30-foot cone)." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 16,
+            spells: {
+                "1/day each": ["calm emotions", "faerie fire"]
+            }
+        }
+    },
+    "adult moonstone dragon": {
+        name: "Adult Moonstone Dragon",
+        source: "FToD",
+        size: "huge",
+        type: "dragon",
+        alignment: "neutral",
+        ac: 19,
+        acType: "natural armor",
+        hp: 195,
+        hitDice: "17d12+85",
+        speed: { walk: 40, fly: 80 },
+        abilityScores: { str: 20, dex: 18, con: 20, int: 22, wis: 20, cha: 23 },
+        savingThrows: { dex: 10, con: 11, int: 12, wis: 11, cha: 12 },
+        skills: { perception: 11, persuasion: 12, stealth: 10 },
+        conditionImmunities: ["charmed"],
+        senses: ["blindsight 60 ft., darkvision 120 ft."],
+        languages: "Common, Draconic, Elvish, Gnomish, Sylvan",
+        cr: 15,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dragon makes three attacks: one with its Bite and two with its Claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 16 (2d10+5) piercing damage plus 7 (2d6) radiant damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 14 (2d8+5) bludgeoning damage." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath or Moonlight Breath." }
+        ],
+        legendaryActions: [
+            { name: "Tail Attack", description: "The dragon makes a Tail attack." },
+            { name: "Cast a Spell (Costs 2 Actions)", description: "The dragon casts a spell." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 20,
+            spells: {
+                "2/day each": ["calm emotions", "dispel magic", "faerie fire", "invisibility"]
+            }
+        }
+    },
+    "ancient moonstone dragon": {
+        name: "Ancient Moonstone Dragon",
+        source: "FToD",
+        size: "gargantuan",
+        type: "dragon",
+        alignment: "neutral",
+        ac: 20,
+        acType: "natural armor",
+        hp: 330,
+        hitDice: "20d20+120",
+        speed: { walk: 40, fly: 80 },
+        abilityScores: { str: 22, dex: 18, con: 23, int: 20, wis: 22, cha: 26 },
+        savingThrows: { dex: 11, con: 13, int: 12, wis: 13, cha: 15 },
+        skills: { perception: 13, persuasion: 15, stealth: 11 },
+        conditionImmunities: ["charmed"],
+        senses: ["blindsight 60 ft., darkvision 120 ft."],
+        languages: "all",
+        cr: 21,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dragon makes three attacks: one with its Bite and two with its Claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d10+6) piercing damage plus 11 (2d10) radiant damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 13 (2d6+6) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 15 (2d8+6) bludgeoning damage." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (90-foot cone) or Moonlight Breath (90-foot cone)." }
+        ],
+        legendaryActions: [
+            { name: "Tail Attack", description: "The dragon makes a Tail attack." },
+            { name: "Cast a Spell (Costs 2 Actions)", description: "The dragon casts a spell." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "cha",
+            dc: 23,
+            spells: {
+                "2/day each": ["calm emotions", "dispel magic", "faerie fire", "invisibility", "revivify"]
+            }
+        }
+    },
+    "gem stalker": {
+        name: "Gem Stalker",
+        source: "FToD",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral",
+        ac: 17,
+        acType: "natural armor",
+        hp: 75,
+        hitDice: "10d10+20",
+        speed: { walk: 40, climb: 40 },
+        abilityScores: { str: 17, dex: 16, con: 15, int: 3, wis: 14, cha: 8 },
+        savingThrows: { dex: 6, wis: 5 },
+        skills: { perception: 5, stealth: 6 },
+        damageResistances: ["psychic"],
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: 5,
+        traits: [
+            { name: "Spider Climb", description: "The gem stalker can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." },
+            { name: "Unusual Nature", description: "The gem stalker doesn't require food or drink." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The gem stalker makes four Claw attacks." },
+            { name: "Claw", description: "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 10 (2d6+3) slashing damage." },
+            { name: "Psionic Shards (Recharge 5-6)", description: "The gem stalker releases psionic energy in a 30-foot cone. Each creature in that area must make a DC 13 Intelligence saving throw, taking 28 (8d6) psychic damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "draconian dreadnought": {
+        name: "Draconian Dreadnought",
+        source: "FToD",
+        size: "large",
+        type: "monstrosity",
+        alignment: "any alignment",
+        ac: 16,
+        acType: "natural armor",
+        hp: 57,
+        hitDice: "6d10+24",
+        speed: { walk: 30 },
+        abilityScores: { str: 18, dex: 10, con: 18, int: 10, wis: 10, cha: 10 },
+        savingThrows: { str: 6, con: 6, wis: 2 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: 4,
+        traits: [
+            { name: "Death Throes", description: "When the draconian is reduced to 0 hit points, it transforms into stone and shatters." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The draconian makes two Serrated Sword attacks and one Tail attack." },
+            { name: "Serrated Sword", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage. If the target is a Large or smaller creature, it must succeed on a DC 14 Strength saving throw or be knocked prone." }
+        ]
+    },
+    "draconian foot soldier": {
+        name: "Draconian Foot Soldier",
+        source: "FToD",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "any alignment",
+        ac: 14,
+        acType: "natural armor",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30 },
+        abilityScores: { str: 13, dex: 11, con: 13, int: 8, wis: 8, cha: 10 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: "1/2",
+        traits: [
+            { name: "Death Throes", description: "When the draconian is reduced to 0 hit points, its scales and flesh melt into acidic ooze." },
+            { name: "Draconic Glide", description: "When the draconian falls and isn't incapacitated, it subtracts up to 100 feet from the fall when calculating the fall's damage, and it can move up to 2 feet horizontally for every 1 foot it descends." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The draconian makes two Shortsword attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage." }
+        ]
+    },
+    "draconian mage": {
+        name: "Draconian Mage",
+        source: "FToD",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "any alignment",
+        ac: 15,
+        acType: "natural armor",
+        hp: 40,
+        hitDice: "9d8",
+        speed: { walk: 30 },
+        abilityScores: { str: 10, dex: 13, con: 10, int: 11, wis: 17, cha: 11 },
+        savingThrows: { int: 2, wis: 5, cha: 2 },
+        skills: { perception: 5 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Draconic",
+        cr: 2,
+        traits: [
+            { name: "Death Throes", description: "When the draconian is reduced to 0 hit points, its body explodes in a ball of fire." },
+            { name: "Draconic Glide", description: "When the draconian falls and isn't incapacitated, it subtracts up to 100 feet from the fall when calculating the fall's damage, and it can move up to 2 feet horizontally for every 1 foot it descends." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The draconian makes two Trident attacks." },
+            { name: "Trident", description: "Melee or Ranged Weapon Attack: +2 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 (1d6) piercing damage, or 4 (1d8) piercing damage if used with two hands to make a melee attack." }
+        ],
+        spellcasting: {
+            ability: "wis",
+            dc: 13,
+            attackBonus: 5,
+            spells: {
+                cantrips: ["mage hand", "prestidigitation"],
+                "1st": { slots: 4, spells: ["charm person", "detect magic", "disguise self", "magic missile", "shield"] },
+                "2nd": { slots: 3, spells: ["invisibility", "scorching ray"] }
+            }
+        }
+    },
+    "draconian mastermind": {
+        name: "Draconian Mastermind",
+        source: "FToD",
+        size: "medium",
+        type: "monstrosity",
+        alignment: "any alignment",
+        ac: 17,
+        acType: "natural armor",
+        hp: 67,
+        hitDice: "9d8+27",
+        speed: { walk: 35 },
+        abilityScores: { str: 13, dex: 14, con: 16, int: 15, wis: 11, cha: 17 },
+        savingThrows: { int: 5, wis: 3, cha: 6 },
+        skills: { perception: 3 },
+        conditionImmunities: ["charmed"],
+        senses: ["truesight 60 ft."],
+        languages: "Common, Draconic",
+        cr: 6,
+        traits: [
+            { name: "Death Throes", description: "When the draconian is reduced to 0 hit points, it transforms into a shadow." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The draconian makes two Rend attacks." },
+            { name: "Rend", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage plus 5 (2d4) necrotic damage." }
+        ],
+        spellcasting: {
+            ability: "cha",
+            dc: 14,
+            attackBonus: 6,
+            spells: {
+                cantrips: ["mage hand", "minor illusion", "prestidigitation"],
+                "1st": { slots: 4, spells: ["charm person", "detect magic", "disguise self", "silent image"] },
+                "2nd": { slots: 3, spells: ["detect thoughts", "hold person", "invisibility", "suggestion"] },
+                "3rd": { slots: 3, spells: ["clairvoyance", "fear", "hypnotic pattern", "major image"] }
+            }
+        }
+    },
+    "aspect of tiamat": {
+        name: "Aspect of Tiamat",
+        source: "FToD",
+        size: "gargantuan",
+        type: "dragon",
+        alignment: "chaotic evil",
+        ac: 23,
+        acType: "natural armor",
+        hp: 574,
+        hitDice: "28d20+280",
+        speed: { walk: 60, fly: 120 },
+        abilityScores: { str: 30, dex: 14, con: 30, int: 21, wis: 20, cha: 26 },
+        savingThrows: { dex: 10, wis: 13, cha: 16 },
+        skills: { arcana: 13, intimidation: 16, perception: 21 },
+        damageImmunities: ["acid", "cold", "fire", "lightning", "poison", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "frightened", "poisoned", "stunned"],
+        senses: ["truesight 120 ft."],
+        languages: "Common, Draconic, Infernal",
+        cr: 30,
+        traits: [
+            { name: "Chromatic Wrath", description: "The aspect has five heads, each resistant to one type of damage (acid, cold, fire, lightning, or poison)." },
+            { name: "Legendary Resistance (5/Day)", description: "If the aspect fails a saving throw, it can choose to succeed instead." },
+            { name: "Regeneration", description: "The aspect regains 30 hit points at the start of its turn." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The aspect makes five Bite attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +18 to hit, reach 20 ft., one target. Hit: 23 (2d12+10) piercing damage plus 14 (4d6) damage of a type determined by the biting head: acid, cold, fire, lightning, or poison." },
+            { name: "Chromatic Flames (Recharge 5-6)", description: "The aspect exhales multicolored flames in a 300-foot cone. Each creature in that area must make a DC 26 Dexterity saving throw, taking 71 (11d12) damage of a type of the aspect's choosing on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: [
+            { name: "Attack", description: "The aspect makes one Bite attack." },
+            { name: "Roar (Costs 2 Actions)", description: "The aspect lets out a fearsome roar. Each creature within 120 feet of the aspect must succeed on a DC 24 Wisdom saving throw or become frightened for 1 minute." }
+        ]
+    },
+    "aspect of bahamut": {
+        name: "Aspect of Bahamut",
+        source: "FToD",
+        size: "gargantuan",
+        type: "dragon",
+        alignment: "lawful good",
+        ac: 23,
+        acType: "natural armor",
+        hp: 585,
+        hitDice: "30d20+270",
+        speed: { walk: 60, fly: 120, swim: 60 },
+        abilityScores: { str: 30, dex: 18, con: 29, int: 25, wis: 28, cha: 30 },
+        savingThrows: { con: 17, int: 15, wis: 17, cha: 18 },
+        skills: { insight: 17, perception: 25, persuasion: 18 },
+        damageImmunities: ["acid", "cold", "fire", "lightning", "poison", "radiant", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["charmed", "deafened", "frightened", "paralyzed", "stunned"],
+        senses: ["truesight 120 ft."],
+        languages: "all, telepathy 120 ft.",
+        cr: 30,
+        traits: [
+            { name: "Legendary Resistance (5/Day)", description: "If the aspect fails a saving throw, it can choose to succeed instead." },
+            { name: "Platinum Brilliance", description: "If the aspect would be reduced to 0 hit points, its current hit point total instead resets to 500 hit points." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The aspect makes one Bite attack and two Claw attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +18 to hit, reach 20 ft., one target. Hit: 21 (2d10+10) piercing damage plus 10 (3d6) force damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +18 to hit, reach 15 ft., one target. Hit: 19 (2d8+10) slashing damage. If the target is a Huge or smaller creature, it is grappled (escape DC 20)." },
+            { name: "Breath Weapon (Recharge 5-6)", description: "The aspect exhales destructive energy in a 300-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 105 (30d6) radiant damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: [
+            { name: "Attack", description: "The aspect makes one Claw attack." },
+            { name: "Blinding Presence (Costs 2 Actions)", description: "Each creature of the aspect's choice that is within 120 feet of it must succeed on a DC 26 Wisdom saving throw or be blinded until the end of its next turn." }
+        ]
+    },
+
+    // ===== The Wild Beyond the Witchlight (WBtW) =====
+    "brigganock": {
+        name: "Brigganock",
+        source: "WBtW",
+        size: "tiny",
+        type: "fey",
+        alignment: "chaotic good",
+        ac: 15,
+        acType: "leather armor",
+        hp: 7,
+        hitDice: "2d4+2",
+        speed: { walk: 20 },
+        abilityScores: { str: 6, dex: 18, con: 12, int: 13, wis: 14, cha: 12 },
+        savingThrows: { dex: 6 },
+        skills: { perception: 6, sleight_of_hand: 8, stealth: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Sylvan",
+        cr: "1/8",
+        traits: [
+            { name: "Tunneler", description: "The brigganock can use a bonus action to burrow through solid rock at half its walking speed." }
+        ],
+        actions: [
+            { name: "Geode Club", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "wis",
+            dc: 12,
+            spells: {
+                "1/day each": ["mending", "pass without trace", "speak with animals"]
+            }
+        }
+    },
+    "campestri": {
+        name: "Campestri",
+        source: "WBtW",
+        size: "tiny",
+        type: "plant",
+        alignment: "chaotic good",
+        ac: 11,
+        hp: 2,
+        hitDice: "1d4",
+        speed: { walk: 5 },
+        abilityScores: { str: 1, dex: 12, con: 10, int: 10, wis: 11, cha: 15 },
+        skills: { performance: 4 },
+        senses: ["tremorsense 30 ft."],
+        languages: "Common, Sylvan",
+        cr: 0,
+        traits: [
+            { name: "Spore Burst", description: "When a campestri dies, it releases a burst of spores. Each creature within 5 feet must succeed on a DC 10 Constitution saving throw or be poisoned for 1 minute." }
+        ],
+        actions: [
+            { name: "Headbutt", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 1 bludgeoning damage." }
+        ]
+    },
+    "harengon brigand": {
+        name: "Harengon Brigand",
+        source: "WBtW",
+        size: "medium",
+        type: "humanoid",
+        subtype: "harengon",
+        alignment: "neutral evil",
+        ac: 14,
+        acType: "leather armor",
+        hp: 22,
+        hitDice: "5d8",
+        speed: { walk: 35 },
+        abilityScores: { str: 12, dex: 16, con: 10, int: 10, wis: 14, cha: 10 },
+        savingThrows: { dex: 5 },
+        skills: { perception: 6, stealth: 5, survival: 4 },
+        senses: ["passive Perception 16"],
+        languages: "Common",
+        cr: 1,
+        traits: [
+            { name: "Rabbit Hop", description: "The harengon can use a bonus action to jump a number of feet equal to five times its proficiency bonus without provoking opportunity attacks." },
+            { name: "Standing Leap", description: "The harengon's long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The harengon makes two Shortsword attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage." },
+            { name: "Light Crossbow", description: "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 7 (1d8+3) piercing damage." }
+        ]
+    },
+    "jabberwock": {
+        name: "Jabberwock",
+        source: "WBtW",
+        size: "huge",
+        type: "dragon",
+        alignment: "chaotic evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 230,
+        hitDice: "20d12+100",
+        speed: { walk: 30, fly: 60 },
+        abilityScores: { str: 23, dex: 14, con: 21, int: 10, wis: 12, cha: 15 },
+        savingThrows: { str: 11, con: 10, wis: 6 },
+        skills: { perception: 6, stealth: 7 },
+        damageResistances: ["fire"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["frightened", "poisoned"],
+        senses: ["darkvision 120 ft., blindsight 30 ft."],
+        languages: "Draconic",
+        cr: 13,
+        traits: [
+            { name: "Confusing Burble", description: "When the jabberwock speaks, each creature within 60 feet of it that can hear it must succeed on a DC 18 Wisdom saving throw or be confused for 1 minute (as the confusion spell)." },
+            { name: "Legendary Resistance (2/Day)", description: "If the jabberwock fails a saving throw, it can choose to succeed instead." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The jabberwock makes three attacks: one with its Bite and two with its Claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 22 (3d10+6) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 15 (2d8+6) bludgeoning damage." },
+            { name: "Eyes of Flame (Recharge 5-6)", description: "The jabberwock glares at up to two creatures within 60 feet of it. Each target must make a DC 18 Dexterity saving throw, taking 27 (6d8) fire damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: [
+            { name: "Move", description: "The jabberwock moves up to its speed without provoking opportunity attacks." },
+            { name: "Whiffling (Costs 2 Actions)", description: "The jabberwock beats its wings. Each creature within 15 feet of it must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
+        ]
+    },
+    "korred": {
+        name: "Korred",
+        source: "WBtW",
+        size: "small",
+        type: "fey",
+        alignment: "chaotic neutral",
+        ac: 17,
+        acType: "natural armor",
+        hp: 102,
+        hitDice: "12d6+60",
+        speed: { walk: 30, burrow: 30 },
+        abilityScores: { str: 23, dex: 14, con: 20, int: 10, wis: 15, cha: 9 },
+        skills: { athletics: 9, perception: 5, stealth: 5 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        senses: ["darkvision 120 ft., tremorsense 120 ft."],
+        languages: "Dwarvish, Gnomish, Sylvan, Terran, Undercommon",
+        cr: 7,
+        traits: [
+            { name: "Command Hair", description: "The korred has at least one 50-foot length of hair. As a bonus action, the korred can command one length of its hair to move up to 20 feet and grapple a creature within 5 feet of it. The hair has AC 20 and 20 hit points." },
+            { name: "Stone Camouflage", description: "The korred has advantage on Dexterity (Stealth) checks made to hide in rocky terrain." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The korred makes two Rock or Greatclub attacks." },
+            { name: "Greatclub", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) bludgeoning damage." },
+            { name: "Rock", description: "Ranged Weapon Attack: +9 to hit, range 60/120 ft., one target. Hit: 15 (2d8+6) bludgeoning damage." }
+        ],
+        spellcasting: {
+            innate: true,
+            ability: "wis",
+            dc: 13,
+            spells: {
+                atWill: ["commune with nature", "meld into stone", "stone shape"],
+                "1/day": ["conjure elemental (earth elemental only)", "Otto's irresistible dance"]
+            }
+        }
+    },
+    "quickling": {
+        name: "Quickling",
+        source: "WBtW",
+        size: "tiny",
+        type: "fey",
+        alignment: "chaotic evil",
+        ac: 16,
+        hp: 10,
+        hitDice: "3d4+3",
+        speed: { walk: 120 },
+        abilityScores: { str: 4, dex: 23, con: 13, int: 10, wis: 12, cha: 7 },
+        skills: { acrobatics: 8, perception: 5, sleight_of_hand: 8, stealth: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Sylvan",
+        cr: 1,
+        traits: [
+            { name: "Blurring Movement", description: "Attack rolls against the quickling have disadvantage unless it is incapacitated or restrained." },
+            { name: "Evasion", description: "If the quickling is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The quickling makes three Dagger attacks." },
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +8 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 8 (1d4+6) piercing damage." }
+        ]
+    },
+    "darklings": {
+        name: "Darkling",
+        source: "WBtW",
+        size: "small",
+        type: "fey",
+        alignment: "chaotic neutral",
+        ac: 14,
+        acType: "leather armor",
+        hp: 13,
+        hitDice: "3d6+3",
+        speed: { walk: 30 },
+        abilityScores: { str: 9, dex: 16, con: 12, int: 10, wis: 12, cha: 10 },
+        skills: { acrobatics: 5, deception: 2, perception: 5, stealth: 7 },
+        senses: ["blindsight 30 ft., darkvision 120 ft."],
+        languages: "Elvish, Sylvan",
+        cr: "1/2",
+        traits: [
+            { name: "Death Flash", description: "When the darkling dies, its body and possessions, excluding metal or magic objects, burn to ash." },
+            { name: "Light Sensitivity", description: "While in bright light, the darkling has disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Dagger", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage plus 7 (2d6) necrotic damage." }
+        ]
+    },
+    "darkling elder": {
+        name: "Darkling Elder",
+        source: "WBtW",
+        size: "medium",
+        type: "fey",
+        alignment: "chaotic neutral",
+        ac: 15,
+        acType: "studded leather",
+        hp: 27,
+        hitDice: "5d8+5",
+        speed: { walk: 30 },
+        abilityScores: { str: 13, dex: 17, con: 12, int: 10, wis: 14, cha: 13 },
+        skills: { acrobatics: 5, deception: 3, perception: 6, stealth: 7 },
+        senses: ["blindsight 30 ft., darkvision 120 ft."],
+        languages: "Elvish, Sylvan",
+        cr: 2,
+        traits: [
+            { name: "Death Burn", description: "When the darkling elder dies, its body and possessions, excluding metal or magic objects, are consumed in a blinding flash." },
+            { name: "Light Sensitivity", description: "While in bright light, the darkling has disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The darkling elder makes two Shortsword attacks." },
+            { name: "Shortsword", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage plus 7 (2d6) necrotic damage." },
+            { name: "Darkness (Recharges after a Short or Long Rest)", description: "The darkling elder casts darkness without any components." }
+        ]
+    },
+
+    // ===== Icewind Dale: Rime of the Frostmaiden (IDRotF) =====
+    "ice troll": {
+        name: "Ice Troll",
+        source: "IDRotF",
+        size: "large",
+        type: "giant",
+        alignment: "chaotic evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 115,
+        hitDice: "11d10+55",
+        speed: { walk: 30, burrow: 20 },
+        abilityScores: { str: 18, dex: 8, con: 20, int: 7, wis: 9, cha: 7 },
+        skills: { perception: 2 },
+        damageImmunities: ["cold"],
+        senses: ["darkvision 60 ft."],
+        languages: "Giant",
+        cr: 8,
+        traits: [
+            { name: "Cold Absorption", description: "Whenever the troll is subjected to cold damage, it takes no damage and instead regains hit points equal to the cold damage dealt." },
+            { name: "Ice Walk", description: "The troll can move across and climb icy surfaces without needing to make an ability check." },
+            { name: "Keen Smell", description: "The troll has advantage on Wisdom (Perception) checks that rely on smell." },
+            { name: "Regeneration", description: "The troll regains 10 hit points at the start of its turn. If the troll takes fire damage, this trait doesn't function at the start of the troll's next turn." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The troll makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage plus 4 (1d8) cold damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage plus 4 (1d8) cold damage." }
+        ]
+    },
+    "coldlight walker": {
+        name: "Coldlight Walker",
+        source: "IDRotF",
+        size: "medium",
+        type: "undead",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 82,
+        hitDice: "11d8+33",
+        speed: { walk: 30 },
+        abilityScores: { str: 15, dex: 10, con: 16, int: 5, wis: 8, cha: 3 },
+        damageImmunities: ["cold"],
+        conditionImmunities: ["blinded", "charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["blindsight 60 ft."],
+        languages: "understands the languages it knew in life but can't speak",
+        cr: 5,
+        traits: [
+            { name: "Blinding Light", description: "The walker sheds bright light in a 20-foot radius and dim light for an additional 20 feet. A creature that starts its turn within 5 feet of the walker must succeed on a DC 14 Constitution saving throw or be blinded until the start of its next turn." },
+            { name: "Icy Doom", description: "When the walker dies, it releases a burst of cold. Each creature within 10 feet of it must make a DC 14 Constitution saving throw, taking 21 (6d6) cold damage on a failed save, or half as much damage on a successful one." },
+            { name: "Unusual Nature", description: "The walker doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The walker makes two Slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) bludgeoning damage plus 10 (3d6) cold damage." }
+        ]
+    },
+    "chardalyn berserker": {
+        name: "Chardalyn Berserker",
+        source: "IDRotF",
+        size: "medium",
+        type: "humanoid",
+        subtype: "human",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "hide armor",
+        hp: 67,
+        hitDice: "9d8+27",
+        speed: { walk: 40 },
+        abilityScores: { str: 16, dex: 12, con: 17, int: 9, wis: 11, cha: 9 },
+        damageResistances: ["cold"],
+        senses: ["passive Perception 10"],
+        languages: "Common",
+        cr: 4,
+        traits: [
+            { name: "Chardalyn Madness", description: "The berserker has disadvantage on Intelligence, Wisdom, and Charisma saving throws." },
+            { name: "Reckless", description: "At the start of its turn, the berserker can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The berserker makes three Chardalyn Flail attacks." },
+            { name: "Chardalyn Flail", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage plus 4 (1d8) necrotic damage." }
+        ]
+    },
+    "chardalyn dragon": {
+        name: "Chardalyn Dragon",
+        source: "IDRotF",
+        size: "huge",
+        type: "construct",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 147,
+        hitDice: "14d12+56",
+        speed: { walk: 30, fly: 90 },
+        abilityScores: { str: 24, dex: 11, con: 19, int: 3, wis: 10, cha: 1 },
+        savingThrows: { str: 11, con: 8 },
+        damageImmunities: ["cold", "poison", "radiant"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["darkvision 120 ft., blindsight 30 ft."],
+        languages: "understands Common and Draconic but can't speak",
+        cr: 11,
+        traits: [
+            { name: "Immutable Form", description: "The dragon is immune to any spell or effect that would alter its form." },
+            { name: "Magic Resistance", description: "The dragon has advantage on saving throws against spells and other magical effects." },
+            { name: "Siege Monster", description: "The dragon deals double damage to objects and structures." },
+            { name: "Unusual Nature", description: "The dragon doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The dragon makes three attacks: two with its Claws and one with its Tail." },
+            { name: "Bite", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 18 (2d10+7) piercing damage plus 4 (1d8) radiant damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 14 (2d6+7) slashing damage." },
+            { name: "Tail", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 16 (2d8+7) bludgeoning damage." },
+            { name: "Radiant Breath (Recharge 5-6)", description: "The dragon exhales a beam of radiant energy in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 31 (7d8) radiant damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "frost giant everlasting one": {
+        name: "Frost Giant Everlasting One",
+        source: "IDRotF",
+        size: "huge",
+        type: "giant",
+        alignment: "chaotic evil",
+        ac: 15,
+        acType: "patchwork armor",
+        hp: 189,
+        hitDice: "14d12+98",
+        speed: { walk: 40 },
+        abilityScores: { str: 25, dex: 9, con: 24, int: 9, wis: 10, cha: 12 },
+        savingThrows: { con: 11, wis: 4, cha: 5 },
+        skills: { athletics: 11, perception: 4 },
+        damageImmunities: ["cold"],
+        senses: ["darkvision 60 ft."],
+        languages: "Giant",
+        cr: 12,
+        traits: [
+            { name: "Extra Heads", description: "The frost giant has a 10 percent chance of having more than one head. If it has more than one head, it has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." },
+            { name: "Regeneration", description: "The frost giant regains 10 hit points at the start of its turn. If the giant takes acid or fire damage, this trait doesn't function at the start of the giant's next turn." },
+            { name: "Vaprak's Rage (Recharges after a Short or Long Rest)", description: "As a bonus action, the frost giant can enter a rage. The rage lasts for 1 minute or until the giant is incapacitated. While raging, the giant gains the following benefits: advantage on Strength checks and Strength saving throws, +4 bonus to damage with melee weapon attacks." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The frost giant makes two attacks with its greataxe." },
+            { name: "Greataxe", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 26 (3d12+7) slashing damage, or 30 (3d12+11) slashing damage while raging." },
+            { name: "Rock", description: "Ranged Weapon Attack: +11 to hit, range 60/240 ft., one target. Hit: 29 (4d10+7) bludgeoning damage." }
+        ]
+    },
+    "snowy owlbear": {
+        name: "Snowy Owlbear",
+        source: "IDRotF",
+        size: "large",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 59,
+        hitDice: "7d10+21",
+        speed: { walk: 40 },
+        abilityScores: { str: 20, dex: 12, con: 17, int: 3, wis: 12, cha: 7 },
+        skills: { perception: 3 },
+        damageResistances: ["cold"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 3,
+        traits: [
+            { name: "Keen Sight and Smell", description: "The owlbear has advantage on Wisdom (Perception) checks that rely on sight or smell." },
+            { name: "Snow Camouflage", description: "The owlbear has advantage on Dexterity (Stealth) checks made to hide in snowy terrain." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The owlbear makes two attacks: one with its beak and one with its claws." },
+            { name: "Beak", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 10 (1d10+5) piercing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) slashing damage." }
+        ]
+    },
+    "tomb tapper": {
+        name: "Tomb Tapper",
+        source: "IDRotF",
+        size: "large",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 17,
+        acType: "natural armor",
+        hp: 207,
+        hitDice: "18d10+108",
+        speed: { walk: 30, burrow: 20 },
+        abilityScores: { str: 22, dex: 10, con: 22, int: 5, wis: 14, cha: 10 },
+        savingThrows: { con: 10, wis: 6, cha: 4 },
+        skills: { perception: 6 },
+        damageImmunities: ["poison", "psychic"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned"],
+        senses: ["blindsight 60 ft., tremorsense 120 ft."],
+        languages: "—",
+        cr: 10,
+        traits: [
+            { name: "Magic Resistance", description: "The tomb tapper has advantage on saving throws against spells and other magical effects." },
+            { name: "Unusual Nature", description: "The tomb tapper doesn't require air, food, drink, or sleep." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The tomb tapper makes two Claw attacks." },
+            { name: "Claw", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 17 (2d10+6) slashing damage." },
+            { name: "Arcane Rebuke (Recharge 5-6)", description: "The tomb tapper unleashes a wave of arcane energy. Each creature within 30 feet of the tomb tapper must make a DC 18 Dexterity saving throw, taking 26 (4d12) force damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "goliath warrior": {
+        name: "Goliath Warrior",
+        source: "IDRotF",
+        size: "medium",
+        type: "humanoid",
+        subtype: "goliath",
+        alignment: "any alignment",
+        ac: 12,
+        acType: "hide armor",
+        hp: 30,
+        hitDice: "4d8+12",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 11, con: 16, int: 10, wis: 13, cha: 11 },
+        skills: { athletics: 5, perception: 3, survival: 3 },
+        damageResistances: ["cold"],
+        senses: ["passive Perception 13"],
+        languages: "Common, Giant",
+        cr: 1,
+        traits: [
+            { name: "Mountain Born", description: "The goliath is acclimated to high altitude, including elevations above 20,000 feet." },
+            { name: "Powerful Build", description: "The goliath counts as one size larger when determining its carrying capacity and the weight it can push, drag, or lift." },
+            { name: "Stone's Endurance", description: "When the goliath takes damage, it can use its reaction to roll a d12 and reduce the damage by the number rolled plus its Constitution modifier (minimum 1)." }
+        ],
+        actions: [
+            { name: "Greataxe", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d12+3) slashing damage." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 (1d6+3) piercing damage." }
+        ]
+    },
+
+    // ===== Tales from the Yawning Portal (TftYP) =====
+    "giant crayfish": {
+        name: "Giant Crayfish",
+        source: "TftYP",
+        size: "large",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 45,
+        hitDice: "7d10+7",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 15, dex: 13, con: 13, int: 1, wis: 9, cha: 3 },
+        skills: { stealth: 3 },
+        senses: ["blindsight 30 ft."],
+        languages: "—",
+        cr: 2,
+        traits: [
+            { name: "Amphibious", description: "The crayfish can breathe air and water." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The crayfish makes two claw attacks." },
+            { name: "Claw", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage, and the target is grappled (escape DC 12). The crayfish has two claws, each of which can grapple only one target." }
+        ]
+    },
+    "giant ice toad": {
+        name: "Giant Ice Toad",
+        source: "TftYP",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral",
+        ac: 14,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "7d10+14",
+        speed: { walk: 30 },
+        abilityScores: { str: 16, dex: 13, con: 14, int: 8, wis: 10, cha: 6 },
+        damageImmunities: ["cold"],
+        senses: ["darkvision 60 ft."],
+        languages: "Ice Toad",
+        cr: 3,
+        traits: [
+            { name: "Amphibious", description: "The toad can breathe air and water." },
+            { name: "Cold Aura", description: "Any creature that starts its turn within 10 feet of the toad takes 5 (1d10) cold damage." },
+            { name: "Standing Leap", description: "The toad's long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) piercing damage plus 9 (2d8) cold damage. If the target is a Medium or smaller creature, it is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the toad can't bite another target." }
+        ]
+    },
+    "giant lightning eel": {
+        name: "Giant Lightning Eel",
+        source: "TftYP",
+        size: "large",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 13,
+        hp: 42,
+        hitDice: "5d10+15",
+        speed: { walk: 5, swim: 30 },
+        abilityScores: { str: 11, dex: 17, con: 16, int: 2, wis: 12, cha: 3 },
+        damageResistances: ["lightning"],
+        senses: ["blindsight 60 ft."],
+        languages: "—",
+        cr: 3,
+        traits: [
+            { name: "Water Breathing", description: "The eel can breathe only underwater." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The eel makes two bite attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage plus 4 (1d8) lightning damage." },
+            { name: "Lightning Jolt (Recharge 5-6)", description: "One creature the eel touches within 5 feet of it outside water, or each creature within 15 feet of it in a body of water, must make a DC 12 Constitution saving throw, taking 13 (3d8) lightning damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "giant subterranean lizard": {
+        name: "Giant Subterranean Lizard",
+        source: "TftYP",
+        size: "huge",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 14,
+        acType: "natural armor",
+        hp: 66,
+        hitDice: "7d12+21",
+        speed: { walk: 30, swim: 50 },
+        abilityScores: { str: 21, dex: 9, con: 17, int: 2, wis: 10, cha: 7 },
+        skills: { stealth: 3 },
+        senses: ["passive Perception 10"],
+        languages: "—",
+        cr: 4,
+        traits: [
+            { name: "Hold Breath", description: "The lizard can hold its breath for 30 minutes." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The lizard makes two attacks: one with its bite and one with its tail." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 16 (2d10+5) piercing damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Dexterity saving throw or be swallowed by the lizard." },
+            { name: "Tail", description: "Melee Weapon Attack: +7 to hit, reach 10 ft., one target not grappled or swallowed by the lizard. Hit: 12 (2d6+5) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone." }
+        ]
+    },
+    "sea lion": {
+        name: "Sea Lion",
+        source: "TftYP",
+        size: "large",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "7d10+14",
+        speed: { walk: 10, swim: 40 },
+        abilityScores: { str: 17, dex: 15, con: 15, int: 3, wis: 12, cha: 8 },
+        skills: { perception: 3, stealth: 4 },
+        senses: ["passive Perception 13"],
+        languages: "—",
+        cr: 5,
+        traits: [
+            { name: "Amphibious", description: "The sea lion can breathe air and water." },
+            { name: "Keen Smell", description: "The sea lion has advantage on Wisdom (Perception) checks that rely on smell." },
+            { name: "Pack Tactics", description: "The sea lion has advantage on an attack roll against a creature if at least one of the sea lion's allies is within 5 feet of the creature and the ally isn't incapacitated." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The sea lion makes three attacks: one bite attack and two claw attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) slashing damage." }
+        ]
+    },
+    "tridrone": {
+        name: "Tridrone",
+        source: "TftYP",
+        size: "medium",
+        type: "construct",
+        alignment: "lawful neutral",
+        ac: 15,
+        acType: "natural armor",
+        hp: 16,
+        hitDice: "3d8+3",
+        speed: { walk: 30 },
+        abilityScores: { str: 12, dex: 14, con: 12, int: 9, wis: 10, cha: 9 },
+        senses: ["truesight 120 ft."],
+        languages: "Modron",
+        cr: "1/2",
+        traits: [
+            { name: "Axiomatic Mind", description: "The tridrone can't be compelled to act in a manner contrary to its nature or its instructions." },
+            { name: "Disintegration", description: "If the tridrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The tridrone makes three fist attacks or three javelin attacks." },
+            { name: "Fist", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) bludgeoning damage." },
+            { name: "Javelin", description: "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6+1) piercing damage." }
+        ]
+    },
+    "centaur mummy": {
+        name: "Centaur Mummy",
+        source: "TftYP",
+        size: "large",
+        type: "undead",
+        alignment: "lawful evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 85,
+        hitDice: "10d10+30",
+        speed: { walk: 30 },
+        abilityScores: { str: 20, dex: 12, con: 16, int: 5, wis: 14, cha: 12 },
+        savingThrows: { wis: 5 },
+        damageVulnerabilities: ["fire"],
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["necrotic", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "Common, Sylvan",
+        cr: 6,
+        traits: [
+            { name: "Charge", description: "If the mummy moves at least 20 feet straight toward a target and then hits it with a pike attack on the same turn, the target takes an extra 10 (3d6) piercing damage." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The mummy makes two melee attacks, one with its pike and one with its hooves, or it makes two attacks with its pike." },
+            { name: "Pike", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 10 (1d10+5) piercing damage." },
+            { name: "Hooves", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) bludgeoning damage plus 10 (3d6) necrotic damage. If the target is a creature, it must succeed on a DC 14 Constitution saving throw or be cursed with mummy rot." },
+            { name: "Dreadful Glare", description: "The mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, it must succeed on a DC 12 Wisdom saving throw against this magic or become frightened until the end of the mummy's next turn." }
+        ]
+    },
+    "white maw": {
+        name: "White Maw",
+        source: "TftYP",
+        size: "huge",
+        type: "ooze",
+        alignment: "chaotic neutral",
+        ac: 5,
+        hp: 217,
+        hitDice: "14d12+126",
+        speed: { walk: 10 },
+        abilityScores: { str: 18, dex: 1, con: 28, int: 12, wis: 10, cha: 3 },
+        damageImmunities: ["acid", "cold", "lightning", "slashing"],
+        conditionImmunities: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "prone"],
+        senses: ["blindsight 60 ft. (blind beyond this radius)"],
+        languages: "telepathy 60 ft.",
+        cr: 10,
+        traits: [
+            { name: "Amorphous", description: "The maw can move through a space as narrow as 1 foot wide without squeezing." },
+            { name: "Rejuvenation", description: "The maw draws sustenance from living creatures it devours. While within its bound region, the maw gains the following: Whenever it kills a creature, the maw gains temporary hit points equal to the creature's hit point maximum." },
+            { name: "Spider Climb", description: "The maw can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The maw makes three pseudopod attacks." },
+            { name: "Pseudopod", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 22 (4d8+4) bludgeoning damage plus 9 (2d8) acid damage." },
+            { name: "Engulf", description: "The maw moves up to its speed. While doing so, it can enter Large or smaller creatures' spaces. Whenever the maw enters a creature's space, the creature must make a DC 18 Dexterity saving throw. On a failed save, the creature is engulfed by the maw." }
+        ]
+    },
+
+    // ===== Ghosts of Saltmarsh (GoS) =====
+    "sahuagin champion": {
+        name: "Sahuagin Champion",
+        source: "GoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "sahuagin",
+        alignment: "lawful evil",
+        ac: 16,
+        acType: "breastplate",
+        hp: 71,
+        hitDice: "13d8+13",
+        speed: { walk: 30, swim: 40 },
+        abilityScores: { str: 16, dex: 14, con: 12, int: 12, wis: 13, cha: 9 },
+        skills: { perception: 5 },
+        senses: ["darkvision 120 ft."],
+        languages: "Sahuagin",
+        cr: 5,
+        traits: [
+            { name: "Blood Frenzy", description: "The champion has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+            { name: "Limited Amphibiousness", description: "The champion can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating." },
+            { name: "Shark Telepathy", description: "The champion can magically command any shark within 120 feet of it, using a limited telepathy." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The champion makes three attacks: one with its bite and two with its trident, or two with its heavy crossbow." },
+            { name: "Bite", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) piercing damage." },
+            { name: "Trident", description: "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) piercing damage, or 7 (1d8+3) piercing damage if used with two hands to make a melee attack." },
+            { name: "Heavy Crossbow", description: "Ranged Weapon Attack: +5 to hit, range 100/400 ft., one target. Hit: 7 (1d10+2) piercing damage." }
+        ]
+    },
+    "sahuagin hatchling swarm": {
+        name: "Sahuagin Hatchling Swarm",
+        source: "GoS",
+        size: "medium",
+        type: "swarm of Tiny humanoids",
+        alignment: "lawful evil",
+        ac: 14,
+        hp: 52,
+        hitDice: "8d8+16",
+        speed: { walk: 5, swim: 30 },
+        abilityScores: { str: 9, dex: 18, con: 14, int: 3, wis: 8, cha: 3 },
+        damageResistances: ["bludgeoning, piercing, slashing"],
+        conditionImmunities: ["charmed", "frightened", "grappled", "paralyzed", "petrified", "prone", "restrained", "stunned"],
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: 3,
+        traits: [
+            { name: "Blood Frenzy", description: "The swarm has advantage on melee attack rolls against any creature that doesn't have all its hit points." },
+            { name: "Seething", description: "Once it enters a creature's space, the swarm can make opportunity attacks against that creature even if the creature didn't move out of the swarm's space." },
+            { name: "Swarm", description: "The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny creature." },
+            { name: "Water Breathing", description: "The swarm can breathe only underwater." }
+        ],
+        actions: [
+            { name: "Bites", description: "Melee Weapon Attack: +6 to hit, reach 0 ft., one creature in the swarm's space. Hit: 14 (4d6) piercing damage, or 7 (2d6) piercing damage if the swarm has half of its hit points or fewer." }
+        ]
+    },
+    "locathah": {
+        name: "Locathah",
+        source: "GoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "locathah",
+        alignment: "neutral",
+        ac: 13,
+        acType: "natural armor",
+        hp: 22,
+        hitDice: "4d8+4",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 13, dex: 12, con: 12, int: 11, wis: 11, cha: 11 },
+        savingThrows: { dex: 3 },
+        skills: { athletics: 3, perception: 2 },
+        senses: ["darkvision 60 ft."],
+        languages: "Aquan, Common",
+        cr: "1/2",
+        traits: [
+            { name: "Leviathan Will", description: "The locathah has advantage on saving throws against being charmed, frightened, paralyzed, poisoned, stunned, or put to sleep." },
+            { name: "Limited Amphibiousness", description: "The locathah can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The locathah makes two attacks with its quarterstaff." },
+            { name: "Quarterstaff", description: "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage, or 5 (1d8+1) bludgeoning damage if used with two hands." },
+            { name: "Crossbow", description: "Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target. Hit: 5 (1d8+1) piercing damage." }
+        ]
+    },
+    "locathah hunter": {
+        name: "Locathah Hunter",
+        source: "GoS",
+        size: "medium",
+        type: "humanoid",
+        subtype: "locathah",
+        alignment: "neutral",
+        ac: 14,
+        acType: "natural armor",
+        hp: 33,
+        hitDice: "6d8+6",
+        speed: { walk: 30, swim: 30 },
+        abilityScores: { str: 14, dex: 14, con: 12, int: 11, wis: 14, cha: 11 },
+        savingThrows: { dex: 4, wis: 4 },
+        skills: { athletics: 4, perception: 4, survival: 4 },
+        senses: ["darkvision 60 ft."],
+        languages: "Aquan, Common",
+        cr: 2,
+        traits: [
+            { name: "Leviathan Will", description: "The hunter has advantage on saving throws against being charmed, frightened, paralyzed, poisoned, stunned, or put to sleep." },
+            { name: "Limited Amphibiousness", description: "The hunter can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hunter makes two attacks with its longbow or two attacks with its harpoon." },
+            { name: "Harpoon", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage. If the target is a Huge or smaller creature, it must succeed on a Strength contest against the hunter or be pulled up to 20 feet toward the hunter." },
+            { name: "Longbow", description: "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8+2) piercing damage." }
+        ]
+    },
+    "maw demon": {
+        name: "Maw Demon",
+        source: "GoS",
+        size: "medium",
+        type: "fiend",
+        subtype: "demon",
+        alignment: "chaotic evil",
+        ac: 13,
+        acType: "natural armor",
+        hp: 33,
+        hitDice: "6d8+6",
+        speed: { walk: 30 },
+        abilityScores: { str: 14, dex: 8, con: 13, int: 5, wis: 8, cha: 5 },
+        damageResistances: ["cold", "fire", "lightning"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["blinded", "charmed", "frightened", "poisoned"],
+        senses: ["blindsight 60 ft. (blind beyond this radius)"],
+        languages: "understands Abyssal but can't speak",
+        cr: 1,
+        traits: [
+            { name: "Rampage", description: "When the demon reduces a creature to 0 hit points with a melee attack on its turn, the demon can take a bonus action to move up to half its speed and make a bite attack." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d8+2) piercing damage." }
+        ]
+    },
+    "sea spawn": {
+        name: "Sea Spawn",
+        source: "GoS",
+        size: "medium",
+        type: "humanoid",
+        alignment: "neutral evil",
+        ac: 11,
+        acType: "natural armor",
+        hp: 32,
+        hitDice: "5d8+10",
+        speed: { walk: 20, swim: 30 },
+        abilityScores: { str: 15, dex: 8, con: 15, int: 6, wis: 10, cha: 8 },
+        senses: ["darkvision 120 ft."],
+        languages: "understands Aquan and Common but can't speak",
+        cr: 1,
+        traits: [
+            { name: "Limited Amphibiousness", description: "The sea spawn can breathe air and water, but needs to be submerged in the sea at least once a day for 1 minute to avoid suffocating." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The sea spawn makes three attacks: two unarmed strikes and one with its Piscine Anatomy." },
+            { name: "Unarmed Strike", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) bludgeoning damage." },
+            { name: "Piscine Anatomy", description: "The sea spawn has one or more of the following attack options, provided it has the appropriate anatomy: Bite, Poison Quills, Tentacle." }
+        ]
+    },
+    "juvenile kraken": {
+        name: "Juvenile Kraken",
+        source: "GoS",
+        size: "huge",
+        type: "monstrosity",
+        subtype: "titan",
+        alignment: "chaotic evil",
+        ac: 16,
+        acType: "natural armor",
+        hp: 207,
+        hitDice: "18d12+90",
+        speed: { walk: 20, swim: 50 },
+        abilityScores: { str: 24, dex: 11, con: 20, int: 19, wis: 15, cha: 17 },
+        savingThrows: { str: 12, dex: 5, con: 10, int: 9, wis: 7 },
+        damageImmunities: ["lightning", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["frightened", "paralyzed"],
+        senses: ["truesight 120 ft."],
+        languages: "Abyssal, Celestial, Infernal, Primordial, telepathy 60 ft., but can't speak",
+        cr: 14,
+        traits: [
+            { name: "Amphibious", description: "The kraken can breathe air and water." },
+            { name: "Freedom of Movement", description: "The kraken ignores difficult terrain, and magical effects can't reduce its speed or cause it to be restrained." },
+            { name: "Siege Monster", description: "The kraken deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The kraken makes two tentacle attacks, each of which it can replace with one use of Fling." },
+            { name: "Bite", description: "Melee Weapon Attack: +12 to hit, reach 5 ft., one target. Hit: 20 (3d8+7) piercing damage." },
+            { name: "Tentacle", description: "Melee Weapon Attack: +12 to hit, reach 20 ft., one target. Hit: 17 (3d6+7) bludgeoning damage, and the target is grappled (escape DC 20)." },
+            { name: "Fling", description: "One Medium or smaller object held or creature grappled by the kraken is thrown up to 40 feet in a random direction and knocked prone." },
+            { name: "Lightning Storm", description: "The kraken creates three bolts of lightning, each of which can strike a target the kraken can see within 150 feet of it. A target must make a DC 18 Dexterity saving throw, taking 16 (3d10) lightning damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: [
+            { name: "Tentacle Attack", description: "The kraken makes one tentacle attack." },
+            { name: "Fling", description: "The kraken uses Fling." },
+            { name: "Ink Cloud (Costs 3 Actions)", description: "While underwater, the kraken expels an ink cloud in a 40-foot radius. The cloud spreads around corners, and that area is heavily obscured to creatures other than the kraken." }
+        ]
+    },
+
+    // ===== Explorer's Guide to Wildemount (EGtW) =====
+    "udaak": {
+        name: "Udaak",
+        source: "EGtW",
+        size: "gargantuan",
+        type: "fiend",
+        alignment: "chaotic evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 165,
+        hitDice: "10d20+60",
+        speed: { walk: 50 },
+        abilityScores: { str: 26, dex: 14, con: 22, int: 3, wis: 14, cha: 12 },
+        savingThrows: { str: 13, con: 11, wis: 7 },
+        skills: { perception: 7 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "poisoned"],
+        senses: ["blindsight 120 ft."],
+        languages: "—",
+        cr: 16,
+        traits: [
+            { name: "Alien Mind", description: "If a creature tries to read the udaak's thoughts, it takes 18 (4d8) psychic damage and must make a DC 19 Intelligence saving throw or be stunned for 1 minute." },
+            { name: "Magic Resistance", description: "The udaak has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The udaak makes three attacks: one with its bite and two with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 30 (4d10+8) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 22 (4d6+8) slashing damage." },
+            { name: "Void Screech (Recharge 5-6)", description: "The udaak releases a psychic screech. Each creature within 120 feet of the udaak that can hear it must make a DC 19 Wisdom saving throw, taking 55 (10d10) psychic damage on a failed save, or half as much damage on a successful one." }
+        ]
+    },
+    "gloomstalker": {
+        name: "Gloomstalker",
+        source: "EGtW",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 90,
+        hitDice: "12d10+24",
+        speed: { walk: 40, fly: 80 },
+        abilityScores: { str: 22, dex: 16, con: 14, int: 5, wis: 17, cha: 14 },
+        savingThrows: { dex: 6, wis: 6 },
+        skills: { perception: 6, stealth: 6 },
+        damageImmunities: ["necrotic"],
+        senses: ["darkvision 240 ft."],
+        languages: "—",
+        cr: 6,
+        traits: [
+            { name: "Shadowstep", description: "As a bonus action, the gloomstalker can teleport up to 40 feet to an unoccupied space it can see. Both the space it leaves and its destination must be in dim light or darkness." },
+            { name: "Sunlight Sensitivity", description: "While in sunlight, the gloomstalker has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The gloomstalker makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one creature. Hit: 15 (2d8+6) piercing damage plus 7 (2d6) necrotic damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage plus 7 (2d6) necrotic damage." },
+            { name: "Snatch", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one Medium or smaller creature. Hit: 13 (2d6+6) slashing damage, and the target is grappled (escape DC 17). While grappled in this way, the target is restrained." },
+            { name: "Shriek (Recharge 6)", description: "The gloomstalker emits a terrible shriek. Each creature within 60 feet of the gloomstalker that can hear it must make a DC 14 Constitution saving throw. On a failure, the creature takes 22 (4d10) psychic damage and is frightened of the gloomstalker until the end of the gloomstalker's next turn." }
+        ]
+    },
+    "horizonback tortoise": {
+        name: "Horizonback Tortoise",
+        source: "EGtW",
+        size: "gargantuan",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 17,
+        acType: "natural armor",
+        hp: 227,
+        hitDice: "13d20+91",
+        speed: { walk: 20 },
+        abilityScores: { str: 28, dex: 3, con: 25, int: 4, wis: 10, cha: 5 },
+        savingThrows: { str: 13, con: 11 },
+        damageImmunities: ["poison"],
+        conditionImmunities: ["poisoned"],
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 8,
+        traits: [
+            { name: "Amphibious", description: "The tortoise can breathe air and water." },
+            { name: "Massive Frame", description: "The tortoise can carry up to 20,000 pounds as cargo on its shell." }
+        ],
+        actions: [
+            { name: "Bite", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 28 (3d12+9) bludgeoning damage." },
+            { name: "Shell Defense (Recharge 5-6)", description: "The tortoise withdraws into its shell. Until it emerges, it has a +5 bonus to AC and has advantage on Strength and Constitution saving throws." }
+        ]
+    },
+    "aeorian nullifier": {
+        name: "Aeorian Nullifier",
+        source: "EGtW",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 180,
+        hitDice: "19d10+76",
+        speed: { walk: 40 },
+        abilityScores: { str: 20, dex: 15, con: 18, int: 15, wis: 14, cha: 18 },
+        savingThrows: { con: 9, int: 7, wis: 7, cha: 9 },
+        skills: { arcana: 7, perception: 7 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["necrotic", "radiant"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened"],
+        senses: ["darkvision 120 ft."],
+        languages: "Deep Speech",
+        cr: 12,
+        traits: [
+            { name: "Horrid Absorption", description: "When the nullifier is subjected to necrotic or radiant damage, it takes no damage and instead regains hit points equal to the damage dealt." },
+            { name: "Magic Resistance", description: "The nullifier has advantage on saving throws against spells and other magical effects." },
+            { name: "Null Field", description: "The nullifier emits a field of magical interference in a 60-foot-radius sphere centered on it. Any spell of 5th level or lower cast within this area is subject to the effects of a dispel magic spell cast at 5th level." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The nullifier makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 23 (4d8+5) piercing damage plus 9 (2d8) force damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 16 (2d10+5) slashing damage plus 9 (2d8) force damage." }
+        ]
+    },
+    "aeorian reverser": {
+        name: "Aeorian Reverser",
+        source: "EGtW",
+        size: "large",
+        type: "monstrosity",
+        alignment: "neutral evil",
+        ac: 15,
+        acType: "natural armor",
+        hp: 133,
+        hitDice: "14d10+56",
+        speed: { walk: 40, climb: 40 },
+        abilityScores: { str: 21, dex: 16, con: 18, int: 14, wis: 15, cha: 16 },
+        savingThrows: { con: 8, int: 6, wis: 6, cha: 7 },
+        skills: { perception: 6 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["necrotic", "radiant"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened"],
+        senses: ["darkvision 120 ft."],
+        languages: "Deep Speech",
+        cr: 8,
+        traits: [
+            { name: "Magic Resistance", description: "The reverser has advantage on saving throws against spells and other magical effects." },
+            { name: "Reversal", description: "When a creature the reverser can see within 30 feet of it regains hit points, the reverser can use its reaction to force the creature to make a DC 15 Constitution saving throw. On a failed save, the creature doesn't regain those hit points and instead takes necrotic damage equal to half the number of hit points it would have regained." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The reverser makes two attacks: one with its bite and one with its claws." },
+            { name: "Bite", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 18 (2d12+5) piercing damage plus 7 (2d6) necrotic damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) slashing damage plus 7 (2d6) necrotic damage." }
+        ]
+    },
+    "bristled moorbounder": {
+        name: "Bristled Moorbounder",
+        source: "EGtW",
+        size: "large",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 15,
+        acType: "natural armor",
+        hp: 52,
+        hitDice: "7d10+14",
+        speed: { walk: 70 },
+        abilityScores: { str: 18, dex: 14, con: 14, int: 2, wis: 13, cha: 5 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 3,
+        traits: [
+            { name: "Bladed Hide", description: "At the start of each of its turns, the moorbounder deals 5 (2d4) piercing damage to any creature grappling it." },
+            { name: "Standing Leap", description: "The moorbounder's long jump is up to 40 feet and its high jump is up to 20 feet, with or without a running start." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The moorbounder makes two attacks: one with its blades and one with its claws." },
+            { name: "Blades", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 14 (4d4+4) slashing damage." }
+        ]
+    },
+    "moorbounder": {
+        name: "Moorbounder",
+        source: "EGtW",
+        size: "large",
+        type: "beast",
+        alignment: "unaligned",
+        ac: 13,
+        acType: "natural armor",
+        hp: 30,
+        hitDice: "4d10+8",
+        speed: { walk: 70 },
+        abilityScores: { str: 18, dex: 14, con: 14, int: 2, wis: 13, cha: 5 },
+        senses: ["darkvision 60 ft."],
+        languages: "—",
+        cr: 1,
+        traits: [
+            { name: "Standing Leap", description: "The moorbounder's long jump is up to 40 feet and its high jump is up to 20 feet, with or without a running start." }
+        ],
+        actions: [
+            { name: "Claws", description: "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 14 (4d4+4) slashing damage." }
+        ]
     }
 };
 
