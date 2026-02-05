@@ -36,6 +36,8 @@ const races = {
     hexblood: { abilityBonus: {}, speed: 30, size: 'Medium', lifespan: 100, languages: ['Common', 'One other'], traits: ['Darkvision 60 ft', 'Eerie Token', 'Hex Magic (Disguise Self, Hex)'], senses: ['Darkvision 60 ft'], description: 'Beings touched by hags and dark fey magic. They carry a curse or blessing that connects them to the darker side of the Feywild.' },
     hobgoblin: { abilityBonus: { con: 2, int: 1 }, speed: 30, size: 'Medium', lifespan: 100, languages: ['Common', 'Goblin'], traits: ['Darkvision 60 ft', 'Fey Ancestry', 'Fortune from the Many', 'Martial Training'], senses: ['Darkvision 60 ft'], description: 'Disciplined, militaristic goblinoids who value order and hierarchy. They are organized warriors with a strong sense of honor and duty.' },
     human: { abilityBonus: { any: 1 }, speed: 30, size: 'Medium', lifespan: 100, languages: ['Common', 'One other'], traits: ['Extra Language', 'Extra Skill'], senses: [], description: 'The most adaptable and ambitious of the common races. Humans are diverse, driven, and their short lives push them to achieve greatness quickly.' },
+    'human (variant)': { abilityBonus: { any: 2 }, speed: 30, size: 'Medium', lifespan: 100, languages: ['Common', 'One other'], traits: ['One Skill Proficiency', 'One Feat'], senses: [], description: 'A variant human who trades standard ability bonuses for a feat and skill proficiency. These humans have developed a specialized talent that sets them apart.' },
+    'custom lineage': { abilityBonus: { any: 2 }, speed: 30, size: 'Small or Medium', lifespan: 100, languages: ['Common', 'One other'], traits: ['One Feat', 'Darkvision 60 ft or Skill Proficiency'], senses: [], description: 'A character of unique or mixed heritage, allowing for flexible customization. You might be the result of unusual parentage or magical transformation.' },
     kalashtar: { abilityBonus: { wis: 1, cha: 1 }, speed: 30, size: 'Medium', lifespan: 100, languages: ['Common', 'Quori', 'One other'], traits: ['Dual Mind (advantage on WIS saves)', 'Mental Discipline', 'Mind Link (telepathy)', 'Severed from Dreams'], senses: [], description: 'Beings bonded with spirits from the plane of dreams. They are empathetic, telepathic, and dedicated to fighting nightmares and evil.' },
     kender: { abilityBonus: { dex: 2, cha: 1 }, speed: 30, size: 'Small', lifespan: 100, languages: ['Common', 'Kenderspeak'], traits: ['Fearless', 'Kender Ace (sleight of hand proficiency)', 'Taunt'], senses: [], description: 'Curious, fearless halfling-like folk from Krynn. They are immune to fear, compulsively curious, and have a habit of "borrowing" interesting items they find.' },
     kenku: { abilityBonus: { dex: 2, wis: 1 }, speed: 30, size: 'Medium', lifespan: 60, languages: ['Common', 'Auran'], traits: ['Expert Duplication', 'Kenku Training', 'Mimicry'], senses: [], description: 'Crow-like humanoids cursed to only communicate through mimicry. They are creative, resourceful, and excel at forgery and deception.' },
@@ -947,11 +949,35 @@ const subclasses = {
             { id: 'graviturgy', name: 'Graviturgy Magic', source: 'EGtW', description: 'Understanding and mastering the forces that draw bodies of matter together or push them apart, graviturgists can bend the fabric of space.', backstoryHook: 'who specializes in Graviturgy Magic, manipulating gravity and the fabric of space' }
         ]
     },
+    artificer: {
+        level: 3,
+        name: 'Artificer Specialist',
+        options: [
+            { id: 'alchemist', name: 'Alchemist', source: 'TCoE/ERLW', description: 'An Alchemist is an expert at combining reagents to produce mystical effects. Alchemists use their creations to give life and to leach it away.', backstoryHook: 'who specializes as an Alchemist, brewing elixirs and potions with magical properties' },
+            { id: 'armorer', name: 'Armorer', source: 'TCoE', description: 'An artificer who specializes as an Armorer modifies armor to function almost like a second skin. The armor is enhanced to hone the artificer\'s magic.', backstoryHook: 'who specializes as an Armorer, wearing magically enhanced armor that acts as a second skin' },
+            { id: 'artillerist', name: 'Artillerist', source: 'TCoE/ERLW', description: 'An Artillerist specializes in using magic to hurl energy, projectiles, and explosions on a battlefield. This destructive power is valued by armies.', backstoryHook: 'who specializes as an Artillerist, wielding devastating magical cannons and explosives' },
+            { id: 'battle-smith', name: 'Battle Smith', source: 'TCoE/ERLW', description: 'Armies require protection, and someone has to put things back together if defenses fail. A combination of protector and medic, a Battle Smith is an expert at defending others and repairing both material and personnel.', backstoryHook: 'who specializes as a Battle Smith, accompanied by a loyal steel defender construct' }
+        ]
+    },
     commoner: null
 };
 
 // Class Features by Level
 const classFeatures = {
+    artificer: [
+        { level: 1, name: 'Magical Tinkering', description: 'You learn how to invest a spark of magic into mundane objects. You can touch a Tiny nonmagical object and give it one of these magical properties: emit light, emit recorded message, emit odor or sound, or display a static visual.' },
+        { level: 1, name: 'Spellcasting', description: 'You have studied the workings of magic and how to cast spells, channeling the magic through objects. Intelligence is your spellcasting ability.' },
+        { level: 2, name: 'Infuse Item', description: 'You gain the ability to imbue mundane items with certain magical infusions. You learn artificer infusions and can infuse nonmagical objects at the end of a long rest.' },
+        { level: 3, name: 'Artificer Specialist', description: 'You choose the type of specialist you are: Alchemist, Armorer, Artillerist, or Battle Smith.' },
+        { level: 3, name: 'The Right Tool for the Job', description: 'You learn how to produce exactly the tool you need. With thieves\' tools or artisan\'s tools in hand, you can magically create one set of artisan\'s tools in an unoccupied space within 5 feet of you.' },
+        { level: 6, name: 'Tool Expertise', description: 'Your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.' },
+        { level: 7, name: 'Flash of Genius', description: 'You can add your Intelligence modifier to your own or another creature\'s ability check or saving throw within 30 feet.' },
+        { level: 10, name: 'Magic Item Adept', description: 'You achieve a profound understanding of how to use and make magic items. You can attune to up to four magic items at once and can craft common or uncommon magic items in a quarter of the normal time.' },
+        { level: 11, name: 'Spell-Storing Item', description: 'You can now store a spell in an object. When you finish a long rest, you can touch one simple or martial weapon or one spellcasting focus and store a spell in it.' },
+        { level: 14, name: 'Magic Item Savant', description: 'You can now attune to up to five magic items at once and ignore all class, race, spell, and level requirements on attuning to or using a magic item.' },
+        { level: 18, name: 'Magic Item Master', description: 'You can now attune to up to six magic items at once.' },
+        { level: 20, name: 'Soul of Artifice', description: 'You develop a mystical connection to your magic items. You gain a +1 bonus to all saving throws per magic item you are currently attuned to. If you\'re reduced to 0 hit points but not killed outright, you can use your reaction to end one of your artificer infusions, causing you to drop to 1 hit point instead.' }
+    ],
     barbarian: [
         { level: 1, name: 'Rage', description: 'In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action. While raging, you gain advantage on Strength checks and saving throws, bonus rage damage on melee attacks, and resistance to bludgeoning, piercing, and slashing damage.' },
         { level: 1, name: 'Unarmored Defense', description: 'While not wearing armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.' },

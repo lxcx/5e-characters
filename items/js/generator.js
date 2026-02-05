@@ -40,21 +40,9 @@ function mergeItemDatabases() {
         Object.assign(allItems, potionItems);
     }
     
-    // Add magic items A-H
-    if (typeof magicItemsA !== 'undefined') {
-        Object.assign(allItems, magicItemsA);
-    }
-    if (typeof magicItemsB !== 'undefined') {
-        Object.assign(allItems, magicItemsB);
-    }
-    if (typeof magicItemsC !== 'undefined') {
-        Object.assign(allItems, magicItemsC);
-    }
-    if (typeof magicItemsD !== 'undefined') {
-        Object.assign(allItems, magicItemsD);
-    }
-    if (typeof magicItemsEFGH !== 'undefined') {
-        Object.assign(allItems, magicItemsEFGH);
+    // Add all magic items (consolidated file)
+    if (typeof allMagicItems !== 'undefined') {
+        Object.assign(allItems, allMagicItems);
     }
     
     console.log(`Loaded ${Object.keys(allItems).length} items`);
