@@ -145,6 +145,7 @@ function exportToPDF() {
         ${hasPortrait ? `<div class="portrait-section"><img src="${portraitImg.src}" class="portrait-image" alt="${m.name} portrait"></div>` : ''}
         <h1 class="monster-name">${m.name}</h1>
         <p class="monster-type">${capitalize(m.size)} ${m.type}, ${m.alignment}</p>
+        ${m.flavorText ? `<p style="font-style: italic; margin: 10px 0;">${m.flavorText}</p>` : ''}
         
         <div class="divider"></div>
         
@@ -198,7 +199,7 @@ function exportToPDF() {
         ${renderPDFActions(m)}
         
         ${m.legendaryActions ? renderPDFLegendary(m) : ''}
-        ${m.lairActions ? renderPDFLair(m) : ''}
+        ${(m.lairActions || m.lairDescription || m.regionalEffects) ? renderPDFLair(m) : ''}
         ${m.spellcasting ? renderPDFSpells(m) : ''}
     </div>
     
@@ -285,13 +286,40 @@ function renderPDFLegendary(m) {
 }
 
 function renderPDFLair(m) {
-    return `
-        <h2 class="section-title">Lair Actions</h2>
-        <p class="lair-intro">On initiative count 20 (losing initiative ties), the creature can take a lair action to cause one of the following effects:</p>
-        <ul>
-            ${m.lairActions.map(a => `<li>${a.description}</li>`).join('')}
-        </ul>
-    `;
+    let html = '';
+    
+    // Lair description
+    if (m.lairDescription) {
+        html += `
+            <h2 class="section-title">${m.name}'s Lair</h2>
+            <p>${m.lairDescription}</p>
+        `;
+    }
+    
+    // Lair Actions
+    if (m.lairActions && m.lairActions.length > 0) {
+        html += `
+            <h3 style="font-size: 12pt; color: #58180d; margin-top: 10px;">Lair Actions</h3>
+            <p class="lair-intro">On initiative count 20 (losing initiative ties), the creature can take a lair action to cause one of the following effects; the creature can't use the same effect two rounds in a row:</p>
+            <ul>
+                ${m.lairActions.map(a => `<li>${a.description}</li>`).join('')}
+            </ul>
+        `;
+    }
+    
+    // Regional Effects
+    if (m.regionalEffects && m.regionalEffects.length > 0) {
+        html += `
+            <h3 style="font-size: 12pt; color: #58180d; margin-top: 10px;">Regional Effects</h3>
+            <p>The region containing a legendary ${m.name}'s lair is warped by the creature's magic, which creates one or more of the following effects:</p>
+            <ul>
+                ${m.regionalEffects.map(e => `<li>${e}</li>`).join('')}
+            </ul>
+            <p><em>If the ${m.name.toLowerCase()} dies, these effects fade over the course of 1d10 days.</em></p>
+        `;
+    }
+    
+    return html;
 }
 
 function renderPDFSpells(m) {

@@ -127,7 +127,19 @@ const allMonsters = {
                 "8th": { slots: 1, spells: ["maze", "mind blank"] },
                 "9th": { slots: 1, spells: ["power word kill", "time stop"] }
             }
-        }
+        },
+        flavorText: "Acererak is an archlich who travels the planes in search of artifacts. He built the Tomb of Horrors and later the Tomb of the Nine Gods, filling them with traps and monsters to harvest the souls of adventurers. His withered, skeletal form is adorned with gems and arcane jewelry.",
+        lairDescription: "Acererak's lair is the Tomb of the Nine Gods, a dungeon of unspeakable horror deep beneath the ruined city of Omu in Chult. The tomb is filled with deadly traps, powerful undead, and the imprisoned souls of those who dared enter.",
+        lairActions: [
+            { description: "Acererak causes one creature he can see within 60 feet of him to suffer an effect from the Tomb of the Nine Gods. The target must make a DC 19 Wisdom saving throw or be teleported to an unoccupied space within the tomb of Acererak's choice." },
+            { description: "Acererak targets one creature he can see within 60 feet of him. The target must succeed on a DC 19 Constitution saving throw or take 26 (4d12) necrotic damage as spectral hands reach out from the walls to drain its life force." },
+            { description: "A wave of soul-chilling cold sweeps through the lair. Each creature of Acererak's choice that he can see within 60 feet must succeed on a DC 19 Constitution saving throw or take 10 (3d6) cold damage and have its speed halved until the end of its next turn." }
+        ],
+        regionalEffects: [
+            "Creatures within 1 mile of the tomb can't regain hit points unless they are undead or constructs.",
+            "Any humanoid that dies within 1 mile of the tomb has its soul trapped within the Soulmonger (if it still functions) or rises as a zombie 24 hours later.",
+            "Divination spells cast within the tomb fail automatically, returning false or misleading information at Acererak's whim."
+        ]
     },
     "zombie-tyrannosaurus": {
         name: "Zombie Tyrannosaurus Rex",
@@ -232,7 +244,19 @@ const allMonsters = {
                 { name: "Tail Attack", description: "Iymrith makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "Iymrith beats her wings. Each creature within 15 feet of her must succeed on a DC 24 Dexterity saving throw or take 16 (2d6+9) bludgeoning damage and be knocked prone. Iymrith can then fly up to half her flying speed." }
             ]
-        }
+        },
+        flavorText: "Iymrith the Doom of the Desert is an ancient blue dragon who has manipulated giants for centuries. She delights in destruction and chaos, using her shapeshifting abilities to infiltrate the courts of giants while maintaining her lair beneath the sands of the Anauroch.",
+        lairDescription: "Iymrith's lair is a vast underground complex beneath the desert, with tunnels leading to a ruined amphitheater where she holds court. The lair is filled with magical traps, illusory passages, and the treasures of countless civilizations she has destroyed.",
+        lairActions: [
+            { description: "Part of the ceiling collapses above one creature that Iymrith can see within 120 feet of her. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success." },
+            { description: "A cloud of sand swirls about in a 20-foot-radius sphere centered on a point Iymrith can see within 120 feet of her. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." },
+            { description: "Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that Iymrith can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage." }
+        ],
+        regionalEffects: [
+            "Thunderstorms rage within 6 miles of the lair.",
+            "Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
+            "Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 × 10 feet into the sinkhole."
+        ]
     },
     
     
@@ -466,7 +490,8 @@ const allMonsters = {
                 "3/day each": ["blade barrier", "dispel evil and good", "resurrection"],
                 "1/day each": ["commune", "control weather"]
             }
-        }
+        },
+        flavorText: "A solar is a godlike angel, the most powerful of all celestials. Only twenty-four solars are said to exist. They serve as the generals of divine armies, the champions of the gods, and guardians of the most important cosmic locations. A solar stands about 9 feet tall and possesses enormous feathered wings that shimmer with divine radiance."
     },
     "planetar": {
         name: "Planetar",
@@ -666,7 +691,15 @@ const allMonsters = {
                 atWill: ["detect evil and good", "druidcraft", "pass without trace"],
                 "1/day each": ["calm emotions", "dispel evil and good", "entangle"]
             }
-        }
+        },
+        flavorText: "Unicorns dwell in enchanted forests, blessing the region around them with their celestial presence. They are fierce protectors of good and will only appear to those who are pure of heart.",
+        lairDescription: "A unicorn's lair is typically a grove of ancient trees, a crystal-clear spring, or another place of natural beauty within an enchanted forest. The celestial presence of the unicorn keeps the area perpetually peaceful.",
+        regionalEffects: [
+            "Open flames of a nonmagical nature are extinguished within the unicorn's domain. Torches and campfires refuse to burn, but closed lanterns are unaffected.",
+            "Creatures native to the unicorn's domain have an easier time hiding; they have advantage on all Dexterity (Stealth) checks made to hide.",
+            "When a good-aligned creature casts a spell or uses a magical effect that causes another good-aligned creature to regain hit points, the target regains the maximum number of hit points possible for the spell or effect.",
+            "Curses, diseases, and poisons affecting good-aligned creatures are suppressed when those creatures are within the unicorn's domain."
+        ]
     },
     "empyrean": {
         name: "Empyrean",
@@ -715,7 +748,8 @@ const allMonsters = {
                 atWill: ["greater restoration", "pass without trace", "water breathing", "water walk"],
                 "1/day each": ["commune", "dispel evil and good", "earthquake", "fire storm", "plane shift (self only)"]
             }
-        }
+        },
+        flavorText: "Empyreans are celestial titans, the offspring of gods themselves. They are among the most powerful beings in existence, standing over 20 feet tall with perfect physical forms that radiate divine power. Most empyreans are good, but some fall to evil and become agents of destruction. An empyrean's mood affects the weather around it—clear skies and gentle breezes accompany a content empyrean, while storms and earthquakes herald an angry one."
     },
 
     // ===== Ki-rin =====
@@ -766,7 +800,15 @@ const allMonsters = {
                 atWill: ["gaseous form", "major image (6th-level version)", "wind walk"],
                 "1/day": ["create food and water"]
             }
-        }
+        },
+        flavorText: "Ki-rin are noble, celestial creatures that serve the gods of good. They have the body of a stag, a leonine mane, cloven hooves that leave no prints, and a single spiraling horn. They can walk on air as easily as on solid ground.",
+        lairDescription: "A ki-rin's lair is typically a floating palace of clouds, a mountaintop temple, or another location of profound serenity far from the troubles of the world below.",
+        regionalEffects: [
+            "The ki-rin's celestial presence protects the region. Celestials, fey, and good-aligned creatures within 3 miles of the ki-rin's lair gain advantage on all saving throws.",
+            "Fiends and undead within 3 miles of the ki-rin's lair have disadvantage on all saving throws.",
+            "Within 3 miles of its lair, the ki-rin can communicate telepathically with any willing creature.",
+            "The sky within 6 miles of the lair remains clear and pleasant, unless the ki-rin wills otherwise."
+        ]
     },
 
     // === From monsters-classics.js ===
@@ -865,6 +907,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 21,
+        flavorText: "The most evil-tempered and vile of the chromatic dragons, black dragons collect the wreckage and treasures of fallen peoples. A black dragon's lair is a dismal cave, grotto, or ruin that is at least partially flooded, providing pools where the dragon rests, and water sources for the creatures it hunts.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -884,7 +927,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 23 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed." }
             ]
-        }
+        },
+        lairDescription: "Black dragons dwell in swamps on the frayed edges of civilization. A black dragon's lair is a dismal cave, grotto, or ruin that is at least partially flooded, providing pools where the dragon rests, and bodies of water for the creatures it hunts. The lair is usually littered with the carcasses of half-eaten creatures and the remains of the dragon's victims.",
+        lairActions: [
+            { description: "Pools of water that the dragon can see within 120 feet of it surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 15 Strength saving throw or be pulled up to 20 feet into the water and knocked prone." },
+            { description: "A cloud of swarming insects fills a 20-foot-radius sphere centered on a point the dragon chooses within 120 feet of it. The cloud spreads around corners and remains until the dragon dismisses it as an action, uses this lair action again, or dies. The cloud is lightly obscured. Any creature in the cloud when it appears must make a DC 15 Constitution saving throw, taking 10 (3d6) piercing damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the cloud takes 10 (3d6) piercing damage." },
+            { description: "Magical darkness spreads from a point the dragon chooses within 60 feet of it, filling a 15-foot-radius sphere until the dragon dismisses it as an action, uses this lair action again, or dies. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it. If any of the effect's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled." }
+        ],
+        regionalEffects: [
+            "The land within 6 miles of the lair takes twice as long as normal to traverse, since the plants grow thick and twisted, and the swamps are bytes of murky water.",
+            "Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the dragon that drink such water regurgitate it within minutes.",
+            "Fog lightly obscures the land within 6 miles of the lair."
+        ]
     },
     "adult-black-dragon": {
         name: "Adult Black Dragon",
@@ -904,6 +958,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 14,
+        flavorText: "The most evil-tempered and vile of the chromatic dragons, black dragons collect the spoils of their decaying domain and guard them jealously. A black dragon's head is marked by forward-curving horns, and its eyes burn with baleful green light.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -923,7 +978,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Black dragons dwell in swamps on the frayed edges of civilization. Their lairs are hidden in twisted, murky gnarled trees and within the darkest depths of stagnant bogs. Black dragons favor sunken ruins, but will settle for dank caves or crumbling castles.",
+        lairActions: [
+            { description: "Pools of water that the dragon can see within 120 feet of it surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 15 Strength saving throw or be pulled up to 20 feet into the water and knocked prone." },
+            { description: "A cloud of swarming insects fills a 20-foot-radius sphere centered on a point the dragon chooses within 120 feet of it. The cloud spreads around corners and remains until the dragon dismisses it as an action, uses this lair action again, or dies. The cloud is lightly obscured. Any creature in the cloud when it appears must make a DC 15 Constitution saving throw, taking 10 (3d6) piercing damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the cloud takes 10 (3d6) piercing damage." },
+            { description: "Magical darkness spreads from a point the dragon chooses within 60 feet of it, filling a 15-foot-radius sphere until the dragon dismisses it as an action, uses this lair action again, or dies. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it. If any of the effect's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled." }
+        ],
+        regionalEffects: [
+            "The land within 6 miles of the lair takes twice as long as normal to traverse, since the plants grow thick and twisted, and the swamps are bytes with reeking mud.",
+            "Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the dragon that drink such water regurgitate it within minutes.",
+            "Fog lightly obscures the land within 6 miles of the lair."
+        ]
     },
     "young-black-dragon": {
         name: "Young Black Dragon",
@@ -999,6 +1065,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 23,
+        flavorText: "Vain and territorial, blue dragons soar through the skies over deserts, preying on caravans and swooping down on any creatures that dare to trespass on their domain. A blue dragon's scales vary in color from an iridescent azure to a deep indigo, polished to a glossy finish by the sand through which it burrows.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1017,7 +1084,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 24 Dexterity saving throw or take 16 (2d6+9) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Blue dragons make their lairs in barren places, using their lightning breath and their burrowing ability to carve out crystallized caverns and tunnels beneath the sands. Thunderstorms rage around a legendary blue dragon's lair, and the dragon is able to use the storm's lightning to striking effect.",
+        lairActions: [
+            { description: "Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success." },
+            { description: "A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." },
+            { description: "Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage." }
+        ],
+        regionalEffects: [
+            "Thunderstorms rage within 6 miles of the lair.",
+            "Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
+            "Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 × 10 feet into the sinkhole."
+        ]
     },
     "adult-blue-dragon": {
         name: "Adult Blue Dragon",
@@ -1037,6 +1115,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 16,
+        flavorText: "Vain and territorial, blue dragons soar through the skies over deserts, preying on caravans and plundering herds and settlements in the verdant lands beyond the desert's bytes. A blue dragon is recognized by its dramatic frilled ears and the massive horn on its snout.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1055,7 +1134,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 20 Dexterity saving throw or take 14 (2d6+7) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Blue dragons make their lairs in barren places, using their lightning breath and their burrowing ability to carve out crystallized caverns and tunnels beneath the sands. They love to use sandstorms to conceal the entrances to their lairs.",
+        lairActions: [
+            { description: "Part of the ceiling collapses above one creature that the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage and be knocked prone and buried. The buried target is restrained and unable to breathe or stand up. A creature can take an action to make a DC 10 Strength check, ending the buried state on a success." },
+            { description: "A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." },
+            { description: "Lightning arcs, forming a 5-foot-wide line between two of the lair's solid surfaces that the dragon can see. They must be within 120 feet of the dragon and 120 feet of each other. Each creature in that line must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) lightning damage." }
+        ],
+        regionalEffects: [
+            "Thunderstorms rage within 6 miles of the lair.",
+            "Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).",
+            "Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check; otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 × 10 feet into the sinkhole."
+        ]
     },
     "young-blue-dragon": {
         name: "Young Blue Dragon",
@@ -1126,6 +1216,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 22,
+        flavorText: "The most cunning and treacherous of true dragons, green dragons use misdirection and trickery to get the upper hand against their enemies. A green dragon is recognized by its curved jawline and the crest that begins near its eyes and continues down its spine, reaching full height just behind the skull.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1145,7 +1236,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 23 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Green dragons make their lairs in ancient forests. The mightiest of green dragons carve out caverns in cliff faces or hillsides to serve as their lair. The location is always shrouded in thick forest growth, often enhanced by the dragon's influence. A green dragon's lair might also be the ruins of a castle or mansion claimed by the forest after being overthrown by the dragon.",
+        lairActions: [
+            { description: "Grasping roots and vines erupt in a 20-foot radius centered on a point on the ground that the dragon can see within 120 feet of it. That area becomes difficult terrain, and each creature there must succeed on a DC 15 Strength saving throw or be restrained by the roots and vines. A creature can be freed if it or another creature takes an action to make a DC 15 Strength check and succeeds. The roots and vines wilt away when the dragon uses this lair action again or when the dragon dies." },
+            { description: "A wall of tangled brush bristling with thorns springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, and it blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the save takes 18 (4d8) piercing damage and is pushed 5 feet out of the wall's space, appearing on whichever side of the wall it wants. A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature travels through the wall, it must spend 4 feet of movement. Furthermore, a creature in the wall's space must make a DC 15 Dexterity saving throw once each round it's in contact with the wall, taking 18 (4d8) piercing damage on a failed save, or half as much damage on a successful one. Each 10-foot section of wall has AC 5, 15 hit points, vulnerability to fire damage, resistance to bludgeoning and piercing damage, and immunity to psychic damage. The wall sinks back into the ground when the dragon uses this lair action again or when the dragon dies." },
+            { description: "Magical fog billows around one creature the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Wisdom saving throw or be charmed by the dragon until initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "Thickets form labyrinthine passages within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot a creature moves costing it 4 feet of movement. A creature in the thickets must make a DC 15 Dexterity saving throw once each round it's in contact with the thickets or take 3 (1d6) piercing damage from thorns.",
+            "Within 1 mile of its lair, the dragon leaves no physical evidence of its passage unless it wishes to. Tracking it there is impossible except by magical means. In addition, it ignores movement impediments and damage from plants in this area that are neither combatants nor combatant. The plants remove themselves from the dragon's path.",
+            "Rodents and birds within 1 mile of the dragon's lair serve as the dragon's eyes and ears. Deer and other large game are strangely absent, having been hunted to extinction by the dragon."
+        ]
     },
     "adult-green-dragon": {
         name: "Adult Green Dragon",
@@ -1166,6 +1268,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 15,
+        flavorText: "The most cunning and treacherous of true dragons, green dragons use misdirection and trickery to get the upper hand against their enemies. A green dragon is recognized by its curved jaw line and the crest that begins near its eyes and continues down its spine.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1185,7 +1288,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Green dragons are the undisputed masters of their jungle domain. They make their lairs in ancient, towering forests, preferably within cliff-side caverns with entrances hidden behind waterfalls, or in the hollow remains of enormous trees.",
+        lairActions: [
+            { description: "Grasping roots and vines erupt in a 20-foot radius centered on a point on the ground that the dragon can see within 120 feet of it. That area becomes difficult terrain, and each creature there must succeed on a DC 15 Strength saving throw or be restrained by the roots and vines. A creature can be freed if it or another creature takes an action to make a DC 15 Strength check and succeeds. The roots and vines wilt away when the dragon uses this lair action again or when the dragon dies." },
+            { description: "A wall of tangled brush bristling with thorns springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, and it blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the save takes 18 (4d8) piercing damage and is pushed 5 feet out of the wall's space, appearing on whichever side of the wall it wants. A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature travels through the wall, it must spend 4 feet of movement. Furthermore, a creature in the wall's space must make a DC 15 Dexterity saving throw once each round it's in contact with the wall, taking 18 (4d8) piercing damage on a failed save, or half as much damage on a successful one. Each 10-foot section of wall has AC 5, 15 hit points, vulnerability to fire damage, resistance to bludgeoning and piercing damage, and immunity to psychic damage. The wall sinks back into the ground when the dragon uses this lair action again or when the dragon dies." },
+            { description: "Magical fog billows around one creature the dragon can see within 120 feet of it. The creature must succeed on a DC 15 Wisdom saving throw or be charmed by the dragon until initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "Thickets form labyrinthine passages throughout the forest within 1 mile of the dragon's lair. The thickets act as 10-foot-high, 10-foot-thick walls that block line of sight. Creatures can move through the thickets, with every 1 foot of movement costing 4 feet.",
+            "Within 1 mile of its lair, the dragon leaves no physical evidence of its passage unless it wishes to. Tracking it there is impossible except by magical means.",
+            "Rodents and birds within 1 mile of the dragon's lair serve as the dragon's eyes and ears. Deer and other large game are strangely absent, hinting at an unnaturally hungry predator."
+        ]
     },
     "young-green-dragon": {
         name: "Young Green Dragon",
@@ -1263,6 +1377,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 24,
+        flavorText: "The odor of sulfur and pumice surrounds a red dragon, whose swept-back horns and spinal frill define its silhouette. Its beaked snout vents smoke at all times, and its eyes dance with flame when it is angry. No other dragon comes close to the arrogance of the red dragon. These creatures see themselves as kings and emperors, and view the rest of dragonkind as inferior.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1281,7 +1396,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Red dragons lair in high mountains or hills, dwelling in caverns under snow-capped peaks, or within the deep halls of abandoned mines and dwarven strongholds. Caves with volcanic or geothermal activity are the most highly prized red dragon lairs, creating hazards that hinder intruders and letting searing heat and volcanic gases wash over a dragon as it sleeps. With its hoard well protected deep within the lair, a red dragon spends as much of its time outside the mountain as in it. For a red dragon, the great heights of the world are the throne from which it can look out to survey all it controls—and the wider world it seeks to control.",
+        lairActions: [
+            { description: "Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one." },
+            { description: "A tremor shakes the lair in a 60-foot radius around the dragon. Each creature other than the dragon on the ground in that area must succeed on a DC 15 Dexterity saving throw or be knocked prone." },
+            { description: "Volcanic gases form a cloud in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The sphere spreads around corners, and its area is lightly obscured. It lasts until initiative count 20 on the next round. Each creature that starts its turn in the cloud must succeed on a DC 13 Constitution saving throw or be poisoned until the end of its turn. While poisoned in this way, a creature is incapacitated." }
+        ],
+        regionalEffects: [
+            "Small earthquakes are common within 6 miles of the dragon's lair.",
+            "Water sources within 1 mile of the lair are supernaturally warm and tainted by sulfur.",
+            "Rocky fissures within 1 mile of the dragon's lair form portals to the Elemental Plane of Fire, allowing creatures of elemental fire into the world to dwell nearby."
+        ]
     },
     "adult-red-dragon": {
         name: "Adult Red Dragon",
@@ -1301,6 +1427,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 17,
+        flavorText: "The odor of sulfur and pumice surrounds a red dragon, whose swept-back horns and spinal frill define its silhouette. Its beaked snout vents smoke at all times, and its eyes dance with flame when it is angry.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1319,7 +1446,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Red dragons lair in high mountains or hills, dwelling in caverns under snow-capped peaks, or within the deep halls of abandoned mines and dwarven strongholds. Caves with volcanic or geothermal activity are the most highly prized red dragon lairs.",
+        lairActions: [
+            { description: "Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one." },
+            { description: "A tremor shakes the lair in a 60-foot radius around the dragon. Each creature other than the dragon on the ground in that area must succeed on a DC 15 Dexterity saving throw or be knocked prone." },
+            { description: "Volcanic gases form a cloud in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The sphere spreads around corners, and its area is lightly obscured. It lasts until initiative count 20 on the next round. Each creature that starts its turn in the cloud must succeed on a DC 13 Constitution saving throw or be poisoned until the end of its turn. While poisoned in this way, a creature is incapacitated." }
+        ],
+        regionalEffects: [
+            "Small earthquakes are common within 6 miles of the dragon's lair.",
+            "Water sources within 1 mile of the lair are supernaturally warm and tainted by sulfur.",
+            "Rocky fissures within 1 mile of the dragon's lair form portals to the Elemental Plane of Fire, allowing creatures of elemental fire into the world to dwell nearby."
+        ]
     },
     "young-red-dragon": {
         name: "Young Red Dragon",
@@ -1389,6 +1527,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 20,
+        flavorText: "The smallest, least intelligent, and most animalistic of the chromatic dragons, white dragons dwell in frigid climes, favoring arctic areas or icy mountains. They are cruel, bestial creatures driven by hunger and greed. A white dragon has feral eyes, a sleek profile, and a thin, forked tongue.",
         traits: [
             { name: "Ice Walk", description: "The dragon can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn't cost it extra movement." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1408,7 +1547,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "White dragons lair in icy caves and deep subterranean chambers far from the sun. They favor high mountain vales accessible only by flying, caverns in cliff faces, and labyrinthine ice caves in glaciers. White dragons love vertical lairs with multiple levels. The highest levels are used for stargazing and looking out over their territory, while the lower levels provide the dragon with shelter from the cold.",
+        lairActions: [
+            { description: "Freezing fog fills a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog when it appears must make a DC 10 Constitution saving throw, taking 10 (3d6) cold damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the fog takes 10 (3d6) cold damage. A wind of at least 20 miles per hour disperses the fog. The fog otherwise lasts until the dragon uses this lair action again or until the dragon dies." },
+            { description: "Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll (+7 to hit) against each target. On a hit, the target takes 10 (3d6) piercing damage." },
+            { description: "The dragon creates an opaque wall of ice on a solid surface it can see within 120 feet of it. The wall can be up to 30 feet long, 30 feet high, and 1 foot thick. When the wall appears, each creature within its area is pushed 5 feet out of the wall's space; appearing on whichever side of the wall it wants. Each 10-foot section of the wall has AC 5, 30 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. The wall disappears when the dragon uses this lair action again or when the dragon dies." }
+        ],
+        regionalEffects: [
+            "Chilly water sources within 1 mile of the lair are supernaturally cold. Any creature other than a cold-immune creature that enters such water must make a DC 10 Constitution saving throw, taking 10 (3d6) cold damage on a failed save, or half as much on a successful one.",
+            "Freezing precipitation falls within 6 miles of the dragon's lair, sometimes extinguishing unprotected flames and making open flames 50 percent likely to be extinguished.",
+            "Icy walls block off areas in the dragon's lair. Each wall is 6 inches thick, and a 10-foot section has AC 5, 15 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage."
+        ]
     },
     "adult-white-dragon": {
         name: "Adult White Dragon",
@@ -1428,6 +1578,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 13,
+        flavorText: "The smallest, least intelligent, and most animalistic of the chromatic dragons, white dragons dwell in frigid climes, favoring arctic areas or icy mountains. A white dragon has a face that seems to harden into a perpetual snarl.",
         traits: [
             { name: "Ice Walk", description: "The dragon can move across and climb icy surfaces without needing to make an ability check." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1447,7 +1598,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "White dragons lair in icy caves and deep subterranean chambers far from the sun. They favor high mountain peaks and polar regions. A white dragon's lair is littered with the frozen corpses of its victims.",
+        lairActions: [
+            { description: "Freezing fog fills a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The fog spreads around corners, and its area is heavily obscured. Each creature in the fog when it appears must make a DC 10 Constitution saving throw, taking 10 (3d6) cold damage on a failed save, or half as much damage on a successful one. A creature that ends its turn in the fog takes 10 (3d6) cold damage. A wind of at least 20 miles per hour disperses the fog. The fog otherwise lasts until the dragon uses this lair action again or until the dragon dies." },
+            { description: "Jagged ice shards fall from the ceiling, striking up to three creatures underneath that the dragon can see within 120 feet of it. The dragon makes one ranged attack roll (+7 to hit) against each target. On a hit, the target takes 10 (3d6) piercing damage." },
+            { description: "The dragon creates an opaque wall of ice on a solid surface it can see within 120 feet of it. The wall can be up to 30 feet long, 30 feet high, and 1 foot thick. When the wall appears, each creature within its area is pushed 5 feet out of the wall's space; appearing on whichever side of the wall it wants. Each 10-foot section of the wall has AC 5, 30 hit points, vulnerability to fire damage, and immunity to acid, cold, necrotic, poison, and psychic damage. The wall disappears when the dragon uses this lair action again or when the dragon dies." }
+        ],
+        regionalEffects: [
+            "Chilly, freezing fog lightly obscures the land within 6 miles of the dragon's lair.",
+            "Freezing precipitation falls within 6 miles of the dragon's lair, sometimes forming blizzard conditions when the dragon is at rest.",
+            "Icy wastes within 6 miles of the dragon's lair are affected by temperatures at least 10 degrees Fahrenheit colder than normal."
+        ]
     },
     "young-white-dragon": {
         name: "Young White Dragon",
@@ -1525,6 +1687,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 20,
+        flavorText: "The most gregarious of the true dragons, brass dragons crave conversation, sunlight, and hot, dry climates. A brass dragon's head is defined by the broad protective plate that expands from its forehead and the097 enormous, plated frill that sweeps back from its cheeks and chin.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1543,7 +1706,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "A brass dragon's lair is always in a dry, hot climate, usually in a rocky desert or on a sun-baked hillside. The dragon likes to bask in the sun and watch over the surrounding landscape. The main entrance to its lair is typically at the top of a cliff or spire. A brass dragon often befriends desert-dwelling creatures that share its home.",
+        lairActions: [
+            { description: "A strong wind blows around the dragon. Each creature within 60 feet of the dragon must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from the dragon and knocked prone. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished." },
+            { description: "A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ],
+        regionalEffects: [
+            "Tracks made in the sand within 6 miles of the dragon's lair magically disappear in minutes.",
+            "Images of Large or smaller monsters haunt the desert sands within 6 miles of the dragon's lair. These images aren't combatants; they are hallucinations.",
+            "Whenever a creature with an Intelligence of 3 or higher comes within 30 feet of a water source within 1 mile of the dragon's lair, the dragon becomes aware of the creature's presence and location."
+        ]
     },
     "adult-brass-dragon": {
         name: "Adult Brass Dragon",
@@ -1563,6 +1736,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 13,
+        flavorText: "The most gregarious of the true dragons, brass dragons crave conversation, sunlight, and hot, dry climates. A brass dragon's blunt wedge-shaped head is defined by the broad protective plate that extends from its forehead and the spikes protruding from its chin.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1581,7 +1755,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "A brass dragon's lair is typically found in an arid region: a cave beneath a desert plateau, or the ruins of a city abandoned to the encroaching sands. The dragon prefers to bask in the sunlight by day.",
+        lairActions: [
+            { description: "A strong wind blows around the dragon. Each creature within 60 feet of the dragon must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from the dragon and knocked prone. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames have a 50 percent chance of being extinguished." },
+            { description: "A cloud of sand swirls about in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success." }
+        ],
+        regionalEffects: [
+            "Tracks made in the sand within 6 miles of the dragon's lair magically shift and change, making it impossible to follow creatures moving through the area by tracking. Creatures that know the effect can take specific actions to make their tracks persevere, at the DM's discretion.",
+            "Images of Large or smaller monsters haunt the desert sands within 6 miles of the dragon's lair. These illusory creatures seem to react to threats but never engage in combat.",
+            "Whenever a creature with an Intelligence of 3 or higher comes within 30 feet of a water source within 1 mile of the dragon's lair, the dragon becomes aware of the creature's presence and location."
+        ]
     },
     "young-brass-dragon": {
         name: "Young Brass Dragon",
@@ -1651,6 +1835,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 22,
+        flavorText: "Bronze dragons are coastal dwellers that feed primarily on aquatic plants and fish. They take an active role in stopping maritime evil, especially piracy. A bronze dragon's head is rounded and has smooth brow ridges. Its wings are rubbery like those of a bat, and its hide has a greenish sheen from years of living near the sea.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1671,7 +1856,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 24 Dexterity saving throw or take 16 (2d6+9) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "A bronze dragon lairs in coastal caves. It might accept the service of aquatic creatures as guards or companions, and it is known to ally with storm giants and good-aligned groups that share its interest in defeating aquatic evils. The dragon's lair is filled with treasures from sunken ships and lost aquatic civilizations.",
+        lairActions: [
+            { description: "The dragon creates fog as if it had cast the fog cloud spell. The fog lasts until initiative count 20 on the next round." },
+            { description: "A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot radius centered on that point must make a DC 15 Constitution saving throw or take 5 (1d10) thunder damage and be deafened until the end of its next turn." },
+            { description: "The dragon creates water as if it had cast the create or destroy water spell." }
+        ],
+        regionalEffects: [
+            "Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
+            "Underwater plants within 6 miles of the dragon's lair take on dazzlingly brilliant hues.",
+            "Within its lair, the dragon can set illusory sounds, such as soft music and strange echoes, so that they can be heard in various parts of the lair."
+        ]
     },
     "adult-bronze-dragon": {
         name: "Adult Bronze Dragon",
@@ -1691,6 +1887,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 15,
+        flavorText: "Bronze dragons are coastal dwellers that feed primarily on aquatic plants and fish. They take an active role in stopping tyranny and often ally themselves with neighboring humanoids. A bronze dragon has a striated horn curving back from its nose, and smaller horns sweep behind its eyes.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1711,7 +1908,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 20 Dexterity saving throw or take 14 (2d6+7) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "A bronze dragon lairs in coastal caves. It might equally be found deep in ocean trenches or within the ruins of a seaside fortress. The dragon enjoys sunning itself on rocky outcroppings above its lair.",
+        lairActions: [
+            { description: "The dragon creates fog as if it had cast the fog cloud spell. The fog lasts until initiative count 20 on the next round." },
+            { description: "A thunderclap originates at a point the dragon can see within 120 feet of it. Each creature within a 20-foot radius centered on that point must make a DC 15 Constitution saving throw or take 5 (1d10) thunder damage and be deafened until the end of its next turn." }
+        ],
+        regionalEffects: [
+            "Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
+            "Underwater plants within 6 miles of the dragon's lair take on dazzlingly brilliant hues.",
+            "Within its lair, the dragon can set illusory sounds, such as soft music and strange echoes, so that they can be heard in various parts of the lair."
+        ]
     },
     "young-bronze-dragon": {
         name: "Young Bronze Dragon",
@@ -1787,6 +1994,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 21,
+        flavorText: "Copper dragons are incorrigible pranksters, joke tellers, and riddlers that live in hills and rocky uplands. Despite their love of jokes, copper dragons take their protection of their territories seriously. A copper dragon's head is wedge-shaped with a backward-curving horn above each eye. Its snout features the metallic scale that gives its head the appearance of a mask.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1806,7 +2014,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 23 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Copper dragons dwell in hills and rocky uplands. Their lairs are found in narrow caves, and they often hide the entrances to their lairs using stone shape or other magic. A copper dragon's lair is often decorated with riddles and puzzles.",
+        lairActions: [
+            { description: "The dragon chooses a point on the ground that it can see within 120 feet of it. Stone spikes sprout from the ground in a 20-foot radius centered on that point. The effect is otherwise identical to the spike growth spell and lasts until the dragon uses this lair action again or until the dragon dies." },
+            { description: "The dragon chooses a 10-foot-square area on the ground that it can see within 120 feet of it. The ground in that area turns into 3-foot-deep mud. Each creature on the ground in that area when the mud appears must succeed on a DC 15 Dexterity saving throw or sink into the mud and become restrained. A creature can take an action to make a DC 15 Strength check, freeing itself or another creature within its reach and ending the restrained condition on a success. Moving 1 foot in the mud costs 2 feet of movement. On initiative count 20 on the next round, the mud hardens, and the Strength DC to work free increases to 20." }
+        ],
+        regionalEffects: [
+            "Magic carvings of the dragon's smiling visage can be googled throughout the area within 6 miles of the dragon's lair. These carvings track creatures if they move and can serve as auditory/visual outlets for the dragon.",
+            "Tiny beasts within 1 mile of the dragon's lair that are normally combatant can speak (repeating words and phrases they've heard from the dragon).",
+            "Intelligent creatures within 1 mile of the dragon's lair are prone to fits of giggling. Even serious matters suddenly seem funny."
+        ]
     },
     "adult-copper-dragon": {
         name: "Adult Copper Dragon",
@@ -1826,6 +2044,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 14,
+        flavorText: "Copper dragons are incorrigible pranksters, joke tellers, and riddlers that live in hills and rocky uplands. Despite their love of jokes, copper dragons can be irascible and are protective of their hoards.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -1844,7 +2063,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6+6) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Copper dragons dwell in hills and rocky uplands. Their lairs are found in narrow caves, and they often hide the entrances to their lairs using stone shape or other magic.",
+        lairActions: [
+            { description: "The dragon chooses a point on the ground that it can see within 120 feet of it. Stone spikes sprout from the ground in a 20-foot radius centered on that point. The effect is otherwise identical to the spike growth spell and lasts until the dragon uses this lair action again or until the dragon dies." },
+            { description: "The dragon chooses a 10-foot-square area on the ground that it can see within 120 feet of it. The ground in that area turns into 3-foot-deep mud. Each creature on the ground in that area when the mud appears must succeed on a DC 15 Dexterity saving throw or sink into the mud and become restrained. A creature can take an action to make a DC 15 Strength check, freeing itself or another creature within its reach and ending the restrained condition on a success. Moving 1 foot in the mud costs 2 feet of movement. On initiative count 20 on the next round, the mud hardens, and the Strength DC to work free increases to 20." }
+        ],
+        regionalEffects: [
+            "Magic carvings of the dragon's smiling visage can be found throughout the area within 6 miles of the dragon's lair. These carvings track creatures if they move.",
+            "Tiny beasts within 1 mile of the dragon's lair that are normally combative can speak (repeating words and phrases they've heard from the dragon).",
+            "Intelligent creatures within 1 mile of the dragon's lair are prone to fits of giggling. Even serious matters suddenly seem funny."
+        ]
     },
     "young-copper-dragon": {
         name: "Young Copper Dragon",
@@ -1914,6 +2143,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 24,
+        flavorText: "The most powerful and majestic of the metallic dragons, gold dragons are dedicated foes of evil. A gold dragon has a face dominated by a great, toothy maw, a sharp forehead horn, and smaller cheek horns, and its feathered wings give it an almost bird-like appearance. As a gold dragon ages, its pupils fade until its eyes resemble pools of molten gold.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1934,7 +2164,18 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Gold dragons can often be found in secluded lairs with their windows gazing upon vast vistas. They favor stone-built lair atop the most precipitous summits, or within ancient ruins far removed from the realms of humanoids. When gold dragons choose to lair in natural caves, they prefer warm locations like hot springs, volcanic vents, and subterranean lakes of magma.",
+        lairActions: [
+            { description: "The dragon glimpses the future, so it has advantage on attack rolls, ability checks, and saving throws until initiative count 20 on the next round." },
+            { description: "One creature the dragon can see within 120 feet of it must succeed on a DC 15 Charisma saving throw or be banished to a dream plane, a different plane of existence the dragon has imagined into being. To escape, the creature must use its action to make a Charisma check contested by the dragon's. If the creature wins, it escapes the dream plane. Otherwise, the effect ends on initiative count 20 on the next round. When the effect ends, the creature reappears in the space it left or in the nearest unoccupied space if that one is occupied." },
+            { description: "The dragon creates a fiery wall within 120 feet of it. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, can take any shape the dragon wants, and blocks line of sight. When the wall appears, each creature in its area must make a DC 24 Dexterity saving throw. A creature that fails the save takes 10 (3d6) fire damage. Each creature that enters the wall for the first time on a turn or ends its turn there takes 10 (3d6) fire damage. The wall is extinguished when the dragon uses this lair action again or when the dragon dies." }
+        ],
+        regionalEffects: [
+            "Whenever a creature that can understand a language sleeps or enters a state of trance or reverie within 6 miles of the dragon's lair, the dragon can establish telepathic contact with that creature and converse with it in its dreams. The creature remembers its conversation with the dragon upon waking.",
+            "Banks of beautiful, googled mist manifest within 6 miles of the dragon's lair. The mist doesn't obscure anything. It assumes forms that hint at prophecies and warnings, though deciphering these hints requires a successful DC 15 Wisdom (Insight) check.",
+            "Gems and pearls within 1 mile of the dragon's lair sparkle and gleam, shedding dim light in a 5-foot radius."
+        ]
     },
     "adult-gold-dragon": {
         name: "Adult Gold Dragon",
@@ -1954,6 +2195,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 17,
+        flavorText: "The most powerful and majestic of the metallic dragons, gold dragons are dedicated foes of evil. A gold dragon has a face dominated by a great, toothy maw, a sharp forehead horn, and smaller cheek horns.",
         traits: [
             { name: "Amphibious", description: "The dragon can breathe air and water." },
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
@@ -1974,7 +2216,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Gold dragons can often be found in secluded lairs with windows gazing upon vast vistas. They favor stone-built lairs atop precipitous summits, or within ancient ruins far removed from humanoid realms.",
+        lairActions: [
+            { description: "The dragon glimpses the future, so it has advantage on attack rolls, ability checks, and saving throws until initiative count 20 on the next round." },
+            { description: "One creature the dragon can see within 120 feet of it must succeed on a DC 15 Charisma saving throw or be banished to a dream plane, a different plane of existence the dragon has imagined into being. To escape, the creature must use its action to make a Charisma check contested by the dragon's. If the creature wins, it escapes the dream plane. Otherwise, the effect ends on initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "Whenever a creature that can understand a language sleeps or enters a state of trance or reverie within 6 miles of the dragon's lair, the dragon can establish telepathic contact with that creature and converse with it in its dreams.",
+            "Banks of beautiful, googled mist manifest within 6 miles of the dragon's lair. The mist doesn't obscure anything. It assumes forms that hint at prophecies and warnings.",
+            "Gems and pearls within 1 mile of the dragon's lair sparkle and gleam, shedding dim light in a 5-foot radius."
+        ]
     },
     "young-gold-dragon": {
         name: "Young Gold Dragon",
@@ -2050,6 +2302,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 23,
+        flavorText: "The friendliest and most social of the metallic dragons, silver dragons cheerfully assist good creatures in need. A silver dragon's broad, flat head features two long cheek ridges. Its mane glistens like metallic hair, and a row of silver scales stretches back from its brow and down its neck.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -2069,7 +2322,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Silver dragons dwell among the clouds, making their lairs on secluded cold mountain peaks. Though many are comfortable in natural cavern complexes or abandoned mines, silver dragons covet the lost palaces of fallen humanoid civilizations. The dragon may allow small communities to develop around its lair, as long as those communities treat the dragon with respect.",
+        lairActions: [
+            { description: "The dragon creates fog as if it had cast the fog cloud spell. The fog lasts until initiative count 20 on the next round." },
+            { description: "A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished." }
+        ],
+        regionalEffects: [
+            "Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
+            "Within 1 mile of the lair, winds buoy non-evil creatures that fall due to no act of the dragon or its allies. Such creatures descend at a rate of 60 feet per round and take no falling damage.",
+            "Given days or longer to work, the dragon can make clouds solid enough to support itself and other creatures, forming a literal castle in the sky."
+        ]
     },
     "adult-silver-dragon": {
         name: "Adult Silver Dragon",
@@ -2089,6 +2352,7 @@ const allMonsters = {
         senses: ["blindsight 60 ft.", "darkvision 120 ft."],
         languages: "Common, Draconic",
         cr: 16,
+        flavorText: "The friendliest and most social of the metallic dragons, silver dragons cheerfully assist good creatures in need. A silver dragon's broad, flat head features two long cheek ridges and a mane that glistens like metallic hair.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the dragon fails a saving throw, it can choose to succeed instead." }
         ],
@@ -2108,7 +2372,17 @@ const allMonsters = {
                 { name: "Tail Attack", description: "The dragon makes a tail attack." },
                 { name: "Wing Attack (Costs 2 Actions)", description: "The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone." }
             ]
-        }
+        },
+        lairDescription: "Silver dragons dwell among the clouds, making their lairs on secluded cold mountain peaks. They may allow small communities to develop around their lair, as long as those communities treat the dragon with respect.",
+        lairActions: [
+            { description: "The dragon creates fog as if it had cast the fog cloud spell. The fog lasts until initiative count 20 on the next round." },
+            { description: "A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames have a 50 percent chance of being extinguished." }
+        ],
+        regionalEffects: [
+            "Once per day, the dragon can alter the weather in a 6-mile radius centered on its lair. The dragon doesn't need to be outdoors; otherwise the effect is identical to the control weather spell.",
+            "Within 1 mile of the lair, winds buoy non-evil creatures that fall due to no act of the dragon or its allies. Such creatures descend at a rate of 60 feet per round and take no falling damage.",
+            "Given days or longer to work, the dragon can make clouds solid enough to support itself and other creatures, forming a literal castle in the sky."
+        ]
     },
     "young-silver-dragon": {
         name: "Young Silver Dragon",
@@ -2177,6 +2451,7 @@ const allMonsters = {
         senses: ["darkvision 120 ft."],
         languages: "Aquan, Draconic",
         cr: 17,
+        flavorText: "Dragon turtles are among the most fearsome creatures of the oceans. As large as a sea vessel, a dragon turtle has a long tail and powerful flippers, which it uses to navigate the depths. Its massive shell is encrusted with barnacles and covered in aquatic plants. Dragon turtles are highly territorial and will attack ships that enter their domain, demanding tribute in exchange for safe passage.",
         traits: [
             { name: "Amphibious", description: "The dragon turtle can breathe air and water." }
         ],
@@ -2186,7 +2461,8 @@ const allMonsters = {
             { name: "Claw", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 16 (2d8+7) slashing damage." },
             { name: "Tail", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 26 (3d12+7) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be pushed up to 10 feet away from the dragon turtle and knocked prone." },
             { name: "Steam Breath (Recharge 5-6)", description: "The dragon turtle exhales scalding steam in a 60-foot cone. Each creature in that area must make a DC 18 Constitution saving throw, taking 52 (15d6) fire damage on a failed save, or half as much damage on a successful one." }
-        ]
+        ],
+        lairDescription: "Dragon turtles make their lairs in undersea caves and wrecked ships. An older dragon turtle's lair might consist of the hulls of multiple ships, all magically held together and filled with air to allow the dragon turtle's hoard to remain preserved. Dragon turtles typically claim a territory extending several miles around their lair."
     },
     "faerie-dragon-red": {
         name: "Faerie Dragon (Red)",
@@ -4051,7 +4327,19 @@ const allMonsters = {
                 "4th": { slots: 3, spells: ["banishment", "greater invisibility"] },
                 "5th": { slots: 1, spells: ["legend lore"] }
             }
-        }
+        },
+        flavorText: "A gynosphinx is the guardian of sacred sites, bearing a humanoid head, the body of a lion, and feathered wings. Such creatures treasure knowledge and test those who seek the sites they protect with riddles and puzzles.",
+        lairDescription: "A sphinx presides over an ancient temple, tomb, or vault of knowledge. Sphinxes act to protect sacred places and test visitors with riddles and puzzles.",
+        lairActions: [
+            { description: "The sphinx creates a localized temporal anomaly in a 20-foot cube within its lair. Each creature within that cube must succeed on a DC 15 Constitution saving throw or be affected as if by the slow spell until initiative count 20 on the next round." },
+            { description: "The sphinx shifts itself and up to seven other willing creatures it can see in its lair to another plane of existence. Once outside its lair, the sphinx can't use this lair action again until it finishes a short or long rest." },
+            { description: "The sphinx uses its lair's magic to perceive the future. Until initiative count 20 on the next round, the sphinx can add 1d6 to the result of any ability check, attack roll, or saving throw it makes." }
+        ],
+        regionalEffects: [
+            "Any creature that completes a short or long rest within 1 mile of the sphinx's lair is contacted by the sphinx in their dreams. The sphinx can communicate information to the creature and receive answers in return.",
+            "Divination spells cast within 1 mile of the sphinx's lair have a 10 percent chance to provide information about the sphinx's location, in addition to the intended results of the spell.",
+            "The sphinx can choose to extend its Truesight to any willing creature within 1 mile of its lair for as long as it concentrates on that creature."
+        ]
     },
 
     // === From monsters-expansion12.js ===
@@ -9794,7 +10082,8 @@ const allMonsters = {
                 { name: "Move", description: "The tarrasque moves up to half its speed." },
                 { name: "Chomp (Costs 2 Actions)", description: "The tarrasque makes one bite attack or uses its Swallow." }
             ]
-        }
+        },
+        flavorText: "The legendary tarrasque is possibly the most dreaded monster of the Material Plane. It is widely believed to be a near-unstoppable force of annihilation, a primordial engine of destruction that awakens to bring ruin to the world. The tarrasque has no lair. Instead, when it has gorged itself on enough matter, the creature burrows deep into the earth and enters a period of hibernation lasting decades or even centuries."
     },
     "kraken": {
         name: "Kraken",
@@ -9834,7 +10123,19 @@ const allMonsters = {
                 { name: "Lightning Storm (Costs 2 Actions)", description: "The kraken uses Lightning Storm." },
                 { name: "Ink Cloud (Costs 3 Actions)", description: "While underwater, the kraken expels an ink cloud in a 60-foot radius. The cloud spreads around corners, and that area is heavily obscured to creatures other than the kraken. Each creature other than the kraken that ends its turn there must succeed on a DC 23 Constitution saving throw, taking 16 (3d10) poison damage on a failed save, or half as much damage on a successful one." }
             ]
-        }
+        },
+        flavorText: "Beneath the waves, the kraken sleeps for untold ages, dreaming of chaos and destruction. Krakens are great titan sea creatures that demand sacrifice from those who sail over their territory. When awakened, a kraken's wrath can sink entire fleets and devastate coastlines.",
+        lairDescription: "A kraken lives in dark depths, usually a sunken rift or a cavern filled with detritus, treasure, and the remains of sacrifices. The kraken can alter the water within its lair, and it often does so to draw unwary victims to their doom.",
+        lairActions: [
+            { description: "A strong current moves through the kraken's lair. Each creature other than the kraken that starts its turn within 60 feet of the kraken must succeed on a DC 23 Strength saving throw or be pushed up to 60 feet away from the kraken. On a success, the creature is pushed 10 feet away from the kraken." },
+            { description: "Creatures in the water within 60 feet of the kraken have vulnerability to lightning damage until initiative count 20 on the next round." },
+            { description: "The water in the kraken's lair becomes electrically charged. All creatures within 120 feet of the kraken must succeed on a DC 23 Constitution saving throw, taking 10 (3d6) lightning damage on a failed save, or half as much damage on a successful one." }
+        ],
+        regionalEffects: [
+            "The kraken can alter the weather at will in a 6-mile radius centered on its lair. The effect is identical to the control weather spell.",
+            "Water elementals coalesce within 6 miles of the lair. These elementals can't leave the water and have Intelligence and Charisma scores of 1 (-5).",
+            "Aquatic creatures within 6 miles of the lair that have an Intelligence score of 2 or lower are charmed by the kraken and aggressive toward intruders in the area."
+        ]
     },
     "purple-worm": {
         name: "Purple Worm",
@@ -10184,10 +10485,17 @@ const allMonsters = {
                 { name: "Psychic Drain (Costs 2 Actions)", cost: 2, description: "One creature charmed by the aboleth takes 10 (3d6) psychic damage, and the aboleth regains hit points equal to the damage the creature takes." }
             ]
         },
+        flavorText: "Before the coming of the gods, aboleths lurked in primordial oceans and underground lakes. They reached out with their minds and seized control of the burgeoning life-forms of the mortal realm, making those creatures their slaves. Aboleths have flawless memories. They pass their knowledge and experiences from generation to generation, so an aboleth knows everything its ancestors knew.",
+        lairDescription: "Aboleths lair in subterranean lakes or the rocky depths of the ocean, often in ruins they have fashioned to look like the lost cities of their ancient past. An aboleth spends most of its existence underwater, surfacing occasionally to treat with visitors or torment captured land-dwellers.",
         lairActions: [
             { description: "The aboleth casts phantasmal force (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions. If a target succeeds on the saving throw or if the effect ends for it, the target is immune to the aboleth's phantasmal force lair action for the next 24 hours." },
             { description: "Pools of water within 90 feet of the aboleth surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 14 Strength saving throw or be pulled up to 20 feet into the water and knocked prone." },
             { description: "Water in the aboleth's lair magically becomes a conduit for the creature's rage. The aboleth can target any number of creatures it can see in such water within 90 feet of it. A target must succeed on a DC 14 Wisdom saving throw or take 7 (2d6) psychic damage." }
+        ],
+        regionalEffects: [
+            "Underground surfaces within 1 mile of the aboleth's lair are slimy and wet, and are considered difficult terrain.",
+            "Water sources within 1 mile of the lair are supernaturally fouled. Enemies of the aboleth that drink such water vomit it within minutes.",
+            "As an action, the aboleth can create an illusory image of itself within 1 mile of the lair. The copy can appear at any location the aboleth has seen before or in any location a creature charmed by the aboleth can currently see. The image can't attack or affect anything physical, but it can communicate as the aboleth normally could."
         ]
     },
     
@@ -10354,7 +10662,18 @@ const allMonsters = {
             actions: [
                 { name: "Eye Ray", cost: 1, description: "The beholder uses one random eye ray." }
             ]
-        }
+        },
+        flavorText: "One glance at a beholder is enough to assess its foul and otherworldly nature. Aggressive, hateful, and greedy, these aberrations are among the greatest threats to adventurers in the Underdark. A beholder's central body is a great orb of flesh with a large, toothy mouth. Above and around that maw are a series of eye stalks, each tipped with a smaller eye, while a great central eye dominates the creature's face.",
+        lairDescription: "A beholder's central lair is typically a large, spacious cavern with high ceilings, where it can attack without fear of being cornered. A beholder carves out its lair using its disintegration ray, creating vertical shafts through which it can ambush intruders.",
+        lairActions: [
+            { description: "A 50-foot-square area of ground within 120 feet of the beholder becomes slimy; that area is difficult terrain until initiative count 20 on the next round." },
+            { description: "Walls within 120 feet of the beholder sprout grasping appendages until initiative count 20 on the round after next. Each creature of the beholder's choice that starts its turn within 10 feet of such a wall must succeed on a DC 15 Dexterity saving throw or be grappled. Escaping requires a successful DC 15 Strength (Athletics) or Dexterity (Acrobatics) check." },
+            { description: "An eye opens on a solid surface within 60 feet of the beholder. One random eye ray of the beholder shoots from that eye at a target of the beholder's choice that it can see. The eye then closes and vanishes." }
+        ],
+        regionalEffects: [
+            "Creatures within 1 mile of the beholder's lair sometimes feel as if they're being watched when they aren't.",
+            "When the beholder sleeps, minor warping and irruptions of reality occur within 1 mile of its lair and then cease when it wakes. Marks such as this can reveal the presence of a beholder to knowledgeable explorers."
+        ]
     },
     
     "black-bear": {
@@ -13423,7 +13742,20 @@ const allMonsters = {
                 "5th": { slots: 2, spells: ["flame strike", "greater restoration"] },
                 "6th": { slots: 1, spells: ["heroes' feast"] }
             }
-        }
+        },
+        flavorText: "An androsphinx bears the head of a humanoid male on its lion's body. Outwardly gruff and downcast, it often guards sacred sites and tests those who seek them with riddles and trials of combat.",
+        lairDescription: "A sphinx presides over an ancient temple, tomb, or vault of knowledge. The sphinx's innate magic has power over the flow of time within its lair.",
+        lairActions: [
+            { description: "The flow of time is altered such that every creature in the lair must reroll initiative. The sphinx can choose not to reroll." },
+            { description: "The effects of time are altered such that every creature in the lair must succeed on a DC 15 Constitution saving throw or become 1d20 years older or younger (the sphinx's choice), but never any younger than 1 year old. A greater restoration spell can restore a creature's age to normal." },
+            { description: "The flow of time within the lair is altered such that everything within moves up to 10 years forward or backward (sphinx's choice). Only the sphinx is immediately aware of the time change. A wish spell can return the caster and up to seven other creatures designated by the caster to their normal time." },
+            { description: "The sphinx shifts itself and up to seven other willing creatures it can see in its lair to another plane of existence. Once outside its lair, the sphinx can't use this lair action again until it finishes a short or long rest." }
+        ],
+        regionalEffects: [
+            "Any creature that completes a short or long rest within 1 mile of the sphinx's lair is contacted by the sphinx in their dreams. The sphinx can communicate information to the creature and receive answers in return.",
+            "Divination spells cast within 1 mile of the sphinx's lair have a 10 percent chance to provide misleading information about events involving the sphinx, at the DM's discretion.",
+            "The sphinx can choose to know whenever a creature enters within 1 mile of its lair, and it can choose to be aware of the creature's identity."
+        ]
     },
     "sphinx-gyno": {
         name: "Gynosphinx",
@@ -13472,7 +13804,19 @@ const allMonsters = {
                 "4th": { slots: 3, spells: ["banishment", "greater invisibility"] },
                 "5th": { slots: 1, spells: ["legend lore"] }
             }
-        }
+        },
+        flavorText: "A gynosphinx is the guardian of sacred sites, bearing a humanoid head, the body of a lion, and feathered wings. Such creatures treasure knowledge and test those who seek the sites they protect with riddles and puzzles.",
+        lairDescription: "A sphinx presides over an ancient temple, tomb, or vault of knowledge. Sphinxes act to protect sacred places and test visitors with riddles and puzzles.",
+        lairActions: [
+            { description: "The sphinx creates a localized temporal anomaly in a 20-foot cube within its lair. Each creature within that cube must succeed on a DC 15 Constitution saving throw or be affected as if by the slow spell until initiative count 20 on the next round." },
+            { description: "The sphinx shifts itself and up to seven other willing creatures it can see in its lair to another plane of existence. Once outside its lair, the sphinx can't use this lair action again until it finishes a short or long rest." },
+            { description: "The sphinx uses its lair's magic to perceive the future. Until initiative count 20 on the next round, the sphinx can add 1d6 to the result of any ability check, attack roll, or saving throw it makes." }
+        ],
+        regionalEffects: [
+            "Any creature that completes a short or long rest within 1 mile of the sphinx's lair is contacted by the sphinx in their dreams. The sphinx can communicate information to the creature and receive answers in return.",
+            "Divination spells cast within 1 mile of the sphinx's lair have a 10 percent chance to provide information about the sphinx's location, in addition to the intended results of the spell.",
+            "The sphinx can choose to extend its Truesight to any willing creature within 1 mile of its lair for as long as it concentrates on that creature."
+        ]
     },
     "swarm-of-bats": {
         name: "Swarm of Bats",
@@ -19216,7 +19560,20 @@ const allMonsters = {
                 { name: "Unarmed Strike", description: "The vampire makes one unarmed strike." },
                 { name: "Bite (Costs 2 Actions)", description: "The vampire makes one bite attack." }
             ]
-        }
+        },
+        flavorText: "Awakened to an endless night, vampires hunger for the life they have lost and sate that hunger by drinking the blood of the living. Vampires are intelligent and cunning creatures, using their supernatural abilities and charm to manipulate mortals and establish dark domains.",
+        lairDescription: "A vampire chooses a grand yet defensible location for its lair, such as a castle, fortified manor, or underground complex. The vampire's lair contains a resting place—a coffin or sarcophagus—where it can retreat during the day.",
+        lairActions: [
+            { description: "The vampire calls forth spectral bats that swarm around its enemies. One creature the vampire can see within 60 feet of it must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) necrotic damage and be blinded until initiative count 20 on the next round." },
+            { description: "The vampire magically calls 2d4 swarms of bats or rats, provided the sun isn't up. The called creatures arrive in 1d4 rounds, acting as allies of the vampire and obeying its telepathic commands. The beasts remain for 1 hour, until the vampire dies, or until the vampire dismisses them as a bonus action." },
+            { description: "An area of shadow within 30 feet of the vampire begins to writhe. Each creature in a 20-foot-radius sphere centered on that point must succeed on a DC 15 Constitution saving throw or be restrained by grasping shadows until initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "There's a noticeable increase in the populations of bats, rats, and wolves within 5 miles of the lair.",
+            "Plants within 500 feet of the lair wither, and their stems and branches become twisted and thorny.",
+            "Shadows cast within 500 feet of the lair seem abnormally gaunt and sometimes move as though alive.",
+            "A creeping fog clings to the ground within 500 feet of the vampire's lair. The fog occasionally takes eerie forms, such as grasping claws and writhing serpents."
+        ]
     },
     "vampire-spawn": {
         name: "Vampire Spawn",
@@ -19269,6 +19626,7 @@ const allMonsters = {
         senses: ["truesight 120 ft."],
         languages: "Common plus up to five other languages",
         cr: 21,
+        flavorText: "Liches are the remains of great wizards who embrace undeath as a means of preserving themselves. They further their own power at any cost, having no interest in the affairs of the living except where those affairs interfere with their own. A lich is a gaunt and skeletal humanoid with withered flesh stretched tight across its bones. Its eyes succumbed to decay long ago, but points of light burn in its empty sockets.",
         traits: [
             { name: "Legendary Resistance (3/Day)", description: "If the lich fails a saving throw, it can choose to succeed instead." },
             { name: "Rejuvenation", description: "If it has a phylactery, a destroyed lich gains a new body in 1d10 days, regaining all its hit points and becoming active again." },
@@ -19302,7 +19660,18 @@ const allMonsters = {
                 "8th": { slots: 1, spells: ["dominate monster", "power word stun"] },
                 "9th": { slots: 1, spells: ["power word kill"] }
             }
-        }
+        },
+        lairDescription: "A lich often haunts the abode it favored in life, such as a lonely tower, a## magnificent castle, or a hidden cavern. Many liches choose to construct extensive underground labyrinths to house their secrets, with the lich's sanctum at the heart of the complex.",
+        lairActions: [
+            { description: "The lich rolls a d8 and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens." },
+            { description: "The lich targets one creature it can see within 30 feet of it. A crackling cord of negative energy tethers the lich to the target. Whenever the lich takes damage, the target must make a DC 18 Constitution saving throw. On a failed save, the lich takes half the damage (rounded down), and the target takes the remaining damage. This tether lasts until initiative count 20 on the next round or until the lich or the target is no longer in the lich's lair." },
+            { description: "The lich calls forth the spirits of creatures that died in its lair. These spectral apparitions appear within 60 feet of the lich and are intangible. Until initiative count 20 on the next round, they fill a 60-foot-radius area within 60 feet of the lich with ghastly whispers and wailing. Each creature that starts its turn in this area must succeed on a DC 18 Wisdom saving throw or be frightened until initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "Creatures within 1 mile of the lich's lair are restless and have unpleasant dreams. Any spell that requires a well-rested state to prepare (such as healing spells prepared during a long rest) has a 50% chance of not being prepared.",
+            "Undead creatures within 1 mile of the lich's lair have advantage on all saving throws.",
+            "If a humanoid spends at least 1 hour within 1 mile of the lich's lair, that creature must succeed on a DC 18 Wisdom saving throw or descend into a madness determined by the Madness of the Lich table. A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
+        ]
     },
     "demilich": {
         name: "Demilich",
@@ -19396,7 +19765,19 @@ const allMonsters = {
                 "5th": { slots: 2, spells: ["contagion", "insect plague"] },
                 "6th": { slots: 1, spells: ["harm"] }
             }
-        }
+        },
+        flavorText: "In the tombs of the ancients, tyrannical monarchs and high priests demanded to be interred with their decaying servants. A mummy lord is an undead creature whose soul has been preserved in its mummified body, bound to a powerful magic item called a heart canopic jar. Such creatures can be destroyed only by destroying the jar.",
+        lairDescription: "A mummy lord presides over an ancient temple or tomb that was important to the mummy lord in life and continues to be a site of power in death. The lair contains the mummy lord's heart in a canopic jar.",
+        lairActions: [
+            { description: "Each undead creature in the lair can pinpoint the location of each living creature within 120 feet of it until initiative count 20 on the next round." },
+            { description: "Each undead in the lair has advantage on saving throws against effects that turn undead until initiative count 20 on the next round." },
+            { description: "Until initiative count 20 on the next round, any non-undead creature that tries to cast a spell of 4th level or lower in the mummy lord's lair is wracked with pain. The creature can choose another action, but if it tries to cast the spell, it must make a DC 16 Constitution saving throw. On a failed save, it takes 1d6 necrotic damage per level of the spell, and the spell has no effect and is wasted." }
+        ],
+        regionalEffects: [
+            "Food instantly molders and water instantly evaporates when brought into the lair. Other nonmagical drinks are spoiled—Loss, wine turns to vinegar, and so on.",
+            "Divination spells cast within the lair by creatures other than the mummy lord have a 25 percent chance to provide misleading results, as determined by the DM. If a divination spell already has a chance to fail or become unreliable when cast multiple times, that chance increases by 25 percent.",
+            "A creature that takes treasure from the lair is cursed until the treasure is returned. The cursed target has disadvantage on all saving throws. The curse lasts until removed by a remove curse spell or other magic."
+        ]
     },
     "mummy": {
         name: "Mummy",
@@ -20052,7 +20433,19 @@ const allMonsters = {
                 { name: "Psychic Pulse", description: "The elder brain targets one creature within 120 feet of it with which it has a psychic link. Enemies of the elder brain within 10 feet of that creature take 10 (3d6) psychic damage." },
                 { name: "Sever Psychic Link", description: "The elder brain targets one creature within 120 feet of it with which it has a psychic link. The elder brain ends the link, causing the creature to have disadvantage on all ability checks, attack rolls, and saving throws until the end of the creature's next turn." }
             ]
-        }
+        },
+        flavorText: "The ultimate expression of mind flayer domination, an elder brain sprawls within a pool of viscous brine in the heart of every mind flayer colony. It is the living memory of the colony, storing the experiences and knowledge of every illithid that has ever joined it. The elder brain commands the colony through telepathy, directing all activities and orchestrating the colony's long-term goals.",
+        lairDescription: "The elder brain's lair is at the heart of a mind flayer colony, typically a massive cavern complex deep in the Underdark. The brain pool occupies the central chamber, surrounded by passages and chambers used by the colony's illithids.",
+        lairActions: [
+            { description: "The elder brain casts wall of force." },
+            { description: "The elder brain targets one friendly creature it can sense within 120 feet of it. The target has a flash of inspiration and gains advantage on one attack roll, ability check, or saving throw it makes before the end of its next turn. If the target doesn't or can't use this benefit, the inspiration is lost." },
+            { description: "The elder brain targets one creature it can sense within 120 feet of it and anchors it by sheer force of will. The target must succeed on a DC 18 Charisma saving throw or be unable to use any method of extradimensional movement, including teleportation or travel to a different plane of existence. This effect lasts until initiative count 20 on the next round." }
+        ],
+        regionalEffects: [
+            "Creatures within 5 miles of an elder brain feel as if they are being watched, even when they aren't.",
+            "The elder brain can overhear any telepathic conversation within 5 miles of it. The creature that initiated the telepathic conversation makes a DC 18 Wisdom (Insight) check when telepathic contact is first established. If the check succeeds, the creature is aware that something is eavesdropping on the conversation.",
+            "Any creature that sleeps within 5 miles of the elder brain may be contacted by it in the creature's dreams."
+        ]
     },
 
     // ===== ORCS =====

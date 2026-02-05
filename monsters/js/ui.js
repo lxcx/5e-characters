@@ -19,6 +19,8 @@ function displayMonster(monster) {
                 </div>
             </div>
             
+            ${monster.flavorText ? `<p class="monster-flavor-text"><em>${monster.flavorText}</em></p>` : ''}
+            
             <div class="stat-block-divider"></div>
             
             <div class="monster-stats-row">
@@ -1077,19 +1079,47 @@ function closeSpellAddModal() {
 
 // Render lair actions
 function renderLairActions(monster) {
-    if (!monster.lairActions) return '';
+    if (!monster.lairActions && !monster.lairDescription && !monster.regionalEffects) return '';
     
-    return `
-        <div class="lair-section">
-            <h3 class="section-title"><i class="fa-solid fa-dungeon"></i> Lair Actions</h3>
+    let html = '<div class="lair-section">';
+    
+    // Lair description (narrative about where the creature lives)
+    if (monster.lairDescription) {
+        html += `
+            <h3 class="section-title"><i class="fa-solid fa-dungeon"></i> Lair</h3>
+            <p class="lair-description">${monster.lairDescription}</p>
+        `;
+    }
+    
+    // Lair Actions
+    if (monster.lairActions && monster.lairActions.length > 0) {
+        html += `
+            <h4 class="subsection-title">Lair Actions</h4>
             <p class="lair-intro">On initiative count 20 (losing initiative ties), the creature can take a lair action to cause one of the following effects; the creature can't use the same effect two rounds in a row:</p>
             <ul class="lair-list">
                 ${monster.lairActions.map(action => `
                     <li>${action.description}</li>
                 `).join('')}
             </ul>
-        </div>
-    `;
+        `;
+    }
+    
+    // Regional Effects
+    if (monster.regionalEffects && monster.regionalEffects.length > 0) {
+        html += `
+            <h4 class="subsection-title">Regional Effects</h4>
+            <p class="regional-intro">The region containing a legendary ${monster.name}'s lair is warped by the creature's magic, which creates one or more of the following effects:</p>
+            <ul class="regional-list">
+                ${monster.regionalEffects.map(effect => `
+                    <li>${effect}</li>
+                `).join('')}
+            </ul>
+            <p class="regional-note"><em>If the ${monster.name.toLowerCase()} dies, these effects fade over the course of 1d10 days.</em></p>
+        `;
+    }
+    
+    html += '</div>';
+    return html;
 }
 
 // Render spellcasting

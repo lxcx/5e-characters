@@ -164,10 +164,13 @@ function convertLibraryMonster(data) {
         reactions: data.reactions || [],
         legendaryActions: data.legendaryActions || null,
         lairActions: data.lairActions || null,
+        lairDescription: data.lairDescription || null,
+        regionalEffects: data.regionalEffects || null,
         spellcasting: data.spellcasting || null,
         isLegendary: !!data.legendaryActions,
         hasSpellcasting: !!data.spellcasting,
         description: data.description || `A ${data.size} ${data.type} from the ${data.source || 'Monster Manual'}.`,
+        flavorText: data.flavorText || null,
         visualDescription: data.visualDescription || undefined,
         isFromLibrary: true
     };
