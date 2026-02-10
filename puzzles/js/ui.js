@@ -90,7 +90,7 @@ function displayTrap(trap) {
             
             <div class="trap-section flavor-section">
                 <h3><i class="fa-solid fa-book"></i> Context</h3>
-                <p><em>This trap was placed here for the purpose of ${trap.reason}.</em></p>
+                <p><em>This trap was placed here ${trap.reason.charAt(0).toLowerCase() + trap.reason.slice(1)}.</em></p>
             </div>
         </div>
     `;
