@@ -791,6 +791,7 @@ function displayNPC(npc) {
             </div>
             ` : ''}
         `;
+    }
 
     // Pending Level Up section (if user chose "Choose Ability Scores & Feats")
     if (npc.pendingLevelUpChoice) {
