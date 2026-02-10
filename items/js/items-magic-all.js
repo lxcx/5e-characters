@@ -5029,6 +5029,159 @@ const allMagicItems = {
     },
 
     // ============================================
+    // LEGENDARY ITEMS (Curse of Strahd)
+    // ============================================
+
+    'holy-symbol-of-ravenkind': {
+        name: 'Holy Symbol of Ravenkind',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 1,
+        cost: 'priceless',
+        attunement: 'cleric or paladin of good alignment',
+        charges: 10,
+        recharge: 'Regains 1d6+4 expended charges daily at dawn',
+        description: 'The Holy Symbol of Ravenkind is a unique holy symbol sacred to the good-hearted people of the valley of Barovia. It is a platinum amulet shaped like the sun, with a large crystal embedded in its center. The holy symbol has 10 charges for the following properties. While holding the symbol, you can use an action to expend charges: Hold Vampires (1 charge): Present the holy symbol, and vampires and vampire spawn within 30 feet that can see it must make a DC 15 Wisdom saving throw or be paralyzed for 1 minute. A target can repeat the save at the end of each turn. Turn Undead (3 charges): Each undead that can see or hear you within 30 feet must make a DC 15 Wisdom saving throw with disadvantage. On failure, it is turned for 1 minute or until it takes damage. Sunlight (5 charges): The crystal sheds bright light in a 30-foot radius and dim light for an additional 30 feet. The light is sunlight and lasts for 10 minutes.',
+        source: 'COS'
+    },
+    'icon-of-ravenloft': {
+        name: 'Icon of Ravenloft',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 10,
+        cost: 'priceless',
+        attunement: 'creature of good alignment',
+        description: 'The Icon of Ravenloft is a 4-foot-tall, 10-pound statuette of a weeping angelic figure crafted from pure silver. While within 30 feet of the icon, a creature is under the effect of a protection from evil and good spell against fiends and undead. Only a creature attuned to the icon can use its other properties. Augury: You can use an action to cast augury, requiring no components. Once used, this property can\'t be used again until the next dawn. Bane of the Undead: You can use the icon as a holy symbol while using the Turn Undead or Turn the Unholy feature. If you do so, increase the save DC by 2. Cure Wounds: While holding the icon, you can use an action to heal a creature that you can see within 30 feet, causing it to regain 3d8+3 hit points. Once used, this property can\'t be used again until the next dawn.',
+        source: 'COS'
+    },
+    'sunsword': {
+        name: 'Sunsword',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'longsword',
+        rarity: 'legendary',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8+2',
+        damageType: 'radiant',
+        properties: ['+2 weapon', 'versatile (1d10+2)', 'finesse', 'sentient'],
+        description: 'The Sunsword is a unique blade that once belonged to Strahd\'s brother, Sergei von Zarovich. It is a sentient chaotic good weapon with an Intelligence of 11, a Wisdom of 17, and a Charisma of 16. It has hearing and normal vision out to 60 feet. The weapon can speak, read, and understand Common. While you are attuned to it, it can communicate telepathically. You gain a +2 bonus to attack and damage rolls with this weapon, which deals radiant damage instead of slashing. While the blade exists, you can use a bonus action to make it shed bright light in a 15-foot radius and dim light for an additional 15 feet (or extinguish it). The light is sunlight. Undead take an extra 1d8 radiant damage. The weapon\'s special purpose is the destruction of Strahd von Zarovich.',
+        source: 'COS'
+    },
+    'gulthias-staff': {
+        name: 'Gulthias Staff',
+        type: 'staff',
+        rarity: 'rare',
+        weight: 4,
+        cost: '10000 gp',
+        attunement: 'any',
+        charges: 10,
+        recharge: 'Regains 1d6+4 expended charges daily at dusk',
+        description: 'Made from the branch of a Gulthias tree, this staff can be wielded as a magic quarterstaff that grants a +2 bonus to attack and damage rolls. The staff has 10 charges. While holding it, you can expend charges to cast the following spells: Blight (4 charges), Speak with Plants (3 charges), Vampiric Touch (5 charges). If the staff is broken or burned, its wood releases a terrible, inhuman scream. Any blights within 300 feet of the staff that can hear the scream immediately wither and die. Curse: The staff curses any non-evil creature that attunes to it. The creature has disadvantage on attack rolls, saving throws, and ability checks. The curse persists until the creature ends its attunement to the staff.',
+        cursed: true,
+        curseDescription: 'Non-evil creatures that attune to this staff have disadvantage on all attack rolls, saving throws, and ability checks while attuned.',
+        source: 'COS'
+    },
+    'saint-markovias-thighbone': {
+        name: 'Saint Markovia\'s Thighbone',
+        type: 'weapon',
+        weaponType: 'simple',
+        subtype: 'mace',
+        rarity: 'rare',
+        weight: 4,
+        cost: '5000 gp',
+        attunement: 'any',
+        damage: '1d6',
+        damageType: 'bludgeoning',
+        properties: [],
+        description: 'Saint Markovia\'s thighbone has the properties of a mace of disruption. It deals an extra 2d6 radiant damage to fiends and undead. If a fiend or undead has 25 hit points or fewer after taking this damage, it must succeed on a DC 15 Wisdom saving throw or be destroyed. On a successful save, the creature becomes frightened of you until the end of your next turn. While you hold this weapon, it sheds bright light in a 20-foot radius and dim light for an additional 20 feet.',
+        source: 'COS'
+    },
+    'blood-spear': {
+        name: 'Blood Spear',
+        type: 'weapon',
+        weaponType: 'simple',
+        subtype: 'spear',
+        rarity: 'uncommon',
+        weight: 3,
+        cost: '500 gp',
+        attunement: 'any',
+        damage: '1d6+2',
+        damageType: 'piercing',
+        properties: ['+2 weapon', 'versatile (1d8+2)', 'thrown (20/60)'],
+        description: 'You gain a +2 bonus to attack and damage rolls made with this magic weapon. Whenever you use this spear to reduce a creature to 0 hit points, you gain 2d6 temporary hit points. The spear is made from the finger bone of a Barovian witch, carved into the shape of a spear and tipped with a shard of iron.',
+        source: 'COS'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Princes of the Apocalypse - Elemental Weapons)
+    // ============================================
+
+    'tinderstrike': {
+        name: 'Tinderstrike',
+        type: 'weapon',
+        weaponType: 'simple',
+        subtype: 'dagger',
+        rarity: 'legendary',
+        weight: 1,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d4+2',
+        damageType: 'piercing',
+        properties: ['+2 weapon', 'finesse', 'light', 'thrown (20/60)'],
+        description: 'A flint dagger, Tinderstrike is uncommonly sharp, and sparks cascade off its edge whenever it strikes something solid. Its handle isite and has a pommel carved to resemble a flickering flame. You gain a +2 bonus to attack and damage rolls, and deal an extra 2d6 fire damage on a hit. Fire Mastery: You gain the following benefits while holding Tinderstrike: You can speak Ignan. You have resistance to fire damage. You can cast dominate monster (DC 17) on a fire elemental once per dawn. Dance of the All-Consuming Fire: While inside a fire node, you can perform a ritual to create a devastation orb of fire (usable once per dawn). Flaw: Tinderstrike makes its wielder impatient and rash. You gain the flaw: "I act without thinking and take risks without weighing the consequences."',
+        source: 'POTA'
+    },
+    'ironfang': {
+        name: 'Ironfang',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'war pick',
+        rarity: 'legendary',
+        weight: 2,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8+2',
+        damageType: 'piercing',
+        properties: ['+2 weapon'],
+        description: 'A war pick forged from a single piece of iron, Ironfang has a fang-like head and a handle wrapped in leather. You gain a +2 bonus to attack and damage rolls, and deal an extra 1d8 thunder damage on a hit. Earth Mastery: You gain the following benefits while holding Ironfang: You can speak Terran. You have resistance to acid damage. You have tremorsense out to 60 feet. You can sense precious metals and stones, such as gold and gems, within 60 feet. You can cast shatter (DC 17, 3 charges, regains 1d3 daily at dawn). The Rumbling: If you are inside an earth node, you can perform a ritual to destroy any portal to the Elemental Plane of Earth (usable once per dawn). Flaw: Ironfang heightens its wielder\'s destructive nature. You gain the flaw: "I like to break things and cause ruin."',
+        source: 'POTA'
+    },
+    'windvane': {
+        name: 'Windvane',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'spear',
+        rarity: 'legendary',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d6+2',
+        damageType: 'piercing',
+        properties: ['+2 weapon', 'finesse', 'versatile (1d8+2)', 'thrown (20/60)'],
+        description: 'A silver spear that glistens like moonlight, Windvane has the finesse property and deals an extra 1d6 lightning damage on a hit. You gain a +2 bonus to attack and damage rolls. Air Mastery: You gain the following benefits while holding Windvane: You can speak Auran. You have resistance to lightning damage. You can cast dominate monster (DC 17) on an air elemental once per dawn. Song of the Four Winds: While inside an air node, you can perform a ritual to create a devastation orb of air (usable once per dawn). Flaw: Windvane makes its wielder flighty and unreliable. You gain the flaw: "I\'m never happy with what I have—I always want more."',
+        source: 'POTA'
+    },
+    'drown': {
+        name: 'Drown',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'trident',
+        rarity: 'legendary',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d6+1',
+        damageType: 'piercing',
+        properties: ['+1 weapon', 'versatile (1d8+1)', 'thrown (20/60)'],
+        description: 'This steel trident is decorated with bronze barnacles along the haft and has a sea-green jewel just below the tines and a silver shell emblazoned on the haft. It floats on the surface of water and hovers in place when submerged, always cool to the touch and water can\'t damage it. You gain a +1 bonus to attack and damage rolls, and deal an extra 1d8 cold damage on a hit. Water Mastery: You gain the following benefits: You can speak Aquan. You have resistance to cold damage. You can cast dominate monster (DC 17) on a water elemental once per dawn. Tears of Endless Anguish: While inside a water node, you can perform a ritual to create a devastation orb of water (usable once per dawn). Flaw: Drown makes its wielder covetous. You gain the flaw: "I demand and deserve the largest share of the spoils." After 24 hours attuned, barnacles form on your skin (removable only by greater restoration).',
+        cursed: true,
+        curseDescription: 'After 24 consecutive hours attuned to Drown, barnacles form on your skin. They can only be removed by greater restoration or similar magic, but not while you remain attuned.',
+        source: 'POTA'
+    },
+
+    // ============================================
     // ARTIFACTS (DMG)
     // ============================================
 
