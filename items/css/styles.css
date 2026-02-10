@@ -1089,6 +1089,27 @@ button:active {
     white-space: nowrap;
 }
 
+/* Curse Toggle */
+.curse-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 15px 0;
+    padding: 12px 15px;
+    background: rgba(139, 0, 0, 0.05);
+    border-radius: 8px;
+    flex-wrap: nowrap;
+}
+
+.toggle-switch.curse input:checked + .toggle-slider.curse {
+    background-color: #8b0000;
+}
+
+.toggle-text.curse {
+    color: #8b0000;
+    font-weight: 500;
+}
+
 .attunement-detail:hover {
     background-color: rgba(201, 162, 39, 0.2);
 }

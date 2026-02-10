@@ -74,6 +74,15 @@ function displayItem(item) {
                 ` : ''}
             </div>
             
+            <!-- Curse Toggle -->
+            <div class="curse-toggle">
+                <label class="toggle-switch curse">
+                    <input type="checkbox" id="curseToggle" ${item.cursed ? 'checked' : ''} onchange="toggleCurse()">
+                    <span class="toggle-slider curse"></span>
+                </label>
+                <span class="toggle-text curse"><i class="fa-solid fa-skull"></i> Cursed Item</span>
+            </div>
+            
             ${item.charges ? renderCharges(item) : ''}
             
             <div class="item-description editable-block" onclick="editItemDescription()" title="Click to edit">
@@ -103,12 +112,10 @@ function displayItem(item) {
                     <i class="fa-solid fa-skull"></i>
                     <span>This item is cursed</span>
                 </div>
-                ${item.curseDescription ? `
                 <div class="curse-description" style="margin-top: 10px; padding: 10px; background: rgba(139, 0, 0, 0.1); border-left: 3px solid #8b0000; border-radius: 4px;">
                     <div style="font-weight: bold; color: #8b0000; margin-bottom: 5px;"><i class="fa-solid fa-scroll"></i> Curse Effect</div>
-                    <div class="curse-text editable" id="editable-curseDescription" onclick="editCurseDescription()" style="cursor: pointer; font-style: italic;">${item.curseDescription}</div>
+                    <div class="curse-text editable" id="editable-curseDescription" onclick="editCurseDescription()" style="cursor: pointer; font-style: italic;">${item.curseDescription || 'Click to add curse description...'}</div>
                 </div>
-                ` : ''}
             ` : ''}
             
             ${item.source ? `
@@ -530,6 +537,24 @@ function toggleAttunement() {
         currentItem.attunement = true;
     } else {
         currentItem.attunement = false;
+    }
+    displayItem(currentItem);
+}
+
+// Toggle curse
+function toggleCurse() {
+    if (!currentItem) return;
+    
+    const checkbox = document.getElementById('curseToggle');
+    if (checkbox.checked) {
+        currentItem.cursed = true;
+        // Add a default curse description if none exists
+        if (!currentItem.curseDescription) {
+            currentItem.curseDescription = getRandomCurse();
+        }
+    } else {
+        currentItem.cursed = false;
+        delete currentItem.curseDescription;
     }
     displayItem(currentItem);
 }
