@@ -6,7 +6,7 @@
 
         body {
             font-family: 'Bookinsanity', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #7a200d 0%, #3e0c02 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             padding: 20px;
         }
