@@ -5180,6 +5180,664 @@ const allMagicItems = {
         curseDescription: 'After 24 consecutive hours attuned to Drown, barnacles form on your skin. They can only be removed by greater restoration or similar magic, but not while you remain attuned.',
         source: 'POTA'
     },
+    'lost-crown-of-besilmer': {
+        name: 'Lost Crown of Besilmer',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        charges: 3,
+        recharge: 'Regains 1d3 expended charges daily at dawn',
+        description: 'This dwarven battle-helm is made of steel with a golden circlet. While attuned, you have resistance to psychic damage and advantage on saving throws against being charmed. As a bonus action, you can expend 1 charge to inspire one creature you can see within 60 feet. For 1 minute or until you inspire a different creature, the inspired creature can add a d6 to one ability check, attack roll, or saving throw it makes. This can be done after rolling but before determining success.',
+        source: 'POTA'
+    },
+    'orcsplitter': {
+        name: 'Orcsplitter',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'greataxe',
+        rarity: 'legendary',
+        weight: 7,
+        cost: 'priceless',
+        attunement: 'good-aligned dwarf, fighter, or paladin',
+        damage: '1d12+2',
+        damageType: 'slashing',
+        properties: ['+2 weapon', 'heavy', 'two-handed'],
+        description: 'A mighty dwarven greataxe forged to destroy orcs. You gain a +2 bonus to attack and damage rolls. When you hit an orc with this weapon, the orc takes an extra 2d12 slashing damage. Hurl: You can throw this weapon, and it returns to your hand immediately after the attack. Range 20/60. Orc Detection: While holding this weapon, you can use an action to detect the presence of orcs within 1 mile. You learn the direction to orcs, though not their exact location or number.',
+        source: 'POTA'
+    },
+    'devastation-orb': {
+        name: 'Devastation Orb',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 3,
+        cost: '10000 gp',
+        attunement: 'none',
+        description: 'A devastation orb is an elemental bomb that can be created only by performing a ritual at an elemental node. The type of orb depends on the node (air, earth, fire, or water). The orb can be thrown (range 20/60) as an action. On impact, it explodes in a 1-mile-radius sphere. Each creature in the area must make a DC 18 Dexterity saving throw, taking 12d6 damage (type depends on orb) on failure or half on success. The explosion also creates environmental effects lasting 24 hours: Air (hurricane winds), Earth (earthquakes and fissures), Fire (firestorms), Water (flooding).',
+        source: 'POTA'
+    },
+    'claws-of-the-umber-hulk': {
+        name: 'Claws of the Umber Hulk',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'These heavy gauntlets are made of thick leather and reinforced with umber hulk claws. While wearing them, you gain a burrowing speed of 20 feet, and you can tunnel through solid rock at a rate of 1 foot per round. You can use your claws as natural melee weapons. If you hit with them, you deal slashing damage equal to 1d8 + your Strength modifier.',
+        source: 'POTA'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Out of the Abyss)
+    // ============================================
+
+    'dawnbringer': {
+        name: 'Dawnbringer',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'longsword',
+        rarity: 'legendary',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'creature of non-evil alignment',
+        damage: '1d8+2',
+        damageType: 'radiant',
+        properties: ['+2 weapon', 'versatile (1d10+2)', 'finesse', 'sentient'],
+        description: 'Dawnbringer appears as a gilded hilt until activated, when a blade of pure radiance springs forth. You gain a +2 bonus to attack and damage rolls, and the weapon deals radiant damage instead of slashing. When you hit an undead creature, it takes an extra 1d8 radiant damage. The blade emits bright light in a 15-foot radius and dim light for an additional 15 feet; this light is sunlight. As an action, you can change the light radius (max 30/30, min 10/10). You can also use the sword to cast lesser restoration once per day. Sentience: Neutral good, Int 12, Wis 15, Cha 14. Hearing and darkvision 120 ft. Speaks Common telepathically. Fears darkness and abandonment.',
+        source: 'OOA'
+    },
+    'piwafwi-of-fire-resistance': {
+        name: 'Piwafwi of Fire Resistance',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This dark spider-silk cloak is made by drow. While wearing it, you have advantage on Stealth checks, and you have resistance to fire damage. In an area of dim light or darkness, you can pull the hood up to become invisible. The cloak loses its magic when exposed to sunlight for 1 hour.',
+        source: 'OOA'
+    },
+    'stonespeaker-crystal': {
+        name: 'Stonespeaker Crystal',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This multifaceted crystal allows you to communicate with earth elementals, stone giants, and other creatures associated with elemental earth. While holding the crystal, you can cast speak with animals (earth creatures only) at will. Additionally, you can cast stone shape once per day without expending a spell slot. The crystal also grants you a +1 bonus to Intelligence (Investigation) checks made to find secret doors in stone surfaces.',
+        source: 'OOA'
+    },
+    'wand-of-viscid-globs': {
+        name: 'Wand of Viscid Globs',
+        type: 'wand',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'spellcaster',
+        charges: 7,
+        recharge: 'Regains 1d6+1 expended charges daily at dawn',
+        description: 'Crafted by the drow, this slender black wand has 7 charges. While holding it, you can use an action to expend 1 charge to fire a glob of viscid material at a creature you can see within 60 feet. The target must succeed on a DC 13 Dexterity saving throw or be restrained by the sticky glob. A creature can use its action to try to free itself or another creature within reach from the glob with a DC 13 Strength check. The glob can also be attacked (AC 10, 5 hp, immune to poison and psychic). The wand crumbles to dust if you expend its last charge.',
+        source: 'OOA'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Storm King's Thunder)
+    // ============================================
+
+    'gurts-greataxe': {
+        name: 'Gurt\'s Greataxe',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'greataxe',
+        rarity: 'legendary',
+        weight: 325,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '3d12+1',
+        damageType: 'slashing',
+        properties: ['+1 weapon', 'heavy', 'two-handed', 'giant-sized'],
+        description: 'This massive weapon was forged for the frost giant lord Gurt. A Medium creature can attune to it but has disadvantage on attack rolls. You gain a +1 bonus to attack and damage rolls. When you hit a human, the target takes an extra 2d12 slashing damage. The axe sheds light as a torch when the temperature drops below 0°F. You can use the axe to cast a cold-damage version of heat metal (save DC 13) once per dawn. The Uthgardt barbarians recognize this axe and will attack any giant wielding it.',
+        source: 'SKT'
+    },
+    'korolnor-scepter': {
+        name: 'Korolnor Scepter',
+        type: 'rod',
+        rarity: 'legendary',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'The Korolnor Scepter is a 3-foot-long rod of mithral with a blue sapphire set in its head. While attuned, you can use the scepter to cast the following spells: telekinesis (at will), globe of invulnerability (1/day), and wall of force (1/day). Additionally, while holding the scepter, you have advantage on Charisma (Persuasion) checks made to influence giants, and you can speak, read, and understand Giant.',
+        source: 'SKT'
+    },
+    'potion-of-giant-size': {
+        name: 'Potion of Giant Size',
+        type: 'potion',
+        rarity: 'legendary',
+        weight: 0.5,
+        cost: 'priceless',
+        attunement: 'none',
+        description: 'When you drink this potion, you become Huge for 24 hours. Your Strength becomes 25 if it isn\'t already higher. For every 10 feet you walk, the ground within 10 feet of you shakes. Each structure within 10 feet of you takes 50 bludgeoning damage when you walk past or through it. Objects that aren\'t being worn or carried within 10 feet of you take 2d10 bludgeoning damage.',
+        source: 'SKT'
+    },
+    'banner-of-the-krig-rune': {
+        name: 'Banner of the Krig Rune',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 1,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This purple pennant is crafted from wyvern leather and emblazoned with the krig (war) rune. As a bonus action while holding the banner, you can invoke the rune to gain one of the following benefits for 1 minute: All friendly creatures within 10 feet of you gain a +1 bonus to attack rolls and AC, or all hostile creatures within 10 feet of you have disadvantage on attack rolls. Once used, this property can\'t be used again until the next dawn.',
+        source: 'SKT'
+    },
+    'blod-stone': {
+        name: 'Blod Stone',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 1,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This red-black gemstone is carved with the blod (blood) rune. While holding it, you gain darkvision out to 60 feet. You can use an action to cause the stone to shed dim red light in a 10-foot radius or extinguish the light. As a bonus action, you can invoke the rune to heal yourself for 2d10 hit points. Once you heal yourself with this stone, you can\'t do so again until the next dawn.',
+        source: 'SKT'
+    },
+    'rod-of-the-vonindod': {
+        name: 'Rod of the Vonindod',
+        type: 'rod',
+        rarity: 'very-rare',
+        weight: 10,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'The fire giant Duke Zalto crafted this adamantine rod as part of his scheme to rebuild the Vonindod colossus. The rod is 4 feet long and has the following properties: It can be used as a magic quarterstaff that deals an extra 1d6 fire damage. While holding it, you have resistance to fire damage. As an action, you can cause the rod to detect the presence of Vonindod fragments within 1 mile, learning the direction to the nearest fragment.',
+        source: 'SKT'
+    },
+    'conch-of-teleportation': {
+        name: 'Conch of Teleportation',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 2,
+        cost: '10000 gp',
+        attunement: 'any',
+        description: 'This magic conch shell can be blown as an action to teleport you and up to 5 willing creatures of your choice within 30 feet of you to a specific location. The conch knows only one destination, determined when it was created (usually a giant lord\'s court). Once used, the conch can\'t be used again until the next dawn.',
+        source: 'SKT'
+    },
+    'navigation-orb': {
+        name: 'Navigation Orb',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 3,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This crystal orb was created by cloud giant navigators. While holding the orb, you can use it to determine which way is north, and you always know your exact location as long as you are on the same plane of existence as the orb was created on. The orb also grants you a +5 bonus to Wisdom (Survival) checks made to navigate.',
+        source: 'SKT'
+    },
+    'shard-of-the-ise-rune': {
+        name: 'Shard of the Ise Rune',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 0.5,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This shard of ice never melts and is inscribed with the ise (ice) rune. While attuned, you have resistance to cold damage. You can use a bonus action to invoke the rune, causing a creature you can see within 60 feet to make a DC 14 Constitution saving throw or take 2d6 cold damage and have its speed halved until the end of its next turn. Once used, this property can\'t be used again until the next dawn.',
+        source: 'SKT'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Tomb of Annihilation)
+    // ============================================
+
+    'bookmark': {
+        name: 'Bookmark',
+        type: 'weapon',
+        weaponType: 'simple',
+        subtype: 'dagger',
+        rarity: 'legendary',
+        weight: 1,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d4+3',
+        damageType: 'piercing',
+        properties: ['+3 weapon', 'finesse', 'light', 'thrown (20/60)', 'sentient'],
+        description: 'This +3 dagger belongs to Artus Cimber and has the soul of a djinni trapped inside. You gain a +3 bonus to attack and damage rolls. The dagger can speak, read, and understand Common, Draconic, Dwarvish, and Elvish. It communicates telepathically. The dagger can cast dimension door once per day, targeting only its wielder and itself. Sentience: Chaotic good, Int 10, Wis 12, Cha 16. It yearns for freedom and will aid anyone who promises to free the djinni trapped within.',
+        source: 'TOA'
+    },
+    'amulet-of-the-black-skull': {
+        name: 'Amulet of the Black Skull',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 1,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This obsidian amulet is carved in the likeness of a screaming humanoid skull. While wearing the amulet, you can use an action to speak its command word to transport yourself and anything you are wearing or carrying to a specific location: the Tomb of the Nine Gods in Chult. You arrive in the tomb\'s entrance gallery. Once used, this property can\'t be used again until the next dawn. The amulet also grants you resistance to necrotic damage.',
+        source: 'TOA'
+    },
+    'ghost-lantern': {
+        name: 'Ghost Lantern',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'A ghost is trapped inside this lantern. While holding the lantern, you can command the ghost to shed bright light in a 30-foot radius and dim light for an additional 30 feet. As an action, you can command the ghost to cast mage hand, which allows the hand to interact with ethereal objects and creatures. The lantern grants you advantage on Wisdom (Perception) checks made to find invisible creatures.',
+        source: 'TOA'
+    },
+    'scorpion-armor': {
+        name: 'Scorpion Armor',
+        type: 'armor',
+        subtype: 'plate',
+        rarity: 'rare',
+        weight: 65,
+        cost: '10000 gp',
+        attunement: 'any',
+        ac: 18,
+        strengthReq: 15,
+        stealthDisadvantage: true,
+        description: 'This plate armor is fashioned from scorpion chitin. While wearing it, you have resistance to poison damage, and you can use a bonus action to cause a scorpion tail stinger to extend from the armor\'s backplate and make a melee weapon attack against a creature within 5 feet of you. You are proficient with this attack, which deals 1d10 piercing damage plus 1d10 poison damage on a hit.',
+        source: 'TOA'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Waterdeep: Dragon Heist)
+    // ============================================
+
+    'azuredge': {
+        name: 'Azuredge',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'battleaxe',
+        rarity: 'legendary',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8+3',
+        damageType: 'slashing',
+        properties: ['+3 weapon', 'versatile (1d10+3)', 'thrown (60/180)', 'sentient'],
+        description: 'Forged by Ahghairon, this sentient battleaxe was made to defend Waterdeep. You gain a +3 bonus to attack and damage rolls. When you hit a fiend or undead, it takes an extra 2d6 radiant damage. The Shield spell provides no defense against Azuredge. You can throw the axe (3 charges, regains all at dawn) and it returns at the end of your turn. Sentience: Lawful neutral, Int 12, Wis 15, Cha 15. Senses non-lawful creatures within 120 ft. If used against its will, the axe becomes 10x heavier and adheres to surfaces.',
+        source: 'WDH'
+    },
+    'blackstaff': {
+        name: 'Blackstaff',
+        type: 'staff',
+        rarity: 'legendary',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'wizard who is the Blackstaff heir',
+        charges: 20,
+        recharge: 'Regains 2d8+4 expended charges daily at dawn',
+        description: 'The Blackstaff is Waterdeep\'s symbol of arcane authority. You gain a +2 bonus to AC, saving throws, and spell attack rolls. As a magic quarterstaff, it grants +2 to attack and damage. Spells (charges): cone of cold (5), fireball (5), globe of invulnerability (6), hold monster (5), levitate (2), lightning bolt (5), magic missile (1), ray of enfeeblement (1), wall of force (5). You can also cast dispel magic (1 charge) and drain spell slots from creatures. Sentience: Int 22, Wis 15, Cha 18. Contains spirits of all previous Blackstaffs, with Khelben Arunsun dominant.',
+        source: 'WDH'
+    },
+    'dragonstaff-of-ahghairon': {
+        name: 'Dragonstaff of Ahghairon',
+        type: 'staff',
+        rarity: 'legendary',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'This staff was created by Ahghairon to prevent dragons from entering Waterdeep. While holding the staff, you can use a bonus action to make dragons within 60 feet of you frightened of you for 1 minute (DC 18 Wisdom save). A dragon can repeat the save at the end of each turn. As an action, you can target a dragon within 60 feet, forcing it to make a DC 18 Constitution save or be paralyzed for 1 minute. It can repeat the save at the end of each turn. Each property can be used once per dawn.',
+        source: 'WDH'
+    },
+    'lords-ensemble': {
+        name: 'Lord\'s Ensemble',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 10,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This outfit consists of a helm, a cloak, a rod, and a suit of plate armor. While wearing the full ensemble, you have advantage on Charisma checks made to influence nobles and members of Waterdeep\'s government. The helm grants darkvision 60 ft. The cloak grants resistance to poison damage. The rod can cast dominate person (DC 15) once per day. The armor grants +2 to AC beyond normal plate.',
+        source: 'WDH'
+    },
+    'bracer-of-flying-daggers': {
+        name: 'Bracer of Flying Daggers',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This armband appears to have thin daggers strapped to it. As a bonus action, you can pull up to two magic daggers from the bracer and immediately throw them, making a ranged attack with each dagger. A dagger vanishes if you don\'t throw it immediately, and the daggers disappear right after they hit or miss. The bracer never runs out of daggers.',
+        source: 'WDH'
+    },
+    'knaves-eye-patch': {
+        name: 'Knave\'s Eye Patch',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 0,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'While wearing this eye patch, you have advantage on Wisdom (Perception) checks that rely on sight. If you have the Sunlight Sensitivity trait, you don\'t have disadvantage on attack rolls or Perception checks that rely on sight when you, your target, or what you\'re trying to see is in direct sunlight. Additionally, you can see in dim light within 30 feet of you as if it were bright light.',
+        source: 'WDH'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Waterdeep: Dungeon of the Mad Mage)
+    // ============================================
+
+    'black-crystal-tablet': {
+        name: 'Black Crystal Tablet',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 5,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'This slab of obsidian is covered in glowing runes that shift and change. While holding the tablet, you can use it as a spellcasting focus, and you know the thaumaturgy cantrip. The tablet has 10 charges and regains 1d6+4 daily at dawn. You can expend charges to cast: dispel magic (3), remove curse (3), nondetection (3), greater restoration (5), or plane shift (7). Additionally, you can cast commune with the tablet once per day without expending charges.',
+        source: 'WDMM'
+    },
+    'blast-scepter': {
+        name: 'Blast Scepter',
+        type: 'rod',
+        rarity: 'very-rare',
+        weight: 2,
+        cost: '25000 gp',
+        attunement: 'any',
+        charges: 5,
+        recharge: 'Regains 1d4+1 expended charges daily at dawn',
+        description: 'This rod can be wielded as a magic mace that grants a +1 bonus to attack and damage rolls. The rod has 5 charges. While holding it, you can use an action to expend charges to cast: thunderwave (1 charge, 2nd level), shatter (2 charges), or lightning bolt (3 charges). The spell save DC is 15.',
+        source: 'WDMM'
+    },
+    'shield-of-the-uven-rune': {
+        name: 'Shield of the Uven Rune',
+        type: 'shield',
+        rarity: 'very-rare',
+        weight: 6,
+        cost: '25000 gp',
+        attunement: 'any',
+        ac: 2,
+        acBonus: 2,
+        description: 'This shield is inscribed with the uven (enemy) rune. While holding the shield, you have a +1 bonus to AC in addition to the shield\'s normal bonus. The shield has 3 charges. When you are hit by an attack, you can use your reaction to expend 1 charge to reduce the damage by 1d8. When you expend the last charge, roll a d20. On a 1, the shield loses its magic. Otherwise, it regains 1 charge daily at dawn.',
+        source: 'WDMM'
+    },
+    'dagger-of-blindsight': {
+        name: 'Dagger of Blindsight',
+        type: 'weapon',
+        weaponType: 'simple',
+        subtype: 'dagger',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'any',
+        damage: '1d4',
+        damageType: 'piercing',
+        properties: ['finesse', 'light', 'thrown (20/60)'],
+        description: 'This dagger has a serrated blade made of a strange black metal. While attuned to this weapon, you have blindsight with a range of 30 feet. The dagger functions as a normal magic dagger for attack and damage.',
+        source: 'WDMM'
+    },
+    'horn-of-the-endless-maze': {
+        name: 'Horn of the Endless Maze',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 2,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'You can use an action to blow this horn. When you do, choose a creature within 600 feet that can hear the horn. That creature must succeed on a DC 15 Wisdom saving throw or be transported to a random location in the Endless Maze (a layer of Pandemonium). The creature remains there until it finds one of the plane\'s exits. Once used, the horn can\'t be used again until 7 days have passed.',
+        source: 'WDMM'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Icewind Dale: Rime of the Frostmaiden)
+    // ============================================
+
+    'ythryn-mythallar': {
+        name: 'Ythryn Mythallar',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'This massive crystal sphere powers the Netherese city of Ythryn. A creature attuned to it can use an action to cast one of the following spells without material components: control weather, fabricate, move earth, or telepathy. The Mythallar regains the ability to cast each spell at dawn. Additionally, a spellcaster attuned to the Mythallar doesn\'t need material components for any spell cast within 500 feet of it, as long as the spell doesn\'t consume the component.',
+        source: 'IDRF'
+    },
+    'scroll-of-the-comet': {
+        name: 'Scroll of the Comet',
+        type: 'scroll',
+        rarity: 'legendary',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'none',
+        description: 'By using an action to read this scroll, you cause a comet to fall from the sky and crash into a point you can see within 1 mile of you. Each creature within 50 feet of that point must make a DC 20 Dexterity saving throw, taking 30d6 bludgeoning damage and 30d6 fire damage on a failed save, or half as much on a success. The area becomes difficult terrain covered in debris and flames. The scroll is destroyed after use.',
+        source: 'IDRF'
+    },
+    'scroll-of-tarrasque-summoning': {
+        name: 'Scroll of Tarrasque Summoning',
+        type: 'scroll',
+        rarity: 'legendary',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'none',
+        description: 'By using an action to read this scroll, you summon a tarrasque that appears in an unoccupied space you can see within 1 mile of you. The tarrasque is hostile to all creatures and attacks the nearest creature to it. The tarrasque remains until destroyed. The scroll is destroyed after use.',
+        source: 'IDRF'
+    },
+    'abracadabrus': {
+        name: 'Abracadabrus',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 25,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This ornate, multi-compartmented jewelry box is decorated with tiny glass gems that flash when the item\'s magic is activated. The box has 20 charges. While holding it, you can use an action to speak one of the box\'s three command words: one creates food and water (5 charges), one creates an object of precious materials worth up to 200 gp (20 charges, consumed permanently), one creates a trinket or nonmagical item worth up to 25 gp (1 charge). The box regains 1d20 charges daily at dawn.',
+        source: 'IDRF'
+    },
+    'cauldron-of-plenty': {
+        name: 'Cauldron of Plenty',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 50,
+        cost: '5000 gp',
+        attunement: 'none',
+        description: 'This thick copper cauldron can produce enough food and water to sustain up to 36 creatures for 24 hours. To activate, fill the cauldron with 10 gallons of water, heat it until boiling, and recite the command word. The cauldron then produces food and water for the specified number of creatures. This property can be used once per day.',
+        source: 'IDRF'
+    },
+    'professor-orb': {
+        name: 'Professor Orb',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 5,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'This orb contains the consciousness of a scholar or sage. While holding the orb, you can ask it questions on any topic. The orb has proficiency in four skills of the DM\'s choice (typically Arcana, History, Nature, and Religion) and has a +9 bonus to checks using those skills. The orb can speak, read, and understand four languages chosen by the DM. It can\'t see or hear beyond 60 feet and has no movement capabilities.',
+        source: 'IDRF'
+    },
+
+    // ============================================
+    // LEGENDARY ITEMS (Baldur's Gate: Descent into Avernus)
+    // ============================================
+
+    'blade-of-avernus': {
+        name: 'Blade of Avernus',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'longsword',
+        rarity: 'artifact',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8+3',
+        damageType: 'slashing',
+        properties: ['+3 weapon', 'versatile (1d10+3)', 'vorpal'],
+        description: 'This blade has the vorpal property. When you roll a 20 on an attack roll with it against a creature that has at least one head, you cut off one of its heads (if it can survive without that head, it isn\'t killed). Additionally, while you are attuned to this weapon: You can use an action to cast word of recall, and when you do, you (and up to 5 willing creatures) are teleported to the entrance of the Bleeding Citadel. You can use an action to charm a devil for 1 hour (DC 17 Charisma save negates).',
+        source: 'BGDA'
+    },
+    'fane-eater': {
+        name: 'Fane-Eater',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'battleaxe',
+        rarity: 'legendary',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8+3',
+        damageType: 'slashing',
+        properties: ['+3 weapon', 'versatile (1d10+3)'],
+        description: 'Fane-Eater is a battleaxe forged for an archdevil. You gain a +3 bonus to attack and damage rolls. When you hit a creature associated with a deity (celestials, clerics, paladins of any deity, etc.), the creature takes an extra 2d8 necrotic damage. You can use an action to cast dispel magic (as a 5th-level spell). Once used, this property can\'t be used again until the next dawn.',
+        source: 'BGDA'
+    },
+    'infernal-tack': {
+        name: 'Infernal Tack',
+        type: 'wondrous-item',
+        rarity: 'legendary',
+        weight: 30,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'A bridle, bit, reins, saddle, and stirrups made of charred bone and infernal iron. When placed on a nightmare, the infernal tack bonds to that nightmare, which thereafter becomes your steed. While riding your nightmare, you can treat it as a controlled mount. You and your nightmare can both benefit from spells that normally target only one creature. The nightmare gains +2 to AC and saving throws while you ride it.',
+        source: 'BGDA'
+    },
+    'matalotok': {
+        name: 'Matalotok',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'warhammer',
+        rarity: 'legendary',
+        weight: 2,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '1d8',
+        damageType: 'bludgeoning',
+        properties: ['versatile (1d10)'],
+        description: 'This ancient hammer was crafted by the god Thrym and favored by the demon lord Kostchtchie. It is frigid to the touch and wreathed in mist. While holding Matalotok, you are immune to cold damage. When you deal damage with Matalotok, the target and each creature within 30 feet of it take 3d6 cold damage.',
+        source: 'BGDA'
+    },
+    'obsidian-flint-dragon-plate': {
+        name: 'Obsidian Flint Dragon Plate',
+        type: 'armor',
+        subtype: 'plate',
+        rarity: 'legendary',
+        weight: 65,
+        cost: 'priceless',
+        attunement: 'none',
+        ac: 18,
+        strengthReq: 15,
+        stealthDisadvantage: true,
+        description: 'This suit of plate armor is made from the scales of an obsidian flint dragon. While wearing this armor, you gain a +2 bonus to AC, you have resistance to poison damage, and you have advantage on saving throws against the breath weapons of dragons.',
+        source: 'BGDA'
+    },
+    'helm-of-devil-command': {
+        name: 'Helm of Devil Command',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 3,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This helm is made of infernal iron and decorated with infernal symbols. While wearing it, you can use an action to cast dominate monster (DC 21) on a devil. If the devil has truesight, it has advantage on the saving throw. On a successful save, the devil is immune to the helm\'s effect for 24 hours. If you don\'t share a language with the devil, it has advantage on the save. The helm has 3 charges and regains all charges daily at dawn.',
+        source: 'BGDA'
+    },
+    'battle-standard-of-infernal-power': {
+        name: 'Battle Standard of Infernal Power',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 5,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This 8-foot-tall hellish battle standard is topped with a spear point. While holding the standard, you and all allies within 300 feet of you gain a +1 bonus to AC and attack rolls while the standard is planted in the ground or held aloft. If you are targeted by a spell that targets only you, you can use your reaction to make another creature within 30 feet of the standard the target instead.',
+        source: 'BGDA'
+    },
+    'gauntlets-of-flaming-fury': {
+        name: 'Gauntlets of Flaming Fury',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 2,
+        cost: '5000 gp',
+        attunement: 'any',
+        description: 'These brass gauntlets are covered in flame motifs. While wearing them, you can use a bonus action to cause flames to envelope both gauntlets. While ablaze, your unarmed strikes deal an extra 1d6 fire damage. The flames last until you use a bonus action to end them or you are incapacitated.',
+        source: 'BGDA'
+    },
+
+    // ============================================
+    // RARE+ ITEMS (Eberron: Rising from the Last War)
+    // ============================================
+
+    'arcane-propulsion-arm': {
+        name: 'Arcane Propulsion Arm',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 8,
+        cost: '25000 gp',
+        attunement: 'creature missing a hand or arm',
+        description: 'This prosthetic arm was developed for veterans of the Last War. The arm attaches and detaches at the elbow or shoulder. While attached, it functions identically to a normal arm. You can use the arm to make unarmed strikes that deal 1d8 force damage. As an action, you can detach the arm and throw it at a target within 60 feet, making a ranged attack. On hit, it deals 1d8 force damage and returns to you at the end of your turn.',
+        source: 'ERLW'
+    },
+    'dyrrns-tentacle-whip': {
+        name: 'Dyrrn\'s Tentacle Whip',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'whip',
+        rarity: 'very-rare',
+        weight: 3,
+        cost: '25000 gp',
+        attunement: 'any',
+        damage: '1d4',
+        damageType: 'slashing',
+        properties: ['finesse', 'reach'],
+        description: 'This whip is actually a living symbiont that has fused with your flesh. While attuned, you gain a +2 bonus to attack and damage rolls. When you hit with this weapon, you can force the target to make a DC 15 Constitution saving throw. On failure, the target takes an extra 1d6 psychic damage and is stunned until the end of your next turn. You can use this feature 3 times per long rest.',
+        source: 'ERLW'
+    },
+    'kyrzins-ooze': {
+        name: 'Kyrzin\'s Ooze',
+        type: 'wondrous-item',
+        rarity: 'very-rare',
+        weight: 0.5,
+        cost: '25000 gp',
+        attunement: 'any',
+        description: 'This symbiotic ooze bonds to your skin and acts as living armor. While bonded, you have a +1 bonus to AC and you have resistance to acid and poison damage. As an action, you can have the ooze extend a pseudopod and make a melee attack against a creature within 10 feet. On hit, it deals 3d6 acid damage. You can use this feature 3 times per long rest.',
+        source: 'ERLW'
+    },
+    'living-armor': {
+        name: 'Living Armor',
+        type: 'armor',
+        subtype: 'plate',
+        rarity: 'very-rare',
+        weight: 65,
+        cost: '25000 gp',
+        attunement: 'any',
+        ac: 18,
+        strengthReq: 15,
+        stealthDisadvantage: true,
+        description: 'This armor is a living symbiont that has bonded with you. You gain a +1 bonus to AC while wearing it. Once per turn when you deal damage to a creature, you regain hit points equal to half the damage dealt. The armor whispers dark thoughts to you. If you fail a Wisdom saving throw, you must attack the nearest creature (friend or foe) on your next turn. The armor makes a saving throw each dawn (DC 12 Wisdom); on failure, it tries to take control of you.',
+        cursed: true,
+        curseDescription: 'The armor whispers dark thoughts. On a failed Wisdom save, you must attack the nearest creature on your next turn.',
+        source: 'ERLW'
+    },
+    'docent': {
+        name: 'Docent',
+        type: 'wondrous-item',
+        rarity: 'rare',
+        weight: 1,
+        cost: '5000 gp',
+        attunement: 'warforged',
+        description: 'A docent is a sentient magical item embedded into a warforged\'s body. While installed, you gain proficiency in two skills of the docent\'s choice (typically Intelligence-based). The docent can perceive through your senses and communicate telepathically. It can cast detect magic at will. Each docent has a distinct personality and agenda. Common docents were created by House Cannith to guide newly created warforged.',
+        source: 'ERLW'
+    },
+
+    // ============================================
+    // ARTIFACT (Tomb of Annihilation)
+    // ============================================
+
+    'staff-of-the-forgotten-one': {
+        name: 'Staff of the Forgotten One',
+        type: 'staff',
+        rarity: 'artifact',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'sorcerer, warlock, or wizard',
+        charges: 7,
+        recharge: 'Regains 1d4+3 expended charges daily at dawn',
+        description: 'This crooked bone staff is topped with the skull of a forgotten archmage destroyed by Acererak, with Acererak\'s death rune etched into the skull\'s forehead. While attuned: Your proficiency bonus is doubled for Arcana and History checks. You can\'t be blinded, charmed, deafened, frightened, petrified, or stunned. Undead CR 2 or lower won\'t threaten you. Use as a +3 quarterstaff that deals extra 3d6 necrotic damage. Invoke Curse: Expend 1 charge to curse a creature within 60 feet (Con save). While cursed, target can\'t heal and has vulnerability to necrotic damage. 50% chance the imprisoned archmage tries to possess you when you expend charges (DC 20 Cha save).',
+        source: 'TOA'
+    },
+
+    // ============================================
+    // ARTIFACT (Waterdeep: Dragon Heist)
+    // ============================================
+
+    'stone-of-golorr': {
+        name: 'Stone of Golorr',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0.5,
+        cost: 'priceless',
+        attunement: 'any',
+        charges: 3,
+        recharge: 'Regains 1d3 expended charges daily at dawn',
+        description: 'This glossy, greenish-gray stone is actually an aboleth named Golorr transformed into an artifact. The stone is sentient (lawful evil, Int 18, Wis 15, Cha 18) with an alien, domineering intellect. Expend charges to cast legend lore; the aboleth shares its knowledge but cannot lie (information is often cryptic). The stone knows the location of Neverember\'s vault, that three keys are needed, and that Aurinax the gold dragon guards it. When attunement ends, DC 16 Wisdom save or lose all memories of the stone. Remove curse has a 20% chance to restore memories; greater restoration restores them automatically.',
+        source: 'WDH'
+    },
 
     // ============================================
     // ARTIFACTS (DMG)
