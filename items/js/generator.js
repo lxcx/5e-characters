@@ -131,10 +131,17 @@ function generateItem() {
     
     currentItem = { id: itemId, ...itemData };
     
-    // Add random curse if checkbox is checked
+    // Handle curse based on checkbox
     if (addCurse) {
+        // Add random curse if checkbox is checked
         currentItem.cursed = true;
-        currentItem.curseDescription = getRandomCurse();
+        if (!currentItem.curseDescription) {
+            currentItem.curseDescription = getRandomCurse();
+        }
+    } else {
+        // Remove curse if checkbox is NOT checked (even if item is inherently cursed)
+        delete currentItem.cursed;
+        delete currentItem.curseDescription;
     }
     
     displayItem(currentItem);
@@ -177,6 +184,20 @@ function rollTreasureTable(table) {
     
     const [itemId, itemData] = tableItems[Math.floor(Math.random() * tableItems.length)];
     currentItem = { id: itemId, ...itemData };
+    
+    // Handle curse based on checkbox (same as generateItem)
+    const addCurse = document.getElementById('addCurse').checked;
+    if (addCurse) {
+        currentItem.cursed = true;
+        if (!currentItem.curseDescription) {
+            currentItem.curseDescription = getRandomCurse();
+        }
+    } else {
+        // Remove curse if checkbox is NOT checked
+        delete currentItem.cursed;
+        delete currentItem.curseDescription;
+    }
+    
     displayItem(currentItem);
     
     document.getElementById('regenerateBtn').style.display = 'flex';
