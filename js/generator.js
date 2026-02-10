@@ -1,5 +1,25 @@
 // D&D 5E NPC Generator - NPC Generation (age, stats, backstory)
 
+// Lock states for regeneration - tracks which fields should be preserved
+const lockStates = {
+    name: false,
+    race: false,
+    npcClass: false,
+    occupation: false,
+    age: false,
+    gender: false,
+    alignment: false,
+    stats: false,
+    skills: false,
+    equipment: false,
+    languages: false,
+    backstory: false,
+    spells: false,
+    weapons: false,
+    background: false,
+    feats: false
+};
+
 function generateStartingCurrency(className) {
     const goldData = startingGold[className] || startingGold.commoner;
     let total = 0;

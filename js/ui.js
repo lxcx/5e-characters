@@ -1,24 +1,6 @@
 // D&D 5E NPC Generator - UI Functions (display, edit, modals)
 
 let currentNPC = null;
-const lockStates = {
-    name: false,
-    race: false,
-    npcClass: false,
-    occupation: false,
-    age: false,
-    gender: false,
-    alignment: false,
-    stats: false,
-    skills: false,
-    equipment: false,
-    languages: false,
-    backstory: false,
-    spells: false,
-    weapons: false,
-    background: false,
-    feats: false
-};
 
 function toggleLock(field) {
     lockStates[field] = !lockStates[field];
@@ -4387,5 +4369,3 @@ function copyPromptToClipboard() {
         }, 2000);
     });
 }
-
-// Export Character Sheet to PDF (opens printable view)
