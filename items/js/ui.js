@@ -16,20 +16,20 @@ function displayItem(item) {
                 <div class="config-group">
                     <label><i class="fa-solid fa-cubes"></i> Type</label>
                     <select id="itemTypeSelect" onchange="changeItemType(this.value)">
-                        <option value="weapon" ${item.type === 'weapon' ? 'selected' : ''}>Weapon</option>
+                        <option value="adventuring-gear" ${item.type === 'adventuring-gear' ? 'selected' : ''}>Adventuring Gear</option>
+                        <option value="ammunition" ${item.type === 'ammunition' ? 'selected' : ''}>Ammunition</option>
                         <option value="armor" ${item.type === 'armor' ? 'selected' : ''}>Armor</option>
-                        <option value="shield" ${item.type === 'shield' ? 'selected' : ''}>Shield</option>
+                        <option value="container" ${item.type === 'container' ? 'selected' : ''}>Container</option>
                         <option value="potion" ${item.type === 'potion' ? 'selected' : ''}>Potion</option>
                         <option value="ring" ${item.type === 'ring' ? 'selected' : ''}>Ring</option>
                         <option value="rod" ${item.type === 'rod' ? 'selected' : ''}>Rod</option>
                         <option value="scroll" ${item.type === 'scroll' ? 'selected' : ''}>Scroll</option>
+                        <option value="shield" ${item.type === 'shield' ? 'selected' : ''}>Shield</option>
                         <option value="staff" ${item.type === 'staff' ? 'selected' : ''}>Staff</option>
-                        <option value="wand" ${item.type === 'wand' ? 'selected' : ''}>Wand</option>
-                        <option value="wondrous-item" ${item.type === 'wondrous-item' ? 'selected' : ''}>Wondrous Item</option>
-                        <option value="adventuring-gear" ${item.type === 'adventuring-gear' ? 'selected' : ''}>Adventuring Gear</option>
                         <option value="tool" ${item.type === 'tool' ? 'selected' : ''}>Tool</option>
-                        <option value="container" ${item.type === 'container' ? 'selected' : ''}>Container</option>
-                        <option value="ammunition" ${item.type === 'ammunition' ? 'selected' : ''}>Ammunition</option>
+                        <option value="wand" ${item.type === 'wand' ? 'selected' : ''}>Wand</option>
+                        <option value="weapon" ${item.type === 'weapon' ? 'selected' : ''}>Weapon</option>
+                        <option value="wondrous-item" ${item.type === 'wondrous-item' ? 'selected' : ''}>Wondrous Item</option>
                     </select>
                 </div>
                 
@@ -212,82 +212,76 @@ function renderSubtypeSelector(item) {
     `;
 }
 
-// Get subtypes for a given item type
+// Get subtypes for a given item type (alphabetically sorted)
 function getSubtypesForType(type) {
     const subtypeMap = {
         'weapon': [
-            // Simple Melee
+            { value: 'battleaxe', label: 'Battleaxe' },
+            { value: 'blowgun', label: 'Blowgun' },
             { value: 'club', label: 'Club' },
             { value: 'dagger', label: 'Dagger' },
-            { value: 'greatclub', label: 'Greatclub' },
-            { value: 'handaxe', label: 'Handaxe' },
-            { value: 'javelin', label: 'Javelin' },
-            { value: 'light-hammer', label: 'Light Hammer' },
-            { value: 'mace', label: 'Mace' },
-            { value: 'quarterstaff', label: 'Quarterstaff' },
-            { value: 'sickle', label: 'Sickle' },
-            { value: 'spear', label: 'Spear' },
-            // Simple Ranged
-            { value: 'light-crossbow', label: 'Light Crossbow' },
             { value: 'dart', label: 'Dart' },
-            { value: 'shortbow', label: 'Shortbow' },
-            { value: 'sling', label: 'Sling' },
-            // Martial Melee
-            { value: 'battleaxe', label: 'Battleaxe' },
             { value: 'flail', label: 'Flail' },
             { value: 'glaive', label: 'Glaive' },
             { value: 'greataxe', label: 'Greataxe' },
+            { value: 'greatclub', label: 'Greatclub' },
             { value: 'greatsword', label: 'Greatsword' },
             { value: 'halberd', label: 'Halberd' },
+            { value: 'hand-crossbow', label: 'Hand Crossbow' },
+            { value: 'handaxe', label: 'Handaxe' },
+            { value: 'heavy-crossbow', label: 'Heavy Crossbow' },
+            { value: 'javelin', label: 'Javelin' },
             { value: 'lance', label: 'Lance' },
+            { value: 'light-crossbow', label: 'Light Crossbow' },
+            { value: 'light-hammer', label: 'Light Hammer' },
+            { value: 'longbow', label: 'Longbow' },
             { value: 'longsword', label: 'Longsword' },
+            { value: 'mace', label: 'Mace' },
             { value: 'maul', label: 'Maul' },
             { value: 'morningstar', label: 'Morningstar' },
+            { value: 'net', label: 'Net' },
             { value: 'pike', label: 'Pike' },
+            { value: 'quarterstaff', label: 'Quarterstaff' },
             { value: 'rapier', label: 'Rapier' },
             { value: 'scimitar', label: 'Scimitar' },
+            { value: 'shortbow', label: 'Shortbow' },
             { value: 'shortsword', label: 'Shortsword' },
+            { value: 'sickle', label: 'Sickle' },
+            { value: 'sling', label: 'Sling' },
+            { value: 'spear', label: 'Spear' },
             { value: 'trident', label: 'Trident' },
             { value: 'war-pick', label: 'War Pick' },
             { value: 'warhammer', label: 'Warhammer' },
-            { value: 'whip', label: 'Whip' },
-            // Martial Ranged
-            { value: 'blowgun', label: 'Blowgun' },
-            { value: 'hand-crossbow', label: 'Hand Crossbow' },
-            { value: 'heavy-crossbow', label: 'Heavy Crossbow' },
-            { value: 'longbow', label: 'Longbow' },
-            { value: 'net', label: 'Net' }
+            { value: 'whip', label: 'Whip' }
         ],
         'armor': [
-            // Light
-            { value: 'padded', label: 'Padded' },
-            { value: 'leather', label: 'Leather' },
-            { value: 'studded-leather', label: 'Studded Leather' },
-            // Medium
-            { value: 'hide', label: 'Hide' },
-            { value: 'chain-shirt', label: 'Chain Shirt' },
-            { value: 'scale-mail', label: 'Scale Mail' },
             { value: 'breastplate', label: 'Breastplate' },
-            { value: 'half-plate', label: 'Half Plate' },
-            // Heavy
-            { value: 'ring-mail', label: 'Ring Mail' },
             { value: 'chain-mail', label: 'Chain Mail' },
+            { value: 'chain-shirt', label: 'Chain Shirt' },
+            { value: 'half-plate', label: 'Half Plate' },
+            { value: 'hide', label: 'Hide' },
+            { value: 'leather', label: 'Leather' },
+            { value: 'padded', label: 'Padded' },
+            { value: 'plate', label: 'Plate' },
+            { value: 'ring-mail', label: 'Ring Mail' },
+            { value: 'scale-mail', label: 'Scale Mail' },
             { value: 'splint', label: 'Splint' },
-            { value: 'plate', label: 'Plate' }
+            { value: 'studded-leather', label: 'Studded Leather' }
         ],
         'ammunition': [
             { value: 'arrow', label: 'Arrow' },
+            { value: 'needle', label: 'Blowgun Needle' },
             { value: 'bolt', label: 'Crossbow Bolt' },
-            { value: 'bullet', label: 'Sling Bullet' },
-            { value: 'needle', label: 'Blowgun Needle' }
+            { value: 'bullet', label: 'Sling Bullet' }
         ],
         'potion': [
-            { value: 'healing', label: 'Healing' },
             { value: 'buff', label: 'Buff' },
-            { value: 'utility', label: 'Utility' },
-            { value: 'poison', label: 'Poison' }
+            { value: 'healing', label: 'Healing' },
+            { value: 'poison', label: 'Poison' },
+            { value: 'utility', label: 'Utility' }
         ],
         'scroll': [
+            // Scrolls kept in level order (more intuitive than alphabetical)
             { value: 'cantrip', label: 'Cantrip' },
             { value: '1st-level', label: '1st Level' },
             { value: '2nd-level', label: '2nd Level' },
