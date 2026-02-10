@@ -904,3 +904,162 @@ button:active {
 .export-pdf-btn:active {
     transform: translateY(0);
 }
+
+/* Editable Elements */
+.editable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: -2px -6px;
+}
+
+.editable:hover {
+    background-color: rgba(201, 162, 39, 0.2);
+}
+
+.editable-inline {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+.editable-inline:hover {
+    background-color: rgba(201, 162, 39, 0.2);
+}
+
+.editable-block {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    padding: 10px;
+    margin: -10px;
+}
+
+.editable-block:hover {
+    background-color: rgba(201, 162, 39, 0.1);
+}
+
+.editable-stat {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+
+.editable-stat:hover {
+    background-color: rgba(201, 162, 39, 0.2);
+}
+
+/* Edit Inputs */
+.edit-input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 4px 8px;
+    border: 2px solid #c9a227;
+    border-radius: 4px;
+    background: white;
+    width: 150px;
+}
+
+.edit-input-large {
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%;
+}
+
+.edit-input-small {
+    width: 100px;
+}
+
+.edit-select {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 4px 8px;
+    border: 2px solid #c9a227;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+}
+
+.edit-textarea {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px;
+    border: 2px solid #c9a227;
+    border-radius: 4px;
+    background: white;
+    width: 100%;
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Attunement Toggle */
+.attunement-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(88, 24, 13, 0.05);
+    border-radius: 8px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    width: 44px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.toggle-slider::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-label input:checked + .toggle-slider {
+    background: #c9a227;
+}
+
+.toggle-label input:checked + .toggle-slider::after {
+    transform: translateX(20px);
+}
+
+.toggle-text {
+    color: #58180d;
+    font-weight: 500;
+}
+
+.attunement-detail {
+    color: #6c757d;
+    font-style: italic;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.attunement-detail:hover {
+    background-color: rgba(201, 162, 39, 0.2);
+}

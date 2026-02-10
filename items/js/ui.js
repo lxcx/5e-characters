@@ -12,30 +12,34 @@ function displayItem(item) {
     let html = `
         <div class="item-card ${item.cursed ? 'cursed' : ''}">
             <div class="item-header">
-                <h1 class="item-name ${rarityClass}">${item.name}</h1>
+                <h1 class="item-name ${rarityClass} editable" onclick="editItemName()" title="Click to edit">${item.name}</h1>
                 <p class="item-basics">
-                    ${categoryName}${item.subtype ? ` (${capitalize(item.subtype)})` : ''}, 
-                    <span class="${rarityClass}">${rarityName}</span>
+                    <span class="editable-inline" onclick="editItemType()" title="Click to edit">${categoryName}${item.subtype ? ` (${capitalize(item.subtype)})` : ''}</span>, 
+                    <span class="${rarityClass} editable-inline" onclick="editItemRarity()" title="Click to edit">${rarityName}</span>
                 </p>
             </div>
             
             <div class="stat-block-divider"></div>
             
-            ${renderItemStats(item)}
+            ${renderEditableItemStats(item)}
             
             ${renderItemProperties(item)}
             
-            ${attunementText ? `
-                <div class="attunement-badge">
-                    <i class="fa-solid fa-link"></i>
-                    ${attunementText}
-                </div>
-            ` : ''}
+            <div class="attunement-toggle">
+                <label class="toggle-label">
+                    <input type="checkbox" id="attunementToggle" ${item.attunement ? 'checked' : ''} onchange="toggleAttunement()">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text"><i class="fa-solid fa-link"></i> Requires Attunement</span>
+                </label>
+                ${item.attunement && typeof item.attunement === 'string' ? `
+                    <span class="attunement-detail editable-inline" onclick="editAttunementRequirement()" title="Click to edit">(${item.attunement})</span>
+                ` : ''}
+            </div>
             
             ${item.charges ? renderCharges(item) : ''}
             
-            <div class="item-description">
-                ${item.description || 'No description available.'}
+            <div class="item-description editable-block" onclick="editItemDescription()" title="Click to edit">
+                ${item.description || 'Click to add description...'}
             </div>
             
             <!-- Item Image Section -->
@@ -86,8 +90,8 @@ function displayItem(item) {
     }
 }
 
-// Render item statistics
-function renderItemStats(item) {
+// Render item statistics with editable cost
+function renderEditableItemStats(item) {
     let stats = [];
     
     // Armor stats
@@ -103,42 +107,42 @@ function renderItemStats(item) {
             } else if (item.subtype === 'light') {
                 acText = `${item.ac} + Dex`;
             }
-            stats.push({ label: 'Armor Class', value: acText });
+            stats.push({ label: 'Armor Class', value: acText, editable: false });
         }
         if (item.acBonus) {
-            stats.push({ label: 'AC Bonus', value: `+${item.acBonus}` });
+            stats.push({ label: 'AC Bonus', value: `+${item.acBonus}`, editable: false });
         }
         if (item.strengthReq) {
-            stats.push({ label: 'Strength', value: `${item.strengthReq} required` });
+            stats.push({ label: 'Strength', value: `${item.strengthReq} required`, editable: false });
         }
     }
     
-    // Common stats
-    if (item.cost) {
-        stats.push({ label: 'Cost', value: item.cost });
+    // Common stats - cost is editable
+    if (item.cost || item.rarity !== 'mundane') {
+        stats.push({ label: 'Cost', value: item.cost || 'Unknown', editable: true, field: 'cost' });
     }
     
     if (item.weight) {
-        stats.push({ label: 'Weight', value: `${item.weight} lb.` });
+        stats.push({ label: 'Weight', value: `${item.weight} lb.`, editable: false });
     }
     
     // Weapon stats
     if (item.damage) {
-        stats.push({ label: 'Damage', value: item.damage });
+        stats.push({ label: 'Damage', value: item.damage, editable: false });
     }
     
     if (item.damageType) {
-        stats.push({ label: 'Damage Type', value: capitalize(item.damageType) });
+        stats.push({ label: 'Damage Type', value: capitalize(item.damageType), editable: false });
     }
     
     // Container stats
     if (item.capacity) {
-        stats.push({ label: 'Capacity', value: item.capacity });
+        stats.push({ label: 'Capacity', value: item.capacity, editable: false });
     }
     
     // Magic item stats
     if (item.charges) {
-        stats.push({ label: 'Charges', value: item.charges });
+        stats.push({ label: 'Charges', value: item.charges, editable: false });
     }
     
     if (stats.length === 0) return '';
@@ -146,7 +150,7 @@ function renderItemStats(item) {
     return `
         <div class="item-stats-row">
             ${stats.map(stat => `
-                <div class="stat-item">
+                <div class="stat-item ${stat.editable ? 'editable-stat' : ''}" ${stat.editable ? `onclick="editItemStat('${stat.field}')" title="Click to edit"` : ''}>
                     <span class="stat-label">${stat.label}</span>
                     <span class="stat-value">${stat.value}</span>
                 </div>
@@ -154,6 +158,11 @@ function renderItemStats(item) {
         </div>
         <div class="stat-block-divider"></div>
     `;
+}
+
+// Render item statistics (non-editable version for compatibility)
+function renderItemStats(item) {
+    return renderEditableItemStats(item);
 }
 
 // Render item properties
@@ -292,5 +301,231 @@ function editCurseDescription() {
         if (e.key === 'Escape') {
             displayItem(currentItem);
         }
+    });
+}
+
+// ============================================
+// ITEM EDITING FUNCTIONS
+// ============================================
+
+// Edit item name
+function editItemName() {
+    if (!currentItem) return;
+    
+    const nameEl = document.querySelector('.item-name');
+    if (!nameEl) return;
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentItem.name;
+    input.className = 'edit-input edit-input-large';
+    
+    nameEl.innerHTML = '';
+    nameEl.appendChild(input);
+    input.focus();
+    input.select();
+    
+    const saveEdit = () => {
+        const newValue = input.value.trim();
+        if (newValue) {
+            currentItem.name = newValue;
+        }
+        displayItem(currentItem);
+    };
+    
+    input.addEventListener('blur', saveEdit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveEdit();
+        if (e.key === 'Escape') displayItem(currentItem);
+    });
+}
+
+// Edit item type
+function editItemType() {
+    if (!currentItem) return;
+    
+    const typeEl = document.querySelector('.item-basics .editable-inline');
+    if (!typeEl) return;
+    
+    const types = [
+        { value: 'weapon', label: 'Weapon' },
+        { value: 'armor', label: 'Armor' },
+        { value: 'shield', label: 'Shield' },
+        { value: 'potion', label: 'Potion' },
+        { value: 'ring', label: 'Ring' },
+        { value: 'rod', label: 'Rod' },
+        { value: 'scroll', label: 'Scroll' },
+        { value: 'staff', label: 'Staff' },
+        { value: 'wand', label: 'Wand' },
+        { value: 'wondrous-item', label: 'Wondrous Item' },
+        { value: 'adventuring-gear', label: 'Adventuring Gear' },
+        { value: 'tool', label: 'Tool' },
+        { value: 'ammunition', label: 'Ammunition' }
+    ];
+    
+    const select = document.createElement('select');
+    select.className = 'edit-select';
+    types.forEach(t => {
+        const option = document.createElement('option');
+        option.value = t.value;
+        option.textContent = t.label;
+        if (t.value === currentItem.type) option.selected = true;
+        select.appendChild(option);
+    });
+    
+    typeEl.innerHTML = '';
+    typeEl.appendChild(select);
+    select.focus();
+    
+    const saveEdit = () => {
+        currentItem.type = select.value;
+        displayItem(currentItem);
+    };
+    
+    select.addEventListener('change', saveEdit);
+    select.addEventListener('blur', saveEdit);
+}
+
+// Edit item rarity
+function editItemRarity() {
+    if (!currentItem) return;
+    
+    const rarityEl = document.querySelectorAll('.item-basics .editable-inline')[1];
+    if (!rarityEl) return;
+    
+    const rarities = [
+        { value: 'mundane', label: 'Mundane' },
+        { value: 'common', label: 'Common' },
+        { value: 'uncommon', label: 'Uncommon' },
+        { value: 'rare', label: 'Rare' },
+        { value: 'very-rare', label: 'Very Rare' },
+        { value: 'legendary', label: 'Legendary' },
+        { value: 'artifact', label: 'Artifact' }
+    ];
+    
+    const select = document.createElement('select');
+    select.className = 'edit-select';
+    rarities.forEach(r => {
+        const option = document.createElement('option');
+        option.value = r.value;
+        option.textContent = r.label;
+        if (r.value === currentItem.rarity) option.selected = true;
+        select.appendChild(option);
+    });
+    
+    rarityEl.innerHTML = '';
+    rarityEl.appendChild(select);
+    select.focus();
+    
+    const saveEdit = () => {
+        currentItem.rarity = select.value;
+        displayItem(currentItem);
+    };
+    
+    select.addEventListener('change', saveEdit);
+    select.addEventListener('blur', saveEdit);
+}
+
+// Toggle attunement
+function toggleAttunement() {
+    if (!currentItem) return;
+    
+    const checkbox = document.getElementById('attunementToggle');
+    if (checkbox.checked) {
+        currentItem.attunement = true;
+    } else {
+        currentItem.attunement = false;
+    }
+    displayItem(currentItem);
+}
+
+// Edit attunement requirement
+function editAttunementRequirement() {
+    if (!currentItem) return;
+    
+    const detailEl = document.querySelector('.attunement-detail');
+    if (!detailEl) return;
+    
+    const currentReq = typeof currentItem.attunement === 'string' ? currentItem.attunement : '';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentReq;
+    input.placeholder = 'e.g., by a spellcaster';
+    input.className = 'edit-input';
+    
+    detailEl.innerHTML = '';
+    detailEl.appendChild(input);
+    input.focus();
+    input.select();
+    
+    const saveEdit = () => {
+        const newValue = input.value.trim();
+        currentItem.attunement = newValue || true;
+        displayItem(currentItem);
+    };
+    
+    input.addEventListener('blur', saveEdit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveEdit();
+        if (e.key === 'Escape') displayItem(currentItem);
+    });
+}
+
+// Edit item description
+function editItemDescription() {
+    if (!currentItem) return;
+    
+    const descEl = document.querySelector('.item-description');
+    if (!descEl) return;
+    
+    const textarea = document.createElement('textarea');
+    textarea.value = currentItem.description || '';
+    textarea.className = 'edit-textarea';
+    textarea.placeholder = 'Enter item description...';
+    
+    descEl.innerHTML = '';
+    descEl.appendChild(textarea);
+    descEl.classList.remove('editable-block');
+    textarea.focus();
+    
+    const saveEdit = () => {
+        currentItem.description = textarea.value.trim();
+        displayItem(currentItem);
+    };
+    
+    textarea.addEventListener('blur', saveEdit);
+    textarea.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') displayItem(currentItem);
+    });
+}
+
+// Edit item stat (cost)
+function editItemStat(field) {
+    if (!currentItem || field !== 'cost') return;
+    
+    const statEl = document.querySelector('.editable-stat .stat-value');
+    if (!statEl) return;
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentItem.cost || '';
+    input.placeholder = 'e.g., 500 gp';
+    input.className = 'edit-input edit-input-small';
+    
+    statEl.innerHTML = '';
+    statEl.appendChild(input);
+    input.focus();
+    input.select();
+    
+    const saveEdit = () => {
+        currentItem.cost = input.value.trim();
+        displayItem(currentItem);
+    };
+    
+    input.addEventListener('blur', saveEdit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveEdit();
+        if (e.key === 'Escape') displayItem(currentItem);
     });
 }
