@@ -26,11 +26,11 @@ function displayItem(item) {
             ${renderItemProperties(item)}
             
             <div class="attunement-toggle">
-                <label class="toggle-label">
+                <label class="toggle-switch">
                     <input type="checkbox" id="attunementToggle" ${item.attunement ? 'checked' : ''} onchange="toggleAttunement()">
                     <span class="toggle-slider"></span>
-                    <span class="toggle-text"><i class="fa-solid fa-link"></i> Requires Attunement</span>
                 </label>
+                <span class="toggle-text"><i class="fa-solid fa-link"></i> Requires Attunement</span>
                 ${item.attunement && typeof item.attunement === 'string' ? `
                     <span class="attunement-detail editable-inline" onclick="editAttunementRequirement()" title="Click to edit">(${item.attunement})</span>
                 ` : ''}
@@ -479,14 +479,19 @@ function editItemDescription() {
     const descEl = document.querySelector('.item-description');
     if (!descEl) return;
     
+    // Get the current height to maintain it
+    const currentHeight = descEl.offsetHeight;
+    
     const textarea = document.createElement('textarea');
     textarea.value = currentItem.description || '';
     textarea.className = 'edit-textarea';
     textarea.placeholder = 'Enter item description...';
+    textarea.style.minHeight = Math.max(currentHeight, 200) + 'px';
     
     descEl.innerHTML = '';
     descEl.appendChild(textarea);
     descEl.classList.remove('editable-block');
+    descEl.classList.add('editing');
     textarea.focus();
     
     const saveEdit = () => {
