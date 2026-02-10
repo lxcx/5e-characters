@@ -11,10 +11,31 @@ function displayItem(item) {
     
     let html = `
         <div class="item-card ${item.cursed ? 'cursed' : ''}">
+            <!-- Item Type Selector -->
+            <div class="item-type-selector">
+                <label for="itemTypeSelect"><i class="fa-solid fa-cubes"></i> Item Type:</label>
+                <select id="itemTypeSelect" onchange="changeItemType(this.value)">
+                    <option value="weapon" ${item.type === 'weapon' ? 'selected' : ''}>Weapon</option>
+                    <option value="armor" ${item.type === 'armor' ? 'selected' : ''}>Armor</option>
+                    <option value="shield" ${item.type === 'shield' ? 'selected' : ''}>Shield</option>
+                    <option value="potion" ${item.type === 'potion' ? 'selected' : ''}>Potion</option>
+                    <option value="ring" ${item.type === 'ring' ? 'selected' : ''}>Ring</option>
+                    <option value="rod" ${item.type === 'rod' ? 'selected' : ''}>Rod</option>
+                    <option value="scroll" ${item.type === 'scroll' ? 'selected' : ''}>Scroll</option>
+                    <option value="staff" ${item.type === 'staff' ? 'selected' : ''}>Staff</option>
+                    <option value="wand" ${item.type === 'wand' ? 'selected' : ''}>Wand</option>
+                    <option value="wondrous-item" ${item.type === 'wondrous-item' ? 'selected' : ''}>Wondrous Item</option>
+                    <option value="adventuring-gear" ${item.type === 'adventuring-gear' ? 'selected' : ''}>Adventuring Gear</option>
+                    <option value="tool" ${item.type === 'tool' ? 'selected' : ''}>Tool</option>
+                    <option value="container" ${item.type === 'container' ? 'selected' : ''}>Container</option>
+                    <option value="ammunition" ${item.type === 'ammunition' ? 'selected' : ''}>Ammunition</option>
+                </select>
+            </div>
+            
             <div class="item-header">
                 <h1 class="item-name ${rarityClass} editable" onclick="editItemName()" title="Click to edit">${item.name}</h1>
                 <p class="item-basics">
-                    <span class="editable-inline" onclick="editItemType()" title="Click to edit">${categoryName}${item.subtype ? ` (${capitalize(item.subtype)})` : ''}</span>, 
+                    ${categoryName}${item.subtype ? ` (${capitalize(item.subtype)})` : ''}, 
                     <span class="${rarityClass} editable-inline" onclick="editItemRarity()" title="Click to edit">${rarityName}</span>
                 </p>
             </div>
@@ -90,59 +111,47 @@ function displayItem(item) {
     }
 }
 
-// Render item statistics with editable cost
+// Render item statistics with editable fields based on item type
 function renderEditableItemStats(item) {
     let stats = [];
     
-    // Armor stats
+    // Weapon-specific stats (always show for weapons)
+    if (item.type === 'weapon') {
+        stats.push({ label: 'Damage', value: item.damage || '—', editable: true, field: 'damage' });
+        stats.push({ label: 'Damage Type', value: item.damageType ? capitalize(item.damageType) : '—', editable: true, field: 'damageType' });
+    }
+    
+    // Armor stats (always show for armor/shield)
     if (item.type === 'armor' || item.type === 'shield') {
-        if (item.ac) {
-            let acText = item.ac.toString();
-            if (item.maxDex !== undefined && item.maxDex !== null) {
-                if (item.maxDex === 0) {
-                    acText = item.ac.toString();
-                } else {
-                    acText = `${item.ac} + Dex (max ${item.maxDex})`;
-                }
-            } else if (item.subtype === 'light') {
-                acText = `${item.ac} + Dex`;
+        let acText = item.ac ? item.ac.toString() : '—';
+        if (item.ac && item.maxDex !== undefined && item.maxDex !== null) {
+            if (item.maxDex === 0) {
+                acText = item.ac.toString();
+            } else {
+                acText = `${item.ac} + Dex (max ${item.maxDex})`;
             }
-            stats.push({ label: 'Armor Class', value: acText, editable: false });
+        } else if (item.ac && item.subtype === 'light') {
+            acText = `${item.ac} + Dex`;
         }
-        if (item.acBonus) {
-            stats.push({ label: 'AC Bonus', value: `+${item.acBonus}`, editable: false });
+        stats.push({ label: 'Armor Class', value: acText, editable: true, field: 'ac' });
+        
+        if (item.type === 'shield') {
+            stats.push({ label: 'AC Bonus', value: item.acBonus ? `+${item.acBonus}` : '+2', editable: true, field: 'acBonus' });
         }
-        if (item.strengthReq) {
-            stats.push({ label: 'Strength', value: `${item.strengthReq} required`, editable: false });
-        }
     }
     
-    // Common stats - cost is editable
-    if (item.cost || item.rarity !== 'mundane') {
-        stats.push({ label: 'Cost', value: item.cost || 'Unknown', editable: true, field: 'cost' });
-    }
-    
-    if (item.weight) {
-        stats.push({ label: 'Weight', value: `${item.weight} lb.`, editable: false });
-    }
-    
-    // Weapon stats
-    if (item.damage) {
-        stats.push({ label: 'Damage', value: item.damage, editable: false });
-    }
-    
-    if (item.damageType) {
-        stats.push({ label: 'Damage Type', value: capitalize(item.damageType), editable: false });
-    }
+    // Common stats - cost and weight are always shown and editable
+    stats.push({ label: 'Cost', value: item.cost || '—', editable: true, field: 'cost' });
+    stats.push({ label: 'Weight', value: item.weight ? `${item.weight} lb.` : '—', editable: true, field: 'weight' });
     
     // Container stats
-    if (item.capacity) {
-        stats.push({ label: 'Capacity', value: item.capacity, editable: false });
+    if (item.type === 'container') {
+        stats.push({ label: 'Capacity', value: item.capacity || '—', editable: true, field: 'capacity' });
     }
     
-    // Magic item stats
-    if (item.charges) {
-        stats.push({ label: 'Charges', value: item.charges, editable: false });
+    // Magic item charges (for wands, staffs, rods, etc.)
+    if (['wand', 'staff', 'rod', 'ring', 'wondrous-item'].includes(item.type)) {
+        stats.push({ label: 'Charges', value: item.charges || '—', editable: true, field: 'charges' });
     }
     
     if (stats.length === 0) return '';
@@ -150,7 +159,7 @@ function renderEditableItemStats(item) {
     return `
         <div class="item-stats-row">
             ${stats.map(stat => `
-                <div class="stat-item ${stat.editable ? 'editable-stat' : ''}" ${stat.editable ? `onclick="editItemStat('${stat.field}')" title="Click to edit"` : ''}>
+                <div class="stat-item editable-stat" onclick="editItemStat('${stat.field}')" title="Click to edit">
                     <span class="stat-label">${stat.label}</span>
                     <span class="stat-value">${stat.value}</span>
                 </div>
@@ -340,52 +349,6 @@ function editItemName() {
     });
 }
 
-// Edit item type
-function editItemType() {
-    if (!currentItem) return;
-    
-    const typeEl = document.querySelector('.item-basics .editable-inline');
-    if (!typeEl) return;
-    
-    const types = [
-        { value: 'weapon', label: 'Weapon' },
-        { value: 'armor', label: 'Armor' },
-        { value: 'shield', label: 'Shield' },
-        { value: 'potion', label: 'Potion' },
-        { value: 'ring', label: 'Ring' },
-        { value: 'rod', label: 'Rod' },
-        { value: 'scroll', label: 'Scroll' },
-        { value: 'staff', label: 'Staff' },
-        { value: 'wand', label: 'Wand' },
-        { value: 'wondrous-item', label: 'Wondrous Item' },
-        { value: 'adventuring-gear', label: 'Adventuring Gear' },
-        { value: 'tool', label: 'Tool' },
-        { value: 'ammunition', label: 'Ammunition' }
-    ];
-    
-    const select = document.createElement('select');
-    select.className = 'edit-select';
-    types.forEach(t => {
-        const option = document.createElement('option');
-        option.value = t.value;
-        option.textContent = t.label;
-        if (t.value === currentItem.type) option.selected = true;
-        select.appendChild(option);
-    });
-    
-    typeEl.innerHTML = '';
-    typeEl.appendChild(select);
-    select.focus();
-    
-    const saveEdit = () => {
-        currentItem.type = select.value;
-        displayItem(currentItem);
-    };
-    
-    select.addEventListener('change', saveEdit);
-    select.addEventListener('blur', saveEdit);
-}
-
 // Edit item rarity
 function editItemRarity() {
     if (!currentItem) return;
@@ -505,17 +468,83 @@ function editItemDescription() {
     });
 }
 
-// Edit item stat (cost)
+// Edit item stat (various fields)
 function editItemStat(field) {
-    if (!currentItem || field !== 'cost') return;
+    if (!currentItem) return;
     
-    const statEl = document.querySelector('.editable-stat .stat-value');
+    // Find the stat element for this field
+    const statItems = document.querySelectorAll('.stat-item');
+    let statEl = null;
+    
+    const fieldLabels = {
+        'damage': 'Damage',
+        'damageType': 'Damage Type',
+        'ac': 'Armor Class',
+        'acBonus': 'AC Bonus',
+        'cost': 'Cost',
+        'weight': 'Weight',
+        'capacity': 'Capacity',
+        'charges': 'Charges'
+    };
+    
+    statItems.forEach(el => {
+        const label = el.querySelector('.stat-label');
+        if (label && label.textContent === fieldLabels[field]) {
+            statEl = el.querySelector('.stat-value');
+        }
+    });
+    
     if (!statEl) return;
     
+    // For damage type, show a dropdown
+    if (field === 'damageType') {
+        const select = document.createElement('select');
+        select.className = 'edit-select';
+        const types = ['bludgeoning', 'piercing', 'slashing', 'acid', 'cold', 'fire', 'force', 'lightning', 'necrotic', 'poison', 'psychic', 'radiant', 'thunder'];
+        types.forEach(t => {
+            const option = document.createElement('option');
+            option.value = t;
+            option.textContent = capitalize(t);
+            if (currentItem.damageType && currentItem.damageType.toLowerCase() === t) option.selected = true;
+            select.appendChild(option);
+        });
+        
+        statEl.innerHTML = '';
+        statEl.appendChild(select);
+        select.focus();
+        
+        const saveEdit = () => {
+            currentItem.damageType = select.value;
+            displayItem(currentItem);
+        };
+        
+        select.addEventListener('change', saveEdit);
+        select.addEventListener('blur', saveEdit);
+        return;
+    }
+    
+    // For other fields, use text input
     const input = document.createElement('input');
     input.type = 'text';
-    input.value = currentItem.cost || '';
-    input.placeholder = 'e.g., 500 gp';
+    
+    const placeholders = {
+        'damage': 'e.g., 1d8+1',
+        'ac': 'e.g., 15',
+        'acBonus': 'e.g., 2',
+        'cost': 'e.g., 500 gp',
+        'weight': 'e.g., 3',
+        'capacity': 'e.g., 30 lb.',
+        'charges': 'e.g., 7'
+    };
+    
+    // Get current value, stripping any suffixes like " lb."
+    let currentValue = currentItem[field] || '';
+    if (field === 'weight' && currentValue) {
+        currentValue = currentValue.toString();
+    }
+    
+    input.value = currentValue;
+    input.placeholder = placeholders[field] || '';
     input.className = 'edit-input edit-input-small';
     
     statEl.innerHTML = '';
@@ -524,7 +553,16 @@ function editItemStat(field) {
     input.select();
     
     const saveEdit = () => {
-        currentItem.cost = input.value.trim();
+        let newValue = input.value.trim();
+        
+        // Handle numeric fields
+        if (field === 'weight' || field === 'ac' || field === 'acBonus' || field === 'charges') {
+            const num = parseFloat(newValue);
+            currentItem[field] = isNaN(num) ? null : num;
+        } else {
+            currentItem[field] = newValue || null;
+        }
+        
         displayItem(currentItem);
     };
     
@@ -533,4 +571,42 @@ function editItemStat(field) {
         if (e.key === 'Enter') saveEdit();
         if (e.key === 'Escape') displayItem(currentItem);
     });
+}
+
+// Change item type and update fields accordingly
+function changeItemType(newType) {
+    if (!currentItem) return;
+    
+    const oldType = currentItem.type;
+    currentItem.type = newType;
+    
+    // Initialize type-specific fields if switching to a new type
+    if (newType === 'weapon' && oldType !== 'weapon') {
+        currentItem.damage = currentItem.damage || '1d6';
+        currentItem.damageType = currentItem.damageType || 'slashing';
+    } else if ((newType === 'armor' || newType === 'shield') && oldType !== 'armor' && oldType !== 'shield') {
+        currentItem.ac = currentItem.ac || (newType === 'shield' ? null : 12);
+        if (newType === 'shield') {
+            currentItem.acBonus = currentItem.acBonus || 2;
+        }
+    } else if (newType === 'container' && oldType !== 'container') {
+        currentItem.capacity = currentItem.capacity || '';
+    }
+    
+    // Clear type-specific fields when changing away from that type
+    if (oldType === 'weapon' && newType !== 'weapon') {
+        delete currentItem.damage;
+        delete currentItem.damageType;
+    }
+    if ((oldType === 'armor' || oldType === 'shield') && newType !== 'armor' && newType !== 'shield') {
+        delete currentItem.ac;
+        delete currentItem.acBonus;
+        delete currentItem.maxDex;
+        delete currentItem.strengthReq;
+    }
+    if (oldType === 'container' && newType !== 'container') {
+        delete currentItem.capacity;
+    }
+    
+    displayItem(currentItem);
 }

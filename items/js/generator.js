@@ -309,10 +309,14 @@ function getRarityName(rarity) {
 
 // Get attunement text
 function getAttunementText(attunement) {
-    if (!attunement || attunement === 'none') return null;
+    if (!attunement || attunement === 'none' || attunement === false) return null;
+    
+    // Handle boolean true
+    if (attunement === true) return 'Requires attunement';
     
     const texts = {
         'any': 'Requires attunement',
+        'true': 'Requires attunement',
         'spellcaster': 'Requires attunement by a spellcaster',
         'cleric': 'Requires attunement by a cleric',
         'druid': 'Requires attunement by a druid',
@@ -331,7 +335,16 @@ function getAttunementText(attunement) {
         'evil': 'Requires attunement by a creature of evil alignment'
     };
     
-    return texts[attunement] || attunement;
+    // If it's a known key, return the text; otherwise it's a custom requirement string
+    if (texts[attunement]) return texts[attunement];
+    
+    // If it looks like a requirement string already (contains "by"), return as-is with prefix
+    if (typeof attunement === 'string' && attunement.toLowerCase().includes('by')) {
+        return `Requires attunement ${attunement}`;
+    }
+    
+    // Otherwise just say requires attunement with the class/requirement
+    return `Requires attunement by ${attunement}`;
 }
 
 // Get category display name
