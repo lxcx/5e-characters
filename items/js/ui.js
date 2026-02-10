@@ -78,6 +78,12 @@ function displayItem(item) {
     `;
     
     resultEl.innerHTML = html;
+    
+    // Show export section
+    const exportSection = document.getElementById('exportSection');
+    if (exportSection) {
+        exportSection.style.display = 'block';
+    }
 }
 
 // Render item statistics

@@ -165,6 +165,13 @@
                 <div id="placeholder" style="text-align: center; color: #6c757d; padding: 40px;">
                     <p id="placeholderText" style="font-size: 1.2em;">Select your options and click "Generate Item" to discover treasure</p>
                 </div>
+                
+                <!-- Export Section -->
+                <div class="export-section" id="exportSection" style="display: none;">
+                    <button class="export-pdf-btn" onclick="exportItemToPDF()">
+                        <i class="fa-solid fa-file-pdf"></i> Export to PDF
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -180,6 +187,7 @@
     <!-- Core Scripts -->
     <script src="/items/js/generator.js"></script>
     <script src="/items/js/ui.js"></script>
+    <script src="/items/js/pdf.js"></script>
 
     <!-- Site Footer -->
     <footer class="site-footer">
@@ -194,6 +202,9 @@
                 </a>
                 <a href="/items/" class="footer-link active">
                     <i class="fa-solid fa-gem"></i> Item Generator
+                </a>
+                <a href="/puzzles/" class="footer-link">
+                    <i class="fa-solid fa-dungeon"></i> Puzzle & Trap Generator
                 </a>
             </nav>
         </div>

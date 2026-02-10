@@ -1,0 +1,603 @@
+/* D&D 5E Puzzle & Trap Generator - Styles */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bookinsanity', Georgia, serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #333;
+    padding-bottom: 80px;
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 50%, #c0392b 100%);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 2.8em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+header h1 i {
+    margin-right: 15px;
+}
+
+header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1em;
+}
+
+/* Content Layout */
+.content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form Section */
+.form-section {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+}
+
+.form-section h2 {
+    font-family: 'Nodesto Caps Condensed', serif;
+    color: #c0392b;
+    margin-bottom: 20px;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #c0392b;
+    background: #fff;
+    color: #c0392b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+}
+
+.mode-btn:hover {
+    background: rgba(192, 57, 43, 0.1);
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: #fff;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #2c3e50;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: #c0392b;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #c0392b;
+}
+
+/* Generate Button */
+.generate-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(192, 57, 43, 0.4);
+}
+
+.generate-btn i {
+    margin-right: 8px;
+}
+
+/* Result Section */
+.result-section {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.result-header h2 {
+    font-family: 'Nodesto Caps Condensed', serif;
+    color: #c0392b;
+}
+
+.regenerate-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.regenerate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
+}
+
+/* Placeholder */
+#placeholder {
+    text-align: center;
+    color: #6c757d;
+    padding: 60px 20px;
+}
+
+#placeholder i {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: #c0392b;
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ================================
+   TRAP CARD STYLES
+   ================================ */
+
+.trap-card, .puzzle-card {
+    background: linear-gradient(to bottom, #fdf5e6 0%, #f5e6d3 100%);
+    border: 3px solid #8B4513;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.1);
+}
+
+.trap-header, .puzzle-header {
+    margin-bottom: 15px;
+}
+
+.trap-name, .puzzle-name {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 2em;
+    color: #8B4513;
+    margin-bottom: 10px;
+}
+
+.trap-name i, .puzzle-name i {
+    margin-right: 10px;
+    color: #c0392b;
+}
+
+.trap-tags, .puzzle-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tag-category {
+    background: #3498db;
+}
+
+.tag-danger, .tag-difficulty {
+    background: #e74c3c;
+}
+
+.tag-source {
+    background: #7f8c8d;
+}
+
+/* Stat Block Divider */
+.stat-block-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #c0392b 20%, #c0392b 80%, transparent 100%);
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+/* Trap/Puzzle Stats */
+.trap-stats, .puzzle-stats {
+    display: grid;
+    gap: 10px;
+}
+
+.stat-row {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: #c0392b;
+    min-width: 100px;
+}
+
+.stat-label i {
+    margin-right: 6px;
+}
+
+.stat-value {
+    color: #333;
+}
+
+/* Sections */
+.trap-section, .puzzle-section {
+    margin: 15px 0;
+}
+
+.trap-section h3, .puzzle-section h3 {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 1.3em;
+    color: #c0392b;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(192, 57, 43, 0.3);
+    padding-bottom: 5px;
+}
+
+.trap-section h3 i, .puzzle-section h3 i {
+    margin-right: 8px;
+}
+
+.trap-section p, .puzzle-section p {
+    line-height: 1.6;
+}
+
+/* Damage Section */
+.damage-section {
+    background: rgba(231, 76, 60, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+}
+
+.damage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.damage-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+.damage-label {
+    display: block;
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.damage-value {
+    font-family: 'Nodesto Caps Condensed', serif;
+    font-size: 1.4em;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Countermeasures List */
+.countermeasures-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.countermeasures-list li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.countermeasures-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Complex Phases */
+.complex-phases {
+    background: rgba(52, 152, 219, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #3498db;
+}
+
+.complex-phases h4 {
+    color: #2980b9;
+    margin-bottom: 10px;
+}
+
+.complex-phases ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.complex-phases li {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+/* Flavor Section */
+.flavor-section {
+    font-style: italic;
+    color: #666;
+}
+
+/* ================================
+   PUZZLE SPECIFIC STYLES
+   ================================ */
+
+.setup-box {
+    background: rgba(52, 73, 94, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #34495e;
+    font-style: italic;
+}
+
+/* Solution Section */
+.solution-section h3 {
+    cursor: pointer;
+    user-select: none;
+}
+
+.solution-section h3:hover {
+    color: #a93226;
+}
+
+.spoiler-warning {
+    font-size: 0.7em;
+    color: #e74c3c;
+    font-weight: normal;
+}
+
+.solution-content {
+    background: rgba(231, 76, 60, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 2px dashed #e74c3c;
+}
+
+/* Hints Section */
+.hints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hint-item {
+    background: rgba(241, 196, 15, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #f1c40f;
+}
+
+.hint-item.collapsed .hint-text {
+    display: none;
+}
+
+.hint-reveal-btn {
+    background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hint-reveal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(241, 196, 15, 0.4);
+}
+
+.hint-text {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+/* Consequence Section */
+.consequence-section {
+    background: rgba(142, 68, 173, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #8e44ad;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    z-index: 1000;
+    border-top: 2px solid #c0392b;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+}
+
+.footer-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.footer-link.active {
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: #fff;
+}
+
+.footer-link i {
+    margin-right: 6px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .trap-name, .puzzle-name {
+        font-size: 1.5em;
+    }
+    
+    .damage-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

@@ -61,6 +61,8 @@ function displayMonster(monster) {
             
             ${renderTraits(monster)}
             
+            ${renderExtraTalents(monster)}
+            
             ${renderActions(monster)}
             
             ${renderReactions(monster)}
@@ -235,6 +237,74 @@ function renderTraits(monster) {
             </div>
         </div>
     `;
+}
+
+// Render extra talents (from Monster Talents supplement)
+function renderExtraTalents(monster) {
+    if (!monster.extraTalents || monster.extraTalents.length === 0) {
+        return '';
+    }
+    
+    const talentsHtml = monster.extraTalents.map((talent, index) => {
+        // Format the talent description with recharge/uses info
+        let desc = talent.description;
+        let prefix = '';
+        
+        if (talent.recharge) {
+            prefix = `(Recharge ${talent.recharge}). `;
+        }
+        if (talent.uses) {
+            prefix = `(${talent.uses}). `;
+        }
+        
+        // Determine the icon based on talent type
+        let typeIcon = 'fa-sparkles';
+        if (talent.type === 'Action') typeIcon = 'fa-bolt';
+        else if (talent.type === 'Reaction') typeIcon = 'fa-shield';
+        else if (talent.type === 'Legendary Action') typeIcon = 'fa-crown';
+        
+        return `
+            <div class="talent-item">
+                <p>
+                    <strong><i class="fa-solid ${typeIcon}" style="color: #7c3aed; margin-right: 4px;"></i>${talent.name}.</strong>
+                    <em style="color: #6c757d;">(${talent.type}${talent.cost > 1 ? `, Cost: ${talent.cost}` : ''})</em>
+                    ${prefix}${desc}
+                    <button class="remove-trait-btn" onclick="removeExtraTalent(${index})" title="Remove this talent">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </p>
+            </div>
+        `;
+    }).join('');
+    
+    return `
+        <div class="talents-section" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #7c3aed;">
+            <h3 class="section-title" style="color: #7c3aed;"><i class="fa-solid fa-hat-wizard"></i> Extra Talents</h3>
+            <p style="font-size: 0.85em; color: #6c757d; margin-bottom: 10px;"><em>Special abilities from Monster Talents supplement</em></p>
+            ${talentsHtml}
+            <div class="traits-controls">
+                <button class="add-trait-btn" onclick="rerollExtraTalents()" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+                    <i class="fa-solid fa-dice"></i> Reroll Talents
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Remove an extra talent
+function removeExtraTalent(index) {
+    if (currentMonster && currentMonster.extraTalents) {
+        currentMonster.extraTalents.splice(index, 1);
+        displayMonster(currentMonster);
+    }
+}
+
+// Reroll extra talents
+function rerollExtraTalents() {
+    if (currentMonster && typeof getRandomTalents === 'function') {
+        currentMonster.extraTalents = getRandomTalents(currentMonster.type, currentMonster.cr);
+        displayMonster(currentMonster);
+    }
 }
 
 // Render actions

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5E Puzzle & Trap Generator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- D&D Style Fonts -->
+    <link href="https://db.onlinewebfonts.com/c/c391b9f3d65d9f9e311c80d964b696e1?family=Nodesto+Caps+Condensed" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/b9b59f3d31d975e265c5ed4c5433326f?family=Bookinsanity" rel="stylesheet">
+    <link rel="stylesheet" href="/puzzles/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-dungeon"></i> D&D 5E Puzzle & Trap Generator</h1>
+            <p>Create devious traps and mind-bending puzzles for your dungeons</p>
+        </header>
+
+        <div class="content">
+            <div class="form-section">
+                <h2 style="margin-bottom: 20px; color: #2c3e50;"><i class="fa-solid fa-sliders"></i> Generator Options</h2>
+                
+                <!-- Mode Selection -->
+                <div class="form-group">
+                    <label>Generator Type</label>
+                    <div class="mode-toggle">
+                        <button type="button" class="mode-btn active" id="modeTrap" onclick="setGeneratorMode('trap')">
+                            <i class="fa-solid fa-skull-crossbones"></i> Trap
+                        </button>
+                        <button type="button" class="mode-btn" id="modePuzzle" onclick="setGeneratorMode('puzzle')">
+                            <i class="fa-solid fa-puzzle-piece"></i> Puzzle
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Trap Options -->
+                <div id="trapOptions">
+                    <div class="form-group">
+                        <label for="trapCategory">Trap Category</label>
+                        <select id="trapCategory">
+                            <option value="random">Random</option>
+                            <option value="mechanical">Mechanical (Physical traps)</option>
+                            <option value="magical">Magical (Arcane traps)</option>
+                            <option value="hybrid">Hybrid (Combination)</option>
+                            <option value="complex">Complex (Multi-stage)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trapDanger">Danger Level</label>
+                        <select id="trapDanger">
+                            <option value="random">Random</option>
+                            <option value="setback">Setback (Annoying)</option>
+                            <option value="dangerous">Dangerous (Threatening)</option>
+                            <option value="deadly">Deadly (Lethal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partyLevel">Party Level (for scaling)</label>
+                        <input type="number" id="partyLevel" value="5" min="1" max="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="random">Random</option>
+                            <option value="Ancient tomb entrance">Ancient Tomb</option>
+                            <option value="Long narrow corridor">Corridor</option>
+                            <option value="Circular chamber with domed ceiling">Circular Chamber</option>
+                            <option value="Treasure vault">Treasure Vault</option>
+                            <option value="Abandoned temple">Temple</option>
+                            <option value="Natural cavern">Cavern</option>
+                            <option value="Wizard's laboratory">Wizard's Lab</option>
+                            <option value="Prison cells">Prison</option>
+                            <option value="Sewer junction">Sewers</option>
+                            <option value="Mine shaft">Mine</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="useTemplates" checked>
+                        <label for="useTemplates">Use curated trap templates</label>
+                    </div>
+                </div>
+
+                <!-- Puzzle Options -->
+                <div id="puzzleOptions" style="display: none;">
+                    <div class="form-group">
+                        <label for="puzzleCategory">Puzzle Category</label>
+                        <select id="puzzleCategory">
+                            <option value="random">Random</option>
+                            <option value="riddle">Riddle (Word puzzles)</option>
+                            <option value="logic">Logic Puzzle (Deduction)</option>
+                            <option value="physical">Physical (Manipulation)</option>
+                            <option value="pattern">Pattern Recognition</option>
+                            <option value="cipher">Cipher/Code</option>
+                            <option value="mechanical">Mechanical (Locks/Gears)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="puzzleDifficulty">Difficulty</label>
+                        <select id="puzzleDifficulty">
+                            <option value="random">Random</option>
+                            <option value="easy">Easy (Straightforward)</option>
+                            <option value="medium">Medium (Requires creativity)</option>
+                            <option value="hard">Hard (Complex analysis)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partyLevelPuzzle">Party Level (for consequences)</label>
+                        <input type="number" id="partyLevelPuzzle" value="5" min="1" max="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="locationPuzzle">Location</label>
+                        <select id="locationPuzzle">
+                            <option value="random">Random</option>
+                            <option value="Ancient tomb entrance">Ancient Tomb</option>
+                            <option value="Circular chamber with domed ceiling">Circular Chamber</option>
+                            <option value="Abandoned temple">Temple</option>
+                            <option value="Wizard's laboratory">Wizard's Lab</option>
+                            <option value="Library archives">Library</option>
+                            <option value="Royal crypt">Royal Crypt</option>
+                            <option value="Ritual chamber">Ritual Chamber</option>
+                            <option value="Throne room">Throne Room</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="useTemplatesPuzzle" checked>
+                        <label for="useTemplatesPuzzle">Use curated puzzle templates</label>
+                    </div>
+                </div>
+
+                <button id="generateBtn" class="generate-btn" onclick="generate()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Trap
+                </button>
+            </div>
+
+            <div class="result-section">
+                <div class="result-header">
+                    <h2><i class="fa-solid fa-scroll"></i> Generated Result</h2>
+                    <button class="regenerate-btn" onclick="regenerate()" id="regenerateBtn">
+                        <i class="fa-solid fa-arrows-rotate"></i> Regenerate
+                    </button>
+                </div>
+                <div id="result" class="hidden">
+                    <!-- Result will be displayed here -->
+                </div>
+                <div id="placeholder">
+                    <i class="fa-solid fa-dungeon"></i>
+                    <p style="font-size: 1.2em;">Select your options and click "Generate" to create a trap or puzzle</p>
+                    
+                    <div class="content-stats" style="margin-top: 25px; padding: 20px; background: rgba(139, 69, 19, 0.1); border-radius: 8px; border: 1px solid rgba(139, 69, 19, 0.3);">
+                        <h3 style="color: #8B4513; margin-bottom: 15px;"><i class="fa-solid fa-database"></i> Content Library</h3>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center;">
+                            <div class="stat-box" style="padding: 10px; background: rgba(231, 76, 60, 0.1); border-radius: 6px;">
+                                <div style="font-size: 2em; color: #e74c3c; font-weight: bold;" id="trapCount">Loading...</div>
+                                <div style="color: #666;">Trap Templates</div>
+                            </div>
+                            <div class="stat-box" style="padding: 10px; background: rgba(142, 68, 173, 0.1); border-radius: 6px;">
+                                <div style="font-size: 2em; color: #8e44ad; font-weight: bold;" id="puzzleCount">Loading...</div>
+                                <div style="color: #666;">Puzzle Templates</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; color: #666; font-size: 0.85em;">
+                            <strong>WotC Core:</strong> DMG, Xanathar's Guide, Tasha's Cauldron, Van Richten's Guide, Fizban's Treasury<br>
+                            <strong>Adventures:</strong> Lost Mine of Phandelver, Hoard of the Dragon Queen, Rise of Tiamat,<br>
+                            Princes of the Apocalypse, Out of the Abyss, Curse of Strahd, Storm King's Thunder,<br>
+                            Tales from the Yawning Portal (all 7), Tomb of Annihilation, Dragon Heist, Dungeon of the Mad Mage,<br>
+                            Ghosts of Saltmarsh, Descent into Avernus, Rime of the Frostmaiden, Candlekeep Mysteries,<br>
+                            Wild Beyond the Witchlight, Radiant Citadel, Keys from the Golden Vault<br>
+                            <strong>Third Party:</strong> Book of Challenges, Grimtooth's Ultimate Traps, GM's Book of Traps/Puzzles, Puzzles & Perplexities I & II
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/puzzles/js/data.js"></script>
+    <script src="/puzzles/js/generator.js"></script>
+    <script src="/puzzles/js/ui.js"></script>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span class="footer-label">D&D 5E Tools:</span>
+            <nav class="footer-nav">
+                <a href="/" class="footer-link">
+                    <i class="fa-solid fa-user"></i> Character Generator
+                </a>
+                <a href="/monsters/" class="footer-link">
+                    <i class="fa-solid fa-dragon"></i> Monster Generator
+                </a>
+                <a href="/items/" class="footer-link">
+                    <i class="fa-solid fa-gem"></i> Item Generator
+                </a>
+                <a href="/puzzles/" class="footer-link active">
+                    <i class="fa-solid fa-dungeon"></i> Puzzle & Trap Generator
+                </a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

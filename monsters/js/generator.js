@@ -250,6 +250,11 @@ function generateMonster() {
         monster.spellcasting = generateSpellcasting(monster, options.cr);
     }
     
+    // Add extra talents if enabled
+    if (options.hasExtraTalents && typeof getRandomTalents === 'function') {
+        monster.extraTalents = getRandomTalents(options.type, options.cr);
+    }
+    
     // Calculate saving throws
     monster.savingThrows = generateSavingThrows(monster);
     
@@ -339,7 +344,8 @@ function getFormValues() {
         environment,
         role,
         isLegendary: document.getElementById('isLegendary').checked,
-        hasSpellcasting: document.getElementById('hasSpellcasting').checked
+        hasSpellcasting: document.getElementById('hasSpellcasting').checked,
+        hasExtraTalents: document.getElementById('hasExtraTalents').checked
     };
 }
 
