@@ -453,6 +453,10 @@ button:active {
     margin: -2px -6px;
 }
 
+.editable {
+    position: relative;
+}
+
 .editable:hover {
     background-color: rgba(124, 58, 237, 0.1);
 }
@@ -461,8 +465,11 @@ button:active {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: '\f303';
-    font-size: 0.7em;
-    margin-left: 6px;
+    font-size: 0.6em;
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.2s;
     color: #7c3aed;
