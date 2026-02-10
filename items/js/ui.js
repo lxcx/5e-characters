@@ -176,13 +176,21 @@ function renderItemStats(item) {
 
 // Render item properties
 function renderItemProperties(item) {
-    if (!item.properties || item.properties.length === 0) return '';
+    const properties = item.properties || [];
     
     return `
-        <div class="item-properties">
-            ${item.properties.map(prop => `
-                <span class="property-tag">${capitalize(prop)}</span>
-            `).join('')}
+        <div class="item-properties-section">
+            <div class="item-properties">
+                ${properties.map((prop, index) => `
+                    <span class="property-tag editable-property" onclick="editProperty(${index})" title="Click to edit">
+                        ${capitalize(prop)}
+                        <button class="property-delete" onclick="event.stopPropagation(); deleteProperty(${index})" title="Remove property">×</button>
+                    </span>
+                `).join('')}
+                <button class="property-add" onclick="addProperty()" title="Add property">
+                    <i class="fa-solid fa-plus"></i> Add
+                </button>
+            </div>
         </div>
     `;
 }
@@ -609,4 +617,75 @@ function changeItemType(newType) {
     }
     
     displayItem(currentItem);
+}
+
+// ============================================
+// PROPERTY EDITING FUNCTIONS
+// ============================================
+
+// Edit a property
+function editProperty(index) {
+    if (!currentItem || !currentItem.properties) return;
+    
+    const propertyTags = document.querySelectorAll('.property-tag.editable-property');
+    const tagEl = propertyTags[index];
+    if (!tagEl) return;
+    
+    const currentValue = currentItem.properties[index] || '';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentValue;
+    input.className = 'edit-input property-edit-input';
+    input.placeholder = 'e.g., +1 weapon, versatile (1d10)';
+    
+    tagEl.innerHTML = '';
+    tagEl.appendChild(input);
+    tagEl.classList.remove('editable-property');
+    input.focus();
+    input.select();
+    
+    const saveEdit = () => {
+        const newValue = input.value.trim();
+        if (newValue) {
+            currentItem.properties[index] = newValue;
+        } else {
+            // Remove empty property
+            currentItem.properties.splice(index, 1);
+        }
+        displayItem(currentItem);
+    };
+    
+    input.addEventListener('blur', saveEdit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveEdit();
+        if (e.key === 'Escape') displayItem(currentItem);
+    });
+}
+
+// Delete a property
+function deleteProperty(index) {
+    if (!currentItem || !currentItem.properties) return;
+    
+    currentItem.properties.splice(index, 1);
+    displayItem(currentItem);
+}
+
+// Add a new property
+function addProperty() {
+    if (!currentItem) return;
+    
+    if (!currentItem.properties) {
+        currentItem.properties = [];
+    }
+    
+    // Add a placeholder and immediately edit it
+    currentItem.properties.push('');
+    displayItem(currentItem);
+    
+    // Immediately edit the new property
+    setTimeout(() => {
+        const newIndex = currentItem.properties.length - 1;
+        editProperty(newIndex);
+    }, 50);
 }

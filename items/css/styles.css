@@ -1137,3 +1137,87 @@ button:active {
 .item-type-selector select:hover {
     border-color: #8b6914;
 }
+
+/* Editable Properties */
+.item-properties-section {
+    margin: 10px 0;
+}
+
+.item-properties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.property-tag.editable-property {
+    cursor: pointer;
+    position: relative;
+    padding-right: 24px;
+    transition: all 0.2s;
+}
+
+.property-tag.editable-property:hover {
+    background: rgba(201, 162, 39, 0.3);
+    transform: translateY(-1px);
+}
+
+.property-delete {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #8b6914;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    margin: 0;
+    line-height: 1;
+    opacity: 0.6;
+    transition: all 0.2s;
+    width: auto;
+}
+
+.property-delete:hover {
+    opacity: 1;
+    color: #dc2626;
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: none;
+}
+
+.property-add {
+    background: transparent;
+    border: 2px dashed #c9a227;
+    color: #8b6914;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    width: auto;
+}
+
+.property-add:hover {
+    background: rgba(201, 162, 39, 0.15);
+    border-style: solid;
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+.property-add i {
+    font-size: 0.8em;
+}
+
+.property-edit-input {
+    width: 150px;
+    padding: 2px 8px;
+    font-size: 0.85em;
+}
