@@ -90,6 +90,7 @@ function generateItem() {
     const rarityFilter = document.getElementById('rarity').value;
     const sourceFilter = document.getElementById('source').value;
     const magicOnly = document.getElementById('magicOnly').checked;
+    const addCurse = document.getElementById('addCurse').checked;
     
     // Filter items based on criteria
     let filteredItems = Object.entries(allItems).filter(([id, item]) => {
@@ -129,6 +130,13 @@ function generateItem() {
     const [itemId, itemData] = filteredItems[Math.floor(Math.random() * filteredItems.length)];
     
     currentItem = { id: itemId, ...itemData };
+    
+    // Add random curse if checkbox is checked
+    if (addCurse) {
+        currentItem.cursed = true;
+        currentItem.curseDescription = getRandomCurse();
+    }
+    
     displayItem(currentItem);
     
     // Show regenerate button and result

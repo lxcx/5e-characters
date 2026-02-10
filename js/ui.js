@@ -146,7 +146,7 @@ function displayNPC(npc) {
             <div class="npc-field-row">
                 <div class="npc-field-content">
                     <span class="npc-field-label">Occupation:</span>
-                    <span class="npc-field-value editable" id="editable-occupation" onclick="editSelectField('occupation', '${npc.occupation}', getOccupationOptions(), event)">${occupationName}</span>
+                    <span class="npc-field-value editable" id="editable-occupation" onclick="editSelectField('occupation', '${npc.occupation}', getOccupationOptions(), event)">${occupationName}${npc.shopName ? ` at <em>${npc.shopName}</em>` : ''}</span>
                 </div>
                 ${lockBtn('occupation')}
             </div>
@@ -781,6 +781,34 @@ function displayNPC(npc) {
             <div class="info-item editable" id="editable-backstory" onclick="editTextareaField('backstory', currentNPC.backstory, event)">${npc.backstory}</div>
         `;
     }
+    
+    // NPC Flavor Section (Secrets, Motivations, Carrying)
+    if (npc.secret || npc.motivation || npc.carrying) {
+        html += `
+            <!-- NPC Flavor Section -->
+            <div class="section-title" style="margin-top: 15px;"><i class="fa-solid fa-mask"></i> NPC Details (GM Only)</div>
+            
+            ${npc.secret ? `
+            <div class="info-item">
+                <span class="info-label" style="color: #8b0000;"><i class="fa-solid fa-user-secret"></i> Secret:</span>
+                <span class="editable" id="editable-secret" onclick="editTextareaField('secret', currentNPC.secret, event)" style="font-style: italic;">${capitalize(npc.name.split(' ')[0])} ${npc.secret}</span>
+            </div>
+            ` : ''}
+            
+            ${npc.motivation ? `
+            <div class="info-item">
+                <span class="info-label" style="color: #2e7d32;"><i class="fa-solid fa-bullseye"></i> Motivation:</span>
+                <span class="editable" id="editable-motivation" onclick="editTextareaField('motivation', currentNPC.motivation, event)" style="font-style: italic;">${capitalize(npc.name.split(' ')[0])} ${npc.motivation}</span>
+            </div>
+            ` : ''}
+            
+            ${npc.carrying ? `
+            <div class="info-item">
+                <span class="info-label" style="color: #6a1b9a;"><i class="fa-solid fa-suitcase"></i> Carrying:</span>
+                <span class="editable" id="editable-carryingItem" onclick="editTextField('carryingItem', currentNPC.carrying.item, event)">${npc.carrying.item}${npc.carrying.value ? ` <span style="color: #c9a227;">(${npc.carrying.value})</span>` : ''}</span>
+            </div>
+            ` : ''}
+        `;
 
     // Pending Level Up section (if user chose "Choose Ability Scores & Feats")
     if (npc.pendingLevelUpChoice) {
@@ -1417,7 +1445,12 @@ function editTextField(field, currentValue, event) {
         saved = true;
         const newValue = input.value.trim();
         if (newValue && newValue !== currentValue) {
-            currentNPC[field] = newValue;
+            // Handle nested fields
+            if (field === 'carryingItem' && currentNPC.carrying) {
+                currentNPC.carrying.item = newValue;
+            } else {
+                currentNPC[field] = newValue;
+            }
             regenerateBackstoryIfNeeded();
         }
         isEditing = false;
@@ -2081,6 +2114,13 @@ function updateNPCField(field, newValue) {
         const occData = occupations[newValue];
         if (occData && !lockStates.equipment) {
             currentNPC.equipment = occData.equipment || [];
+        }
+        // Regenerate shop name for new occupation
+        const shopCategory = occupationShopCategory[newValue];
+        if (shopCategory && currentNPC.ageCategory !== 'infant' && currentNPC.ageCategory !== 'child') {
+            currentNPC.shopName = generateShopName(shopCategory);
+        } else {
+            currentNPC.shopName = null;
         }
     }
     

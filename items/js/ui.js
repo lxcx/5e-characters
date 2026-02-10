@@ -61,6 +61,12 @@ function displayItem(item) {
                     <i class="fa-solid fa-skull"></i>
                     <span>This item is cursed</span>
                 </div>
+                ${item.curseDescription ? `
+                <div class="curse-description" style="margin-top: 10px; padding: 10px; background: rgba(139, 0, 0, 0.1); border-left: 3px solid #8b0000; border-radius: 4px;">
+                    <div style="font-weight: bold; color: #8b0000; margin-bottom: 5px;"><i class="fa-solid fa-scroll"></i> Curse Effect</div>
+                    <div class="curse-text editable" id="editable-curseDescription" onclick="editCurseDescription()" style="cursor: pointer; font-style: italic;">${item.curseDescription}</div>
+                </div>
+                ` : ''}
             ` : ''}
             
             ${item.source ? `
@@ -239,4 +245,46 @@ function handleItemImageUpload(event) {
     };
     reader.readAsDataURL(file);
     event.target.value = '';
+}
+
+// ============================================
+// CURSE EDITING
+// ============================================
+
+// Edit curse description
+function editCurseDescription() {
+    const element = document.getElementById('editable-curseDescription');
+    if (!element || !currentItem) return;
+    
+    const currentValue = currentItem.curseDescription || '';
+    
+    const textarea = document.createElement('textarea');
+    textarea.className = 'curse-edit-textarea';
+    textarea.value = currentValue;
+    textarea.style.cssText = 'width: 100%; min-height: 80px; padding: 8px; border: 1px solid #8b0000; border-radius: 4px; font-family: inherit; font-size: inherit; resize: vertical;';
+    
+    element.innerHTML = '';
+    element.appendChild(textarea);
+    element.classList.remove('editable');
+    
+    setTimeout(() => {
+        textarea.focus();
+        textarea.select();
+    }, 10);
+    
+    const saveEdit = () => {
+        const newValue = textarea.value.trim();
+        if (newValue) {
+            currentItem.curseDescription = newValue;
+        }
+        displayItem(currentItem);
+    };
+    
+    textarea.addEventListener('blur', saveEdit);
+    
+    textarea.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            displayItem(currentItem);
+        }
+    });
 }

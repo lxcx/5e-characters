@@ -4695,3 +4695,238 @@ const startingGold = {
     warlock: { dice: 4, sides: 4, multiplier: 10 },     // 4d4 × 10 gp
     wizard: { dice: 4, sides: 4, multiplier: 10 }       // 4d4 × 10 gp
 };
+
+// ========== NPC FLAVOR DATA ==========
+// Secrets/Obstacles - hidden character depths
+const npcSecrets = [
+    "is secretly a member of a thieves' guild",
+    "is hiding from someone dangerous",
+    "has a gambling problem they can't control",
+    "is actually a runaway noble in disguise",
+    "is being blackmailed by a local crime lord",
+    "has a dark secret about their past",
+    "is a spy for a rival kingdom",
+    "owes a massive debt to dangerous people",
+    "witnessed a murder and fears for their life",
+    "is part of a secret cult",
+    "has been cursed and doesn't know how to break it",
+    "is searching for a lost family member",
+    "stole something valuable and lives in fear of discovery",
+    "made a pact with a dark entity",
+    "is not who they claim to be",
+    "carries a terrible illness they're hiding",
+    "betrayed someone close to them",
+    "is being hunted by bounty hunters",
+    "knows the location of hidden treasure",
+    "accidentally killed someone",
+    "is a shapechanger hiding their true form",
+    "is possessed by a spirit",
+    "has prophetic dreams they don't understand",
+    "is a former criminal trying to go straight",
+    "has a twin no one knows about",
+    "is plotting revenge against someone",
+    "can't remember parts of their past",
+    "is being watched by mysterious figures",
+    "has a forbidden love affair",
+    "is slowly going mad",
+    "works for the secret police",
+    "is an escaped prisoner",
+    "has ties to pirates or smugglers",
+    "knows dangerous forbidden knowledge",
+    "is addicted to a rare substance",
+    "has made enemies in high places",
+    "is the last of their bloodline",
+    "carries a cursed item they can't get rid of",
+    "has a split personality",
+    "is not actually the person's real child/parent",
+    "is dying and hiding it from everyone",
+    "once served an evil master",
+    "has a price on their head",
+    "is immune to magic and doesn't know why",
+    "can see ghosts and spirits",
+    "is a deserter from an army",
+    "has been replaced by a doppelganger",
+    "knows the true identity of a local hero",
+    "is slowly transforming into something inhuman",
+    "guards a dangerous artifact"
+];
+
+// Motivations/Wants - what drives the NPC
+const npcMotivations = [
+    "wants to find a rare ingredient for a remedy",
+    "needs help dealing with a bully",
+    "is looking for a lost pet",
+    "wants someone to listen to their story",
+    "needs directions to somewhere important",
+    "is trying to sell something unusual",
+    "wants to learn a new skill",
+    "needs protection from someone",
+    "is searching for a missing person",
+    "wants to hire adventurers for a job",
+    "needs a message delivered urgently",
+    "is looking for investors for a scheme",
+    "wants revenge on someone who wronged them",
+    "needs help moving something heavy",
+    "is trying to find true love",
+    "wants to start a new business",
+    "needs someone to teach them to fight",
+    "is looking for a drinking companion",
+    "wants to commission a special item",
+    "needs an alibi for tonight",
+    "is trying to break a curse",
+    "wants to join an adventuring party",
+    "needs a loan desperately",
+    "is looking for a healer",
+    "wants to know the latest rumors",
+    "needs a place to hide for a few days",
+    "is trying to impress someone important",
+    "wants to throw a grand celebration",
+    "needs magical assistance",
+    "is looking to make a dangerous deal",
+    "wants to prove their innocence",
+    "needs to retrieve something stolen",
+    "is trying to find their purpose in life",
+    "wants to learn about their heritage",
+    "needs to settle an old score",
+    "is looking for a specific rare book",
+    "wants to escape their current life",
+    "needs muscle for a risky job",
+    "is trying to save a failing business",
+    "wants to find a cure for a loved one",
+    "needs information about the local area",
+    "is looking to convert others to their faith",
+    "wants to document local legends",
+    "needs passage to another town",
+    "is trying to win a competition",
+    "wants to find a worthy apprentice",
+    "needs help with a personal matter",
+    "is looking to adopt a child",
+    "wants to restore their family's honor",
+    "needs to confess something important"
+];
+
+// Random items NPCs might be carrying
+const npcCarrying = [
+    { item: "a crumpled love letter", value: null },
+    { item: "a worn map with markings", value: null },
+    { item: "a silver locket with a portrait inside", value: "5 gp" },
+    { item: "a half-eaten sandwich", value: null },
+    { item: "a list of names with some crossed out", value: null },
+    { item: "a brass key to an unknown lock", value: null },
+    { item: "a pouch of unusual herbs", value: "2 gp" },
+    { item: "a child's wooden toy", value: null },
+    { item: "a flask of strong spirits", value: "5 sp" },
+    { item: "a book of poetry", value: "1 gp" },
+    { item: "a lucky rabbit's foot", value: null },
+    { item: "a set of weighted dice", value: "1 gp" },
+    { item: "a small vial of perfume", value: "5 gp" },
+    { item: "a wanted poster (possibly of themselves)", value: null },
+    { item: "a collection of pressed flowers", value: null },
+    { item: "an invitation to a secret meeting", value: null },
+    { item: "a religious symbol of an obscure deity", value: null },
+    { item: "a small mirror that shows something odd", value: "10 gp" },
+    { item: "a deck of fortune-telling cards", value: "2 gp" },
+    { item: "a jar of pickled something", value: "3 sp" },
+    { item: "a sealed letter addressed to someone important", value: null },
+    { item: "a small bag of colorful marbles", value: null },
+    { item: "a broken piece of jewelry", value: "3 gp" },
+    { item: "a receipt for something expensive", value: null },
+    { item: "a hand-drawn family portrait", value: null },
+    { item: "a collection of teeth from various creatures", value: null },
+    { item: "a small music box that plays an eerie tune", value: "8 gp" },
+    { item: "a promissory note for a large sum", value: null },
+    { item: "a bag of exotic spices", value: "4 gp" },
+    { item: "a compass that always points to something other than north", value: "15 gp" },
+    { item: "a folded paper crane", value: null },
+    { item: "a small bottle of invisible ink", value: "10 gp" },
+    { item: "a lock of someone's hair", value: null },
+    { item: "a small collection of foreign coins", value: "7 gp" },
+    { item: "a vial labeled 'DRINK ME'", value: null },
+    { item: "a piece of a treasure map", value: null },
+    { item: "a small figurine carved from bone", value: "2 gp" },
+    { item: "a ticket to a sold-out show", value: "3 gp" },
+    { item: "a pair of fancy gloves", value: "2 gp" },
+    { item: "a snuffbox with a hidden compartment", value: "5 gp" },
+    { item: "a well-worn prayer book", value: "1 gp" },
+    { item: "a bag of hard candies", value: "2 sp" },
+    { item: "a journal with entries in code", value: null },
+    { item: "a small potted cactus", value: "1 gp" },
+    { item: "a set of lockpicks hidden in a pen case", value: "20 gp" },
+    { item: "a letter of recommendation from a noble", value: null },
+    { item: "a small hourglass filled with red sand", value: "3 gp" },
+    { item: "a charm bracelet with many tiny trinkets", value: "4 gp" },
+    { item: "a small notebook filled with sketches", value: null },
+    { item: "a badge of office (possibly fake)", value: null }
+];
+
+// ========== SHOP/ESTABLISHMENT NAME GENERATOR ==========
+// Adjectives for shop names
+const shopNameAdjectives = [
+    "Lively", "Merry", "Golden", "Silver", "Rusty", "Dusty", "Jolly", "Honest",
+    "Lucky", "Happy", "Grumpy", "Sleepy", "Crooked", "Straight", "Gilded", "Painted",
+    "Broken", "Mended", "Charming", "Cozy", "Warm", "Cool", "Fiery", "Frozen",
+    "Ancient", "Young", "Old", "New", "Wise", "Clever", "Humble", "Proud",
+    "Quiet", "Loud", "Singing", "Dancing", "Prancing", "Leaping", "Running", "Walking",
+    "Flying", "Soaring", "Diving", "Swimming", "Laughing", "Crying", "Smiling", "Frowning",
+    "Hungry", "Thirsty", "Wandering", "Resting", "Sleeping", "Waking", "Dreaming", "Hoping",
+    "Crafty", "Handy", "Sturdy", "Reliable", "Trusted", "Famous", "Hidden", "Secret",
+    "Royal", "Noble", "Common", "Simple", "Fancy", "Plain", "Ornate", "Modest",
+    "Swift", "Steady", "Patient", "Eager", "Brave", "Bold", "Gentle", "Kind"
+];
+
+// Nouns for shop names (general)
+const shopNameNouns = [
+    "Dragon", "Griffin", "Phoenix", "Unicorn", "Pegasus", "Stag", "Boar", "Bear",
+    "Wolf", "Fox", "Hound", "Cat", "Crow", "Raven", "Eagle", "Hawk",
+    "Owl", "Swan", "Dove", "Rooster", "Hen", "Goose", "Duck", "Pig",
+    "Horse", "Pony", "Mule", "Ox", "Bull", "Cow", "Sheep", "Goat",
+    "Lion", "Tiger", "Leopard", "Badger", "Otter", "Beaver", "Squirrel", "Rabbit",
+    "Hammer", "Anvil", "Sword", "Shield", "Helm", "Boot", "Glove", "Ring",
+    "Crown", "Throne", "Scepter", "Orb", "Gem", "Pearl", "Diamond", "Ruby",
+    "Rose", "Lily", "Oak", "Willow", "Thistle", "Clover", "Ivy", "Vine",
+    "Star", "Moon", "Sun", "Cloud", "Storm", "Thunder", "Lightning", "Rainbow",
+    "Barrel", "Tankard", "Flagon", "Bottle", "Cauldron", "Kettle", "Pot", "Pan"
+];
+
+// Specific suffixes by occupation type
+const shopSuffixes = {
+    // Food & Drink establishments
+    food: ["Inn", "Tavern", "Alehouse", "Pub", "Kitchen", "Bakery", "Brewery", "Cellar", "Hall", "House"],
+    // Trade & Craft shops
+    trade: ["Workshop", "Forge", "Shop", "Emporium", "Studio", "Works", "House", "Corner", "Place", "Goods"],
+    // Commerce establishments
+    commerce: ["Trading Post", "Market", "Exchange", "Emporium", "Goods", "Wares", "Mercantile", "Store", "Shop", "House"]
+};
+
+// Generate a shop/establishment name
+function generateShopName(occupationCategory) {
+    const adj = shopNameAdjectives[Math.floor(Math.random() * shopNameAdjectives.length)];
+    const noun = shopNameNouns[Math.floor(Math.random() * shopNameNouns.length)];
+    const suffixes = shopSuffixes[occupationCategory] || shopSuffixes.trade;
+    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+    
+    // Various name patterns
+    const patterns = [
+        `The ${adj} ${noun}`,
+        `The ${adj} ${noun} ${suffix}`,
+        `${noun}'s ${suffix}`,
+        `The ${noun} & ${shopNameNouns[Math.floor(Math.random() * shopNameNouns.length)]}`,
+        `The ${adj} ${suffix}`
+    ];
+    
+    return patterns[Math.floor(Math.random() * patterns.length)];
+}
+
+// Map occupation categories to shop name types
+const occupationShopCategory = {
+    // Food & Drink
+    'baker': 'food', 'butcher': 'food', 'brewer': 'food', 'cook': 'food',
+    'innkeeper': 'food', 'vintner': 'food', 'barkeep': 'food',
+    // Trade & Craft
+    'blacksmith': 'trade', 'carpenter': 'trade', 'mason': 'trade', 'potter': 'trade',
+    'weaver': 'trade', 'tailor': 'trade', 'cobbler': 'trade', 'tanner': 'trade',
+    'jeweler': 'trade', 'glassblower': 'trade',
+    // Commerce
+    'merchant': 'commerce', 'peddler': 'commerce', 'shopkeeper': 'commerce',
+    'banker': 'commerce', 'trader': 'commerce'
+};

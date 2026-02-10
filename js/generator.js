@@ -551,6 +551,18 @@ function generateNPC() {
     const passiveInvestigation = 10 + modifiers.int + (skills.includes('Investigation') ? proficiencyBonus : 0);
     const passiveInsight = 10 + modifiers.wis + (skills.includes('Insight') ? proficiencyBonus : 0);
 
+    // Generate NPC flavor (secrets, motivations, carrying items)
+    const npcSecret = randomChoice(npcSecrets);
+    const npcMotivation = randomChoice(npcMotivations);
+    const npcCarryingItem = randomChoice(npcCarrying);
+    
+    // Generate shop/establishment name for appropriate occupations
+    let shopName = null;
+    const shopCategory = occupationShopCategory[selectedOccupation];
+    if (shopCategory && selectedAgeCategory !== 'infant' && selectedAgeCategory !== 'child') {
+        shopName = generateShopName(shopCategory);
+    }
+
     // Display NPC
     displayNPC({
         name: fullName,
@@ -604,7 +616,12 @@ function generateNPC() {
         passiveInvestigation: passiveInvestigation,
         passiveInsight: passiveInsight,
         xp: xpThresholds[totalLevel] || 0,
-        ...calculateAC(characterClasses[0]?.className || 'commoner', modifiers)
+        ...calculateAC(characterClasses[0]?.className || 'commoner', modifiers),
+        // NPC flavor
+        secret: npcSecret,
+        motivation: npcMotivation,
+        carrying: npcCarryingItem,
+        shopName: shopName
     });
 }
 
