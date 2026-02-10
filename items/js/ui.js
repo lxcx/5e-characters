@@ -27,11 +27,11 @@ function displayItem(item) {
             
             <div class="attunement-toggle">
                 <label class="toggle-switch">
-                    <input type="checkbox" id="attunementToggle" ${item.attunement ? 'checked' : ''} onchange="toggleAttunement()">
+                    <input type="checkbox" id="attunementToggle" ${item.attunement && item.attunement !== 'none' ? 'checked' : ''} onchange="toggleAttunement()">
                     <span class="toggle-slider"></span>
                 </label>
                 <span class="toggle-text"><i class="fa-solid fa-link"></i> Requires Attunement</span>
-                ${item.attunement && typeof item.attunement === 'string' ? `
+                ${item.attunement && typeof item.attunement === 'string' && item.attunement !== 'none' && item.attunement !== 'true' ? `
                     <span class="attunement-detail editable-inline" onclick="editAttunementRequirement()" title="Click to edit">(${item.attunement})</span>
                 ` : ''}
             </div>
