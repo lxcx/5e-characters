@@ -1,4 +1,4 @@
-﻿// ============================================
+// ============================================
 // MAGIC ITEMS DATABASE - ALL ITEMS (A-Z)
 // ============================================
 // Consolidated DMG and other sourcebook magic items
@@ -5026,5 +5026,190 @@ const allMagicItems = {
         properties: ['+3 weapon', 'versatile (1d10+3)', 'sentient', 'thrown (20/60)'],
         description: 'Forged by dwarves and once possessed by the dwarven hero Raurlor, Whelm is a fierce weapon that despises orcs, goblins, and creatures that are not dwarves. Although you must be a dwarf to attune to this weapon, Whelm is not above testing lesser creatures, provided they\'re not orcs or goblins. You gain a +3 bonus to attack and damage rolls made with this magic weapon. At the start of each of your turns, Whelm deals 1d6 psychic damage to you until you exterminate 1d4+1 goblins. Whelm has additional abilities: Goblinoid Bane (extra 2d6 bludgeoning vs goblins and orcs). Thrown and returns to hand. Detect giants within 500 feet. Stun giants on hit (DC 15 Con save). You can use an action to cast Shockwave (DC 15, 2d8 thunder, 60-foot radius).',
         source: 'DMG'
+    },
+
+    // ============================================
+    // ARTIFACTS (DMG)
+    // ============================================
+
+    'axe-of-the-dwarvish-lords': {
+        name: 'Axe of the Dwarvish Lords',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'battleaxe',
+        rarity: 'artifact',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'dwarf',
+        damage: '1d8+3',
+        damageType: 'slashing',
+        properties: ['+3 weapon', 'versatile (1d10+3)', 'thrown (20/60)', 'returns when thrown'],
+        description: 'Seeing the peril his people faced, a young dwarf prince came to believe that his people needed something to unite them. Thus, he set out to forge a weapon that would be such a symbol. Aided by Moradin, the prince labored in the fire of his faith for many years. The result was the Axe of the Dwarvish Lords. You gain a +3 bonus to attack and damage rolls with this magic axe. The axe also functions as a belt of dwarvenkind, a dwarven thrower, and a sword of sharpness. Conjure Earth Elemental: Use an action to cast the spell (save DC 17). Travel the Depths: Can teleport to any location within the earth. Summon Dwarf: Once per day, summon a dwarf warrior spirit. Random Properties: 2 minor beneficial, 1 major beneficial, 2 minor detrimental.',
+        source: 'DMG'
+    },
+    'book-of-exalted-deeds': {
+        name: 'Book of Exalted Deeds',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 5,
+        cost: 'priceless',
+        attunement: 'creature of good alignment',
+        description: 'The definitive treatise on all that is good in the multiverse, the fabled Book of Exalted Deeds figures prominently in many religions. Rather than being a single tome, the work encompasses many writings by celestial beings. Any non-good creature that tries to read the book takes 24d6 radiant damage. Destroying the book causes the reader to burst into divine radiance. If you spend 80 hours reading and studying the book, your Wisdom score increases by 2 (max 24), and you gain the ability to cast the hallow spell once per day. The book also grants: immunity to charm and fear, advantage on saving throws against spells from evil creatures, and the ability to cast healing word at will. Random Properties: 2 minor beneficial, 2 major beneficial.',
+        source: 'DMG'
+    },
+    'book-of-vile-darkness': {
+        name: 'Book of Vile Darkness',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 5,
+        cost: 'priceless',
+        attunement: 'creature of evil alignment',
+        description: 'The contents of this foul manuscript of ineffable wickedness are the meat and drink of those in evil\'s thrall. No mortal was meant to know the secrets it contains, knowledge so vile that to even glimpse the words invites madness. Any non-evil creature that tries to read the book takes 24d6 psychic damage. If you spend 80 hours reading the book, your Constitution score increases by 2 (max 24), and you gain access to its foul magic. You can cast dominate monster (DC 18) once per day, and you command the allegiance of all evil creatures within 1 mile when you call. The book also lets you: create undead at will, remove conditions from yourself, and summon a Night Hag as an advisor. Random Properties: 2 minor beneficial, 1 major beneficial, 3 minor detrimental, 1 major detrimental. Curse: Touching the book makes you unwilling to part with it.',
+        source: 'DMG'
+    },
+    'eye-of-vecna': {
+        name: 'Eye of Vecna',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'Seldom is the name of Vecna spoken except in a hushed voice. Vecna was, in his time, one of the mightiest of all wizards. Through dark magic and conquest, he forged a terrible empire. For all his power, Vecna couldn\'t escape his own mortality. He began to fear death and take steps to prevent his end. To attune the eye, you must gouge out your own eye and press the artifact into the empty socket. The Eye grafts itself to your head and becomes a golden eye with a slit pupil. While attuned: You have truesight out to 120 feet, you can use an action to see as if wearing a ring of X-ray vision, you can use an action to cast eyebite or clairvoyance. The Eye lets you paralyze or kill creatures you can see (DC 20 Constitution save). X-ray vision: Once per day, 1 minute duration. Random Properties: 1 minor beneficial, 1 major detrimental.',
+        source: 'DMG'
+    },
+    'hand-of-vecna': {
+        name: 'Hand of Vecna',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'Seldom is the name of Vecna spoken except in a hushed voice. His undead hand is a feared relic. To attune the hand, you must lop off your left hand at the wrist and press the artifact against the stump. The hand grafts itself to your arm and becomes a shriveled, mummified hand with long, claw-like fingernails. While attuned: Your Strength score becomes 20 (unless already higher), any melee spell attack or melee weapon attack with the hand deals an extra 2d8 cold damage, you can use an action to cast finger of death (DC 18), and you can use an action to cast teleport. You can use an action to cast sleep (9th level version). The Hand lets you make a melee attack that instantly kills humanoids on a failed DC 20 Constitution save. Random Properties: 1 minor beneficial, 1 major detrimental.',
+        source: 'DMG'
+    },
+    'orb-of-dragonkind': {
+        name: 'Orb of Dragonkind',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        charges: 7,
+        recharge: 'Regains 1d4+3 expended charges daily at dawn',
+        description: 'Ages past, elves and humans waged a terrible war against evil dragons. When the world seemed doomed, powerful wizards came together and worked their greatest magic, forging five Orbs of Dragonkind to help them defeat the dragons. Each orb contains the essence of an evil dragon, a presence that resents any attempt to coax magic from it. To use the orb, you must win a contest of wills (DC 15 Charisma check). On failure, you are charmed by the orb. While controlling the orb, you can cast cure wounds (5th level, 3 charges), daylight (1 charge), death ward (2 charges), or scrying (3 charges). You can also cast detect magic at will. Call Dragons: Use an action to issue a telepathic call that extends 40 miles. Evil dragons feel compelled to come to you. Random Properties: 2 minor beneficial, 1 minor detrimental, 1 major detrimental.',
+        source: 'DMG'
+    },
+    'sword-of-kas': {
+        name: 'Sword of Kas',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'longsword',
+        rarity: 'artifact',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'any',
+        damage: '2d6+3',
+        damageType: 'slashing',
+        properties: ['+3 weapon', 'versatile (2d6+3)', 'sentient', 'finesse'],
+        description: 'When Vecna grew in power, he appointed an evil and ruthless lieutenant, Kas the Bloody-Handed, to act as his bodyguard and assassin. Kas coveted the Spider Throne and betrayed Vecna, cutting off Vecna\'s hand and plucking out his eye. The battle destroyed both of them, but both their spirits survived. The Sword of Kas was created by Vecna for his lieutenant. You gain a +3 bonus to attack and damage rolls. Critical hits deal an extra 2d10 slashing damage, and the target must make a DC 15 Constitution save or be unable to regain hit points for 1 minute. Spirit of Kas: The sword speaks to you, urging destruction of Vecna and all who serve him. While attuned: You have resistance to necrotic damage, your hit point maximum can\'t be reduced, and you can\'t be frightened. Spells: You can cast call lightning, divine word, or finger of death. Random Properties: 1 minor beneficial, 1 major beneficial, 1 minor detrimental, 1 major detrimental.',
+        source: 'DMG'
+    },
+    'wand-of-orcus': {
+        name: 'Wand of Orcus',
+        type: 'wand',
+        rarity: 'artifact',
+        weight: 4,
+        cost: 'priceless',
+        attunement: 'any',
+        charges: 7,
+        recharge: 'Regains 1d4+3 expended charges daily at dawn',
+        properties: ['+3 to spell attacks'],
+        description: 'The ghastly Wand of Orcus rarely leaves Orcus\'s side. The wand is topped with a skull that once belonged to a human hero slain by Orcus. The wand can be wielded as a magic mace that grants a +3 bonus to attack and damage rolls. The wand deals an extra 2d12 necrotic damage to any target it hits. When you hit an undead with this weapon, that creature takes an extra 2d12 necrotic damage as the wand drains its animating force. While holding the wand, you can use an action to conjure up to 500 hit points worth of undead (zombies, skeletons, shadows, ghouls, ghasts, wights, or mummies). Spells (DC 18): animate dead, blight, circle of death (2 charges), finger of death (3 charges), power word kill (4 charges), speak with dead. Random Properties: 2 minor beneficial, 1 major beneficial, 2 minor detrimental, 1 major detrimental. Sentient: Chaotic evil, telepathic, urges you to spread death.',
+        source: 'DMG'
+    },
+
+    // ============================================
+    // ARTIFACTS (Tasha's Cauldron of Everything)
+    // ============================================
+
+    'demonomicon-of-iggwilv': {
+        name: 'Demonomicon of Iggwilv',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 5,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'An expansive treatise on the Abyss and the fiends that dwell there, the Demonomicon of Iggwilv was written by the infamous archmage Iggwilv, and duplicated through magical means. Each copy contains everything the original contained, including knowledge that can tear a reader\'s mind apart. Any non-evil creature that reads the book for 1 minute must make a DC 20 Intelligence saving throw. On failure, the creature takes 6d6 psychic damage, and its Intelligence and Wisdom scores become 1 for 30 days. While attuned: You have advantage on Intelligence checks to recall lore about demons, resistance to poison and psychic damage, and immunity to being charmed or frightened by fiends. Spells: You can cast dominate monster (demons only), gate (demons only), magic circle, or banishment. You can also summon a shadow demon once per day.',
+        source: 'TCE'
+    },
+    'mighty-servant-of-leuk-o': {
+        name: 'Mighty Servant of Leuk-o',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: '2 creatures',
+        description: 'Named for the warlord who infamously employed it, the Mighty Servant of Leuk-o is a fantastically powerful construct. A 10-foot-tall machine of metal and riveted plates, it requires two attuned creatures to pilot it: one in its head and one in its chest. The Mighty Servant is a Huge construct with AC 22, 310 hit points, and a movement speed of 60 ft. While piloting, you can use its Destructive Fist attack (melee, +14 to hit, 4d12+7 force damage). The Servant has immunity to all conditions, immunity to fire, poison, and psychic damage, and resistance to all other damage. It also has: Helm of Perfect Sight (truesight 120 ft), Crushing Charge (extra 6d12 damage if moving 20+ ft), and Antimagic Cone (60 ft cone from eyes). Flaw: The Servant craves destruction and may rebel. Random Properties: 1 minor beneficial, 1 major detrimental.',
+        source: 'TCE'
+    },
+    'teeth-of-dahlver-nar': {
+        name: 'Teeth of Dahlver-Nar',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'The Teeth of Dahlver-Nar are the remains of a priest who gathered specimens from all sorts of creatures over his lifetime. A collection of teeth in a tarnished brass box, these artifacts can be implanted in place of your own teeth. When implanting a tooth (a process requiring 1 minute), you gain the benefits of that tooth but also suffer strange afflictions. There are 32 teeth, each with different powers such as: Unicorn Tooth (detect evil and good at will), Planetar Tooth (fly 30 ft), Solar Tooth (searing smite at 5th level), Mind Flayer Tooth (detect thoughts), Vampire Tooth (bite attack dealing 1d6 piercing + 3d6 necrotic), Dragon Tooth (breath weapon), and more. Removing a tooth ends its benefits and afflictions. Random Properties: Varies by tooth. Side Effects: Various madness and physical transformations.',
+        source: 'TCE'
+    },
+
+    // ============================================
+    // ARTIFACTS (Adventure Modules)
+    // ============================================
+
+    'ring-of-winter': {
+        name: 'Ring of Winter',
+        type: 'ring',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'The Ring of Winter is an artifact that was made by an archomental of ice long ago. It is a plain gold band that grows cold when worn. While wearing this ring, you gain the following benefits: You are immune to cold damage. You don\'t age and can\'t be aged magically. You don\'t need food, drink, or air. While the Ring of Winter is on your person, you can cast cone of cold, wall of ice, Otiluke\'s freezing sphere, and sleet storm at will (spell save DC 17). Ice Age: If the ring remains on your finger for 30 days, the area within 1 mile of you becomes a frozen wasteland. Creatures within 120 feet take 2d6 cold damage at the start of each of their turns. Curse: The ring makes you feel cold emotionally, making you indifferent to the suffering of others. Random Properties: 2 minor beneficial, 1 minor detrimental.',
+        source: 'TOA'
+    },
+    'sword-of-zariel': {
+        name: 'Sword of Zariel',
+        type: 'weapon',
+        weaponType: 'martial',
+        subtype: 'longsword',
+        rarity: 'artifact',
+        weight: 3,
+        cost: 'priceless',
+        attunement: 'creature of good alignment',
+        damage: '2d6+3',
+        damageType: 'radiant',
+        properties: ['+3 weapon', 'holy avenger', 'versatile'],
+        description: 'This longsword belonged to the angel Zariel before her fall from grace. It is a celestial weapon of incredible power. You gain a +3 bonus to attack and damage rolls with this sword. The sword deals radiant damage instead of slashing. Against fiends and undead, the sword deals an extra 2d10 radiant damage. While holding the sword, you can use an action to give yourself a flying speed of 90 feet for 1 hour. While you hold the sword, it sheds bright light in a 20-foot radius and dim light for an additional 20 feet. You are immune to the frightened condition. You can use a bonus action to give all creatures of your choice within 30 feet resistance to fire, necrotic, and radiant damage for 1 minute. Random Properties: 2 major beneficial, 1 minor beneficial, 1 major detrimental.',
+        source: 'BGDA'
+    },
+    'mask-of-the-dragon-queen': {
+        name: 'Mask of the Dragon Queen',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 1,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'The Mask of the Dragon Queen is a collection of five Dragon Masks, each representing one of the five chromatic dragon types. When all five masks are combined, they form this single, terrible artifact. While attuned to the Mask, you gain the following benefits: You have immunity to acid, cold, fire, lightning, and poison damage. You can speak and understand Draconic. You have blindsight out to 60 feet. You have advantage on saving throws against being charmed or frightened. Once per day, you can use an action to gain the following benefits for 1 hour: You sprout dragon wings and gain a flying speed of 60 feet. You can use a breath weapon as a bonus action (15d8 damage of any chromatic type, 60-foot cone, DC 18 Dexterity save for half). Legendary Resistance (3/day). The Mask can summon Tiamat under specific circumstances.',
+        source: 'ROT'
+    },
+    'wyrmskull-throne': {
+        name: 'Wyrmskull Throne',
+        type: 'wondrous-item',
+        rarity: 'artifact',
+        weight: 0,
+        cost: 'priceless',
+        attunement: 'any',
+        description: 'Built by dwarves and imbued with the power of dragons, the Wyrmskull Throne is a massive throne carved from obsidian and adorned with dragon skulls. A creature seated on the throne can harness the skulls\' magic. While attuned and seated: You have resistance to cold, fire, lightning, necrotic, and poison damage. You have truesight out to 60 feet. You can cast charm person, mass suggestion, and scrying (all at will), with a spell save DC of 21. The throne can summon an adult white, blue, green, black, or red dragon (your choice) once per day. The dragon is friendly to you and follows your commands for 1 hour. You can use an action to issue a telepathic call that reaches all dragons within 40 miles, who must succeed on a DC 21 Wisdom save or be compelled to come to you. Random Properties: 2 major beneficial, 1 minor detrimental, 1 major detrimental.',
+        source: 'SKT'
     }
 };
