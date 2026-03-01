@@ -2486,7 +2486,7 @@ const allMonsters = {
         ],
         actions: [
             { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 1 piercing damage." },
-            { name: "Euphoria Breath (Recharge 5-6)", description: "The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn." }
+            { name: "Euphoria Breath (Recharge 5-6)", description: "The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:\n\n1-4. The creature takes no action or bonus action and uses all of its movement to move in a random direction.\n\n5-6. The creature doesn't move or take actions this turn." }
         ],
         spellcasting: {
             innate: true,
@@ -4809,7 +4809,7 @@ const allMonsters = {
         actions: [
             { name: "Multiattack", description: "The sea spawn makes three attacks: two unarmed strikes and one with its Piscine Anatomy." },
             { name: "Unarmed Strike", description: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) bludgeoning damage." },
-            { name: "Piscine Anatomy", description: "The sea spawn has one or more of the following attack options, provided it has the appropriate anatomy: Bite, Poison Quills, Tentacle, Claw." }
+            { name: "Piscine Anatomy", description: "The sea spawn makes one attack with its anatomy option (choose or roll a d4):\n\n1. Bite. Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage.\n\n2. Poison Quills. Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 3 (1d6) poison damage, and the target must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n\n3. Tentacle. Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 5 (1d6+2) bludgeoning damage, and the target is grappled (escape DC 12) if it is a Medium or smaller creature. Until this grapple ends, the sea spawn can't use this tentacle on another target.\n\n4. Claw. Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage." }
         ]
     },
     "deep-scion": {
@@ -5387,7 +5387,7 @@ const allMonsters = {
             { name: "Multiattack", description: "The mind witness makes two attacks: one with its bite and one with its tentacles." },
             { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 16 (4d6+2) piercing damage." },
             { name: "Tentacles", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 20 (4d8+2) psychic damage. If the target is Large or smaller, it is grappled (escape DC 13) and must succeed on a DC 13 Intelligence saving throw or be stunned until this grapple ends." },
-            { name: "Eye Ray", description: "The mind witness shoots one magical eye ray at random (reroll duplicates), choosing one target it can see within 120 feet of it. See the beholder stat block for a list of possible eye rays." }
+            { name: "Eye Ray", description: "The mind witness shoots one magical eye ray at random (reroll duplicates), choosing one target it can see within 120 feet of it:\n\n1. Aversion Ray. The targeted creature must make a DC 13 Charisma saving throw. On a failed save, the target has disadvantage on attack rolls for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n\n2. Fear Ray. The targeted creature must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n\n3. Psychic Ray. The target must succeed on a DC 13 Intelligence saving throw or take 27 (6d8) psychic damage.\n\n4. Slowing Ray. The targeted creature must make a DC 13 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n\n5. Stunning Ray. The targeted creature must succeed on a DC 13 Constitution saving throw or be stunned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n\n6. Telekinetic Ray. If the target is a creature, it must succeed on a DC 13 Strength saving throw or the mind witness moves it up to 30 feet in any direction. The target is restrained by the ray's telekinetic grip until the start of the mind witness's next turn or until the mind witness is incapacitated." }
         ]
     },
     
@@ -7476,7 +7476,7 @@ const allMonsters = {
         ],
         actions: [
             { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 1 piercing damage." },
-            { name: "Euphoria Breath (Recharge 5-6)", description: "The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn." }
+            { name: "Euphoria Breath (Recharge 5-6)", description: "The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:\n\n1-4. The creature takes no action or bonus action and uses all of its movement to move in a random direction.\n\n5-6. The creature doesn't move or take actions this turn." }
         ],
         spellcasting: {
             innate: true,
@@ -14016,7 +14016,7 @@ const allMonsters = {
         languages: "Umber Hulk",
         cr: 5,
         traits: [
-            { name: "Confusing Gaze", description: "When a creature starts its turn within 30 feet of the umber hulk and is able to see the umber hulk's eyes, the umber hulk can magically force it to make a DC 15 Charisma saving throw, unless the umber hulk is incapacitated. On a failed saving throw, the creature can't take reactions until the start of its next turn and rolls a d8 to determine what it does during that turn." },
+            { name: "Confusing Gaze", description: "When a creature starts its turn within 30 feet of the umber hulk and is able to see the umber hulk's eyes, the umber hulk can magically force it to make a DC 15 Charisma saving throw, unless the umber hulk is incapacitated. On a failed saving throw, the creature can't take reactions until the start of its next turn and rolls a d8 to determine what it does during that turn:\n\n1. The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn't take an action this turn.\n\n2-5. The creature doesn't move or take actions this turn.\n\n6-7. The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\n\n8. The creature can act and move normally." },
             { name: "Tunneler", description: "The umber hulk can burrow through solid rock at half its burrowing speed and leaves a 5 foot-wide, 8-foot-high tunnel in its wake." }
         ],
         actions: [
@@ -32920,7 +32920,7 @@ const allMonsters = {
         languages: "Dwarvish, Gnomish, Sylvan, Terran, Undercommon",
         cr: 7,
         traits: [
-            { name: "Command Hair", description: "The korred can use a bonus action to command one rope of hair it has animated to do one of the following: entangle, release." },
+            { name: "Command Hair", description: "The korred has at least one 50-foot-long rope woven of its hair. As a bonus action, the korred commands one such rope within 30 feet of it to move up to 20 feet and entangle a Large or smaller creature that the korred can see. The target must succeed on a DC 13 Dexterity saving throw or become grappled by the rope (escape DC 13). Until this grapple ends, the target is restrained. The korred can use a bonus action to release the target, which is also freed if the korred dies or becomes incapacitated." },
             { name: "Stone Camouflage", description: "The korred has advantage on Dexterity (Stealth) checks made to hide in rocky terrain." },
             { name: "Stone Stride", description: "Once on its turn, the korred can use 10 feet of its movement to step magically into one stone object or surface and emerge from a second stone object or surface within 60 feet of the first." }
         ],
