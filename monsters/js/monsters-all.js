@@ -21380,7 +21380,7 @@ const allMonsters = {
         actions: [
             { name: "Dagger", description: "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage." },
             { name: "Sling", description: "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4+2) bludgeoning damage." },
-            { name: "Weapon Invention", description: "The kobold uses one of the following options (roll a d8 or choose one); the kobold can use each one no more than once per day: 1. Acid, 2. Alchemist's Fire, 3. Basket of Centipedes, 4. Green Slime Pot, 5. Rot Grub Pot, 6. Scorpion on a Stick, 7. Skunk in a Cage, 8. Wasp Nest in a Bag." }
+            { name: "Weapon Invention", description: "The kobold uses one of the following options (roll a d8 or choose one); the kobold can use each one no more than once per day:\n\n1. Acid. The kobold hurls a flask of acid. Ranged Weapon Attack: +4 to hit, range 5/20 ft., one target. Hit: 7 (2d6) acid damage.\n\n2. Alchemist's Fire. The kobold throws a flask of alchemist's fire. Ranged Weapon Attack: +4 to hit, range 5/20 ft., one target. Hit: 2 (1d4) fire damage at the start of each of the target's turns. A creature can end this damage by using its action to make a DC 10 Dexterity check to extinguish the flames.\n\n3. Basket of Centipedes. The kobold throws a small basket into a 5-foot-square space within 20 feet of it. A swarm of insects (centipedes) with 11 hit points emerges from the basket and rolls initiative. At the end of each of the swarm's turns, there's a 50 percent chance that the swarm disperses.\n\n4. Green Slime Pot. The kobold throws a clay pot full of green slime at the target, and it breaks open on impact. Ranged Weapon Attack: +4 to hit, range 5/20 ft., one target. Hit: 5 (1d10) acid damage, and the target is covered in slime until a creature uses its action to scrape or wash the slime off. A target covered in the slime takes 5 (1d10) acid damage at the start of each of its turns.\n\n5. Rot Grub Pot. The kobold throws a clay pot into a 5-foot-square space within 20 feet of it, and it breaks open on impact. A swarm of rot grubs emerges from the shattered pot and remains a hazard in that square.\n\n6. Scorpion on a Stick. The kobold makes a melee attack with a scorpion tied to the end of a 5-foot-long pole. Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 (1d8) poison damage on a failed save, or half as much damage on a successful one.\n\n7. Skunk in a Cage. The kobold releases a skunk into an unoccupied space within 5 feet of it. The skunk has a walking speed of 20 feet, AC 10, 1 hit point, and no effective attacks. It rolls initiative and, on its turn, uses its action to spray musk at a random creature within 5 feet of it. The target must make a DC 9 Constitution saving throw. On a failed save, the target retches and can't take actions for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature that doesn't need to breathe or is immune to poison automatically succeeds on the saving throw. Once the skunk has sprayed its musk, it can't do so again until it finishes a short or long rest.\n\n8. Wasp Nest in a Bag. The kobold throws a small bag into a 5-foot-square space within 20 feet of it. A swarm of insects (wasps) with 11 hit points emerges from the bag and rolls initiative. At the end of each of the swarm's turns, there's a 50 percent chance that the swarm disperses." }
         ]
     },
     "kobold-scale-sorcerer": {
@@ -26405,7 +26405,7 @@ const allMonsters = {
         cr: 2,
         actions: [
             { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10+3) piercing damage plus 3 (1d6) radiant damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (sleep gas in a 15-foot cone) or Moonlight Breath (radiant damage in a 15-foot cone)." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 15-foot cone. Each creature in that area must succeed on a DC 12 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 14 (4d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ]
     },
     "young moonstone dragon": {
@@ -26430,7 +26430,7 @@ const allMonsters = {
             { name: "Multiattack", description: "The dragon makes three attacks: one with its Bite and two with its Claws." },
             { name: "Bite", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage plus 5 (1d10) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (sleep gas in a 30-foot cone) or Moonlight Breath (radiant damage in a 30-foot cone)." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 30-foot cone. Each creature in that area must succeed on a DC 15 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 28 (8d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         spellcasting: {
             innate: true,
@@ -26467,7 +26467,7 @@ const allMonsters = {
             { name: "Bite", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 16 (2d10+5) piercing damage plus 7 (2d6) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage." },
             { name: "Tail", description: "Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 14 (2d8+5) bludgeoning damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath or Moonlight Breath." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 60-foot cone. Each creature in that area must succeed on a DC 19 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 60-foot cone. Each creature in that area must make a DC 19 Dexterity saving throw, taking 49 (14d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         legendaryActions: [
             { name: "Tail Attack", description: "The dragon makes a Tail attack." },
@@ -26508,7 +26508,7 @@ const allMonsters = {
             { name: "Bite", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d10+6) piercing damage plus 11 (2d10) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 13 (2d6+6) slashing damage." },
             { name: "Tail", description: "Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 15 (2d8+6) bludgeoning damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (90-foot cone) or Moonlight Breath (90-foot cone)." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 90-foot cone. Each creature in that area must succeed on a DC 21 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 90-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 63 (18d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         legendaryActions: [
             { name: "Tail Attack", description: "The dragon makes a Tail attack." },
@@ -30029,7 +30029,7 @@ const allMonsters = {
         ],
         actions: [
             { name: "Flesh-Crushing Stride", description: "The hellfire engine moves up to its speed in a straight line. During this move, it can enter Large or smaller creatures' spaces. A creature whose space the hellfire engine enters must make a DC 18 Dexterity saving throw. On a successful save, the creature is pushed 5 feet to the nearest space out of the hellfire engine's path. On a failed save, the creature falls prone and takes 28 (8d6) bludgeoning damage." },
-            { name: "Hellfire Weapons", description: "The hellfire engine uses one of the following options: Bonemelt Sprayer, Lightning Flail, Thunder Cannon." }
+            { name: "Hellfire Weapons", description: "The hellfire engine uses one of the following options (choose one):\n\n1. Bonemelt Sprayer. The hellfire engine spews acidic fire in a 30-foot cone. Each creature in that area must make a DC 20 Dexterity saving throw, taking 11d6 fire damage on a failed save, or half as much damage on a successful one. Damage from this weapon ignores fire resistance.\n\n2. Lightning Flail. Melee Weapon Attack: +11 to hit, reach 15 ft., one creature. Hit: 18 (4d6+4) bludgeoning damage plus 22 (5d8) lightning damage. If the target is a creature, it can't take reactions until the start of its next turn, and if the target is Large or smaller, it is also knocked prone.\n\n3. Thunder Cannon. The hellfire engine targets a point it can see within 120 feet of it and shoots a ball of lightning that explodes at that point. Each creature within 20 feet of that point must make a DC 20 Dexterity saving throw, taking 27 (5d8+5) bludgeoning damage plus 13 (2d12) thunder damage on a failed save, or half as much damage on a successful one. If a creature fails this saving throw by 5 or more and is Huge or smaller, it is knocked prone and pushed 20 feet away from the point of impact." }
         ]
     },
     "howler": {
@@ -32154,7 +32154,7 @@ const allMonsters = {
         cr: 2,
         actions: [
             { name: "Bite", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10+3) piercing damage plus 3 (1d6) radiant damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath or Moonlight Breath." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 15-foot cone. Each creature in that area must succeed on a DC 12 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 14 (4d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         spellcasting: {
             innate: true,
@@ -32187,7 +32187,7 @@ const allMonsters = {
             { name: "Multiattack", description: "The dragon makes one Bite attack and two Claw attacks." },
             { name: "Bite", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage plus 5 (1d10) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath or Moonlight Breath." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 30-foot cone. Each creature in that area must succeed on a DC 15 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 28 (8d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         spellcasting: {
             innate: true,
@@ -32225,7 +32225,7 @@ const allMonsters = {
             { name: "Bite", description: "Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 17 (2d12+4) piercing damage plus 5 (1d10) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage." },
             { name: "Tail", description: "Melee Weapon Attack: +10 to hit, reach 15 ft., one target. Hit: 13 (2d8+4) bludgeoning damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (60-foot cone) or Moonlight Breath (90-foot line)." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 90-foot line that is 10 feet wide. Each creature in that area must make a DC 18 Dexterity saving throw, taking 49 (14d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         legendaryActions: [
             { name: "Tail", description: "The dragon makes one Tail attack." },
@@ -32267,7 +32267,7 @@ const allMonsters = {
             { name: "Bite", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d10+6) piercing damage plus 11 (2d10) radiant damage." },
             { name: "Claw", description: "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 13 (2d6+6) slashing damage." },
             { name: "Tail", description: "Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 15 (2d8+6) bludgeoning damage." },
-            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons: Dream Breath (90-foot cone) or Moonlight Breath (120-foot line)." }
+            { name: "Breath Weapon (Recharge 5-6)", description: "The dragon uses one of the following breath weapons:\n\nDream Breath. The dragon exhales mist in a 90-foot cone. Each creature in that area must succeed on a DC 21 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.\n\nMoonlight Breath. The dragon exhales a beam of moonlight in a 120-foot line that is 10 feet wide. Each creature in that area must make a DC 21 Dexterity saving throw, taking 63 (18d6) radiant damage on a failed save, or half as much damage on a successful one." }
         ],
         legendaryActions: [
             { name: "Tail", description: "The dragon makes one Tail attack." },
