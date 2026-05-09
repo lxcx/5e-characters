@@ -27217,7 +27217,7 @@ const allMonsters = {
         hitDice: "6d8+12",
         speed: { walk: 30 },
         abilityScores: { str: 13, dex: 12, con: 14, int: 10, wis: 14, cha: 15 },
-        skills: { animal handling: 4, nature: 2, perception: 4 },
+        skills: { "animal handling": 4, nature: 2, perception: 4 },
         senses: ["passive Perception 14"],
         languages: "Common, Sylvan",
         cr: 1,
