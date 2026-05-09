@@ -25261,6 +25261,379 @@ const allMonsters = {
             { name: "Breath Weapon (Recharge 5-6)", description: "The cerberus exhales a 30-foot cone of molten rock. Each creature in that area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one. On a failed save, a creature is also restrained by the rock as it begins to harden. A restrained creature can make a DC 15 Strength check, freeing itself on a success. If the creature is still restrained at the start of the cerberus's next turn, the rock hardens completely, and the creature is petrified." }
         ]
     },
+    "woe-strider": {
+        name: "Woe Strider",
+        source: "MOoT",
+        size: "large",
+        type: "aberration",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 110,
+        hitDice: "13d10+39",
+        speed: { walk: 40, climb: 40 },
+        abilityScores: { str: 18, dex: 13, con: 16, int: 12, wis: 14, cha: 8 },
+        savingThrows: { con: 6, wis: 5 },
+        skills: { intimidation: 5, perception: 5 },
+        damageResistances: ["necrotic"],
+        senses: ["darkvision 120 ft."],
+        languages: "telepathy 120 ft.",
+        cr: 7,
+        traits: [
+            { name: "Antimagic Cone", description: "The woe strider's open eye creates an area of antimagic, as in the antimagic field spell, in a 60-foot cone. At the start of each of its turns, the woe strider decides which way the cone faces and whether the cone is active. The area works against the woe strider's own abilities." },
+            { name: "Magic Resistance", description: "The woe strider has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The woe strider makes two claw attacks and one bite attack. If both claws hit the same creature, the target is grappled (escape DC 14)." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 15 (2d10+4) piercing damage plus 7 (2d6) necrotic damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) slashing damage." }
+        ],
+        visualDescription: "A nightmarish aberration with a massive cyclopean eye dominating its face, long grasping claws, and a body that seems to absorb light. Its single eye projects an aura of magical nullification, and its form appears to be woven from solidified despair and shadow."
+    },
+    "colossus-of-akros": {
+        name: "Colossus of Akros",
+        source: "MOoT",
+        size: "gargantuan",
+        type: "construct",
+        alignment: "unaligned",
+        ac: 21,
+        acType: "natural armor",
+        hp: 350,
+        hitDice: "20d20+140",
+        speed: { walk: 60 },
+        abilityScores: { str: 28, dex: 9, con: 24, int: 3, wis: 11, cha: 1 },
+        savingThrows: { str: 15, con: 13, wis: 6 },
+        damageImmunities: ["fire", "poison", "psychic", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened", "paralyzed", "petrified", "poisoned", "stunned", "unconscious"],
+        senses: ["darkvision 120 ft."],
+        languages: "understands the languages of its creator but can't speak",
+        cr: 23,
+        traits: [
+            { name: "Fire Absorption", description: "Whenever the colossus is subjected to fire damage, it takes no damage and instead regains a number of hit points equal to the fire damage dealt." },
+            { name: "Immutable Form", description: "The colossus is immune to any spell or effect that would alter its form." },
+            { name: "Legendary Resistance (3/Day)", description: "If the colossus fails a saving throw, it can choose to succeed instead." },
+            { name: "Magic Weapons", description: "The colossus's weapon attacks are magical." },
+            { name: "Siege Monster", description: "The colossus deals double damage to objects and structures." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The colossus makes two slam attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +15 to hit, reach 15 ft., one target. Hit: 28 (3d12+9) bludgeoning damage." },
+            { name: "Bolt of Divine Energy (Recharge 5-6)", description: "The colossus hurls a bolt of divine energy at a point it can see within 200 feet of it. Each creature within 30 feet of that point must make a DC 21 Dexterity saving throw, taking 42 (12d6) radiant damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: {
+            count: 3,
+            actions: [
+                { name: "Slam", description: "The colossus makes one slam attack." },
+                { name: "Stomp (Costs 2 Actions)", description: "The colossus stomps one of its feet at a point on the ground within 20 feet of it. Any creature in a 20-foot-radius, 20-foot-high cylinder centered on that point must succeed on a DC 21 Dexterity saving throw or take 16 (3d10) bludgeoning damage and be knocked prone." }
+            ]
+        },
+        visualDescription: "An enormous bronze and iron statue standing hundreds of feet tall, depicting a mighty warrior in ancient Greek-style armor. Its joints glow with divine fire, and its eyes burn with golden light. Forged by the gods themselves to protect the polis of Akros."
+    },
+    "polukranos": {
+        name: "Polukranos, World Eater",
+        source: "MOoT",
+        size: "gargantuan",
+        type: "monstrosity",
+        alignment: "unaligned",
+        ac: 17,
+        acType: "natural armor",
+        hp: 232,
+        hitDice: "15d20+75",
+        speed: { walk: 50, swim: 50 },
+        abilityScores: { str: 26, dex: 11, con: 20, int: 3, wis: 10, cha: 7 },
+        savingThrows: { str: 14, con: 11, wis: 6 },
+        skills: { perception: 12 },
+        damageImmunities: ["acid"],
+        senses: ["darkvision 120 ft."],
+        languages: "—",
+        cr: 19,
+        traits: [
+            { name: "Acidic Blood", description: "When the hydra takes piercing or slashing damage, each creature within 5 feet of it takes 7 (2d6) acid damage." },
+            { name: "Hold Breath", description: "The hydra can hold its breath for 1 hour." },
+            { name: "Legendary Resistance (3/Day)", description: "If the hydra fails a saving throw, it can choose to succeed instead." },
+            { name: "Multiple Heads", description: "The hydra has five heads. While it has more than one head, the hydra has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious. Whenever the hydra takes 30 or more damage in a single turn, one of its heads dies. If all its heads die, the hydra dies. At the end of its turn, it grows two heads for each of its heads that died since its last turn, unless it has taken fire damage since its last turn. The hydra regains 10 hit points for each head regrown in this way." },
+            { name: "Reactive Heads", description: "For each head the hydra has beyond one, it gets an extra reaction that can be used only for opportunity attacks." },
+            { name: "Wakeful", description: "While the hydra sleeps, at least one of its heads is awake." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hydra makes as many bite attacks as it has heads." },
+            { name: "Bite", description: "Melee Weapon Attack: +14 to hit, reach 15 ft., one target. Hit: 17 (2d8+8) piercing damage plus 7 (2d6) acid damage." },
+            { name: "Acid Spit (Recharge 5-6)", description: "The hydra spits acid in a 60-foot cone. Each creature in that area must make a DC 19 Dexterity saving throw, taking 45 (10d8) acid damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: {
+            count: 5,
+            actions: [
+                { name: "Detect", description: "The hydra makes a Wisdom (Perception) check." },
+                { name: "Bite", description: "The hydra makes one bite attack." },
+                { name: "Tail Sweep (Costs 2 Actions)", description: "The hydra sweeps its tail. Each creature within 20 feet of the hydra must succeed on a DC 22 Strength saving throw or be pushed 10 feet away and knocked prone." }
+            ]
+        },
+        visualDescription: "A titanic five-headed hydra of legendary proportions, with scales that glisten with corrosive acid. Each serpentine head is large enough to swallow an ox whole. Polukranos is known as the World Eater, a monster of myth that has terrorized Theros since the age of the gods."
+    },
+    "archon-of-falling-stars": {
+        name: "Archon of Falling Stars",
+        source: "MOoT",
+        size: "large",
+        type: "celestial",
+        alignment: "lawful good",
+        ac: 18,
+        acType: "natural armor",
+        hp: 144,
+        hitDice: "17d10+51",
+        speed: { walk: 30, fly: 90 },
+        abilityScores: { str: 20, dex: 15, con: 17, int: 16, wis: 18, cha: 20 },
+        savingThrows: { con: 7, wis: 8, cha: 9 },
+        skills: { insight: 8, perception: 8 },
+        damageResistances: ["radiant", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened"],
+        senses: ["truesight 120 ft."],
+        languages: "all, telepathy 120 ft.",
+        cr: 12,
+        traits: [
+            { name: "Flyby", description: "The archon doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+            { name: "Magic Resistance", description: "The archon has advantage on saving throws against spells and other magical effects." },
+            { name: "Mount", description: "If the archon isn't mounted, it can use a bonus action to magically teleport onto the creature serving as its mount, provided the archon and its mount are on the same plane of existence. When it teleports, the archon appears astride the mount, along with any equipment it is wearing or carrying." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The archon makes two Radiant Blade attacks or uses its Radiant Strike twice." },
+            { name: "Radiant Blade", description: "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 14 (2d8+5) slashing damage plus 14 (4d6) radiant damage." },
+            { name: "Radiant Strike", description: "Ranged Spell Attack: +9 to hit, range 120 ft., one target. Hit: 22 (4d10) radiant damage, and the target must succeed on a DC 17 Constitution saving throw or be blinded until the end of its next turn." }
+        ],
+        reactions: [
+            { name: "Falling Star (Recharge 5-6)", description: "When the archon or a creature it can see within 60 feet of it is hit by an attack, the archon can cause a meteor to fall from the sky onto the attacker. The attacker must make a DC 17 Dexterity saving throw, taking 28 (8d6) fire damage plus 28 (8d6) radiant damage on a failed save, or half as much damage on a successful one." }
+        ],
+        visualDescription: "A majestic celestial warrior clad in gleaming white and gold armor, riding upon a spectral winged horse made of starlight. Meteors trail behind it like a comet's tail as it soars through the sky, bringing divine justice to the wicked."
+    },
+    "nightmare-shepherd": {
+        name: "Nightmare Shepherd",
+        source: "MOoT",
+        size: "large",
+        type: "fiend",
+        alignment: "lawful evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 136,
+        hitDice: "16d10+48",
+        speed: { walk: 30, fly: 60 },
+        abilityScores: { str: 19, dex: 15, con: 17, int: 14, wis: 17, cha: 20 },
+        savingThrows: { dex: 6, con: 7, wis: 7, cha: 9 },
+        skills: { deception: 9, insight: 7, perception: 7 },
+        damageResistances: ["cold", "necrotic", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["fire", "poison"],
+        conditionImmunities: ["exhaustion", "frightened", "poisoned"],
+        senses: ["truesight 60 ft."],
+        languages: "Abyssal, Common, Infernal, telepathy 120 ft.",
+        cr: 11,
+        traits: [
+            { name: "Aura of Nightmares", description: "Any creature that starts its turn within 30 feet of the shepherd must succeed on a DC 17 Wisdom saving throw or be frightened until the start of its next turn. If a creature's saving throw is successful, the creature is immune to the shepherd's Aura of Nightmares for the next 24 hours." },
+            { name: "Magic Resistance", description: "The shepherd has advantage on saving throws against spells and other magical effects." },
+            { name: "Shepherd of Souls", description: "When a creature within 60 feet of the shepherd dies, the shepherd can use its reaction to cause a shadow demon to rise from the corpse. The shadow demon acts on the shepherd's initiative count and obeys the shepherd's commands." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The shepherd makes two scythe attacks." },
+            { name: "Scythe", description: "Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 13 (2d8+4) slashing damage plus 10 (3d6) necrotic damage." },
+            { name: "Nightmare Touch", description: "Melee Spell Attack: +9 to hit, reach 5 ft., one creature. Hit: 28 (8d6) psychic damage, and the target must succeed on a DC 17 Wisdom saving throw or be incapacitated until the end of its next turn." }
+        ],
+        visualDescription: "A towering demonic figure with black feathered wings and the legs of a goat, wielding a wickedly curved scythe. Its eyes burn with hellfire, and shadows writhe around it like living things. Where it walks, the souls of the dead rise as twisted servants."
+    },
+    "eater-of-hope": {
+        name: "Eater of Hope",
+        source: "MOoT",
+        size: "large",
+        type: "fiend",
+        subtype: "demon",
+        alignment: "chaotic evil",
+        ac: 17,
+        acType: "natural armor",
+        hp: 90,
+        hitDice: "12d10+24",
+        speed: { walk: 30, fly: 60 },
+        abilityScores: { str: 19, dex: 17, con: 14, int: 12, wis: 11, cha: 16 },
+        savingThrows: { dex: 6, wis: 3, cha: 6 },
+        skills: { deception: 6, intimidation: 6, stealth: 6 },
+        damageResistances: ["cold", "fire", "lightning", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["charmed", "exhaustion", "poisoned"],
+        senses: ["darkvision 120 ft."],
+        languages: "Abyssal, telepathy 120 ft.",
+        cr: 6,
+        traits: [
+            { name: "Aura of Hopelessness", description: "Any creature that starts its turn within 30 feet of the demon must succeed on a DC 14 Wisdom saving throw or have disadvantage on attack rolls and ability checks until the start of its next turn." },
+            { name: "Magic Resistance", description: "The demon has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The demon makes two claw attacks and one bite attack." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) piercing damage." },
+            { name: "Claw", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Consume Hope (Recharge 5-6)", description: "The demon targets one creature it can see within 30 feet of it. The target must make a DC 14 Charisma saving throw. On a failed save, the target takes 22 (4d10) psychic damage and can't regain hit points for 1 minute. The demon regains hit points equal to half the psychic damage dealt." }
+        ],
+        visualDescription: "A horrific demon with ragged black wings, razor-sharp claws, and a face that is a swirling void of darkness. Wherever it passes, mortals feel their hopes and dreams drain away, replaced by crushing despair."
+    },
+    "ghostblade-eidolon": {
+        name: "Ghostblade Eidolon",
+        source: "MOoT",
+        size: "medium",
+        type: "undead",
+        alignment: "any alignment",
+        ac: 12,
+        hp: 55,
+        hitDice: "10d8+10",
+        speed: { walk: 30, fly: 30, hover: true },
+        abilityScores: { str: 16, dex: 15, con: 12, int: 13, wis: 12, cha: 14 },
+        savingThrows: { wis: 3 },
+        skills: { perception: 3, stealth: 4 },
+        damageResistances: ["acid", "fire", "lightning", "thunder", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["cold", "necrotic", "poison"],
+        conditionImmunities: ["charmed", "exhaustion", "grappled", "paralyzed", "petrified", "poisoned", "prone", "restrained"],
+        senses: ["darkvision 60 ft."],
+        languages: "the languages it knew in life",
+        cr: 5,
+        traits: [
+            { name: "Blurred Form", description: "Attack rolls against the eidolon are made with disadvantage unless the attacker has truesight." },
+            { name: "Incorporeal Movement", description: "The eidolon can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The eidolon makes two ghostblade attacks." },
+            { name: "Ghostblade", description: "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) slashing damage plus 9 (2d8) necrotic damage." }
+        ],
+        visualDescription: "The spectral form of a fallen warrior, its body translucent and flickering like a candle flame. It wields ghostly blades that shimmer with necrotic energy, and its form constantly shifts and blurs, making it difficult to focus upon."
+    },
+    "theran-chimera": {
+        name: "Theran Chimera",
+        source: "MOoT",
+        size: "large",
+        type: "monstrosity",
+        alignment: "chaotic evil",
+        ac: 14,
+        acType: "natural armor",
+        hp: 114,
+        hitDice: "12d10+48",
+        speed: { walk: 30, fly: 60 },
+        abilityScores: { str: 19, dex: 11, con: 19, int: 3, wis: 14, cha: 10 },
+        skills: { perception: 8 },
+        senses: ["darkvision 60 ft."],
+        languages: "understands Draconic but can't speak",
+        cr: 7,
+        traits: [
+            { name: "Three Heads", description: "The chimera has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The chimera makes three attacks: one with its bite, one with its horns, and one with its claws. When its fire breath is available, it can use the breath in place of its bite." },
+            { name: "Bite", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) piercing damage." },
+            { name: "Horns", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (1d12+4) bludgeoning damage." },
+            { name: "Claws", description: "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage." },
+            { name: "Fire Breath (Recharge 5-6)", description: "The dragon head exhales fire in a 15-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 31 (7d8) fire damage on a failed save, or half as much damage on a successful one." }
+        ],
+        visualDescription: "A horrific fusion of lion, goat, and dragon. Its lion's head roars with savage fury, the goat's head bleats with demonic malice, and the dragon's head breathes gouts of flame. Its body combines the worst aspects of all three creatures, and a serpentine tail lashes behind it."
+    },
+    "hundred-handed-one": {
+        name: "Hundred-Handed One",
+        source: "MOoT",
+        size: "huge",
+        type: "giant",
+        alignment: "neutral",
+        ac: 15,
+        acType: "natural armor",
+        hp: 243,
+        hitDice: "18d12+126",
+        speed: { walk: 40 },
+        abilityScores: { str: 26, dex: 15, con: 24, int: 10, wis: 14, cha: 11 },
+        savingThrows: { con: 12, wis: 7 },
+        skills: { perception: 12 },
+        damageResistances: ["bludgeoning, piercing, and slashing from nonmagical attacks"],
+        senses: ["darkvision 120 ft."],
+        languages: "Giant",
+        cr: 15,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the hundred-handed one fails a saving throw, it can choose to succeed instead." },
+            { name: "Reactive", description: "The hundred-handed one can take one reaction on every turn in a combat." },
+            { name: "Vigilant", description: "The hundred-handed one can't be surprised." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The hundred-handed one makes four slam attacks or four rock attacks." },
+            { name: "Slam", description: "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 22 (4d6+8) bludgeoning damage." },
+            { name: "Rock", description: "Ranged Weapon Attack: +13 to hit, range 60/240 ft., one target. Hit: 30 (4d10+8) bludgeoning damage." }
+        ],
+        legendaryActions: {
+            count: 3,
+            actions: [
+                { name: "Attack", description: "The hundred-handed one makes one slam or rock attack." },
+                { name: "Barrage (Costs 2 Actions)", description: "The hundred-handed one makes four rock attacks." }
+            ]
+        },
+        visualDescription: "A colossal humanoid with fifty heads and one hundred arms, a primordial being from before the time of the gods. Each of its heads watches a different direction, and its countless arms can hurl boulders with devastating accuracy, creating a storm of stone that can level armies."
+    },
+    "typhon": {
+        name: "Typhon",
+        source: "MOoT",
+        size: "huge",
+        type: "monstrosity",
+        alignment: "chaotic evil",
+        ac: 18,
+        acType: "natural armor",
+        hp: 195,
+        hitDice: "17d12+85",
+        speed: { walk: 40, fly: 60 },
+        abilityScores: { str: 24, dex: 16, con: 20, int: 8, wis: 14, cha: 14 },
+        savingThrows: { str: 12, con: 10, wis: 7, cha: 7 },
+        skills: { intimidation: 7, perception: 7 },
+        damageResistances: ["cold", "fire", "lightning", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["poison"],
+        conditionImmunities: ["frightened", "poisoned"],
+        senses: ["darkvision 120 ft.", "truesight 60 ft."],
+        languages: "Giant, Primordial",
+        cr: 15,
+        traits: [
+            { name: "Legendary Resistance (3/Day)", description: "If the typhon fails a saving throw, it can choose to succeed instead." },
+            { name: "Magic Resistance", description: "The typhon has advantage on saving throws against spells and other magical effects." },
+            { name: "Serpentine Heads", description: "The typhon has six serpentine heads that share its space. While it has more than one head, the typhon has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious. Whenever the typhon takes 35 or more damage in a single turn, one of its heads dies." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The typhon makes six bite attacks." },
+            { name: "Bite", description: "Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 14 (2d6+7) piercing damage plus 7 (2d6) poison damage." },
+            { name: "Poison Breath (Recharge 5-6)", description: "The typhon exhales poisonous gas in a 60-foot cone. Each creature in that area must make a DC 18 Constitution saving throw, taking 42 (12d6) poison damage on a failed save, or half as much damage on a successful one." }
+        ],
+        legendaryActions: {
+            count: 3,
+            actions: [
+                { name: "Bite", description: "The typhon makes one bite attack." },
+                { name: "Coil (Costs 2 Actions)", description: "The typhon wraps its serpentine body around one Large or smaller creature within 10 feet of it. The target must succeed on a DC 20 Strength saving throw or be grappled (escape DC 20) and restrained until the grapple ends." }
+            ]
+        },
+        visualDescription: "A monstrous creature with the upper body of a giant and the lower body of a mass of writhing serpents. Six dragon-like heads sprout from its shoulders, each spewing clouds of poisonous vapor. This primordial horror is said to be father of all monsters."
+    },
+    "ashen-rider": {
+        name: "Ashen Rider",
+        source: "MOoT",
+        size: "large",
+        type: "celestial",
+        alignment: "lawful evil",
+        ac: 19,
+        acType: "natural armor",
+        hp: 178,
+        hitDice: "17d10+85",
+        speed: { walk: 30, fly: 90 },
+        abilityScores: { str: 22, dex: 18, con: 20, int: 17, wis: 19, cha: 21 },
+        savingThrows: { dex: 9, con: 10, wis: 9, cha: 10 },
+        skills: { insight: 9, intimidation: 10, perception: 9 },
+        damageResistances: ["necrotic", "radiant", "bludgeoning, piercing, and slashing from nonmagical attacks"],
+        damageImmunities: ["fire"],
+        conditionImmunities: ["charmed", "exhaustion", "frightened"],
+        senses: ["truesight 120 ft."],
+        languages: "all, telepathy 120 ft.",
+        cr: 16,
+        traits: [
+            { name: "Aura of Annihilation", description: "When a creature starts its turn within 30 feet of the ashen rider, it must succeed on a DC 18 Constitution saving throw or take 10 (3d6) fire damage and 10 (3d6) necrotic damage." },
+            { name: "Flyby", description: "The ashen rider doesn't provoke opportunity attacks when it flies out of an enemy's reach." },
+            { name: "Magic Resistance", description: "The ashen rider has advantage on saving throws against spells and other magical effects." }
+        ],
+        actions: [
+            { name: "Multiattack", description: "The ashen rider makes two attacks with its lance of ruin." },
+            { name: "Lance of Ruin", description: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 17 (2d10+6) piercing damage plus 14 (4d6) necrotic damage. If the target is a creature, it must succeed on a DC 18 Constitution saving throw or have its hit point maximum reduced by an amount equal to the necrotic damage taken. This reduction lasts until the target finishes a long rest." },
+            { name: "Exile (Recharge 5-6)", description: "The ashen rider targets one creature it can see within 60 feet of it. The target must succeed on a DC 18 Charisma saving throw or be magically banished to a harmless demiplane for 1 minute. While there, the target is incapacitated. At the end of each of its turns, the target can repeat the saving throw, returning to the space it left on a success." }
+        ],
+        visualDescription: "A terrifying archon of destruction mounted on a skeletal nightmare wreathed in black flames. Its armor is scorched and cracked, revealing the burning darkness within. Where the Ashen Rider passes, all things turn to cinder and ash."
+    },
 
     // ===== Guildmasters' Guide to Ravnica (GGR) =====
     "skyjek roc": {
