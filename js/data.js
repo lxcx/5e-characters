@@ -1178,6 +1178,701 @@ const subclassFeatures = {
             { level: 6, name: 'Spirit Session', description: 'Through a ritual séance of at least 1 minute with willing creatures, you can temporarily learn a spell from the divination or necromancy schools (of a level you can cast) from any class\'s spell list.' },
             { level: 14, name: 'Mystical Connection', description: 'When you roll on the Spirit Tales table, you can roll twice and choose which of the two results to use.' }
         ]
+    },
+    barbarian: {
+        berserker: [
+            { level: 3, name: "Frenzy", description: "When you rage, you can go into a frenzy, making a single melee weapon attack as a bonus action on each of your turns. When your rage ends, you suffer one level of exhaustion." },
+            { level: 6, name: "Mindless Rage", description: "You can't be charmed or frightened while raging. If you're charmed or frightened when you enter your rage, the effect is suspended for the duration." },
+            { level: 10, name: "Intimidating Presence", description: "As an action, you can frighten a creature within 30 feet (Wisdom save) until the end of your next turn, and can extend the effect on later turns." },
+            { level: 14, name: "Retaliation", description: "When you take damage from a creature within 5 feet, you can use your reaction to make a melee weapon attack against it." }
+        ],
+        "totem-warrior": [
+            { level: 3, name: "Spirit Seeker & Totem Spirit", description: "You can cast Beast Sense and Speak with Animals as rituals, and choose a totem animal that grants a benefit while raging (e.g., Bear grants resistance to all damage but psychic)." },
+            { level: 6, name: "Aspect of the Beast", description: "You gain a benefit based on a totem animal, such as the Bear's doubled carrying capacity and advantage on Strength checks to push, pull, lift, or break objects." },
+            { level: 10, name: "Spirit Walker", description: "You can cast Commune with Nature as a ritual to summon a totem spirit in animal form for guidance." },
+            { level: 14, name: "Totemic Attunement", description: "You gain a benefit while raging based on a totem animal, such as the Bear causing nearby enemies to have disadvantage on attacks against creatures other than you." }
+        ],
+        "ancestral-guardian": [
+            { level: 3, name: "Ancestral Protectors", description: "While raging, the first creature you hit each turn is hindered by ancestral spirits, giving it disadvantage on attacks against anyone but you, and its attacks against others deal half damage." },
+            { level: 6, name: "Spirit Shield", description: "While raging, you can use your reaction to reduce the damage an ally within 30 feet takes (2d6, increasing with level)." },
+            { level: 10, name: "Consult the Spirits", description: "You can cast Augury or Clairvoyance without a spell slot, using ancestral spirits as your senses." },
+            { level: 14, name: "Vengeful Ancestors", description: "When you use Spirit Shield to reduce damage, the attacker takes force damage equal to the amount you prevented." }
+        ],
+        "storm-herald": [
+            { level: 3, name: "Storm Aura", description: "While raging, you emanate a 10-foot aura of Desert, Sea, or Tundra that produces an effect at the start of each of your turns (e.g., Desert deals fire damage to nearby enemies)." },
+            { level: 6, name: "Storm Soul", description: "You gain resistance and other benefits based on your chosen environment (e.g., Sea grants lightning resistance and the ability to breathe underwater and swim)." },
+            { level: 10, name: "Shielding Storm", description: "You can extend your Storm Aura's damage resistance to allies within it." },
+            { level: 14, name: "Raging Storm", description: "Your Storm Aura gains an additional powerful effect (e.g., Desert deals fire damage to a creature that hits you with a melee attack)." }
+        ],
+        zealot: [
+            { level: 3, name: "Divine Fury & Warrior of the Gods", description: "While raging, your first hit each turn deals extra radiant or necrotic damage (1d6 + half your barbarian level). A spell or effect that revives you needs no material components." },
+            { level: 6, name: "Fanatical Focus", description: "If you fail a saving throw while raging, you can reroll it once per rage and must use the new roll." },
+            { level: 10, name: "Zealous Presence", description: "As a bonus action, you unleash a battle cry that grants up to ten creatures advantage on attack rolls and saving throws until the start of your next turn." },
+            { level: 14, name: "Rage Beyond Death", description: "While raging, dropping to 0 hit points doesn't knock you unconscious; you keep fighting and making death saves until your rage ends." }
+        ],
+        battlerager: [
+            { level: 3, name: "Battlerager Armor", description: "While wearing spiked armor and raging, you can make a bonus action melee attack with your armor spikes (1d4 piercing), and creatures you grapple take spike damage." },
+            { level: 6, name: "Reckless Abandon", description: "When you use Reckless Attack while raging, you also gain temporary hit points equal to your Constitution modifier." },
+            { level: 10, name: "Battlerager Charge", description: "You can take the Dash action as a bonus action while raging." },
+            { level: 14, name: "Spiked Retribution", description: "When a creature within 5 feet hits you with a melee attack while you're raging in spiked armor, it takes 3 piercing damage." }
+        ],
+        beast: [
+            { level: 3, name: "Form of the Beast", description: "When you rage, you manifest a natural weapon: a bite (heal on hit), claws (an extra attack), or a tail (extra reach and a reaction AC bonus)." },
+            { level: 6, name: "Bestial Soul", description: "Your natural weapons count as magical, and you gain a swimming, climbing, or jumping adaptation that you can change after each rest." },
+            { level: 10, name: "Infectious Fury", description: "When you hit with a natural weapon while raging, you can spend uses to force the target to make an attack against another creature or take psychic damage." },
+            { level: 14, name: "Call the Hunt", description: "When you rage, you can grant several allies extra damage dice on their attacks while gaining temporary hit points yourself." }
+        ],
+        "wild-magic": [
+            { level: 3, name: "Magic Awareness & Wild Surge", description: "You can cast Detect Magic without a slot, and when you enter a rage you roll on the Wild Magic table for a random magical effect." },
+            { level: 6, name: "Bolstering Magic", description: "You can touch a creature to grant it a bonus to attack rolls and ability checks, or restore an expended spell slot of a random level." },
+            { level: 10, name: "Unstable Backlash", description: "When you take damage or fail a save while raging, you can use your reaction to roll again on the Wild Magic table." },
+            { level: 14, name: "Controlled Surge", description: "When you roll on the Wild Magic table, you roll twice and choose which of the two effects to use." }
+        ]
+    },
+    cleric: {
+        knowledge: [
+            { level: 1, name: "Blessings of Knowledge", description: "You learn two languages, gain proficiency in two of Arcana, History, Nature, or Religion, and double your proficiency bonus on ability checks with them." },
+            { level: 2, name: "Channel Divinity: Knowledge of the Ages", description: "You gain proficiency with a skill or tool of your choice for 10 minutes." },
+            { level: 6, name: "Channel Divinity: Read Thoughts", description: "You read a creature's surface thoughts and can cast Suggestion on it without a spell slot." },
+            { level: 8, name: "Potent Spellcasting", description: "You add your Wisdom modifier to the damage you deal with any cleric cantrip." },
+            { level: 17, name: "Visions of the Past", description: "Through meditation, you can call up visions of the past connected to an object you hold or the area around you." }
+        ],
+        life: [
+            { level: 1, name: "Bonus Proficiency & Disciple of Life", description: "You gain proficiency with heavy armor, and your healing spells restore additional hit points equal to 2 + the spell's level." },
+            { level: 2, name: "Channel Divinity: Preserve Life", description: "You restore hit points equal to five times your cleric level, divided among creatures within 30 feet (up to half their max each)." },
+            { level: 6, name: "Blessed Healer", description: "When you cast a healing spell on another creature, you also regain hit points equal to 2 + the spell's level." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 radiant damage (2d8 at 14th level)." },
+            { level: 17, name: "Supreme Healing", description: "When you would roll dice to restore hit points with a spell, you use the highest number possible for each die instead." }
+        ],
+        light: [
+            { level: 1, name: "Bonus Cantrip & Warding Flare", description: "You learn the Light cantrip, and can use your reaction to impose disadvantage on an attacker within 30 feet a number of times equal to your Wisdom modifier per rest." },
+            { level: 2, name: "Channel Divinity: Radiance of the Dawn", description: "You dispel magical darkness nearby and deal radiant damage (2d10 + your cleric level) to hostile creatures within 30 feet (half on a save)." },
+            { level: 6, name: "Improved Flare", description: "You can use Warding Flare to protect other creatures, not just yourself." },
+            { level: 8, name: "Potent Spellcasting", description: "You add your Wisdom modifier to the damage you deal with any cleric cantrip." },
+            { level: 17, name: "Corona of Light", description: "You emit an aura of sunlight; enemies in it have disadvantage on saving throws against spells that deal fire or radiant damage." }
+        ],
+        nature: [
+            { level: 1, name: "Acolyte of Nature & Bonus Proficiency", description: "You learn a druid cantrip, gain proficiency in one nature-related skill, and gain proficiency with heavy armor." },
+            { level: 2, name: "Channel Divinity: Charm Animals and Plants", description: "You charm beasts and plants within 30 feet (Wisdom save) for 1 minute." },
+            { level: 6, name: "Dampen Elements", description: "You can use your reaction to grant a creature resistance to acid, cold, fire, lightning, or thunder damage." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 cold, fire, or lightning damage (2d8 at 14th level)." },
+            { level: 17, name: "Master of Nature", description: "You can command charmed beasts and plants as a bonus action." }
+        ],
+        tempest: [
+            { level: 1, name: "Wrath of the Storm & Bonus Proficiencies", description: "You gain proficiency with heavy armor and martial weapons, and can use your reaction to deal 2d8 lightning or thunder damage to a creature that hits you." },
+            { level: 2, name: "Channel Divinity: Destructive Wrath", description: "You deal maximum damage instead of rolling for a lightning or thunder spell or effect." },
+            { level: 6, name: "Thunderbolt Strike", description: "When you deal lightning damage to a Large or smaller creature, you can push it up to 10 feet away." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 thunder damage (2d8 at 14th level)." },
+            { level: 17, name: "Stormborn", description: "You have a flying speed equal to your walking speed whenever you aren't underground or indoors." }
+        ],
+        trickery: [
+            { level: 1, name: "Blessing of the Trickster", description: "You can touch a willing creature to give it advantage on Dexterity (Stealth) checks for 1 hour." },
+            { level: 2, name: "Channel Divinity: Invoke Duplicity", description: "You create an illusory duplicate of yourself for 1 minute, gaining advantage on attacks when near it and casting spells from its space." },
+            { level: 6, name: "Channel Divinity: Cloak of Shadows", description: "You become invisible until the end of your next turn." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 poison damage (2d8 at 14th level)." },
+            { level: 17, name: "Improved Duplicity", description: "You can create up to four duplicates with Invoke Duplicity." }
+        ],
+        war: [
+            { level: 1, name: "War Priest & Bonus Proficiencies", description: "You gain proficiency with heavy armor and martial weapons, and can make a bonus action weapon attack a number of times equal to your Wisdom modifier per rest." },
+            { level: 2, name: "Channel Divinity: Guided Strike", description: "You add +10 to an attack roll you make (or, with War God's Blessing, one made by another creature)." },
+            { level: 6, name: "Channel Divinity: War God's Blessing", description: "You use your reaction to grant a creature within 30 feet a +10 bonus to an attack roll." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 damage of the weapon's type (2d8 at 14th level)." },
+            { level: 17, name: "Avatar of Battle", description: "You gain resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons." }
+        ],
+        death: [
+            { level: 1, name: "Reaper", description: "You learn a necromancy cantrip that targets one creature, and can now target two creatures within 5 feet of each other with it." },
+            { level: 2, name: "Channel Divinity: Touch of Death", description: "When you hit a creature with a melee attack, you deal extra necrotic damage equal to 5 + twice your cleric level." },
+            { level: 6, name: "Inescapable Destruction", description: "Your spells and Channel Divinity that deal necrotic damage ignore resistance to necrotic damage." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 necrotic damage (2d8 at 14th level)." },
+            { level: 17, name: "Improved Reaper", description: "When you cast a necromancy spell of 1st through 5th level that targets one creature, you can target two creatures within 5 feet of each other." }
+        ],
+        arcana: [
+            { level: 1, name: "Arcane Initiate", description: "You gain proficiency in the Arcana skill and learn two cantrips of your choice from the wizard spell list." },
+            { level: 2, name: "Channel Divinity: Arcane Abjuration", description: "You turn a celestial, elemental, fey, or fiend (Wisdom save), potentially banishing lower-CR creatures back to their home plane." },
+            { level: 6, name: "Spell Breaker", description: "When you restore hit points to an ally with a spell, you can also end one spell of equal or lower level on that creature." },
+            { level: 8, name: "Potent Spellcasting", description: "You add your Wisdom modifier to the damage you deal with any cleric cantrip." },
+            { level: 17, name: "Arcane Mastery", description: "You add one spell each of 6th, 7th, 8th, and 9th level from the wizard spell list to your cleric spells." }
+        ],
+        forge: [
+            { level: 1, name: "Bonus Proficiencies & Blessing of the Forge", description: "You gain proficiency with heavy armor and smith's tools, and can enchant a weapon or suit of armor to grant a +1 bonus each long rest." },
+            { level: 2, name: "Channel Divinity: Artisan's Blessing", description: "You conduct an hour-long ritual to create one nonmagical metal item worth up to 100 gp." },
+            { level: 6, name: "Soul of the Forge", description: "You gain resistance to fire damage, and a +1 bonus to AC while wearing heavy armor." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 fire damage (2d8 at 14th level)." },
+            { level: 17, name: "Saint of Forge and Fire", description: "You gain immunity to fire damage and, while in heavy armor, resistance to nonmagical bludgeoning, piercing, and slashing damage." }
+        ],
+        grave: [
+            { level: 1, name: "Circle of Mortality & Eyes of the Grave", description: "Your healing cantrips maximize their healing on a creature at 0 hit points, and you can sense undead within 60 feet as an action." },
+            { level: 2, name: "Channel Divinity: Path to the Grave", description: "You curse a creature so the next attack against it has advantage and deals double damage on a hit." },
+            { level: 6, name: "Sentinel at Death's Door", description: "You can use your reaction to turn a critical hit against a creature you can see within 30 feet into a normal hit." },
+            { level: 8, name: "Potent Spellcasting", description: "You add your Wisdom modifier to the damage you deal with any cleric cantrip." },
+            { level: 17, name: "Keeper of Souls", description: "When an enemy dies near you, you or an ally regains hit points equal to the creature's number of Hit Dice." }
+        ],
+        order: [
+            { level: 1, name: "Bonus Proficiencies & Voice of Authority", description: "You gain heavy armor and Intimidation or Persuasion proficiency; when you cast a spell on an ally, that ally can use its reaction to make a weapon attack." },
+            { level: 2, name: "Channel Divinity: Order's Demand", description: "You charm creatures of your choice within 30 feet (Wisdom save) and can force them to drop what they're holding." },
+            { level: 6, name: "Embodiment of the Law", description: "You can cast enchantment spells of 1st through 5th level as a bonus action a number of times per long rest equal to your Wisdom modifier." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 psychic damage (2d8 at 14th level)." },
+            { level: 17, name: "Order's Wrath", description: "Once per turn when you deal Divine Strike damage, you can curse the target so the next ally to hit it deals extra psychic damage." }
+        ],
+        peace: [
+            { level: 1, name: "Implement of Peace & Emboldening Bond", description: "You gain Insight, Performance, or Persuasion proficiency, and can bond creatures so they can add a d4 to a roll while near each other." },
+            { level: 2, name: "Channel Divinity: Balm of Peace", description: "You move up to your speed without provoking opportunity attacks and can restore hit points to creatures you pass." },
+            { level: 6, name: "Protective Bond", description: "Bonded creatures can use their reaction to teleport to and take the damage another bonded creature would take." },
+            { level: 8, name: "Potent Spellcasting", description: "You add your Wisdom modifier to the damage you deal with any cleric cantrip." },
+            { level: 17, name: "Expansive Bond", description: "The range of your Emboldening Bond increases, and creatures using Protective Bond also gain resistance to the redirected damage." }
+        ],
+        twilight: [
+            { level: 1, name: "Bonus Proficiencies, Eyes of Night & Vigilant Blessing", description: "You gain heavy armor and martial weapons, 300-foot darkvision you can share with allies, and can grant a creature advantage on its next initiative roll." },
+            { level: 2, name: "Channel Divinity: Twilight Sanctuary", description: "You create a 30-foot sphere that grants temporary hit points or ends the charmed or frightened condition on creatures each round." },
+            { level: 6, name: "Steps of Night", description: "You can gain a flying speed for a short time as a bonus action while in dim light or darkness." },
+            { level: 8, name: "Divine Strike", description: "Once per turn, your weapon attacks deal an extra 1d8 radiant damage (2d8 at 14th level)." },
+            { level: 17, name: "Twilight Shroud", description: "You and allies within your Twilight Sanctuary gain half cover." }
+        ]
+    },
+    druid: {
+        land: [
+            { level: 2, name: "Bonus Cantrip & Natural Recovery", description: "You learn one additional druid cantrip, and can recover expended spell slots during a short rest once per day." },
+            { level: 6, name: "Land's Stride", description: "Moving through nonmagical difficult terrain costs no extra movement, and you have advantage on saves against plants magically created to impede movement." },
+            { level: 10, name: "Nature's Ward", description: "You can't be charmed or frightened by elementals or fey, and you're immune to poison and disease." },
+            { level: 14, name: "Nature's Sanctuary", description: "Beasts and plants must succeed on a Wisdom saving throw to be able to attack you." }
+        ],
+        moon: [
+            { level: 2, name: "Combat Wild Shape & Circle Forms", description: "You can Wild Shape as a bonus action and spend spell slots to heal while transformed, and can transform into beasts of challenge rating 1 or higher." },
+            { level: 6, name: "Primal Strike", description: "Your attacks in beast form count as magical for overcoming resistance and immunity to nonmagical attacks." },
+            { level: 10, name: "Elemental Wild Shape", description: "You can expend two uses of Wild Shape to transform into an air, earth, fire, or water elemental." },
+            { level: 14, name: "Thousand Forms", description: "You can cast Alter Self at will." }
+        ],
+        dreams: [
+            { level: 2, name: "Balm of the Summer Court", description: "You have a pool of d6s you can spend to heal creatures and grant them temporary hit points as a bonus action." },
+            { level: 6, name: "Hearth of Moonlight and Shadow", description: "During a rest, you create a protective 30-foot sphere granting cover and bonuses to Stealth and Perception and to saving throws." },
+            { level: 10, name: "Hidden Paths", description: "You can teleport yourself, or touch another creature to teleport it, a number of times per rest equal to your Wisdom modifier." },
+            { level: 14, name: "Walker in Dreams", description: "After a short rest, you can cast Dream, Scrying, or Teleportation Circle without a spell slot by connecting to the Feywild." }
+        ],
+        shepherd: [
+            { level: 2, name: "Speech of the Woods & Spirit Totem", description: "You can speak with beasts, and as a bonus action summon a Bear, Hawk, or Unicorn spirit whose aura aids allies within 30 feet." },
+            { level: 6, name: "Mighty Summoner", description: "Beasts and fey you conjure or summon gain extra hit points, and their attacks count as magical." },
+            { level: 10, name: "Guardian Spirit", description: "Your Spirit Totem heals summoned or conjured creatures that end their turn within its aura." },
+            { level: 14, name: "Faithful Summons", description: "When reduced to 0 hit points or incapacitated, you automatically cast Conjure Animals to summon four protective spirits." }
+        ],
+        spores: [
+            { level: 2, name: "Halo of Spores & Symbiotic Entity", description: "You deal reactive necrotic damage to a nearby creature, and can expend a use of Wild Shape to gain temporary hit points and empower your spores and melee attacks." },
+            { level: 6, name: "Fungal Infestation", description: "When a beast or humanoid dies within 10 feet of you, you can use your reaction to animate it as a zombie for a short time." },
+            { level: 10, name: "Spreading Spores", description: "You can hurl your Halo of Spores to fill a 10-foot cube within 30 feet with damaging spores." },
+            { level: 14, name: "Fungal Body", description: "You can't be blinded, deafened, frightened, or poisoned, and critical hits against you become normal hits while your Symbiotic Entity is active." }
+        ],
+        stars: [
+            { level: 2, name: "Star Map & Starry Form", description: "You gain a magical star chart granting bonus spells, and can assume a Starry Form (Archer, Chalice, or Dragon) as a bonus action using Wild Shape." },
+            { level: 6, name: "Cosmic Omen", description: "After a long rest, you roll a die to determine an omen of weal or woe that you can invoke as a reaction to boost or hinder rolls." },
+            { level: 10, name: "Twinkling Constellations", description: "Your Starry Form constellations improve, and your Dragon form grants a flying speed." },
+            { level: 14, name: "Full of Stars", description: "While in Starry Form, you become partially incorporeal, gaining resistance to bludgeoning, piercing, and slashing damage." }
+        ],
+        wildfire: [
+            { level: 2, name: "Summon Wildfire Spirit", description: "You can expend a use of Wild Shape to summon a Wildfire Spirit that can teleport allies and burn enemies with its Fiery Teleportation." },
+            { level: 6, name: "Enhanced Bond", description: "Your spells that deal fire damage or restore hit points gain a bonus when your Wildfire Spirit is present, and you can cast them through its space." },
+            { level: 10, name: "Cauterizing Flames", description: "When a creature dies near you or your spirit, a spectral flame springs up that heals or harms a creature that enters it." },
+            { level: 14, name: "Blazing Revival", description: "If you drop to 0 hit points while your Wildfire Spirit is present, you can dismiss it to instead drop to half your hit point maximum." }
+        ]
+    },
+    fighter: {
+        champion: [
+            { level: 3, name: "Improved Critical", description: "Your weapon attacks score a critical hit on a roll of 19 or 20." },
+            { level: 7, name: "Remarkable Athlete", description: "You add half your proficiency bonus to Strength, Dexterity, and Constitution checks that don't already use it, and your running jump distance increases." },
+            { level: 10, name: "Additional Fighting Style", description: "You choose a second option from the Fighting Style class feature." },
+            { level: 15, name: "Superior Critical", description: "Your weapon attacks score a critical hit on a roll of 18-20." },
+            { level: 18, name: "Survivor", description: "At the start of each of your turns, you regain hit points if you have no more than half your hit points left and at least 1 hit point." }
+        ],
+        "battle-master": [
+            { level: 3, name: "Combat Superiority", description: "You learn maneuvers fueled by superiority dice (d8) that let you perform special tricks such as Trip Attack, Riposte, and Disarming Attack." },
+            { level: 7, name: "Know Your Enemy", description: "If you study a creature for 1 minute outside combat, you learn how it compares to you in two capabilities of your choice." },
+            { level: 10, name: "Improved Combat Superiority", description: "Your superiority dice turn into d10s." },
+            { level: 15, name: "Relentless", description: "When you roll initiative and have no superiority dice left, you regain one." },
+            { level: 18, name: "Improved Combat Superiority (d12)", description: "Your superiority dice turn into d12s." }
+        ],
+        "eldritch-knight": [
+            { level: 3, name: "Spellcasting & Weapon Bond", description: "You learn wizard spells (mostly abjuration and evocation) using Intelligence, and can magically bond with weapons to summon them to your hand." },
+            { level: 7, name: "War Magic", description: "When you use your action to cast a cantrip, you can make one weapon attack as a bonus action." },
+            { level: 10, name: "Eldritch Strike", description: "When you hit a creature with a weapon attack, it has disadvantage on its next saving throw against a spell you cast before the end of your next turn." },
+            { level: 15, name: "Arcane Charge", description: "When you use Action Surge, you can teleport up to 30 feet to an unoccupied space you can see before or after the extra action." },
+            { level: 18, name: "Improved War Magic", description: "When you use your action to cast a spell, you can make one weapon attack as a bonus action." }
+        ],
+        "purple-dragon-knight": [
+            { level: 3, name: "Rallying Cry", description: "When you use Second Wind, you also grant temporary hit points equal to your fighter level to up to three creatures of your choice within 60 feet." },
+            { level: 7, name: "Royal Envoy", description: "You gain expertise (doubled proficiency) in Persuasion and proficiency in one additional skill of your choice." },
+            { level: 10, name: "Inspiring Surge", description: "When you use Action Surge, you can grant one ally within 60 feet an extra action to make one weapon attack." },
+            { level: 15, name: "Bulwark", description: "When you use Indomitable, you can also extend the reroll to one ally within 60 feet who failed the same saving throw." },
+            { level: 18, name: "Inspiring Surge (two allies)", description: "You can grant the extra attack from Inspiring Surge to two allies instead of one." }
+        ],
+        "arcane-archer": [
+            { level: 3, name: "Arcane Archer Lore & Arcane Shot", description: "You gain Arcana or Nature proficiency and a magic-detecting cantrip, and learn Arcane Shot options that infuse arrows with magical effects like Banishing or Piercing Arrow." },
+            { level: 7, name: "Curving Shot & Magic Arrow", description: "Your nonmagical arrows count as magical, and when you miss with a magic arrow you can use a bonus action to reroll the attack against another target." },
+            { level: 15, name: "Ever-Ready Shot", description: "When you roll initiative and have no Arcane Shot uses remaining, you regain one use." },
+            { level: 18, name: "Improved Shots", description: "The extra damage of your Arcane Shot options increases (from 2d6 to 3d6)." }
+        ],
+        cavalier: [
+            { level: 3, name: "Bonus Proficiency, Born to the Saddle & Unwavering Mark", description: "You gain a skill or language, advantage to stay mounted, and can mark a creature you hit to punish it for attacking anyone but you." },
+            { level: 7, name: "Warding Maneuver", description: "When you or a creature within 5 feet is hit, you can use your reaction to add a d8 to AC and potentially grant resistance to that damage." },
+            { level: 10, name: "Hold the Line", description: "Creatures provoke opportunity attacks from you when they move 5 or more feet while within your reach, and your opportunity attacks reduce their speed to 0." },
+            { level: 15, name: "Ferocious Charger", description: "If you move at least 10 feet in a straight line before hitting a creature, you can force it to make a save or be knocked prone." },
+            { level: 18, name: "Vigilant Defender", description: "You can make an opportunity attack on every other creature's turn during a round, giving you a special reaction each turn." }
+        ],
+        samurai: [
+            { level: 3, name: "Bonus Proficiency & Fighting Spirit", description: "You gain a social skill proficiency, and can give yourself advantage on weapon attacks and temporary hit points as a bonus action three times per rest." },
+            { level: 7, name: "Elegant Courtier", description: "You add your Wisdom modifier to Persuasion checks and gain proficiency in Wisdom saving throws." },
+            { level: 10, name: "Tireless Spirit", description: "When you roll initiative and have no uses of Fighting Spirit left, you regain one." },
+            { level: 15, name: "Rapid Strike", description: "If you have advantage on a weapon attack, you can forgo the advantage to make one additional weapon attack as part of the same action." },
+            { level: 18, name: "Strength Before Death", description: "When you take damage that would reduce you to 0 hit points, you can use your reaction to take a full extra turn immediately." }
+        ],
+        "psi-warrior": [
+            { level: 3, name: "Psionic Power", description: "You gain Psionic Energy dice you can spend for Protective Field (reduce damage to a creature), Psionic Strike (extra force damage), and Telekinetic Movement." },
+            { level: 7, name: "Telekinetic Adept", description: "You learn Psi-Powered Leap and Telekinetic Thrust, letting you push or knock prone a creature you hit with Psionic Strike." },
+            { level: 10, name: "Guarded Mind", description: "You gain resistance to psychic damage and can spend a Psionic Energy die to end the charmed or frightened condition on yourself." },
+            { level: 15, name: "Bulwark of Force", description: "As a bonus action, you grant yourself and allies within 30 feet half cover for 1 minute." },
+            { level: 18, name: "Telekinetic Master", description: "You can cast Telekinesis, and while concentrating on it you can make one weapon attack as a bonus action on your turns." }
+        ],
+        "rune-knight": [
+            { level: 3, name: "Bonus Proficiencies, Rune Carver & Giant's Might", description: "You gain smith's tools proficiency, can inscribe magical giant runes on your gear for various effects, and can become Large to gain damage and Strength bonuses." },
+            { level: 7, name: "Runic Shield", description: "When an ally within 60 feet is hit by an attack, you can use your reaction to force the attacker to reroll the d20 and use the lower result." },
+            { level: 10, name: "Great Stature", description: "Magic causes you to grow taller, and your Giant's Might bonus damage die increases to a d8." },
+            { level: 15, name: "Master of Runes", description: "You can invoke each of your runes twice per rest, rather than once." },
+            { level: 18, name: "Runic Juggernaut", description: "Your Giant's Might lets you grow to Huge size, increases your reach by 5 feet, and boosts your bonus damage." }
+        ],
+        "echo-knight": [
+            { level: 3, name: "Manifest Echo", description: "As a bonus action, you summon a spectral duplicate you can move, attack from, and swap places with, redirecting your attacks through it." },
+            { level: 7, name: "Unleash Incarnation", description: "You can make one extra melee attack from your echo's position whenever you take the Attack action, a number of times per rest equal to your Constitution modifier." },
+            { level: 10, name: "Echo Avatar", description: "You can use an action to see and hear through your echo out to a distance of 1,000 feet for up to 10 minutes." },
+            { level: 15, name: "Shadow Martyr", description: "You can use your echo to intercept an attack against another creature, imposing disadvantage on the attacker once per rest." },
+            { level: 18, name: "Reclaim Potential", description: "When your echo is destroyed by taking damage, you gain temporary hit points a number of times per rest equal to your Constitution modifier." }
+        ]
+    },
+    monk: {
+        "open-hand": [
+            { level: 3, name: "Open Hand Technique", description: "When you hit a creature with Flurry of Blows, you can impose an effect: knock it prone, push it 15 feet, or deny it reactions until the end of your next turn." },
+            { level: 6, name: "Wholeness of Body", description: "As an action, you regain hit points equal to three times your monk level, once per long rest." },
+            { level: 11, name: "Tranquility", description: "At the end of a long rest, you gain the effect of a Sanctuary spell that lasts until the start of your next long rest." },
+            { level: 17, name: "Quivering Palm", description: "When you hit a creature with an unarmed strike, you can set up lethal vibrations you can later end as an action to deal massive necrotic damage (Constitution save)." }
+        ],
+        shadow: [
+            { level: 3, name: "Shadow Arts", description: "You can spend ki to cast Darkness, Darkvision, Pass Without Trace, or Silence, and you know the Minor Illusion cantrip." },
+            { level: 6, name: "Shadow Step", description: "When in dim light or darkness, you can teleport up to 60 feet to another such space as a bonus action, gaining advantage on your next melee attack." },
+            { level: 11, name: "Cloak of Shadows", description: "While in dim light or darkness, you become invisible until you attack, cast a spell, or step into bright light." },
+            { level: 17, name: "Opportunist", description: "When a creature within 5 feet of you is hit by an attack from another creature, you can use your reaction to make a melee attack against it." }
+        ],
+        "four-elements": [
+            { level: 3, name: "Disciple of the Elements", description: "You learn Elemental Disciplines such as Fangs of the Fire Snake or Water Whip that let you spend ki to create elemental effects and cast elemental spells." },
+            { level: 6, name: "Additional Elemental Discipline", description: "You learn additional disciplines and can spend more ki to cast higher-level elemental effects." },
+            { level: 11, name: "Additional Elemental Discipline", description: "You expand your repertoire with more powerful elemental disciplines." },
+            { level: 17, name: "Additional Elemental Discipline", description: "You gain access to the most powerful elemental disciplines available to your tradition." }
+        ],
+        "long-death": [
+            { level: 3, name: "Touch of Death", description: "When you reduce a creature within 5 feet to 0 hit points, you gain temporary hit points equal to your Wisdom modifier + your monk level." },
+            { level: 6, name: "Hour of Reaping", description: "As an action, you can frighten each creature within 30 feet that can see you (Wisdom save) until the end of your next turn." },
+            { level: 11, name: "Mastery of Death", description: "When you would be reduced to 0 hit points, you can spend 1 ki point to instead drop to 1 hit point." },
+            { level: 17, name: "Touch of the Long Death", description: "As an action, you spend up to 10 ki points to deal 2d10 necrotic damage per point to a creature within 5 feet (Constitution save for half)." }
+        ],
+        "sun-soul": [
+            { level: 3, name: "Radiant Sun Bolt", description: "You can make ranged spell-like unarmed strikes dealing radiant damage, and can spend a ki point to unleash a barrage of two extra bolts as a bonus action." },
+            { level: 6, name: "Searing Arc Strike", description: "After taking the Attack action, you can spend ki as a bonus action to cast Burning Hands." },
+            { level: 11, name: "Searing Sunburst", description: "You can create a 20-foot-radius sphere of light dealing radiant damage (Constitution save), spending ki to increase the damage." },
+            { level: 17, name: "Sun Shield", description: "You emit bright light at will, and when a creature hits you with a melee attack you can retaliate with radiant damage as a reaction." }
+        ],
+        "drunken-master": [
+            { level: 3, name: "Bonus Proficiencies & Drunken Technique", description: "You gain Performance and brewer's supplies proficiency, and your Flurry of Blows grants you the benefit of Disengage plus 10 feet of extra movement." },
+            { level: 6, name: "Tipsy Sway", description: "You can redirect a creature's missed melee attack to another creature within reach (Leap to Your Feet lets you stand from prone with only 5 feet of movement)." },
+            { level: 11, name: "Drunkard's Luck", description: "When you make an ability check, attack roll, or saving throw with disadvantage, you can spend 2 ki points to cancel the disadvantage." },
+            { level: 17, name: "Intoxicated Frenzy", description: "When you use Flurry of Blows, you can make up to three additional attacks with it, provided each targets a different creature." }
+        ],
+        kensei: [
+            { level: 3, name: "Path of the Kensei", description: "You choose kensei weapons, gaining an AC bonus with Agile Parry, extra ranged damage with Deft Strike, and the ability to treat a ranged weapon as a monk weapon." },
+            { level: 6, name: "One with the Blade", description: "Your kensei weapons count as magical, and once per turn you can spend a ki point to deal extra damage when you hit with one." },
+            { level: 11, name: "Sharpen the Blade", description: "You can spend up to 3 ki points to grant a kensei weapon a bonus to attack and damage rolls equal to the ki spent for 1 minute." },
+            { level: 17, name: "Unerring Accuracy", description: "Once on each of your turns, if you miss with a monk weapon attack, you can reroll it." }
+        ],
+        mercy: [
+            { level: 3, name: "Implements of Mercy, Hand of Healing & Hand of Harm", description: "You gain Insight and Medicine proficiency and an herbalism kit, and can spend ki to heal creatures or deal extra necrotic damage on a hit." },
+            { level: 6, name: "Physician's Touch", description: "Your Hand of Healing can also end a condition, and your Hand of Harm can also poison the target." },
+            { level: 11, name: "Flurry of Healing and Harm", description: "When you use Flurry of Blows, you can replace each strike with a use of Hand of Healing without spending ki, and can apply Hand of Harm as part of it." },
+            { level: 17, name: "Hand of Ultimate Mercy", description: "As an action, you can spend 5 ki points to touch a creature that died within the last 24 hours and return it to life with hit points." }
+        ],
+        "astral-self": [
+            { level: 3, name: "Arms of the Astral Self", description: "You spend ki to summon spectral arms that use Wisdom for their unarmed strikes, increase your reach, and can defend you as a reaction." },
+            { level: 6, name: "Visage of the Astral Self", description: "You summon a spectral visage granting darkvision, Wisdom-based Intimidation and Insight, and the ability to speak to and hear creatures at range." },
+            { level: 11, name: "Body of the Astral Self", description: "You can manifest your full astral body, adding damage to your astral arm strikes and gaining a deflecting reaction against damage." },
+            { level: 17, name: "Awakened Astral Self", description: "You gain a bonus to AC while your astral self is summoned, and can make one extra attack with your astral arms when you take the Attack action." }
+        ],
+        "ascendant-dragon": [
+            { level: 3, name: "Draconic Disciple & Breath of the Dragon", description: "Your unarmed strikes can deal elemental damage, you gain draconic benefits to Charisma checks, and you can replace attacks with a damaging breath weapon." },
+            { level: 6, name: "Wings Unfurled", description: "When you use Step of the Wind, you can gain a flying speed equal to your walking speed until the end of the turn." },
+            { level: 11, name: "Aspect of the Wyrm", description: "You emanate an aura that either frightens enemies or grants your allies resistance to your breath weapon's damage type." },
+            { level: 17, name: "Ascendant Aspect", description: "Your aura improves, and your Breath of the Dragon gains blindsight and deals extra damage." }
+        ]
+    },
+    paladin: {
+        devotion: [
+            { level: 3, name: "Channel Divinity: Sacred Weapon & Turn the Unholy", description: "You imbue a weapon with radiant power for a Charisma bonus to attacks and bright light, or force fiends and undead to flee (Wisdom save)." },
+            { level: 7, name: "Aura of Devotion", description: "You and friendly creatures within 10 feet (30 feet at 18th level) can't be charmed while you are conscious." },
+            { level: 15, name: "Purity of Spirit", description: "You are always under the effects of a Protection from Evil and Good spell." },
+            { level: 20, name: "Holy Nimbus", description: "As an action, you emanate sunlight for 1 minute, damaging enemies who start their turn near you and granting you advantage on saves against fiend and undead spells." }
+        ],
+        ancients: [
+            { level: 3, name: "Channel Divinity: Nature's Wrath & Turn the Faithless", description: "You restrain a creature with spectral vines (Strength or Dexterity save), or force fey and fiends to flee (Wisdom save)." },
+            { level: 7, name: "Aura of Warding", description: "You and friendly creatures within 10 feet (30 feet at 18th level) have resistance to damage from spells." },
+            { level: 15, name: "Undying Sentinel", description: "When reduced to 0 hit points, you can drop to 1 instead once per long rest, and you no longer age or suffer frailty of old age." },
+            { level: 20, name: "Elder Champion", description: "You transform into a nature avatar for 1 minute, regaining hit points each turn, casting paladin spells as a bonus action, and forcing nearby enemies to have disadvantage on saves against your spells and Channel Divinity." }
+        ],
+        vengeance: [
+            { level: 3, name: "Channel Divinity: Abjure Enemy & Vow of Enmity", description: "You frighten a creature and reduce its speed (Wisdom save), or gain advantage on attack rolls against one creature for 1 minute." },
+            { level: 7, name: "Relentless Avenger", description: "When you hit a creature with an opportunity attack, you can move up to half your speed immediately without provoking opportunity attacks." },
+            { level: 15, name: "Soul of Vengeance", description: "When a creature under your Vow of Enmity makes an attack, you can use your reaction to make a melee attack against it." },
+            { level: 20, name: "Avenging Angel", description: "You gain a flying speed and an aura that frightens nearby enemies for 1 hour once per long rest." }
+        ],
+        oathbreaker: [
+            { level: 3, name: "Channel Divinity: Control Undead & Dreadful Aspect", description: "You bring an undead creature under your control (Charisma save), or frighten enemies within 30 feet (Wisdom save) for 1 minute." },
+            { level: 7, name: "Aura of Hate", description: "You, and any fiends and undead within 10 feet (30 feet at 18th level), gain a bonus to melee weapon damage equal to your Charisma modifier." },
+            { level: 15, name: "Supernatural Resistance", description: "You gain resistance to nonmagical bludgeoning, piercing, and slashing damage." },
+            { level: 20, name: "Dread Lord", description: "As a bonus action, you wreathe yourself in gloom for 1 minute, weakening enemy attacks, summoning spectral blades to attack, and reducing bright light around you." }
+        ],
+        crown: [
+            { level: 3, name: "Channel Divinity: Champion Challenge & Turn the Tide", description: "You prevent chosen creatures from moving away from you (Wisdom save), or heal wounded creatures within 30 feet with an inspiring rallying cry." },
+            { level: 7, name: "Divine Allegiance", description: "When a creature within 5 feet takes damage, you can use your reaction to substitute your own hit points, taking the damage yourself." },
+            { level: 15, name: "Unyielding Spirit", description: "You have advantage on saving throws to avoid becoming paralyzed or stunned." },
+            { level: 20, name: "Exalted Champion", description: "For 1 hour, you gain resistance to nonmagical weapon damage, and allies within 30 feet gain advantage on Wisdom saving throws and death saving throws." }
+        ],
+        conquest: [
+            { level: 3, name: "Channel Divinity: Conquering Presence & Guided Strike", description: "You frighten each creature within 30 feet (Wisdom save) for 1 minute, or add +10 to one attack roll you make." },
+            { level: 7, name: "Aura of Conquest", description: "Enemies frightened of you that are within 10 feet (30 feet at 18th level) have their speed reduced to 0 and take psychic damage each turn." },
+            { level: 15, name: "Scornful Rebuke", description: "When a creature hits you with an attack while you're conscious, it takes psychic damage equal to your Charisma modifier." },
+            { level: 20, name: "Invincible Conqueror", description: "As an action, for 1 minute you gain resistance to all damage, an extra attack on each turn, and a critical hit range of 19-20 with melee weapons." }
+        ],
+        redemption: [
+            { level: 3, name: "Channel Divinity: Emissary of Peace & Rebuke the Violent", description: "You gain a +5 bonus to Persuasion checks, or deal radiant damage to a creature that harmed another (Wisdom save for half)." },
+            { level: 7, name: "Aura of the Guardian", description: "You can use your reaction to magically take the damage that an ally within 10 feet (30 feet at 18th level) would take." },
+            { level: 15, name: "Protective Spirit", description: "You regain hit points at the end of your turn in combat if you have fewer than half your hit points remaining." },
+            { level: 20, name: "Emissary of Redemption", description: "You gain resistance to all damage dealt by other creatures, and attackers take radiant damage equal to half the damage they deal to you." }
+        ],
+        glory: [
+            { level: 3, name: "Channel Divinity: Peerless Athlete & Inspiring Smite", description: "You gain advantage on Athletics and Acrobatics and improved jumps, or distribute temporary hit points to nearby creatures after a Divine Smite." },
+            { level: 7, name: "Aura of Alacrity", description: "Your walking speed increases by 10 feet, and allies who start their turn in your aura gain +10 feet of speed until the end of that turn." },
+            { level: 15, name: "Glorious Defense", description: "When you or a creature within 10 feet is targeted by an attack, you can use your reaction to boost AC and, if the attack misses, make a weapon attack against the attacker." },
+            { level: 20, name: "Living Legend", description: "For 1 minute, you can reroll a failed save once per turn, turn one missed attack per turn into a hit, and impose disadvantage on Charisma checks against you." }
+        ],
+        watchers: [
+            { level: 3, name: "Channel Divinity: Watcher's Will & Abjure the Extraplanar", description: "You grant yourself and allies advantage on Intelligence, Wisdom, and Charisma saves, or force aberrations, celestials, elementals, fey, and fiends to flee (Wisdom save)." },
+            { level: 7, name: "Aura of the Sentinel", description: "You and allies within 10 feet (30 feet at 18th level) gain a bonus to initiative equal to your proficiency bonus." },
+            { level: 15, name: "Vigilant Rebuke", description: "When you or a creature you can see succeeds on an Intelligence, Wisdom, or Charisma save, you can use your reaction to deal force damage to the source." },
+            { level: 20, name: "Mortal Bulwark", description: "As a bonus action, for 1 minute you gain truesight, an extra attack against extraplanar creatures, and the ability to banish such a creature on a hit (Charisma save)." }
+        ]
+    },
+    ranger: {
+        hunter: [
+            { level: 3, name: "Hunter's Prey", description: "You choose Colossus Slayer (extra damage to hurt foes), Giant Killer (reaction attack vs. Large+ creatures), or Horde Breaker (extra attack on a second nearby target)." },
+            { level: 7, name: "Defensive Tactics", description: "You choose Escape the Horde, Multiattack Defense, or Steel Will to bolster your survivability." },
+            { level: 11, name: "Multiattack", description: "You choose Volley (ranged attack against creatures in a 10-foot cube) or Whirlwind Attack (melee attack against creatures within 5 feet)." },
+            { level: 15, name: "Superior Hunter's Defense", description: "You choose a powerful defense such as Evasion, Stand Against the Tide, or Uncanny Dodge." }
+        ],
+        "beast-master": [
+            { level: 3, name: "Ranger's Companion", description: "You gain a beast companion of CR 1/4 or lower that acts on your command, adds your proficiency bonus to its rolls, and improves as you level." },
+            { level: 7, name: "Exceptional Training", description: "Your companion can Dash, Disengage, Dodge, or Help as a bonus action, and its attacks count as magical." },
+            { level: 11, name: "Bestial Fury", description: "Your companion can make two attacks when you command it to take the Attack action." },
+            { level: 15, name: "Share Spells", description: "When you cast a spell targeting yourself, you can also affect your beast companion if it is within 30 feet." }
+        ],
+        "gloom-stalker": [
+            { level: 3, name: "Dread Ambusher & Umbral Sight", description: "You gain initiative and first-turn bonuses with extra movement and a damaging first strike, plus 90-foot darkvision and invisibility to creatures relying on darkvision." },
+            { level: 7, name: "Iron Mind", description: "You gain proficiency in Wisdom saving throws." },
+            { level: 11, name: "Stalker's Flurry", description: "Once on each of your turns when you miss with a weapon attack, you can make another weapon attack." },
+            { level: 15, name: "Shadowy Dodge", description: "When a creature makes an attack roll against you with advantage, you can use your reaction to impose disadvantage on that roll." }
+        ],
+        "horizon-walker": [
+            { level: 3, name: "Detect Portal & Planar Warrior", description: "You can sense planar portals within 1 mile, and as a bonus action target a creature so your weapon attacks against it deal force damage plus extra force damage once per turn." },
+            { level: 7, name: "Ethereal Step", description: "As a bonus action, you can cast Etherealness on yourself, but it lasts only until the end of the turn." },
+            { level: 11, name: "Distant Strike", description: "You can teleport 10 feet before each attack, and if you attack two different creatures you can make a third attack against a third creature." },
+            { level: 15, name: "Spectral Defense", description: "When you take damage from an attack, you can use your reaction to give yourself resistance to that attack's damage." }
+        ],
+        "monster-slayer": [
+            { level: 3, name: "Hunter's Sense & Slayer's Prey", description: "As an action, you learn a creature's vulnerabilities, resistances, and immunities, and can designate a target to take extra damage from your attacks each turn." },
+            { level: 7, name: "Supernatural Defense", description: "When your Slayer's Prey target forces you to make a saving throw or ability check to escape, you add a d6 to your roll." },
+            { level: 11, name: "Magic-User's Nemesis", description: "When a creature you can see casts a spell or teleports, you can use your reaction to force it to make a Wisdom save or have the effect fail." },
+            { level: 15, name: "Slayer's Counter", description: "When your Slayer's Prey target forces you to make a saving throw, you can make a weapon attack against it as a reaction; on a hit you automatically succeed on the save." }
+        ],
+        "fey-wanderer": [
+            { level: 3, name: "Dreadful Strikes & Otherworldly Glamour", description: "Your weapon attacks deal extra psychic damage once per turn, and you add your Wisdom modifier to Charisma checks plus gain a social skill proficiency." },
+            { level: 7, name: "Beguiling Twist", description: "You have advantage on saves against being charmed or frightened, and can redirect a creature's failed save against such effects to charm or frighten another creature." },
+            { level: 11, name: "Fey Reinforcements", description: "You always have Summon Fey prepared and can cast it once per long rest without a spell slot." },
+            { level: 15, name: "Misty Wanderer", description: "You can cast Misty Step a number of times per long rest equal to your Wisdom modifier without a slot, and can bring a willing creature along." }
+        ],
+        swarmkeeper: [
+            { level: 3, name: "Gathered Swarm", description: "A swarm of nature spirits accompanies you; when you hit with an attack you can have it deal extra force damage, move the target, or move yourself." },
+            { level: 7, name: "Writhing Tide", description: "As a bonus action, you can use your swarm to gain a flying speed of 10 feet and hover for 1 minute a number of times per rest." },
+            { level: 11, name: "Mighty Swarm", description: "Your Gathered Swarm improves, dealing more damage and moving targets farther or knocking them prone." },
+            { level: 15, name: "Swarming Dispersal", description: "When you take damage, you can use your reaction to gain resistance to it and teleport up to 30 feet via your swarm." }
+        ],
+        drakewarden: [
+            { level: 3, name: "Draconic Gift & Drake Companion", description: "You learn the Thaumaturgy cantrip and a draconic language, and can summon a loyal drake companion that fights alongside you and grows with you." },
+            { level: 7, name: "Bond of Fang and Scale", description: "Your drake grows, gains a breath weapon and flight, and you and it gain resistance to its damage type while it's within 30 feet." },
+            { level: 11, name: "Drake's Breath", description: "You or your drake can exhale a 30-foot cone of damaging energy (Dexterity save) in place of one of your attacks." },
+            { level: 15, name: "Perfected Bond", description: "Your drake grows Large, its attacks and breath deal more damage, and it can make an attack when you take the Attack action." }
+        ]
+    },
+    rogue: {
+        thief: [
+            { level: 3, name: "Fast Hands & Second-Story Work", description: "You can use Cunning Action to make Sleight of Hand checks, use thieves' tools, or use an object, and climbing costs you no extra movement." },
+            { level: 9, name: "Supreme Sneak", description: "You have advantage on Stealth checks if you move no more than half your speed on the same turn." },
+            { level: 13, name: "Use Magic Device", description: "You ignore all class, race, and level requirements on the use of magic items." },
+            { level: 17, name: "Thief's Reflexes", description: "You can take two turns during the first round of any combat, on your initiative and on your initiative minus 10." }
+        ],
+        assassin: [
+            { level: 3, name: "Bonus Proficiencies & Assassinate", description: "You gain proficiency with disguise and poisoner's kits, advantage on attacks against creatures that haven't acted yet, and automatic critical hits on surprised creatures." },
+            { level: 9, name: "Infiltration Expertise", description: "You can spend time and money to establish a convincing false identity, complete with documentation and contacts." },
+            { level: 13, name: "Impostor", description: "You can unerringly mimic another person's speech, writing, and behavior after studying them." },
+            { level: 17, name: "Death Strike", description: "When you hit a surprised creature, it must make a Constitution save or take double damage from the attack." }
+        ],
+        "arcane-trickster": [
+            { level: 3, name: "Spellcasting & Mage Hand Legerdemain", description: "You learn wizard spells (mostly enchantment and illusion) using Intelligence, and can control an invisible, more capable Mage Hand." },
+            { level: 9, name: "Magical Ambush", description: "If you're hidden from a creature when you cast a spell on it, it has disadvantage on any saving throw against that spell." },
+            { level: 13, name: "Versatile Trickster", description: "You can use your Mage Hand to distract a creature, gaining advantage on attack rolls against it until the end of the turn." },
+            { level: 17, name: "Spell Thief", description: "Once per long rest, you can steal a spell cast at you, denying it to the caster and gaining the ability to cast it yourself for a time." }
+        ],
+        mastermind: [
+            { level: 3, name: "Master of Intrigue & Master of Tactics", description: "You gain proficiency with disguise and forgery kits and languages, can mimic speech patterns, and can use the Help action as a bonus action at up to 30 feet." },
+            { level: 9, name: "Insightful Manipulator", description: "If you study a creature for 1 minute, you learn how it compares to you in Intelligence, Wisdom, Charisma, and class levels." },
+            { level: 13, name: "Misdirection", description: "When you're targeted by an attack while a creature within 5 feet provides you cover, you can use your reaction to redirect the attack to that creature." },
+            { level: 17, name: "Soul of Deceit", description: "Your thoughts can't be read by telepathy or other means, and magic that would detect your alignment or lies shows what you choose." }
+        ],
+        swashbuckler: [
+            { level: 3, name: "Fancy Footwork & Rakish Audacity", description: "A creature you attack in melee can't make opportunity attacks against you that turn, and you can use Sneak Attack without advantage if no other creatures are within 5 feet of your target." },
+            { level: 9, name: "Panache", description: "You can make a Persuasion check to charm a creature or goad it into a duel, giving it disadvantage on attacks against others." },
+            { level: 13, name: "Elegant Maneuver", description: "You can use a bonus action to gain advantage on your next Acrobatics or Athletics check this turn." },
+            { level: 17, name: "Master Duelist", description: "Once per short or long rest, when you miss with an attack you can reroll it with advantage." }
+        ],
+        inquisitive: [
+            { level: 3, name: "Ear for Deceit, Eye for Detail & Insightful Fighting", description: "You excel at detecting lies and spotting details, and can use a bonus action and an Insight check to gain Sneak Attack against a creature without advantage for 1 minute." },
+            { level: 9, name: "Steady Eye", description: "You have advantage on Perception and Investigation checks if you move no more than half your speed on the same turn." },
+            { level: 13, name: "Unerring Eye", description: "As an action, you can sense the presence of illusions, shapechangers not in their original form, and other magical deceptions within 30 feet." },
+            { level: 17, name: "Eye for Weakness", description: "While using Insightful Fighting on a creature, your Sneak Attack damage against it increases by 3d6." }
+        ],
+        scout: [
+            { level: 3, name: "Skirmisher & Survivalist", description: "You can move up to half your speed as a reaction when an enemy ends its turn within 5 feet of you, and you gain expertise in Nature and Survival." },
+            { level: 9, name: "Superior Mobility", description: "Your walking speed increases by 10 feet (also affecting any climbing or swimming speed)." },
+            { level: 13, name: "Ambush Master", description: "You have advantage on initiative rolls, and the first creature you hit in the first round of combat gives your allies advantage against it." },
+            { level: 17, name: "Sudden Strike", description: "You can make an extra attack as a bonus action and apply Sneak Attack to a second target on the same turn." }
+        ],
+        phantom: [
+            { level: 3, name: "Whispers of the Dead & Wails from the Grave", description: "After each rest you gain a skill or tool proficiency, and when you deal Sneak Attack damage you can also deal necrotic damage to a second creature nearby." },
+            { level: 9, name: "Tokens of the Departed", description: "When a creature dies near you, you gain a soul trinket that grants advantage on death saves and Constitution saves and empowers Wails from the Grave." },
+            { level: 13, name: "Ghost Walk", description: "You assume a spectral form as a bonus action, gaining a flying speed, the ability to move through creatures and objects, and disadvantage on attacks against you." },
+            { level: 17, name: "Death's Friend", description: "Your Wails from the Grave triggers even without a second target, and you always have a soul trinket available." }
+        ],
+        soulknife: [
+            { level: 3, name: "Psionic Power & Psychic Blades", description: "You gain Psionic Energy dice and can manifest shimmering psychic blades to make attacks, including a bonus action attack with a second blade." },
+            { level: 9, name: "Soul Blades", description: "You can spend Psionic Energy for Homing Strikes (turn a miss into a hit) and Psychic Teleportation (hurl a blade to teleport)." },
+            { level: 13, name: "Psychic Veil", description: "You can turn invisible for up to 1 hour, ending early if you attack or force a saving throw." },
+            { level: 17, name: "Rend Mind", description: "When you deal Sneak Attack damage with your Psychic Blades, you can force the target to make a Wisdom save or be stunned for 1 minute." }
+        ]
+    },
+    sorcerer: {
+        draconic: [
+            { level: 1, name: "Dragon Ancestor & Draconic Resilience", description: "You choose a dragon type and learn to speak Draconic; your hit point maximum increases and your unarmored AC becomes 13 + your Dexterity modifier." },
+            { level: 6, name: "Elemental Affinity", description: "You add your Charisma modifier to one damage roll of spells matching your dragon's element, and can spend sorcery points for resistance to that damage type." },
+            { level: 14, name: "Dragon Wings", description: "As a bonus action, you can sprout dragon wings and gain a flying speed equal to your walking speed." },
+            { level: 18, name: "Draconic Presence", description: "You can spend 5 sorcery points to exude a 60-foot aura that charms or frightens nearby creatures (Wisdom save)." }
+        ],
+        wild: [
+            { level: 1, name: "Wild Magic Surge & Tides of Chaos", description: "Your spellcasting can trigger a random magical surge, and you can gain advantage on one attack, check, or save per rest (which may cause a surge)." },
+            { level: 6, name: "Bend Luck", description: "You can spend 2 sorcery points to use your reaction to add or subtract a d4 from another creature's attack roll, ability check, or saving throw." },
+            { level: 14, name: "Controlled Chaos", description: "Whenever you roll on the Wild Magic Surge table, you roll twice and choose which result to use." },
+            { level: 18, name: "Spell Bombardment", description: "When you roll damage for a spell and roll the highest number on a die, you can roll that die again and add it to the damage, once per turn." }
+        ],
+        storm: [
+            { level: 1, name: "Wind Speaker & Tempestuous Magic", description: "You can speak Primordial and its dialects, and can use a bonus action to fly 10 feet without provoking opportunity attacks before or after casting a spell of 1st level or higher." },
+            { level: 6, name: "Heart of the Storm", description: "You gain resistance to lightning and thunder damage, and deal damage to nearby creatures when you cast a spell of 1st level or higher that deals such damage." },
+            { level: 14, name: "Storm Guide", description: "You can control the weather immediately around you, stopping rain or directing wind as a bonus action." },
+            { level: 18, name: "Storm's Fury", description: "When a creature hits you with a melee attack, you can use your reaction to deal lightning damage to it and push it up to 20 feet (Strength save)." }
+        ],
+        "divine-soul": [
+            { level: 1, name: "Divine Magic & Favored by the Gods", description: "You gain access to the cleric spell list for your known spells, and can add 2d4 to a failed saving throw or missed attack once per short rest." },
+            { level: 6, name: "Empowered Healing", description: "When you or an ally within 5 feet rolls dice to restore hit points with a spell, you can spend a sorcery point to reroll any of those dice." },
+            { level: 14, name: "Otherworldly Wings", description: "As a bonus action, you can manifest spectral wings and gain a flying speed of 30 feet." },
+            { level: 18, name: "Unearthly Recovery", description: "When you have fewer than half your hit points, you can use a bonus action to regain hit points equal to half your maximum, once per long rest." }
+        ],
+        shadow: [
+            { level: 1, name: "Eyes of the Dark & Strength of the Grave", description: "You gain 120-foot darkvision and can cast Darkness using sorcery points, and can spend sorcery points to survive a hit that would drop you to 0 (Charisma save)." },
+            { level: 6, name: "Hound of Ill Omen", description: "You spend 3 sorcery points to summon a shadowy hound that pursues a target, giving you advantage on attacks against it and hindering its saves against your spells." },
+            { level: 14, name: "Shadow Walk", description: "When you are in dim light or darkness, you can use a bonus action to teleport up to 120 feet to another area of dim light or darkness." },
+            { level: 18, name: "Umbral Form", description: "You spend 6 sorcery points to transform into a shadowy form for 1 minute, gaining resistance to all damage except force and radiant and the ability to move through creatures and objects." }
+        ],
+        "aberrant-mind": [
+            { level: 1, name: "Psionic Spells & Telepathic Speech", description: "You learn psionic spells that can be cast with sorcery points, and can form a telepathic connection with a creature you can see for a number of minutes equal to your Charisma modifier." },
+            { level: 6, name: "Psionic Sorcery & Psychic Defenses", description: "You can cast your psionic spells by spending sorcery points instead of a spell slot (with no components), and gain resistance to psychic damage and advantage against charm and fright." },
+            { level: 14, name: "Revelation in Flesh", description: "You can spend sorcery points to gain aberrant traits like flight, a swimming speed, seeing invisible creatures, or squeezing through tiny spaces." },
+            { level: 18, name: "Warping Implosion", description: "You can teleport 120 feet and unleash a gravitational implosion that deals heavy force damage to creatures near your departure point, once per long rest." }
+        ],
+        "clockwork-soul": [
+            { level: 1, name: "Clockwork Magic & Restore Balance", description: "You learn order-themed spells, and can use your reaction to cancel advantage or disadvantage on a creature's d20 roll a number of times per long rest equal to your proficiency bonus." },
+            { level: 6, name: "Bastion of Law", description: "You can spend 1 to 5 sorcery points to create a ward of protective dice that absorb damage dealt to a creature." },
+            { level: 14, name: "Trance of Order", description: "As a bonus action, for 1 minute attacks against you can't have advantage, and you can treat a d20 roll of 9 or lower as a 10 for attacks, checks, and saves." },
+            { level: 18, name: "Clockwork Cavalcade", description: "You summon spirits in a 30-foot cube that restore hit points, repair objects, and end spells of 6th level or lower, once per long rest." }
+        ]
+    },
+    warlock: {
+        archfey: [
+            { level: 1, name: "Fey Presence", description: "As an action, you can charm or frighten each creature in a 10-foot cube (Wisdom save) until the end of your next turn, once per short rest." },
+            { level: 6, name: "Misty Escape", description: "When you take damage, you can use your reaction to turn invisible and teleport up to 60 feet, once per short rest." },
+            { level: 10, name: "Beguiling Defenses", description: "You are immune to being charmed, and when a creature tries to charm you, you can turn the attempt back on it (Wisdom save) to deal psychic damage." },
+            { level: 14, name: "Dark Delirium", description: "As an action, you plunge a creature into an illusory realm, charming or frightening it for up to 1 minute (Wisdom save), once per short rest." }
+        ],
+        fiend: [
+            { level: 1, name: "Dark One's Blessing", description: "When you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level." },
+            { level: 6, name: "Dark One's Own Luck", description: "You can add a d10 to an ability check or saving throw after you roll but before the outcome, once per short rest." },
+            { level: 10, name: "Fiendish Resilience", description: "After each rest, you can choose one damage type to gain resistance to until you choose a different one, except damage from magical or silvered weapons." },
+            { level: 14, name: "Hurl Through Hell", description: "When you hit a creature with an attack, you can banish it through the lower planes; it takes 10d10 psychic damage when it returns, once per long rest." }
+        ],
+        "great-old-one": [
+            { level: 1, name: "Awakened Mind", description: "You can telepathically speak to any creature you can see within 30 feet, even if you share no language." },
+            { level: 6, name: "Entropic Ward", description: "When a creature makes an attack roll against you, you can use your reaction to impose disadvantage; if it misses, your next attack against it has advantage, once per short rest." },
+            { level: 10, name: "Thought Shield", description: "Your thoughts can't be read, you gain resistance to psychic damage, and a creature dealing psychic damage to you takes the same amount back." },
+            { level: 14, name: "Create Thrall", description: "You can touch an incapacitated humanoid to charm it into a thrall you can communicate with telepathically across any distance on the same plane." }
+        ],
+        undying: [
+            { level: 1, name: "Among the Dead", description: "You learn the Spare the Dying cantrip, undead have difficulty attacking you unless you attack first, and you have advantage on saves against diseases." },
+            { level: 6, name: "Defy Death", description: "You can regain hit points (1d8 + Constitution modifier) when you succeed on a death saving throw or stabilize a creature, once per long rest." },
+            { level: 10, name: "Undying Nature", description: "You can hold your breath indefinitely, don't require food, water, or sleep (only 4 hours of rest), and age at a greatly slowed rate." },
+            { level: 14, name: "Indestructible Life", description: "As a bonus action, you regain hit points equal to 1d8 + your warlock level and can reattach or regrow lost body parts, once per short rest." }
+        ],
+        celestial: [
+            { level: 1, name: "Bonus Cantrips & Healing Light", description: "You learn the Light and Sacred Flame cantrips, and gain a pool of d6s you can spend as a bonus action to heal a creature within 60 feet." },
+            { level: 6, name: "Radiant Soul", description: "You gain resistance to radiant damage, and add your Charisma modifier to one radiant or fire damage roll of a spell you cast." },
+            { level: 10, name: "Celestial Resilience", description: "You and up to five allies gain temporary hit points whenever you finish a short or long rest." },
+            { level: 14, name: "Searing Vengeance", description: "When you would make a death saving throw, you can instead regain hit points equal to half your maximum, stand up, and blind nearby enemies with radiant damage, once per long rest." }
+        ],
+        hexblade: [
+            { level: 1, name: "Hexblade's Curse & Hex Warrior", description: "You curse a target for bonus damage and an expanded critical range, and can use Charisma for attacks with one weapon each day, gaining medium armor, shield, and martial weapon proficiency." },
+            { level: 6, name: "Accursed Specter", description: "When you slay a humanoid, you can raise its soul as a loyal spectral servant until your next long rest, once per rest." },
+            { level: 10, name: "Armor of Hexes", description: "When a creature cursed by your Hexblade's Curse hits you, you can roll a d6; on a 4 or higher the attack misses instead." },
+            { level: 14, name: "Master of Hexes", description: "When a creature cursed by your Hexblade's Curse dies, you can transfer the curse to a new creature without expending a use." }
+        ],
+        fathomless: [
+            { level: 1, name: "Tentacle of the Deeps & Gift of the Sea", description: "You can summon a spectral tentacle to attack and slow foes with cold damage, and you gain a swimming speed of 40 feet and the ability to breathe underwater." },
+            { level: 6, name: "Oceanic Soul & Guardian Coil", description: "You gain resistance to cold damage and can speak with creatures underwater, and your tentacle can use its reaction to reduce damage to you or a nearby ally." },
+            { level: 10, name: "Grasping Tentacles", description: "You learn Evard's Black Tentacles, gain temporary hit points when you cast it, and have advantage on concentration checks to maintain it." },
+            { level: 14, name: "Fathomless Plunge", description: "As an action, you can teleport yourself and up to five willing creatures to a body of water you have seen within 1 mile, once per short rest." }
+        ],
+        genie: [
+            { level: 1, name: "Genie's Vessel", description: "You gain a magical vessel tied to a genie kind; you deal bonus damage of its element once per turn, can use it as a spellcasting focus, and can retreat inside it to rest." },
+            { level: 6, name: "Elemental Gift", description: "You gain resistance to your genie's damage type, and can use a bonus action to gain a flying speed of 30 feet for 10 minutes a number of times per long rest." },
+            { level: 10, name: "Sanctuary Vessel", description: "When you enter your Genie's Vessel, you can bring up to five creatures inside, and those who rest there gain benefits tied to your genie kind." },
+            { level: 14, name: "Limited Wish", description: "You can entreat your genie to produce the effect of any spell of 6th level or lower, once per 1d4 long rests." }
+        ],
+        undead: [
+            { level: 1, name: "Form of Dread", description: "As a bonus action, you transform into a terrifying form for 1 minute, gaining temporary hit points, immunity to fright, and the ability to frighten a creature you hit once per turn." },
+            { level: 6, name: "Grave Touched", description: "You can change the damage of your attacks and spells to necrotic, ignore necrotic resistance while in Form of Dread, and no longer need to eat, drink, or breathe." },
+            { level: 10, name: "Necrotic Husk", description: "You gain resistance to necrotic damage, and when you would drop to 0 hit points you can instead explode with necrotic damage and drop to 1, once per long rest." },
+            { level: 14, name: "Spirit Projection", description: "You can project your spirit to become incorporeal for 1 hour, gaining teleportation, resistance, and life-draining spell effects, once per long rest." }
+        ]
+    },
+    wizard: {
+        abjuration: [
+            { level: 2, name: "Abjuration Savant & Arcane Ward", description: "You copy abjuration spells into your book more cheaply, and casting an abjuration spell of 1st level or higher creates a magical ward that absorbs damage." },
+            { level: 6, name: "Projected Ward", description: "When a creature within 30 feet takes damage, you can use your reaction to have your Arcane Ward absorb that damage instead." },
+            { level: 10, name: "Improved Abjuration", description: "When you cast an abjuration spell that requires an ability check (like Counterspell or Dispel Magic), you add your proficiency bonus to the check." },
+            { level: 14, name: "Spell Resistance", description: "You have advantage on saving throws against spells, and resistance to the damage of spells." }
+        ],
+        conjuration: [
+            { level: 2, name: "Conjuration Savant & Minor Conjuration", description: "You copy conjuration spells more cheaply, and can conjure an inanimate nonmagical object (up to 3 feet, 10 pounds) in your hand or on the ground." },
+            { level: 6, name: "Benign Transposition", description: "You can teleport up to 30 feet to an unoccupied space, or swap places with a willing Small or Medium creature." },
+            { level: 10, name: "Focused Conjuration", description: "Your concentration on a conjuration spell can't be broken as a result of taking damage." },
+            { level: 14, name: "Durable Summons", description: "Any creature you summon or create with a conjuration spell gains 30 temporary hit points." }
+        ],
+        divination: [
+            { level: 2, name: "Divination Savant & Portent", description: "You copy divination spells more cheaply, and after each long rest you roll two d20s and can replace any attack, check, or save (yours or a creature's) with one of the rolls." },
+            { level: 6, name: "Expert Divination", description: "When you cast a divination spell of 2nd level or higher, you regain one expended spell slot of a lower level." },
+            { level: 10, name: "The Third Eye", description: "As an action, you gain a benefit until your next rest: darkvision, ethereal sight, greater comprehension of languages, or 10 feet of see invisibility." },
+            { level: 14, name: "Greater Portent", description: "You roll three d20s for your Portent feature, rather than two." }
+        ],
+        enchantment: [
+            { level: 2, name: "Enchantment Savant & Hypnotic Gaze", description: "You copy enchantment spells more cheaply, and as an action can charm and incapacitate a creature within 5 feet with your gaze (Wisdom save)." },
+            { level: 6, name: "Instinctive Charm", description: "When a creature you can see within 30 feet attacks you, you can use your reaction to redirect the attack to another creature (Wisdom save), once per short rest." },
+            { level: 10, name: "Split Enchantment", description: "When you cast an enchantment spell of 1st level or higher that targets only one creature, it can target a second creature." },
+            { level: 14, name: "Alter Memories", description: "When you charm a creature, you can make it unaware it was charmed, and can erase its memory of a period of time while it was charmed." }
+        ],
+        evocation: [
+            { level: 2, name: "Evocation Savant & Sculpt Spells", description: "You copy evocation spells more cheaply, and can protect up to a number of allies from your evocation spells' area, letting them automatically succeed and take no damage." },
+            { level: 6, name: "Potent Cantrip", description: "When a creature succeeds on a saving throw against your cantrip, it still takes half the cantrip's damage (if any) and suffers no other effect." },
+            { level: 10, name: "Empowered Evocation", description: "You add your Intelligence modifier to one damage roll of any wizard evocation spell you cast." },
+            { level: 14, name: "Overchannel", description: "You can deal maximum damage with a wizard spell of 5th level or lower; using it repeatedly between rests deals increasing necrotic damage to you." }
+        ],
+        illusion: [
+            { level: 2, name: "Illusion Savant & Improved Minor Illusion", description: "You copy illusion spells more cheaply, and your Minor Illusion can create both a sound and an image at the same time." },
+            { level: 6, name: "Malleable Illusions", description: "When you cast an illusion spell with a duration of 1 minute or longer, you can use an action to change its nature." },
+            { level: 10, name: "Illusory Self", description: "When a creature attacks you, you can use your reaction to interpose an illusory duplicate, causing the attack to automatically miss, once per short rest." },
+            { level: 14, name: "Illusory Reality", description: "When you cast an illusion spell of 1st level or higher, you can make one inanimate, nonmagical object within the illusion temporarily real for 1 minute." }
+        ],
+        necromancy: [
+            { level: 2, name: "Necromancy Savant & Grim Harvest", description: "You copy necromancy spells more cheaply, and once per turn when you kill a creature with a spell you regain hit points equal to twice the spell's level (thrice for necromancy)." },
+            { level: 6, name: "Undead Thralls", description: "You learn Animate Dead; undead you create with it gain extra hit points and add your proficiency bonus to damage, and you can raise one additional corpse." },
+            { level: 10, name: "Inured to Undeath", description: "You gain resistance to necrotic damage, and your hit point maximum can't be reduced." },
+            { level: 14, name: "Command Undead", description: "As an action, you can bring an undead creature within 60 feet under your control (Charisma save, with penalties for intelligent undead)." }
+        ],
+        transmutation: [
+            { level: 2, name: "Transmutation Savant & Minor Alchemy", description: "You copy transmutation spells more cheaply, and can temporarily transform one material into another (such as wood into stone) over the course of 10 minutes." },
+            { level: 6, name: "Transmuter's Stone", description: "You create a magical stone that grants an ongoing benefit (darkvision, +10 speed, proficiency in Constitution saves, or elemental resistance), changeable when you cast a transmutation spell." },
+            { level: 10, name: "Shapechanger", description: "You add Polymorph to your spellbook and can cast it on yourself without a slot to become a beast of CR 1 or lower, once per short rest." },
+            { level: 14, name: "Master Transmuter", description: "You can destroy your Transmuter's Stone to transmute a nonmagical object, remove curses and afflictions, restore youth, or (with a new stone) recreate a magic item's effect." }
+        ],
+        bladesinging: [
+            { level: 2, name: "Training in War and Song & Bladesong", description: "You gain proficiency with light armor, one one-handed melee weapon, and Performance, and can activate a Bladesong for bonuses to AC, speed, concentration, and Dexterity checks." },
+            { level: 6, name: "Extra Attack", description: "You can attack twice whenever you take the Attack action, and can replace one of those attacks with a casting of a cantrip that has a casting time of one action." },
+            { level: 10, name: "Song of Defense", description: "While your Bladesong is active, you can use your reaction to expend a spell slot to reduce damage you take by 5 for each level of the slot." },
+            { level: 14, name: "Song of Victory", description: "While your Bladesong is active, you add your Intelligence modifier to the damage of your melee weapon attacks." }
+        ],
+        "war-magic": [
+            { level: 2, name: "Arcane Deflection & Tactical Wit", description: "You can use your reaction to gain +2 AC against an attack or +4 to a saving throw (limiting you to cantrips next turn), and you add your Intelligence modifier to initiative." },
+            { level: 6, name: "Power Surge", description: "You store magical energy when you counter or dispel spells (and after long rests), and can spend a surge to add force damage to a damaging spell." },
+            { level: 10, name: "Durable Magic", description: "While you concentrate on a spell, you gain a +2 bonus to AC and to all saving throws." },
+            { level: 14, name: "Deflecting Shroud", description: "When you use Arcane Deflection, magical energy arcs from you to deal force damage to up to three creatures within 60 feet." }
+        ],
+        "order-of-scribes": [
+            { level: 2, name: "Wizardly Quill & Awakened Spellbook", description: "You conjure a magical quill that copies spells quickly and freely, and your spellbook becomes an awakened companion that lets you change a spell's damage type and cast rituals faster." },
+            { level: 6, name: "Manifest Mind", description: "You can summon a spectral manifestation of your Awakened Spellbook that moves independently, casts your spells from its position, and grants you information." },
+            { level: 10, name: "Master Scrivener", description: "After a long rest, you can create one magic spell scroll from a 1st- or 2nd-level spell in your spellbook." },
+            { level: 14, name: "One with the Word", description: "Your soul is bound to your spellbook; if you would die, you can avoid death by expending spell slots totaling five levels, then recover in your book." }
+        ],
+        chronurgy: [
+            { level: 2, name: "Chronal Shift & Temporal Awareness", description: "You can force a creature to reroll an attack, check, or save twice per long rest, and you add your Intelligence modifier to your initiative rolls." },
+            { level: 6, name: "Momentary Stasis", description: "As an action, you can place a Large or smaller creature within 60 feet into temporary stasis, leaving it incapacitated and immobile (Constitution save)." },
+            { level: 10, name: "Arcane Abeyance", description: "You can cast a spell of 4th level or lower and store it in a tiny mote that another creature can carry and release later." },
+            { level: 14, name: "Convergent Future", description: "When a creature within 60 feet makes an attack, check, or save, you can ignore the roll and decide whether it succeeds or fails, at the cost of gaining exhaustion-like strain." }
+        ],
+        graviturgy: [
+            { level: 2, name: "Adjust Density", description: "As an action, you can double or halve the weight of a Large or smaller creature or object for 1 minute, altering its speed and Strength or increasing its speed." },
+            { level: 6, name: "Gravity Well", description: "Whenever you deal damage to a creature with a spell, you can move that creature 5 feet to an unoccupied space." },
+            { level: 10, name: "Violent Attraction", description: "When a creature you can see hits with a melee attack, you can use your reaction to add a damage die; when a creature falls, you can add damage to the impact." },
+            { level: 14, name: "Event Horizon", description: "As an action, you emanate a 30-foot gravitational field for 1 minute that deals force damage and reduces the speed of enemies who move within it (Constitution save)." }
+        ]
+    },
+    artificer: {
+        alchemist: [
+            { level: 3, name: "Tool Proficiency & Experimental Elixir", description: "You gain proficiency with alchemist's supplies, and after a long rest you can create random beneficial elixirs (healing, swiftness, resilience, and more)." },
+            { level: 5, name: "Alchemical Savant", description: "You add your Intelligence modifier to one roll of any spell you cast with alchemist's supplies that restores hit points or deals acid, fire, necrotic, or poison damage." },
+            { level: 9, name: "Restorative Reagents", description: "Your elixirs also grant temporary hit points, and you can cast Lesser Restoration without a spell slot a number of times per long rest equal to your Intelligence modifier." },
+            { level: 15, name: "Chemical Mastery", description: "You gain resistance to acid and poison damage and immunity to the poisoned condition, and can cast Greater Restoration and Heal without material components." }
+        ],
+        armorer: [
+            { level: 3, name: "Tools of the Trade, Arcane Armor & Armor Model", description: "You gain heavy armor and smith's tools proficiency, turn a suit of armor into an integrated Arcane Armor, and choose a Guardian or Infiltrator model with unique features." },
+            { level: 5, name: "Extra Attack", description: "You can attack twice, instead of once, whenever you take the Attack action on your turn." },
+            { level: 9, name: "Armor Modifications", description: "You can apply more infusions to your Arcane Armor, treating its defensive and weapon parts as separate items for infusions." },
+            { level: 15, name: "Perfected Armor", description: "Your armor model improves: the Guardian can pull in and strike a nearby creature, while the Infiltrator can knock prone and hinder targets it damages." }
+        ],
+        artillerist: [
+            { level: 3, name: "Tool Proficiency & Eldritch Cannon", description: "You gain woodcarver's tools proficiency and can magically create a small Eldritch Cannon (Flamethrower, Force Ballista, or Protector) that acts on your command." },
+            { level: 5, name: "Arcane Firearm", description: "You can use a wand, staff, or rod as a spellcasting focus, and add a d8 to one damage roll of any artificer spell cast through it." },
+            { level: 9, name: "Explosive Cannon", description: "Your Eldritch Cannon deals extra damage, and you can command it to detonate in a 20-foot explosion (Dexterity save)." },
+            { level: 15, name: "Fortified Position", description: "Your cannons grant half cover to allies within 10 feet, and you can have two Eldritch Cannons active at the same time." }
+        ],
+        "battle-smith": [
+            { level: 3, name: "Battle Ready & Steel Defender", description: "You gain martial weapon proficiency and can use Intelligence for magic weapon attacks, and you build a loyal Steel Defender construct that fights and protects allies." },
+            { level: 5, name: "Extra Attack", description: "You can attack twice, instead of once, whenever you take the Attack action on your turn." },
+            { level: 9, name: "Arcane Jolt", description: "When you or your Steel Defender hits with a weapon attack, you can deal extra force damage to the target or heal a creature within 30 feet, a number of times per long rest equal to your Intelligence modifier." },
+            { level: 15, name: "Improved Defender", description: "Your Arcane Jolt damage and healing increase, and your Steel Defender gains a bonus to AC and a Deflect Attack reaction." }
+        ]
     }
 };
 
