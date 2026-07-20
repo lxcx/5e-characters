@@ -468,6 +468,15 @@ function generateNPC() {
     const totalLevel = characterClasses.reduce((sum, cc) => cc.className === 'commoner' ? sum : sum + cc.level, 0) || 1;
     const proficiencyBonus = getProficiencyBonus(totalLevel);
 
+    // Expertise (doubled proficiency on chosen skills) - preserve if skills are locked,
+    // otherwise auto-assign to the character's best proficient skills based on class slots
+    let expertise;
+    if (lockStates.skills && currentNPC && Array.isArray(currentNPC.expertise)) {
+        expertise = currentNPC.expertise.filter(s => skills.includes(s));
+    } else {
+        expertise = autoAssignExpertise({ skills, modifiers, characterClasses, proficiencyBonus });
+    }
+
     // Calculate hit points from all classes (level 0 classes like commoner don't contribute)
     const hitDieMap = { 'd4': 4, 'd6': 6, 'd8': 8, 'd10': 10, 'd12': 12 };
     let hitPoints = 0;
@@ -566,10 +575,14 @@ function generateNPC() {
         }
     });
 
-    // Calculate passive skills
-    const passivePerception = 10 + modifiers.wis + (skills.includes('Perception') ? proficiencyBonus : 0);
-    const passiveInvestigation = 10 + modifiers.int + (skills.includes('Investigation') ? proficiencyBonus : 0);
-    const passiveInsight = 10 + modifiers.wis + (skills.includes('Insight') ? proficiencyBonus : 0);
+    // Calculate passive skills (expertise doubles the proficiency bonus)
+    const passiveBonus = (skill, ability) => {
+        if (!skills.includes(skill)) return 0;
+        return expertise.includes(skill) ? proficiencyBonus * 2 : proficiencyBonus;
+    };
+    const passivePerception = 10 + modifiers.wis + passiveBonus('Perception', 'wis');
+    const passiveInvestigation = 10 + modifiers.int + passiveBonus('Investigation', 'int');
+    const passiveInsight = 10 + modifiers.wis + passiveBonus('Insight', 'wis');
 
     // Generate NPC flavor (secrets, motivations, carrying items)
     const npcSecret = randomChoice(npcSecrets);
@@ -597,6 +610,7 @@ function generateNPC() {
         abilities: abilities,
         modifiers: modifiers,
         skills: skills,
+        expertise: expertise,
         equipment: equipment,
         backstory: backstory,
         size: raceData.size,
