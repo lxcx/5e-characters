@@ -1122,6 +1122,65 @@ const classFeatures = {
     commoner: []
 };
 
+// Subclass Features by Level
+// Keyed by base class -> subclass id -> array of { level, name, description }
+// Subclass ids match the ids in the `subclasses` object above.
+const subclassFeatures = {
+    bard: {
+        lore: [
+            { level: 3, name: 'Bonus Proficiencies', description: 'You gain proficiency with three skills of your choice.' },
+            { level: 3, name: 'Cutting Words', description: 'When a creature within 60 feet that you can see makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one Bardic Inspiration die and subtract that roll from the creature\'s total, potentially causing it to miss or fail.' },
+            { level: 6, name: 'Additional Magical Secrets', description: 'You learn two spells of your choice from any class. The chosen spells count as bard spells for you but don\'t count against the number of bard spells you know.' },
+            { level: 14, name: 'Peerless Skill', description: 'When you make an ability check, you can expend one use of Bardic Inspiration and add the die roll to your ability check. You can choose to do so after you roll but before the DM says whether you succeed or fail.' }
+        ],
+        valor: [
+            { level: 3, name: 'Bonus Proficiencies', description: 'You gain proficiency with medium armor, shields, and martial weapons.' },
+            { level: 3, name: 'Combat Inspiration', description: 'A creature that has a Bardic Inspiration die from you can add it to a weapon damage roll it makes, or add it to its AC against one attack (as a reaction), rolling the die after the attack hits but before damage is determined.' },
+            { level: 6, name: 'Extra Attack', description: 'You can attack twice, instead of once, whenever you take the Attack action on your turn.' },
+            { level: 14, name: 'Battle Magic', description: 'When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.' }
+        ],
+        glamour: [
+            { level: 3, name: 'Mantle of Inspiration', description: 'As a bonus action, you can expend one use of Bardic Inspiration to grant temporary hit points to allies within 60 feet and allow each of them to immediately use their reaction to move up to their speed without provoking opportunity attacks.' },
+            { level: 3, name: 'Enthralling Performance', description: 'After performing for at least 1 minute, you can attempt to magically inspire fascination in up to a number of humanoids within 60 feet equal to your Charisma modifier; those who fail a Wisdom save are charmed by you for 1 hour.' },
+            { level: 6, name: 'Mantle of Majesty', description: 'As a bonus action, you cast command without expending a spell slot, and for 1 minute you can cast it as a bonus action on each of your turns without a spell slot; charmed creatures automatically fail their save against it.' },
+            { level: 14, name: 'Unbreakable Majesty', description: 'As a bonus action, you assume a magically majestic presence for 1 minute. Any creature that tries to attack you must make a Charisma save or be unable to attack you and must choose a new target (wasting the attack if none is available).' }
+        ],
+        swords: [
+            { level: 3, name: 'Bonus Proficiencies', description: 'You gain proficiency with medium armor and the scimitar. If you\'re proficient with a simple or martial melee weapon, you can use it as a spellcasting focus for your bard spells.' },
+            { level: 3, name: 'Fighting Style', description: 'You adopt a style of fighting as your specialty: Dueling or Two-Weapon Fighting.' },
+            { level: 3, name: 'Blade Flourish', description: 'Whenever you take the Attack action, your walking speed increases by 10 feet until the end of the turn, and you can expend one Bardic Inspiration die to add a Blade Flourish option to a hit: Defensive Flourish (add die to damage and AC), Slashing Flourish (add die to damage, also to another nearby creature), or Mobile Flourish (add die to damage and push the target, then move up to that distance).' },
+            { level: 6, name: 'Extra Attack', description: 'You can attack twice, instead of once, whenever you take the Attack action on your turn.' },
+            { level: 14, name: 'Master\'s Flourish', description: 'Whenever you use a Blade Flourish option, you can roll a d6 and use it instead of expending a Bardic Inspiration die.' }
+        ],
+        whispers: [
+            { level: 3, name: 'Psychic Blades', description: 'When you hit a creature with a weapon attack, you can expend one Bardic Inspiration die to deal extra psychic damage (2d6 at 3rd level, increasing with your bard level).' },
+            { level: 3, name: 'Words of Terror', description: 'If you speak to a humanoid alone for at least 1 minute, you can attempt to seed paranoia in its mind; on a failed Wisdom save it is frightened of you or a creature of your choice for 1 hour.' },
+            { level: 6, name: 'Mantle of Whispers', description: 'When a humanoid dies within 30 feet of you, you can use your reaction to magically capture its shadow, then later use it as a disguise to assume the dead creature\'s appearance and access its surface memories.' },
+            { level: 14, name: 'Shadow Lore', description: 'As an action, you whisper a threat laden with imagined shadowy secrets. One creature within 30 feet that can hear you must succeed on a Wisdom save or be charmed by you, obeying your commands, for 8 hours or until you or your allies harm it.' }
+        ],
+        creation: [
+            { level: 3, name: 'Mote of Potential', description: 'Your Bardic Inspiration is enhanced with dancing, musical creation. When a creature uses your Bardic Inspiration die for an ability check, it rolls the die twice and uses the higher; for an attack it deals thunder damage equal to the die to a nearby creature; for a save, allies near it gain temporary hit points equal to the die.' },
+            { level: 3, name: 'Performance of Creation', description: 'As an action, you can create one nonmagical item of your choice in an unoccupied space within 10 feet, up to a value based on your bard level. The item lasts for a number of hours equal to your Charisma modifier.' },
+            { level: 6, name: 'Animating Performance', description: 'As an action, you can animate one Large or smaller nonmagical item into a Dancing Item creature that fights on your behalf until it drops to 0 hit points, you dismiss it, or you use the feature again.' },
+            { level: 14, name: 'Creative Crescendo', description: 'When you use Performance of Creation, you can create more than one item at once (a number equal to your Charisma modifier), and those items are no longer limited by the normal item value.' }
+        ],
+        eloquence: [
+            { level: 3, name: 'Silver Tongue', description: 'You are a master at saying the right thing. When you make a Persuasion or Deception check, you can treat a d20 roll of 9 or lower as a 10.' },
+            { level: 3, name: 'Unsettling Words', description: 'As a bonus action, you can expend one Bardic Inspiration die and choose a creature within 60 feet; subtract the number rolled from the next saving throw the creature makes before the start of your next turn.' },
+            { level: 6, name: 'Unfailing Inspiration', description: 'When a creature adds one of your Bardic Inspiration dice to an ability check, attack roll, or saving throw and fails, the creature keeps the die instead of it being expended.' },
+            { level: 6, name: 'Universal Speech', description: 'As an action, you make yourself understood by up to a number of creatures equal to your Charisma modifier for 1 hour, regardless of the languages you or they speak.' },
+            { level: 14, name: 'Infectious Inspiration', description: 'When a creature within 60 feet succeeds on a roll using your Bardic Inspiration, you can use your reaction to give another creature a Bardic Inspiration die without expending one of your uses, a number of times per long rest equal to your Charisma modifier.' }
+        ],
+        spirits: [
+            { level: 3, name: 'Guiding Whispers', description: 'You learn the guidance cantrip, which counts as a bard spell for you and has a range of 60 feet when you cast it with this feature.' },
+            { level: 3, name: 'Spiritual Focus', description: 'You can use a candle, incense, crystal ball, skull, spirit board, or similar object as a spellcasting focus. While holding it, casting a bard spell that restores hit points or deals damage lets you roll a d6 and add it to one such roll.' },
+            { level: 3, name: 'Tales from Beyond', description: 'As a bonus action, you can expend one use of Bardic Inspiration to roll on the Spirit Tales table and gain a randomly determined magical effect you can unleash, ranging from tales of terror and battle to tales of protection and renewal.' },
+            { level: 6, name: 'Spirit Session', description: 'Through a ritual séance of at least 1 minute with willing creatures, you can temporarily learn a spell from the divination or necromancy schools (of a level you can cast) from any class\'s spell list.' },
+            { level: 14, name: 'Mystical Connection', description: 'When you roll on the Spirit Tales table, you can roll twice and choose which of the two results to use.' }
+        ]
+    }
+};
+
 // D&D 5e Feats (pre-2024 sources: PHB, Tasha's Cauldron of Everything, Xanathar's Guide to Everything)
 const feats = {
     // === PLAYER'S HANDBOOK FEATS ===

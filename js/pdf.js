@@ -22,13 +22,15 @@ function exportCharacterSheet() {
         'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Stealth', 'Survival'
     ];
     
+    const expertiseList = npc.expertise || [];
     const skillRows = allSkills.map(skill => {
         const isProficient = npc.skills.includes(skill);
+        const hasExpertise = isProficient && expertiseList.includes(skill);
         const ability = skillAbilities[skill] || 'int';
         const abilityMod = npc.modifiers[ability] || 0;
-        const skillMod = isProficient ? abilityMod + profBonus : abilityMod;
+        const skillMod = hasExpertise ? abilityMod + profBonus * 2 : (isProficient ? abilityMod + profBonus : abilityMod);
         const modStr = skillMod >= 0 ? `+${skillMod}` : `${skillMod}`;
-        const profMark = isProficient ? '*' : '';
+        const profMark = hasExpertise ? '**' : (isProficient ? '*' : '');
         return `<tr><td>${skill} (${ability.toUpperCase()})</td><td style="text-align:right; width: 30px;">${modStr}</td><td style="width: 10px;">${profMark}</td></tr>`;
     }).join('');
     
@@ -323,7 +325,7 @@ table tr:last-child td { border-bottom: none; }
 <div class="column">
     <h2>Skills</h2>
     <table>${skillRows}</table>
-    <div class="proficient-note">* = proficient</div>
+    <div class="proficient-note">* = proficient${expertiseList.length > 0 ? ', ** = expertise' : ''}</div>
 
     <h2>Weapons</h2>
     ${(() => {
@@ -432,9 +434,12 @@ table tr:last-child td { border-bottom: none; }
 
     <h2>Class Features</h2>
     ${(() => {
-const features = getCharacterFeatures(npc.characterClasses || [{ className: npc.npcClass, level: npc.totalLevel || 1 }]);
+const features = getCharacterFeatures(npc.characterClasses || [{ className: npc.npcClass, level: npc.totalLevel || 1, subclass: npc.subclass || null }]);
 if (features.length === 0) return '<p>None</p>';
-return features.map(f => `<div class="trait-block"><strong>${f.name} (Level ${f.level} ${capitalize(f.className)}).</strong> ${f.description}</div>`).join('');
+return features.map(f => {
+    const label = f.isSubclass && f.subclassName ? f.subclassName : capitalize(f.className);
+    return `<div class="trait-block"><strong>${f.name} (Level ${f.level} ${label}).</strong> ${f.description}</div>`;
+}).join('');
     })()}
 
     ${npc.feats && npc.feats.length > 0 ? `

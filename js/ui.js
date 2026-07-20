@@ -222,13 +222,13 @@ function displayNPC(npc) {
             <!-- Passive Skills -->
             <div class="passive-skills-row">
                 <div class="passive-skill" title="Passive Perception">
-                    <i class="fa-solid fa-eye"></i> ${npc.passivePerception}
+                    <i class="fa-solid fa-eye"></i> ${10 + getSkillBonus(npc, 'Perception')}
                 </div>
                 <div class="passive-skill" title="Passive Investigation">
-                    <i class="fa-solid fa-magnifying-glass"></i> ${npc.passiveInvestigation || 10 + (npc.modifiers?.int || 0)}
+                    <i class="fa-solid fa-magnifying-glass"></i> ${10 + getSkillBonus(npc, 'Investigation')}
                 </div>
                 <div class="passive-skill" title="Passive Insight">
-                    <i class="fa-solid fa-brain"></i> ${npc.passiveInsight || 10 + (npc.modifiers?.wis || 0)}
+                    <i class="fa-solid fa-brain"></i> ${10 + getSkillBonus(npc, 'Insight')}
                 </div>
             </div>
     `;
@@ -522,13 +522,37 @@ function displayNPC(npc) {
         `;
     }
     
+    // Subclass Descriptions
+    const npcClassesForCard = npc.characterClasses || [{ className: npc.npcClass, level: npc.totalLevel || 1, subclass: npc.subclass || null }];
+    const subclassInfos = [];
+    npcClassesForCard.forEach(cc => {
+        if (cc.subclass && typeof subclasses !== 'undefined' && subclasses[cc.className]) {
+            const option = subclasses[cc.className].options.find(opt => opt.id === cc.subclass);
+            if (option) {
+                subclassInfos.push({ name: option.name, source: option.source, description: option.description });
+            }
+        }
+    });
+    if (subclassInfos.length > 0) {
+        html += `
+            <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Subclass</div>
+            <div class="traits-list">
+                ${subclassInfos.map(s => `<div class="subclass-block"><strong>${s.name}</strong> <span class="subclass-source">(${s.source})</span><br>${s.description}</div>`).join('')}
+            </div>
+        `;
+    }
+
     // Class Features
-    const characterFeatures = getCharacterFeatures(npc.characterClasses || [{ className: npc.npcClass, level: npc.totalLevel || 1 }]);
+    const characterFeatures = getCharacterFeatures(npcClassesForCard);
     if (characterFeatures.length > 0) {
         html += `
             <div class="section-title"><i class="fa-solid fa-scroll"></i> Class Features</div>
             <div class="features-list">
-                ${characterFeatures.map(f => `<span class="feature-tag" title="${f.description.replace(/"/g, '&quot;')}">${f.name} <span class="feature-level">(Lv ${f.level})</span></span>`).join('')}
+                ${characterFeatures.map(f => {
+                    const label = f.isSubclass && f.subclassName ? `${f.subclassName}` : capitalize(f.className);
+                    const title = `${f.name} (Level ${f.level} ${label}). ${f.description}`.replace(/"/g, '&quot;');
+                    return `<span class="feature-tag${f.isSubclass ? ' subclass-feature' : ''}" title="${title}">${f.name} <span class="feature-level">(Lv ${f.level})</span></span>`;
+                }).join('')}
             </div>
         `;
     }
@@ -636,15 +660,20 @@ function displayNPC(npc) {
         'Insight', 'Intimidation', 'Investigation', 'Medicine', 'Nature', 'Perception',
         'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Stealth', 'Survival'
     ];
-    const proficiencyBonus = npc.proficiencyBonus || 2;
+    const expertiseList = npc.expertise || [];
+    const expertiseSlots = getExpertiseSlots(getNpcCharacterClasses(npc));
     
     allSkills.forEach(skill => {
         const isProficient = npc.skills.includes(skill);
-        const ability = skillAbilities[skill] || 'int';
-        const abilityMod = npc.modifiers[ability] || 0;
-        const skillMod = isProficient ? abilityMod + proficiencyBonus : abilityMod;
+        const hasExpertise = isProficient && expertiseList.includes(skill);
+        const skillMod = getSkillBonus(npc, skill);
         const modStr = skillMod >= 0 ? `+${skillMod}` : `${skillMod}`;
-        html += `<span class="skill-tag ${isProficient ? 'proficient' : ''}">${skill} <span class="skill-modifier">(${modStr})</span></span>`;
+        const tagClass = `skill-tag ${isProficient ? 'proficient' : ''} ${hasExpertise ? 'expertise' : ''}`.replace(/\s+/g, ' ').trim();
+        // Show a star toggle on proficient skills when the character has expertise slots
+        const star = (expertiseSlots > 0 && isProficient)
+            ? `<span class="expertise-toggle ${hasExpertise ? 'active' : ''}" title="${hasExpertise ? 'Remove expertise' : 'Grant expertise (doubles proficiency bonus)'}" onclick="event.stopPropagation(); toggleExpertise('${skill.replace(/'/g, "\\'")}')"><i class="fa-solid fa-star"></i></span> `
+            : '';
+        html += `<span class="${tagClass}">${star}${skill} <span class="skill-modifier">(${modStr})</span></span>`;
     });
 
     html += `
@@ -1232,15 +1261,113 @@ function getCharacterFeatures(characterClasses) {
             if (feature.level <= cc.level) {
                 features.push({
                     ...feature,
-                    className: cc.className
+                    className: cc.className,
+                    isSubclass: false
                 });
             }
         });
+
+        // Merge in subclass features when a subclass is chosen
+        if (cc.subclass && typeof subclassFeatures !== 'undefined' && subclassFeatures[cc.className]) {
+            const subclassFeatureList = subclassFeatures[cc.className][cc.subclass] || [];
+            const subclassLabel = getSubclassName(cc.className, cc.subclass);
+            subclassFeatureList.forEach(feature => {
+                if (feature.level <= cc.level) {
+                    features.push({
+                        ...feature,
+                        className: cc.className,
+                        subclassName: subclassLabel,
+                        isSubclass: true
+                    });
+                }
+            });
+        }
     });
     
     // Sort by level, then by class name
     features.sort((a, b) => a.level - b.level || a.className.localeCompare(b.className));
     return features;
+}
+
+// Look up a subclass's display name from its id
+function getSubclassName(className, subclassId) {
+    const subclassData = typeof subclasses !== 'undefined' ? subclasses[className] : null;
+    if (!subclassData || !subclassData.options) return '';
+    const option = subclassData.options.find(opt => opt.id === subclassId);
+    return option ? option.name : '';
+}
+
+// Normalize an NPC into a characterClasses array (falls back to single class)
+function getNpcCharacterClasses(npc) {
+    if (npc && Array.isArray(npc.characterClasses) && npc.characterClasses.length > 0) {
+        return npc.characterClasses;
+    }
+    return [{ className: npc?.npcClass, level: npc?.totalLevel || 1 }];
+}
+
+// Number of skill expertise picks a character has, based on class features
+// (Rogue: 2 at Lv1, +2 at Lv6; Bard: 2 at Lv3, +2 at Lv10)
+function getExpertiseSlots(characterClasses) {
+    if (!characterClasses) return 0;
+    let slots = 0;
+    characterClasses.forEach(cc => {
+        if (cc.className === 'rogue') {
+            if (cc.level >= 1) slots += 2;
+            if (cc.level >= 6) slots += 2;
+        } else if (cc.className === 'bard') {
+            if (cc.level >= 3) slots += 2;
+            if (cc.level >= 10) slots += 2;
+        }
+    });
+    return slots;
+}
+
+// Skill modifier including proficiency and expertise (doubled proficiency)
+function getSkillBonus(npc, skill) {
+    const ability = skillAbilities[skill] || 'int';
+    const abilityMod = npc.modifiers?.[ability] || 0;
+    const pb = npc.proficiencyBonus || 2;
+    const isProficient = (npc.skills || []).includes(skill);
+    const hasExpertise = isProficient && (npc.expertise || []).includes(skill);
+    if (hasExpertise) return abilityMod + pb * 2;
+    if (isProficient) return abilityMod + pb;
+    return abilityMod;
+}
+
+// Auto-assign expertise to a character's best proficient skills, up to their slot count
+function autoAssignExpertise(npc) {
+    const slots = getExpertiseSlots(getNpcCharacterClasses(npc));
+    if (slots <= 0) return [];
+    const proficient = (npc.skills || []).filter(s => (skillAbilities[s] !== undefined));
+    // Prefer skills with the highest ability modifier so the pick is sensible
+    const sorted = [...proficient].sort((a, b) => {
+        const ma = npc.modifiers?.[skillAbilities[a] || 'int'] || 0;
+        const mb = npc.modifiers?.[skillAbilities[b] || 'int'] || 0;
+        return mb - ma;
+    });
+    return sorted.slice(0, slots);
+}
+
+// Toggle expertise on a proficient skill (respecting the character's expertise slots)
+function toggleExpertise(skill) {
+    if (!currentNPC || !currentNPC.skills.includes(skill)) return;
+    if (!Array.isArray(currentNPC.expertise)) currentNPC.expertise = [];
+    const slots = getExpertiseSlots(getNpcCharacterClasses(currentNPC));
+    const idx = currentNPC.expertise.indexOf(skill);
+    if (idx >= 0) {
+        currentNPC.expertise.splice(idx, 1);
+    } else {
+        if (currentNPC.expertise.length >= slots) {
+            alert(`This character has ${slots} expertise slot${slots === 1 ? '' : 's'}. Remove expertise from another skill first.`);
+            return;
+        }
+        currentNPC.expertise.push(skill);
+    }
+    // Keep stored passive values (used by the PDF export) in sync
+    currentNPC.passivePerception = 10 + getSkillBonus(currentNPC, 'Perception');
+    currentNPC.passiveInvestigation = 10 + getSkillBonus(currentNPC, 'Investigation');
+    currentNPC.passiveInsight = 10 + getSkillBonus(currentNPC, 'Insight');
+    displayNPC(currentNPC);
 }
 
 function calculateAC(primaryClassName, modifiers) {
@@ -1962,8 +2089,21 @@ function recalculateNPCFromClasses() {
     const occSkills = occData?.skills || [];
     currentNPC.skills = [...new Set([...allClassSkills, ...occSkills])];
     
-    // Recalculate passive perception
-    currentNPC.passivePerception = 10 + currentNPC.modifiers.wis + (currentNPC.skills.includes('Perception') ? currentNPC.proficiencyBonus : 0);
+    // Keep expertise valid: drop non-proficient skills, and re-seed if the
+    // character now has expertise slots but no picks (e.g. after a class change)
+    if (Array.isArray(currentNPC.expertise)) {
+        currentNPC.expertise = currentNPC.expertise.filter(s => currentNPC.skills.includes(s));
+    } else {
+        currentNPC.expertise = [];
+    }
+    if (currentNPC.expertise.length === 0) {
+        currentNPC.expertise = autoAssignExpertise(currentNPC);
+    }
+    
+    // Recalculate passive skills (expertise doubles proficiency)
+    currentNPC.passivePerception = 10 + getSkillBonus(currentNPC, 'Perception');
+    currentNPC.passiveInvestigation = 10 + getSkillBonus(currentNPC, 'Investigation');
+    currentNPC.passiveInsight = 10 + getSkillBonus(currentNPC, 'Insight');
     
     // Regenerate backstory if not locked
     regenerateBackstoryIfNeeded();
@@ -3075,11 +3215,19 @@ function openSpellModal(type) {
         }
         
         const isSelected = currentSpellSelections.includes(spellId);
+        const escapedDescription = (spell.description || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
         optionsHtml += `
-            <div class="modal-option ${isSelected ? 'selected' : ''}" data-spell-level="${spell.level}" onclick="toggleSpellOption(this, '${spellId}')" title="${spell.description.substring(0, 300).replace(/"/g, '&quot;')}...">
+            <div class="modal-option ${isSelected ? 'selected' : ''}" data-spell-level="${spell.level}" onclick="toggleSpellOption(this, '${spellId}')">
                 <span class="modal-option-checkbox"></span>
                 <span>${spell.name}</span>
                 <span class="spell-school">${spell.school}</span>
+                <button type="button" class="spell-info-btn" onclick="event.stopPropagation(); toggleSpellDescription(this)" title="Show spell description" aria-label="Show spell description">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+                <div class="spell-description-panel" onclick="event.stopPropagation();">${escapedDescription}</div>
             </div>
         `;
     });
@@ -3101,6 +3249,12 @@ function toggleSpellOption(element, spellId) {
     }
     
     updateSpellModalCount();
+}
+
+function toggleSpellDescription(button) {
+    const option = button.closest('.modal-option');
+    if (!option) return;
+    option.classList.toggle('description-open');
 }
 
 function updateSpellModalCount() {
@@ -3928,6 +4082,15 @@ function closeModal() {
 function saveModalSelections() {
     if (currentModalField && currentNPC) {
         currentNPC[currentModalField] = [...currentModalSelections];
+        // Expertise can only apply to skills the character is still proficient in
+        if (currentModalField === 'skills') {
+            if (Array.isArray(currentNPC.expertise)) {
+                currentNPC.expertise = currentNPC.expertise.filter(s => currentNPC.skills.includes(s));
+            }
+            currentNPC.passivePerception = 10 + getSkillBonus(currentNPC, 'Perception');
+            currentNPC.passiveInvestigation = 10 + getSkillBonus(currentNPC, 'Investigation');
+            currentNPC.passiveInsight = 10 + getSkillBonus(currentNPC, 'Insight');
+        }
         displayNPC(currentNPC);
     }
     closeModal();
